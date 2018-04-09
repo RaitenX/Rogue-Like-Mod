@@ -148,7 +148,34 @@ label Kitty_SexMenu:
                 
         "Could we maybe?. . . [[fuck]":
                 if P_Semen and K_Action:
-                    menu:
+                    if ("master" in K_Petnames or "sir" in K_Petnames) and ApprovalCheck("Kitty", 900, "O") and not K_Bondage: # bondage event
+                        $ K_Bondage = 1
+                        ch_k "Hey, [K_Petname], I've got some new things here, do you think we could try them?"
+                        "She grabs what it looks like some bondage gear"
+                        menu:
+                            "Yep":
+                                call KittyFace("sexy", 1) 
+                                if K_Over or K_Chest or K_Panties or K_Legs:
+                                    "She glances up at you as her clothes drop to the ground."
+                                $ K_Over = 0
+                                $ K_Legs = 0
+                                $ K_Chest = 0
+                                $ K_Panties = 0
+                                "She starts dressing the new outfit"
+                                $ K_Over = "armbinder"
+                                $ K_Chest = "bustier bra"
+                                $ K_Panties = "zipper panties"
+                                jump K_HotdogPrep
+                                #pass
+                                #call Kitty_Bottoms_Off_Legs
+                                #call Kitty_Top_Off
+                                #call Kitty_Bottoms_Off
+                                #shes gonna wear it
+                            "Not now, but let's save it for another time":
+                                pass
+                                #nope
+
+                    menu Kitty_SMenu2:
                         "What did you want to do?"
                         "Lean back, I've got something in mind. . .":
                                 call K_Sex_H           
@@ -156,6 +183,23 @@ label Kitty_SexMenu:
                                 call K_Sex_P           
                         "Fuck your ass.":                        
                                 call K_Sex_A    
+                        "How about you put that bondage outfit":
+                            call KittyFace("sexy", 1) 
+                            if K_Over or K_Chest or K_Panties or K_Legs:
+                                "She glances up at you as her clothes drop to the ground."
+                            $ K_Over = 0
+                            $ K_Legs = 0
+                            $ K_Chest = 0
+                            $ K_Panties = 0
+                            "She starts dressing the new outfit"
+                            $ K_Over = "armbinder"
+                            $ K_Chest = "bustier bra"
+                            $ K_Panties = "zipper panties"
+                            jump K_HotdogPrep
+
+
+                            #jump Kitty_SMenu2
+                            
                         "How about some toys? [[Pussy]":                        
                             call K_Dildo_Pussy     
                         "How about some toys? [[Anal]":                        

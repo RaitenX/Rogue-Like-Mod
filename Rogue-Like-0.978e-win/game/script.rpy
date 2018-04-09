@@ -330,6 +330,7 @@ init -1:
     default K_Eyes = "normal"
     default K_Hair = "evo"
     default K_Gag = 0    
+    default K_Bondage = 0    
     default K_Blush = 0
     default K_Spunk = []
     default K_Pubes = 1

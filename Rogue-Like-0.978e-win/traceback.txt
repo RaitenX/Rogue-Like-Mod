@@ -1,6 +1,6 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' 'images/EmmaSprite/EmmaSprite_Towel_Under.png'>:
+While loading <'Image' 'KittySexBDPantyOpenAss.png'>:
   File "game/script Locations.rpy", line 806, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2218, in script call
@@ -125,7 +125,7 @@ While loading <'Image' 'images/EmmaSprite/EmmaSprite_Towel_Under.png'>:
     call Kitty_SexMenu
   File "game/Kitty_Sex.rpy", line 77, in script call
     call K_Makeout
-  File "game/Kitty_Sex.rpy", line 1945, in script call
+  File "game/Kitty_Sex.rpy", line 1989, in script call
     call Kitty_Caught
   File "game/script Locations.rpy", line 1277, in script call
     call Girls_Location
@@ -147,7 +147,7 @@ While loading <'Image' 'images/EmmaSprite/EmmaSprite_Towel_Under.png'>:
     call Kitty_SexMenu
   File "game/Kitty_Sex.rpy", line 77, in script call
     call K_Makeout
-  File "game/Kitty_Sex.rpy", line 1945, in script call
+  File "game/Kitty_Sex.rpy", line 1989, in script call
     call Kitty_Caught
   File "game/script Locations.rpy", line 751, in script call
     call Chat
@@ -157,7 +157,7 @@ While loading <'Image' 'images/EmmaSprite/EmmaSprite_Towel_Under.png'>:
     call Kitty_SexMenu
   File "game/Kitty_Sex.rpy", line 111, in script call
     call K_Blowjob
-  File "game/Kitty_Sex.rpy", line 1945, in script call
+  File "game/Kitty_Sex.rpy", line 1989, in script call
     call Kitty_Caught
   File "game/script Locations.rpy", line 751, in script call
     call Chat
@@ -167,7 +167,7 @@ While loading <'Image' 'images/EmmaSprite/EmmaSprite_Towel_Under.png'>:
     call Kitty_SexMenu
   File "game/Kitty_Sex.rpy", line 111, in script call
     call K_Blowjob
-  File "game/Kitty_Sex.rpy", line 1945, in script call
+  File "game/Kitty_Sex.rpy", line 1989, in script call
     call Kitty_Caught
   File "game/script Locations.rpy", line 2287, in script call
     call Chat
@@ -201,7 +201,7 @@ While loading <'Image' 'images/EmmaSprite/EmmaSprite_Towel_Under.png'>:
     call Kitty_SexMenu
   File "game/Kitty_Sex.rpy", line 111, in script call
     call K_Blowjob
-  File "game/Kitty_Sex.rpy", line 1945, in script call
+  File "game/Kitty_Sex.rpy", line 1989, in script call
     call Kitty_Caught
   File "game/script Locations.rpy", line 751, in script call
     call Chat
@@ -241,7 +241,7 @@ While loading <'Image' 'images/EmmaSprite/EmmaSprite_Towel_Under.png'>:
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
-  File "game/Kitty_Sex.rpy", line 154, in script call
+  File "game/Kitty_Sex.rpy", line 181, in script call
     call K_Sex_H
   File "game/Kitty_Missionary.rpy", line 1956, in script call
     call Sex_Dialog("Kitty",Partner)
@@ -249,7 +249,7 @@ While loading <'Image' 'images/EmmaSprite/EmmaSprite_Towel_Under.png'>:
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
-  File "game/Kitty_Sex.rpy", line 154, in script call
+  File "game/Kitty_Sex.rpy", line 181, in script call
     call K_Sex_H
   File "game/Kitty_Missionary.rpy", line 1956, in script call
     call Sex_Dialog("Kitty",Partner)
@@ -265,29 +265,33 @@ While loading <'Image' 'images/EmmaSprite/EmmaSprite_Towel_Under.png'>:
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 126, in script call
+  File "game/script Locations.rpy", line 1227, in script call
     call Chat
-  File "game/script Functions.rpy", line 1159, in script call
-    call Emma_Chat
-  File "game/script Locations.rpy", line 126, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1159, in script call
-    call Emma_Chat
-  File "game/script Locations.rpy", line 126, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1147, in script call
-    call Emma_Chat
-  File "game/Emma_Chat.rpy", line 69, in script call
-    call Emma_Settings
-  File "game/Emma_Chat.rpy", line 544, in script call
-    call Emma_Clothes
-  File "game/Emma_Chat.rpy", line 3156, in script
-    menu:
-IOError: Couldn't find file 'images/EmmaSprite/EmmaSprite_Towel_Under.png'.
+  File "game/script Functions.rpy", line 1134, in script call
+    call Kitty_Chat
+  File "game/Kitty_Chat.rpy", line 185, in script call
+    call Kitty_SexMenu
+  File "game/Kitty_Missionary.rpy", line 1335, in script call
+    call Sex_Dialog("Kitty",Partner)
+  File "game/script Functions.rpy", line 2880, in script call
+    call Kitty_Taboo
+  File "game/Kitty_Sex.rpy", line 1994, in script call
+    call Rogue_Noticed("Kitty")
+  File "game/Rogue_Sex.rpy", line 2167, in script
+    "Rogue noticed what you and Kitty are up to."
+IOError: Couldn't find file 'KittySexBDPantyOpenAss.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\bootstrap.py", line 305, in bootstrap
+    renpy.main.main()
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\main.py", line 499, in main
+    run(restart)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\main.py", line 147, in run
+    renpy.execution.run_context(True)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\execution.py", line 795, in run_context
+    context.run()
   File "game/script Locations.rpy", line 806, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2218, in script call
@@ -412,7 +416,7 @@ Full traceback:
     call Kitty_SexMenu
   File "game/Kitty_Sex.rpy", line 77, in script call
     call K_Makeout
-  File "game/Kitty_Sex.rpy", line 1945, in script call
+  File "game/Kitty_Sex.rpy", line 1989, in script call
     call Kitty_Caught
   File "game/script Locations.rpy", line 1277, in script call
     call Girls_Location
@@ -434,7 +438,7 @@ Full traceback:
     call Kitty_SexMenu
   File "game/Kitty_Sex.rpy", line 77, in script call
     call K_Makeout
-  File "game/Kitty_Sex.rpy", line 1945, in script call
+  File "game/Kitty_Sex.rpy", line 1989, in script call
     call Kitty_Caught
   File "game/script Locations.rpy", line 751, in script call
     call Chat
@@ -444,7 +448,7 @@ Full traceback:
     call Kitty_SexMenu
   File "game/Kitty_Sex.rpy", line 111, in script call
     call K_Blowjob
-  File "game/Kitty_Sex.rpy", line 1945, in script call
+  File "game/Kitty_Sex.rpy", line 1989, in script call
     call Kitty_Caught
   File "game/script Locations.rpy", line 751, in script call
     call Chat
@@ -454,7 +458,7 @@ Full traceback:
     call Kitty_SexMenu
   File "game/Kitty_Sex.rpy", line 111, in script call
     call K_Blowjob
-  File "game/Kitty_Sex.rpy", line 1945, in script call
+  File "game/Kitty_Sex.rpy", line 1989, in script call
     call Kitty_Caught
   File "game/script Locations.rpy", line 2287, in script call
     call Chat
@@ -488,7 +492,7 @@ Full traceback:
     call Kitty_SexMenu
   File "game/Kitty_Sex.rpy", line 111, in script call
     call K_Blowjob
-  File "game/Kitty_Sex.rpy", line 1945, in script call
+  File "game/Kitty_Sex.rpy", line 1989, in script call
     call Kitty_Caught
   File "game/script Locations.rpy", line 751, in script call
     call Chat
@@ -528,7 +532,7 @@ Full traceback:
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
-  File "game/Kitty_Sex.rpy", line 154, in script call
+  File "game/Kitty_Sex.rpy", line 181, in script call
     call K_Sex_H
   File "game/Kitty_Missionary.rpy", line 1956, in script call
     call Sex_Dialog("Kitty",Partner)
@@ -536,7 +540,7 @@ Full traceback:
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
-  File "game/Kitty_Sex.rpy", line 154, in script call
+  File "game/Kitty_Sex.rpy", line 181, in script call
     call K_Sex_H
   File "game/Kitty_Missionary.rpy", line 1956, in script call
     call Sex_Dialog("Kitty",Partner)
@@ -552,71 +556,63 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 126, in script call
+  File "game/script Locations.rpy", line 1227, in script call
     call Chat
-  File "game/script Functions.rpy", line 1159, in script call
-    call Emma_Chat
-  File "game/script Locations.rpy", line 126, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1159, in script call
-    call Emma_Chat
-  File "game/script Locations.rpy", line 126, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1147, in script call
-    call Emma_Chat
-  File "game/Emma_Chat.rpy", line 69, in script call
-    call Emma_Settings
-  File "game/Emma_Chat.rpy", line 544, in script call
-    call Emma_Clothes
-  File "game/Emma_Chat.rpy", line 3156, in script
-    menu:
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\ast.py", line 1483, in execute
-    choice = renpy.exports.menu(choices, self.set)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\exports.py", line 868, in menu
-    rv = renpy.store.menu(items)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\exports.py", line 1054, in display_menu
-    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\ui.py", line 287, in interact
+  File "game/script Functions.rpy", line 1134, in script call
+    call Kitty_Chat
+  File "game/Kitty_Chat.rpy", line 185, in script call
+    call Kitty_SexMenu
+  File "game/Kitty_Missionary.rpy", line 1335, in script call
+    call Sex_Dialog("Kitty",Partner)
+  File "game/script Functions.rpy", line 2880, in script call
+    call Kitty_Taboo
+  File "game/Kitty_Sex.rpy", line 1994, in script call
+    call Rogue_Noticed("Kitty")
+  File "game/Rogue_Sex.rpy", line 2167, in script
+    "Rogue noticed what you and Kitty are up to."
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 624, in execute
+    renpy.exports.say(who, what, interact=self.interact, *args, **kwargs)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\exports.py", line 1173, in say
+    who(what, *args, **kwargs)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\character.py", line 911, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, **display_args)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\character.py", line 747, in do_display
+    **display_args)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\character.py", line 523, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ui.py", line 287, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\core.py", line 2553, in interact
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 2553, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\core.py", line 2916, in interact_core
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 2916, in interact_core
     self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\core.py", line 1980, in draw_screen
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 1980, in draw_screen
     renpy.config.screen_height,
   File "renpy/display/render.pyx", line 430, in renpy.display.render.render_screen (gen\renpy.display.render.c:6938)
     rv = render(root, width, height, 0, 0)
   File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
     rv = d.render(widtho, heighto, st, at)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
     surf = render(child, width, height, cst, cat)
   File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
     cpdef render(d, object widtho, object heighto, double st, double at):
   File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
     rv = d.render(widtho, heighto, st, at)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
     surf = render(child, width, height, cst, cat)
   File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
     cpdef render(d, object widtho, object heighto, double st, double at):
   File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
     rv = d.render(widtho, heighto, st, at)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
     surf = render(child, width, height, cst, cat)
   File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
     cpdef render(d, object widtho, object heighto, double st, double at):
   File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
     rv = d.render(widtho, heighto, st, at)
-  File "renpy/display/accelerator.pyx", line 108, in renpy.display.accelerator.transform_render (gen\renpy.display.accelerator.c:2047)
-    cr = render(child, widtho, heighto, st - self.child_st_base, at)
-  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
-    rv = d.render(widtho, heighto, st, at)
-  File "renpy/display/accelerator.pyx", line 108, in renpy.display.accelerator.transform_render (gen\renpy.display.accelerator.c:2047)
-    cr = render(child, widtho, heighto, st - self.child_st_base, at)
-  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
-    rv = d.render(widtho, heighto, st, at)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\image.py", line 392, in render
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\image.py", line 392, in render
     return wrap_render(self.target, width, height, st, at)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\image.py", line 213, in wrap_render
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\image.py", line 213, in wrap_render
     rend = render(child, w, h, st, at)
   File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
     cpdef render(d, object widtho, object heighto, double st, double at):
@@ -626,39 +622,119 @@ Full traceback:
     cr = render(child, widtho, heighto, st - self.child_st_base, at)
   File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
     rv = d.render(widtho, heighto, st, at)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
     surf = render(child, width, height, cst, cat)
   File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
     cpdef render(d, object widtho, object heighto, double st, double at):
   File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
     rv = d.render(widtho, heighto, st, at)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\layout.py", line 318, in render
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 318, in render
     surf = render(self.child, width, height, st, at)
   File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
     cpdef render(d, object widtho, object heighto, double st, double at):
   File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
     rv = d.render(widtho, heighto, st, at)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\layout.py", line 318, in render
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 318, in render
     surf = render(self.child, width, height, st, at)
   File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
     cpdef render(d, object widtho, object heighto, double st, double at):
   File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
     rv = d.render(widtho, heighto, st, at)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\layout.py", line 1236, in render
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 1236, in render
     return renpy.display.render.render(self.child, w, h, st, at)
   File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
     cpdef render(d, object widtho, object heighto, double st, double at):
   File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
     rv = d.render(widtho, heighto, st, at)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\im.py", line 503, in render
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\image.py", line 392, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\image.py", line 213, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "renpy/display/accelerator.pyx", line 108, in renpy.display.accelerator.transform_render (gen\renpy.display.accelerator.c:2047)
+    cr = render(child, widtho, heighto, st - self.child_st_base, at)
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
+    surf = render(child, width, height, cst, cat)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "renpy/display/accelerator.pyx", line 108, in renpy.display.accelerator.transform_render (gen\renpy.display.accelerator.c:2047)
+    cr = render(child, widtho, heighto, st - self.child_st_base, at)
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\image.py", line 392, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\image.py", line 213, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "renpy/display/accelerator.pyx", line 108, in renpy.display.accelerator.transform_render (gen\renpy.display.accelerator.c:2047)
+    cr = render(child, widtho, heighto, st - self.child_st_base, at)
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
+    surf = render(child, width, height, cst, cat)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 318, in render
+    surf = render(self.child, width, height, st, at)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\image.py", line 392, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\image.py", line 213, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "renpy/display/accelerator.pyx", line 108, in renpy.display.accelerator.transform_render (gen\renpy.display.accelerator.c:2047)
+    cr = render(child, widtho, heighto, st - self.child_st_base, at)
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
+    surf = render(child, width, height, cst, cat)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "renpy/display/accelerator.pyx", line 108, in renpy.display.accelerator.transform_render (gen\renpy.display.accelerator.c:2047)
+    cr = render(child, widtho, heighto, st - self.child_st_base, at)
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 318, in render
+    surf = render(self.child, width, height, st, at)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 1236, in render
+    return renpy.display.render.render(self.child, w, h, st, at)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\im.py", line 503, in render
     texture = cache.get(self, texture=True)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\im.py", line 212, in get
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\im.py", line 212, in get
     surf = image.load()
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\display\im.py", line 553, in load
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\im.py", line 553, in load
     surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
-  File "D:\Downloads\Coc\Rogue-Like-0.978e-win\Rogue-Like-0.978e-win\renpy\loader.py", line 548, in load
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\loader.py", line 548, in load
     raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'images/EmmaSprite/EmmaSprite_Towel_Under.png'.
+IOError: Couldn't find file 'KittySexBDPantyOpenAss.png'.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.13.2919

@@ -4151,6 +4151,7 @@ label Failsafe:
     $ K_HairColor = 0 if "K_HairColor" not in globals().keys() else K_HairColor
     $ K_Blush = 0 if "K_Blush" not in globals().keys() else K_Blush
     $ K_Gag = 0 if "K_Gag" not in globals().keys() else K_Gag
+    $ K_Bondage = 0 if "K_Bondage" not in globals().keys() else K_Bondage
     $ K_Spunk = [] if "K_Spunk" not in globals().keys() else K_Spunk
     $ K_Sperm = [] if "K_Sperm" not in globals().keys() else K_Sperm
     $ K_Pubes = 1 if "K_Pubes" not in globals().keys() else K_Pubes

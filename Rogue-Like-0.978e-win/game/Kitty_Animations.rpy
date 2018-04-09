@@ -563,6 +563,8 @@ image Kitty_Sex_Body = LiveComposite(
             "K_Chest == 'orange top'", "images/KittySex/Kitty_Sex_Under_Orange.png",
             "K_Chest == 'leather top'", "images/KittySex/Kitty_Sex_Under_Leather.png",
             "K_Chest == 'swimsuit3'", "images/KittySex/Kitty_Sex_Swimsuit3_Top.png",
+            "K_Chest == 'bustier bra' and K_PantiesDown", "images/KittySex/KittySexBustierBraOpen.png",
+            "K_Chest == 'bustier bra'", "images/KittySex/KittySexBustierBraClosed.png",
             "True", Null(),            
             ), 
         (0,0), ConditionSwitch(                                                                                 #Wet look
@@ -580,6 +582,7 @@ image Kitty_Sex_Body = LiveComposite(
             "K_Over == 'pink top'", "images/KittySex/Kitty_Sex_Over_PinkShirt.png",           
             "K_Over == 'red shirt'", "images/KittySex/Kitty_Sex_Over_RedShirt.png",   
             "K_Over == 'towel'", "images/KittySex/Kitty_Sex_Over_Towel.png",       
+            "K_Over == 'armbinder'", "images/KittySex/KittySexArmbinderOvershirt.png",       
             "True", Null(), 
             ),  
         (0,0),ConditionSwitch(                                                                                  #Outside Spunk
@@ -631,6 +634,7 @@ image Kitty_Sex_Legs:
             "K_Panties == 'lace panties' and K_Wet", "images/KittySex/Kitty_Sex_Panties_Lace_Wet.png",       
             "K_Panties == 'lace panties'", "images/KittySex/Kitty_Sex_Panties_Lace.png",   
             "K_Panties == 'swimsuit3'", "images/KittySex/Kitty_Sex_Swimsuit3_Bottom.png",
+            "K_Panties == 'zipper panties'", "images/KittySex/KittySexBDPantyClosed.png",
             "True", Null(),                     
             ),  
         (0,0), ConditionSwitch(                                                                                 #Legs Layer
@@ -642,7 +646,6 @@ image Kitty_Sex_Legs:
             "K_Legs == 'shorts' and K_Wet > 1", "images/KittySex/Kitty_Sex_Shorts_Wet.png",
             "K_Legs == 'shorts'", "images/KittySex/Kitty_Sex_Shorts.png",
             "K_Legs == 'yoga pants' and K_Wet > 1", "images/KittySex/Kitty_Sex_Pants_Yoga_Wet.png",
-            "K_Legs == 'yoga pants'", "images/KittySex/Kitty_Sex_Pants_Yoga.png",
             "True", Null(),                      
             ),   
         (0,0), ConditionSwitch(                                                                                 #Over Layer
@@ -840,7 +843,8 @@ image Kitty_Sex_Pussy:
             ConditionSwitch(
             "K_PantiesDown and P_Cock != 'anal' and K_Panties == 'swimsuit3'", "images/KittySex/Kitty_Sex_Swimsuit3_BottomPush.png",
             "True", Null(), 
-            ),           
+            ),  
+
     contains:
             # pubes
             ConditionSwitch(    
@@ -856,6 +860,12 @@ image Kitty_Sex_Pussy:
                 "True and K_HairColor == 'black'", "images/KittySex/Kitty_Sex_PubesBlack_Closed.png",
                 "True", "images/KittySex/Kitty_Sex_Pubes_Closed.png",
                 )
+    contains:
+            ConditionSwitch(
+            "K_PantiesDown and K_Panties == 'zipper panties'", "images/KittySex/KittySexBDPantyOpenTop.png",
+            "True", Null(), 
+            ),
+
     
     contains:
             #Spunk under penis
@@ -1054,6 +1064,7 @@ image Kitty_Sex_Anus:
     contains:
             ConditionSwitch(
             "K_PantiesDown and P_Cock == 'anal' and K_Panties == 'swimsuit3'", "images/KittySex/Kitty_Sex_Swimsuit3_BottomPush.png",
+            "K_PantiesDown and P_Cock == 'anal' and K_Panties == 'zipper panties'", "images/KittySex/KittySexBDPantyOpenAss.png",
             "True", Null(), 
             ),
     contains:
