@@ -226,8 +226,10 @@ image Rogue:
         (0,0), ConditionSwitch(                                                                         #Hair
             "renpy.showing('Rogue_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Rogue_TJ_Animation')", Null(),
             "R_Hair == 'evo' and R_Water and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_wet.png",
+            "R_Hair == 'evo' and R_Water and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_wet.png",
             "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_hair_wet.png",
             "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_evo.png",
+            "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_evo.png",
             "R_Hair == 'evo'", "images/RogueSprite/Rogue_hair_evo.png",
             "True", Null(), 
             ),                           
@@ -403,6 +405,7 @@ image Rogue_Selfie:
         contains:
             ConditionSwitch(
                 "R_HairColor == 'black'", "images/RogueSelfie/Rogue_selfie_hairBlack_back.png",
+                "R_HairColor == 'blonde'", "images/RogueSelfie/Rogue_selfie_hairBlonde_back.png",
                 "True", "images/RogueSelfie/Rogue_selfie_hair_back.png",
                 ),
 
@@ -426,6 +429,7 @@ image Rogue_Selfie:
         contains:
             ConditionSwitch(
                 "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueSelfie/Rogue_selfie_hairBlack.png",
+                "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueSelfie/Rogue_selfie_hairBlonde.png",
                 "R_Hair == 'evo'", "images/RogueSelfie/Rogue_selfie_hair.png",
                 "True", "images/RogueSelfie/Rogue_selfie_hair.png",
                 ), 
@@ -654,6 +658,7 @@ image Rogue_Doggy_Body = LiveComposite(                                         
         (0,0), ConditionSwitch(                                                                                 #Hair underlayer
             "R_Water", Null(), 
             "R_Hair == 'evo'and R_HairColor == 'black'", "images/RogueDoggy/Rogue_Doggy_HairBlackB.png",   
+            "R_Hair == 'evo'and R_HairColor == 'blonde'", "images/RogueDoggy/Rogue_Doggy_HairBlondeB.png",   
             "R_Hair == 'evo'", "images/RogueDoggy/Rogue_Doggy_HairB.png",   
             "True", Null(),                   
             ),   
@@ -739,10 +744,13 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             ),  
         (0,0), ConditionSwitch(                                                                                 #Hair
             "R_Water and R_HairColor == 'black'", "images/RogueDoggy/Rogue_Doggy_HairBlackWet.png",   
+            "R_Water and R_HairColor == 'blonde'", "images/RogueDoggy/Rogue_Doggy_HairBlondeWet.png",   
             "R_Water", "images/RogueDoggy/Rogue_Doggy_HairWet.png",   
             "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueDoggy/Rogue_Doggy_HairBlackF.png",   
+            "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueDoggy/Rogue_Doggy_HairBlondeF.png",   
             "R_Hair == 'evo'", "images/RogueDoggy/Rogue_Doggy_HairF.png",   
             "True and R_HairColor == 'black'", "images/RogueDoggy/Rogue_Doggy_HairBlackF.png",                     
+            "True and R_HairColor == 'blonde'", "images/RogueDoggy/Rogue_Doggy_HairBlondeF.png",                     
             "True", "images/RogueDoggy/Rogue_Doggy_HairF.png",                     
             ),  
         (0,0), ConditionSwitch(                                                                                 #face spunk
@@ -1485,8 +1493,10 @@ image Rogue_BJ_Animation:#BJ_NewTest:                                           
 image BJ_HairBack:
     ConditionSwitch(                                                                            #Hair underlay
             "R_Water and R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack_back_wet.png",
+            "R_Water and R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde_back_wet.png",
             "R_Water and R_Hair == 'evo'", "images/RogueBJFace/Rogue_bj_hair_back_wet.png",
             "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack_back.png",
+            "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde_back.png",
             "R_Hair == 'evo'", "images/RogueBJFace/Rogue_bj_hair_back.png",
             "True", Null(),
             ),
@@ -1502,8 +1512,10 @@ image BJ_Head:                                                                  
         (787,913),     
         (0,0), ConditionSwitch(                                                                 #Hair back
             "R_Water and R_Hair == 'evo' and R_HairColor == 'black'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlack_back_wet.png", "BJ_Backdrop"),
+            "R_Water and R_Hair == 'evo' and R_HairColor == 'blonde'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlonde_back_wet.png", "BJ_Backdrop"),
             "R_Water and R_Hair == 'evo'", AlphaMask("images/RogueBJFace/Rogue_bj_hair_back_wet.png", "BJ_Backdrop"),
             "R_Hair == 'evo' and R_HairColor == 'black'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlack_back.png", "BJ_Backdrop"),
+            "R_Hair == 'evo' and R_HairColor == 'blonde'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlonde_back.png", "BJ_Backdrop"),
             "R_Hair == 'evo'", AlphaMask("images/RogueBJFace/Rogue_bj_hair_back.png", "BJ_Backdrop"),
             "True", Null(),
             ),   
@@ -1566,8 +1578,10 @@ image BJ_Head:                                                                  
                 ),
         (0,0), ConditionSwitch(                                                                 #Hair overlay
             "R_Water and R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack_wet.png",
+            "R_Water and R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde_wet.png",
             "R_Water and R_Hair == 'evo'", "images/RogueBJFace/Rogue_bj_hair_wet.png",
             "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack.png",
+            "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde.png",
             "R_Hair == 'evo'", "images/RogueBJFace/Rogue_bj_hair.png",
             "True", Null(),
             ),
@@ -1882,6 +1896,7 @@ image Rogue_BJFace:
                 ),
         (0,0), ConditionSwitch(
             "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack.png",
+            "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde.png",
             "R_Hair == 'evo'", "images/RogueBJFace/Rogue_bj_hair.png",
             "True", Null(),
             ),              
@@ -2040,6 +2055,7 @@ image Rogue_TJ_Under:
     contains:
         ConditionSwitch(
             "R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack_back.png",
+            "R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde_back.png",
             "True", "images/RogueBJFace/Rogue_bj_hair_back.png",
             ),
 

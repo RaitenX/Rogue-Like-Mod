@@ -4695,16 +4695,25 @@ label Rogue_Clothes:
         "You could lose that spiked collar." if R_Neck == "spiked collar":
                         $ R_Neck = 0
 
-        "Dye your hair black." if R_HairColor != "black":
+        "Dye your hair.":
             if ApprovalCheck("Rogue", 800):
-                ch_r "You think so?"
+                ch_r "Which color?"
+
+                menu:
+                    "Black" if R_HairColor != "black":
+                        ch_r "Like this?"
+                        $ R_HairColor = "black"
+
+                    "Blonde" if R_HairColor != "blonde":
+                        ch_r "Like this?"
+                        $ R_HairColor = "blonde"
+
+                #ch_r "You think so?"
                 #"She rummages in her bag and grabs some gel, running it through her hair."
-                ch_r "Like this?"
-                $ R_HairColor = "black"
             else:
                 ch_r "It's too high maintenance."
 
-        "Change the color of you hair back." if R_HairColor == "black":
+        "Change the color of you hair back." if R_HairColor == "black" or R_HairColor == "blonde":
             if ApprovalCheck("Rogue", 800):
                 ch_r "You think so?"
                 #"She rummages in her bag and grabs some gel, running it through her hair."
