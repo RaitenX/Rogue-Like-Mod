@@ -1447,86 +1447,6 @@ label Kitty_Flirt:
                         $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 4) 
                     #End Flip her Skirt   
 
-            "Pull her shorts down" if K_Legs == "shorts" and not K_PantiesDown and not K_Upskirt:
-                    call KittyFace("surprised", 1)
-                    $ K_Upskirt = 1
-                    #$ K_PantiesDown = 1
-                    pause 0.5            
-                    #$ R_PantiesDown = 0
-                    $ K_Upskirt = 0
-                    #$ K_PantiesDown = 0
-                    "You sneak up on Kitty from behind and pull her shorts down quickly!"
-                    
-                    if not Taboo: #no taboo
-                        if ApprovalCheck("Kitty", 850, "L"):
-                            call KittyFace("sexy", 1)
-                            ch_k "Oh, naughty, [K_Petname]!"
-                            ch_k "You could have just asked, you know. . ."
-                        elif ApprovalCheck("Kitty", 700, "L"):
-                            call KittyFace("sexy", 1)
-                            ch_k "[K_Petname]! A little warning!"
-                        elif ApprovalCheck("Kitty", 600, "L"):
-                            call KittyFace("bemused", 1)
-                            $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -3)           
-                            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 3)  
-                            ch_k "Wha?! [K_Petname]? . . I don't usually. . ."
-                        elif ApprovalCheck("Kitty", 500):
-                            call KittyFace("angry", 1)
-                            $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -5)           
-                            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 2)  
-                            ch_k "Wha! [K_Petname]!"
-                        else: 
-                            call KittyFace("angry", 1)
-                            ch_k "What the fuck, [K_Petname]!"
-                            $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -10)          
-                            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 2)           
-                            $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 1) 
-                            ch_k "Not cool"  
-                        $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 2)             
-                        $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 1)           
-                        $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 1)  
-                        if K_Panties:
-                            $ K_SeenPanties = 1
-                        else:
-                            call Kitty_First_Bottomless(1) 
-                        
-                    else: #no panties, taboo
-                        if ApprovalCheck("Kitty", 850, "L") and ApprovalCheck("Kitty", 1500):
-                            call KittyFace("sexy", 1)
-                            ch_k "Oh, naughty, [K_Petname]!"
-                            ch_k "You could have just asked, you know. . ."
-                        elif ApprovalCheck("Kitty", 700, "L") and ApprovalCheck("Kitty", 1500):
-                            call KittyFace("sexy", 1)
-                            ch_k "[K_Petname]! A little warning!"
-                        elif ApprovalCheck("Kitty", 700, "L"):
-                            call KittyFace("bemused", 1)
-                            $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -3)           
-                            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 3)  
-                            ch_k "[K_Petname]! This isn't the time or place for this!"
-                        elif ApprovalCheck("Kitty", 1000):
-                            call KittyFace("angry", 1)
-                            $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -5)           
-                            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 2)  
-                            ch_k "Wha! [K_Petname]!"
-                        else: 
-                            call KittyFace("angry", 1)
-                            ch_k "What the fuck, [K_Petname]!"
-                            $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -10)          
-                            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 2)           
-                            $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 1) 
-                            ch_k "Not cool" 
-                        $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 2)             
-                        $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 2)           
-                        $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 2)  
-                        if K_Panties:
-                            $ K_SeenPanties = 1
-                        else:
-                            call Kitty_First_Bottomless(1)                 
-                    $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 60, 1) 
-                    if "exhibitionist" in K_Traits:
-                        $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 4) 
-                    #End Flip her Skirt 
-
 
             "Grab her tit":                                                                                     #Grab her tit
                     call KittyFace("surprised", 1)
@@ -2708,6 +2628,8 @@ label Kitty_Summon(Tempmod=Tempmod):
         $ Tempmod = 10
     elif K_Loc == "bg pool":    
         $ Tempmod = 10
+    elif K_Loc == "bg field":    
+        $ Tempmod = 10
     elif K_Loc == "bg showerroom":    
         $ Tempmod = 30
         
@@ -2731,7 +2653,9 @@ label Kitty_Summon(Tempmod=Tempmod):
         elif K_Loc == "bg dangerroom": 
                 ch_k "I'm in the Danger Room, [K_Petname], want in?"
         elif K_Loc == "bg pool": 
-                ch_k "I'm at the pool, [K_Petname], want in?"    
+                ch_k "I'm at the pool, [K_Petname], want in?"
+        elif K_Loc == "bg field": 
+                ch_k "I'm[K_like]gonna watch the match, [K_Petname], want to come?"     
         elif K_Loc == "bg campus": 
                 ch_k "I'm chillin in the quad, [K_Petname], want to come?" 
         elif K_Loc == "bg kitty": 
@@ -2883,7 +2807,10 @@ label Kitty_Summon(Tempmod=Tempmod):
                     jump Player_Room 
             elif K_Loc == "bg pool": 
                     ch_k "I'll be here for you."
-                    jump Player_Room                
+                    jump Player_Room
+            elif K_Loc == "bg field": 
+                    ch_k "I'll hold a seat for you!"
+                    jump Field_Entry                     
             elif K_Loc == "bg showerroom": 
                     ch_k "I guess I'll be lathering up."
                     jump Shower_Room
@@ -2985,7 +2912,9 @@ label Kitty_Leave(Tempmod=Tempmod, GirlsNum = 0):
     elif K_Loc == "bg kitty": 
         ch_k "I'm heading back to my room, want to[K_like]hang out?" 
     elif K_Loc == "bg player": 
-        ch_k "I'll[K_like]be heading to your room."   
+        ch_k "I'll[K_like]be heading to your room."
+    elif K_Loc == "bg field": 
+        ch_k "I'm headed to the field now, care to[K_like]join me?"      
     elif K_Loc == "bg showerroom":    
         if ApprovalCheck("Kitty", 1600):
             ch_k "I'm[K_like]hitting the showers, want to join me?"
@@ -3114,6 +3043,9 @@ label Kitty_Leave(Tempmod=Tempmod, GirlsNum = 0):
             elif K_Loc == "bg pool":
                 ch_k "Let's go for a swim"
                 jump Pool_Entry
+            elif K_Loc == "bg field":
+                ch_k "Don't be too late!"
+                jump Field_Entry
             else:            
                 ch_k "You know, I'll just meet you in my room."
                 $ K_Loc = "bg kitty"

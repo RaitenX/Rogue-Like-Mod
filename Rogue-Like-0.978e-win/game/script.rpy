@@ -1761,10 +1761,18 @@ label Rogue_Schedule(Clothes = 1, Location = 1, LocTemp = R_Loc):
         #Location portion
         if "Rogue" in Party or R_Loc == "hold":
                 pass
-        elif Weekday == 0 or Weekday == 2 or Weekday == 4:            
-        #MoWeFr   
+        elif Weekday == 0 or Weekday == 2:            
+        #Fr   
                 if Current_Time == "Midday": 
                         $ R_Loc = "bg classroom"
+                else:
+                        $ R_Loc = "bg rogue"
+        elif Weekday == 4:            
+        #Fr   
+                if Current_Time == "Midday": 
+                        $ R_Loc = "bg classroom"
+                elif Current_Time == "Evening":
+                        $ R_Loc = "bg field"
                 else:
                         $ R_Loc = "bg rogue"
         elif Weekday == 1 or Weekday == 3:                          
@@ -1781,6 +1789,8 @@ label Rogue_Schedule(Clothes = 1, Location = 1, LocTemp = R_Loc):
                         $ R_Loc = "bg pool"
                 elif Current_Time == "Midday":
                         $ R_Loc = "bg campus"
+                elif Current_Time == "Evening":
+                        $ R_Loc = "bg field"
                 else:
                         $ R_Loc = "bg rogue"
                                                  
@@ -2205,12 +2215,22 @@ label Kitty_Schedule(Clothes = 1, Location = 1, LocTemp = K_Loc):
         if "Kitty" in Party or K_Loc == "hold":
                 pass          
                 
-        elif Weekday == 0 or Weekday == 2 or Weekday == 4:
-        #MoWeFr   
+        elif Weekday == 0 or Weekday == 2:
+        #MoWe   
                 if Current_Time == "Morning":
                         $ K_Loc = "bg classroom"
                 elif Current_Time == "Midday": 
                         $ K_Loc = "bg dangerroom"
+                else:
+                        $ K_Loc = "bg kitty"
+        elif Weekday == 4:
+        #Fr   
+                if Current_Time == "Morning":
+                        $ K_Loc = "bg classroom"
+                elif Current_Time == "Midday": 
+                        $ K_Loc = "bg dangerroom"
+                elif Current_Time == "Evening": 
+                        $ K_Loc = "bg field"
                 else:
                         $ K_Loc = "bg kitty"
         elif Weekday == 1 or Weekday == 3:
@@ -2227,6 +2247,8 @@ label Kitty_Schedule(Clothes = 1, Location = 1, LocTemp = K_Loc):
                         $ K_Loc = "bg campus"
                 elif Current_Time == "Midday":
                         $ K_Loc = "bg pool"
+                elif Current_Time == "Evening": 
+                        $ K_Loc = "bg field"
                 else:
                         $ K_Loc = "bg kitty"
                         
@@ -3014,6 +3036,12 @@ label Taboo_Level:
                     $ Taboo = 0
                 else:
                     $ Taboo = 40
+                    
+        elif bg_current == "bg field":
+                if Current_Time == "Night":
+                    $ Taboo = 0
+                else:
+                    $ Taboo = 40
 
         elif bg_current == "bg campus":
                 if Current_Time == "Night":
@@ -3052,6 +3080,11 @@ label Taboo_Level:
                     $ R_Taboo = 0
                 else:
                     $ R_Taboo = 40
+        elif R_Loc == "bg field":
+                if Current_Time == "Night":
+                    $ Taboo = 0
+                else:
+                    $ Taboo = 40
         elif R_Loc == "bg campus":
                 if Current_Time == "Night":
                     $ R_Taboo = 20
@@ -3089,6 +3122,11 @@ label Taboo_Level:
                     $ K_Taboo = 0
                 else:
                     $ K_Taboo = 40
+        elif K_Loc == "bg field":
+                if Current_Time == "Night":
+                    $ Taboo = 0
+                else:
+                    $ Taboo = 40
         elif K_Loc == "bg campus":
                 if Current_Time == "Night":
                     $ K_Taboo = 20
@@ -3126,6 +3164,11 @@ label Taboo_Level:
                     $ E_Taboo = 0
                 else:
                     $ E_Taboo = 40
+        elif E_Loc == "bg field":
+                if Current_Time == "Night":
+                    $ Taboo = 0
+                else:
+                    $ Taboo = 40
         elif E_Loc == "bg campus":
                 if Current_Time == "Night":
                     $ E_Taboo = 20

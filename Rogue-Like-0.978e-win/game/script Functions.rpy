@@ -2718,6 +2718,20 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
             if E_Loc == "bg teacher":
                     "Emma takes her position behind the podium."
             #end girls showed up to the Danger Room
+    elif bg_current == "bg field":   
+            if Secondary:  
+                    #if there's a second girl
+                    "[Primary] and [Secondary] just entered the pool area."
+            else:
+                    #if there's no second girl,
+                    "[Primary] just entered the pool area."   
+            if Primary == "Rogue" or Secondary == "Rogue":
+                            ch_r "Hey, [R_Petname]."
+            elif Primary == "Kitty" or Secondary == "Kitty":
+                                ch_k "Oh, hey."
+            elif Primary == "Emma" or Secondary == "Emma":
+                                ch_e "Oh, hello, [E_Petname]."
+            #end girls showed up to the football field
     elif bg_current == "bg dangerroom":   
             if Secondary:  
                     #if there's a second girl

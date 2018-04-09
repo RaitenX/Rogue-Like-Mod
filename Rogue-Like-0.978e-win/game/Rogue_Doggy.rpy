@@ -46,7 +46,7 @@ label R_Doggy_P:
     if Situation == "Rogue":                                                                  #Rogue auto-starts   
         if Approval > 2:                                                      # fix, add rogue auto stuff here
             call Rogue_Doggy_Launch("L")   
-            if R_Legs == "skirt":
+            if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                 "Rogue turns and backs up against your cock, sliding her skirt up as she does so."
                 $ R_Upskirt = 1
             elif R_Legs == "pants":
@@ -90,7 +90,7 @@ label R_Doggy_P:
     
     if Situation == "auto":   
         call Rogue_Doggy_Launch("L")   
-        if R_Legs == "skirt":
+        if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
             "You press up against Rogue's backside, sliding her skirt up as you go."
             $ R_Upskirt = 1
         elif R_Legs == "pants":
@@ -1089,7 +1089,7 @@ label R_Doggy_A:
     if Situation == "Rogue":                                                                  #Rogue auto-starts   
         if Approval > 2:                                                      # fix, add rogue auto stuff here
             call Rogue_Doggy_Launch("L")   
-            if R_Legs == "skirt":
+            if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                 "Rogue turns and backs up against your cock, sliding her skirt up as she does so."
                 $ R_Upskirt = 1
             elif R_Legs == "pants":
@@ -1133,7 +1133,7 @@ label R_Doggy_A:
     
     if Situation == "auto":   
         call Rogue_Doggy_Launch("L")   
-        if R_Legs == "skirt":
+        if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
             "You press up against Rogue's backside, sliding her skirt up as you go."
             $ R_Upskirt = 1
         elif R_Legs == "pants":
