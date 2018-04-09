@@ -1372,8 +1372,17 @@ label Kitty_Flirt:
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 4)            
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 2)
                         ch_k "Ow! That hurt!"  
+
+            "Open those zippers" if K_Panties == "zipper panties" or K_Chest == "bustier bra":
+                    call KittyFace("sexy",2)
+                    ch_k "Ok, [K_Petname]"
+                    "She opens the zippers"
+                    $ K_Panties = "zipper panties open"
+                    $ K_Chest = "bustier bra open"
+                    $ K_Outfit = "zipper bondage open"
+                    $ K_Shame = K_OutfitShame[1]
                     
-            "Pull her panties down" if not K_Legs and K_Panties and not K_PantiesDown and K_Panties != "swimsuit3":
+            "Pull her panties down" if not K_Legs and K_Panties and not K_PantiesDown and K_Panties != "swimsuit3" and K_Panties != "zipper panties" and K_Panties != "zipper panties open":
                     call KittyFace("surprised", 1)
                     #$ R_Upskirt = 1
                     $ K_PantiesDown = 1
@@ -3354,6 +3363,16 @@ label Kitty_Clothes:
                     $ K_Shame = K_OutfitShame[1]
                     ch_k "This is [K_like] so classy!"
                 "Let's try something else though.":
+                    ch_k "K."  
+
+        "Put on that bondage outfit" if K_Bondage:
+            call KittyOutfit("zipper bondage")   
+            menu:
+                "You should wear this one out. [[set current outfit]":
+                    $ K_Outfit = "zipper bondage"
+                    $ K_Shame = K_OutfitShame[1]
+                    ch_k "This is [K_like] so naughty!"
+                "Let's try something else though.":
                     ch_k "K."            
                     
         "That red shirt and black jeans look really nice on you.":                           #Pink  
@@ -4559,6 +4578,8 @@ label Kitty_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
             elif K_Chest == "bra":
                 $ Count = 10   
             elif K_Chest == "lace bra":
+                $ Count = 5   
+            elif K_Chest == "bustier bra":
                 $ Count = 5
             else:     #K_Chest == 0
                 if K_Pierce:
@@ -4621,8 +4642,10 @@ label Kitty_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                             $ Count = 5
                         elif K_Panties == "swimsuit3":
                             $ Count = 30
+                        elif K_Panties == "zipper panties":
+                            $ Count = 3
                         elif K_Panties:                         #If wearing only any other panties
-                            $ Count = 7
+                            $ Count = 1
                         #else: 0
                         
                         if HoseNum("Kitty") >= 10:

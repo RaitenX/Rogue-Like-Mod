@@ -367,7 +367,12 @@ label K_SexPrep:
             ch_k "We can't exactly do much like this, huh."
         
         if K_Panties == "zipper panties":
-            "She pulls the zippers down"    
+            "She pulls the zippers down"
+            $ K_Panties = "zipper panties open"
+            if K_Chest == "bustier bra":
+                $ K_Chest = "bustier bra open"
+        elif K_Panties == "zipper panties open":
+            ch_k "I'm ready"    
         elif K_Panties and (K_Legs == "capris" or K_Legs == "black jeans"):
             "She quickly drops her pants and her [K_Panties]."
         elif K_Panties and K_Legs == "shorts":
@@ -416,7 +421,12 @@ label K_SexPrep:
                             
     else:  #if Situation == "auto"  
         if K_Panties == "zipper panties":
-            "You quickly pull her zippers down"   
+            "You quickly pull the zippers down"
+            $ K_Panties = "zipper panties open"
+            if K_Chest == "bustier bra":
+                $ K_Chest = "bustier bra open"
+        elif K_Panties == "zipper panties open":
+            "You get ready"    
         else:     
             if K_Legs == "pants" and K_Panties:
                 "You quickly pull down her pants and her [K_Panties] and press against her slit."
@@ -1099,7 +1109,12 @@ label K_AnalPrep:
             ch_k "We can't exactly do much like this, huh."
 
         if K_Panties == "zipper panties":
-            "She pulls the zippers down" 
+            "She pulls the zippers down"
+            $ K_Panties = "zipper panties open"
+            if K_Chest == "bustier bra":
+                $ K_Chest = "bustier bra open"
+        elif K_Panties == "zipper panties open":
+            ch_k "I'm ready"  
         elif K_Panties and (K_Legs == "capris" or K_Legs == "black jeans"):
             "She quickly drops her pants and her [K_Panties]."
         elif K_Panties and K_Legs == "shorts":
@@ -1150,6 +1165,11 @@ label K_AnalPrep:
     else: #if Situation == "auto"       
         if K_Panties == "zipper panties":
             "You quickly pull the zippers down"
+            $ K_Panties = "zipper panties open"
+            if K_Chest == "bustier bra":
+                $ K_Chest = "bustier bra open"
+        elif K_Panties == "zipper panties open":
+            "You get ready"  
         else: 
             if K_Legs == "pants" and K_Panties:
                 "You quickly pull down her pants and her [K_Panties] and press against her back door."

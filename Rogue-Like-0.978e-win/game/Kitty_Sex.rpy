@@ -165,6 +165,8 @@ label Kitty_SexMenu:
                                 $ K_Over = "armbinder"
                                 $ K_Chest = "bustier bra"
                                 $ K_Panties = "zipper panties"
+                                $ K_Outfit = "zipper bondage"
+                                $ K_Shame = K_OutfitShame[1]
                                 jump K_HotdogPrep
                                 #pass
                                 #call Kitty_Bottoms_Off_Legs
@@ -183,7 +185,7 @@ label Kitty_SexMenu:
                                 call K_Sex_P           
                         "Fuck your ass.":                        
                                 call K_Sex_A    
-                        "How about you put that bondage outfit":
+                        "How about you put that bondage outfit" if K_Bondage and K_Outfit != "zipper bondage" and K_Outfit != "zipper bondage open":
                             call KittyFace("sexy", 1) 
                             if K_Over or K_Chest or K_Panties or K_Legs:
                                 "She glances up at you as her clothes drop to the ground."
@@ -195,6 +197,8 @@ label Kitty_SexMenu:
                             $ K_Over = "armbinder"
                             $ K_Chest = "bustier bra"
                             $ K_Panties = "zipper panties"
+                            $ K_Outfit = "zipper bondage"
+                            $ K_Shame = K_OutfitShame[1]
                             jump K_HotdogPrep
 
 

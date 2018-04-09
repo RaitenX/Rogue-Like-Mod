@@ -2,8 +2,20 @@
 errors listed below, and try again.
 
 
-File "game/Kitty_Animations.rpy", line 623: Line is indented, but the preceding ATL statement does not expect a block. Please check this line's indentation.
-    (0,0), "Kitty_Sex_Anus",                                                                          
-    ^
+File "game/Kitty_Missionary.rpy", line 372: reached end of line when expecting ':'.
+    if K_Chest == "bustier bra"
+                               ^
+
+File "game/Kitty_Missionary.rpy", line 426: reached end of line when expecting ':'.
+    if K_Chest == "bustier bra"
+                               ^
+
+File "game/Kitty_Missionary.rpy", line 1114: reached end of line when expecting ':'.
+    if K_Chest == "bustier bra"
+                               ^
+
+File "game/Kitty_Missionary.rpy", line 1169: reached end of line when expecting ':'.
+    if K_Chest == "bustier bra"
+                               ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

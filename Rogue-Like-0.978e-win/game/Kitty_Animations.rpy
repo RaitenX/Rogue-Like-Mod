@@ -76,6 +76,8 @@ image Kitty_Sprite:
             "K_Panties == 'green panties'", "images/KittySprite/Kitty_Sprite_Panties_Green.png",
             "K_Panties == 'lace panties'", "images/KittySprite/Kitty_Sprite_Panties_Lace.png",
             "K_Panties == 'purple bikini panties'", "images/KittySprite/Kitty_Sprite_Panties_Bikini1.png",
+            "K_Panties == 'zipper panties'", "images/KittySprite/Kitty_Sprite_BDPanty.png",
+            "K_Panties == 'zipper panties open'", "images/KittySprite/Kitty_Sprite_BDPantyOpen.png",
             #"K_Panties == 'swimsuit3'", "images/KittySprite/Kitty_Sprite_Swimsuit3.png",
             "True", Null(),
             ),  
@@ -88,6 +90,8 @@ image Kitty_Sprite:
             "K_Panties == 'green panties'", "images/KittySprite/Kitty_Sprite_Panties_Green_Down.png",
             "K_Panties == 'lace panties'", "images/KittySprite/Kitty_Sprite_Panties_Lace_Down.png",
             "K_Panties == 'purple bikini panties'", "images/KittySprite/Kitty_Sprite_Panties_Bikini1_Down.png",
+            "K_Panties == 'zipper panties'", "images/KittySprite/Kitty_Sprite_BDPantyOpen.png",
+            "K_Panties == 'zipper panties open'", "images/KittySprite/Kitty_Sprite_BDPantyOpen.png",
             "True", Null(),
             ),  
         (0,0), ConditionSwitch(                                                                         #wetness                    
@@ -145,6 +149,9 @@ image Kitty_Sprite:
             "K_Chest == 'orange top'", "images/KittySprite/Kitty_Sprite_Orange1.png",
             "K_Chest == 'leather top'", "images/KittySprite/Kitty_Sprite_Leather1.png",
             "K_Chest == 'swimsuit3'", "images/KittySprite/Kitty_Sprite_Swimsuit3.png",
+            "K_Chest == 'bustier bra' and K_PantiesDown", "images/KittySprite/Kitty_Sprite_BustierOpen.png",
+            "K_Chest == 'bustier bra'", "images/KittySprite/Kitty_Sprite_Bustier.png",
+            "K_Chest == 'bustier bra open'", "images/KittySprite/Kitty_Sprite_BustierOpen.png",
             "K_Chest == 0 and K_Over == 'pink top'", Null(),   #use for when bra and top clash  
             "True", Null(),        
             ),  
@@ -565,6 +572,7 @@ image Kitty_Sex_Body = LiveComposite(
             "K_Chest == 'swimsuit3'", "images/KittySex/Kitty_Sex_Swimsuit3_Top.png",
             "K_Chest == 'bustier bra' and K_PantiesDown", "images/KittySex/KittySexBustierBraOpen.png",
             "K_Chest == 'bustier bra'", "images/KittySex/KittySexBustierBraClosed.png",
+            "K_Chest == 'bustier bra open'", "images/KittySex/KittySexBustierBraOpen.png",
             "True", Null(),            
             ), 
         (0,0), ConditionSwitch(                                                                                 #Wet look
@@ -635,6 +643,7 @@ image Kitty_Sex_Legs:
             "K_Panties == 'lace panties'", "images/KittySex/Kitty_Sex_Panties_Lace.png",   
             "K_Panties == 'swimsuit3'", "images/KittySex/Kitty_Sex_Swimsuit3_Bottom.png",
             "K_Panties == 'zipper panties'", "images/KittySex/KittySexBDPantyClosed.png",
+            "K_Panties == 'zipper panties open'", "images/KittySex/KittySexBDPantyOpen.png",
             "True", Null(),                     
             ),  
         (0,0), ConditionSwitch(                                                                                 #Legs Layer
@@ -863,6 +872,7 @@ image Kitty_Sex_Pussy:
     contains:
             ConditionSwitch(
             "K_PantiesDown and K_Panties == 'zipper panties'", "images/KittySex/KittySexBDPantyOpenTop.png",
+            "K_PantiesDown and K_Panties == 'zipper panties open'", "images/KittySex/KittySexBDPantyOpenTop.png",
             "True", Null(), 
             ),
 
@@ -1065,6 +1075,7 @@ image Kitty_Sex_Anus:
             ConditionSwitch(
             "K_PantiesDown and P_Cock == 'anal' and K_Panties == 'swimsuit3'", "images/KittySex/Kitty_Sex_Swimsuit3_BottomPush.png",
             "K_PantiesDown and P_Cock == 'anal' and K_Panties == 'zipper panties'", "images/KittySex/KittySexBDPantyOpenAss.png",
+            "K_PantiesDown and P_Cock == 'anal' and K_Panties == 'zipper panties open'", "images/KittySex/KittySexBDPantyOpenAss.png",
             "True", Null(), 
             ),
     contains:

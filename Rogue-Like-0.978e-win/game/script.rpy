@@ -1890,6 +1890,32 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ K_Hair = "long"
                     $ K_Hose = 0 
 
+        elif K_OutfitTemp == "zipper bondage":
+                    if not K_Over:
+                            $ Undressed = 1
+                    elif K_Panties == 0 and "pantyless" not in K_DailyActions:                        
+                            $ Undressed = 1   
+                    $ K_Legs = 0
+                    $ K_Over = "armbinder"
+                    $ K_Chest = "bustier bra"
+                    $ K_Panties = "zipper panties"      
+                    $ K_Neck = 0
+                    $ K_Hair = K_Hair
+                    $ K_Hose = 0 
+
+        elif K_OutfitTemp == "zipper bondage open":
+                    if not K_Over:
+                            $ Undressed = 1
+                    elif K_Panties == 0 and "pantyless" not in K_DailyActions:                        
+                            $ Undressed = 1   
+                    $ K_Legs = 0
+                    $ K_Over = "armbinder"
+                    $ K_Chest = "bustier bra open"
+                    $ K_Panties = "zipper panties open"      
+                    $ K_Neck = 0
+                    $ K_Hair = K_Hair
+                    $ K_Hose = 0 
+
         elif K_OutfitTemp == "swimsuit3":
                     if K_Panties == 0 and "pantyless" not in K_DailyActions:                        
                             $ Undressed = 1  
