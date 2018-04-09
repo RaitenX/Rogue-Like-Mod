@@ -365,8 +365,15 @@ label K_SexPrep:
         
         if K_Panties or K_Legs or HoseNum("Kitty") >= 5: #If she refuses to take off her pants but agreed to sex
             ch_k "We can't exactly do much like this, huh."
-            
-        if K_Panties and (K_Legs == "capris" or K_Legs == "black jeans"):
+        
+        if K_Panties == "zipper panties":
+            "She pulls the zippers down"
+            $ K_Panties = "zipper panties open"
+            if K_Chest == "bustier bra":
+                $ K_Chest = "bustier bra open"
+        elif K_Panties == "zipper panties open":
+            ch_k "I'm ready"    
+        elif K_Panties and (K_Legs == "capris" or K_Legs == "black jeans"):
             "She quickly drops her pants and her [K_Panties]."
         elif K_Panties and K_Legs == "shorts":
             "She quickly drops her shorts and her [K_Panties]."
@@ -412,11 +419,19 @@ label K_SexPrep:
                 "Kitty leans back and presses against you suggestively."
                 "You take careful aim and then ram your cock in."
                             
-    else:  #if Situation == "auto"         
-        if K_Legs == "pants" and K_Panties:
-            "You quickly pull down her pants and her [K_Panties] and press against her slit."
-        if K_Panties and K_Legs != "pants":
-            "You quickly pull down her [K_Panties] and press against her slit."  
+    else:  #if Situation == "auto"  
+        if K_Panties == "zipper panties":
+            "You quickly pull the zippers down"
+            $ K_Panties = "zipper panties open"
+            if K_Chest == "bustier bra":
+                $ K_Chest = "bustier bra open"
+        elif K_Panties == "zipper panties open":
+            "You get ready"    
+        else:     
+            if K_Legs == "pants" and K_Panties:
+                "You quickly pull down her pants and her [K_Panties] and press against her slit."
+            if K_Panties and K_Legs != "pants":
+                "You quickly pull down her [K_Panties] and press against her slit."  
         $ K_Upskirt = 1
         $ K_PantiesDown = 1       
         $ K_SeenPanties = 1
@@ -1092,8 +1107,15 @@ label K_AnalPrep:
         call Kitty_Bottoms_Off        
         if K_Panties or K_Legs or HoseNum("Kitty") >= 5: #If she refuses to take off her pants but agreed to anal
             ch_k "We can't exactly do much like this, huh."
-            
-        if K_Panties and (K_Legs == "capris" or K_Legs == "black jeans"):
+
+        if K_Panties == "zipper panties":
+            "She pulls the zippers down"
+            $ K_Panties = "zipper panties open"
+            if K_Chest == "bustier bra":
+                $ K_Chest = "bustier bra open"
+        elif K_Panties == "zipper panties open":
+            ch_k "I'm ready"  
+        elif K_Panties and (K_Legs == "capris" or K_Legs == "black jeans"):
             "She quickly drops her pants and her [K_Panties]."
         elif K_Panties and K_Legs == "shorts":
             "She quickly drops her shorts and her [K_Panties]."
@@ -1141,10 +1163,18 @@ label K_AnalPrep:
                 "You press against her rim and nudge your cock in."
                      
     else: #if Situation == "auto"       
-        if K_Legs == "pants" and K_Panties:
-            "You quickly pull down her pants and her [K_Panties] and press against her back door."
-        if K_Panties and K_Legs != "pants":
-            "You quickly pull down her [K_Panties] and press against her back door."  
+        if K_Panties == "zipper panties":
+            "You quickly pull the zippers down"
+            $ K_Panties = "zipper panties open"
+            if K_Chest == "bustier bra":
+                $ K_Chest = "bustier bra open"
+        elif K_Panties == "zipper panties open":
+            "You get ready"  
+        else: 
+            if K_Legs == "pants" and K_Panties:
+                "You quickly pull down her pants and her [K_Panties] and press against her back door."
+            if K_Panties and K_Legs != "pants":
+                "You quickly pull down her [K_Panties] and press against her back door."  
         $ K_Upskirt = 1
         $ K_PantiesDown = 1       
         $ K_SeenPanties = 1
