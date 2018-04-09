@@ -2717,6 +2717,8 @@ label Kitty_Summon(Tempmod=Tempmod):
         $ Tempmod = 10
     elif K_Loc == "bg pool":    
         $ Tempmod = 10
+    elif K_Loc == "bg field":    
+        $ Tempmod = 10
     elif K_Loc == "bg showerroom":    
         $ Tempmod = 30
         
@@ -2740,7 +2742,9 @@ label Kitty_Summon(Tempmod=Tempmod):
         elif K_Loc == "bg dangerroom": 
                 ch_k "I'm in the Danger Room, [K_Petname], want in?"
         elif K_Loc == "bg pool": 
-                ch_k "I'm at the pool, [K_Petname], want in?"    
+                ch_k "I'm at the pool, [K_Petname], want in?"
+        elif K_Loc == "bg field": 
+                ch_k "I'm[K_like]gonna watch the match, [K_Petname], want to come?"    
         elif K_Loc == "bg campus": 
                 ch_k "I'm chillin in the quad, [K_Petname], want to come?" 
         elif K_Loc == "bg kitty": 
@@ -2889,10 +2893,13 @@ label Kitty_Summon(Tempmod=Tempmod):
                     jump Kitty_Room
             elif K_Loc == "bg player": 
                     ch_k "I'll be here for you."
-                    jump Player_Room 
+                    jump Player_Room
+            elif K_Loc == "bg field": 
+                    ch_k "I'll hold a seat for you!"
+                    jump Field_Entry  
             elif K_Loc == "bg pool": 
                     ch_k "I'll be here for you."
-                    jump Player_Room                
+                    jump Pool_Entry                
             elif K_Loc == "bg showerroom": 
                     ch_k "I guess I'll be lathering up."
                     jump Shower_Room
@@ -2953,7 +2960,11 @@ label Kitty_Leave(Tempmod=Tempmod, GirlsNum = 0):
             elif K_Loc == "bg kitty": 
                         ch_k "I'm[K_like]heading back to my room." 
             elif K_Loc == "bg player": 
-                        ch_k "I'll[K_like]be heading to your room."   
+                        ch_k "I'll[K_like]be heading to your room."
+            elif K_Loc == "bg pool": 
+                        ch_k "I'll[K_like]be heading to the pool."
+            elif K_Loc == "bg field": 
+                        ch_k "I'm headed to the field now."     
             elif K_Loc == "bg showerroom":    
                 if ApprovalCheck("Kitty", 1400):
                         ch_k "I'm catching a shower, later!"
@@ -2994,7 +3005,11 @@ label Kitty_Leave(Tempmod=Tempmod, GirlsNum = 0):
     elif K_Loc == "bg kitty": 
         ch_k "I'm heading back to my room, want to[K_like]hang out?" 
     elif K_Loc == "bg player": 
-        ch_k "I'll[K_like]be heading to your room."   
+        ch_k "I'll[K_like]be heading to your room."
+    elif K_Loc == "bg field": 
+        ch_k "I'm headed to the field now, care to[K_like]join me?"   
+    elif K_Loc == "bg pool": 
+        ch_k "I'm headed to the pool now, care to[K_like]join me?"   
     elif K_Loc == "bg showerroom":    
         if ApprovalCheck("Kitty", 1600):
             ch_k "I'm[K_like]hitting the showers, want to join me?"
@@ -3123,6 +3138,9 @@ label Kitty_Leave(Tempmod=Tempmod, GirlsNum = 0):
             elif K_Loc == "bg pool":
                 ch_k "Let's go for a swim"
                 jump Pool_Entry
+            elif K_Loc == "bg field":
+                ch_k "Don't be too late!"
+                jump Field_Entry
             else:            
                 ch_k "You know, I'll just meet you in my room."
                 $ K_Loc = "bg kitty"

@@ -1355,7 +1355,7 @@ label Rogue_Chitchat(O=0, Options = ["default","default","default"]):
         ch_r "Can't wait for the next big party."
         ch_r "I love to dance, and I've got the best partner to grind with-"
         call Rogue_Doggy_Launch("massage")
-        if R_Legs == "skirt":
+        if R_Legs == "skirt" or R_Legs == "cheerleader skirt":
             $ R_Upskirt = 1
             if R_Panties and R_SeenPanties and ApprovalCheck("Rogue", 800, TabM = 3):
                 pass
@@ -1764,7 +1764,7 @@ label Rogue_Flirt:
                         ch_r "Ow! Lay off."  
                         #End pinch her ass
                     
-        "Flip her skirt up" if (R_Legs == "skirt" or R_Legs == "skirtshort") and not R_Upskirt:                                         #Flip her skirt           
+        "Flip her skirt up" if (R_Legs == "skirt" or R_Legs == "skirtshort" or R_Legs == "cheerleader skirt" or R_Legs == "cheerleader skirtshort") and not R_Upskirt:   #Flip her skirt           
                     call RogueFace("surprised", 1)
                     $ R_Upskirt = 1
                     pause 0.5            
@@ -1893,8 +1893,7 @@ label Rogue_Flirt:
                     if "exhibitionist" in R_Traits:
                         $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 4) 
                     #End Flip her Skirt
-                    
-        "Pull her panties down" if (R_Legs == "skirt" or R_Legs == "skirtshort" or not R_Legs) and R_Panties and R_Panties != "swimsuit1" and R_Panties != "swimsuit2" and not R_PantiesDown and not R_Upskirt and not R_Hose:                                         #Flip her skirt           
+        "Pull her panties down" if (R_Legs == "skirt" or R_Legs == "skirtshort" or R_Legs == "cheerleader skirt" or R_Legs == "cheerleader skirtshort" or not R_Legs) and R_Panties and R_Panties != "swimsuit1" and R_Panties != "swimsuit2" and not R_PantiesDown and not R_Upskirt and not R_Hose:            
                     call RogueFace("surprised", 1)
                     $ R_Upskirt = 1
                     $ R_PantiesDown = 1
@@ -2223,7 +2222,7 @@ label Rogue_AskPanties(Store = 0):
             elif ApprovalCheck("Rogue", 900, TabM = 5):
                 $ Line = "change"
                 
-        elif R_Legs == "skirt":
+        elif R_Legs == "skirt" or R_Legs == "cheerleader skirt":
             if ApprovalCheck("Rogue", 600, "OI", TabM = 5) or "exhibitionist" in R_Traits:   
                 $ Line = "here"
             elif ApprovalCheck("Rogue", 1100, TabM = 5):
@@ -2236,7 +2235,7 @@ label Rogue_AskPanties(Store = 0):
         
         if Line == "here":                              #She's agreed to change and will do it here
                 call RogueFace("sly")                          
-                if R_Legs == "skirt":      
+                if R_Legs == "skirt" or R_Legs == "cheerleader skirt":   
                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 60, 4)            
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 4)
                 else: #no pants or skirt         
@@ -2314,7 +2313,7 @@ label Rogue_AskPanties(Store = 0):
                                         $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 60, 5)         
                                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 60, 5)            
                                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 5)   
-                                elif R_Legs == "skirt":
+                                elif R_Legs == "skirt" or R_Legs == "cheerleader skirt":
                                         $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 60, 5)         
                                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 60, 4)            
                                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 4) 
@@ -2395,7 +2394,7 @@ label Remove_Panties(chr = "Rogue", Store = 0, Store2 = 0):
                 
                 if R_Legs == "pants":    
                     $ R_Legs = 0        
-                if R_Legs == "skirt": 
+                if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"): 
                     $ R_Upskirt = 1
                 if HoseNum("Rogue") >= 5:
                     $ R_Hose = 0        
@@ -2404,9 +2403,9 @@ label Remove_Panties(chr = "Rogue", Store = 0, Store2 = 0):
                 if Taboo:
                         if Store == "pants":
                             "Rogue looks around, but pulls her pants clean off and her panties with them."
-                        elif Store == "skirt" and Store2 != R_Hose:
+                        elif (Store == "skirt" or Store == "cheerleader skirt") and Store2 != R_Hose:
                             "Rogue looks around, hikes up her skirt, pulls her [Store2] clean off and her panties with them."
-                        elif Store == "skirt":               
+                        elif Store == "skirt" or Store == "cheerleader skirt":              
                             "Rogue looks around, reaches under her skirt, and pulls her panties down."
                         elif Store2 != R_Hose:  
                             "Rogue looks around, but pulls her [Store2] clean off and her panties with them." 
@@ -2415,9 +2414,9 @@ label Remove_Panties(chr = "Rogue", Store = 0, Store2 = 0):
                 else: #Not Taboo
                         if Store == "pants":
                             "Rogue glances at you and pulls her pants clean off and her panties with them."
-                        elif Store == "skirt" and Store2 != R_Hose:
+                        elif (Store == "skirt" or Store == "cheerleader skirt") and Store2 != R_Hose:
                             "Rogue glances at you, hikes up her skirt, pulls her [Store2] clean off and her panties with them."
-                        elif Store == "skirt":
+                        elif Store == "skirt" or Store == "cheerleader skirt":
                             "Rogue glances at you, reaches under her skirt, and pulls her panties down."
                         elif Store2 != R_Hose:
                             "Rogue glances at you and pulls her [Store2] clean off and her panties with them."
@@ -2428,10 +2427,10 @@ label Remove_Panties(chr = "Rogue", Store = 0, Store2 = 0):
                 $ R_Hose = Store2      
                 if R_Legs == "pants":
                     "She hands you the panties and then pulls her pants back on."
-                elif R_Legs == "skirt" and HoseNum("Rogue") >= 5:
+                elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt") and HoseNum("Rogue") >= 5:
                     "She hands you the panties and then pulls her [R_Hose] back on and her skirt back down."  
                     $ R_Upskirt = 0
-                elif R_Legs == "skirt":        
+                elif R_Legs == "skirt" or R_Legs == "cheerleader skirt":        
                     "She hands you the panties and then pulls her skirt back down."  
                     $ R_Upskirt = 0    
                 elif HoseNum("Rogue") >= 5:
@@ -4250,7 +4249,7 @@ label Rogue_Clothes:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<                        
                        
     menu Rogue_Clothes_Legs:                                                                                                    # Leggings   
-        "Lose the skirt. . ." if R_Legs == "skirt": 
+        "Lose the skirt. . ." if R_Legs == "skirt" or R_Legs == "cheerleader skirt": 
                         call RogueFace("sexy", 1)
                         if R_SeenPanties and R_Panties and ApprovalCheck("Rogue", 500, TabM=5):
                             ch_r "Sure."             
@@ -4273,7 +4272,7 @@ label Rogue_Clothes:
                             if not R_Panties:
                                 ch_r "Maybe if I put some panties on first. . ."
 
-        "Lose the short skirt. . ." if R_Legs == "skirtshort": 
+        "Lose the short skirt. . ." if R_Legs == "skirtshort" or R_Legs == "cheerleader skirtshort": 
                         call RogueFace("sexy", 1)
                         if R_SeenPanties and R_Panties and ApprovalCheck("Rogue", 500, TabM=5):
                             ch_r "Sure."             
@@ -4296,34 +4295,67 @@ label Rogue_Clothes:
                             #if not R_Panties:
                             #    ch_r "Maybe if I put some panties on first. . ."
                                 
-        "How about that skirt?" if R_Legs != "skirt":  
-                        $ R_Legs = "skirt"
-                        $ R_Upskirt = 0
+        "How about that skirt?":
+                        menu:
+                            ch_r "Which version of my skirt?"
+                            "The normal one" if R_Legs != "skirt":  
+                              $ R_Legs = "skirt"
+                              $ R_Upskirt = 0
+                            "The cheerleader one" if R_Legs != "cheerleader skirt":  
+                              $ R_Legs = "cheerleader skirt"
+                              $ R_Upskirt = 0
 
-        "How about that short skirt?" if R_Legs != "skirtshort":  
-                        call RogueFace("sexy", 1)
-                        if R_SeenPanties and R_Panties and ApprovalCheck("Rogue", 400, TabM=5):
-                            ch_r "Sure."             
-                            $ R_Legs = "skirtshort"
-                            $ R_Upskirt = 0
-                        elif R_SeenPussy and ApprovalCheck("Rogue", 700, TabM=4):
-                            ch_r "Sure, why not?"             
-                            $ R_Legs = "skirtshort"
-                            $ R_Upskirt = 0
-                        elif ApprovalCheck("Rogue", 1000, TabM=2) and R_Panties: 
-                            ch_r "Well, I suppose if it's for you. . ."
-                            $ R_SeenPanties = 1             
-                            $ R_Legs = "skirtshort"
-                            $ R_Upskirt = 0
-                        elif ApprovalCheck("Rogue", 1300, TabM=3): #No panties
-                            ch_r "Well, I suppose if it's for you. . ."                
-                            $ R_Legs = "skirtshort"
-                            $ R_Upskirt = 0
-                            call Rogue_First_Bottomless
-                        elif Taboo:
-                            ch_r "Not in public, [R_Petname]."
-                        else:
-                            ch_r "No, it's too short, [R_Petname]."
+        "How about that short skirt?":
+                        menu:
+                            ch_r "Which version of my skirt?"
+                            "The normal one" if R_Legs != "skirtshort":
+                                 call RogueFace("sexy", 1)
+                                 if R_SeenPanties and R_Panties and ApprovalCheck("Rogue", 400, TabM=5):
+                                      ch_r "Sure."             
+                                      $ R_Legs = "skirtshort"
+                                      $ R_Upskirt = 0
+                                 elif R_SeenPussy and ApprovalCheck("Rogue", 700, TabM=4):
+                                      ch_r "Sure, why not?"             
+                                      $ R_Legs = "skirtshort"
+                                      $ R_Upskirt = 0
+                                 elif ApprovalCheck("Rogue", 1000, TabM=2) and R_Panties: 
+                                      ch_r "Well, I suppose if it's for you. . ."
+                                      $ R_SeenPanties = 1             
+                                      $ R_Legs = "skirtshort"
+                                      $ R_Upskirt = 0
+                                 elif ApprovalCheck("Rogue", 1300, TabM=3): #No panties
+                                      ch_r "Well, I suppose if it's for you. . ."                
+                                      $ R_Legs = "skirtshort"
+                                      $ R_Upskirt = 0
+                                      call Rogue_First_Bottomless
+                                 elif Taboo:
+                                      ch_r "Not in public, [R_Petname]."
+                                 else:
+                                      ch_r "No, it's too short, [R_Petname]."
+                            "The cheerleader one" if R_Legs != "cheerleader skirtshort":
+                                call RogueFace("sexy", 1)
+                                if R_SeenPanties and R_Panties and ApprovalCheck("Rogue", 400, TabM=5):
+                                      ch_r "Sure."             
+                                      $ R_Legs = "cheerleader skirtshort"
+                                      $ R_Upskirt = 0
+                                elif R_SeenPussy and ApprovalCheck("Rogue", 700, TabM=4):
+                                      ch_r "Sure, why not?"             
+                                      $ R_Legs = "cheerleader skirtshort"
+                                      $ R_Upskirt = 0
+                                elif ApprovalCheck("Rogue", 1000, TabM=2) and R_Panties: 
+                                      ch_r "Well, I suppose if it's for you. . ."
+                                      $ R_SeenPanties = 1             
+                                      $ R_Legs = "cheerleader skirtshort"
+                                      $ R_Upskirt = 0
+                                elif ApprovalCheck("Rogue", 1300, TabM=3): #No panties
+                                      ch_r "Well, I suppose if it's for you. . ."                
+                                      $ R_Legs = "cheerleader skirtshort"
+                                      $ R_Upskirt = 0
+                                      call Rogue_First_Bottomless
+                                elif Taboo:
+                                      ch_r "Not in public, [R_Petname]."
+                                else:
+                                      ch_r "No, it's too short, [R_Petname]."
 
         "Maybe go without the jeans." if R_Legs == "pants":
                         call RogueFace("sexy", 1)
@@ -4591,7 +4623,7 @@ label Rogue_Clothes:
                                 jump Rogue_Clothes  
                         
                         $ R_Panties = 0  
-                        if not R_Legs or R_Legs == "skirtshort":                
+                        if not R_Legs or (R_Legs == "skirtshort" or R_Legs == "cheerleader skirtshort"):                
                             call Rogue_First_Bottomless
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 2)  
                             
@@ -5215,7 +5247,11 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         elif R_Legs == "skirt":                 #If wearing a skirt commando
                             $ Count = 20
                         elif R_Legs == "skirtshort":            #If wearing a short skirt commando
-                            $ Count = 0    
+                             $ Count = 0
+                        elif R_Legs == "cheerleader skirt":                 #If wearing a cheerleader skirt commando
+                            $ Count = 20
+                        elif R_Legs == "cheerleader skirtshort":            #If wearing a short cheerleader skirt commando
+                            $ Count = 0       
                         elif R_Panties == "shorts":             #If wearing shorts
                             $ Count = 25
                         elif R_Panties == "red shorts":             #If wearing shorts

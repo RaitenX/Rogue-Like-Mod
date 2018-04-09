@@ -133,7 +133,12 @@ image Rogue:
             "R_Legs == 'skirt' and R_Upskirt", "images/RogueSprite/Rogue_legs_skirt_up.png",
             "R_Legs == 'skirt'", "images/RogueSprite/Rogue_legs_skirt.png",
             "R_Legs == 'skirtshort' and R_Upskirt", "images/RogueSprite/Rogue_legs_skirtshort_up.png",
-            "R_Legs == 'skirtshort'", "images/RogueSprite/Rogue_legs_skirtshort.png",           
+            "R_Legs == 'skirtshort'", "images/RogueSprite/Rogue_legs_skirtshort.png",  
+            "R_Legs == 'skirtshort'", "images/RogueSprite/Rogue_legs_skirtshort.png",
+            "R_Legs == 'cheerleader skirt' and R_Upskirt", "images/RogueSprite/Rogue_Cheerleader_Skirt_Up.png",
+            "R_Legs == 'cheerleader skirt'", "images/RogueSprite/Rogue_Cheerleader_Skirt.png",
+            "R_Legs == 'cheerleader skirtshort' and R_Upskirt", "images/RogueSprite/Rogue_Cheerleader_Skirt_Short.png",
+            "R_Legs == 'cheerleader skirtshort'", "images/RogueSprite/Rogue_Cheerleader_Skirt_Short_Up.png",            
             "True", Null(),   
             ),
         (0,0), ConditionSwitch(                                                                         #Arms and gloves
@@ -145,6 +150,7 @@ image Rogue:
             "R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms2b_gloved.png",                                                         #Gloved, no collar
             "R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_bare.png",                                                    #No gloves, collar
             "True", "images/RogueSprite/Rogue_arms2b_bare.png",                                                                         #No gloves, no collar
+            
             
 #            "Rogue_Arms == 1 and R_Arms == 'collargloved'", "images/RogueSprite/Rogue_arms1a_gloved.png",  
 #            "Rogue_Arms == 1 and R_Arms == 'collarbare'", "images/RogueSprite/Rogue_arms1a_bare.png", 
@@ -170,6 +176,7 @@ image Rogue:
             "R_Chest == 'lace bra'", "images/RogueSprite/Rogue_chest_lacebra.png",  
             "R_Chest == 'swimsuit1'", "images/RogueSprite/Rogue_Swimsuit1.png",
             "R_Chest == 'swimsuit2'", "images/RogueSprite/Rogue_Swimsuit2.png",
+            "R_Chest == 'cheerleader'", "images/RogueSprite/Rogue_Cheerleader_Outfit.png",
             "True", Null(),               
             ),                   
         (0,0), ConditionSwitch(                                                                         #water
@@ -529,7 +536,9 @@ label Display_Background(Entry = 0):
         elif bg_current == "bg dangerroom":        
                                 scene bg_danger onlayer backdrop
         elif bg_current == "bg pool":        
-                                scene bg_pool onlayer backdrop           
+                                scene bg_pool onlayer backdrop 
+        elif bg_current == "bg field":        
+                                scene bg_field onlayer backdrop            
         elif bg_current == "bg showerroom":        
                                 scene bg_shower onlayer backdrop  
         elif bg_current == "bg study":        
@@ -599,7 +608,8 @@ image bg_class:
 #image bg_classlit = "images/ClassroomLit.jpg"
 #image bg_classnight = "images/ClassroomNight.jpg"
 image bg_danger = "images/dangerroom.jpg"
-image bg_pool = "images/pool.jpg"      
+image bg_pool = "images/pool.jpg"
+image bg_field = "images/Football_Field.png"       
 image bg_shower = "images/Shower.jpg"
 image bg_study = "images/study.jpg"
 image bg_movies = "images/Movies.jpg"     
@@ -700,6 +710,7 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             "R_Chest == 'blue sports bra'", "images/RogueDoggy/Rogue_Doggy_Chest_BYSportsBra.png",
             "R_Chest == 'lace bra'", "images/RogueDoggy/Rogue_Doggy_Chest_Bra.png",
             "R_Chest == 'bra'", "images/RogueDoggy/Rogue_Doggy_Chest_Bra.png",
+            "R_Chest == 'cheerleader'", "images/RogueDoggy/Rouge_Doggy_Cheerleader_Outfit.png",
             "True", Null(),            
             ), 
         (0,0), ConditionSwitch(                                                                                 #Wet look
@@ -879,6 +890,12 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
             "R_Legs == 'skirtshort' and R_Upskirt and P_Sprite and P_Cock == 'anal' and Speed" , "images/RogueDoggy/Rogue_Doggy_Legs_SkirtShort_UpAnal.png",   
             "R_Legs == 'skirtshort' and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_Legs_SkirtShort_Up.png",   
             "R_Legs == 'skirtshort'", "images/RogueDoggy/Rogue_Doggy_Legs_SkirtShort.png", 
+            "R_Legs == 'cheerleader skirt' and R_Upskirt and P_Sprite and P_Cock == 'anal' and Speed" , "images/RogueDoggy/Rogue_Doggy_Cheerleader_Skirt_UpAnal.png",   
+            "R_Legs == 'cheerleader skirt' and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_Cheerleader_Skirt_Up.png",   
+            "R_Legs == 'cheerleader skirt'", "images/RogueDoggy/Rogue_Doggy_Cheerleader_Skirt.png", 
+            "R_Legs == 'cheerleader skirtshort' and R_Upskirt and P_Sprite and P_Cock == 'anal' and Speed" , "images/RogueDoggy/Rogue_Doggy_Cheerleader_SkirtShort_UpAnal.png",   
+            "R_Legs == 'cheerleader skirtshort' and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_Cheerleader_SkirtShort_Up.png",   
+            "R_Legs == 'cheerleader skirtshort'", "images/RogueDoggy/Rogue_Doggy_Cheerleader_SkirtShort.png", 
             "True", Null(),                      
             ),   
         (0,0), ConditionSwitch(                                                                                 #Over Layer
@@ -894,16 +911,16 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
             ),   
         (0,0), ConditionSwitch(                                                                                 #Hotdogging underlayer
             "not P_Sprite or P_Cock != 'out'", Null(),   
-            "R_Legs == 'skirt' and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_HotdogUpskirtBack.png",  
-            "R_Legs == 'skirtshort' and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_HotdogUpskirtBack.png",  
+            "(R_Legs == 'skirt' or R_Legs == 'cheerleader skirt') and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_HotdogUpskirtBack.png",  
+            "(R_Legs == 'skirtshort' or R_Legs == 'cheerleader skirt') and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_HotdogUpskirtBack.png", 
             "True", "images/RogueDoggy/Rogue_Doggy_HotdogBack.png", 
             ),    
         (0,0), ConditionSwitch(                                                                                 #Hotdogging Cock w/ alpha
             "not P_Sprite or P_Cock != 'out'", Null(),            
-            "R_Legs == 'skirt' and R_Upskirt and Speed", AlphaMask("Zero_Hotdog_Moving", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png"),
-            "R_Legs == 'skirt' and R_Upskirt", AlphaMask("Zero_Hotdog_Static", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png"),
-            "R_Legs == 'skirtshort' and R_Upskirt and Speed", AlphaMask("Zero_Hotdog_Moving", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png"),
-            "R_Legs == 'skirtshort' and R_Upskirt", AlphaMask("Zero_Hotdog_Static", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png"),
+            "(R_Legs == 'skirt' or R_Legs == 'cheerleader skirt') and R_Upskirt and Speed", AlphaMask("Zero_Hotdog_Moving", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png"),
+            "(R_Legs == 'skirt' or R_Legs == 'cheerleader skirt') and R_Upskirt", AlphaMask("Zero_Hotdog_Static", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png"),
+            "(R_Legs == 'skirtshort' or R_Legs == 'cheerleader skirt') and R_Upskirt and Speed", AlphaMask("Zero_Hotdog_Moving", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png"),
+            "(R_Legs == 'skirtshort' or R_Legs == 'cheerleader skirt') and R_Upskirt", AlphaMask("Zero_Hotdog_Static", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png"),
             "Speed", AlphaMask("Zero_Hotdog_Moving", "images/RogueDoggy/Rogue_Doggy_HotdogMask.png"),    
             "True", AlphaMask("Zero_Hotdog_Static", "images/RogueDoggy/Rogue_Doggy_HotdogMask.png"),
             ),

@@ -45,6 +45,10 @@ label Worldmap:
                     $ renpy.pop_call() 
                     jump Pool_Entry
 
+        "The Football Field": 
+                    $ renpy.pop_call() 
+                    jump Field_Entry
+
         "The showers":
                     $ renpy.pop_call() 
                     jump Shower_Room_Entry         
@@ -678,6 +682,9 @@ label Campus:
         "Go to the Pool" if TravelMode: 
                     jump Pool_Entry
 
+        "Go to the football field" if TravelMode: 
+                    jump Field_Entry     
+
         "Go to the showers" if TravelMode: 
                     jump Shower_Room_Entry            
         "Xavier's Study" if TravelMode: 
@@ -1177,6 +1184,53 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
 # end Skinny Dipping / 
 
 # end Pool Room Interface //////////////////////////////////////////////////////////////////////
+
+# Football Field Interface //////////////////////////////////////////////////////////////////////
+  
+label Field_Entry:
+    $ bg_current = "bg field"               
+    call Taboo_Level
+    $ P_RecentActions.append("traveling")
+    call EventCalls
+    call Set_The_Scene
+    
+label Field:
+    $ bg_current = "bg field"
+    if "traveling" in P_RecentActions:
+        $ P_RecentActions.remove("traveling")
+    call Set_The_Scene
+    call Taboo_Level
+    call QuickEvents    
+    call Checkout(1)    
+    call GirlsAngry      
+
+# Football Field Menu Start <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    menu:
+        "You are at the football field. What would you like to do?"
+        
+        "Chat":
+            call Chat
+            
+        "Watch the match." if Weekday > 3 and Current_Time == "Evening":
+            "You watch the match that is going on. It was an entertaining match."
+            call Wait
+            call EventCalls
+            call Girls_Location
+            
+        "Wait." if Current_Time != "Night":
+            "You wait around a bit."
+            call Wait   
+            call EventCalls            
+            call Girls_Location
+            
+        "Leave [[Go to Campus Square]":
+                if TravelMode:
+                    jump Campus_Entry
+                else:
+                    call Worldmap               
+    jump Field
+
+# end Football Field Interface //////////////////////////////////////////////////////////////////////
 
 # Danger Room Interface //////////////////////////////////////////////////////////////////////
 

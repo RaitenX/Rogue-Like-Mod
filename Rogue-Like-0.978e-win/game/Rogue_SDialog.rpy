@@ -666,7 +666,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
                                 $ TempLust += 1 if R_Lust < 50 else 0
                             
-                    elif R_Legs == "skirt" and HoseNum("Rogue") >= 5: # skirt with full hose          
+                    elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt") and HoseNum("Rogue") >= 5: # skirt with full hose           
                                 $ Line = renpy.random.choice(["You reach under skirt and stroke her thighs", 
                                         "You lift her skirt a bit and feel her firm thighs", 
                                         "Her legs twitch a bit beneath her skirt",
@@ -675,7 +675,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 $ TempFocus += 2 if P_Focus < 40 else 0  
                                 $ TempLust += 2 if R_Lust < 40 else 0                                
                                 $ R_Addict -= 1 if D20S > 10 else 0                            
-                    elif R_Legs == "skirt" and R_Hose: #skirt with stockings         
+                    elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt") and R_Hose: #skirt with stockings       
                                 $ Line = renpy.random.choice(["You reach under skirt and stroke her thighs", 
                                         "You lift her skirt a bit and feel her firm thighs", 
                                         "Her legs twitch a bit beneath her skirt",
@@ -684,7 +684,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 $ TempFocus += 2 if P_Focus < 50 else 0  
                                 $ TempLust += 2 if R_Lust < 50 else 0                               
                                 $ R_Addict -= 1 if D20S > 10 else 0                            
-                    elif R_Legs == "skirt":  #and no hose
+                    elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):  #and no hose
                                 $ Line = renpy.random.choice(["You reach under skirt and stroke her thighs", 
                                         "You lift her skirt a bit and feel her firm thighs", 
                                         "Her legs twitch a bit beneath her skirt",
@@ -740,7 +740,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "You slide a finger into her pussy and stroke the top", 
                                                     "You pull her pants out a bit and she gasps as you slide two fingers between her lips", 
                                                     "You rub her clit with your palm as you dive into her pussy with your middle finger"]) 
-                            elif R_Legs == "skirt":
+                            elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                                     if R_Panties == "shorts" and not R_PantiesDown: #shorts on
                                             $ Line = renpy.random.choice(["You push her skirt and shorts up, and slide a finger between her lips", 
                                                     "You slide a finger into her pussy and stroke the top", 
@@ -795,7 +795,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "She gasps as you reach under her and lightly stroke her ass through the jeans",
                                                     "You slide a hand up her inner thigh, she moans a little as you reach the point where they meet"])
                                                 
-                            elif R_Legs == "skirt":
+                            elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                                     if R_Panties == "shorts" and not R_PantiesDown: #shorts on
                                             $ Line = renpy.random.choice(["You reach under skirt and ran your hands over the thin shorts covering her", 
                                                     "You slide a hand up the leg of her shorts, and brush your hands across her pussy underneath", 
@@ -901,7 +901,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                             $ TempFocus += 1 if P_Focus < 70 else 0  
                                             $ TempLust += 3 if R_Lust > 60 else 2
                             else:                    
-                                if R_Legs == "skirt":
+                                if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                                         if R_Panties == "shorts" and not R_PantiesDown: #shorts on
                                                 $ Line = renpy.random.choice(["You push her skirt up and lick at her pussy through her shorts",                 
                                                         "You bend down and lick the edges of her lips through the shorts",                 
@@ -1028,7 +1028,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 "She gasps as you reach under her and lightly stroke her ass through the jeans",
                                                 "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])  
                                             
-                        elif R_Legs == "skirt":
+                        elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                                 if R_Panties == "shorts" and not R_PantiesDown: #shorts on
                                         $ Line = renpy.random.choice(["You reach under skirt and brush across her shorts", 
                                                 "You lift her skirt a bit and grind against her shorts", 
@@ -1123,7 +1123,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "You slide a finger into her tight anus", 
                                                     "You pull her pants out a bit and she gasps as you slide a finger up her hole", 
                                                     "You gasps as you rub her asshole with your fingers"]) 
-                            elif R_Legs == "skirt":
+                            elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                                     if R_Panties == "shorts" and not R_PantiesDown: #shorts on
                                             $ Line = renpy.random.choice(["You push her skirt and shorts up, and slide a finger into her anus", 
                                                     "You slide a finger into her tight anus", 
@@ -1180,7 +1180,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 $ TempFocus += 1 if P_Focus < 70 else 0  
                                                 $ TempLust += 1 if R_Lust < 60 else 0
                             else:                    
-                                if R_Legs == "skirt":
+                                if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                                         if R_Panties == "shorts" and not R_PantiesDown: #shorts on
                                                 $ Line = renpy.random.choice(["You push her skirt up and lick at her asshole through her shorts",                 
                                                         "You bend down and stroke the edges of her shorts with your tongue",                 
@@ -1297,14 +1297,14 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
                                 $ TempLust += 3 if R_Lust < 50 else 1
                         else:
-                                if R_Legs == "skirt" and R_Panties:            
+                                if (R_Legs == "skirt" or R_Legs == "cheerleader skirt") and R_Panties:           
                                     $ Line = renpy.random.choice(["You push her skirt and panties aside, and slide the dildo into her pussy", 
                                             "You slide the toy deep into her pussy", 
                                             "She gasps as you rotate the dildo within her tight pussy",
                                             "You rub her clit with your thumb as you dive into her puss with the rubber phallus"])
                                     $ TempFocus += 2 if P_Focus < 50 else 1  
                                     $ TempLust += 8 if R_Lust > 70 else 5
-                                elif R_Legs == "skirt":            
+                                elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):             
                                     $ Line = renpy.random.choice(["You push her skirt aside, and slide the dildo into her tight hole", 
                                             "You slide the toy deep into her pussy",
                                             "You lift her skirt a bit and she gasps as you slide the dildo firmly into her tight puss", 
@@ -1350,14 +1350,14 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
                                 $ TempLust += 3 if R_Lust < 50 else 1
                         else:
-                                if R_Legs == "skirt" and R_Panties:            
+                                if (R_Legs == "skirt" or R_Legs == "cheerleader skirt") and R_Panties:            
                                     $ Line = renpy.random.choice(["You push her skirt and panties aside, and slide the dildo into her ass", 
                                             "You slide the toy deep into her ass", 
                                             "She gasps as you rotate the dildo within her tight asshole",
                                             "You rub her clit with your thumb as you dive into her ass with the rubber phallus"])
                                     $ TempFocus += 2 if P_Focus < 50 else 1  
                                     $ TempLust += 8 if R_Lust > 70 else 5
-                                elif R_Legs == "skirt":            
+                                elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):           
                                     $ Line = renpy.random.choice(["You push her skirt aside, and slide the dildo into her tight hole", 
                                             "You slide the toy deep into her ass",
                                             "You lift her skirt a bit and she gasps as you slide the dildo firmly into her tight anus", 
