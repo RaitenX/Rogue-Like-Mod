@@ -1722,11 +1722,18 @@ image Kitty_BJ_Backdrop:
             "True", Null(),
             ),  
         (0,0), ConditionSwitch(  
+            "True and K_Tan == 'tan' and K_Over == 'armbinder'", "images/KittyBJFace/Kitty_BJ_Armbinder_TBody.png",
             "True and K_Tan == 'tan'", "images/KittyBJFace/Kitty_BJ_TBody.png",
+            "True and K_Tan == 'tan2' and K_Over == 'armbinder'", "images/KittyBJFace/Kitty_BJ_Armbinder_T2Body.png",
             "True and K_Tan == 'tan2'", "images/KittyBJFace/Kitty_BJ_T2Body.png",
+            "True and K_Over == 'armbinder'", "images/KittyBJFace/Kitty_BJ_Armbinder_Body.png",                                                   
             "True", "images/KittyBJFace/Kitty_BJ_Body.png",                                                   
             ),
             #body
+        (0,0), ConditionSwitch(
+            "K_Over == 'armbinder'", "images/KittyBJFace/Kitty_BJ_Over_Armbinder_Straps.png",
+            "True", Null(),
+            ),
         (0,0), ConditionSwitch(                                                                         
             #necklace
             "K_Neck == 'gold necklace'", "images/KittyBJFace/Kitty_BJ_Neck_Gold.png",
@@ -1747,6 +1754,7 @@ image Kitty_BJ_Backdrop:
             "K_Chest == 'sports bra'", "images/KittyBJFace/Kitty_BJ_Bra_Sport.png",
             "K_Chest == 'bra'", "images/KittyBJFace/Kitty_BJ_Bra.png",
             "K_Chest == 'cami'", "images/KittyBJFace/Kitty_BJ_Bra_Cami.png",
+            "K_Chest == 'bustier bra'", "images/KittyBJFace/Kitty_BJ_Bra_Bustier.png",
             "True", Null(),       
             ),  
             
@@ -1849,7 +1857,11 @@ image Kitty_BJ_Head:                                                            
             "K_Brows == 'confused'", "images/KittyBJFace/Kitty_BJ_Brows_Confused.png",
             "True", "images/KittyBJFace/Kitty_BJ_Brows_Normal.png",
             ),
-        (0,0), "Kitty BJ Blink",                                                                
+        (0,0), "Kitty BJ Blink",  
+        (0,0), ConditionSwitch(
+            "K_Over == 'armbinder'", "images/KittyBJFace/Kitty_BJ_Eyes_Blindfold.png",  
+            "True", Null(),
+            ),                                                              
             #Eyes
         (0,0), ConditionSwitch(                                                                 
             #cum on the face

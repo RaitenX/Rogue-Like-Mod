@@ -1517,6 +1517,34 @@ label KBJ_Cycle: #Repeating strokes
         if Line and P_Focus < 100:                                                    #Player Command menu
                     $ Cnt += 1
                     $ Round -= 1
+                    if ("master" in K_Petnames or "sir" in K_Petnames or "slave" in K_Petnames) and ApprovalCheck("Kitty", 750, "O") and not K_Bondage: # bondage event
+                        $ K_Bondage = 1
+                        ch_k "Hey, [K_Petname], I've got some new things here, do you think we could try them?"
+                        "She grabs what it looks like some bondage gear"
+                        menu:
+                            "Yep":
+                                call KittyFace("sexy", 1) 
+                                if K_Over or K_Chest or K_Panties or K_Legs:
+                                    "She glances up at you as her clothes drop to the ground."
+                                $ K_Over = 0
+                                $ K_Legs = 0
+                                $ K_Chest = 0
+                                $ K_Panties = 0
+                                "She starts dressing the new outfit"
+                                $ K_Over = "armbinder"
+                                $ K_Chest = "bustier bra"
+                                $ K_Panties = "zipper panties"
+                                $ K_Outfit = "zipper bondage"
+                                $ K_Shame = K_OutfitShame[1]
+                                #jump K_HotdogPrep
+                                #pass
+                                #call Kitty_Bottoms_Off_Legs
+                                #call Kitty_Top_Off
+                                #call Kitty_Bottoms_Off
+                                #shes gonna wear it
+                            "Not now, but let's save it for another time":
+                                pass
+                                #nope
                     menu:
                         "[Line]"
                         "Keep going. . ." if Speed:
@@ -1572,6 +1600,21 @@ label KBJ_Cycle: #Repeating strokes
                                 else:
                                     $ Speed = 1
                                 $ K_RecentActions.append("setpace")
+
+                        "How about you put that bondage outfit" if K_Bondage and K_Outfit != "zipper bondage" and K_Outfit != "zipper bondage open":
+                            call KittyFace("sexy", 1) 
+                            if K_Over or K_Chest or K_Panties or K_Legs:
+                                "She glances up at you as her clothes drop to the ground."
+                            $ K_Over = 0
+                            $ K_Legs = 0
+                            $ K_Chest = 0
+                            $ K_Panties = 0
+                            "She starts dressing the new outfit"
+                            $ K_Over = "armbinder"
+                            $ K_Chest = "bustier bra"
+                            $ K_Panties = "zipper panties"
+                            $ K_Outfit = "zipper bondage"
+                            $ K_Shame = K_OutfitShame[1]
                                 
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass

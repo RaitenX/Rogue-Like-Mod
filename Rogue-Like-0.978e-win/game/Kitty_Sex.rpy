@@ -148,7 +148,7 @@ label Kitty_SexMenu:
                 
         "Could we maybe?. . . [[fuck]":
                 if P_Semen and K_Action:
-                    if ("master" in K_Petnames or "sir" in K_Petnames) and ApprovalCheck("Kitty", 900, "O") and not K_Bondage: # bondage event
+                    if ("master" in K_Petnames or "sir" in K_Petnames or "slave" in K_Petnames) and ApprovalCheck("Kitty", 750, "O") and not K_Bondage: # bondage event
                         $ K_Bondage = 1
                         ch_k "Hey, [K_Petname], I've got some new things here, do you think we could try them?"
                         "She grabs what it looks like some bondage gear"

@@ -1906,7 +1906,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     elif K_Panties == 0 and "pantyless" not in K_DailyActions:                        
                             $ Undressed = 1   
                     $ K_Legs = 0
-                    $ K_Over = "armbinder"
+                    $ K_Over = 0
                     $ K_Chest = "bustier bra"
                     $ K_Panties = "zipper panties"      
                     $ K_Neck = 0
@@ -1919,7 +1919,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     elif K_Panties == 0 and "pantyless" not in K_DailyActions:                        
                             $ Undressed = 1   
                     $ K_Legs = 0
-                    $ K_Over = "armbinder"
+                    $ K_Over = 0
                     $ K_Chest = "bustier bra open"
                     $ K_Panties = "zipper panties open"      
                     $ K_Neck = 0
