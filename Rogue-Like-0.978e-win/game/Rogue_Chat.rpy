@@ -4550,6 +4550,10 @@ label Rogue_Clothes:
                             jump Rogue_Clothes_Under_Top 
                         $ R_Chest = 0
                         jump Rogue_Clothes_Under_Top 
+
+                "Try on that cheerleader top." if R_Chest != "cheerleader":
+                                $ R_Chest = "cheerleader" 
+                                jump Rogue_Clothes_Under_Top
                     
                 "Try on that black tank top." if R_Chest != "tank":
                                 $ R_Chest = "tank"  
@@ -5186,6 +5190,8 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                             
             #If she's wearing a bra of some kind
             if R_Chest == "tank":                                              
+                $ Count = 20
+            if R_Chest == "cheerleader":                                              
                 $ Count = 20
             if R_Chest == "tank short":                                              
                 $ Count = 5

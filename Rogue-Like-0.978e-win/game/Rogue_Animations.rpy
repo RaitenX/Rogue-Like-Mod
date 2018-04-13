@@ -558,8 +558,13 @@ label Display_Background(Entry = 0):
                                 scene bg_class onlayer backdrop 
         elif bg_current == "bg dangerroom":        
                                 scene bg_danger onlayer backdrop
-        elif bg_current == "bg pool":        
-                                scene bg_pool onlayer backdrop 
+        elif bg_current == "bg pool":  
+                            if Current_Time == "Evening":
+                                scene bg_pool_e onlayer backdrop 
+                            elif Current_Time == "Night":
+                                scene bg_pool_n onlayer backdrop 
+                            else:
+                                scene bg_pool_d onlayer backdrop 
         elif bg_current == "bg field":        
                                 scene bg_field onlayer backdrop            
         elif bg_current == "bg showerroom":        
@@ -632,6 +637,9 @@ image bg_class:
 #image bg_classnight = "images/ClassroomNight.jpg"
 image bg_danger = "images/dangerroom.jpg"
 image bg_pool = "images/pool.jpg"
+image bg_pool_d = "images/pool_day.png"
+image bg_pool_e = "images/pool_evening.png"
+image bg_pool_n = "images/pool_night.png"
 image bg_field = "images/Football_Field.png"       
 image bg_shower = "images/Shower.jpg"
 image bg_study = "images/study.jpg"
