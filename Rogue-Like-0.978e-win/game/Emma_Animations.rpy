@@ -12,7 +12,11 @@ image Emma_Sprite:
             "E_Hair == 'wet' or E_Water", "images/EmmaSprite/EmmaSprite_HairbackWet.png",
             "E_Hair", "images/EmmaSprite/EmmaSprite_Hairback.png",   
             "True", Null(),        
-            ),      
+            ),  
+        (0,0), ConditionSwitch(                                                                         #hair back 
+            "E_Over == 'cape'", "images/EmmaSprite/EmmaSprite_LongCape_Back.png",   
+            "True", Null(),        
+            ),
         (0,0), ConditionSwitch(                                                                         #panties down back 
             "E_PantiesDown and E_Panties == 'white panties'", "images/EmmaSprite/EmmaSprite_Panties_DownBack.png",   
             "True", Null(),        
@@ -104,11 +108,7 @@ image Emma_Sprite:
             "E_Chest == 'NewX' and Emma_Arms > 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewX_Down.png",   
             "E_Chest == 'NewX black' and Emma_Arms > 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewXBlack_Down.png",   
             "True", Null(),              
-            ),       
-#        (0,0), ConditionSwitch(                                                                         #soap
-#            "E_Water == 3", "images/EmmaSprite/Emma_body_wet3.png",
-#            "True", Null(),                 
-#            ),
+            ),
         (0,0), ConditionSwitch(                                                                         #cape layer       
             "E_Over or E_Chest != 'corset'", Null(),  
             "Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Cape2.png",              
@@ -125,6 +125,8 @@ image Emma_Sprite:
             "E_Over == 'jacket' and Emma_Arms == 2 and E_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",      
             "E_Over == 'jacket' and Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Jacket_2Down.png",        
             "E_Over == 'jacket'", "images/EmmaSprite/EmmaSprite_Jacket_1Up.png",       
+            "E_Over == 'cape' and Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_LongCape_TitsDown.png",   
+            "E_Over == 'cape'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp.png",   
             "True", Null(), 
             ), 
         (0,0), ConditionSwitch(                                                                         #Towel Over layer       

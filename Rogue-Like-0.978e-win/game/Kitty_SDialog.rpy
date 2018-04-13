@@ -170,8 +170,13 @@ label Kitty_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
            
     elif Trigger == "blow":
         
-            if not Speed: #if Kitty is not moving                
-                    if "hungry" in K_Traits:
+            if not Speed: #if Kitty is not moving  
+                    if K_Over == "armbinder":
+                            call KittyFace("sly")
+                            $ Line = "Kitty can't see a thing. She licks her lips in anticipation"
+                            $ TempLust += 3 if K_Lust < 40 else 1  
+
+                    elif "hungry" in K_Traits:
                             call KittyFace("sly")
                             $ Line = "Kitty stares at your cock. She licks her lips in anticipation"
                             $ TempLust += 3 if K_Lust < 40 else 1                    

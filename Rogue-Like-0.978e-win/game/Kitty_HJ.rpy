@@ -1517,7 +1517,7 @@ label KBJ_Cycle: #Repeating strokes
         if Line and P_Focus < 100:                                                    #Player Command menu
                     $ Cnt += 1
                     $ Round -= 1
-                    if ("master" in K_Petnames or "sir" in K_Petnames or "slave" in K_Petnames) and ApprovalCheck("Kitty", 750, "O") and not K_Bondage: # bondage event
+                    if ("master" in K_Petnames or "sir" in K_Petnames or K_Pet == "slave") and ApprovalCheck("Kitty", 750, "O") and not K_Bondage: # bondage event
                         $ K_Bondage = 1
                         ch_k "Hey, [K_Petname], I've got some new things here, do you think we could try them?"
                         "She grabs what it looks like some bondage gear"
@@ -1531,11 +1531,24 @@ label KBJ_Cycle: #Repeating strokes
                                 $ K_Chest = 0
                                 $ K_Panties = 0
                                 "She starts dressing the new outfit"
+                                "You help her with the armbinder, making sure she can't move her arms"
+                                "And add a blindfold so she can't see a thing"
                                 $ K_Over = "armbinder"
                                 $ K_Chest = "bustier bra"
                                 $ K_Panties = "zipper panties"
                                 $ K_Outfit = "zipper bondage"
                                 $ K_Shame = K_OutfitShame[1]
+                                #if K_Over == "armbinder":
+                                #call KittyFace("sly")
+                                $ Line = "Kitty can't see a thing. She licks her lips in anticipation"
+                                $ TempLust += 3 if K_Lust < 40 else 1  
+
+                                if K_Blow <= 1 or (K_Obed >= 500 and K_Obed > K_Inbt):
+                                        $ TempLust += 2 if K_Lust > 60 else 0                 
+                                        $ Line = Line + ", but she seems to be waiting for some instruction"
+                                else:
+                                        $ Line = Line + ", and then she gets started licking your cock"
+                                #        $ Speed = 1
                                 #jump K_HotdogPrep
                                 #pass
                                 #call Kitty_Bottoms_Off_Legs
@@ -1610,6 +1623,8 @@ label KBJ_Cycle: #Repeating strokes
                             $ K_Chest = 0
                             $ K_Panties = 0
                             "She starts dressing the new outfit"
+                            "You help her with the armbinder, making sure she can't move her arms"
+                            "And add a blindfold so she can't see a thing"
                             $ K_Over = "armbinder"
                             $ K_Chest = "bustier bra"
                             $ K_Panties = "zipper panties"
@@ -1632,6 +1647,17 @@ label KBJ_Cycle: #Repeating strokes
                             menu:
                                 "How about a handy?":
                                         if K_Action and MultiAction:
+                                            if  K_Over == "armbinder":
+                                                call KittyFace("sexy", 1)
+                                                ch_k "I can't do that with my arms like this [K_Petname]"
+                                                "You untie her arms and removes her blindfold"
+                                                $ K_Over = 0
+                                                if K_Chest or K_Pants or K_Panties:
+                                                    "She drops the rest of her clothes"
+                                                    $ K_Chest = 0
+                                                    $ K_Pants = 0
+                                                    $ K_Panties = 0
+                                                    $ K_Outfit = "nude"
                                             $ Situation = "shift"
                                             call K_BJAfter
                                             call K_Handjob

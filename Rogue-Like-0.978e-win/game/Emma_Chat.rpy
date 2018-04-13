@@ -36,6 +36,7 @@ label Emma_Chat:
                     pass
             
         "Sex Menu" if E_Loc == bg_current:
+                    call Taboo_Level
                     if E_Love >= E_Obed:
                         ch_p "Did you want to fool around?"  
                     else: 
@@ -3398,7 +3399,17 @@ label Emma_Clothes(Public=0,Bonus=0):
                 call EmmaFace("bemused", 1)
                 ch_e "I'm not sure this is appropriate without something more substantial underneath."
                 jump Emma_Clothes    
-            $ E_Over = "jacket"   
+            $ E_Over = "jacket"
+
+        "Try on that white cape you have." if E_Over != "cape":
+            call EmmaFace("bemused")
+            if E_Chest or E_SeenChest or ApprovalCheck("Emma", 500, TabM=(3-Public)):
+                ch_e "Yeah, ok."          
+            else:
+                call EmmaFace("bemused", 1)
+                ch_e "I'm not sure this is appropriate without something more substantial underneath."
+                jump Emma_Clothes    
+            $ E_Over = "cape"   
                 
 #        "How about that red t-shirt you have?" if E_Over != "red shirt":
 #            $ E_Over = "red shirt"  
@@ -4165,6 +4176,8 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
             #If she's wearing an overshirt
             if E_Over == "jacket":                                             
                 $ Count += 15
+            elif E_Over == "cape":
+                $ Count += 20
             elif E_Over == "towel":      
                 $ Count += 5
             #else: nothing    

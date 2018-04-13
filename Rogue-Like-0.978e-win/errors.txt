@@ -2,20 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/Kitty_Missionary.rpy", line 372: reached end of line when expecting ':'.
-    if K_Chest == "bustier bra"
-                               ^
-
-File "game/Kitty_Missionary.rpy", line 426: reached end of line when expecting ':'.
-    if K_Chest == "bustier bra"
-                               ^
-
-File "game/Kitty_Missionary.rpy", line 1114: reached end of line when expecting ':'.
-    if K_Chest == "bustier bra"
-                               ^
-
-File "game/Kitty_Missionary.rpy", line 1169: reached end of line when expecting ':'.
-    if K_Chest == "bustier bra"
-                               ^
+File "game/script.rpy", line 3024: if statement expects a non-empty block.
+    if Outfit:
+              ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

@@ -465,7 +465,7 @@ init -1:
     default E_Custom = [0,0,0,0,0,0,0,0,0,0]
     default E_Custom2 = [0,0,0,0,0,0,0,0,0,0,0]
     default E_Custom3 = [0,0,0,0,0,0,0,0,0,0,0]    
-    default E_Gym = [2,0,"shorts",0,0,"sports bra","white panties",0,0,0,0]
+    default E_Gym = [2,0,0,"cape","NewX","corset","white panties",0,0,0,0]
     default E_Sleepwear = [0,0,0,0,0,"corset","white panties",0,0,0]
     default E_Schedule = [0,0,0,0,0,0,0,0,4,0]                      #chooses when she wears what
     default EmmaLayer = 101
@@ -951,6 +951,21 @@ label EventCalls:
                 #if you are in class and not travelling. . .
                 if "met" in E_History:    
                         $ E_Loc = "bg classroom"
+
+        if "traveling" in P_RecentActions and bg_current == "bg dangerroom" and Weekday < 5 and Current_Time == "Evening" and E_Loc == "bg dangerroom":
+            if "metgym" not in E_History:     
+                    jump EmmaMeetGym
+                    return   
+            #elif Current_Time == "Evening" and not Party:
+            #    if "classcaught" not in E_History:     
+            #        jump Emma_Caught_Classroom
+            #        return     
+            #    elif D20 <= 10:  
+            #        if E_Lust >= 50:
+            #                jump Emma_Caught_Classroom
+            #                return   
+            #        else:
+            #            $ E_Loc = "bg classroom"
             
         if "detention" in P_Traits and bg_current == "bg classroom" and Weekday < 5 and Current_Time == "Evening" and not Party:    
                     jump Emma_Detention
@@ -2575,6 +2590,8 @@ label Emma_Schedule(Clothes = 1, Location = 1, LocTemp = E_Loc):
                         $ E_Loc = "bg teacher"
                 elif Current_Time == "Midday":
                         $ E_Loc = "bg teacher"
+                elif Current_Time == "Evening":
+                        $ E_Loc = "bg dangerroom"
                 else:
                         $ E_Loc = "bg emma"
         else:
@@ -3109,9 +3126,9 @@ label Taboo_Level:
                     $ R_Taboo = 40
         elif R_Loc == "bg field":
                 if Current_Time == "Night":
-                    $ Taboo = 0
+                    $ R_Taboo = 0
                 else:
-                    $ Taboo = 40
+                    $ R_Taboo = 40
         elif R_Loc == "bg campus":
                 if Current_Time == "Night":
                     $ R_Taboo = 20
@@ -3151,9 +3168,9 @@ label Taboo_Level:
                     $ K_Taboo = 40
         elif K_Loc == "bg field":
                 if Current_Time == "Night":
-                    $ Taboo = 0
+                    $ K_Taboo = 0
                 else:
-                    $ Taboo = 40
+                    $ K_Taboo = 40
         elif K_Loc == "bg campus":
                 if Current_Time == "Night":
                     $ K_Taboo = 20
@@ -3193,9 +3210,9 @@ label Taboo_Level:
                     $ E_Taboo = 40
         elif E_Loc == "bg field":
                 if Current_Time == "Night":
-                    $ Taboo = 0
+                    $ E_Taboo = 0
                 else:
-                    $ Taboo = 40
+                    $ E_Taboo = 40
         elif E_Loc == "bg campus":
                 if Current_Time == "Night":
                     $ E_Taboo = 20

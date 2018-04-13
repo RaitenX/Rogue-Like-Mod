@@ -252,7 +252,112 @@ label EmmaMeet:
     $ Round -= 10      
     return
             
-# end EmmaMeet //////////////////////////////////////////////////////////            
+# end EmmaMeet //////////////////////////////////////////////////////////  
+
+# start EmmaMeet //////////////////////////////////////////////////////////
+# Check  #Emma_Update   to see what needs fixing still
+label EmmaMeetGym:    
+    $ bg_current = "bg dangerroom"   
+    call CleartheRoom("Emma",0,1)
+    $ E_Loc = "bg emma"  
+    $ E_Gym = [2,0,0,"cape","NewX","corset","white panties",0,0,0,0]  
+    $ E_Over = "cape"
+    $ E_Legs = 0
+    $ E_Panties = "white panties"
+    $ E_Neck = "NewX"      
+    $ E_Outfit = "gym"
+    #$ E_Love = 300        
+    #$ E_Obed = 0            
+    #$ E_Inbt = 200 
+    call Shift_Focus("Emma")    
+    call Set_The_Scene
+    $ ESpriteLoc = StageCenter
+    #call LastNamer                         
+    #$ E_Petnames.append(_return)
+    #$ E_Petname = _return
+
+    "You enter the danger room." 
+    show Emma_Sprite at SpriteLoc(ESpriteLoc)
+    #"The bell to class rings, but Professor McCoy seems to be late."
+    "You see Emma Frost in a different outfit."
+    call EmmaFace("normal")
+    #$ E_Loc = "bg classroom" 
+    $ Emma_Arms = 1
+    ch_e "Hello students. My name is Emma Frost, and for now on, I'll be supervising some of the evening trainings."
+    ch_e "I hope that over my tenure here you will demonstrate talents and hard work worthy of my respect." 
+    "She scans her eyes over the room, passing over each student."    
+    #call EmmaFace("surprised")
+    #pause 1
+    call EmmaFace("sly",Mouth="sad")
+    $ E_Love = Statupdate("Emma", "Love", E_Love, 90, -10)     
+    $ E_Lust += 5
+    "As her eyes pass over you, they stop for a moment and then keep going."
+    call EmmaFace("sly")
+    ch_e "Very well, we will begin in a few moments."
+    call EmmaFace("normal") 
+    "You can't take your eyes off her bottom, she is wearing a very small underwear, barely covering her pussy lips"
+    "She notices your looks and aproach you."
+    $ E_Lust += 5
+    ch_e "Is something wrong [E_Petname]?"
+    #"She asks a lot of questions of the students, and singles you out more than once. You notice her glancing in your direction as other students answer."
+    $ E_Lust += 5
+
+    menu:
+        extend ""
+        "You're. . . not wearing much.":
+                $ E_Love = Statupdate("Emma", "Love", E_Love, 70, 5) 
+                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 200, 5) 
+                call EmmaFace("confused", Mouth="normal") 
+                ch_e "Hmm, yes, it makes easier to move around, very useful in combat."
+                call EmmaFace("normal") 
+        "Huh, nothing, nothing wrong.":
+                $ E_Love = Statupdate("Emma", "Love", E_Love, 70, -1) 
+                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, -1)
+                call EmmaFace("confused", Mouth="normal") 
+                ch_e ". . . ok."
+                call EmmaFace("normal") 
+        "I'm lucky you can't see what I'm picturing right now.":
+                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 5)
+                call EmmaFace("bemused") 
+                pause 0.5
+                call EmmaFace("bemused", Eyes="down") 
+                "She glances downward."
+                call EmmaFace("sly") 
+                $ E_Love = Statupdate("Emma", "Love", E_Love, 70, 10) 
+                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 200, 10) 
+                $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 50, 15) 
+                ch_e "I can't read your mind, but I'm not blind, [E_Petname]."
+
+    ch_e "In any case, let's stop talking and start the training session."
+
+    "The training session starts but you can't focus on the training, you can't take your eyes of Emma's body"
+    "At some moments you swear you were able to see her pussy escape the tight underwear"
+    $ E_OutfitDay = "gym"
+    call Wait 
+    #call CleartheRoom("Emma",0,1)
+    #$ E_Loc = "bg dangerroom" 
+    #call Set_The_Scene
+    ch_e "All right students, class dismissed."
+
+    #ch_e "In any case, I think we should set aside some time to talk."
+    #ch_e "I'd like to make you a personal project, so I can see how you tick."
+
+     
+    #call EmmaFace("normal",0) 
+    "She looks at you and move her mouth without making a sound:"
+    call EmmaFace("sly")
+    #ch_e "That said, class is finished for the day and I have some paperwork to attend to, so I'll see you. . ."   
+    ch_e ". . . later. . ."
+    hide Emma_Sprite with easeoutright 
+    "She strides out of the room and down the hall."
+    $ E_Loc = "bg emma"         
+    $ E_History.append("metgym")          
+    $ Round -= 10      
+    $ E_OutfitDay = "teacher"
+
+    return
+            
+# end EmmaMeetGym //////////////////////////////////////////////////////////            
            
 
 # Event Emma_Teacher_Caught /////////////////////////////////////////////////////         
