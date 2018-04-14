@@ -4042,6 +4042,7 @@ label Failsafe:
     $ R_Eyes = "normal" if "R_Eyes" not in globals().keys() else R_Eyes
     $ R_Hair = "evo" if "R_Hair" not in globals().keys() else R_Hair
     $ R_HairColor = 0 if "R_HairColor" not in globals().keys() else R_HairColor
+    $ E_HairColor = 0 if "E_HairColor" not in globals().keys() else E_HairColor
     $ R_Gag = 0 if "R_Gag" not in globals().keys() else R_Gag
     $ R_Gagx = 0 if "R_Gagx" not in globals().keys() else R_Gagx
     $ R_Blush = 0 if "R_Blush" not in globals().keys() else R_Blush

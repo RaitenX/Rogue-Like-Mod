@@ -453,6 +453,7 @@ init -1:
     default E_Brows = "normal"
     default E_Eyes = "normal"
     default E_Hair = "wavy"
+    default E_HairColor = 0
     default E_Gag = 0    
     default E_Blush = 0
     default E_Spunk = []

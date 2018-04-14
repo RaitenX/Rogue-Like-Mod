@@ -3762,20 +3762,42 @@ label Emma_Clothes(Public=0,Bonus=0):
             ch_e "Ok."
         "Put your gloves on." if not E_Arms:
             $ E_Arms = 1
-            ch_e "Ok."       
-        "You look good with your hair flowing." if E_Hair != "wave":
-            if ApprovalCheck("Emma", 600):
-                ch_e "Like this?"
-                $ E_Hair = "wave"
-            else:
-                ch_e "Yes, I do."
-                
-        "Maybe keep your hair straight." if E_Hair != "wet":
-            if ApprovalCheck("Emma", 600):
-                ch_e "You think?"
-                $ E_Hair = "wet"
-            else:
-                ch_e "I tend to prefer it a bit more loose."
+            ch_e "Ok."     
+
+        "Hair options":
+
+            menu:
+
+                "You look good with your hair flowing." if E_Hair != "wave":
+                    if ApprovalCheck("Emma", 600):
+                        ch_e "Like this?"
+                        $ E_Hair = "wave"
+                    else:
+                        ch_e "Yes, I do."
+                        
+                "Maybe keep your hair straight." if E_Hair != "wet":
+                    if ApprovalCheck("Emma", 600):
+                        ch_e "You think?"
+                        $ E_Hair = "wet"
+                    else:
+                        ch_e "I tend to prefer it a bit more loose."
+        
+                "Maybe dye your hair black." if E_HairColor != "black":
+                    if ApprovalCheck("Emma", 600):
+                        ch_e "You think?"
+                        $ E_HairColor = "black"
+                    else:
+                        ch_e "I tend to prefer it the way it is."
+        
+                "Maybe dye your hair back to blonde." if E_HairColor == "black":
+                    if ApprovalCheck("Emma", 600):
+                        ch_e "You think?"
+                        $ E_HairColor = "blonde"
+                    else:
+                        ch_e "I tend to prefer it the way it is."
+
+                "Nevermind":
+                    pass
                         
         "You know, I like some nice hair down there. Maybe grow it out." if not E_Pubes and "pubes" in E_Todo:
             call EmmaFace("bemused", 1)

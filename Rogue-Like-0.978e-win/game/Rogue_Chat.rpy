@@ -4427,6 +4427,15 @@ label Rogue_Clothes:
                                             else:
                                                 ch_r "You'll have to wait, [R_Petname]."
                                                 jump Rogue_Clothes_Legs
+
+                                "Then you could slip on the black large panties. . .":
+                                            if ApprovalCheck("Rogue", 1100, TabM=3):
+                                                $ R_SeenPanties = 1
+                                                ch_r "Sure, ok."
+                                                $ R_Panties = "black large panties"
+                                            else:
+                                                ch_r "You'll have to wait, [R_Petname]."
+                                                jump Rogue_Clothes_Legs
                                         
                                 "Then you could wear the black panties. . .":
                                             if ApprovalCheck("Rogue", 1200, TabM=3):
@@ -4600,6 +4609,14 @@ label Rogue_Clothes:
                             ch_r "That's a bit too revealing. . ." 
                         jump Rogue_Clothes_Under_Top
 
+                "Just put some tape on your nipples." if R_Chest != "tape":
+                        if (R_SeenChest and ApprovalCheck("Rogue", 1000)) or ApprovalCheck("Rogue", 1200, TabM=2):
+                            ch_r "Sure."   
+                            $ R_Chest = "tape"         
+                        else:                
+                            ch_r "That's too revealing. . ." 
+                        jump Rogue_Clothes_Under_Top
+
                 "Nevermind.":
                         jump Rogue_Clothes_Under
         
@@ -4656,6 +4673,15 @@ label Rogue_Clothes:
                             ch_r "Heh, no, I think I'll stick with these, thanks."
                         else:
                             ch_r "I think I'll choose my own underwear, thank you."
+
+        "Why don't you wear the black large panties instead?" if R_Panties and R_Panties != "black large panties":
+                        if ApprovalCheck("Rogue", 1000, TabM=3):
+                            ch_r "Sure, ok."
+                            $ R_Panties = "black large panties"  
+                        elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
+                            ch_r "Heh, no, I think I'll stick with these, thanks."
+                        else:
+                            ch_r "I think I'll choose my own underwear, thank you."
                 
         "Why don't you wear the black panties instead?" if R_Panties and R_Panties != "black panties":
                         if ApprovalCheck("Rogue", 1100, TabM=3):
@@ -4692,6 +4718,9 @@ label Rogue_Clothes:
                             "How about the green ones?":
                                 ch_r "Sure, ok."
                                 $ R_Panties = "green panties"
+                            "How about the black large ones?":
+                                ch_r "Sure, ok."
+                                $ R_Panties = "black large panties"
                             "How about the black ones?":
                                 ch_r "Alright."                
                                 $ R_Panties  = "black panties"
@@ -5195,6 +5224,8 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                 $ Count = 20
             if R_Chest == "tank short":                                              
                 $ Count = 5
+            if R_Chest == "tape":                                              
+                $ Count = 5
             elif R_Chest == "buttoned tank":
                 $ Count = 15
             elif R_Chest == "sports bra":
@@ -5293,6 +5324,8 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         elif R_Panties == "blue shorts":             #If wearing shorts
                             $ Count = 25  
                         elif R_Panties == "green panties":      #If wearing only green panties
+                            $ Count = 10
+                        elif R_Panties == "black large panties":      #If wearing only green panties
                             $ Count = 10
                         elif R_Panties == "lace panties":       #If wearing only lace panties
                             $ Count = 5

@@ -9,7 +9,9 @@ image Emma_Sprite:
 #            ),        
         (0,0), ConditionSwitch(                                                                         #hair back 
             "not E_Hair", Null(),
+            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_HairBlackbackWet.png",
             "E_Hair == 'wet' or E_Water", "images/EmmaSprite/EmmaSprite_HairbackWet.png",
+            "E_Hair and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_HairBlackback.png",   
             "E_Hair", "images/EmmaSprite/EmmaSprite_Hairback.png",   
             "True", Null(),        
             ),  
@@ -266,7 +268,10 @@ image Emma_Sprite:
     zoom .75                
 
 image TempHairBack:
-    "images/EmmaSprite/EmmaSprite_Head_HairBackWet.png"         
+    (0,0), ConditionSwitch( 
+        "E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackBackWet.png",
+        "True", "images/EmmaSprite/EmmaSprite_Head_HairBackWet.png",
+        ),
     anchor (0.6, 0.0)                
     zoom .5       
     
@@ -350,11 +355,17 @@ image EmmaSprite_Head:
         
         (0,0), "Emma Blink",                                                                           #Eyes        
         (0,0), ConditionSwitch(                                                                         #brows
+            "E_Brows == 'normal' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Normal.png",
             "E_Brows == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal.png",
+            "E_Brows == 'angry' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Angry.png",
             "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Brows_Angry.png",
+            "E_Brows == 'sad' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Sad.png",
             "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Brows_Sad.png",
+            "E_Brows == 'surprised' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Surprised.png",        
             "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Brows_Surprised.png",        
+            "E_Brows == 'confused' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Confused.png",
             "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Brows_Confused.png",
+            "True and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Normal.png",
             "True", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal.png",
             ),         
         (0,0), ConditionSwitch(                                                                         #facial spunk               
@@ -363,7 +374,9 @@ image EmmaSprite_Head:
             ),  
         (0,0), ConditionSwitch(                                                                         #Hair
             "not E_Hair", Null(),
+            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackWet.png",
             "E_Hair == 'wet' or E_Water", "images/EmmaSprite/EmmaSprite_Head_HairWet.png",
+            "E_Hair and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlack.png",
             "E_Hair", "images/EmmaSprite/EmmaSprite_Head_Hair.png",
             "True", Null(),
             ),        
