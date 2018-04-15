@@ -4323,9 +4323,9 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
                             ch_e "Rather too daring, don't you think?."
                             $ Agree = 0
                             
-                    elif Tempshame >= 15 and "public" not in E_History:                 #maybe remove later     
-                            ch_e "I doubt I could get away with this in public, [E_Petname]."
-                            $ Agree = 0
+                    #elif Tempshame >= 15 and "public" not in E_History:                 #maybe remove later     
+                    #        ch_e "I doubt I could get away with this in public, [E_Petname]."
+                    #        $ Agree = 0
                         
                     elif Tempshame <= 25 and (ApprovalCheck("Emma", 2300, TabM=0, C = 0) or ApprovalCheck("Emma", 700, "I", TabM=0, C = 0)):
                             ch_e "This is particularly inappropriate. . . in the best ways."
