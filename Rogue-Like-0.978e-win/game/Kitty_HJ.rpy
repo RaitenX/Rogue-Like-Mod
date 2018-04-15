@@ -1533,6 +1533,7 @@ label KBJ_Cycle: #Repeating strokes
                                 "She starts dressing the new outfit"
                                 "You help her with the armbinder, making sure she can't move her arms"
                                 "And add a blindfold so she can't see a thing"
+                                $ K_Blindfold = 1
                                 $ K_Over = "armbinder"
                                 $ K_Chest = "bustier bra"
                                 $ K_Panties = "zipper panties"
@@ -1625,11 +1626,50 @@ label KBJ_Cycle: #Repeating strokes
                             "She starts dressing the new outfit"
                             "You help her with the armbinder, making sure she can't move her arms"
                             "And add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
                             $ K_Over = "armbinder"
                             $ K_Chest = "bustier bra"
                             $ K_Panties = "zipper panties"
                             $ K_Outfit = "zipper bondage"
                             $ K_Shame = K_OutfitShame[1]
+
+                        "Blindfold her" if K_Bondage and not K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            #if K_Over or K_Chest or K_Panties or K_Legs:
+                            #    "She glances up at you as her clothes drop to the ground."
+                            #$ K_Neck = 0
+                            #$ K_Over = 0
+                            #$ K_Legs = 0
+                            #$ K_Chest = 0
+                            #$ K_Panties = 0
+                            #"She starts dressing the new outfit"
+                            #"You help her with the armbinder, making sure she can't move her arms"
+                            "You add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
+                            #$ K_Over = "armbinder"
+                            #$ K_Chest = "bustier bra"
+                            #$ K_Panties = "zipper panties"
+                            #$ K_Outfit = "zipper bondage"
+                            #$ K_Shame = K_OutfitShame[1]
+
+                        "Remove blindfold" if K_Bondage and K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            #if K_Over or K_Chest or K_Panties or K_Legs:
+                            #    "She glances up at you as her clothes drop to the ground."
+                            #$ K_Neck = 0
+                            #$ K_Over = 0
+                            #$ K_Legs = 0
+                            #$ K_Chest = 0
+                            #$ K_Panties = 0
+                            #"She starts dressing the new outfit"
+                            #"You help her with the armbinder, making sure she can't move her arms"
+                            "You remove the blindfold"
+                            $ K_Blindfold = 0
+                            #$ K_Over = "armbinder"
+                            #$ K_Chest = "bustier bra"
+                            #$ K_Panties = "zipper panties"
+                            #$ K_Outfit = "zipper bondage"
+                            #$ K_Shame = K_OutfitShame[1]
                                 
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
@@ -1652,6 +1692,7 @@ label KBJ_Cycle: #Repeating strokes
                                                 ch_k "I can't do that with my arms like this [K_Petname]"
                                                 "You untie her arms and removes her blindfold"
                                                 $ K_Over = 0
+                                                $ K_Blindfold = 0
                                                 if K_Chest or K_Pants or K_Panties:
                                                     "She drops the rest of her clothes"
                                                     $ K_Chest = 0

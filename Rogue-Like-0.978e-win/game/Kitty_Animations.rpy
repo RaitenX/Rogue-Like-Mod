@@ -1859,7 +1859,7 @@ image Kitty_BJ_Head:                                                            
             ),
         (0,0), "Kitty BJ Blink",  
         (0,0), ConditionSwitch(
-            "K_Over == 'armbinder'", "images/KittyBJFace/Kitty_BJ_Eyes_Blindfold.png",  
+            "K_Blindfold", "images/KittyBJFace/Kitty_BJ_Eyes_Blindfold.png",  
             "True", Null(),
             ),                                                              
             #Eyes
@@ -2340,6 +2340,9 @@ label Kitty_BJ_Reset: # The sequence to the Kitty animations from BJ to default
     if not renpy.showing("Kitty_BJ_Animation"):
         return
     hide Kitty_BJ_Animation
+    if K_Blindfold == 1:
+        "Her blindfold falls through her"
+    $ K_Blindfold = 0
     $ Speed = 0
     
     show Kitty_Sprite at SpriteLoc(StageCenter) zorder KittyLayer:
