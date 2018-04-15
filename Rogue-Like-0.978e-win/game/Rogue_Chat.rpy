@@ -25,7 +25,50 @@ label Rogue_Chat:
                             "Emma" if E_Loc == bg_current:
                                 call Emma_Dismissed
                     else:
-                        call Rogue_Summon  
+                        call Rogue_Summon 
+
+        "Send a dick pic." if R_Loc != bg_current:
+
+                    "You send Rogue a picture of your dick"
+
+                    if R_SEXP < 10:
+                            #call KittyFace("surprised", 2) 
+                            #$ K_Eyes = "down"
+                            ch_r "Wtf dude."  
+                            call KittyFace("angry", 1) 
+                            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 50, 5) 
+                            $ R_RecentActions.append("angry")
+                            $ R_DailyActions.append("angry")  
+                            #$ renpy.pop_call()
+                    elif R_SEXP <= 15:            
+                            ch_r "..."
+                            #call RogueFace("perplexed", 1) 
+                            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 60, 8)
+                    elif ApprovalCheck("Rogue", 1200, TabM = 3):
+                            #call RogueFace("surprised", 1) 
+                            #$ R_Eyes = "down"
+                            ch_r "I miss your 8=====D"            
+                            #call RogueFace("sly", 1) 
+                            call Rogue_Sent_Selfie(1)
+                            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 70, 8)
+                    elif ApprovalCheck("Rogue", 500, "I", TabM=2):
+                            call RogueFace("surprised", 1) 
+                            #$ R_Eyes = "down"
+                            #"Rogue glances at it, but just smiles in amusement."
+                            ch_r "wow"            
+                            call Rogue_Sent_Selfie
+
+                            #call RogueFace("sly", 1) 
+                            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 70, 10)
+                    else:
+                            #call RogueFace("angry", 1) 
+                            #$ R_Eyes = "down"
+                            #"Rogue glances down at your cock with a scowl."        
+                            #$ R_Eyes = "sexy"                
+                            ch_r "I should block you"
+                            $ R_RecentActions.append("angry")
+                            $ R_DailyActions.append("angry")  
+
         "Ask Rogue to leave" if R_Loc == bg_current:
                     call Rogue_Dismissed   
                     return
@@ -831,6 +874,14 @@ label Rogue_Settings:
                             call Rogue_AboutKitty   
                         "Never mind.":
                             pass
+
+        "Stop sending me nudes" if R_Nudes == 1:
+                $ R_Nudes = 0
+                ch_r "Ok"
+        
+        "Send me nudes" if R_Nudes == 0:
+                $ R_Nudes = 1
+                ch_r "Ok"    
                 
         "Follow options" if "follow" in R_Traits:
                     ch_p "You know how you ask if I want to follow you sometimes?"

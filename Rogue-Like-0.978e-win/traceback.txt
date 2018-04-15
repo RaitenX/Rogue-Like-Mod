@@ -1,83 +1,83 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' u'images/pool_day.jpg'>:
-  File "game/script Locations.rpy", line 813, in script call
+While running game code:
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2218, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2218, in script call
     call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 3681, in script call
+  File "game/Rogue_Chat.rpy", line 3732, in script call
     call Gym_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2218, in script call
     call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 3681, in script call
+  File "game/Rogue_Chat.rpy", line 3732, in script call
     call Gym_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2341, in script call
+  File "game/script Locations.rpy", line 2348, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2218, in script call
     call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 3681, in script call
+  File "game/Rogue_Chat.rpy", line 3732, in script call
     call Gym_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
   File "game/script Functions.rpy", line 1022, in script call
     call Kitty_Sleepover
@@ -85,31 +85,31 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
   File "game/Kitty_Chat.rpy", line 185, in script call
     call Kitty_SexMenu
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1281, in script call
+  File "game/script Locations.rpy", line 1286, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
   File "game/Kitty_Chat.rpy", line 185, in script call
     call Kitty_SexMenu
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
   File "game/script Functions.rpy", line 1022, in script call
     call Kitty_Sleepover
@@ -117,7 +117,7 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1281, in script call
+  File "game/script Locations.rpy", line 1286, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -127,11 +127,11 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call K_Makeout
   File "game/Kitty_Sex.rpy", line 1993, in script call
     call Kitty_Caught
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
   File "game/script Functions.rpy", line 1022, in script call
     call Kitty_Sleepover
@@ -139,7 +139,7 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -149,7 +149,7 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call K_Makeout
   File "game/Kitty_Sex.rpy", line 1993, in script call
     call Kitty_Caught
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -159,7 +159,7 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call K_Blowjob
   File "game/Kitty_Sex.rpy", line 1993, in script call
     call Kitty_Caught
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -169,7 +169,7 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call K_Blowjob
   File "game/Kitty_Sex.rpy", line 1993, in script call
     call Kitty_Caught
-  File "game/script Locations.rpy", line 2341, in script call
+  File "game/script Locations.rpy", line 2348, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -181,7 +181,7 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 657, in script call
+  File "game/script Locations.rpy", line 659, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -189,11 +189,11 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call Kitty_Flirt
   File "game/Kitty_Chat.rpy", line 1264, in script call
     call Kitty_SexAct("kissing")
-  File "game/script Locations.rpy", line 146, in script call
+  File "game/script Locations.rpy", line 147, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -203,7 +203,7 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call K_Blowjob
   File "game/Kitty_Sex.rpy", line 1993, in script call
     call Kitty_Caught
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -211,7 +211,7 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call K_Blowjob
   File "game/Kitty_HJ.rpy", line 1694, in script call
     call Sex_Dialog("Kitty",Partner)
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -219,7 +219,7 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call K_Blowjob
   File "game/Kitty_HJ.rpy", line 1694, in script call
     call Sex_Dialog("Kitty",Partner)
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -227,9 +227,9 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call K_Blowjob
   File "game/Kitty_HJ.rpy", line 1694, in script call
     call Sex_Dialog("Kitty",Partner)
-  File "game/script Locations.rpy", line 2206, in script call
+  File "game/script Locations.rpy", line 2212, in script call
     call Kitty_Caught_Changing
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
   File "game/script Functions.rpy", line 1022, in script call
     call Kitty_Sleepover
@@ -237,7 +237,7 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -245,7 +245,7 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call K_Sex_H
   File "game/Kitty_Missionary.rpy", line 1986, in script call
     call Sex_Dialog("Kitty",Partner)
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -257,7 +257,7 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call Chat
   File "game/script Functions.rpy", line 1159, in script call
     call Emma_Chat
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
   File "game/script Functions.rpy", line 1022, in script call
     call Kitty_Sleepover
@@ -265,98 +265,120 @@ While loading <'Image' u'images/pool_day.jpg'>:
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 873, in script
-    "This is the Pool. What would you like to do?"
-IOError: Couldn't find file 'images/pool_day.jpg'.
+  File "game/script Locations.rpy", line 130, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1159, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 130, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1159, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 130, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1159, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 761, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1134, in script call
+    call Kitty_Chat
+  File "game/Kitty_Chat.rpy", line 185, in script call
+    call Kitty_SexMenu
+  File "game/Kitty_Sex.rpy", line 187, in script call
+    call K_Sex_A
+  File "game/Kitty_Missionary.rpy", line 1365, in script call
+    call Sex_Dialog("Kitty",Partner)
+  File "game/script Locations.rpy", line 818, in script call
+    call EventCalls
+  File "game/Emma_Scenes.rpy", line 1184, in script call
+    call Emma_SexMenu
+  File "game/Emma_Sex.rpy", line 87, in script call
+    call E_Makeout
+  File "game/Emma_Sex.rpy", line 912, in script call
+    call E_Jackin
+  File "game/Emma_Sex.rpy", line 573, in script
+    jump E_AnalPrep
+ScriptError: could not find label 'E_AnalPrep'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\bootstrap.py", line 305, in bootstrap
-    renpy.main.main()
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\main.py", line 499, in main
-    run(restart)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\main.py", line 147, in run
-    renpy.execution.run_context(True)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\execution.py", line 795, in run_context
-    context.run()
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2218, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2218, in script call
     call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 3681, in script call
+  File "game/Rogue_Chat.rpy", line 3732, in script call
     call Gym_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2218, in script call
     call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 3681, in script call
+  File "game/Rogue_Chat.rpy", line 3732, in script call
     call Gym_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2341, in script call
+  File "game/script Locations.rpy", line 2348, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2218, in script call
     call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 3681, in script call
+  File "game/Rogue_Chat.rpy", line 3732, in script call
     call Gym_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
   File "game/script Functions.rpy", line 1022, in script call
     call Kitty_Sleepover
@@ -364,31 +386,31 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
   File "game/Kitty_Chat.rpy", line 185, in script call
     call Kitty_SexMenu
-  File "game/script Locations.rpy", line 813, in script call
+  File "game/script Locations.rpy", line 816, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1281, in script call
+  File "game/script Locations.rpy", line 1286, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
   File "game/Kitty_Chat.rpy", line 185, in script call
     call Kitty_SexMenu
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
   File "game/script Functions.rpy", line 1022, in script call
     call Kitty_Sleepover
@@ -396,7 +418,7 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1281, in script call
+  File "game/script Locations.rpy", line 1286, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -406,11 +428,11 @@ Full traceback:
     call K_Makeout
   File "game/Kitty_Sex.rpy", line 1993, in script call
     call Kitty_Caught
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1336, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
   File "game/script Functions.rpy", line 1022, in script call
     call Kitty_Sleepover
@@ -418,7 +440,7 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -428,7 +450,7 @@ Full traceback:
     call K_Makeout
   File "game/Kitty_Sex.rpy", line 1993, in script call
     call Kitty_Caught
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -438,7 +460,7 @@ Full traceback:
     call K_Blowjob
   File "game/Kitty_Sex.rpy", line 1993, in script call
     call Kitty_Caught
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -448,7 +470,7 @@ Full traceback:
     call K_Blowjob
   File "game/Kitty_Sex.rpy", line 1993, in script call
     call Kitty_Caught
-  File "game/script Locations.rpy", line 2341, in script call
+  File "game/script Locations.rpy", line 2348, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -460,7 +482,7 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 657, in script call
+  File "game/script Locations.rpy", line 659, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -468,11 +490,11 @@ Full traceback:
     call Kitty_Flirt
   File "game/Kitty_Chat.rpy", line 1264, in script call
     call Kitty_SexAct("kissing")
-  File "game/script Locations.rpy", line 146, in script call
+  File "game/script Locations.rpy", line 147, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -482,7 +504,7 @@ Full traceback:
     call K_Blowjob
   File "game/Kitty_Sex.rpy", line 1993, in script call
     call Kitty_Caught
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -490,7 +512,7 @@ Full traceback:
     call K_Blowjob
   File "game/Kitty_HJ.rpy", line 1694, in script call
     call Sex_Dialog("Kitty",Partner)
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -498,7 +520,7 @@ Full traceback:
     call K_Blowjob
   File "game/Kitty_HJ.rpy", line 1694, in script call
     call Sex_Dialog("Kitty",Partner)
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -506,9 +528,9 @@ Full traceback:
     call K_Blowjob
   File "game/Kitty_HJ.rpy", line 1694, in script call
     call Sex_Dialog("Kitty",Partner)
-  File "game/script Locations.rpy", line 2206, in script call
+  File "game/script Locations.rpy", line 2212, in script call
     call Kitty_Caught_Changing
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
   File "game/script Functions.rpy", line 1022, in script call
     call Kitty_Sleepover
@@ -516,7 +538,7 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -524,7 +546,7 @@ Full traceback:
     call K_Sex_H
   File "game/Kitty_Missionary.rpy", line 1986, in script call
     call Sex_Dialog("Kitty",Partner)
-  File "game/script Locations.rpy", line 758, in script call
+  File "game/script Locations.rpy", line 761, in script call
     call Chat
   File "game/script Functions.rpy", line 1134, in script call
     call Kitty_Chat
@@ -536,7 +558,7 @@ Full traceback:
     call Chat
   File "game/script Functions.rpy", line 1159, in script call
     call Emma_Chat
-  File "game/script Locations.rpy", line 2347, in script call
+  File "game/script Locations.rpy", line 2354, in script call
     call Round10
   File "game/script Functions.rpy", line 1022, in script call
     call Kitty_Sleepover
@@ -544,69 +566,43 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2223, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 873, in script
-    "This is the Pool. What would you like to do?"
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 624, in execute
-    renpy.exports.say(who, what, interact=self.interact, *args, **kwargs)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\exports.py", line 1173, in say
-    who(what, *args, **kwargs)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\character.py", line 911, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, **display_args)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\character.py", line 747, in do_display
-    **display_args)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\character.py", line 523, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ui.py", line 287, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 2553, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 2916, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 1980, in draw_screen
-    renpy.config.screen_height,
-  File "renpy/display/render.pyx", line 430, in renpy.display.render.render_screen (gen\renpy.display.render.c:6938)
-    rv = render(root, width, height, 0, 0)
-  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
-    rv = d.render(widtho, heighto, st, at)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
-    surf = render(child, width, height, cst, cat)
-  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
-    rv = d.render(widtho, heighto, st, at)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
-    surf = render(child, width, height, cst, cat)
-  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
-    rv = d.render(widtho, heighto, st, at)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
-    surf = render(child, width, height, cst, cat)
-  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
-    rv = d.render(widtho, heighto, st, at)
-  File "renpy/display/accelerator.pyx", line 108, in renpy.display.accelerator.transform_render (gen\renpy.display.accelerator.c:2047)
-    cr = render(child, widtho, heighto, st - self.child_st_base, at)
-  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
-    rv = d.render(widtho, heighto, st, at)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\image.py", line 392, in render
-    return wrap_render(self.target, width, height, st, at)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\image.py", line 213, in wrap_render
-    rend = render(child, w, h, st, at)
-  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
-    rv = d.render(widtho, heighto, st, at)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\im.py", line 503, in render
-    texture = cache.get(self, texture=True)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\im.py", line 212, in get
-    surf = image.load()
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\im.py", line 553, in load
-    surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\loader.py", line 548, in load
-    raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'images/pool_day.jpg'.
+  File "game/script Locations.rpy", line 130, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1159, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 130, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1159, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 130, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1159, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 761, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1134, in script call
+    call Kitty_Chat
+  File "game/Kitty_Chat.rpy", line 185, in script call
+    call Kitty_SexMenu
+  File "game/Kitty_Sex.rpy", line 187, in script call
+    call K_Sex_A
+  File "game/Kitty_Missionary.rpy", line 1365, in script call
+    call Sex_Dialog("Kitty",Partner)
+  File "game/script Locations.rpy", line 818, in script call
+    call EventCalls
+  File "game/Emma_Scenes.rpy", line 1184, in script call
+    call Emma_SexMenu
+  File "game/Emma_Sex.rpy", line 87, in script call
+    call E_Makeout
+  File "game/Emma_Sex.rpy", line 912, in script call
+    call E_Jackin
+  File "game/Emma_Sex.rpy", line 573, in script
+    jump E_AnalPrep
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1552, in execute
+    rv = renpy.game.script.lookup(target)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\script.py", line 861, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'E_AnalPrep'.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.13.2919

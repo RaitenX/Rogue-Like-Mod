@@ -139,12 +139,14 @@ label Player_Room:
                     $ R_Spank = 0
                     call Girls_Location
                     call Kitty_Sent_Selfie 
+                    call Rogue_Sent_Selfie 
                     call EventCalls 
         "Wait" if Current_Time != "Night":
                     "You wait around a bit."
                     call Wait                 
                     call Girls_Location
                     call Kitty_Sent_Selfie
+                    call Rogue_Sent_Selfie
                     call EventCalls   
 
         "Shop":
@@ -708,6 +710,7 @@ label Class_Room_Entry:
     call EventCalls
     call Set_The_Scene
     call Kitty_Sent_Selfie
+    call Rogue_Sent_Selfie
     if Current_Time != "Night" and Current_Time != "Evening" and Weekday < 5:   
             call Class_Room_Seating    
     if E_Loc == "bg teacher":
@@ -870,6 +873,7 @@ label Pool_Entry:
     call Pool_Clothes("pre")#Automatically puts them in pool clothes if they've been here
     call Set_The_Scene
     call Kitty_Sent_Selfie
+    call Rogue_Sent_Selfie
     "This is the Pool. What would you like to do?" 
     
 label Pool_Room:
@@ -1242,6 +1246,7 @@ label Danger_Room_Entry:
     call Gym_Clothes("pre")#Automatically puts them in gym clothes if they've been here
     call Set_The_Scene
     call Kitty_Sent_Selfie
+    call Rogue_Sent_Selfie
     "This is the Danger Room. What would you like to do?" 
     
 label Danger_Room:
@@ -1564,6 +1569,7 @@ label Shower_Room:
                 call EventCalls            
                 call Girls_Location
                 call Kitty_Sent_Selfie 
+                call Rogue_Sent_Selfie 
          
         "Go to the Danger Room" if TravelMode: 
                 jump Danger_Room_Entry 
@@ -2330,6 +2336,7 @@ label Kitty_Room:
     call Set_The_Scene  
     
 # Kitty's Room Menu Start <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    call Rogue_Sent_Selfie
     if K_Loc == bg_current:
         $ Line = "You are in Kitty's room. What would you like to do?"
     else:
@@ -2833,6 +2840,7 @@ label Kitty_Sent_Selfie(test=0):
     if K_Loc != bg_current and K_Nudes == 1 and "Kitty" in Digits:
         if test == 0:
             $ test = renpy.random.randint(1, 3)
+            #$ test = 1
 
         $ K_OverTemp = K_Over
         $ K_ChestTemp = K_Chest
@@ -2893,4 +2901,74 @@ label Kitty_Sent_Selfie(test=0):
         hide Kitty_Selfie 
         $ K_Over = K_OverTemp
         $ K_Chest = K_ChestTemp
+        return
+
+label Rogue_Sent_Selfie(test=0):
+    if R_Loc != bg_current and K_Nudes == 1 and "Rogue" in Digits:
+        if R_Resistance and R_Addict >= 60 and not R_Event[3]:
+            return
+        if test == 0:
+            $ test = renpy.random.randint(1, 3)
+            #$ test = 1
+
+        #$ K_OverTemp = K_Over
+        #$ K_ChestTemp = K_Chest
+        if test == 1:
+            $test = 0
+        
+            if ApprovalCheck("Rogue", 1250, TabM = 3) or (K_SeenChest and not Taboo):
+                $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 60, 5)                
+                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 2)
+                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 10)   
+                $ P_Focus = Statupdate("Rogue", "Focus", P_Focus, 80, 15)    
+                #$ Line = R_Over
+                $ R_Over = 0
+                $ R_Chest = 0                         
+                if not R_SeenChest:
+                    call RogueFace("bemused", 1)
+                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 3)                              
+                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, 4)
+                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3)
+                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 3)  
+                    #"She hesitantly glances your way, and then with tug her [Line] passes through her, tossing it to the ground."   
+                    call Rogue_First_Topless(1)        
+                #else: 
+                #    "She pulls her [Line] over her head, tossing it to the ground." 
+                call Set_The_Scene
+                show Rogue_Selfie at SpriteLoc(-2,-46) zorder 200
+                "Rogue sent you a picture"
+                ch_r "It's hot huh, [R_Petname]?" 
+    
+        #    elif (ApprovalCheck("Kitty", 1000, TabM = 3) or (K_SeenChest and not Taboo)) and K_Chest != 0:
+        #        $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 60, 5)                
+        #        $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
+        #        $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 1)
+        #        $ P_Focus = Statupdate("Kitty", "Focus", P_Focus, 80, 15)      
+        #        #$ Line = K_Chest
+        #        $ K_Over = 0                        
+        #        if not K_SeenChest:
+        #            call KittyFace("bemused", 1)
+        #            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 3)                              
+        #            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 4)
+        #            $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3)
+        #            $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 3)   
+        #            #"She hesitantly glances your way, and then with a shrug pulls her [Line] through herself, tossing it to the ground."
+        #            #call Kitty_First_Topless(1)
+        #        call Set_The_Scene
+        #        show Rogue_Selfie at center zorder 200
+        #        "Kitty sent you a picture" 
+        
+        #    elif ApprovalCheck("Kitty", 600):
+        #        $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 60, 5)                
+        #        $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
+        #        $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 1)
+        #        $ P_Focus = Statupdate("Kitty", "Focus", P_Focus, 80, 15)
+        #        call Set_The_Scene
+        #        show Rogue_Selfie at center zorder 200
+        #        "Rogue sent you a picture" 
+        #        ch_k "What do you think of this look, [K_Petname]?" 
+        hide Rogue_Selfie 
+        #$ K_Over = K_OverTemp
+        #$ K_Chest = K_ChestTemp
+        return
            

@@ -261,6 +261,7 @@ init -1:
     default R_Spunk = []
     default R_Sperm = []
     default R_Pubes = 1
+    default R_Nudes = 1
     default R_Wet = 0
     default R_Water = 0
     default R_Upskirt = 0
