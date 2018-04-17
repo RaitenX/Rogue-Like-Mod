@@ -211,6 +211,7 @@ init -1:
     default R_DildoP = 0
     default R_DildoA = 0
     default R_Vib = 0
+    default R_Vibrator = 0
     default R_Plug = 0
     default R_SuckB = 0
     default R_InsertP = 0
@@ -381,6 +382,7 @@ init -1:
     default K_DildoP = 0
     default K_DildoA = 0
     default K_Vib = 0
+    default K_Vibrator = 0
     default K_Plug = 0
     default K_SuckB = 0
     default K_InsertP = 0
@@ -1278,6 +1280,104 @@ label RogueFace(Emote = R_Emote, B = R_Blush, M = 0, Mouth = 0, Eyes = 0, Brows 
         elif R_ForcedCount and Emote in ("normal", "bemused", "sexy", "sly", "smile", "startled"):
                 $ Emote = "sad"  
                 
+        if Emote == "normal":
+                $ R_Mouth = "normal"
+                $ R_Brows = "normal"
+                $ R_Eyes = "normal"
+        elif Emote == "angry":
+                $ R_Mouth = "sad"
+                $ R_Brows = "angry"
+                $ R_Eyes = "sexy"
+        elif Emote == "bemused":
+                $ R_Mouth = "lipbite"
+                $ R_Brows = "sad"
+                $ R_Eyes = "squint"
+        elif Emote == "closed":
+                $ R_Mouth = "lipbite"
+                $ R_Brows = "sad"
+                $ R_Eyes = "closed"  
+        elif Emote == "confused":
+                $ R_Mouth = "kiss"
+                $ R_Brows = "confused"
+                $ R_Eyes = "surprised"
+        elif Emote == "kiss":
+                $ R_Mouth = "kiss"
+                $ R_Brows = "normal"
+                $ R_Eyes = "closed"
+        elif Emote == "tongue":
+                $ R_Mouth = "tongue"
+                $ R_Brows = "sad"
+                $ R_Eyes = "stunned"
+        elif Emote == "manic":
+                $ R_Mouth = "grimace"
+                $ R_Brows = "sad"
+                $ R_Eyes = "manic"
+                $ R_Blush = 1
+        elif Emote == "sad":
+                $ R_Mouth = "sad"
+                $ R_Brows = "sad"
+                $ R_Eyes = "sexy"
+        elif Emote == "sadside":
+                $ R_Mouth = "sad"
+                $ R_Brows = "sad"
+                $ R_Eyes = "side"
+        elif Emote == "sexy":
+                $ R_Mouth = "lipbite"
+                $ R_Brows = "normal"
+                $ R_Eyes = "sexy"
+        elif Emote == "smile":
+                $ R_Mouth = "smile"
+                $ R_Brows = "normal"
+                $ R_Eyes = "normal"
+        elif Emote == "sucking":
+                $ R_Mouth = "sucking"
+                $ R_Brows = "normal"
+                $ R_Eyes = "closed"
+        elif Emote == "surprised":
+                $ R_Mouth = "surprised"
+                $ R_Brows = "surprised"
+                $ R_Eyes = "surprised"
+        elif Emote == "oh":
+                $ R_Mouth = "kiss"
+                $ R_Brows = "surprised"
+                $ R_Eyes = "surprised"
+        elif Emote == "startled":
+                $ R_Mouth = "grimace"
+                $ R_Brows = "surprised"
+                $ R_Eyes = "surprised"
+        elif Emote == "down":
+                $ R_Mouth = "surprised"
+                $ R_Brows = "sad"
+                $ R_Eyes = "down"  
+        elif Emote == "perplexed":
+                $ R_Mouth = "sad"
+                $ R_Brows = "confused"
+                $ R_Eyes = "normal"
+        elif Emote == "sly":
+                $ R_Mouth = "grimace"
+                $ R_Brows = "normal"
+                $ R_Eyes = "squint" 
+            
+        if M:
+                $ R_Eyes = "manic"        
+        if B > 1:
+                $ R_Blush = 2
+        elif B:
+                $ R_Blush = 1
+        else:
+                $ R_Blush = 0
+                
+        if Mouth:
+                $ R_Mouth = Mouth
+        if Eyes:
+                $ R_Eyes = Eyes
+        if Brows:
+                $ R_Brows = Brows
+                
+        return
+
+label RogueFaceSpecial(Emote = R_Emote, B = R_Blush, M = 0, Mouth = 0, Eyes = 0, Brows = 0):
+        # Emote is the chosen emote, B is the lush state, and M is whether the character is in a  manic state
         if Emote == "normal":
                 $ R_Mouth = "normal"
                 $ R_Brows = "normal"

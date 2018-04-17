@@ -839,6 +839,28 @@ label Rogue_Settings:
                         call Rogue_Clothes
                     else:
                         ch_r "I'm not really interested in your fashion opinions."
+
+        "Wear this vibrator to class" if "vibeclass" not in R_Traits:
+                if "exhibitionist" in R_Traits:
+                    call RogueFaceSpecial("sexy",1)
+                    ch_r "Oooh, naughty. . ."  
+                elif ApprovalCheck("Rogue", 1000, TabM=2) or ApprovalCheck("Rogue", 800, "I") or ApprovalCheck("Rogue", 750, "O"): 
+                    call RogueFaceSpecial("surprised",1)
+                    ch_r "Well, I mean, yeah, I guess I could. . ."
+                else:
+                    call RogueFaceSpecial("angry",1)
+                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -5) 
+                    ch_r "You wish."
+                    return
+                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 5) 
+                $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 5) 
+                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, 5) 
+                $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 5) 
+                $ R_Traits.append("vibeclass")
+                
+        "Don't wear the vibrator to class" if "vibeclass" in R_Traits:
+                ch_r "Ok"
+                $ R_Traits.remove("vibeclass")
                         
                         
         "Shift her Personality" if ApprovalCheck("Rogue", 900, "L", TabM=0) or ApprovalCheck("Rogue", 900, "O", TabM=0)or ApprovalCheck("Rogue", 900, "I", TabM=0):

@@ -2,8 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 3024: if statement expects a non-empty block.
-    if Outfit:
-              ^
+File "game/script Locations.rpy", line 777: expected statement.
+    K_History.append("vibratorclass")
+                                     ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

@@ -728,6 +728,8 @@ label Class_Room:
     call Taboo_Level
     call QuickEvents    
     call Checkout(1)
+    if "vcame" in K_RecentActions:
+        $ K_Wet = 2
     if Round <= 10:
                 if Current_Time == "Night":   
                     "You're getting tired, you head back to your room."
@@ -759,7 +761,238 @@ label Class_Room:
             
         "Chat":
                 call Chat
-                $ Line = "You are in class right now. What would you like to do?" 
+                $ Line = "You are in class right now. What would you like to do?"
+
+        "Turn Kitty's vibrator on" if Weekday < 5 and (Current_Time == "Morning" or Current_Time == "Midday") and K_Loc == bg_current and "vibeclass" in K_Traits:
+                "You turn Kitty's vibrator on"
+                $ K_Vibrator = 1
+                play music "sounds/vibrator1.wav" fadein 1 fadeout 1
+                if K_Loc == bg_current:
+                    call KittyFaceSpecial("surprised", 1) 
+                    
+                    with Shake((0, 0, 0, 0), 3.0, dist=5)
+                    if "vibratorclass" not in K_History:
+                        ch_k "What are you doing [K_Petname]??"
+                        if "exhibitionist" in K_Traits:
+                            call KittyFaceSpecial("sexy", 1) 
+                            "Kitty starts moving in her seat. She can't keep still."
+                            "She looks at you with a sexy smile."
+                            if Adjacent == "Kitty":
+                                ch_k "I like how you think, [K_Petname]."
+                        else:
+                            call KittyFaceSpecial("sad", 1) 
+                            "Kitty starts moving in her seat. She can't keep still."
+                            "She looks at you with a begging face."
+                            if Adjacent == "Kitty":
+                                ch_k "Please stop this, [K_Petname]."
+                        $ K_History.append("vibratorclass")
+                    elif "exhibitionist" not in K_Traits:
+                        ch_k "Not this again."
+                        "She looks at you with a begging face."
+                        if Adjacent == "Kitty":
+                            ch_k "Please [K_Petname], not in public."
+                    else:
+                        ch_k "This again huh"
+                        call KittyFaceSpecial("sexy", 1)
+                        "She looks at you with a sexy smile"
+                        if Adjacent == "Kitty":
+                            ch_k "Please [K_Petname], make it go faster."
+                    
+                    label V_Kitty_On:
+
+                        if K_Vibrator == 2:
+                            with Shake((0, 0, 0, 0), 3.0, dist=5)
+    
+                            $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 100, 5)
+                            $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, 1)
+                            $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 1)
+                            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 10)
+                            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 2)  
+
+                        with Shake((0, 0, 0, 0), 3.0, dist=5)
+                        $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 100, 5)
+                        $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, 1)
+                        $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 1)
+                        $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 10)
+                        $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 2)  
+
+                        if K_Lust <= 50:
+                            if K_Legs or K_Panties:
+                                $ Line = renpy.random.choice(["She tries to keep it together", 
+                                    "She keeps moving her body as if that movement would reduce the vibrations",
+                                    "She tugs her bottoms.",
+                                    "Her hands move along her sides",
+                                    "She looks around trying to see if anyone can notice the noise", 
+                                    "She moves her hands to rub her neck",
+                                    "She gasps as her movements only makes her hornier"])
+                            else:
+                                $ Line = renpy.random.choice(["She tries to keep it together", 
+                                    "She keeps moving her body as if that movement would reduce the vibrations",
+                                    "Her hands move along her sides",
+                                    "She looks around trying to see if anyone can notice the noise", 
+                                    "She moves her hands to rub her neck",
+                                    "She gasps as her movements only makes her hornier"])
+
+                        else:
+
+                            $ Line = renpy.random.choice(["Her hand traces slowly down her body", 
+                                "Her fingers move lightly across her pubic region",
+                                "Her fingers move up and down her inner thighs, slowing building towards their center",
+                                "Her hands move along her sides, carefully caressing them",
+                                "She gently rubs her breasts", 
+                                "She gently cups her breasts and moves them in slow circles",
+                                "She moves her hands from her breasts to rub her neck",
+                                "She lightly pinches one of her nipples",
+                                "She gasps as her finger brushes against an erect nipple"])  
+
+                        "[Line]"
+                        call KittyLust 
+                        if K_Lust >= 100:                                               
+                            call K_Cumming
+                            $ K_Lust = 45
+                            $ K_RecentActions.append("vcame")
+                            if Situation == "shift" or "angry" in K_RecentActions:
+                                jump KFB_After
+                        menu:
+                            "Keep it on":
+                                jump V_Kitty_On
+                            "Turn it up" if K_Vibrator != 2:
+                                play music "sounds/vibrator2.wav"
+                                $ K_Vibrator = 2
+                                $ K_Mouth = "tongue"
+                                $ K_Eyes = "surprised"
+                                $ K_Blush = 2
+                                "You increase the vibrator speed startling her"
+
+                                jump V_Kitty_On
+
+                            "Turn it off":
+                                stop music fadeout 1
+
+                                if "exhibitionist" not in K_Traits:
+                                    if Adjacent == "Kitty":
+                                        ch_k "Thanks, [K_Petname]."
+                                else:
+                                    call KittyFaceSpecial("sad", 1)
+                                    "She looks at you with a sad face"
+                                    if Adjacent == "Kitty":
+                                        ch_k "Why did you stop, [K_Petname]?"
+
+        "Turn Rogue's vibrator on" if Weekday < 5 and (Current_Time == "Morning" or Current_Time == "Midday") and R_Loc == bg_current and "vibeclass" in R_Traits:
+                "You turn Rogue's vibrator on"
+                $ R_Vibrator = 1
+                play music "sounds/vibrator1.wav" fadein 1 fadeout 1
+                if R_Loc == bg_current:
+                    call RogueFaceSpecial("surprised", 1) 
+                    
+                    with Shake((0, 0, 0, 0), 3.0, dist=5)
+                    if "vibratorclass" not in R_History:
+                        ch_r "What are you doing [R_Petname]??"
+                        if "exhibitionist" in R_Traits:
+                            call RogueFaceSpecial("sexy", 1) 
+                            "Rogue starts moving in her seat. She can't keep still."
+                            "She looks at you with a sexy smile."
+                            if Adjacent == "Rogue":
+                                ch_r "I like how you think, [R_Petname]."
+                        else:
+                            call RogueFaceSpecial("sad", 1) 
+                            "Rogue starts moving in her seat. She can't keep still."
+                            "She looks at you with a begging face."
+                            if Adjacent == "Rogue":
+                                ch_r "Please stop this, [R_Petname]."
+                        $ R_History.append("vibratorclass")
+                    elif "exhibitionist" not in R_Traits:
+                        ch_r "Not this again."
+                        "She looks at you with a begging face."
+                        if Adjacent == "Rogue":
+                            ch_r "Please [R_Petname], not in public."
+                    else:
+                        ch_r "This again huh"
+                        call RogueFaceSpecial("sexy", 1)
+                        "She looks at you with a sexy smile"
+                        if Adjacent == "Rogue":
+                            ch_r "Please [R_Petname], make it go faster."
+                    
+                    label V_Rogue_On:
+
+                        if R_Vibrator == 2:
+                            with Shake((0, 0, 0, 0), 3.0, dist=5)
+    
+                            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 100, 5)
+                            $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, 1)
+                            $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 1)
+                            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 10)
+                            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 2)  
+
+                        with Shake((0, 0, 0, 0), 3.0, dist=5)
+                        $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 100, 5)
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, 1)
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 1)
+                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 10)
+                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 2)  
+
+                        if R_Lust <= 50:
+                            if R_Legs or R_Panties:
+                                $ Line = renpy.random.choice(["She tries to keep it together", 
+                                    "She keeps moving her body as if that movement would reduce the vibrations",
+                                    "She tugs her bottoms.",
+                                    "Her hands move along her sides",
+                                    "She looks around trying to see if anyone can notice the noise", 
+                                    "She moves her hands to rub her neck",
+                                    "She gasps as her movements only makes her hornier"])
+                            else:
+                                $ Line = renpy.random.choice(["She tries to keep it together", 
+                                    "She keeps moving her body as if that movement would reduce the vibrations",
+                                    "Her hands move along her sides",
+                                    "She looks around trying to see if anyone can notice the noise", 
+                                    "She moves her hands to rub her neck",
+                                    "She gasps as her movements only makes her hornier"])
+
+                        else:
+
+                            $ Line = renpy.random.choice(["Her hand traces slowly down her body", 
+                                "Her fingers move lightly across her pubic region",
+                                "Her fingers move up and down her inner thighs, slowing building towards their center",
+                                "Her hands move along her sides, carefully caressing them",
+                                "She gently rubs her breasts", 
+                                "She gently cups her breasts and moves them in slow circles",
+                                "She moves her hands from her breasts to rub her neck",
+                                "She lightly pinches one of her nipples",
+                                "She gasps as her finger brushes against an erect nipple"])  
+
+                        "[Line]"
+                        call RogueLust 
+                        if R_Lust >= 100:                                               
+                            call R_Cumming
+                            $ R_Lust = 45
+                            $ R_RecentActions.append("vcame")
+                            if Situation == "shift" or "angry" in R_RecentActions:
+                                jump KFB_After
+                        menu:
+                            "Keep it on":
+                                jump V_Rogue_On
+                            "Turn it up" if R_Vibrator != 2:
+                                play music "sounds/vibrator2.wav"
+                                $ R_Vibrator = 2
+                                $ R_Mouth = "tongue"
+                                $ R_Eyes = "surprised"
+                                $ R_Blush = 2
+                                "You increase the vibrator speed startling her"
+
+                                jump V_Rogue_On
+
+                            "Turn it off":
+                                stop music fadeout 1
+
+                                if "exhibitionist" not in R_Traits:
+                                    if Adjacent == "Rogue":
+                                        ch_r "Thanks, [R_Petname]."
+                                else:
+                                    call RogueFaceSpecial("sad", 1)
+                                    "She looks at you with a sad face"
+                                    if Adjacent == "Rogue":
+                                        ch_r "Why did you stop, [R_Petname]?"
+
             
         "Wait" if Current_Time != "Night":
                 "You hang out for a bit."
@@ -785,6 +1018,8 @@ label Class_Room:
     
 label Take_Class:                       #Class events 
     call Set_The_Scene  
+    if "vcame" in K_RecentActions:
+        $ K_Wet = 2
     if "class" in P_DailyActions:
             $ Line = "The session begins."
     elif Round >= 80:
@@ -2904,7 +3139,7 @@ label Kitty_Sent_Selfie(test=0):
         return
 
 label Rogue_Sent_Selfie(test=0):
-    if R_Loc != bg_current and K_Nudes == 1 and "Rogue" in Digits:
+    if R_Loc != bg_current and R_Nudes == 1 and "Rogue" in Digits:
         if R_Resistance and R_Addict >= 60 and not R_Event[3]:
             return
         if test == 0:
@@ -2921,7 +3156,6 @@ label Rogue_Sent_Selfie(test=0):
                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 2)
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 10)   
                 $ P_Focus = Statupdate("Rogue", "Focus", P_Focus, 80, 15)    
-                #$ Line = R_Over
                 $ R_Over = 0
                 $ R_Chest = 0                         
                 if not R_SeenChest:
@@ -2939,36 +3173,7 @@ label Rogue_Sent_Selfie(test=0):
                 "Rogue sent you a picture"
                 ch_r "It's hot huh, [R_Petname]?" 
     
-        #    elif (ApprovalCheck("Kitty", 1000, TabM = 3) or (K_SeenChest and not Taboo)) and K_Chest != 0:
-        #        $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 60, 5)                
-        #        $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
-        #        $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 1)
-        #        $ P_Focus = Statupdate("Kitty", "Focus", P_Focus, 80, 15)      
-        #        #$ Line = K_Chest
-        #        $ K_Over = 0                        
-        #        if not K_SeenChest:
-        #            call KittyFace("bemused", 1)
-        #            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 3)                              
-        #            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 4)
-        #            $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3)
-        #            $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 3)   
-        #            #"She hesitantly glances your way, and then with a shrug pulls her [Line] through herself, tossing it to the ground."
-        #            #call Kitty_First_Topless(1)
-        #        call Set_The_Scene
-        #        show Rogue_Selfie at center zorder 200
-        #        "Kitty sent you a picture" 
-        
-        #    elif ApprovalCheck("Kitty", 600):
-        #        $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 60, 5)                
-        #        $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
-        #        $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 1)
-        #        $ P_Focus = Statupdate("Kitty", "Focus", P_Focus, 80, 15)
-        #        call Set_The_Scene
-        #        show Rogue_Selfie at center zorder 200
-        #        "Rogue sent you a picture" 
-        #        ch_k "What do you think of this look, [K_Petname]?" 
         hide Rogue_Selfie 
-        #$ K_Over = K_OverTemp
-        #$ K_Chest = K_ChestTemp
+
         return
            

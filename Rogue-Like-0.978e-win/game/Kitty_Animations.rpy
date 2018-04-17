@@ -3039,3 +3039,99 @@ label KittyFace(Emote = K_Emote, B = K_Blush, M = 0, Mouth = 0, Eyes = 0, Brows 
                 $ K_Brows = Brows
         
         return
+
+label KittyFaceSpecial(Emote = K_Emote, B = K_Blush, M = 0, Mouth = 0, Eyes = 0, Brows = 0):
+
+        # Emote is the chosen emote, B is the lush state, and M is whether the character is in a  manic state 
+            
+        if Emote == "normal":
+                $ K_Mouth = "normal"
+                $ K_Brows = "normal"
+                $ K_Eyes = "normal"
+        elif Emote == "angry":
+                $ K_Mouth = "sad"
+                $ K_Brows = "angry"
+                $ K_Eyes = "sexy"
+        elif Emote == "bemused":
+                $ K_Mouth = "lipbite"
+                $ K_Brows = "sad"
+                $ K_Eyes = "squint"
+        elif Emote == "closed":
+                $ K_Mouth = "normal"
+                $ K_Brows = "sad"
+                $ K_Eyes = "closed"  
+        elif Emote == "confused":
+                $ K_Mouth = "kiss"
+                $ K_Brows = "confused"
+                $ K_Eyes = "surprised"
+        elif Emote == "kiss":
+                $ K_Mouth = "kiss"
+                $ K_Brows = "normal"
+                $ K_Eyes = "closed"
+        elif Emote == "tongue":
+                $ K_Mouth = "tongue"
+                $ K_Brows = "sad"
+                $ K_Eyes = "surprised" #"stunned"
+        elif Emote == "manic":
+                $ K_Mouth = "smile"
+                $ K_Brows = "sad"
+                $ K_Eyes = "surprised"
+                $ K_Blush = 1
+        elif Emote == "sad":
+                $ K_Mouth = "sad"
+                $ K_Brows = "sad"
+                $ K_Eyes = "sexy"
+        elif Emote == "sadside":
+                $ K_Mouth = "sad"
+                $ K_Brows = "sad"
+                $ K_Eyes = "side"
+        elif Emote == "sexy":
+                $ K_Mouth = "lipbite"
+                $ K_Brows = "normal"
+                $ K_Eyes = "sexy"
+        elif Emote == "smile":
+                $ K_Mouth = "smile"
+                $ K_Brows = "normal"
+                $ K_Eyes = "normal"
+        elif Emote == "sucking":
+                $ K_Mouth = "sucking"
+                $ K_Brows = "normal"
+                $ K_Eyes = "closed"
+        elif Emote == "surprised":
+                $ K_Mouth = "surprised"
+                $ K_Brows = "surprised"
+                $ K_Eyes = "surprised"
+        elif Emote == "startled":
+                $ K_Mouth = "smile"
+                $ K_Brows = "surprised"
+                $ K_Eyes = "surprised"
+        elif Emote == "down":
+                $ K_Mouth = "surprised"
+                $ K_Brows = "sad"
+                $ K_Eyes = "down"  
+        elif Emote == "perplexed":
+                $ K_Mouth = "smile"
+                $ K_Brows = "sad"
+                $ K_Eyes = "normal"
+        elif Emote == "sly":
+                $ K_Mouth = "smile"
+                $ K_Brows = "normal"
+                $ K_Eyes = "squint"
+            
+        if M:
+                $ K_Eyes = "surprised"        
+        if B > 1:
+                $ K_Blush = 2
+        elif B:
+                $ K_Blush = 1
+        else:
+                $ K_Blush = 0
+        
+        if Mouth:
+                $ K_Mouth = Mouth
+        if Eyes:
+                $ K_Eyes = Eyes
+        if Brows:
+                $ K_Brows = Brows
+        
+        return

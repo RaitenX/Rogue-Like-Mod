@@ -93,20 +93,7 @@ label Kitty_Chat:
     
                             call RogueFace("surprised", 2)
                             "Kitty grabs Rogue's swimsuit and phase them out of Rogue's body using her powers."
-                            ch_r "Nooo!"
-                            $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -50) 
-                                    
-                            "With a sudden embarrassed start, Rogue panics. She takes off while trying to cover her tits and pussy."
-                            call RogueFace("angry", 1)
-                            $ R_RecentActions.append("angry")
-                            $ R_DailyActions.append("angry")
-                            call AllReset("Rogue")
-                            call Remove_Girl("Rogue")
-                            call RogueOutfit
-                            call KittyFace("smile",0)
-                            ch_k "Hahaha, that was funny [K_Petname]"
-                            $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 10)
-                            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 30, 5)
+                            call Rogue_First_Bottomless(1) 
 
                         else:
                             menu:
@@ -123,20 +110,6 @@ label Kitty_Chat:
         
                                     call RogueFace("surprised", 2)
                                     "Kitty grabs Rogue's clothes and phase them out of Rogue's body using her powers."
-                                    ch_r "Nooo!"
-                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -50) 
-                                        
-                                    "With a sudden embarrassed start, Rogue panics. She takes off while trying to cover her tits."
-                                    call RogueFace("angry", 1)
-                                    $ R_RecentActions.append("angry")
-                                    $ R_DailyActions.append("angry")
-                                    call AllReset("Rogue")
-                                    call Remove_Girl("Rogue")
-                                    call RogueOutfit
-                                    call KittyFace("smile",0)
-                                    ch_k "Hahaha, that was funny [K_Petname]"
-                                    $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 10)
-                                    $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 30, 5)
         
                                 "Her bottoms" if R_Legs or R_Panties or R_Hose:
                                     ch_k "Ok"
@@ -151,23 +124,108 @@ label Kitty_Chat:
         
                                     call RogueFace("surprised", 2)
                                     "Kitty grabs Rogue's clothes and phase them out of Rogue's body using her powers."
-                                    ch_r "Nooo!"
-                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -50) 
-                                    "With a sudden embarrassed start, Rogue panics. She takes off while trying to cover her pussy."
-                                        
-                                    call RogueFace("angry", 1)
-                                    $ R_RecentActions.append("angry")
-                                    $ R_DailyActions.append("angry")
-                                    call AllReset("Rogue")
-                                    call Remove_Girl("Rogue")
-                                    call RogueOutfit
-                                    call KittyFace("smile",0)
-                                    ch_k "Hahaha, that was funny [K_Petname]"
-                                    $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 10)
-                                    $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 30, 5)
+                                    call Rogue_First_Bottomless(1) 
+
         
                                 "Never mind":
                                     pass
+
+                        if not Taboo: #no taboo
+                            if "exhibitionist" in R_Traits:
+                                $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 4) 
+                                call RogueFace("sexy", 1)
+                                ch_r "Oh, naughty, [R_Petname]!"
+                                ch_r "You could have just asked, you know. . ."
+                                "She looks around taking pleasure at having her body exposed"
+                                "And takes her time to put her clothes back on"
+                                call RogueFace("smile",1)
+                            elif ApprovalCheck("Rogue", 850, "L"):
+                                call RogueFace("sexy", 1)
+                                ch_r "Oh, naughty!"
+                                ch_r "You could have just asked, you know. . ."
+                            elif ApprovalCheck("Rogue", 700, "L"):
+                                call RogueFace("sexy", 1)
+                                ch_r "[R_Petname], Kitty! A little warning!"
+                            elif ApprovalCheck("Rogue", 600, "L"):
+                                call RogueFace("bemused", 1)
+                                $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -3)           
+                                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 3)  
+                                ch_r "Wha?! [R_Petname], Kitty? . . I don't usually. . ."
+                            elif ApprovalCheck("Rogue", 1100):
+                                call RogueFace("angry", 1)
+                                $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -5)           
+                                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 2)  
+                                ch_r "Wha! [R_Petname]!"
+                            else: 
+                                ch_r "Nooo!"
+                                $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -50) 
+                                "With a sudden embarrassed start, Rogue panics. She takes off while trying to cover her naked parts."
+                                        
+                                call RogueFace("angry", 1)
+                                $ R_RecentActions.append("angry")
+                                $ R_DailyActions.append("angry")
+                                call AllReset("Rogue")
+                                call Remove_Girl("Rogue")
+                                call RogueOutfit
+
+                            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 7)             
+                            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 3)           
+                            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 4)  
+                            
+                        else: #taboo
+                            if "exhibitionist" in R_Traits:
+                                $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 10) 
+                                call RogueFace("sexy", 1)
+                                ch_r "Oh, naughty, [R_Petname]!"
+                                ch_r "You could have just asked, you know. . ."
+                                "She looks around taking pleasure at having her body exposed"
+                                "The fact this is a public place gives her even more pleasure"
+                                $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 10) 
+                                call RogueFace("smile",1)
+                                "Rogue takes her time to put her clothes back on"
+                            elif ApprovalCheck("Rogue", 850, "L") and ApprovalCheck("Rogue", 1500):
+                                call RogueFace("sexy", 1)
+                                ch_r "Oh, naughty, [R_Petname]!"
+                                ch_r "You could have just asked, you know. . ."
+                            elif ApprovalCheck("Rogue", 700, "L") and ApprovalCheck("Rogue", 1500):
+                                call RogueFace("sexy", 1)
+                                ch_r "[R_Petname], Kitty! A little warning!"
+                            elif ApprovalCheck("Rogue", 700, "L"):
+                                call RogueFace("bemused", 1)
+                                $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -3)           
+                                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 3)  
+                                ch_r "[R_Petname], Kitty! This isn't the time or place for this!"
+                            elif ApprovalCheck("Rogue", 1200):
+                                call RogueFace("angry", 1)
+                                $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -5)           
+                                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 2)  
+                                ch_r "Wha! [R_Petname]!"
+                            else: 
+                                ch_r "Nooo!"
+                                $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -50) 
+                                "With a sudden embarrassed start, Rogue panics. She takes off while trying to cover her naked parts."
+                                        
+                                call RogueFace("angry", 1)
+                                $ R_RecentActions.append("angry")
+                                $ R_DailyActions.append("angry")
+                                call AllReset("Rogue")
+                                call Remove_Girl("Rogue")
+                                call RogueOutfit
+
+                            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 7)             
+                            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 4)           
+                            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 4)  
+                            call Rogue_First_Bottomless(1)                 
+                        $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 60, 1) 
+                        #if "exhibitionist" in R_Traits:
+                        #End Flip her Skirt   
+                        #call AllReset("Rogue")
+                        call RogueOutfit
+                        call KittyFace("smile",0)
+                        ch_k "Hahaha, that was funny [K_Petname]"
+                        $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 10)
+                        $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 30, 5)
+
                     else:
                         ch_k "Not happening [K_Petname]"
                         pass
@@ -567,6 +625,28 @@ label Kitty_Settings:
                     call Kitty_Clothes
                 else:
                     ch_k "I'll let you know when I care what you think."
+
+        "Wear this vibrator to class" if "vibeclass" not in K_Traits:
+                if "exhibitionist" in K_Traits:
+                    call KittyFaceSpecial("sexy",1)
+                    ch_k "Oooh, naughty. . ."  
+                elif ApprovalCheck("Kitty", 1000, TabM=3) or ApprovalCheck("Kitty", 800, "I") or ApprovalCheck("Kitty", 750, "O"): 
+                    call KittyFaceSpecial("surprised",1)
+                    ch_k "Well, I mean, yeah, I guess I could. . ."
+                else:
+                    call KittyFaceSpecial("angry",1)
+                    $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -5) 
+                    ch_k "You wish."
+                    return
+                $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 5) 
+                $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 90, 5) 
+                $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 90, 5) 
+                $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 5) 
+                $ K_Traits.append("vibeclass")
+                
+        "Don't wear the vibrator to class" if "vibeclass" in K_Traits:
+                ch_k "Ok"
+                $ K_Traits.remove("vibeclass")
                 
         "Shift her Personality" if ApprovalCheck("Kitty", 900, "L", TabM=0) or ApprovalCheck("Kitty", 900, "O", TabM=0) or ApprovalCheck("Kitty", 900, "I", TabM=0):
                 ch_p "Could we talk about us?"
