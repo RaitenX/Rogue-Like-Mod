@@ -4018,6 +4018,14 @@ label Kitty_Clothes:
                     else:                
                         ch_k "It's pretty skimpy. . ." 
                     jump Kitty_Clothes_Under_Tops 
+
+                "I like that darker lace bra." if "lace bra" in K_Inventory and K_Chest != "darker lace bra":
+                    if K_SeenChest or ApprovalCheck("Kitty", 1300, TabM=2):
+                        ch_k "K."   
+                        $ K_Chest = "darker lace bra"         
+                    else:                
+                        ch_k "It's pretty skimpy. . ." 
+                    jump Kitty_Clothes_Under_Tops 
                     
                 "I like that sports bra." if K_Chest != "sports bra":
                     if K_SeenChest or ApprovalCheck("Kitty", 1000, TabM=2):
@@ -4094,6 +4102,14 @@ label Kitty_Clothes:
                             ch_k "That's[K_like]none of your business."
                     jump Kitty_Clothes_Under_Panties
 
+                "Why don't you wear the darker lace panties instead?" if "lace panties" in K_Inventory and K_Panties and K_Panties != "darker lace panties":
+                    if ApprovalCheck("Kitty", 1300, TabM=3):
+                            ch_k "I guess."
+                            $ K_Panties = "darker lace panties"
+                    else:
+                            ch_k "That's[K_like]none of your business."
+                    jump Kitty_Clothes_Under_Panties
+
                 "You know, you could wear some panties with that. . ." if not K_Panties:
                     call KittyFace("bemused", 1)
                     if (K_Love+K_Obed) <= (2* K_Inbt):
@@ -4116,6 +4132,9 @@ label Kitty_Clothes:
                         "How about the lace ones?" if "lace panties" in K_Inventory:
                             ch_k "Alright."                
                             $ K_Panties  = "lace panties"
+                        "How about the darker lace ones?" if "lace panties" in K_Inventory:
+                            ch_k "Alright."                
+                            $ K_Panties  = "darker lace panties"
                     jump Kitty_Clothes_Under_Panties
 
                 "Go back":  
@@ -4698,6 +4717,8 @@ label Kitty_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
             elif K_Chest == "bra":
                 $ Count = 10   
             elif K_Chest == "lace bra":
+                $ Count = 5  
+            elif K_Chest == "darker lace bra":
                 $ Count = 5   
             elif K_Chest == "bustier bra":
                 $ Count = 5
@@ -4765,6 +4786,8 @@ label Kitty_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         elif K_Panties == "green panties":      #If wearing only green panties
                             $ Count = 10
                         elif K_Panties == "lace panties":       #If wearing only lace panties
+                            $ Count = 5
+                        elif K_Panties == "darker lace panties":       #If wearing only lace panties
                             $ Count = 5
                         elif K_Panties == "swimsuit3":
                             $ Count = 30
