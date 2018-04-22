@@ -884,18 +884,25 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
             "P_Sprite and P_Cock == 'anal' and Speed > 1", "Rogue_Anal_Fucking",
             "P_Sprite and P_Cock == 'anal' and Speed", "Rogue_Anal_Heading",
             "P_Sprite and P_Cock == 'anal'", "Rogue_Anal",  
+            "P_Sprite and P_Cock == 'plug' and Speed", "Rogue_Anal_Plug_Heading",
+            "P_Sprite and P_Cock == 'plug' and R_Plugged", "images/RogueDoggy/Rogue_Doggy_Plugged.png",  
+            "P_Sprite and P_Cock == 'plug'", "Rogue_Anal_Plug",  
 #            "Action == 'plug'", "Rogue_Anal_Plug",  
 #            "Action == 'plug'", "test_case",
+            "R_Plugged", "images/RogueDoggy/Rogue_Doggy_Plugged.png",   
             "R_Loose", "images/RogueDoggy/Rogue_Doggy_Asshole_Loose.png",   
             "True", "images/RogueDoggy/Rogue_Doggy_Asshole_Tight.png", 
             ),
         (0,0), ConditionSwitch(                                                                                 #Hose
             #"R_Spank == 0", "images/RogueDoggy/Rogue_Doggy_Spank0.png",
-            "R_Spank >= 1 and R_Spank <= 4 and P_Cock == 'anal'", "images/RogueDoggy/Rogue_Doggy_SpankAnal1.png",
+            "R_Spank >= 1 and R_Spank <= 4 and R_Plugged", "images/RogueDoggy/Rogue_Doggy_SpankPlugged1.png",
+            "R_Spank >= 1 and R_Spank <= 4 and (P_Cock == 'anal' or P_Cock == 'plug')", "images/RogueDoggy/Rogue_Doggy_SpankAnal1.png",
             "R_Spank >= 1 and R_Spank <= 4", "images/RogueDoggy/Rogue_Doggy_Spank1.png",
-            "R_Spank >= 5 and R_Spank <= 10 and P_Cock == 'anal'", "images/RogueDoggy/Rogue_Doggy_SpankAnal2.png",
+            "R_Spank >= 5 and R_Spank <= 10 and R_Plugged", "images/RogueDoggy/Rogue_Doggy_SpankPlugged2.png",
+            "R_Spank >= 5 and R_Spank <= 10 and (P_Cock == 'anal' or P_Cock == 'plug')", "images/RogueDoggy/Rogue_Doggy_SpankAnal2.png",
             "R_Spank >= 5 and R_Spank <= 10", "images/RogueDoggy/Rogue_Doggy_Spank2.png",
-            "R_Spank >= 11 and P_Cock == 'anal'", "images/RogueDoggy/Rogue_Doggy_SpankAnal3.png",
+            "R_Spank >= 11 and R_Plugged", "images/RogueDoggy/Rogue_Doggy_SpankPlugged3.png",
+            "R_Spank >= 11 and (P_Cock == 'anal' or P_Cock == 'plug')", "images/RogueDoggy/Rogue_Doggy_SpankAnal3.png",
             "R_Spank >= 11", "images/RogueDoggy/Rogue_Doggy_Spank3.png",
             "True", Null(),
             ),           
@@ -1058,6 +1065,25 @@ image Zero_Doggy_Insert:                                                        
             "P_Spunk", "images/RogueDoggy/Rogue_Doggy_Cock_In_Spunk.png",           
             "True", Null(),
             ), 
+
+image Plug_Doggy_Insert:                                                                                #Insert cock
+    contains:
+        ConditionSwitch(    
+            #"P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Cock_In_P.png",
+            #"P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_In_B.png",             
+            "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Plug_In.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Plug_In.png", 
+            ), 
+    #contains:
+    #    ConditionSwitch(    
+    #        "P_Wet", "images/RogueDoggy/Rogue_Doggy_Cock_In_Wet.png",           
+    #        "True", Null(),
+    #        ), 
+    #contains:
+    #    ConditionSwitch(    
+    #        "P_Spunk", "images/RogueDoggy/Rogue_Doggy_Cock_In_Spunk.png",           
+    #        "True", Null(),
+    #        ), 
             
 image Zero_Doggy_Heading:
     contains:
@@ -1213,6 +1239,19 @@ image Rogue_Anal:                                                               
         "Zero_Doggy_Insert"
         pos (172,500)
 
+image Rogue_Anal_Plug:                                                                                               #Anal static Loose
+    contains:                                                                                   #Base
+        "images/RogueDoggy/Rogue_Doggy_Asshole_Loose.png"   
+        anchor (0.50,0.69)
+        pos (208,500)
+        zoom 1.25
+    contains:                                                                                   #Cock
+        "Plug_Doggy_Insert"
+        pos (172,500)
+        #anchor (0.50,0.69)
+        #pos (208,500)
+        #zoom 1.25
+
         
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 image Rogue_Anal_Heading:                                                                                       #Animation for speed 1
@@ -1246,6 +1285,67 @@ image Rogue_Anal_Heading:                                                       
             pause .5
             ease 1.5 zoom .5
             repeat             
+    contains:                                                                                   #Cheeks
+        "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png"
+
+image Rogue_Anal_Plug_Heading:                                                                                       #Animation for speed 1
+    contains:                                                                                   #Base
+        "images/RogueDoggy/Rogue_Doggy_Anal_FullBase.png"   
+        #"images/RogueDoggy/Rogue_Doggy_Anal_HeadingBase.png"    
+    contains:
+        "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png"                                       #Hole
+        #"images/RogueDoggy/Rogue_Doggy_Anal_HeadingBase.png"                                       #Hole
+        anchor (0.52,0.69)
+        pos (218,518)
+        zoom .4
+        block:
+            #ease .25 zoom .8
+            #pause .75
+            #ease 1.5 zoom .3
+            #repeat 
+            ease .30 zoom .9
+            pause .10
+            ease .10 zoom .6
+            #pause .75
+            pause .75
+            ease .25 zoom .9
+            ease 1.0 zoom .4
+            repeat 
+    contains:                                                                                   #Cock
+        "Plug_Doggy_Insert"
+        pos (172,500)
+        block:
+            ease .5 ypos 450
+            pause .5  #up
+            ease 1.5 ypos 500#505  down
+            repeat
+    contains:                                                                                   #Mask
+        "images/RogueDoggy/Rogue_Doggy_Anal_FullMask_Plug.png"
+        #"images/RogueDoggy/Rogue_Doggy_Anal_HeadingMask_Plug.png"
+        anchor (0.52,0.69)
+        pos (218,518)
+        zoom .4
+        block:
+            #ease .25 zoom .8
+            #pause .75
+            #ease 1.5 zoom .3
+            #repeat 
+            ease .30 zoom .9
+            pause .10
+            ease .10 zoom .6
+            #pause .25
+            pause .75
+            ease .25 zoom .9
+            ease 1.0 zoom .4
+            repeat 
+    contains:                                                                                   #Cock
+        "images/RogueDoggy/Rogue_Doggy_Plug_In_Top.png", 
+        pos (172,500)
+        block:
+            ease .5 ypos 450
+            pause .5
+            ease 1.5 ypos 500#505
+            repeat            
     contains:                                                                                   #Cheeks
         "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png"
 
@@ -1443,6 +1543,8 @@ label Rogue_Doggy_Launch(Line = "massage"):
         $ P_Cock = "in"
     elif Line == "anal":
         $ P_Cock = "anal"
+    elif Line == "plug":
+        $ P_Cock = "plug"
     elif Line == "solo":   
         $ P_Sprite = 0
         $ P_Cock = "out"

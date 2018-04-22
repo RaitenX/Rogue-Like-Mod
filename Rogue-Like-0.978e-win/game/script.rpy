@@ -213,6 +213,7 @@ init -1:
     default R_Vib = 0
     default R_Vibrator = 0
     default R_Plug = 0
+    default R_Plugged = 0
     default R_SuckB = 0
     default R_InsertP = 0
     default R_InsertA = 0

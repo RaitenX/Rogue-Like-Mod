@@ -77,6 +77,54 @@ label Rogue_Chat:
                     call Rogue_Flirt               
         "Flirt with her (locked)" if R_Chat[5]:  
                     pass
+
+        "Show me the plug." if R_Plugged:
+
+                    if ApprovalCheck("Rogue", 1450, TabM = 3) or ApprovalCheck("Rogue", 800, "O") or "exhibitionist" in R_Traits: # 145, 160, 175, Taboo -160(355)
+                        call RogueFaceSpecial("sexy",1)
+                        ch_r "Ok [R_Petname]."
+                        call Rogue_Doggy_Launch("plug")
+                        "Rogue points her ass towards you."
+                        if R_Legs == "skirt" or R_Legs == "skirtshort" or R_Legs == "cheerleader skirt" or R_Legs == "cheerleader skirtshort":
+                            $ R_Upskirt = 1
+                            "Lifts up her skirt."
+                            if R_Hose == "tights":
+                                $ Temp_R_Hose = R_Hose            
+                                $ R_Hose = 0
+                                "And pulls down her tights"
+                            if R_Panties and R_Panties != "lace panties" and R_Panties != "black panties":
+                                $ R_PantiesDown = 1
+                                "And pulls down her [R_Panties]"
+                            ch_r "There, you happy?"
+                            $ R_PantiesDown = 0
+                            if Temp_R_Hose:
+                                $ R_Hose = Temp_R_Hose
+                            $ R_Upskirt = 0
+                            pause
+                        elif R_Legs == "pants":
+                            "Rogue pulls down her pants."  
+                            if R_Panties and R_Panties != "lace panties" and R_Panties != "black panties":
+                                $ R_PantiesDown = 1
+                                "And pulls down her [R_Panties]"
+                            $ Temp_R_Legs = R_Legs            
+                            $ R_Legs = 0
+                            ch_r "There, you happy?"
+                            $ R_PantiesDown = 0
+                            $ R_Legs = Temp_R_Legs
+                            pause
+                        elif R_Panties and R_Panties != "lace panties" and R_Panties != "black panties":
+                            $ R_PantiesDown = 1
+                            "And pulls down her [R_Panties]"
+                            ch_r "There, you happy?"
+                            $ R_PantiesDown = 0
+                            pause
+
+                        call Rogue_Doggy_Reset 
+                    else:
+                        if Taboo:
+                            ch_r "Not here [R_Petname]"
+                        else:
+                            ch_r "No"
             
         "Sex Menu" if R_Loc == bg_current:
                     if R_Love >= R_Obed:

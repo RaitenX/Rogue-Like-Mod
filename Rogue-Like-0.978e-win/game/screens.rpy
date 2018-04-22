@@ -981,6 +981,12 @@ screen P_Inventory_screen:
             textbutton "Kitty Max Level" text_size 15 action [ SetVariable("K_Lvl", 10), SetVariable("K_XP", 3330), SetVariable("K_StatPoints", 9) ]
         if E_Lvl < 10:
             textbutton "Emma Max Level" text_size 15 action [ SetVariable("E_Lvl", 10), SetVariable("E_XP", 3330), SetVariable("E_StatPoints", 9) ]
+        if R_ForcedCount:
+            textbutton "Rogue Forced 0" text_size 15 action [ SetVariable("R_ForcedCount", 0)]
+        if K_ForcedCount:
+            textbutton "Kitty Forced 0" text_size 15 action [ SetVariable("K_ForcedCount", 0)]
+        if E_ForcedCount:
+            textbutton "Emma Forced 0" text_size 15 action [ SetVariable("E_ForcedCount", 0)]
         showif "dildo" in P_Inventory:
             $ Inventory_Count = Inventory_Check("dildo")
             text "Dildos: [Inventory_Count]" size 15        

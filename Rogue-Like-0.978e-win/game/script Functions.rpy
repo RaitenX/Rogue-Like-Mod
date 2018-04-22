@@ -4051,6 +4051,7 @@ label Failsafe:
     $ R_Vib = 0 if "R_Vib" not in globals().keys() else R_Vib
     $ R_Vibrator = 0 if "R_Vibrator" not in globals().keys() else R_Vibrator
     $ R_Plug = 0 if "R_Plug" not in globals().keys() else R_Plug
+    $ R_Plugged = 0 if "R_Plugged" not in globals().keys() else R_Plugged
     $ R_SuckB = 0 if "R_SuckB" not in globals().keys() else R_SuckB
     $ R_InsertP = 0 if "R_InsertP" not in globals().keys() else R_InsertP
     $ R_InsertA = 0 if "R_InsertA" not in globals().keys() else R_InsertA

@@ -2783,7 +2783,11 @@ label R_Insert_Ass:
         
     if "no insert ass" in R_DailyActions:               
         $ Tempmod -= 5 
-        $ Tempmod -= 10 if "no insert ass" in R_RecentActions else 0   
+        $ Tempmod -= 10 if "no insert ass" in R_RecentActions else 0  
+
+    if R_Plugged:
+        "You remove the plug from her ass"
+        $ R_Plugged = 0 
             
     $ Approval = ApprovalCheck("Rogue", 1300, TabM = 3) # 130, 145, 160, Taboo -120(250)
     

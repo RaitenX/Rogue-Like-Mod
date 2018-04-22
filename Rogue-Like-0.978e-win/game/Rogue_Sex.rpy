@@ -163,7 +163,9 @@ label Rogue_SexMenu:
                             "How about some toys? [[Pussy]":                        
                                 call R_Dildo_Pussy     
                             "How about some toys? [[Anal]":                        
-                                call R_Dildo_Ass   
+                                call R_Dildo_Ass
+                            "Plug":
+                                call R_Plug_Ass   
                             "Never mind [[something else]":
                                 jump Rogue_SMenu        
                 elif not R_Action:
@@ -760,7 +762,7 @@ label R_Slap_Ass:
             elif R_Spank < 10:
                 $ Line2 = "Harder!"  
             else:
-                $ Line2 = "Don't stop, [R_Petname]" 
+                $ Line2 = "Don't stop, " + R_Petname
 
     else:                
         call RogueFace("surprised", 1)        
@@ -770,13 +772,13 @@ label R_Slap_Ass:
         $ Line = "You slap her ass and she looks back at you a bit startled" 
         if renpy.showing("Rogue_Doggy"):
             if R_Spank == 1:
-                $ Line2 = "[R_Petname]?" 
+                $ Line2 = R_Petname + "?" 
             elif R_Spank < 4:
                 $ Line2 = "Ouch"
             elif R_Spank < 10:
-                $ Line2 = "This hurts, [R_Petname]"  
+                $ Line2 = "This hurts, " + R_Petname
             else:
-                $ Line2 = "Please stop, [R_Petname]"  
+                $ Line2 = "Please stop, " + R_Petname
 
 
     
@@ -1889,23 +1891,23 @@ label Rogue_Offhand_Set(Situation = Situation, TempTrigger = Trigger2):
     if Trigger:
         $ Situation = "auto"                 
         menu:  
-            "Also kiss her." if Trigger in ("fondle breasts","fondle pussy", "fondle thighs", "fondle ass", "insert ass", "sex", "anal", "hotdog", "dildo pussy", "dildo anal"):
+            "Also kiss her." if Trigger in ("fondle breasts","plug","fondle pussy", "fondle thighs", "fondle ass", "insert ass", "sex", "anal", "hotdog", "dildo pussy", "dildo anal"):
                     "You lean in and start kissing her."
                     $ Trigger2 = "kissing"
                     
-            "Also fondle her breasts." if Trigger in ("fondle pussy", "fondle thighs", "fondle ass", "insert ass", "suck breasts", "lick pussy", "lick ass", "sex", "anal", "hotdog", "dildo pussy", "dildo anal"):
+            "Also fondle her breasts." if Trigger in ("fondle pussy","plug", "fondle thighs", "fondle ass", "insert ass", "suck breasts", "lick pussy", "lick ass", "sex", "anal", "hotdog", "dildo pussy", "dildo anal"):
                     $ Trigger2 = "fondle breasts"
                     call R_Fondle_Breasts
                     
-            "Also suck her breasts." if Trigger in ("fondle breasts","fondle pussy", "fondle thighs", "fondle ass", "insert ass", "sex", "anal", "hotdog", "dildo pussy", "dildo anal"):
+            "Also suck her breasts." if Trigger in ("fondle breasts","plug","fondle pussy", "fondle thighs", "fondle ass", "insert ass", "sex", "anal", "hotdog", "dildo pussy", "dildo anal"):
                     $ Trigger2 = "suck breasts"
                     call R_Suck_Breasts
                     
-            "Also fondle her pussy." if Trigger in ("fondle breasts","fondle thighs", "fondle ass", "insert ass", "suck breasts", "lick pussy", "lick ass", "sex", "anal", "hotdog", "dildo pussy", "dildo anal"):
+            "Also fondle her pussy." if Trigger in ("fondle breasts","plug","fondle thighs", "fondle ass", "insert ass", "suck breasts", "lick pussy", "lick ass", "sex", "anal", "hotdog", "dildo pussy", "dildo anal"):
                     $ Trigger2 = "fondle pussy"
                     call R_Fondle_Pussy
                     
-            "Also fondle her ass." if Trigger in ("fondle breasts","fondle pussy", "fondle thighs", "insert ass", "suck breasts", "lick pussy", "lick ass", "sex", "anal", "hotdog", "dildo pussy", "dildo anal"):
+            "Also fondle her ass." if Trigger in ("fondle breasts","plug","fondle pussy", "fondle thighs", "insert ass", "suck breasts", "lick pussy", "lick ass", "sex", "anal", "hotdog", "dildo pussy", "dildo anal"):
                     $ Trigger2 = "fondle ass"
                     call R_Fondle_Ass
                     
@@ -1913,7 +1915,7 @@ label Rogue_Offhand_Set(Situation = Situation, TempTrigger = Trigger2):
                     $ Trigger2 = "insert ass"
                     call R_Insert_Ass
                     
-            "Also jack it." if Trigger in ("fondle breasts","fondle pussy", "fondle thighs", "fondle ass", "insert ass", "suck breasts", "lick pussy", "lick ass", "dildo pussy", "dildo anal"):
+            "Also jack it." if Trigger in ("fondle breasts","fondle pussy","plug", "fondle thighs", "fondle ass", "insert ass", "suck breasts", "lick pussy", "lick ass", "dildo pussy", "dildo anal"):
                     call R_Jackin
                     
             "Nevermind":

@@ -2,8 +2,6 @@
 errors listed below, and try again.
 
 
-File "game/script Locations.rpy", line 777: expected statement.
-    K_History.append("vibratorclass")
-                                     ^
+File "game/Rogue_SDialog.rpy", line 1452: indentation mismatch.
 
 Ren'Py Version: Ren'Py 6.99.13.2919
