@@ -1591,7 +1591,7 @@ label Emma_AskPanties(Store = 0):
             $ Tempmod -= 20
         
         $ Line = 0
-        if E_Legs == "pants" or E_Legs == "NewX" or E_Legs == "NewX black" or HoseNum("Emma") >= 10: 
+        if E_Legs == "pants" or E_Legs == "black pants" or E_Legs == "NewX" or E_Legs == "NewX black" or HoseNum("Emma") >= 10: 
             if ApprovalCheck("Emma", 1000, "OI", TabM = 5) or "exhibitionist" in E_Traits:   
                 $ Line = "here"
             elif ApprovalCheck("Emma", 900, TabM = 5):
@@ -1684,7 +1684,7 @@ label Emma_AskPanties(Store = 0):
                                 
                     if Line:                                            #She agreed to stay  
                                 call EmmaFace("sly", 1) 
-                                if E_Legs == "pants" or E_Legs == "NewX" or E_Legs == "NewX black" or HoseNum("Emma") >= 10:   
+                                if E_Legs == "pants" or E_Legs == "black pants" or E_Legs == "NewX" or E_Legs == "NewX black" or HoseNum("Emma") >= 10:   
                                         $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 60, 5)         
                                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 60, 5)            
                                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 5)   
@@ -3401,6 +3401,16 @@ label Emma_Clothes(Public=0,Bonus=0):
                 jump Emma_Clothes    
             $ E_Over = "jacket"
 
+        "Try on that black jacket you have." if E_Over != "black jacket":
+            call EmmaFace("bemused")
+            if E_Chest or E_SeenChest or ApprovalCheck("Emma", 500, TabM=(3-Public)):
+                ch_e "Yeah, ok."          
+            else:
+                call EmmaFace("bemused", 1)
+                ch_e "I'm not sure this is appropriate without something more substantial underneath."
+                jump Emma_Clothes    
+            $ E_Over = "black jacket"
+
         "Try on that white cape you have." if E_Over != "cape":
             call EmmaFace("bemused")
             if E_Chest or E_SeenChest or ApprovalCheck("Emma", 500, TabM=(3-Public)):
@@ -3410,6 +3420,16 @@ label Emma_Clothes(Public=0,Bonus=0):
                 ch_e "I'm not sure this is appropriate without something more substantial underneath."
                 jump Emma_Clothes    
             $ E_Over = "cape"   
+
+        "Try on that black cape you have." if E_Over != "black cape":
+            call EmmaFace("bemused")
+            if E_Chest or E_SeenChest or ApprovalCheck("Emma", 500, TabM=(3-Public)):
+                ch_e "Yeah, ok."          
+            else:
+                call EmmaFace("bemused", 1)
+                ch_e "I'm not sure this is appropriate without something more substantial underneath."
+                jump Emma_Clothes    
+            $ E_Over = "black cape"   
                 
 #        "How about that red t-shirt you have?" if E_Over != "red shirt":
 #            $ E_Over = "red shirt"  
@@ -3522,6 +3542,10 @@ label Emma_Clothes(Public=0,Bonus=0):
             ch_e "I know."
             $ E_Legs = "pants"
 
+        "You look great in those black pants." if E_Legs != "black pants":
+            ch_e "I know."
+            $ E_Legs = "black pants"
+
         "You look great in those white shorts." if E_Legs != "NewX":
             ch_e "I know."
             $ E_Legs = "NewX"
@@ -3611,7 +3635,7 @@ label Emma_Clothes(Public=0,Bonus=0):
                     ch_e "I'd rather not out here. . ."
                 else:
                     ch_e "I suppose for you. . ."
-            elif E_Over == "jacket" and ApprovalCheck("Emma", 700, TabM=(3-Public)):
+            elif E_Over == "jacket" or E_Over == "black jacket" and ApprovalCheck("Emma", 700, TabM=(3-Public)):
                 ch_e "This is a bit daring without anything under it. . ."  
             elif not E_Over:
                 ch_e "I don't think that would be appropriate."
@@ -3632,6 +3656,14 @@ label Emma_Clothes(Public=0,Bonus=0):
             if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
                 ch_e "So do I."   
                 $ E_Chest = "corset"  
+                $ E_TitsUp = 1
+            else:                
+                ch_e "I don't think that would be appropriate. . ."  
+
+        "I like that black corset you have." if E_Chest != "black corset":
+            if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
+                ch_e "So do I."   
+                $ E_Chest = "black corset"  
                 $ E_TitsUp = 1
             else:                
                 ch_e "I don't think that would be appropriate. . ."    
@@ -3725,6 +3757,13 @@ label Emma_Clothes(Public=0,Bonus=0):
                     $ E_Panties = "white panties"  
             else:                
                     ch_e "I really don't see how that's any of your concern."
+
+        "Why don't you wear the black panties instead?" if E_Panties and E_Panties != "black panties":
+            if ApprovalCheck("Emma", 1100, TabM=(4-Public)):
+                    ch_e "Ok."
+                    $ E_Panties = "black panties"  
+            else:                
+                    ch_e "I really don't see how that's any of your concern."
                 
         "Why don't you wear the lace panties instead?" if "lace panties" in E_Inventory and E_Panties and E_Panties != "lace panties":
             if ApprovalCheck("Emma", 1300, TabM=(4-Public)):
@@ -3745,6 +3784,9 @@ label Emma_Clothes(Public=0,Bonus=0):
                 "How about the white ones?":
                     ch_e "Fine."
                     $ E_Panties = "white panties"
+                "How about the black ones?":
+                    ch_e "Fine."
+                    $ E_Panties = "black panties"
                 "How about the lace ones?" if "lace panties" in E_Inventory:
                     ch_e "Fine."                
                     $ E_Panties  = "lace panties"
@@ -3762,11 +3804,14 @@ label Emma_Clothes(Public=0,Bonus=0):
             ch_e "Ok."
         "Put your gloves on." if not E_Arms:
             $ E_Arms = 1
+            ch_e "Ok." 
+        "Put your black gloves on." if not E_Arms:
+            $ E_Arms = "black gloves"
             ch_e "Ok."     
 
         "Hair options":
 
-            menu:
+            menu Emma_Clothes_Misc_Hair:
 
                 "You look good with your hair flowing." if E_Hair != "wave":
                     if ApprovalCheck("Emma", 600):
@@ -3774,6 +3819,7 @@ label Emma_Clothes(Public=0,Bonus=0):
                         $ E_Hair = "wave"
                     else:
                         ch_e "Yes, I do."
+                    jump Emma_Clothes_Misc_Hair
                         
                 "Maybe keep your hair straight." if E_Hair != "wet":
                     if ApprovalCheck("Emma", 600):
@@ -3781,6 +3827,7 @@ label Emma_Clothes(Public=0,Bonus=0):
                         $ E_Hair = "wet"
                     else:
                         ch_e "I tend to prefer it a bit more loose."
+                    jump Emma_Clothes_Misc_Hair
         
                 "Maybe dye your hair black." if E_HairColor != "black":
                     if ApprovalCheck("Emma", 600):
@@ -3788,16 +3835,66 @@ label Emma_Clothes(Public=0,Bonus=0):
                         $ E_HairColor = "black"
                     else:
                         ch_e "I tend to prefer it the way it is."
+                    jump Emma_Clothes_Misc_Hair
+
+                "Maybe dye your hair red." if E_HairColor != "red":
+                    if ApprovalCheck("Emma", 600):
+                        ch_e "You think?"
+                        $ E_HairColor = "red"
+                    else:
+                        ch_e "I tend to prefer it the way it is."
+                    jump Emma_Clothes_Misc_Hair
+
+
+                "Maybe dye your hair white." if E_HairColor != "white":
+                    if ApprovalCheck("Emma", 600):
+                        ch_e "You think?"
+                        $ E_HairColor = "white"
+                    else:
+                        ch_e "I tend to prefer it the way it is."
+                    jump Emma_Clothes_Misc_Hair
+
         
-                "Maybe dye your hair back to blonde." if E_HairColor == "black":
+                "Maybe dye your hair back to blonde." if E_HairColor and E_HairColor != "blonde":
                     if ApprovalCheck("Emma", 600):
                         ch_e "You think?"
                         $ E_HairColor = "blonde"
                     else:
                         ch_e "I tend to prefer it the way it is."
+                    jump Emma_Clothes_Misc_Hair
 
                 "Nevermind":
-                    pass
+                    jump Emma_Clothes_Misc
+
+        "Neck options":
+            menu Emma_Clothes_Misc_Neck:
+                "Why don't you try on that white choker." if E_Neck != "choker":
+                    ch_e "Ok. . ."         
+                    $ E_Neck = "choker"
+                    jump Emma_Clothes_Misc_Neck
+        
+                "Why don't you try on that black choker." if E_Neck != "black choker":
+                    ch_e "Ok. . ."         
+                    $ E_Neck = "black choker"
+                    jump Emma_Clothes_Misc_Neck
+        
+                "Why don't you try on that NewX neck piece." if E_Neck != "NewX":
+                    ch_e "Ok. . ."         
+                    $ E_Neck = "NewX"
+                    jump Emma_Clothes_Misc_Neck
+                "Why don't you try on that black NewX neck piece." if E_Neck != "NewX black":
+                    ch_e "Ok. . ."         
+                    $ E_Neck = "NewX black"
+                    jump Emma_Clothes_Misc_Neck
+        #        "Why don't you try on that star necklace." if E_Neck != "star necklace":
+        #            ch_e "Ok. . ."         
+        #            $ E_Neck = "star necklace"
+                "Maybe go without a collar." if E_Neck:
+                    ch_e "Ok. . ."         
+                    $ E_Neck = 0
+                    jump Emma_Clothes_Misc_Neck
+                "Nevermind":
+                    jump Emma_Clothes_Misc
                         
         "You know, I like some nice hair down there. Maybe grow it out." if not E_Pubes and "pubes" in E_Todo:
             call EmmaFace("bemused", 1)
@@ -3889,22 +3986,8 @@ label Emma_Clothes(Public=0,Bonus=0):
                 ch_e "Well {i}I{/i} enjoy them."
                 jump Emma_Clothes            
             $ E_Pierce = 0 
-        "Why don't you try on that white choker." if E_Neck != "choker":
-            ch_e "Ok. . ."         
-            $ E_Neck = "choker"
 
-        "Why don't you try on that NewX neck piece." if E_Neck != "NewX":
-            ch_e "Ok. . ."         
-            $ E_Neck = "NewX"
-        "Why don't you try on that black NewX neck piece." if E_Neck != "NewX black":
-            ch_e "Ok. . ."         
-            $ E_Neck = "NewX black"
-#        "Why don't you try on that star necklace." if E_Neck != "star necklace":
-#            ch_e "Ok. . ."         
-#            $ E_Neck = "star necklace"
-        "Maybe go without a collar." if E_Neck:
-            ch_e "Ok. . ."         
-            $ E_Neck = 0
+
             
         "Never mind":
             pass         
@@ -4177,6 +4260,8 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
                 return
                         
             #If she's wearing a bra of some kind
+            if E_Chest == "black corset":  
+                $ Count = 15
             if E_Chest == "corset":  
                 $ Count = 15
             if E_Chest == "NewX":  
@@ -4196,8 +4281,12 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
                     $ Count = 0
                     
             #If she's wearing an overshirt
+            if E_Over == "black jacket":                                             
+                $ Count += 15
             if E_Over == "jacket":                                             
                 $ Count += 15
+            elif E_Over == "black cape":
+                $ Count += 20
             elif E_Over == "cape":
                 $ Count += 20
             elif E_Over == "towel":      
@@ -4243,6 +4332,8 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
                             # if commando
                             $ Count = 25                
                 elif E_Panties == "white panties":      #If wearing only white panties
+                    $ Count = 10
+                elif E_Panties == "black panties":      #If wearing only black panties
                     $ Count = 10
 #                elif E_Panties == "lace panties":       #If wearing only lace panties
 #                    $ Count = 5              
@@ -4571,7 +4662,7 @@ label Emma_Tits_Up:
     $ E_Tits = 1
     if Emma_Arms == 1:
         pass    
-    elif E_Chest == "corset" or E_Chest == "NewX" or E_Chest == "NewX black":
+    elif E_Chest == "corset" or E_Chest == "black corset" or E_Chest == "NewX" or E_Chest == "NewX black":
         pass
     else:
         #if all checks fail,

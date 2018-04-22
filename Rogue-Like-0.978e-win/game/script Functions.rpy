@@ -558,6 +558,8 @@ init python:
                             return 0
                 elif Chr == "Emma":
                         if E_Legs == "pants":
+                            return 10 
+                        elif E_Legs == "black pants":
                             return 10    
                         else:
                             return 0

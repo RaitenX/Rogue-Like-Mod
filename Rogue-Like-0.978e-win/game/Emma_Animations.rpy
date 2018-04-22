@@ -9,17 +9,23 @@ image Emma_Sprite:
 #            ),        
         (0,0), ConditionSwitch(                                                                         #hair back 
             "not E_Hair", Null(),
+            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_HairbackWet_Red.png",
+            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_HairbackWet_White.png",
             "(E_Hair == 'wet' or E_Water) and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_HairBlackbackWet.png",
             "E_Hair == 'wet' or E_Water", "images/EmmaSprite/EmmaSprite_HairbackWet.png",
+            "E_Hair and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Hairback_Red.png",   
+            "E_Hair and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Hairback_White.png",   
             "E_Hair and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_HairBlackback.png",   
             "E_Hair", "images/EmmaSprite/EmmaSprite_Hairback.png",   
             "True", Null(),        
             ),  
         (0,0), ConditionSwitch(                                                                         #hair back 
+            "E_Over == 'black cape'", "images/EmmaSprite/EmmaSprite_LongCape_Back_Black.png",   
             "E_Over == 'cape'", "images/EmmaSprite/EmmaSprite_LongCape_Back.png",   
             "True", Null(),        
             ),
         (0,0), ConditionSwitch(                                                                         #panties down back 
+            "E_PantiesDown and E_Panties == 'black panties'", "images/EmmaSprite/EmmaSprite_Panties_DownBack_Black.png",   
             "E_PantiesDown and E_Panties == 'white panties'", "images/EmmaSprite/EmmaSprite_Panties_DownBack.png",   
             "True", Null(),        
             ),  
@@ -37,15 +43,18 @@ image Emma_Sprite:
             ),  
         (0,0), ConditionSwitch(                                                                         #panties down if not wearing pants
             "not E_PantiesDown or (E_Legs and not E_Upskirt)", Null(),   
+            "E_Panties == 'black panties'", "images/EmmaSprite/EmmaSprite_Panties_Down_Black.png",  
             "E_Panties == 'white panties'", "images/EmmaSprite/EmmaSprite_Panties_Down.png",  
             "True", Null(),        
             ),        
         (0,0), ConditionSwitch(                                                                         #panties up
             "E_PantiesDown and (not E_Legs or E_Upskirt)", Null(),   
+            "E_Panties == 'black panties'", "images/EmmaSprite/EmmaSprite_Panties_Black.png",  
             "E_Panties == 'white panties'", "images/EmmaSprite/EmmaSprite_Panties.png",  
             "True", Null(),        
             ),  
         (0,0), ConditionSwitch(                                                                         #pants    
+            "E_Legs == 'black pants' and not E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_Black.png", 
             "E_Legs == 'pants' and not E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants.png", 
             "E_Legs == 'NewX' and not E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_NewX.png", 
             "E_Legs == 'NewX black' and not E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_NewXBlack.png", 
@@ -66,6 +75,7 @@ image Emma_Sprite:
             "True", Null(), 
             ),    
         (0,0), ConditionSwitch(                                                                         #Chest underlayer
+            "E_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_CorsetUnder_Black.png",   
             "E_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_CorsetUnder.png",   
             "E_Chest == 'NewX'", "images/EmmaSprite/EmmaSprite_CorsetUnder_NewX.png",   
             "E_Chest == 'NewX black'", "images/EmmaSprite/EmmaSprite_CorsetUnder_NewXBlack.png",   
@@ -86,23 +96,27 @@ image Emma_Sprite:
             ), 
         (0,0), ConditionSwitch(                                                                         #gloves 
             "not E_Arms", Null(),  
+            "Emma_Arms == 2 and E_Arms == 'black gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms2_Black.png",   
+            "E_Arms == 'black gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms1_Black.png", #if E_Arms == 1         
             "Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Gloves_Arms2.png",   
             "True", "images/EmmaSprite/EmmaSprite_Gloves_Arms1.png", #if E_Arms == 1         
             ),   
         (0,0), ConditionSwitch(                                                                         #tits
 #            "E_Pierce == 'barbell'", "images/EmmaSprite/Emma_chest_barbell.png",            
 #            "E_Pierce == 'ring'", "images/EmmaSprite/Emma_chest_rings.png",      
-            "Emma_Arms == 1 or E_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_TitsUp.png",   # E_TitsUp = 1
+            "Emma_Arms == 1 or E_Chest == 'corset' or E_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_TitsUp.png",   # E_TitsUp = 1
             "E_Chest == 'sports bra' or E_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_TitsUp.png",   # E_TitsUp = 1
 #            "E_TitsUp", "images/EmmaSprite/EmmaSprite_TitsUp.png",   # E_TitsUp = 1
             "True", "images/EmmaSprite/EmmaSprite_TitsDown.png",   # E_TitsUp = 0
             ), 
         (0,0), ConditionSwitch(                                                                         #Water effect 
             "not E_Water", Null(),             
-            "Emma_Arms == 1 or E_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Water_TitsUp.png",  
+            "Emma_Arms == 1 or E_Chest == 'corset' or E_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_Water_TitsUp.png",  
             "True", "images/EmmaSprite/EmmaSprite_Water_TitsDown.png", #if E_Arms == 1      
             ), 
         (0,0), ConditionSwitch(                                                                         #Chest layer
+            "E_Chest == 'black corset' and E_Over", "images/EmmaSprite/EmmaSprite_CorsetTitsX_Black.png",   
+            "E_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_CorsetTits_Black.png",   
             "E_Chest == 'corset' and E_Over", "images/EmmaSprite/EmmaSprite_CorsetTitsX.png",   
             "E_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_CorsetTits.png",   
             "E_Chest == 'NewX' and Emma_Arms == 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewX_Up.png",   
@@ -112,11 +126,14 @@ image Emma_Sprite:
             "True", Null(),              
             ),
         (0,0), ConditionSwitch(                                                                         #cape layer       
-            "E_Over or E_Chest != 'corset'", Null(),  
-            "Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Cape2.png",              
-            "True", "images/EmmaSprite/EmmaSprite_Cape1.png",   
+            "E_Over or (E_Chest != 'corset' and E_Chest != 'black corset')", Null(),  
+            "Emma_Arms == 2 and E_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Cape2.png",              
+            "E_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Cape1.png", 
+            "Emma_Arms == 2 and E_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_Cape2_Black.png",              
+            "True", "images/EmmaSprite/EmmaSprite_Cape1_Black.png",
             ), 
         (0,0), ConditionSwitch(                                                                         #neck
+            "E_Neck == 'black choker'", "images/EmmaSprite/EmmaSprite_Neck_Choker_Black.png",       
             "E_Neck == 'choker'", "images/EmmaSprite/EmmaSprite_Neck_Choker.png",       
             "E_Neck == 'NewX'", "images/EmmaSprite/EmmaSprite_Neck_NewX.png",       
             "E_Neck == 'NewX black'", "images/EmmaSprite/EmmaSprite_Neck_NewXBlack.png",       
@@ -124,16 +141,21 @@ image Emma_Sprite:
             ),  
         (0,0), ConditionSwitch(                                                                         #Overshirt layer       
             "not E_Over", Null(),  
-            "E_Over == 'jacket' and Emma_Arms == 2 and E_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",      
+            "E_Over == 'jacket' and Emma_Arms == 2 and (E_Chest == 'corset' or E_Chest == 'black corset')", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",      
             "E_Over == 'jacket' and Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Jacket_2Down.png",        
-            "E_Over == 'jacket'", "images/EmmaSprite/EmmaSprite_Jacket_1Up.png",       
+            "E_Over == 'jacket'", "images/EmmaSprite/EmmaSprite_Jacket_1Up.png",    
+            "E_Over == 'black jacket' and Emma_Arms == 2 and (E_Chest == 'corset' or E_Chest == 'black corset')", "images/EmmaSprite/EmmaSprite_Jacket_2Up_Black.png",      
+            "E_Over == 'black jacket' and Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Jacket_2Down_Black.png",        
+            "E_Over == 'black jacket'", "images/EmmaSprite/EmmaSprite_Jacket_1Up_Black.png",    
+            "E_Over == 'black cape' and Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_LongCape_TitsDown_Black.png",   
+            "E_Over == 'black cape'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp_Black.png",   
             "E_Over == 'cape' and Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_LongCape_TitsDown.png",   
             "E_Over == 'cape'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp.png",   
             "True", Null(), 
             ), 
         (0,0), ConditionSwitch(                                                                         #Towel Over layer       
             "not E_Over", Null(),  
-            "E_Over == 'towel' and Emma_Arms == 2 and E_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Towel_Up2.png",      
+            "E_Over == 'towel' and Emma_Arms == 2 and (E_Chest == 'corset' or E_Chest == 'black corset')", "images/EmmaSprite/EmmaSprite_Towel_Up2.png",      
             "E_Over == 'towel' and Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Towel_Down2.png",        
             "E_Over == 'towel'", "images/EmmaSprite/EmmaSprite_Towel_Up1.png",          
             "True", Null(), 
@@ -269,6 +291,8 @@ image Emma_Sprite:
 
 image TempHairBack:
     (0,0), ConditionSwitch( 
+        "E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_HairBackWet_White.png",
+        "E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_HairBackWet_Red.png",
         "E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackBackWet.png",
         "True", "images/EmmaSprite/EmmaSprite_Head_HairBackWet.png",
         ),
@@ -355,16 +379,28 @@ image EmmaSprite_Head:
         
         (0,0), "Emma Blink",                                                                           #Eyes        
         (0,0), ConditionSwitch(                                                                         #brows
+            #"E_Brows == 'normal' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_White.png",
+            #"E_Brows == 'normal' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_Red.png",
             "E_Brows == 'normal' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Normal.png",
             "E_Brows == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal.png",
+            #"E_Brows == 'angry' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Angry_White.png",
+            #"E_Brows == 'angry' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Angry_Red.png",
             "E_Brows == 'angry' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Angry.png",
             "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Brows_Angry.png",
+            #"E_Brows == 'sad' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Sad_White.png",
+            #"E_Brows == 'sad' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Sad_Red.png",
             "E_Brows == 'sad' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Sad.png",
             "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Brows_Sad.png",
+            #"E_Brows == 'surprised' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Surprised_White.png",        
+            #"E_Brows == 'surprised' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Surprised_Red.png",        
             "E_Brows == 'surprised' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Surprised.png",        
             "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Brows_Surprised.png",        
+            #"E_Brows == 'confused' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Confused_White.png",
+            #"E_Brows == 'confused' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Confused_Red.png",
             "E_Brows == 'confused' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Confused.png",
             "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Brows_Confused.png",
+            #"True and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_White.png",
+            #"True and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_Red.png",
             "True and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Normal.png",
             "True", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal.png",
             ),         
@@ -374,8 +410,12 @@ image EmmaSprite_Head:
             ),  
         (0,0), ConditionSwitch(                                                                         #Hair
             "not E_Hair", Null(),
+            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_HairWet_White.png",
+            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_HairWet_Red.png",
             "(E_Hair == 'wet' or E_Water) and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackWet.png",
             "E_Hair == 'wet' or E_Water", "images/EmmaSprite/EmmaSprite_Head_HairWet.png",
+            "E_Hair and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Hair_White.png",
+            "E_Hair and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Hair_Red.png",
             "E_Hair and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlack.png",
             "E_Hair", "images/EmmaSprite/EmmaSprite_Head_Hair.png",
             "True", Null(),

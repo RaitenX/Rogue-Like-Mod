@@ -112,12 +112,16 @@ label Rogue_Chat:
                             $ R_PantiesDown = 0
                             $ R_Legs = Temp_R_Legs
                             pause
-                        elif R_Panties and R_Panties != "lace panties" and R_Panties != "black panties":
+                        elif R_Panties and R_Panties != "lace panties" and R_Panties != "black panties" and R_Panties != "swimsuit1" and R_Panties != "swimsuit2":
                             $ R_PantiesDown = 1
                             "And pulls down her [R_Panties]"
                             ch_r "There, you happy?"
                             $ R_PantiesDown = 0
                             pause
+                        else:
+                            ch_r "There, you happy?"
+                            pause
+                            
 
                         call Rogue_Doggy_Reset 
                     else:
