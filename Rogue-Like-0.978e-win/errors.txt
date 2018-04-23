@@ -2,6 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/Rogue_SDialog.rpy", line 1452: indentation mismatch.
+File "game/screens.rpy", line 167: expected a keyword argument or child statement.
+    "[items]"
+    ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

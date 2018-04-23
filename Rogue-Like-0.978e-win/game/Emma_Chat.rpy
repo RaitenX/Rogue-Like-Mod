@@ -3199,6 +3199,29 @@ label Emma_Clothes(Public=0,Bonus=0):
                 $ E_OutfitDay = E_Outfit           
                 $ E_Chat[1] += 1                
                 return
+#        "Let's talk about your underwear1.":
+#            jump Emma_Clothes_Under
+#        "Let's talk about your underwear2.":
+#            jump Emma_Clothes_Under
+#        "Let's talk about your underwear3.":
+#            jump Emma_Clothes_Under
+#        "Let's talk about your underwear4.":
+#            jump Emma_Clothes_Under
+#        "Let's talk about your underwear5.":
+#            jump Emma_Clothes_Under
+#        "Let's talk about your underwear6.":
+#            jump Emma_Clothes_Under
+#        "Let's talk about your underwear7.":
+#            jump Emma_Clothes_Under
+#        "Let's talk about your underwear8.":
+#            jump Emma_Clothes_Under
+#        "Let's talk about your underwear9.":
+#            jump Emma_Clothes_Under
+#        "Let's talk about your underwear10.":
+#            jump Emma_Clothes_Under
+#        "Let's talk about your underwear11.":
+#            jump Emma_Clothes_Under
+
             
     jump Emma_Clothes
     #End of Emma Wardrobe Main Menu
