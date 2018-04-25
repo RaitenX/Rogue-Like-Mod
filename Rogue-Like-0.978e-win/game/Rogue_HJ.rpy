@@ -379,6 +379,30 @@ label RHJ_Cycle:
                                     "You ask her to slow it down a bit."
                         "Slow Down. . . (locked)" if not Speed:                
                                     pass
+
+                        "Gag":
+                            if not R_Gag:
+                                #"You put a gag on Rogue"
+                            #            $ R_Gag = 2
+                            #        
+                                menu:
+                                    "How about using a ballgag?":
+                                        $ Situation = "shift"
+                                        call R_Gagging("ballgag")
+                                    "Just put the ballgag in her mouth [[without asking].":
+                                        $ Situation = "auto"
+                                        call R_Gagging("ballgag")
+                                    "How about using a ringgag?":
+                                        $ Situation = "shift"
+                                        call R_Gagging("ringgag")
+                                    "Just put the ringgag in her mouth [[without asking].":
+                                        $ Situation = "auto"
+                                        call R_Gagging("ringgag")
+                                    "Nevermind.":
+                                        pass
+                            else:
+                                "You remove Rogue's gag"
+                                $ R_Gag = 0
                             
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
@@ -936,6 +960,30 @@ label RTJ_Cycle:
                                     "You ask her to slow it down a bit."
                         "Slow Down. . . (locked)" if not Speed:                
                                     pass
+
+                        "Gag":
+                            if not R_Gag:
+                                #"You put a gag on Rogue"
+                            #            $ R_Gag = 2
+                            #        
+                                menu:
+                                    "How about using a ballgag?":
+                                        $ Situation = "shift"
+                                        call R_Gagging("ballgag")
+                                    "Just put the ballgag in her mouth [[without asking].":
+                                        $ Situation = "auto"
+                                        call R_Gagging("ballgag")
+                                    "How about using a ringgag?":
+                                        $ Situation = "shift"
+                                        call R_Gagging("ringgag")
+                                    "Just put the ringgag in her mouth [[without asking].":
+                                        $ Situation = "auto"
+                                        call R_Gagging("ringgag")
+                                    "Nevermind.":
+                                        pass
+                            else:
+                                "You remove Rogue's gag"
+                                $ R_Gag = 0
                             
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
@@ -1499,6 +1547,30 @@ label RBJ_Cycle:
                                 else:
                                     $ Speed = 1
                                 $ R_RecentActions.append("setpace")
+
+                        "Gag":
+                            if not R_Gag:
+                                #"You put a gag on Rogue"
+                            #            $ R_Gag = 2
+                            #        
+                                menu:
+                                    "How about using a ballgag?":
+                                        $ Situation = "shift"
+                                        call R_Gagging("ballgag")
+                                    "Just put the ballgag in her mouth [[without asking].":
+                                        $ Situation = "auto"
+                                        call R_Gagging("ballgag")
+                                    "How about using a ringgag?":
+                                        $ Situation = "shift"
+                                        call R_Gagging("ringgag")
+                                    "Just put the ringgag in her mouth [[without asking].":
+                                        $ Situation = "auto"
+                                        call R_Gagging("ringgag")
+                                    "Nevermind.":
+                                        pass
+                            else:
+                                "You remove Rogue's gag"
+                                $ R_Gag = 0
                                 
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass

@@ -1196,6 +1196,11 @@ label Rogue_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
     $ Cleaned = 1 if "cleaned" in R_DailyActions else 0
     $ R_RecentActions.append("cleaned") 
     $ R_DailyActions.append("cleaned") 
+
+    if R_Gag:
+        "She removes the gag"
+        $ R_Gag = 0
+
     
     if Line == "ask":
             $ Line = "random"

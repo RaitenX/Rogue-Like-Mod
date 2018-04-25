@@ -1485,6 +1485,10 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
         if renpy.showing("NightMask", layer='nightmask') and Current_Time == "Morning":
             #Skips theis check if it's a sleepover
             return
+
+        if R_Gag:
+            "She removes her gag"
+            $ R_Gag = 0
         
         if R_OutfitTemp != R_Outfit:
                 #if her new outfit is not what she was wearing before,

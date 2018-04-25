@@ -128,7 +128,9 @@ image Rogue:
 #            "R_Blush", "images/RogueSprite/Rogue_blush.png",
 #            "True", Null(), 
 #            ),
-        (0,0), ConditionSwitch(                                                                         #Mouths        
+        (0,0), ConditionSwitch(  
+            "'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueSprite/Rogue_mouth_ringgag_w.png",                                                                       #Mouths        
+            "R_Gag == 'ringgag'", "images/RogueSprite/Rogue_mouth_ringgag.png",                                                                       #Mouths        
             "'mouth' in R_Spunk and R_Mouth == 'sucking'", "images/RogueSprite/Rogue_mouth_sucking_w.png",
             "'mouth' in R_Spunk and R_Mouth == 'surprised'", "images/RogueSprite/Rogue_mouth_sucking_w.png",
             "'mouth' in R_Spunk and R_Mouth == 'sad'", "images/RogueSprite/Rogue_mouth_sad_w.png",
@@ -697,12 +699,14 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             "True", Null(),                   
             ),   
         (0,0), ConditionSwitch(                                                                                 #Mouth
-            "R_Gag", "images/RogueDoggy/Rogue_Doggy_BallGag.png",
-            "True", Null(),
+            "R_Gag == 'ballgag'", "images/RogueDoggy/Rogue_Doggy_BallGag.png",
+            "True", Null(), #Rogue_Doggy_BallGag
             ),
         (0,0), "images/RogueDoggy/Rogue_Doggy_Body.png",  
         (0,0), ConditionSwitch(                                                                                 #Mouth
-            "R_Gag", "images/RogueDoggy/Rogue_Doggy_BallGagTop.png",
+            "R_Gag == 'ballgag'", "images/RogueDoggy/Rogue_Doggy_BallGagTop.png",
+            "'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueDoggy/Rogue_Doggy_Mouth_BlowW.png",
+            "R_Gag == 'ringgag'", "images/RogueDoggy/Rogue_Doggy_Mouth_Blow.png",
             "'mouth' in R_Spunk and R_Mouth == 'lipbite'", "images/RogueDoggy/Rogue_Doggy_Mouth_LipbiteW.png",
             "'mouth' in R_Spunk and R_Mouth == 'surprised'", "images/RogueDoggy/Rogue_Doggy_Mouth_SurprisedW.png",
             "'mouth' in R_Spunk and R_Mouth == 'sucking'", "images/RogueDoggy/Rogue_Doggy_Mouth_BlowW.png",
@@ -723,9 +727,13 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             ),
                                                               #Body base
         (0,0), ConditionSwitch(                                                                                 #Blush
-            "R_Blush and R_Gag", "images/RogueDoggy/Rogue_Doggy_BlushEvoBallGag.png",
+            "R_Blush and R_Gag == 'ballgag'", "images/RogueDoggy/Rogue_Doggy_BlushEvoBallGag.png",
             "R_Blush", "images/RogueDoggy/Rogue_Doggy_BlushEvo.png",
             "True", Null(), 
+            ),
+        (0,0), ConditionSwitch(                                                                                 #Mouth
+            "R_Gag == 'ringgag'", "images/RogueDoggy/Rogue_Doggy_RingGag.png",
+            "True", Null(), #Rogue_Doggy_RingGag
             ),
         (0,0), ConditionSwitch(                                                                                 #Brows
             "R_Brows == 'normal'", "images/RogueDoggy/Rogue_Doggy_Brows_Normal.png",
@@ -1675,7 +1683,8 @@ label Rogue_Doggy_Reset:
     $ Rogue_Arms = 2      
     $ R_SpriteVer = 0
     hide Rogue_Doggy
-    $ R_Gag = 0
+    if R_Gag == "ballgag":
+        $ R_Gag = 0
     show Rogue at SpriteLoc(R_SpriteLoc) zorder RogueLayer:
                     alpha 1
                     zoom 1
@@ -1776,6 +1785,17 @@ image BJ_Head:                                                                  
             "True", "images/RogueBJFace/Rogue_bj_face_base_s.png"
             ),   
         (0,0), ConditionSwitch(                                                                                 #Mouth for under layer
+            #"Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_lickingS_ring.png", #sucking
+            "Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking
+            #"Speed == 1 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_licking_ring.png", #sucking
+            "Speed == 1 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ring.png", #sucking
+            "Speed == 2 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_licking_ring.png", #sucking
+            "Speed == 3 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_sucking_ring.png", #sucking
+            "Speed == 4 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_sucking_ring.png", #deepthroat  
+            "R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking
+            #"R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS_ring.png", #sucking
+            "R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ring.png", 
+            #"R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_licking_ring.png", #sucking
             "Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
             "Speed == 1 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_licking.png", #licking
             "Speed == 2 and Trigger == 'blow'", Null(),                                #heading Rogue_BJ_HeadingMouth()
@@ -1800,7 +1820,7 @@ image BJ_Head:                                                                  
             "True", "images/RogueBJFace/Rogue_bj_mouth_normal.png",
             ),       
         (316,590), ConditionSwitch(      #600               
-            "Speed == 2", At("BJ_MouthHeading", BJ_MouthAnim()),     
+            "Speed == 2 and not R_Gag", At("BJ_MouthHeading", BJ_MouthAnim()),     
             "True", Null(),
             ),  
         (0,0), ConditionSwitch(                                                                                 #cum for under layer
@@ -1809,6 +1829,14 @@ image BJ_Head:                                                                  
 #            "Speed == 2", "images/RogueBJFace/Rogue_bj_face_under_heading_cum.png", 
             "Speed == 3", "images/RogueBJFace/Rogue_bj_face_under_sucking_cum.png",
             "Speed == 4", "images/RogueBJFace/Rogue_bj_face_under_sucking_cum.png",  
+            "True", Null(),
+            ),
+        (0,0), ConditionSwitch(                                                                                 #cum for under layer
+            #"'facial' in R_Spunk", "images/RogueBJFace/Rogue_bj_facial_under.png",
+            #"not R_Spunk or Trigger != 'blow' or 'mouth' not in R_Spunk", Null(),
+#            "Speed == 2", "images/RogueBJFace/Rogue_bj_face_under_heading_cum.png", 
+            #"Speed == 3", "images/RogueBJFace/Rogue_bj_face_under_sucking_cum.png",
+            #"Speed == 4", "images/RogueBJFace/Rogue_bj_face_under_sucking_cum.png",  
             "True", Null(),
             ),    
         (0,0), ConditionSwitch(                                                                 #Brows
@@ -2159,7 +2187,9 @@ image Rogue_BJChin:
     LiveComposite(
         (787,912),     
         (0,0), "images/RogueBJFace/Rogue_bj_face_under.png", 
-        (0,0), ConditionSwitch(    
+        (0,0), ConditionSwitch(   
+            "R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking
+            "R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ring.png", 
             "Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
             "Speed == 1 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_licking.png",
             "Speed == 2 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_heading.png", 

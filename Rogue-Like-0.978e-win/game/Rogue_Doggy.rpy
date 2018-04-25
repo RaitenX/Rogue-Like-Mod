@@ -492,7 +492,7 @@ label R_Sex_Cycle: #Repeating strokes
                         "Speed up. . . (locked)" if Speed >= 3:
                                     pass
 
-                        "Ballgag":
+                        "Gag":
                             if not R_Gag:
                                 #"You put a gag on Rogue"
                             #            $ R_Gag = 2
@@ -500,10 +500,16 @@ label R_Sex_Cycle: #Repeating strokes
                                 menu:
                                     "How about using a ballgag?":
                                         $ Situation = "shift"
-                                        call R_Gagging
+                                        call R_Gagging("ballgag")
                                     "Just put the ballgag in her mouth [[without asking].":
                                         $ Situation = "auto"
-                                        call R_Gagging
+                                        call R_Gagging("ballgag")
+                                    "How about using a ringgag?":
+                                        $ Situation = "shift"
+                                        call R_Gagging("ringgag")
+                                    "Just put the ringgag in her mouth [[without asking].":
+                                        $ Situation = "auto"
+                                        call R_Gagging("ringgag")
                                     "Nevermind.":
                                         pass
                             else:
@@ -703,7 +709,7 @@ label R_SexAfter:
 
 # Gag Rogue //////////////////////////////////////////////////////////////////////////////////////
 
-label R_Gagging:
+label R_Gagging(Gagtype = 0):
 #    call Shift_Focus("Rogue")
     
 #    if R_Gagx <= 8
@@ -779,7 +785,7 @@ label R_Gagging:
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -10, 1)  
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -8)
                     "You put the ballgag on her mouth."  
-                    $ R_Gag = 2                            
+                    $ R_Gag = Gagtype                           
                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 15)
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3) 
                     if not ApprovalCheck("Rogue", 700, "O", TabM=1):                        
@@ -799,7 +805,7 @@ label R_Gagging:
                         $ R_DailyActions.append("angry")  
                         #$ R_Gagx -= 1                      
                     else:
-                        $ R_Gag = 2
+                        $ R_Gag = Gagtype
                         call RogueFace("sad")
                         "Rogue doesn't seem to be into this, you're lucky she's so obedient."                        
         return             
@@ -835,7 +841,7 @@ label R_Gagging:
             call RogueFace("sad")
             $ R_Mouth = "smile"             
             ch_r "Hmm, it has been on my list. . ."  
-        jump R_GagPrep 
+        jump R_GagPrep
     
     elif Approval:                                                                       #Second time+ dialog
         if R_Forced: 
@@ -858,7 +864,7 @@ label R_Gagging:
                 "I like that."]) 
             ch_r "[Line]"
         $ Line = 0
-        jump R_GagPrep 
+        jump R_GagPrep
             
     if Approval >= 2:                                                                   #She's into it. . .               
         if R_Forced:
@@ -881,7 +887,7 @@ label R_Gagging:
         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 20, 1)
         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 60, 1)
         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 2) 
-        jump R_GagPrep   
+        jump R_GagPrep 
     
     else:                                                                               #She's not into it, but maybe. . .            
         call RogueFace("angry")
@@ -1012,7 +1018,7 @@ label R_GagPrep:
     else: #if Situation == "auto"       
 
         "You quickly put the ballgag on her mouth."
-    $ R_Gag = 2
+    $ R_Gag = Gagtype
     
     if not R_Gagx:                                                      #First time stat buffs       
         if R_Forced:
@@ -1942,18 +1948,24 @@ label R_Anal_Plug_Cycle: #Repeating strokes
                         "Start moving? . ." if not Speed:
                                     $ Speed = 1
 
-                        "Ballgag":
+                        "Gag":
                             if not R_Gag:
                                 #"You put a gag on Rogue"
-                            #            $ R_Gag = 2
+                            #            $ R_Gag = "ballgag"
                             #        
                                 menu:
                                     "How about using a ballgag?":
                                         $ Situation = "shift"
-                                        call R_Gagging
+                                        call R_Gagging("ballgag")
                                     "Just put the ballgag in her mouth [[without asking].":
                                         $ Situation = "auto"
-                                        call R_Gagging
+                                        call R_Gagging("ballgag")
+                                    "How about using a ringgag?":
+                                        $ Situation = "shift"
+                                        call R_Gagging("ringgag")
+                                    "Just put the ringgag in her mouth [[without asking].":
+                                        $ Situation = "auto"
+                                        call R_Gagging("ringgag")
                                     "Nevermind.":
                                         pass
                             else:
@@ -2291,7 +2303,7 @@ label R_Anal_Cycle: #Repeating strokes
                         "Speed up. . . (locked)" if Speed >= 3:
                                     pass
 
-                        "Ballgag":
+                        "Gag":
                             if not R_Gag:
                                 #"You put a gag on Rogue"
                             #            $ R_Gag = 2
@@ -2299,10 +2311,16 @@ label R_Anal_Cycle: #Repeating strokes
                                 menu:
                                     "How about using a ballgag?":
                                         $ Situation = "shift"
-                                        call R_Gagging
+                                        call R_Gagging("ballgag")
                                     "Just put the ballgag in her mouth [[without asking].":
                                         $ Situation = "auto"
-                                        call R_Gagging
+                                        call R_Gagging("ballgag")
+                                    "How about using a ringgag?":
+                                        $ Situation = "shift"
+                                        call R_Gagging("ringgag")
+                                    "Just put the ringgag in her mouth [[without asking].":
+                                        $ Situation = "auto"
+                                        call R_Gagging("ringgag")
                                     "Nevermind.":
                                         pass
                             else:
@@ -2933,7 +2951,7 @@ label R_Hotdog_Cycle: #Repeating strokes
                         "Speed up. . . (locked)" if Speed >= 2:
                                     pass
 
-                        "Ballgag":
+                        "Gag":
                             if not R_Gag:
                                 #"You put a gag on Rogue"
                             #            $ R_Gag = 2
@@ -2941,10 +2959,16 @@ label R_Hotdog_Cycle: #Repeating strokes
                                 menu:
                                     "How about using a ballgag?":
                                         $ Situation = "shift"
-                                        call R_Gagging
+                                        call R_Gagging("ballgag")
                                     "Just put the ballgag in her mouth [[without asking].":
                                         $ Situation = "auto"
-                                        call R_Gagging
+                                        call R_Gagging("ballgag")
+                                    "How about using a ringgag?":
+                                        $ Situation = "shift"
+                                        call R_Gagging("ringgag")
+                                    "Just put the ringgag in her mouth [[without asking].":
+                                        $ Situation = "auto"
+                                        call R_Gagging("ringgag")
                                     "Nevermind.":
                                         pass
                             else:
