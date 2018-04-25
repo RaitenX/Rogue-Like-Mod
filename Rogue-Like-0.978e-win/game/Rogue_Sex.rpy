@@ -815,7 +815,7 @@ label R_Slap_Ass:
     #if not Trigger:
     "[Line]."
     $ Line = 0
-    if renpy.showing("Rogue_Doggy"):
+    if renpy.showing("Rogue_Doggy") and Line2:
         ch_r "[Line2]"
         $ Line2 = 0
 

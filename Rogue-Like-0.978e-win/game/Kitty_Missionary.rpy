@@ -545,7 +545,17 @@ label K_Sex_Cycle: #Repeating strokes
                             
                         "Slap her ass":                     
                                     call K_Slap_Ass                                    
-                                    jump K_Sex_Cycle  
+                                    jump K_Sex_Cycle 
+
+                        "Blindfold her" if K_Bondage and not K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
+
+                        "Remove blindfold" if K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You remove the blindfold"
+                            $ K_Blindfold = 0
                                     
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
@@ -1310,6 +1320,16 @@ label K_Anal_Cycle: #Repeating strokes
                         "Slap her ass":                     
                                     call K_Slap_Ass                                    
                                     jump K_Anal_Cycle  
+
+                        "Blindfold her" if K_Bondage and not K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
+
+                        "Remove blindfold" if K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You remove the blindfold"
+                            $ K_Blindfold = 0
                                     
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
@@ -1927,6 +1947,16 @@ label K_Hotdog_Cycle: #Repeating strokes
                         "Slap her ass":                     
                                     call K_Slap_Ass                                    
                                     jump K_Hotdog_Cycle  
+
+                        "Blindfold her" if K_Bondage and not K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
+
+                        "Remove blindfold" if K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You remove the blindfold"
+                            $ K_Blindfold = 0
                                     
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass

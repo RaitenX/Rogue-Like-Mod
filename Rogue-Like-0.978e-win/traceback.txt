@@ -17,7 +17,7 @@ While running game code:
     call Girls_Location
   File "game/script Functions.rpy", line 2270, in script call
     call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 3806, in script call
+  File "game/Rogue_Chat.rpy", line 3819, in script call
     call Gym_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2275, in script call
     call Kitty_Leave(GirlsNum)
@@ -25,7 +25,7 @@ While running game code:
     call Girls_Location
   File "game/script Functions.rpy", line 2270, in script call
     call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 3806, in script call
+  File "game/Rogue_Chat.rpy", line 3819, in script call
     call Gym_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2275, in script call
     call Kitty_Leave(GirlsNum)
@@ -73,7 +73,7 @@ While running game code:
     call Girls_Location
   File "game/script Functions.rpy", line 2270, in script call
     call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 3806, in script call
+  File "game/Rogue_Chat.rpy", line 3819, in script call
     call Gym_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2275, in script call
     call Kitty_Leave(GirlsNum)
@@ -247,57 +247,13 @@ While running game code:
     call Sex_Dialog("Kitty",Partner)
   File "game/script Locations.rpy", line 763, in script call
     call Chat
-  File "game/script Functions.rpy", line 1186, in script call
-    call Kitty_Chat
-  File "game/Kitty_Sex.rpy", line 183, in script call
-    call K_Sex_H
-  File "game/Kitty_Missionary.rpy", line 1986, in script call
-    call Sex_Dialog("Kitty",Partner)
-  File "game/script Locations.rpy", line 130, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1211, in script call
-    call Emma_Chat
-  File "game/script Locations.rpy", line 2589, in script call
-    call Round10
-  File "game/script Functions.rpy", line 1074, in script call
-    call Kitty_Sleepover
-  File "game/Kitty_Scenes.rpy", line 409, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2275, in script call
-    call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 130, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1211, in script call
-    call Emma_Chat
-  File "game/script Locations.rpy", line 130, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1211, in script call
-    call Emma_Chat
-  File "game/script Locations.rpy", line 130, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1211, in script call
-    call Emma_Chat
-  File "game/script Locations.rpy", line 130, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1199, in script call
-    call Emma_Chat
-  File "game/Emma_Chat.rpy", line 70, in script call
-    call Emma_Settings
-  File "game/Emma_Chat.rpy", line 545, in script call
-    call Emma_Clothes
-  File "game/Emma_Chat.rpy", line 3157, in script
-    menu:
-  File "game/screens.rpy", line 142, in execute
-    screen choice(items):
-  File "game/screens.rpy", line 142, in execute
-    screen choice(items):
-  File "game/screens.rpy", line 146, in execute
-    window:
-  File "game/screens.rpy", line 152, in execute
-    fixed pos (xpos,ypos) xysize (100,100):
-  File "game/screens.rpy", line 152, in keywords
-    fixed pos (xpos,ypos) xysize (100,100):
-NameError: name 'xpos' is not defined
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 105, in script
+    if Temp_R_Hose:
+  File "game/Rogue_Chat.rpy", line 105, in <module>
+    if Temp_R_Hose:
+NameError: name 'Temp_R_Hose' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -318,7 +274,7 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2270, in script call
     call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 3806, in script call
+  File "game/Rogue_Chat.rpy", line 3819, in script call
     call Gym_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2275, in script call
     call Kitty_Leave(GirlsNum)
@@ -326,7 +282,7 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2270, in script call
     call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 3806, in script call
+  File "game/Rogue_Chat.rpy", line 3819, in script call
     call Gym_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2275, in script call
     call Kitty_Leave(GirlsNum)
@@ -374,7 +330,7 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2270, in script call
     call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 3806, in script call
+  File "game/Rogue_Chat.rpy", line 3819, in script call
     call Gym_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2275, in script call
     call Kitty_Leave(GirlsNum)
@@ -548,74 +504,19 @@ Full traceback:
     call Sex_Dialog("Kitty",Partner)
   File "game/script Locations.rpy", line 763, in script call
     call Chat
-  File "game/script Functions.rpy", line 1186, in script call
-    call Kitty_Chat
-  File "game/Kitty_Sex.rpy", line 183, in script call
-    call K_Sex_H
-  File "game/Kitty_Missionary.rpy", line 1986, in script call
-    call Sex_Dialog("Kitty",Partner)
-  File "game/script Locations.rpy", line 130, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1211, in script call
-    call Emma_Chat
-  File "game/script Locations.rpy", line 2589, in script call
-    call Round10
-  File "game/script Functions.rpy", line 1074, in script call
-    call Kitty_Sleepover
-  File "game/Kitty_Scenes.rpy", line 409, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2275, in script call
-    call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 130, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1211, in script call
-    call Emma_Chat
-  File "game/script Locations.rpy", line 130, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1211, in script call
-    call Emma_Chat
-  File "game/script Locations.rpy", line 130, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1211, in script call
-    call Emma_Chat
-  File "game/script Locations.rpy", line 130, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1199, in script call
-    call Emma_Chat
-  File "game/Emma_Chat.rpy", line 70, in script call
-    call Emma_Settings
-  File "game/Emma_Chat.rpy", line 545, in script call
-    call Emma_Clothes
-  File "game/Emma_Chat.rpy", line 3157, in script
-    menu:
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1483, in execute
-    choice = renpy.exports.menu(choices, self.set)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\exports.py", line 868, in menu
-    rv = renpy.store.menu(items)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\exports.py", line 1026, in display_menu
-    show_screen(screen, items=item_actions, _widget_properties=props, _transient=True, _layer=renpy.config.choice_layer, **scope)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\screen.py", line 1051, in show_screen
-    sls.add(_layer, d, _tag, zorder=d.zorder, transient=_transient, keep_st=True, name=name)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 1022, in add
-    self.hide_or_replace(layer, remove_index, "replaced")
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 1044, in hide_or_replace
-    d = oldsle.displayable._hide(now - st, now - at, prefix)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\screen.py", line 445, in _hide
-    self.update()
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\screen.py", line 580, in update
-    self.screen.function(**self.scope)
-  File "game/screens.rpy", line 142, in execute
-    screen choice(items):
-  File "game/screens.rpy", line 142, in execute
-    screen choice(items):
-  File "game/screens.rpy", line 146, in execute
-    window:
-  File "game/screens.rpy", line 152, in execute
-    fixed pos (xpos,ypos) xysize (100,100):
-  File "game/screens.rpy", line 152, in keywords
-    fixed pos (xpos,ypos) xysize (100,100):
-  File "<screen language>", line 152, in <module>
-NameError: name 'xpos' is not defined
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 105, in script
+    if Temp_R_Hose:
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1681, in execute
+    if renpy.python.py_eval(condition):
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1794, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1788, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/Rogue_Chat.rpy", line 105, in <module>
+    if Temp_R_Hose:
+NameError: name 'Temp_R_Hose' is not defined
 
 Windows-8-6.2.9200
 Ren'Py 6.99.13.2919

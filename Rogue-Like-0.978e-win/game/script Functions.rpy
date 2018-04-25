@@ -2169,87 +2169,84 @@ label Pool_Clothes(Mode = 0, Girl = 0, GirlsNum = 0): #checked each time you ent
         
     if not Girl or Girl == "Emma":
         if E_Loc != "bg pool" or Mode == "change":  
-                #If Emma has left the gym or was told to change back
-                if E_Outfit == "gym":
+                #If Emma has left the pool or was told to change back
+                if E_Outfit == "bikini":
                         if bg_current == "bg pool" and "leaving" in E_RecentActions:
-                                #if you're in the danger room, and so is Emma
+                                #if you're in the pool, and so is Emma
                                 show blackscreen onlayer black
                         $ E_Outfit = E_OutfitDay
                         call EmmaOutfit(Changed=1)                        
-        elif E_Outfit == "gym":
-                    #If it's already gym clothes, skip this
+        elif E_Outfit == "bikini":
+                    #If it's already pool clothes, skip this
                     pass   
         elif Mode == "pre":
                 #If she was already here
                 if E_Loc == "bg pool" and "Emma" not in Party:
-                    $ E_Outfit = "gym"
+                    if "exhibitionist" in E_Traits:
+                        $ E_Outfit = "bikini"
+                    else:
+                        $ E_Outfit = "bikini"
                     call EmmaOutfit(Changed=1)
+                    $ E_Water = 2
+
         elif Mode == "auto":
                 #If it's set to do it automatically by the call
                         if E_Loc == "bg pool" and E_Loc == bg_current:
                                 show blackscreen onlayer black
-                        $ E_Outfit = "gym"
+                        if "exhibitionist" in E_Traits:
+                            $ E_Outfit = "bikini"
+                        else:
+                            $ E_Outfit = "bikini"
                         call EmmaOutfit(Changed=1)
+        elif Mode == "goswim":
+                #If it's set to do it automatically by the call
+                if E_Over or E_Legs or E_Chest or E_Panties: #she's not walking around naked
+                    if E_Loc == "bg pool" and E_Loc == bg_current:
+                        ch_e "I'l be right there, let me just put on my bikini"
+                        show blackscreen onlayer black
+                    if "exhibitionist" in E_Traits:
+                        $ E_Outfit = "bikini"
+                    else:
+                        $ E_Outfit = "bikini"
+                    call EmmaOutfit(Changed=1)
         elif E_Loc == bg_current:
-                #If Emma is in the gym, see if she'll change clothes
+                #If Emma is in the pool, see if she'll change clothes
                 if ApprovalCheck("Emma", 1300, "LO") or "sub" in E_Traits:
                     pass
-                elif ApprovalCheck("Emma", 900, "LO") and E_Custom[0]:
+                elif ApprovalCheck("Emma", 800, "LO") and E_Custom[0]:
                     pass
-                elif ApprovalCheck("Emma", 700, "LO") and E_Gym[0]:
+                elif ApprovalCheck("Emma", 600, "LO") and E_Gym[0]:
                     pass
                 else:
                     $ Line = "no"
                 if Line == "no":   
-                    #If she decides not to ask you
+                    #If she decides not to ask you   
                     if GirlsNum:
-                        ch_e "I should change too."  
+                        ch_e "I'll be right back too."  
                     else:
-                        ch_e "I need to change into something more appropriate."                       
+                        ch_e "I'll be back soon, gotta change."                       
                     show blackscreen onlayer black
-                    $ E_Outfit = "gym"
+                    if "exhibitionist" in E_Traits:
+                        $ E_Outfit = "bikini"
+                    else:
+                        $ E_Outfit = "bikini"
                     call EmmaOutfit(Changed=1)
-                #else:
-                #    # She asks to change outfits
-                #    $ E_DailyActions.append("asked gym")
-                #    if GirlsNum:
-                #        $ Line = "Do you think I should change as well?"  
-                #    else:
-                #        $ Line = "Did you want me to change?"   
-                #    menu:
-                #            ch_e "[Line]"
-                #            "Yeah, they look great.":  
-                #                call EmmaFace("smile")                              
-                #                $ E_Love = Statupdate("Emma", "Love", E_Love, 60, 1)
-                #                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 1)
-                #                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, 1)
-                #                $ Line = 1                            
-                #            "No, stay in that.":
-                #                call EmmaFace("confused")    
-                #                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 5)
-                #                $ Line = 0
-                #            "Whichever you like.": 
-                #                call EmmaFace("confused")                                      
-                #                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 1)
-                #                $ Line = renpy.random.randint(0, 3)
-                #            "I don't care.":        
-                #                call EmmaFace("angry")      
-                #                $ E_Love = Statupdate("Emma", "Love", E_Love, 50, -3, 1)
-                #                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 4)
-                #                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 2)  
-                #                $ Line = renpy.random.randint(0, 1)
+
                     if Line:
                             #If she decided to change     
-                            ch_e "Fine, I'll be right back."                       
+                            ch_e "Ok, back in a bit"                       
                             show blackscreen onlayer black
-                            $ E_Outfit = "gym"
+                            if "exhibitionist" in E_Traits:
+                                $ E_Outfit = "bikini"
+                            else:
+                                $ E_Outfit = "bikini"
                             call EmmaOutfit(Changed=1)
                     #end asked
-                if E_Outfit == "gym":
+                if E_Outfit == "bikini":
                     $ GirlsNum += 1 
                 $ Line = 0
         hide blackscreen onlayer black
-        # End Emma 
+        # End Emma
         
         return
 # End Gym clothes / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /        
@@ -4091,6 +4088,8 @@ label Failsafe:
     $ R_Panties = "black panties" if "R_Panties" not in globals().keys() else R_Panties
     $ R_Neck = "spiked collar" if "R_Neck" not in globals().keys() else R_Neck
     $ R_Hose = "stockings" if "R_Hose" not in globals().keys() else R_Hose
+    $ Temp_R_Hose = 0 if "Temp_R_Hose" not in globals().keys() else Temp_R_Hose
+    $ Temp_R_Legs = 0 if "Temp_R_Legs" not in globals().keys() else Temp_R_Legs
     $ R_Mouth = "normal" if "R_Mouth" not in globals().keys() else R_Mouth
     $ R_Brows = "normal" if "R_Brows" not in globals().keys() else R_Brows
     $ R_Eyes = "normal" if "R_Eyes" not in globals().keys() else R_Eyes

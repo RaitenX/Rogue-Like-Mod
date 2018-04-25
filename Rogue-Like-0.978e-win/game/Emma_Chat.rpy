@@ -2913,6 +2913,7 @@ label Emma_Leave(Tempmod=Tempmod, GirlsNum = 0):
             #You end the dialog neutrally      
             hide Emma_Sprite
             call Gym_Clothes("auto", "Emma")
+            call Pool_Clothes("auto", "Emma")
             return
     
     if Line == "no":                                                                    
@@ -2927,6 +2928,7 @@ label Emma_Leave(Tempmod=Tempmod, GirlsNum = 0):
                 ch_e "I'm sorry, I'm just much too busy at the moment."         
             hide Emma_Sprite
             call Gym_Clothes("auto", "Emma")         
+            call Pool_Clothes("auto", "Emma")         
             return
         
     elif Line == "go to":                                                                 
@@ -2936,6 +2938,7 @@ label Emma_Leave(Tempmod=Tempmod, GirlsNum = 0):
             call DrainWord("All","arriving")        
             hide Emma_Sprite
             call Gym_Clothes("auto", "Emma")
+            call Pool_Clothes("auto", "Emma")
             if E_Loc == "bg teacher":
                 ch_e "I'll see you there."            
                 jump Class_Room_Entry
@@ -3705,6 +3708,46 @@ label Emma_Clothes(Public=0,Bonus=0):
                 $ E_Chest = "NewX black"  
                 $ E_TitsUp = 1
             else:                
+                ch_e "I don't think that would be appropriate. . ."  
+
+        "I like that bikini top you have." if E_Chest != "bikini":
+            if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
+                ch_e "So do I."   
+                $ E_Chest = "bikini"  
+                $ E_TitsUp = 1
+            else:                
+                ch_e "I don't think that would be appropriate. . ."  
+
+        "I like that bikini top you have." if E_Chest != "bikini":
+            if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
+                ch_e "So do I."   
+                $ E_Chest = "bikini"  
+                $ E_TitsUp = 1
+            else:                
+                ch_e "I don't think that would be appropriate. . ."  
+
+        "I like that bikini top you have." if E_Chest != "bikini":
+            if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
+                ch_e "So do I."   
+                $ E_Chest = "bikini"  
+                $ E_TitsUp = 1
+            else:                
+                ch_e "I don't think that would be appropriate. . ."  
+
+        "I like that bikini top you have." if E_Chest != "bikini":
+            if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
+                ch_e "So do I."   
+                $ E_Chest = "bikini"  
+                $ E_TitsUp = 1
+            else:                
+                ch_e "I don't think that would be appropriate. . ."  
+
+        "I like that bikini top you have." if E_Chest != "bikini":
+            if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
+                ch_e "So do I."   
+                $ E_Chest = "bikini"  
+                $ E_TitsUp = 1
+            else:                
                 ch_e "I don't think that would be appropriate. . ."           
             
 #        "I like that strapless bra." if E_Chest != "bra":
@@ -3785,6 +3828,13 @@ label Emma_Clothes(Public=0,Bonus=0):
             if ApprovalCheck("Emma", 1100, TabM=(4-Public)):
                     ch_e "Ok."
                     $ E_Panties = "black panties"  
+            else:                
+                    ch_e "I really don't see how that's any of your concern."
+
+        "Why don't you wear that bikini panties?" if E_Panties and E_Panties != "bikini":
+            if ApprovalCheck("Emma", 1100, TabM=(4-Public)):
+                    ch_e "Ok."
+                    $ E_Panties = "bikini"  
             else:                
                     ch_e "I really don't see how that's any of your concern."
                 
@@ -4281,15 +4331,18 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
             if not Check and not Taboo:
                 #if this is not a custom check and you're in a safe space,
                 return
+
                         
             #If she's wearing a bra of some kind
             if E_Chest == "black corset":  
                 $ Count = 15
-            if E_Chest == "corset":  
+            elif E_Chest == "corset":  
                 $ Count = 15
-            if E_Chest == "NewX":  
+            elif E_Chest == "NewX":  
                 $ Count = 10
-            if E_Chest == "NewX black":  
+            elif E_Chest == "bikini":  
+                $ Count = 15
+            elif E_Chest == "NewX black":  
                 $ Count = 10
 #            elif E_Chest == "sports bra":
 #                $ Count = 15
@@ -4343,7 +4396,7 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
                         call EmmaFace("bemused", 1)
                         ch_e "This is considerably more cleavage than even I'm comforable with."
              
-            $ Tempshame -= Count                  #Set Outfit shame for the upper half    
+            $ Tempshame -= Count                  #Set Outfit shame for the upper half   
             $ Count = 0         
             
             if E_Legs or E_Panties:          
@@ -4358,6 +4411,8 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
                     $ Count = 10
                 elif E_Panties == "black panties":      #If wearing only black panties
                     $ Count = 10
+                elif E_Panties == "bikini":      #If wearing only bikini
+                    $ Count = 15
 #                elif E_Panties == "lace panties":       #If wearing only lace panties
 #                    $ Count = 5              
                 #else: 0
@@ -4526,6 +4581,9 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
             elif Tempshame <= 20 and E_Loc == "bg dangerroom": 
                     #If the outfit is light but she's in the gym
                     pass
+            elif Tempshame <= 30 and E_Loc == "bg pool": 
+                    #If the outfit is light but she's in the gym
+                    pass
             elif Tempshame <= 25 and (ApprovalCheck("Emma", 2200) or ApprovalCheck("Emma", 700, "I")):
                     #If the outfit is sexy but she's cool with that
                     pass
@@ -4535,6 +4593,7 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
             elif Custom == 9 and not Taboo:
                     pass
             else:
+                    "[Tempshame]"
                     ch_e "I'm afraid I'll have to change, one moment."
                     $ E_Outfit = "teacher"
 #                    $ E_Outfit = renpy.random.choice(["teacher", "costume"])
@@ -4685,7 +4744,7 @@ label Emma_Tits_Up:
     $ E_Tits = 1
     if Emma_Arms == 1:
         pass    
-    elif E_Chest == "corset" or E_Chest == "black corset" or E_Chest == "NewX" or E_Chest == "NewX black":
+    elif E_Chest == "corset" or E_Chest == "black corset" or E_Chest == "NewX" or E_Chest == "NewX black" or E_Chest == "bikini":
         pass
     else:
         #if all checks fail,

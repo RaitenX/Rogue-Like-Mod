@@ -666,6 +666,7 @@ image Rogue_Doggy:
     LiveComposite(                                                                                 #Base body
         (420,750),  
         (0,0), ConditionSwitch(                                                         #Shows different upper body motion depending on events  
+            "P_Sprite and P_Cock == 'anal' and Speed > 3", "Rogue_Doggy_Fuck3_Top",
             "P_Sprite and P_Cock == 'anal' and Speed > 2", "Rogue_Doggy_Fuck2_Top",
             "P_Sprite and P_Cock == 'anal' and Speed > 1", "Rogue_Doggy_Fuck_Top",
             "P_Sprite and P_Cock == 'anal' and Speed", "Rogue_Doggy_Anal_Head_Top",
@@ -674,6 +675,7 @@ image Rogue_Doggy:
             "True", "Rogue_Doggy_Body",           
             ),  
         (0,0), ConditionSwitch(                                                         #Shows different lower body motion depending on events
+            "P_Sprite and P_Cock == 'anal' and Speed > 3", "Rogue_Doggy_Fuck3_Ass",
             "P_Sprite and P_Cock == 'anal' and Speed > 2", "Rogue_Doggy_Fuck2_Ass",
             "P_Sprite and P_Cock == 'anal' and Speed > 1", "Rogue_Doggy_Fuck_Ass",
             "P_Sprite and P_Cock == 'anal' and Speed", "Rogue_Doggy_Anal_Head_Ass",
@@ -880,6 +882,7 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
             "True", Null(),  
             ),   
         (0,0), ConditionSwitch(                                                                                 #Anus Composite            
+            "P_Sprite and P_Cock == 'anal' and Speed > 3", "Rogue_Anal_Fucking3",         
             "P_Sprite and P_Cock == 'anal' and Speed > 2", "Rogue_Anal_Fucking2",         
             "P_Sprite and P_Cock == 'anal' and Speed > 1", "Rogue_Anal_Fucking",
             "P_Sprite and P_Cock == 'anal' and Speed", "Rogue_Anal_Heading",
@@ -990,9 +993,18 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
         (0,0), ConditionSwitch(                                                                                 #UI tool layer
             "not UI_Tool", Null(),   
             "UI_Tool", "Slap_Ass",  
+            #"not UI_Tool", "Slap_Ass",  
             "True", Null(),   
             ),   
         )
+
+image Slap_Thy_Ass:
+    (0,0), ConditionSwitch(                                                                                 #UI tool layer
+            #"not UI_Tool", Null(),   
+            #"UI_Tool", "Slap_Ass",  
+            "not UI_Tool", "Slap_Ass2",  
+            "True", Null(),   
+            ),  
         
 image Rogue Doggy Blink:                                                                                        #Eyes
     ConditionSwitch(          
@@ -1438,6 +1450,34 @@ image Zero_Doggy_Anal2:                                                         
             pause .1
             ease .6 ypos 465
             repeat
+
+image Zero_Doggy_Anal3:                                                                                         #Animation for speed 3 Cock
+    contains:
+        "Zero_Doggy_Insert"
+        pos (172,460)
+        block:
+            ease .2 ypos 360
+            pause .1
+            ease .3 ypos 465
+            repeat
+
+
+        #"Zero_Doggy_Insert"
+        #pos (172,460)
+        #block:
+        #    ease .2 ypos 395
+        #    pause .1
+        #    ease .6 ypos 465
+        #    repeat
+
+        #anal1
+        #"Zero_Doggy_Insert"
+        #pos (172,460)
+        #block:
+        #    ease .5 ypos 395
+        #    pause .25
+        #    ease 1.75 ypos 460
+        #    repeat
                       
 image Rogue_Anal_Fucking2:                                                                                      #Animation for speed 3 Ass
     contains:                                                                                   #Base
@@ -1452,7 +1492,49 @@ image Rogue_Anal_Fucking2:                                                      
         "images/RogueDoggy/Rogue_Doggy_Anal_FullMask.png"
     contains:                                                                                   #Cheeks
         "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png"
-    
+
+image Rogue_Anal_Fucking3:                                                                                      #Animation for speed 3 Ass
+    contains:                                                                                   #Base
+        "images/RogueDoggy/Rogue_Doggy_Anal_FullBase.png"    
+    contains:                                                                                   #Hole
+        "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png"  
+    contains:
+        "images/RogueDoggy/Rogue_Doggy_Asshole_Loose.png"
+    contains:                                                                                   #Cock
+        AlphaMask("Zero_Doggy_Anal3", "images/RogueDoggy/Rogue_Doggy_AnalMask.png")       
+    contains:                                                                                   #Mask
+        "images/RogueDoggy/Rogue_Doggy_Anal_FullMask3.png"
+    contains:                                                                                   #Cheeks
+        "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png"
+
+
+image Rogue_Doggy_Fuck3_Top:                #animation for anal fucking2 top half
+    contains:
+        subpixel True
+        "Rogue_Doggy_Body"         
+        ypos 20
+        block: 
+            pause .15
+            ease .1 ypos 0
+            pause .1
+            easein .2 ypos 20             
+            pause .05
+            repeat
+            
+image Rogue_Doggy_Fuck3_Ass:                #animation for anal fucking2 ass half
+    contains:
+        subpixel True
+        "Rogue_Doggy_Ass"
+        ypos 5
+        block:     
+            pause .15
+            ease .1 ypos -25
+            ease .1 ypos -15
+            pause .1
+            ease .1 ypos 5 
+            pause .05
+            repeat #.90
+
 
 image Rogue_Doggy_Fuck2_Top:                #animation for anal fucking2 top half
     contains:
@@ -1483,11 +1565,11 @@ image Rogue_Doggy_Fuck2_Ass:                #animation for anal fucking2 ass hal
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>             UI Tool animations
 
-image Slap_Ass:    
-    contains:
-        "SlapHand"
-        pause 1.2
-        Null()
+#image Slap_Ass:    
+#    contains:
+#        "SlapHand"
+#        pause 1.2
+#        Null()
 
 image Slap_Ass:
     contains:
@@ -1527,6 +1609,26 @@ image NotSlap_Ass:
                 ease .2 ypos 520
                 pause .9
             repeat
+
+image Slap_Ass2:
+    contains:
+        "UI_Hand"    
+        subpixel True        
+        zoom 1        
+        alpha 0.5
+        anchor (0.5,0.5)
+        pos (800,350)         
+        rotate 40 
+        block:
+            parallel:
+                ease .1 xpos 670 #rotate 80                
+                #ease .1 xpos 610 #rotate 80
+                pause .3
+            parallel:
+                ease .1 ypos 550
+                pause .3  
+        alpha 0
+
             
 #pos (100,450) #follow through  point r-60
 #        pos (500,380) #high point r-40        

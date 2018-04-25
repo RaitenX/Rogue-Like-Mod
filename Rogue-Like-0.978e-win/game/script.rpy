@@ -253,6 +253,8 @@ init -1:
     default R_Panties = "black panties"
     default R_Neck = "spiked collar"
     default R_Hose = "stockings"
+    default Temp_R_Hose = 0
+    default Temp_R_Legs = 0
     default R_Mouth = "normal"
     default R_Brows = "normal"
     default R_Eyes = "normal"
@@ -2488,6 +2490,19 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     $ E_Panties = "white panties"        
                     $ E_Neck = "choker"
                     $ E_Hair = "wavy"
+                    $ E_Hose = 0 
+        elif E_OutfitTemp == "bikini":
+                    if 0 in (E_Legs,E_Over,E_Chest):
+                            $ Undressed = 1
+                    elif E_Panties == 0 and "pantyless" not in E_DailyActions:                        
+                            $ Undressed = 1   
+                    $ E_Arms = 0
+                    $ E_Legs = 0
+                    $ E_Over = 0
+                    $ E_Chest = "bikini"
+                    $ E_Panties = "bikini"        
+                    $ E_Neck = 0
+                    $ E_Hair = "wavy"
                     $ E_Hose = 0     
         elif E_OutfitTemp == "towel":
                     if E_Over == 0:
@@ -2701,7 +2716,7 @@ label Emma_Schedule(Clothes = 1, Location = 1, LocTemp = E_Loc):
         else:
         #Weekend                               
                 if Current_Time == "Morning":
-                        $ E_Loc = "bg emma"
+                        $ E_Loc = "bg pool"
                 elif Current_Time == "Midday":
                         $ E_Loc = "bg emma"
                 else:
@@ -3665,11 +3680,11 @@ label Display_Kitty(Dress = 1, DLoc = K_SpriteLoc):
 label Display_Emma(Dress = 1, DLoc = E_SpriteLoc, Location = E_Loc):
     # If Dress, then check whether the character is underdressed when displaying her
     
-    if Taboo and Dress: #If not in the showers, get dressed and dry off        
+    if Taboo and Dress and E_Loc != "bg pool": #If not in the showers, get dressed and dry off        
             call EmmaOutfit #add when available
             $ E_Wet = 0
               
-    if E_Loc != "bg showerroom":
+    if E_Loc != "bg showerroom" and E_Loc != "bg pool":
             $ E_Water = 0
         
     $ E_SpriteLoc = DLoc

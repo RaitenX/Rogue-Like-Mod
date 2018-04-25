@@ -88,40 +88,55 @@ label Rogue_Chat:
                         if R_Legs == "skirt" or R_Legs == "skirtshort" or R_Legs == "cheerleader skirt" or R_Legs == "cheerleader skirtshort":
                             $ R_Upskirt = 1
                             "Lifts up her skirt."
+                            pause .1
                             if R_Hose == "tights":
                                 $ Temp_R_Hose = R_Hose            
                                 $ R_Hose = 0
                                 "And pulls down her tights"
+                                pause .1
                             if R_Panties and R_Panties != "lace panties" and R_Panties != "black panties":
                                 $ R_PantiesDown = 1
                                 "And pulls down her [R_Panties]"
+                                pause .1
                             ch_r "There, you happy?"
+                            call Rogue_Show_Plug
                             $ R_PantiesDown = 0
+                            pause .1
                             if Temp_R_Hose:
                                 $ R_Hose = Temp_R_Hose
+                                pause .1
                             $ R_Upskirt = 0
                             pause
                         elif R_Legs == "pants":
+                            #$ Temp_R_Legs = R_Legs            
+                            $ R_Upskirt = 1
+                            #$ R_Legs = 0
                             "Rogue pulls down her pants."  
+                            pause .1
                             if R_Panties and R_Panties != "lace panties" and R_Panties != "black panties":
                                 $ R_PantiesDown = 1
                                 "And pulls down her [R_Panties]"
-                            $ Temp_R_Legs = R_Legs            
-                            $ R_Legs = 0
+                                pause .1
                             ch_r "There, you happy?"
+                            pause .1
+                            call Rogue_Show_Plug
                             $ R_PantiesDown = 0
-                            $ R_Legs = Temp_R_Legs
+                            pause .1
+                            #$ R_Legs = Temp_R_Legs
+                            $ R_Upskirt = 0
                             pause
                         elif R_Panties and R_Panties != "lace panties" and R_Panties != "black panties" and R_Panties != "swimsuit1" and R_Panties != "swimsuit2":
                             $ R_PantiesDown = 1
                             "And pulls down her [R_Panties]"
                             ch_r "There, you happy?"
+                            call Rogue_Show_Plug
                             $ R_PantiesDown = 0
                             pause
                         else:
                             ch_r "There, you happy?"
+                            call Rogue_Show_Plug
                             pause
-                            
+
 
                         call Rogue_Doggy_Reset 
                     else:
@@ -3804,7 +3819,7 @@ label Rogue_Leave(Tempmod=Tempmod):
                 #You end the dialog neutrally
                 hide Rogue
                 call Gym_Clothes("auto", "Rogue")
-                call Pool_Clothes("auto", "Kitty")
+                call Pool_Clothes("auto", "Rogue")
                 return
         
         if Line == "no":                                                                    
@@ -5752,6 +5767,25 @@ label Rogue_AboutKitty:
     else:
         ch_r "That ho-bag skank?"
           
+    return
+
+label Rogue_Show_Plug:
+    
+    menu:
+        "Slap her ass.":
+            $ D20A = renpy.random.randint(1, 20) #Sets random seed factor for the encounter
+
+            show Slap_Ass2 zorder 200
+            call R_Slap_Ass 
+            hide Slap_Ass2
+            if Taboo and (D20A + (int(Taboo/10)) - Stealth) >= 10:        #If there is a Taboo level, and your modified roll is over 10
+                call Rogue_Taboo
+            jump Rogue_Show_Plug
+            
+
+        "Very happy.":
+            pass
+
     return
     
     

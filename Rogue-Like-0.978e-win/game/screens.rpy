@@ -149,19 +149,18 @@ screen choice(items):
         #ypos 0.3
         #yanchor 0
 
-        fixed pos (20,0.43) xysize (300,530):
+        fixed pos (20,0.43) xysize (310,530):
             viewport:
                 yinitial 0
                 #scrollbars "vertical"
                 mousewheel True
-                #draggable True
+                draggable True
         
                 side_yfill True
     
                 vbox:
                     style "menu"
                     spacing 2
-                    #transclude
         
                     for caption, action, chosen in items:
         

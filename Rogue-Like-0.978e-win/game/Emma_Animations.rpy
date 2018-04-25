@@ -27,6 +27,7 @@ image Emma_Sprite:
         (0,0), ConditionSwitch(                                                                         #panties down back 
             "E_PantiesDown and E_Panties == 'black panties'", "images/EmmaSprite/EmmaSprite_Panties_DownBack_Black.png",   
             "E_PantiesDown and E_Panties == 'white panties'", "images/EmmaSprite/EmmaSprite_Panties_DownBack.png",   
+            "E_PantiesDown and E_Panties == 'bikini'", "images/EmmaSprite/EmmaSprite_Panties_DownBack.png",   
             "True", Null(),        
             ),  
         (0,0), ConditionSwitch(                                                                         #legs 
@@ -45,12 +46,14 @@ image Emma_Sprite:
             "not E_PantiesDown or (E_Legs and not E_Upskirt)", Null(),   
             "E_Panties == 'black panties'", "images/EmmaSprite/EmmaSprite_Panties_Down_Black.png",  
             "E_Panties == 'white panties'", "images/EmmaSprite/EmmaSprite_Panties_Down.png",  
+            "E_Panties == 'bikini'", "images/EmmaSprite/EmmaSprite_Panties_Down.png",  
             "True", Null(),        
             ),        
         (0,0), ConditionSwitch(                                                                         #panties up
             "E_PantiesDown and (not E_Legs or E_Upskirt)", Null(),   
             "E_Panties == 'black panties'", "images/EmmaSprite/EmmaSprite_Panties_Black.png",  
             "E_Panties == 'white panties'", "images/EmmaSprite/EmmaSprite_Panties.png",  
+            "E_Panties == 'bikini'", "images/EmmaSprite/EmmaSprite_BikiniBottom.png",  
             "True", Null(),        
             ),  
         (0,0), ConditionSwitch(                                                                         #pants    
@@ -121,8 +124,10 @@ image Emma_Sprite:
             "E_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_CorsetTits.png",   
             "E_Chest == 'NewX' and Emma_Arms == 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewX_Up.png",   
             "E_Chest == 'NewX black' and Emma_Arms == 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewXBlack_Up.png",   
+            "E_Chest == 'bikini' and Emma_Arms == 1", "images/EmmaSprite/EmmaSprite_BikiniTits_Up.png",   
             "E_Chest == 'NewX' and Emma_Arms > 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewX_Down.png",   
             "E_Chest == 'NewX black' and Emma_Arms > 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewXBlack_Down.png",   
+            "E_Chest == 'bikini' and Emma_Arms > 1", "images/EmmaSprite/EmmaSprite_BikiniTits_Down.png",   
             "True", Null(),              
             ),
         (0,0), ConditionSwitch(                                                                         #cape layer       

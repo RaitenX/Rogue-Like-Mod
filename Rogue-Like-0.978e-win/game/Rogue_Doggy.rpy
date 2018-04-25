@@ -517,7 +517,9 @@ label R_Sex_Cycle: #Repeating strokes
                                     pass
                             
                         "Slap her ass":                     
-                                    call R_Slap_Ass                                    
+                                    show Slap_Ass2 zorder 200
+                                    call R_Slap_Ass 
+                                    hide Slap_Ass2                                    
                                     jump R_Sex_Cycle  
                                     
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
@@ -1964,7 +1966,9 @@ label R_Anal_Plug_Cycle: #Repeating strokes
                         #            "You leave the plug inside her ass."
 
                         "Slap her ass":                     
-                                    call R_Slap_Ass                                    
+                                    show Slap_Ass2 zorder 200
+                                    call R_Slap_Ass 
+                                    hide Slap_Ass2                                    
                                     jump R_Anal_Plug_Cycle  
                                     
                            
@@ -2279,6 +2283,10 @@ label R_Anal_Cycle: #Repeating strokes
                         "Speed up. . ." if Speed == 2:
                                     $ Speed = 3  #anal
                                     "You start pounding her ass as fast as you can"
+
+                        "Balls deep." if Speed == 3 :                    
+                                    $ Speed = 4
+                                    "You go balls deep."
                         
                         "Speed up. . . (locked)" if Speed >= 3:
                                     pass
@@ -2308,8 +2316,11 @@ label R_Anal_Cycle: #Repeating strokes
                                     pass
                             
                         "Slap her ass":                     
-                                    call R_Slap_Ass                                    
+                                    show Slap_Ass2 zorder 200
+                                    call R_Slap_Ass 
+                                    hide Slap_Ass2                                   
                                     jump R_Anal_Cycle  
+
                                     
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
@@ -2947,7 +2958,9 @@ label R_Hotdog_Cycle: #Repeating strokes
                                     pass
                             
                         "Slap her ass":                     
-                                    call R_Slap_Ass                                    
+                                    show Slap_Ass2 zorder 200
+                                    call R_Slap_Ass 
+                                    hide Slap_Ass2                                   
                                     jump R_Hotdog_Cycle  
                                     
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:

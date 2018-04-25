@@ -275,6 +275,11 @@ label Kitty_Chat:
                         $ Digits.append("Kitty")
                     else:
                         ch_k "[K_Like]I'd rather not?"  
+
+        "Remove blindfold" if K_Blindfold:
+                    ch_k "Ok"
+                    "Her blindfold falls through her"
+                    $ K_Blindfold = 0
                         
         "Gifts" if K_Loc == bg_current:
                     ch_p "I'd like to give you something."
@@ -3692,10 +3697,26 @@ label Kitty_Clothes:
                 call KittyFace("bemused", 1)
                 ch_k "This top is a little skimpy for what I have on under it."
                 jump Kitty_Clothes    
-            $ K_Over = "pink top"   
+            $ K_Over = "pink top"  
+
+        "Try on that dark shirt you have." if K_Over != "dark top":
+            call KittyFace("bemused")
+            if K_Chest or K_SeenChest:
+                ch_k "K."
+            elif ApprovalCheck("Kitty", 800, TabM=0):
+                ch_k "Yeah, ok."          
+            else:
+                call KittyFace("bemused", 1)
+                ch_k "This top is a little skimpy for what I have on under it."
+                jump Kitty_Clothes    
+            $ K_Over = "dark top"   
                 
         "How about that red t-shirt you have?" if K_Over != "red shirt":
             $ K_Over = "red shirt"  
+            ch_k "This one?"
+
+        "How about that purple t-shirt you have?" if K_Over != "purple shirt":
+            $ K_Over = "purple shirt"  
             ch_k "This one?"
             
         "Maybe just throw on a towel?" if K_Over != "towel":
@@ -3960,9 +3981,9 @@ label Kitty_Clothes:
                             ch_k "I'm kind of nervous. . ."
                         else:
                             ch_k "If it's just you. . ."
-                    elif K_Over == "pink top" and ApprovalCheck("Kitty", 600, TabM=2):
+                    elif K_Over == "pink top" or K_Over == "dark top" and ApprovalCheck("Kitty", 600, TabM=2):
                         ch_k "This look is a bit revealing. . ."  
-                    elif K_Over == "red shirt" and ApprovalCheck("Kitty", 500, TabM=2):
+                    elif K_Over == "red shirt" or K_Over == "purple shirt" and ApprovalCheck("Kitty", 500, TabM=2):
                         ch_k "I guess I could. . ."  
                     elif not K_Over:
                         ch_k "Not without a little coverage, for modesty."
@@ -4731,7 +4752,11 @@ label Kitty_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
             #If she's wearing an overshirt
             if K_Over == "pink top":                                             
                 $ Count += 15
+            elif K_Over == "dark top":                                             
+                $ Count += 15
             elif K_Over == "red shirt":      
+                $ Count += 20
+            elif K_Over == "purple shirt":      
                 $ Count += 20
             elif K_Over == "black dress":                                             
                 $ Count += 40

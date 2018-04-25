@@ -383,6 +383,16 @@ label KHJ_Cycle:
                                     "You ask her to slow it down a bit."
                         "Slow Down. . . (locked)" if not Speed:                
                                     pass
+
+                        "Blindfold her" if K_Bondage and not K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
+
+                        "Remove blindfold" if K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You remove the blindfold"
+                            $ K_Blindfold = 0
                             
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
@@ -941,6 +951,17 @@ label KTJ_Cycle: #Repeating strokes
                 "You ask her to slow it down a bit."
             "Slow Down. . . (locked)" if Speed <= 1:
                 pass
+
+            "Blindfold her" if K_Bondage and not K_Blindfold:
+                call KittyFace("sexy", 1) 
+                "You add a blindfold so she can't see a thing"
+                $ K_Blindfold = 1
+
+            "Remove blindfold" if K_Blindfold:
+                call KittyFace("sexy", 1) 
+                "You remove the blindfold"
+                $ K_Blindfold = 0
+
             "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                 pass
             "Focus to last longer." if "focus" in P_Traits and not P_FocusX:
@@ -1652,7 +1673,7 @@ label KBJ_Cycle: #Repeating strokes
                             #$ K_Outfit = "zipper bondage"
                             #$ K_Shame = K_OutfitShame[1]
 
-                        "Remove blindfold" if K_Bondage and K_Blindfold:
+                        "Remove blindfold" if K_Blindfold:
                             call KittyFace("sexy", 1) 
                             #if K_Over or K_Chest or K_Panties or K_Legs:
                             #    "She glances up at you as her clothes drop to the ground."
@@ -2269,6 +2290,17 @@ label KDP_Cycle: #Repeating strokes
                         "Release your focus." if P_FocusX:
                                     "You release your concentration. . ."                
                                     $ P_FocusX = 0
+
+                        "Blindfold her" if K_Bondage and not K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
+            
+                        "Remove blindfold" if K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You remove the blindfold"
+                            $ K_Blindfold = 0
+
                         
                         "Maybe lose some clothes. . .":
                                     call K_Undress  
@@ -2855,6 +2887,16 @@ label KDA_Cycle: #Repeating strokes
                         "Release your focus." if P_FocusX:
                                     "You release your concentration. . ."                
                                     $ P_FocusX = 0
+
+                        "Blindfold her" if K_Bondage and not K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
+            
+                        "Remove blindfold" if K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You remove the blindfold"
+                            $ K_Blindfold = 0
                         
                         "Maybe lose some clothes. . .":
                                     call K_Undress  
@@ -3403,6 +3445,16 @@ label KFJ_Cycle:
                         "Release your focus." if P_FocusX:
                                     "You release your concentration. . ."                
                                     $ P_FocusX = 0
+
+                        "Blindfold her" if K_Bondage and not K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
+            
+                        "Remove blindfold" if K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You remove the blindfold"
+                            $ K_Blindfold = 0
                    
                         "Maybe lose some clothes. . .":
                                     call K_Undress  

@@ -1158,7 +1158,7 @@ label Pool_Room:
                 #jump Pool_Area
 
         "Go for a swim":
-                if R_Loc == bg_current or K_Loc == bg_current or E_Loc == bg_current:
+                if R_Loc == bg_current or K_Loc == bg_current: #or E_Loc == bg_current:
                     "Let's go for a swim"
                     if R_Loc == bg_current:
                         ch_r "yay"
