@@ -1751,7 +1751,7 @@ image Kitty_BJ_Backdrop:
             ),  
         (0,0), ConditionSwitch(                                                                         
             #red shirt under
-            "K_Over == 'purple shirt'", "images/KittyBJFace/Kitty_BJ_Over_purpleUnder.png",
+            #"K_Over == 'purple shirt'", "images/KittyBJFace/Kitty_BJ_Over_purpleUnder.png",
             "K_Over == 'red shirt'", "images/KittyBJFace/Kitty_BJ_Over_RedUnder.png",
             "True", Null(),
             ),  
@@ -2012,7 +2012,7 @@ image Kitty_Selfie:
         (0,0), "images/KittySelfie/Kitty_selfie_floor.png",
         (0,0), ConditionSwitch(                                                                         
             #red shirt under
-            "K_Over == 'purple shirt'", "images/KittyBJFace/Kitty_BJ_Over_purpleUnder.png",
+            #"K_Over == 'purple shirt'", "images/KittyBJFace/Kitty_BJ_Over_purpleUnder.png",
             "K_Over == 'red shirt'", "images/KittyBJFace/Kitty_BJ_Over_RedUnder.png",
             "True", Null(),
             ),  

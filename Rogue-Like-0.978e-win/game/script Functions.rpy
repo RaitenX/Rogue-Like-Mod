@@ -2793,6 +2793,15 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
             elif Primary == "Kitty" or Secondary == "Kitty":
                                 ch_k "Oh, hey."
             elif Primary == "Emma" or Secondary == "Emma":
+                                if "metgym" not in E_History:     
+                                    $ E_Gym = [2,0,0,"cape","NewX","corset","white panties",0,0,0,0]  
+                                    $ E_Over = "cape"
+                                    $ E_Legs = 0
+                                    $ E_Panties = "white panties"
+                                    $ E_Neck = "NewX"      
+                                    $ E_Outfit = "gym"
+                                    call Present_Check #updates who is present                    
+                                    jump EmmaMeetGym_Waited
                                 ch_e "Oh, hello, [E_Petname]."
             #end girls showed up to the Danger Room
     elif bg_current == "bg pool":   

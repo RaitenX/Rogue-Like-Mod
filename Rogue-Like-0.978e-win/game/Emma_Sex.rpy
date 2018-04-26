@@ -1424,6 +1424,7 @@ label EM_Cycle:
                         "Slap her ass":    
                                 if "unseen" in E_RecentActions:
                                         "You smack Emma firmly on the ass!"
+                                        $ renpy.play('sounds/slap.mp3')
                                         jump EM_Interupted                                          
                                 else:
                                         call E_Slap_Ass

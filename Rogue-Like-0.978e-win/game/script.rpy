@@ -1500,7 +1500,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
         if R_Loc == "bg showerroom" and "Rogue" not in Party and R_OutfitTemp != "nude":
                 #Automatically puts her in the towel while in the shower
                 $ R_OutfitTemp = "towel" 
-        elif R_Loc != "bg showerroom":
+        elif R_Loc != "bg showerroom" and R_Loc != "bg pool":
                 #Dries her off
                 $ R_Water = 0
                 
@@ -1967,6 +1967,10 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
             #Skips theis check if it's a sleepover
             return
         
+        if K_Blindfold:
+            "She removes the blindfold"
+            $ K_Blindfold = 0
+
         if K_OutfitTemp != K_Outfit:
                 #if her new outfit is not what she was wearing before,
                 #don't flag the undressed mechanic
@@ -1977,7 +1981,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
         if K_Loc == "bg showerroom" and "Kitty" not in Party and K_OutfitTemp != "nude":
                 #Automatically puts her in the towel while in the shower
                 $ K_OutfitTemp = "towel"                                  
-        elif K_Loc != "bg showerroom":
+        elif K_Loc != "bg showerroom" and K_Loc != "bg pool":
                 #Dries her off
                 $ K_Water = 0
                 
@@ -2458,7 +2462,7 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
         if E_Loc == "bg showerroom" and "Emma" not in Party and E_OutfitTemp != "nude":
                 #Automatically puts her in the towel while in the shower
                 $ E_OutfitTemp = "towel"                                  
-        elif E_Loc != "bg showerroom":
+        elif E_Loc != "bg showerroom" and E_Loc != "bg pool":
                 #Dries her off
                 $ E_Water = 0
                 
@@ -2720,11 +2724,26 @@ label Emma_Schedule(Clothes = 1, Location = 1, LocTemp = E_Loc):
         else:
         #Weekend                               
                 if Current_Time == "Morning":
-                        $ E_Loc = "bg pool"
+                        $ Options = ["bg pool", "bg emma"]
+                        $ renpy.random.shuffle(Options)
+                        $ E_Loc = Options[0]
+                        $ del Options[:]
                 elif Current_Time == "Midday":
-                        $ E_Loc = "bg emma"
+                        $ Options = ["bg pool", "bg emma"]
+                        $ renpy.random.shuffle(Options)
+                        $ E_Loc = Options[0]
+                        $ del Options[:]
                 else:
                         $ E_Loc = "bg emma"
+
+                if Current_Time == "Night":
+                        $ E_Loc = "bg emma"
+                else:
+                        $ Options = ["bg pool", "bg emma"]
+                        $ renpy.random.shuffle(Options)
+                        $ E_Loc = Options[0]
+                        $ del Options[:]
+
                         
         #If Emma has moved from where she started this action. . .   
         if E_Loc != LocTemp and "Emma" not in Party:    

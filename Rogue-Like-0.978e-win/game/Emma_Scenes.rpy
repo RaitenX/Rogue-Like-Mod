@@ -279,7 +279,8 @@ label EmmaMeetGym:
     "You enter the danger room." 
     show Emma_Sprite at SpriteLoc(ESpriteLoc)
     #"The bell to class rings, but Professor McCoy seems to be late."
-    "You see Emma Frost in a different outfit."
+label EmmaMeetGym_Waited:
+    "You see Emma Frost's in a different outfit."
     call EmmaFace("normal")
     #$ E_Loc = "bg classroom" 
     $ Emma_Arms = 1

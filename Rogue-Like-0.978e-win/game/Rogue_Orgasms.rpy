@@ -1,4 +1,4 @@
-﻿# Start You Cumming //////////////////////////////////////////////////////////////////////////////////
+# Start You Cumming //////////////////////////////////////////////////////////////////////////////////
 
 label PR_Cumming:
     call Shift_Focus("Rogue")
@@ -1196,11 +1196,6 @@ label Rogue_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
     $ Cleaned = 1 if "cleaned" in R_DailyActions else 0
     $ R_RecentActions.append("cleaned") 
     $ R_DailyActions.append("cleaned") 
-
-    if R_Gag:
-        "She removes the gag"
-        $ R_Gag = 0
-
     
     if Line == "ask":
             $ Line = "random"
@@ -1484,7 +1479,7 @@ label Rogue_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                 "Afterward, she wipes the spunk dripping our of her ass."
             else:
                 "She wipes the spunk dripping out of her ass."
-    $ R_Wet = 0        
+    $ R_Wet = 0
     $ del R_Spunk[:]   
     if Cnt >= 5:
             $ R_Eyes = "surprised"

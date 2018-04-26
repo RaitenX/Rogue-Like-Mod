@@ -2,8 +2,16 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1491: expected statement.
-    R_Gag = 0
-          ^
+File "game/script.rpy", line 2730: expected statement.
+    del Options[:]
+               ^
+
+File "game/script.rpy", line 2735: expected statement.
+    del Options[:]
+               ^
+
+File "game/script.rpy", line 2745: expected statement.
+    del Options[:]
+               ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919
