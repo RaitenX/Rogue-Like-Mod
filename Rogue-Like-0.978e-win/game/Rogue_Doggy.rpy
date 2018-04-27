@@ -951,7 +951,6 @@ label R_Gagging(Gagtype = 0):
                     if Situation:
                         $ renpy.pop_call()
                     call Rogue_Doggy_Reset
-                    #$ R_Gag = 0
                     ch_r "You shut it"
                     ch_r "If that's how you want to treat me, we're done here!"                                                  
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -10, 1)                        

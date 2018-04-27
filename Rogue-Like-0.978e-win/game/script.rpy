@@ -261,6 +261,7 @@ init -1:
     default R_Hair = "evo"
     default R_Gag = 0    
     default R_Gagx = 0    
+    default R_Glasses = 0    
     default R_Blush = 0
     default R_Spunk = []
     default R_Sperm = []

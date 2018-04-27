@@ -131,6 +131,7 @@ image Rogue:
         (0,0), ConditionSwitch(  
             "'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueSprite/Rogue_mouth_ringgag_w.png",                                                                       #Mouths        
             "R_Gag == 'ringgag'", "images/RogueSprite/Rogue_mouth_ringgag.png",                                                                       #Mouths        
+            "R_Gag == 'ballgag'", "images/RogueSprite/Rogue_mouth_Ballgag.png",                                                                       #Mouths        
             "'mouth' in R_Spunk and R_Mouth == 'sucking'", "images/RogueSprite/Rogue_mouth_sucking_w.png",
             "'mouth' in R_Spunk and R_Mouth == 'surprised'", "images/RogueSprite/Rogue_mouth_sucking_w.png",
             "'mouth' in R_Spunk and R_Mouth == 'sad'", "images/RogueSprite/Rogue_mouth_sad_w.png",
@@ -149,7 +150,11 @@ image Rogue:
             "R_Mouth == 'grimace'", "images/RogueSprite/Rogue_mouth_grimace.png",           
             "True", "images/RogueSprite/Rogue_mouth_normal.png",
             ),            
-        (0,0), "Rogue Blink",                                                                           #Eyes
+        (0,0), "Rogue Blink",  
+        (0,0), ConditionSwitch(                                                                                 #Collar
+            "R_Glasses", "images/RogueSprite/Rogue_Sprite_Glasses.png",   
+            "True", Null(),                #R_Arms == 'gloved' or not R_Arms
+            ),                                                                           #Eyes
             
         (0,0), ConditionSwitch(                                                                         #Pants and Skirts
             "R_Legs == 'pants' and R_Upskirt", "images/RogueSprite/Rogue_legs_pants_down.png", 
@@ -188,11 +193,15 @@ image Rogue:
         (0,0), ConditionSwitch(                                                                         #chest layer
             "R_Pierce == 'barbell'", "images/RogueSprite/Rogue_chest_barbell.png",            
             "R_Pierce == 'ring'", "images/RogueSprite/Rogue_chest_rings.png",      
-            "True", "images/RogueSprite/Rogue_chest_bare.png",    
+            "True", "images/RogueSprite/Rogue_chest_bare.png",     
             ),   
         (0,0), ConditionSwitch(                                                                         #chest clothes layer
             "R_Chest == 'tank'", "images/RogueSprite/Rogue_chest_tank.png",
             "R_Chest == 'tank short'", "images/RogueSprite/Rogue_chest_tankshort.png",
+            "Rogue_Arms == 1 and R_Chest == 'green crop top'", "images/RogueSprite/Rogue_Sprite_Green_Crop_Top_Arms1.png",
+            "R_Chest == 'green crop top'", "images/RogueSprite/Rogue_Sprite_Green_Crop_Top_Arms2.png",
+            "Rogue_Arms == 1 and R_Chest == 'black crop top'", "images/RogueSprite/Rogue_Sprite_Black_Crop_Top_Arms1.png",
+            "R_Chest == 'black crop top'", "images/RogueSprite/Rogue_Sprite_Black_Crop_Top_Arms2.png",
             "R_Chest == 'tape'", "images/RogueSprite/Rogue_chest_tape.png",
             "R_Chest == 'buttoned tank'", "images/RogueSprite/Rogue_chest_tank2.png",            
             "R_Chest == 'bra'", "images/RogueSprite/Rogue_chest_bra.png",                         
@@ -748,11 +757,17 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             "R_Neck == 'spiked collar'", "images/RogueDoggy/Rogue_Doggy_Collar.png",   
             "True", Null(),                #R_Arms == 'gloved' or not R_Arms
             ),  
+        (0,0), ConditionSwitch(                                                                                 #Collar
+            "R_Glasses", "images/RogueDoggy/Rogue_Doggy_Glasses.png",   
+            "True", Null(),                #R_Arms == 'gloved' or not R_Arms
+            ),  
         (0,0), ConditionSwitch(                                                                                 #tanktop
             "not R_Chest", Null(),        
             "R_Chest == 'tank'", "images/RogueDoggy/Rogue_Doggy_Chest_Tank.png",
             "R_Chest == 'tank short'", "images/RogueDoggy/Rogue_Doggy_Chest_TankShort.png",
             "R_Chest == 'buttoned tank'", "images/RogueDoggy/Rogue_Doggy_Chest_ButtonTank.png",
+            "R_Chest == 'green crop top'", "images/RogueDoggy/Rogue_Doggy_Green_Crop_Top.png",
+            "R_Chest == 'black crop top'", "images/RogueDoggy/Rogue_Doggy_Black_Crop_Top.png",
             "R_Chest == 'sports bra'", "images/RogueDoggy/Rogue_Doggy_Chest_SportsBra.png",
             "R_Chest == 'red sports bra'", "images/RogueDoggy/Rogue_Doggy_Chest_RYSportsBra.png",
             "R_Chest == 'blue sports bra'", "images/RogueDoggy/Rogue_Doggy_Chest_BYSportsBra.png",
@@ -1683,8 +1698,8 @@ label Rogue_Doggy_Reset:
     $ Rogue_Arms = 2      
     $ R_SpriteVer = 0
     hide Rogue_Doggy
-    if R_Gag == "ballgag":
-        $ R_Gag = 0
+    #if R_Gag == "ballgag":
+    #    $ R_Gag = 0
     show Rogue at SpriteLoc(R_SpriteLoc) zorder RogueLayer:
                     alpha 1
                     zoom 1
@@ -1856,6 +1871,10 @@ image BJ_Head:                                                                  
                 "Speed == 4", "images/RogueBJFace/Rogue_bj_face_over_sucking_cum.png",  
                 "True", Null(),
                 ),
+        (0,0), ConditionSwitch(                                                                                 #Collar
+            "R_Glasses", "images/RogueBJFace/Rogue_BJFace_Glasses.png",   
+            "True", Null(),                #R_Arms == 'gloved' or not R_Arms
+            ),  
         (0,0), ConditionSwitch(                                                                 #Hair overlay
             "R_Water and R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack_wet.png",
             "R_Water and R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde_wet.png",
@@ -2161,7 +2180,17 @@ image Rogue_BJFace:
             "R_Brows == 'confused'", "images/RogueBJFace/Rogue_bj_face_brows_confused.png",
             "True", "images/RogueBJFace/Rogue_bj_face_brows_normal.png",
             ),
-        (0,0), "Rogue_BJ Blink",  
+        (0,0), "Rogue_BJ Blink",
+        (0,0), ConditionSwitch(  
+            "R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking
+            "R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ring.png", 
+            "R_Gag == 'ballgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ball.png", 
+            #"R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking  
+            ),
+        (0,0), ConditionSwitch(                                                                                 #Collar
+            "R_Glasses", "images/RogueBJFace/Rogue_BJFace_Glasses.png",   
+            "True", Null(),                #R_Arms == 'gloved' or not R_Arms
+            ),  
         (0,0), ConditionSwitch(
                 "not R_Spunk", Null(),
                 "'mouth' in R_Spunk and Speed == 2 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_face_over_heading_cum.png", 
@@ -2187,9 +2216,12 @@ image Rogue_BJChin:
     LiveComposite(
         (787,912),     
         (0,0), "images/RogueBJFace/Rogue_bj_face_under.png", 
-        (0,0), ConditionSwitch(   
+        (0,0), ConditionSwitch(  
+            "R_Gag", Null(),
             "R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking
             "R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ring.png", 
+            #"R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking
+            "R_Gag == 'ballgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ball.png", 
             "Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
             "Speed == 1 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_licking.png",
             "Speed == 2 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_heading.png", 

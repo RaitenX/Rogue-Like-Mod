@@ -2792,7 +2792,9 @@ label Emma_Leave(Tempmod=Tempmod, GirlsNum = 0):
             elif E_Loc == "bg player": 
                         ch_e "I'll be heading to your room."   
             elif E_Loc == "bg showerroom" and ApprovalCheck("Emma", 1400):
-                        ch_e "I'm going to take a quick shower."              
+                        ch_e "I'm going to take a quick shower."
+            elif E_Loc == "bg pool": 
+                        ch_e "I'm heading to the pool."               
             else:        
                         ch_e "I'll see you later."                  
             hide Emma_Sprite
@@ -2815,6 +2817,8 @@ label Emma_Leave(Tempmod=Tempmod, GirlsNum = 0):
     elif E_Loc == "bg dangerroom":    
         $ Tempmod = 20
     elif E_Loc == "bg showerroom":    
+        $ Tempmod = 20
+    elif E_Loc == "bg pool":
         $ Tempmod = 20
     
     
@@ -2963,6 +2967,9 @@ label Emma_Leave(Tempmod=Tempmod, GirlsNum = 0):
             elif E_Loc == "bg campus": 
                 ch_e "Ok, let's."
                 jump Campus_Entry
+            elif E_Loc == "bg pool": 
+                ch_e "Ok, let's."
+                jump Pool_Entry
             else:     
                 $ E_Loc = "bg player"
                 ch_e "Let's meet in your room instead."
@@ -4359,7 +4366,7 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
             #If she's wearing an overshirt
             if E_Over == "black jacket":                                             
                 $ Count += 15
-            if E_Over == "jacket":                                             
+            elif E_Over == "jacket":                                             
                 $ Count += 15
             elif E_Over == "black cape":
                 $ Count += 20

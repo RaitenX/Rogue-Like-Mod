@@ -3746,6 +3746,8 @@ label Rogue_Leave(Tempmod=Tempmod):
                     else:            
                         ch_r "I'm hitting the showers, [R_Petname], maybe we could touch base later."
                         return           
+        elif R_Loc == "bg pool":
+                        ch_r "I'll be heading to the pool, [R_Petname]."
         else: #Location unknown        
                         ch_r "Why don't you come with me, [R_Petname]?"    
         
@@ -3859,6 +3861,9 @@ label Rogue_Leave(Tempmod=Tempmod):
                 elif R_Loc == "bg campus": 
                     ch_r "Let's head over there."
                     jump Campus_Entry
+                elif R_Loc == "bg pool":
+                    ch_r "Let's head to the pool"
+                    jump Pool_Entry
                 else:
                     ch_r "You know, I'll just meet you in my room."
                     $ R_Loc = "bg rogue"
@@ -4712,6 +4717,14 @@ label Rogue_Clothes:
                                 $ R_Chest = "tank short" 
                                 jump Rogue_Clothes_Under_Top
 
+                "Try on that green crop top." if R_Chest != "green crop top":
+                                $ R_Chest = "green crop top" 
+                                jump Rogue_Clothes_Under_Top
+
+                "Try on that black crop top." if R_Chest != "black crop top":
+                                $ R_Chest = "black crop top" 
+                                jump Rogue_Clothes_Under_Top
+
                 "I like that buttoned tank top." if (R_Chest != "buttoned tank" and R_Over != "mesh top") or (R_Chest != "buttoned tank" and R_Over != "white mesh top") or (R_Chest != "buttoned tank" and R_Over != "blue mesh top") or (R_Chest != "buttoned tank" and R_Over != "yellow mesh top") or (R_Chest != "buttoned tank" and R_Over != "red mesh top") or (R_Chest != "buttoned tank" and R_Over != "black mesh top"):
                                 $ R_Chest = "buttoned tank"  
                                 jump Rogue_Clothes_Under_Top
@@ -4884,6 +4897,11 @@ label Rogue_Clothes:
                         $ R_Neck = "spiked collar"
         "You could lose that spiked collar." if R_Neck == "spiked collar":
                         $ R_Neck = 0
+
+        "I like those glasses." if not R_Glasses:
+                        $ R_Glasses = "glasses"
+        "You could lose those glasses." if R_Glasses:
+                        $ R_Glasses = 0
 
         "Dye your hair.":
             if ApprovalCheck("Rogue", 800):
@@ -5360,11 +5378,15 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
             #If she's wearing a bra of some kind
             if R_Chest == "tank":                                              
                 $ Count = 20
-            if R_Chest == "cheerleader":                                              
+            elif R_Chest == "cheerleader":                                              
                 $ Count = 20
-            if R_Chest == "tank short":                                              
+            elif R_Chest == "tank short":                                              
                 $ Count = 5
-            if R_Chest == "tape":                                              
+            elif R_Chest == "green crop top":                                              
+                $ Count = 20
+            elif R_Chest == "black crop top":                                              
+                $ Count = 20
+            elif R_Chest == "tape":                                              
                 $ Count = 5
             elif R_Chest == "buttoned tank":
                 $ Count = 15
@@ -5519,7 +5541,6 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                 ch_r "So long as we stay inside. . ."
                 
             $ Tempshame -= Count                  #Set Outfit shame for the lower half
-            
             if Check:
                     #if this is a custom outfit check
                     if Custom == 7:
@@ -5543,7 +5564,7 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         elif Tempshame >= 15:
                                 ch_r "Yeah, you're worth it."
                         else:
-                                ch_r "Sure, it's cute."                            
+                                ch_r "Sure, it's cute."  
                     elif Tempshame <= 5:
                         call RogueFace("smile")
                         ch_r "Yeah, I think I like this style, I'd wear this."
@@ -5690,6 +5711,8 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
             elif Custom == 9 and not Taboo:
                     pass
             else:
+                    "[Tempshame]"
+                    "[R_Chest], [R_Over], [R_Legs], [R_Panties]"
                     ch_r "I'll be right back, I've got to change out of this."
                     $ R_Outfit = renpy.random.choice(["evo_green", "evo_pink"])
                     $ R_Water = 0

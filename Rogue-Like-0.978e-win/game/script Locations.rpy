@@ -1194,11 +1194,21 @@ label Pool_Room:
                         #$ K_DailyActions.append("showered")
                         #call Set_The_Scene
                     "That felt great"
+                    call Wait   
+                    call EventCalls
+                    call Pool_Clothes
+                    call Girls_Location 
+                    call Pool_Clothes
 
                     #if R_Loc == bg_current:
 
                 else:
                     "You take a swim by yourself"
+                    call Wait   
+                    call EventCalls
+                    call Pool_Clothes
+                    call Girls_Location 
+                    call Pool_Clothes
 
         "Skinny dipping?" if Current_Time == "Night":# and (R_Loc == bg_current or K_Loc == bg_current or E_Loc == bg_current):
                 call Skinny_Dipping
@@ -1570,6 +1580,7 @@ label Training:
     call Wait
     call Girls_Location 
     call Set_The_Scene
+    call Gym_Clothes 
     $ Line = "The training session has ended, what would you like to do next?"
     
     jump Danger_Room
@@ -2964,39 +2975,39 @@ label Study_Room:
     
 label Study_Room_Explore:
     $ Line = 0
-    $ D20 = renpy.random.randint(1, 20)    
+    #$ D20 = renpy.random.randint(1, 20)    
     menu:
         "Where would you like to look?"
         "Bookshelf":
-            if D20 >= 5 + Cnt:
+            #if D20 >= 5 + Cnt:
                     $ Line = "book"
-            else:
-                    "As you search the bookshelf, you accidentally knock one of the books off."
-                    "It hammers against the floor, and a little light blinks on the desk."
+            #else:
+            #        "As you search the bookshelf, you accidentally knock one of the books off."
+            #        "It hammers against the floor, and a little light blinks on the desk."
         "Left Desk Drawer":
             if K_Loc != bg_current:
                     "You can't seem to get it open, it would be nice to have someone open the catch from the inside."
-            elif D20 >= 10 + Cnt:
-                    $ Line = "left"
+            #elif D20 >= 10 + Cnt:
             else:
-                    "As you open the drawer, it makes a loud a squeak."
-                    "As you look around, you notice a little light starts blinking on the desk."
+                    $ Line = "left"
+            #        "As you open the drawer, it makes a loud a squeak."
+            #        "As you look around, you notice a little light starts blinking on the desk."
         "Middle Desk Drawer":
             if K_Loc != bg_current:
                     "You can't seem to get it open, it would be nice to have someone open the catch from the inside."
-            elif D20 >= 15 + Cnt:
-                    $ Line = "mid"
+            #elif D20 >= 15 + Cnt:
             else:
-                    "As you open the drawer, it makes a loud a squeak."
-                    "As you look around, you notice a little light starts blinking on the desk."
+                    $ Line = "mid"
+            #        "As you open the drawer, it makes a loud a squeak."
+            #        "As you look around, you notice a little light starts blinking on the desk."
         "Right Desk Drawer":
             if K_Loc != bg_current:
                     "You can't seem to get it open, it would be nice to have someone open the catch from the inside."
-            elif D20 >= 5 + Cnt:
-                    $ Line = "right"
+            #elif D20 >= 5 + Cnt:
             else:
-                    "As you open the drawer, it makes a loud a squeak."
-                    "As you look around, you notice a little light starts blinking on the desk."
+                    $ Line = "right"
+            #        "As you open the drawer, it makes a loud a squeak."
+            #        "As you look around, you notice a little light starts blinking on the desk."
         "Never mind [[back]": 
                     jump Study_Room
     
@@ -3006,7 +3017,7 @@ label Study_Room_Explore:
                 "You slip out and head back to your room."
                 jump Player_Room_Entry 
     elif Line == "book":
-            if D20 >= 15 and "Well Studied" not in Achievements:            
+            if D20 >= 5 and "Well Studied" not in Achievements:            
                 "As you check the books on the shelf, you notice that one of them is actually a disguised lockbox."
                 if K_Loc == bg_current:
                     menu:
@@ -3034,21 +3045,19 @@ label Study_Room_Explore:
                 else:#Kitty's not there
                             "You can't think of any way to get it open, too bad you aren't a ghost or something."
                             "You place the box back on the shelf."
-            elif D20 >= 15:
+            elif D20 >= 5:
                 "There doesn't seem to be anything more of interest in here."
             else:
                 "You search through the books for a few minutes, but don't find anything."
                 "It would probably take a more thorough search."            
     elif Line == "left":
-            if D20 >= 15:
-                "yeah?"
-            if D20 >= 15 and "Xavier's photo" not in P_Inventory:            
+            if D20 >= 5 and "Xavier's photo" not in P_Inventory:            
                 "Buried under a pile of documents, you find a printed out photo."
                 "It appears to be a selfie of Mystique making out with Xavier."
                 "She's reaching down to adjust his . . . oh, {i}that's{/i} interesting."
                 "[[Xavier's photo acquired.]"
                 $ P_Inventory.append("Xavier's photo")
-            elif D20 >= 15:
+            elif D20 >= 5:
                 "There doesn't seem to be anything more of interest in here."
             else:
                 "You search through some documents, but don't find anything."

@@ -2009,8 +2009,11 @@ label Pool_Clothes(Mode = 0, Girl = 0, GirlsNum = 0): #checked each time you ent
                     $ Line = "no"
                 if Line == "no":   
                     #If she decides not to ask you
-                    ch_r "I'll be right back, gotta change."                       
-                    show blackscreen onlayer black
+                    if "arriving" in K_RecentActions:
+                        pass
+                    else:
+                        ch_r "I'll be right back, gotta change."                       
+                        show blackscreen onlayer black
                     if "exhibitionist" in R_Traits:
                         $ R_Outfit = "swimsuit2"
                     else:
@@ -2041,15 +2044,15 @@ label Pool_Clothes(Mode = 0, Girl = 0, GirlsNum = 0): #checked each time you ent
                 #                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 2)
                 #                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 2)  
                 #                $ Line = renpy.random.randint(0, 1)
-                    if Line:
-                            #If she decided to change     
-                            ch_r "Ok, be right back."                       
-                            show blackscreen onlayer black
-                            if "exhibitionist" in R_Traits:
-                                $ R_Outfit = "swimsuit2"
-                            else:
-                                $ R_Outfit = "swimsuit1"
-                            call RogueOutfit(Changed=1)
+                    #if Line:
+                    #        #If she decided to change     
+                    #        ch_r "Ok, be right back."                       
+                    #        show blackscreen onlayer black
+                    #        if "exhibitionist" in R_Traits:
+                    #            $ R_Outfit = "swimsuit2"
+                    #        else:
+                    #            $ R_Outfit = "swimsuit1"
+                    #        call RogueOutfit(Changed=1)
                     #end asked
                 if R_Outfit == "swimsuit1" or R_Outfit == "swimsuit2":
                     $ GirlsNum += 1 
@@ -2111,11 +2114,14 @@ label Pool_Clothes(Mode = 0, Girl = 0, GirlsNum = 0): #checked each time you ent
                     $ Line = "no"
                 if Line == "no":   
                     #If she decides not to ask you   
-                    if GirlsNum:
-                        ch_k "I'll be right back too."  
+                    if "arriving" in K_RecentActions:
+                        pass
                     else:
-                        ch_k "I'll be back soon, gotta change."                       
-                    show blackscreen onlayer black
+                        if GirlsNum:
+                            ch_k "I'll be right back too."  
+                        else:
+                            ch_k "I'll be back soon, gotta change."                       
+                        show blackscreen onlayer black
                     if "exhibitionist" in K_Traits:
                         $ K_Outfit = "swimsuit3"
                     else:
@@ -2150,15 +2156,15 @@ label Pool_Clothes(Mode = 0, Girl = 0, GirlsNum = 0): #checked each time you ent
                 #                $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 4)
                 #                $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 2)  
                 #                $ Line = renpy.random.randint(0, 1)
-                    if Line:
+                    #if Line:
                             #If she decided to change     
-                            ch_k "Ok, back in a bit"                       
-                            show blackscreen onlayer black
-                            if "exhibitionist" in K_Traits:
-                                $ K_Outfit = "swimsuit3"
-                            else:
-                                $ K_Outfit = "purple bikini"
-                            call KittyOutfit(Changed=1)
+                    #        ch_k "Ok, back in a bit"                       
+                    #        show blackscreen onlayer black
+                    #        if "exhibitionist" in K_Traits:
+                    #            $ K_Outfit = "swimsuit3"
+                    #        else:
+                    #            $ K_Outfit = "purple bikini"
+                    #        call KittyOutfit(Changed=1)
                     #end asked
                 if K_Outfit == "purple bikini" or K_Outfit == "swimsuit3":
                     $ GirlsNum += 1 
@@ -2221,11 +2227,14 @@ label Pool_Clothes(Mode = 0, Girl = 0, GirlsNum = 0): #checked each time you ent
                     $ Line = "no"
                 if Line == "no":   
                     #If she decides not to ask you   
-                    if GirlsNum:
-                        ch_e "I'll be right back too."  
+                    if "arriving" in E_RecentActions:
+                        pass
                     else:
-                        ch_e "I'll be back soon, gotta change."                       
-                    show blackscreen onlayer black
+                        if GirlsNum:
+                            ch_e "I'll be right back too."  
+                        else:
+                            ch_e "I'll be back soon, gotta change."                       
+                        show blackscreen onlayer black
                     if "exhibitionist" in E_Traits:
                         $ E_Outfit = "bikini"
                     else:
@@ -4107,6 +4116,7 @@ label Failsafe:
     $ E_HairColor = 0 if "E_HairColor" not in globals().keys() else E_HairColor
     $ R_Gag = 0 if "R_Gag" not in globals().keys() else R_Gag
     $ R_Gagx = 0 if "R_Gagx" not in globals().keys() else R_Gagx
+    $ R_Glasses = 0 if "R_Glasses" not in globals().keys() else R_Glasses
     $ R_Blush = 0 if "R_Blush" not in globals().keys() else R_Blush
     $ R_Spunk = [] if "R_Spunk" not in globals().keys() else R_Spunk
     $ R_Sperm = [] if "R_Sperm" not in globals().keys() else R_Sperm

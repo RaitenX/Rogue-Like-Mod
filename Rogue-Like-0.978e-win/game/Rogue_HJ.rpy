@@ -1121,6 +1121,9 @@ label R_TJAfter:
 # R_Blowjob //////////////////////////////////////////////////////////////////////
 
 label R_Blowjob:
+    if R_Gag == "ballgag":
+        "She removes the gag"
+        $ R_Gag = 0
     call Shift_Focus("Rogue")
     if R_Blow >= 7: # She loves it
         $ Tempmod += 15  
