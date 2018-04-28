@@ -191,15 +191,13 @@ While running game code:
     call Emma_Chat
   File "game/Emma_Chat.rpy", line 55, in script call
     call Emma_SexMenu
-  File "game/Emma_Sex.rpy", line 116, in script call
-    call E_Handjob
-  File "game/Emma_HJ.rpy", line 443, in script call
-    call PE_Cumming
-  File "game/Emma_Orgasms.rpy", line 1000, in script
-    $ E_Spunk.remove("hand")
-  File "game/Emma_Orgasms.rpy", line 1000, in <module>
-    $ E_Spunk.remove("hand")
-ValueError: list.remove(x): x not in list
+  File "game/Emma_Sex.rpy", line 120, in script call
+    call E_Blowjob
+  File "game/Emma_HJ.rpy", line 944, in script
+    menu:
+  File "game/Emma_HJ.rpy", line 1000, in <module>
+    "How about you put that bondage outfit" if E_Bondage and E_Outfit != "zipper bondage" and E_Outfit != "zipper bondage open":
+NameError: name 'E_Bondage' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -394,21 +392,21 @@ Full traceback:
     call Emma_Chat
   File "game/Emma_Chat.rpy", line 55, in script call
     call Emma_SexMenu
-  File "game/Emma_Sex.rpy", line 116, in script call
-    call E_Handjob
-  File "game/Emma_HJ.rpy", line 443, in script call
-    call PE_Cumming
-  File "game/Emma_Orgasms.rpy", line 1000, in script
-    $ E_Spunk.remove("hand")
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 827, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1764, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "game/Emma_Orgasms.rpy", line 1000, in <module>
-    $ E_Spunk.remove("hand")
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 631, in do_mutation
-    return method(self, *args, **kwargs)
-ValueError: list.remove(x): x not in list
+  File "game/Emma_Sex.rpy", line 120, in script call
+    call E_Blowjob
+  File "game/Emma_HJ.rpy", line 944, in script
+    menu:
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1483, in execute
+    choice = renpy.exports.menu(choices, self.set)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\exports.py", line 849, in menu
+    if renpy.python.py_eval(condition) ]
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1794, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1788, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/Emma_HJ.rpy", line 1000, in <module>
+    "How about you put that bondage outfit" if E_Bondage and E_Outfit != "zipper bondage" and E_Outfit != "zipper bondage open":
+NameError: name 'E_Bondage' is not defined
 
 Windows-8-6.2.9200
 Ren'Py 6.99.13.2919

@@ -116,8 +116,8 @@ label Emma_SexMenu:
                             call E_Handjob
 #                        "Could you give me a titjob?":
 #                            call E_Titjob         
-#                        "Could you suck my cock?":
-#                            call E_Blowjob 
+                        "Could you suck my cock?":
+                            call E_Blowjob 
 #                        "Never mind [[something else]":
 #                            jump Emma_SMenu
                 elif not E_Action:

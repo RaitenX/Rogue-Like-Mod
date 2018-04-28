@@ -7,8 +7,8 @@ image Emma_Sprite:
 #            "E_Hair == 'wet' or E_Water", "images/EmmaSprite/EmmaSprite_Head_HairBackWet.png",
 #            "True", Null(),        
 #            ),        
-        (0,0), ConditionSwitch(                                                                         #hair back 
-            "not E_Hair", Null(),
+        (0,0), ConditionSwitch(       
+            "renpy.showing('Emma_BJ_Animation') or not E_Hair", Null(),
             "(E_Hair == 'wet' or E_Water) and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_HairbackWet_Red.png",
             "(E_Hair == 'wet' or E_Water) and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_HairbackWet_White.png",
             "(E_Hair == 'wet' or E_Water) and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_HairBlackbackWet.png",
@@ -312,6 +312,7 @@ image EmmaSprite_Head:
 #            "True", Null(),        
 #            ),      
         (0,0), ConditionSwitch(                                                                         #Face no blush not wet
+            "renpy.showing('Emma_BJ_Animation')", Null(),
             "E_Blush or E_Hair == 'wet' or E_Water", Null(),        
             "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_Angry.png",
             "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_Sad.png",
@@ -320,6 +321,7 @@ image EmmaSprite_Head:
             "True", "images/EmmaSprite/EmmaSprite_Head_Wave_Normal.png", #E_Brows == 'normal'
             ),
         (0,0), ConditionSwitch(                                                                         #Face blush 1 not wet
+            "renpy.showing('Emma_BJ_Animation')", Null(),
             "E_Blush != 1 or E_Hair == 'wet' or E_Water", Null(),        
             "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_AngryB1.png",
             "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_SadB1.png",
@@ -328,6 +330,7 @@ image EmmaSprite_Head:
             "True", "images/EmmaSprite/EmmaSprite_Head_Wave_NormalB1.png", #E_Brows == 'normal'
             ),
         (0,0), ConditionSwitch(                                                                         #Face blush 2 not wet
+            "renpy.showing('Emma_BJ_Animation')", Null(),
             "E_Blush != 2 or E_Hair == 'wet' or E_Water", Null(),        
             "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_AngryB2.png",
             "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_SadB2.png",
@@ -337,6 +340,7 @@ image EmmaSprite_Head:
             ),
         
          (0,0), ConditionSwitch(                                                                         #Face no blush wet
+            "renpy.showing('Emma_BJ_Animation')", Null(),
             "E_Blush or (E_Hair != 'wet' and not E_Water)", Null(),        
             "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_Angry.png",
             "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_Sad.png",
@@ -345,6 +349,7 @@ image EmmaSprite_Head:
             "True", "images/EmmaSprite/EmmaSprite_Head_Wet_Normal.png", #E_Brows == 'normal'
             ),
         (0,0), ConditionSwitch(                                                                         #Face blush 1 wet
+            "renpy.showing('Emma_BJ_Animation')", Null(),
             "E_Blush != 1 or (E_Hair != 'wet' and not E_Water)", Null(),        
             "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_AngryB1.png",
             "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_SadB1.png",
@@ -353,6 +358,7 @@ image EmmaSprite_Head:
             "True", "images/EmmaSprite/EmmaSprite_Head_Wet_NormalB1.png", #E_Brows == 'normal'
             ),
         (0,0), ConditionSwitch(                                                                         #Face blush 2 wet
+            "renpy.showing('Emma_BJ_Animation')", Null(),
             "E_Blush != 2 or (E_Hair != 'wet' and not E_Water)", Null(),        
             "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_AngryB2.png",
             "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_SadB2.png",
@@ -362,6 +368,7 @@ image EmmaSprite_Head:
             ),
         
         (0,0), ConditionSwitch(                                                                         #Mouths        
+            "renpy.showing('Emma_BJ_Animation')", Null(),
             "E_Mouth == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
             "E_Mouth == 'lipbite'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Lipbite.png",
             "E_Mouth == 'sucking'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
@@ -376,6 +383,7 @@ image EmmaSprite_Head:
             ),   
         
         (0,0), ConditionSwitch(                                                                         #Mouth spunk               
+            "renpy.showing('Emma_BJ_Animation')", Null(),
             "'mouth' not in E_Spunk", Null(),
             "E_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthOpen.png",            
             "E_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthTongue.png",            
@@ -384,6 +392,7 @@ image EmmaSprite_Head:
         
         (0,0), "Emma Blink",                                                                           #Eyes        
         (0,0), ConditionSwitch(                                                                         #brows
+            "renpy.showing('Emma_BJ_Animation')", Null(),
             #"E_Brows == 'normal' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_White.png",
             #"E_Brows == 'normal' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_Red.png",
             "E_Brows == 'normal' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Normal.png",
@@ -410,10 +419,12 @@ image EmmaSprite_Head:
             "True", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal.png",
             ),         
         (0,0), ConditionSwitch(                                                                         #facial spunk               
+            "renpy.showing('Emma_BJ_Animation')", Null(),
             "'facial' in E_Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_Face.png",             
             "True", Null(),
             ),  
         (0,0), ConditionSwitch(                                                                         #Hair
+            #"renpy.showing('Emma_BJ_Animation')", Null(),
             "not E_Hair", Null(),
             "(E_Hair == 'wet' or E_Water) and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_HairWet_White.png",
             "(E_Hair == 'wet' or E_Water) and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_HairWet_Red.png",
@@ -426,11 +437,13 @@ image EmmaSprite_Head:
             "True", Null(),
             ),        
         (0,0), ConditionSwitch(                                                                         #Hair Water
+            #"renpy.showing('Emma_BJ_Animation')", Null(),
             "not E_Water", Null(),
             "E_Hair == 'wet'", "images/EmmaSprite/EmmaSprite_Head_Water.png",
             "True", "images/EmmaSprite/EmmaSprite_Head_Water.png",
             ),
         (0,0), ConditionSwitch(                                                                         #hair spunk               
+            #"renpy.showing('Emma_BJ_Animation')", Null(),
             "'hair' in E_Spunk and (E_Hair == 'wet' or E_Water)", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWet.png",                         
             "'hair' in E_Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWave.png",              
             "True", Null(),
@@ -554,12 +567,12 @@ image Emma_BJ_Animation:#BJ_NewTest:                                            
             "True", Null(),
             ),    
         (0,0), ConditionSwitch(                                                                 # her head
-            "Speed == 0", At("EmmaSprite_Head", BJ_Starting()),                       
+            "Speed == 0", At("Emma_BJ_Head_2", BJ_Starting()),                       
             #"Speed == 1", At("BJ_Head", BJ_Licking()),                       
-            "Speed == 1", At("EmmaSprite_Head", BJ_Licking()),                       
-            "Speed == 2", At("EmmaSprite_Head", BJ_Heading()),                     
-            "Speed == 3", At("EmmaSprite_Head", BJ_Sucking()),
-            "Speed == 4", At("EmmaSprite_Head", BJ_Deep()), 
+            "Speed == 1", At("Emma_BJ_Head_2", BJ_Licking()),                       
+            "Speed == 2", At("Emma_BJ_Head_2", BJ_Heading()),                     
+            "Speed == 3", At("Emma_BJ_Head_2", BJ_Sucking()),
+            "Speed == 4", At("Emma_BJ_Head_2", BJ_Deep()), 
             "True", Null(),
             ),   
 #        (0,0), Transform("images/RogueBJFace/Rogue_bj_markercard.png", alpha=(.2)),
@@ -571,141 +584,226 @@ image Emma_BJ_Animation:#BJ_NewTest:                                            
             "Speed == 4", At("Blowcock", Cock_BJ_Straight()), 
             "True", Null(),
             ),    
-        (0,0), ConditionSwitch(                                                                 # the masked overlay for when her head overlaps the cock
-            "Speed < 3", Null(), 
-            "Speed == 3", At(AlphaMask("EmmaSprite_Head", "images/RogueBJFace/Rogue_bj_facemask.png"), BJ_Sucking()),
-            "Speed == 4", At(AlphaMask("EmmaSprite_Head", "images/RogueBJFace/Rogue_bj_facemask.png"), BJ_Deep()), 
-            "True", Null(),
-            ),    
-        (0,0), ConditionSwitch(                                                                 # same as above, but for the heading animation
-            "Speed == 2", At(AlphaMask("EmmaSprite_Head", "BJ_MaskHeadingComposite"), BJ_Heading()),
-            "True", Null(),
-            ),    
+         (0,0), ConditionSwitch(                                                                 # the masked overlay for when her head overlaps the cock
+             "Speed < 3", Null(), 
+             "Speed == 3", At(AlphaMask("Emma_BJ_Head_2", "images/RogueBJFace/Rogue_bj_facemask.png"), BJ_Sucking()),
+             "Speed == 4", At(AlphaMask("Emma_BJ_Head_2", "images/EmmaSprite/Emma_bj_facemask.png"), BJ_Deep()), 
+             "True", Null(),
+             ),    
+        # (0,0), ConditionSwitch(                                                                 # same as above, but for the heading animation
+        #     "Speed == 2", At(AlphaMask("Emma_BJ_Head_3", "BJ_MaskHeadingComposite"), BJ_Heading()),
+        #     "True", Null(),
+        #     ),    
         )
     zoom .55
     anchor (.5,.5)
     
 image Emma_BJ_HairBack:
-    ConditionSwitch(                                                                            #Hair underlay
-            #"R_Water and R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack_back_wet.png",
-            #"R_Water and R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde_back_wet.png",
-            #"R_Water and R_Hair == 'evo'", "images/RogueBJFace/Rogue_bj_hair_back_wet.png",
-            #"R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack_back.png",
-            #"R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde_back.png",
-            "R_Hair", "images/EmmaSprite/EmmaSprite_Head_HairBack.png",
-            "True", Null(),
+    LiveComposite(
+        (555,673), 
+        (0,0), ConditionSwitch(       
+            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_HairbackWet_Red.png",
+            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_HairbackWet_White.png",
+            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackbackWet.png",
+            "E_Hair == 'wet' or E_Water", "images/EmmaSprite/EmmaSprite_Head_HairbackWet.png",
+            "E_Hair and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Hairback_Red.png",   
+            "E_Hair and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Hairback_White.png",   
+            "E_Hair and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackback.png",   
+            "E_Hair", "images/EmmaSprite/EmmaSprite_Head_Hairback.png",   
+            "True", Null(),        
             ),
+        )
+    anchor (0.6, 0.0)                
+    zoom 2.025 
+    offset (-240, -200)
 
 image Emma_BJ_Backdrop:                                                                        #Her Body under the head
-    "Emma"
-    zoom 4.5
-    pos (175,-110)
-    offset (-615, -125)
+    "Emma_Sprite"
+    zoom 5.4
+    pos (275,-110)
+    offset (-465, -200) #-325, -125
 
-# image Emma_BJ_Head:                                                                            #These are all the details of the face
-#     LiveComposite(    
-#         (787,913),     
-#         (0,0), ConditionSwitch(                                                                 #Hair back
-#             "R_Water and R_Hair == 'evo' and R_HairColor == 'black'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlack_back_wet.png", "BJ_Backdrop"),
-#             "R_Water and R_Hair == 'evo' and R_HairColor == 'blonde'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlonde_back_wet.png", "BJ_Backdrop"),
-#             "R_Water and R_Hair == 'evo'", AlphaMask("images/RogueBJFace/Rogue_bj_hair_back_wet.png", "BJ_Backdrop"),
-#             "R_Hair == 'evo' and R_HairColor == 'black'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlack_back.png", "BJ_Backdrop"),
-#             "R_Hair == 'evo' and R_HairColor == 'blonde'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlonde_back.png", "BJ_Backdrop"),
-#             "R_Hair == 'evo'", AlphaMask("images/RogueBJFace/Rogue_bj_hair_back.png", "BJ_Backdrop"),
-#             "True", Null(),
-#             ),   
-#         (0,0), ConditionSwitch(                     
-#             "not Speed", "images/RogueBJFace/Rogue_bj_face_base.png",    
-#             "True", "images/RogueBJFace/Rogue_bj_face_base_s.png"
-#             ),   
-#         (0,0), ConditionSwitch(                                                                                 #Mouth for under layer
-#             #"Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_lickingS_ring.png", #sucking
-#             "Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking
-#             #"Speed == 1 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_licking_ring.png", #sucking
-#             "Speed == 1 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ring.png", #sucking
-#             "Speed == 2 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_licking_ring.png", #sucking
-#             "Speed == 3 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_sucking_ring.png", #sucking
-#             "Speed == 4 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_sucking_ring.png", #deepthroat  
-#             "R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking
-#             #"R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS_ring.png", #sucking
-#             "R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ring.png", 
-#             #"R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_licking_ring.png", #sucking
-#             "Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
-#             "Speed == 1 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_licking.png", #licking
-#             "Speed == 2 and Trigger == 'blow'", Null(),                                #heading Rogue_BJ_HeadingMouth()
-#             "Speed == 3 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_sucking.png", #sucking
-#             "Speed == 4 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_sucking.png", #deepthroat         
-#             "'mouth' in R_Spunk and R_Mouth == 'sucking'", "images/RogueBJFace/Rogue_bj_mouth_surprisedS.png",
-#             "'mouth' in R_Spunk and R_Mouth == 'surprised'", "images/RogueBJFace/Rogue_bj_mouth_surprisedS.png",
-#             "'mouth' in R_Spunk and R_Mouth == 'sad'", "images/RogueBJFace/Rogue_bj_mouth_sadS.png",
-#             "'mouth' in R_Spunk and R_Mouth == 'kiss'", "images/RogueBJFace/Rogue_bj_mouth_sadS.png",
-#             "'mouth' in R_Spunk and R_Mouth == 'smile'", "images/RogueBJFace/Rogue_bj_mouth_lipbiteS.png",              
-#             "'mouth' in R_Spunk and R_Mouth == 'tongue'", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
-#             "'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lipbiteS.png",
-#             "R_Mouth == 'normal'", "images/RogueBJFace/Rogue_bj_mouth_normal.png",
-#             "R_Mouth == 'lipbite'", "images/RogueBJFace/Rogue_bj_mouth_lipbite.png",
-#             "R_Mouth == 'sucking'", "images/RogueBJFace/Rogue_bj_mouth_surprised.png",            
-#             "R_Mouth == 'kiss'", "images/RogueBJFace/Rogue_bj_mouth_kiss.png",
-#             "R_Mouth == 'sad'", "images/RogueBJFace/Rogue_bj_mouth_sad.png",
-#             "R_Mouth == 'smile'", "images/RogueBJFace/Rogue_bj_mouth_smile.png",            
-#             "R_Mouth == 'grimace'", "images/RogueBJFace/Rogue_bj_mouth_smile.png",
-#             "R_Mouth == 'surprised'", "images/RogueBJFace/Rogue_bj_mouth_surprised.png",          
-#             "R_Mouth == 'tongue'", "images/RogueBJFace/Rogue_bj_mouth_licking.png",    
-#             "True", "images/RogueBJFace/Rogue_bj_mouth_normal.png",
-#             ),       
-#         (316,590), ConditionSwitch(      #600               
-#             "Speed == 2 and not R_Gag", At("BJ_MouthHeading", BJ_MouthAnim()),     
-#             "True", Null(),
-#             ),  
-#         (0,0), ConditionSwitch(                                                                                 #cum for under layer
-#             "'facial' in R_Spunk", "images/RogueBJFace/Rogue_bj_facial_under.png",
-#             "not R_Spunk or Trigger != 'blow' or 'mouth' not in R_Spunk", Null(),
-# #            "Speed == 2", "images/RogueBJFace/Rogue_bj_face_under_heading_cum.png", 
-#             "Speed == 3", "images/RogueBJFace/Rogue_bj_face_under_sucking_cum.png",
-#             "Speed == 4", "images/RogueBJFace/Rogue_bj_face_under_sucking_cum.png",  
-#             "True", Null(),
-#             ),
-#         (0,0), ConditionSwitch(                                                                                 #cum for under layer
-#             #"'facial' in R_Spunk", "images/RogueBJFace/Rogue_bj_facial_under.png",
-#             #"not R_Spunk or Trigger != 'blow' or 'mouth' not in R_Spunk", Null(),
-# #            "Speed == 2", "images/RogueBJFace/Rogue_bj_face_under_heading_cum.png", 
-#             #"Speed == 3", "images/RogueBJFace/Rogue_bj_face_under_sucking_cum.png",
-#             #"Speed == 4", "images/RogueBJFace/Rogue_bj_face_under_sucking_cum.png",  
-#             "True", Null(),
-#             ),    
-#         (0,0), ConditionSwitch(                                                                 #Brows
-#             "R_Brows == 'normal'", "images/RogueBJFace/Rogue_bj_face_brows_normal.png",
-#             "R_Brows == 'angry'", "images/RogueBJFace/Rogue_bj_face_brows_angry.png",
-#             "R_Brows == 'sad'", "images/RogueBJFace/Rogue_bj_face_brows_sad.png",
-#             "R_Brows == 'surprised'", "images/RogueBJFace/Rogue_bj_face_brows_surprised.png",        
-#             "R_Brows == 'confused'", "images/RogueBJFace/Rogue_bj_face_brows_confused.png",
-#             "True", "images/RogueBJFace/Rogue_bj_face_brows_normal.png",
-#             ),
-#         (0,0), "BJ Blink",                                                                #Eyes
-#         (0,0), ConditionSwitch(                                                                 #cum on the face
-#                 "'facial' in R_Spunk", "images/RogueBJFace/Rogue_bj_facial_over.png",
-#                 "not R_Spunk or Trigger != 'blow' or 'mouth' not in R_Spunk", Null(),
-# #                "Speed == 2", "images/RogueBJFace/Rogue_bj_face_over_heading_cum.png", 
-#                 "Speed == 3", "images/RogueBJFace/Rogue_bj_face_over_sucking_cum.png",
-#                 "Speed == 4", "images/RogueBJFace/Rogue_bj_face_over_sucking_cum.png",  
-#                 "True", Null(),
-#                 ),
-#         (0,0), ConditionSwitch(                                                                                 #Collar
-#             "R_Glasses", "images/RogueBJFace/Rogue_BJFace_Glasses.png",   
-#             "True", Null(),                #R_Arms == 'gloved' or not R_Arms
-#             ),  
-#         (0,0), ConditionSwitch(                                                                 #Hair overlay
-#             "R_Water and R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack_wet.png",
-#             "R_Water and R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde_wet.png",
-#             "R_Water and R_Hair == 'evo'", "images/RogueBJFace/Rogue_bj_hair_wet.png",
-#             "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack.png",
-#             "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde.png",
-#             "R_Hair == 'evo'", "images/RogueBJFace/Rogue_bj_hair.png",
-#             "True", Null(),
-#             ),
-#         )
+image Emma_BJ_Head_3:
+    "Emma_BJ_Head"
+    #zoom .75
+    zoom 4.05
+    pos (275,-110)
+    offset (-140, -125) #-140 - 125
+
+image Emma_BJ_Head_2:
+    "Emma_BJ_Head"
+    #zoom .75
+    zoom 4.05
+    pos (275,-110)
+    offset (-240, -200) #-140 - 125
 
 
+image Emma_BJ_Head:
+    LiveComposite(
+        (555,673), 
+        #(0,0), ConditionSwitch(       
+        #    "(E_Hair == 'wet' or E_Water) and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_HairbackWet_Red.png",
+        #    "(E_Hair == 'wet' or E_Water) and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_HairbackWet_White.png",
+        #    "(E_Hair == 'wet' or E_Water) and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackbackWet.png",
+        #    "E_Hair == 'wet' or E_Water", "images/EmmaSprite/EmmaSprite_Head_HairbackWet.png",
+        #    "E_Hair and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Hairback_Red.png",   
+        #    "E_Hair and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Hairback_White.png",   
+        #    "E_Hair and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackback.png",   
+        #    "E_Hair", "images/EmmaSprite/EmmaSprite_Head_Hairback.png",   
+        #    "True", Null(),        
+        #    ), 
+        (0,0), ConditionSwitch(                                                                         #Face no blush not wet
+            "E_Blush or E_Hair == 'wet' or E_Water", Null(),        
+            "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_Angry.png",
+            "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_Sad.png",
+            "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wave_Surprised.png",     
+            "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wave_Confused.png", 
+            "True", "images/EmmaSprite/EmmaSprite_Head_Wave_Normal.png", #E_Brows == 'normal'
+            ),
+        (0,0), ConditionSwitch(                                                                         #Face blush 1 not wet
+            "E_Blush != 1 or E_Hair == 'wet' or E_Water", Null(),        
+            "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_AngryB1.png",
+            "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_SadB1.png",
+            "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wave_SurprisedB1.png",   
+            "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wave_ConfusedB1.png", 
+            "True", "images/EmmaSprite/EmmaSprite_Head_Wave_NormalB1.png", #E_Brows == 'normal'
+            ),
+        (0,0), ConditionSwitch(                                                                         #Face blush 2 not wet
+            "E_Blush != 2 or E_Hair == 'wet' or E_Water", Null(),        
+            "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_AngryB2.png",
+            "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_SadB2.png",
+            "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wave_SurprisedB2.png",    
+            "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wave_ConfusedB2.png", 
+            "True", "images/EmmaSprite/EmmaSprite_Head_Wave_NormalB2.png", #E_Brows == 'normal'
+            ),
+        
+         (0,0), ConditionSwitch(                                                                         #Face no blush wet
+            "E_Blush or (E_Hair != 'wet' and not E_Water)", Null(),        
+            "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_Angry.png",
+            "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_Sad.png",
+            "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wet_Surprised.png",    
+            "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wet_Confused.png",  
+            "True", "images/EmmaSprite/EmmaSprite_Head_Wet_Normal.png", #E_Brows == 'normal'
+            ),
+        (0,0), ConditionSwitch(                                                                         #Face blush 1 wet
+            "E_Blush != 1 or (E_Hair != 'wet' and not E_Water)", Null(),        
+            "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_AngryB1.png",
+            "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_SadB1.png",
+            "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wet_SurprisedB1.png",    
+            "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wet_ConfusedB1.png",    
+            "True", "images/EmmaSprite/EmmaSprite_Head_Wet_NormalB1.png", #E_Brows == 'normal'
+            ),
+        (0,0), ConditionSwitch(                                                                         #Face blush 2 wet
+            "E_Blush != 2 or (E_Hair != 'wet' and not E_Water)", Null(),        
+            "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_AngryB2.png",
+            "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_SadB2.png",
+            "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wet_SurprisedB2.png",    
+            "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wet_ConfusedB2.png",    
+            "True", "images/EmmaSprite/EmmaSprite_Head_Wet_NormalB2.png", #E_Brows == 'normal'
+            ),
+        
+        # (0,0), ConditionSwitch(                                                                         #Mouths        
+        #     "E_Mouth == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
+        #     "E_Mouth == 'lipbite'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Lipbite.png",
+        #     "E_Mouth == 'sucking'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
+        #     "E_Mouth == 'kiss'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Kiss.png",
+        #     "E_Mouth == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Sad.png",
+        #     "E_Mouth == 'smile'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smile.png",
+        #     "E_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
+        #     "E_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Tongue.png",                
+        #     "E_Mouth == 'grimace'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smile.png",                 
+        #     "E_Mouth == 'smirk'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smirk.png",         
+        #     "True", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
+        #     ),   
+        
+        # (0,0), ConditionSwitch(                                                                         #Mouth spunk               
+        #     "'mouth' not in E_Spunk", Null(),
+        #     "E_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthOpen.png",            
+        #     "E_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthTongue.png",            
+        #     "True", "images/EmmaSprite/EmmaSprite_Head_Spunk_Mouth.png",  
+        #     ),  
+
+        (0,0), ConditionSwitch(                                                                                 #Mouth for under layer
+            #"Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
+            "Speed == 1 and Trigger == 'blow'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Tongue.png", #licking
+            "Speed == 2 and Trigger == 'blow'", Null(),                                #heading Rogue_BJ_HeadingMouth()
+            "Speed == 3 and Trigger == 'blow'", "images/EmmaSprite/Emma_bj_mouth.png", #sucking
+            "Speed == 4 and Trigger == 'blow'", "images/EmmaSprite/Emma_bj_mouth.png", #deepthroat         
+            "E_Mouth == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
+            "E_Mouth == 'lipbite'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Lipbite.png",
+            "E_Mouth == 'sucking'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
+            "E_Mouth == 'kiss'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Kiss.png",
+            "E_Mouth == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Sad.png",
+            "E_Mouth == 'smile'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smile.png",
+            "E_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
+            "E_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Tongue.png",                
+            "E_Mouth == 'grimace'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smile.png",                 
+            "E_Mouth == 'smirk'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smirk.png",         
+            "True", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
+            ),
+        (0,0), ConditionSwitch(                                                                         #Mouth spunk               
+            "'mouth' not in E_Spunk", Null(),
+            "E_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthOpen.png",            
+            "E_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthTongue.png",            
+            "True", "images/EmmaSprite/EmmaSprite_Head_Spunk_Mouth.png",  
+            ), 
+        
+        (0,0), "Emma Blink",                                                                           #Eyes        
+        (0,0), ConditionSwitch(                                                                         #brows
+            #"E_Brows == 'normal' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_White.png",
+            #"E_Brows == 'normal' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_Red.png",
+            "E_Brows == 'normal' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Normal.png",
+            "E_Brows == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal.png",
+            #"E_Brows == 'angry' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Angry_White.png",
+            #"E_Brows == 'angry' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Angry_Red.png",
+            "E_Brows == 'angry' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Angry.png",
+            "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Brows_Angry.png",
+            #"E_Brows == 'sad' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Sad_White.png",
+            #"E_Brows == 'sad' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Sad_Red.png",
+            "E_Brows == 'sad' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Sad.png",
+            "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Brows_Sad.png",
+            #"E_Brows == 'surprised' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Surprised_White.png",        
+            #"E_Brows == 'surprised' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Surprised_Red.png",        
+            "E_Brows == 'surprised' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Surprised.png",        
+            "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Brows_Surprised.png",        
+            #"E_Brows == 'confused' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Confused_White.png",
+            #"E_Brows == 'confused' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Confused_Red.png",
+            "E_Brows == 'confused' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Confused.png",
+            "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Brows_Confused.png",
+            #"True and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_White.png",
+            #"True and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_Red.png",
+            "True and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Normal.png",
+            "True", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal.png",
+            ),         
+        (0,0), ConditionSwitch(                                                                         #facial spunk               
+            "'facial' in E_Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_Face.png",             
+            "True", Null(),
+            ),  
+        (0,0), ConditionSwitch(                                                                         #Hair
+            "not E_Hair", Null(),
+            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_HairWet_White.png",
+            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_HairWet_Red.png",
+            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackWet.png",
+            "E_Hair == 'wet' or E_Water", "images/EmmaSprite/EmmaSprite_Head_HairWet.png",
+            "E_Hair and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Hair_White.png",
+            "E_Hair and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Hair_Red.png",
+            "E_Hair and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlack.png",
+            "E_Hair", "images/EmmaSprite/EmmaSprite_Head_Hair.png",
+            "True", Null(),
+            ),        
+        (0,0), ConditionSwitch(                                                                         #Hair Water
+            "not E_Water", Null(),
+            "E_Hair == 'wet'", "images/EmmaSprite/EmmaSprite_Head_Water.png",
+            "True", "images/EmmaSprite/EmmaSprite_Head_Water.png",
+            ),
+        (0,0), ConditionSwitch(                                                                         #hair spunk               
+            "'hair' in E_Spunk and (E_Hair == 'wet' or E_Water)", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWet.png",                         
+            "'hair' in E_Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWave.png",              
+            "True", Null(),
+            ),  
+        )                
+    anchor (0.6, 0.0)                
+    zoom .5   
 
 
 
@@ -715,15 +813,15 @@ label Emma_BJ_Launch(Line = 0):    # The sequence to launch the Emma BJ animatio
     
     call Emma_Hide
     if Line == "L" or Line == "cum":
-        show Emma at SpriteLoc(StageCenter) zorder EmmaLayer:
+        show Emma_Sprite at SpriteLoc(StageCenter) zorder EmmaLayer:
             alpha 1
 #            zoom 1 offset (0,0)
-            ease 1 zoom 2.5 offset (70,140) #(-90,140) offset (150,80) 
+            ease 1 zoom 3 offset (160,90) #(-90,140) offset (150,80) 
         with dissolve
     else:
-        show Emma at SpriteLoc(StageCenter) zorder EmmaLayer:
+        show Emma_Sprite at SpriteLoc(StageCenter) zorder EmmaLayer:
             alpha 1
-            zoom 2.5 offset (70,140) #(-90,140) 
+            zoom 3 offset (160,90) #(-90,140) 
         with dissolve
         
 #    show Emma:
@@ -749,10 +847,11 @@ label Emma_BJ_Launch(Line = 0):    # The sequence to launch the Emma BJ animatio
     if Line != "cum":
         $ Trigger = "blow"
     
-    show Emma zorder EmmaLayer:
+    show Emma_Sprite zorder EmmaLayer:
         alpha 0
     show Emma_BJ_Animation zorder 150: 
         pos (645,510) 
+    "t"
     return
     
 label Emma_BJ_Reset: # The sequence to the Emma animations from BJ to default
@@ -765,7 +864,7 @@ label Emma_BJ_Reset: # The sequence to the Emma animations from BJ to default
 #        alpha 1
 #        zoom 2 offset (70,140)
 #    with dissolve
-    show Emma SpriteLoc(R_SpriteLoc) zorder EmmaLayer:        
+    show Emma_Sprite SpriteLoc(E_SpriteLoc) zorder EmmaLayer:        
         zoom 2 offset (70,140)
         alpha 1
         block:

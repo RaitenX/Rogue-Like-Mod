@@ -519,6 +519,607 @@ label E_HJAfter:
 ## end E_Handjob //////////////////////////////////////////////////////////////////////
 
 
+# E_Blowjob //////////////////////////////////////////////////////////////////////
+
+label E_Blowjob:
+    call Shift_Focus("Emma")
+    if E_Blow >= 7: # She loves it
+        $ Tempmod += 15  
+    elif E_Blow >= 3: #You've done it before several times
+        $ Tempmod += 10
+    elif E_Blow: #You've done it before
+        $ Tempmod += 7    
+        
+    if E_Addict >= 75 and E_Swallow >=3: #She's really strung out and has swallowed
+        $ Tempmod += 25
+    elif E_Addict >= 75: #She's really strung out
+        $ Tempmod += 15
+        
+    if Situation == "shift":
+        $ Tempmod += 15
+    if "exhibitionist" in E_Traits:
+        $ Tempmod += (4*Taboo) 
+    if "dating" in E_Traits or "sex friend" in E_Petnames:
+        $ Tempmod += 10
+    elif "ex" in E_Traits:
+        $ Tempmod -= 40  
+    if E_ForcedCount and not E_Forced:
+        $ Tempmod -= 5 * E_ForcedCount        
+    
+    if Taboo and "tabno" in E_DailyActions:        
+        $ Tempmod -= 10 
+        
+    if "no blow" in E_DailyActions:               
+        $ Tempmod -= 5 
+        $ Tempmod -= 10 if "no blow" in E_RecentActions else 0    
+    
+    $ Approval = ApprovalCheck("Emma", 1300, TabM = 4) # 130, 145, 160, Taboo -160(290)
+    
+    if Situation == "Emma":                                                                  #Emma auto-starts   
+        if Approval > 2:                                                      # fix, add Emma auto stuff here
+            "Emma slides down and gives your cock a little lick."
+            menu:
+                "What do you do?"
+                "Nothing.":                    
+                    $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 3) 
+                    $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 40, 2)                     
+                    "Emma continues licking at it."
+                "Praise her.":       
+                    call EmmaFace("sexy, 1")                    
+                    $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 3) 
+                    ch_p "Hmmm, keep doing that, [E_Pet]."
+                    call Emma_Namecheck
+                    "Emma continues her actions."
+                    $ E_Love = Statupdate("Emma", "Love", E_Love, 85, 1)
+                    $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 1)
+                    $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
+                "Ask her to stop.":     
+                    call EmmaFace("surprised")  
+                    $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 1) 
+                    ch_p "Let's not do that for now, [E_Pet]."
+                    call Emma_Namecheck
+                    "Emma puts it down."
+                    $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 1)
+                    $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 3)
+                    return            
+            jump EBJ_Prep
+        else:                
+            $ Tempmod = 0                               # fix, add Emma auto stuff here
+            $ Trigger2 = 0
+            return            
+    
+    if not E_Blow and "no blow" not in E_RecentActions:        
+        call EmmaFace("surprised", 2)
+        $ E_Mouth = "kiss"
+        ch_e "You want me to suck your dick?"
+        if E_Hand:          
+            $ E_Mouth = "smile"
+            ch_e "Not satisfied with handies?"        
+        $ E_Blush = 1
+            
+    if not E_Blow and Approval:                                                 #First time dialog        
+        if E_Forced: 
+            call EmmaFace("sad")
+            $ E_Love = Statupdate("Emma", "Love", E_Love, 70, -3, 1)
+            $ E_Love = Statupdate("Emma", "Love", E_Love, 20, -2, 1)
+        elif E_Love >= (E_Obed + E_Inbt):
+            call EmmaFace("sexy")
+            $ E_Brows = "sad"
+            $ E_Mouth = "smile" 
+            ch_e "I have wondered what you. . . taste like."            
+        elif E_Obed >= E_Inbt:
+            call EmmaFace("normal")
+            ch_e "If you want me to. . ."               
+        elif E_Addict >= 50:
+            call EmmaFace("manic", 1)
+            ch_e "My mouth is watering. . ."   
+        else: # Uninhibited 
+            call EmmaFace("sad")
+            $ E_Mouth = "smile"             
+            ch_e " sure. . ."       
+    elif Approval:                                                                       #Second time+ dialog
+        if E_Forced: 
+            call EmmaFace("sad")
+            $ E_Love = Statupdate("Emma", "Love", E_Love, 70, -3, 1)
+            $ E_Love = Statupdate("Emma", "Love", E_Love, 20, -2, 1)
+            ch_e "You want me to do that again?"
+        elif not Taboo and "tabno" in E_DailyActions:        
+            ch_e "Ok, I guess this is private enough. . ."    
+        elif "blow" in E_RecentActions:
+            call EmmaFace("sexy", 1)
+            ch_e "Mmm, again? [[stretches her jaw]"
+            jump EBJ_Prep                
+        elif "blow" in E_DailyActions:
+            call EmmaFace("sexy", 1)
+            $ Line = renpy.random.choice(["Back again so soon?",   
+                "You're going to give me lockhee- . . . jaw.", 
+                "Let me get some saliva going.",
+                "Didn't get enough earlier?",
+                "My jaw's still a bit sore from earlier.",
+                "My jaw's still a bit sore from earlier."]) 
+            ch_e "[Line]"
+        elif E_Blow < 3:        
+            call EmmaFace("sexy", 1)
+            $ E_Brows = "confused"
+            $ E_Mouth = "kiss"
+            ch_e "So you'd like another blowjob?"        
+        else:       
+            call EmmaFace("sexy", 1)
+            $ Emma_Arms = 2
+            $ Line = renpy.random.choice(["You want me to [mimes blowing]?",                 
+                "So you wanna 'nother blowjob?",                 
+                "A little. . . lick?", 
+                "You want me to suck you off?",
+                "A little tlc?"]) 
+            ch_e "[Line]"
+        $ Line = 0
+            
+    if Approval >= 2:                                                                   #She's into it. . .               
+        if E_Forced:
+            call EmmaFace("sad")
+            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 1)
+            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 1)
+            ch_e "Whatever."    
+        elif "no blow" in E_DailyActions:               
+            ch_e "Ok, fine, I suppose it isn't {i}sooo{/i} bad. . ."  
+        else:
+            call EmmaFace("sexy", 1)
+            $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 1)
+            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 3) 
+            $ Line = renpy.random.choice(["Well, sure, ahhhhhh.",                 
+                "Well. . . ok.",                 
+                "Yum.", 
+                "Sure, whip it out.",
+                "Ok. . . [She licks her lips].",
+                "Lol, ok, alright."]) 
+            ch_e "[Line]"
+            $ Line = 0
+        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 20, 1) 
+        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 1)      
+        $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 2) 
+        jump EBJ_Prep   
+    
+    else:                                                                               #She's not into it, but maybe. . .            
+        call EmmaFace("angry")
+        if "no blow" in E_RecentActions:  
+            ch_e "What did I {i}just{/i} tell you [E_Petname]."
+        elif Taboo and "tabno" in E_DailyActions and "no blow" in E_DailyActions:  
+            ch_e "I told you, not in public!"  
+        elif "no blow" in E_DailyActions:       
+            ch_e "I told you \"no,\" [E_Petname]."
+        elif Taboo and "tabno" in E_DailyActions:  
+            ch_e "I told you this is too public!"      
+        elif not E_Blow:
+            call EmmaFace("bemused")
+            ch_e "I don't know about the taste, [E_Petname]. . ."
+        else:
+            call EmmaFace("bemused")
+            ch_e "Later, [E_Petname]!"
+        menu:
+            extend ""
+            "Sorry, never mind." if "no blow" in E_DailyActions:
+                call EmmaFace("bemused")
+                ch_e "Aw, it's ok, [E_Petname]."              
+                return
+            "Maybe later?" if "no blow" not in E_DailyActions:
+                call EmmaFace("sexy")  
+                ch_e "You never know, [E_Petname]."
+                $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 2)
+                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 2)   
+                if Taboo:                    
+                    $ E_RecentActions.append("tabno")                      
+                    $ E_DailyActions.append("tabno") 
+                $ E_RecentActions.append("no blow")                      
+                $ E_DailyActions.append("no blow")            
+                return
+            "Come on, please?":             
+                if Approval:
+                    call EmmaFace("sexy")     
+                    $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 2)
+                    $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
+                    $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 3) 
+                    $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 40, 2) 
+                    $ Line = renpy.random.choice(["Well, sure, I guess.",                 
+                        "Well. . . ok.",                 
+                        "I could maybe give it a try.", 
+                        "I guess I could. . .",
+                        "Fiiine. . . [She licks her lips].",
+                        "Heh, ok, fine."]) 
+                    ch_e "[Line]"
+                    $ Line = 0                   
+                    jump EBJ_Prep
+                else:   
+                    if ApprovalCheck("Emma", 1100, TabM = 3): # 110, 125, 140, Taboo -120(230)             Handy instead?    
+                        $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 1) 
+                        $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 3) 
+                        call EmmaFace("confused", 1)
+                        $ E_Arms = 1
+                        if E_Hand:
+                            ch_e "Maybe I could just use my hand?"
+                        else:
+                            ch_e "I could maybe. . . [[she makes a jerking motion with her hand]?"
+                        menu:
+                            ch_e "Would that work?"
+                            "Sure, that's fine.":
+                                $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 2)  
+                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 1)                                
+                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 1) 
+                                jump EHJ_Prep
+                            "Nah, if it's not a BJ, forget it.":
+                                $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -2)                                
+                                $ E_Arms = 0                
+                                ch_e "Ok, your loss."  
+                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 2)  
+                    
+                    
+            "Suck it, [E_Pet]":                                               # Pressured into it                
+                call Emma_Namecheck
+                $ Approval = ApprovalCheck("Emma", 750, "OI", TabM = 3) # 75, 90, 105, -120(195)
+                if Approval > 1 or (Approval and E_Forced):
+                    call EmmaFace("sad")
+                    $ E_Love = Statupdate("Emma", "Love", E_Love, 70, -5, 1)
+                    $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -2)                 
+                    ch_e "Ok, fine. . ."  
+                    $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 4)
+                    $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 1) 
+                    $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 3)  
+                    $ E_Forced = 1
+                    jump EBJ_Prep
+                else:                              
+                    $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -15)     
+                    $ E_RecentActions.append("angry")
+                    $ E_DailyActions.append("angry")   
+    
+    #She refused all offers.   
+    if "no blow" in E_DailyActions:
+        call EmmaFace("angry", 1)
+        ch_e "You can eat a dick, 'cos I'm not."   
+        $ E_RecentActions.append("angry")
+        $ E_DailyActions.append("angry")   
+    elif E_Forced:
+        call EmmaFace("angry", 1)
+        ch_e "I just can't do that!"
+        $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5)     
+        $ E_Love = Statupdate("Emma", "Love", E_Love, 70, -2) if E_Love > 300 else E_Love
+        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, -2)      
+        $ E_RecentActions.append("angry")
+        $ E_DailyActions.append("angry")   
+        $ E_RecentActions.append("no blow")                      
+        $ E_DailyActions.append("no blow") 
+        return
+    elif Taboo:                             # she refuses and this is too public a place for her
+        call EmmaFace("angry", 1)          
+        $ E_DailyActions.append("tabno") 
+        ch_e "This is way too exposed!"
+        $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5)  
+        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, -3)    
+        return                
+    elif E_Blow:
+        call EmmaFace("sad") 
+        ch_e "No, not this time."       
+    else:
+        call EmmaFace("normal", 1)
+        ch_e "Nope."  
+    $ E_RecentActions.append("no blow")                      
+    $ E_DailyActions.append("no blow") 
+    $ Tempmod = 0    
+    return
+    
+
+label EBJ_Prep:   
+    if renpy.showing("Emma_HJ_Animation"):
+        hide Emma_HJ_Animation with easeoutbottom
+    if Taboo:
+        $ E_Inbt += int(Taboo/10)  
+        $ E_Lust += int(Taboo/5)
+                
+    call EmmaFace("sexy")
+    if E_Forced:
+        call EmmaFace("sad")
+    elif E_Hand:
+        $ E_Brows = "confused"
+        $ E_Eyes = "sexy"
+        $ E_Mouth = "smile"
+    
+    call Emma_BJ_Launch("L")
+    if not E_Blow:        
+        if E_Forced:
+            $ E_Love = Statupdate("Emma", "Love", E_Love, 90, -70)
+            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 45)
+            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 60) 
+        else:
+            $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 5)
+            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 35)
+            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 40)     
+    
+    call Seen_First_Peen(1)
+    
+    if Situation:     
+        $ renpy.pop_call() 
+        $ Situation = 0  
+    $ Line = 0
+    $ Cnt = 0
+    if Taboo:
+        call DrainWord("Emma","tabno")
+    call DrainWord("Emma","no blow")
+    $ E_RecentActions.append("blow")                      
+    $ E_DailyActions.append("blow")     
+
+label EBJ_Cycle: #Repeating strokes  
+    while Round >=0:
+        call Shift_Focus("Emma")
+        call Emma_BJ_Launch    
+        call EmmaLust   
+            
+        $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
+         
+        if Cnt == (10 + E_Blow):
+                $ E_Brows = "angry"        
+                menu:
+                    ch_e "I'm totally worn out here. Can we do something else?"
+                    "How about a Handy?" if E_Action and MultiAction:
+                            $ Situation = "shift"
+                            call E_BJAfter
+                            call E_Handjob 
+                            return
+                    "Finish up." if P_FocusX:
+                            "You release your concentration. . ."             
+                            $ P_FocusX = 0
+                            $ P_Focus += 15
+                            $ Cnt += 1
+                            "[Line]."
+                            jump EBJ_Cycle
+                    "Let's try something else." if MultiAction: 
+                            $ Line = 0
+                            call Emma_BJ_Reset
+                            $ Situation = "shift"
+                            jump E_BJAfter
+                    "No, get back down there.":
+                            if ApprovalCheck("Emma", 1200) or ApprovalCheck("Emma", 500, "O"):
+                                $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -5)
+                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 3)
+                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 2)
+                                "She grumbles but gets back to work."
+                            else:
+                                call EmmaFace("angry", 1)  
+                                "She scowls at you, drops you cock and pulls back."
+                                ch_e "Well fuck you then."
+                                $ E_Love = Statupdate("Emma", "Love", E_Love, 50, -3, 1)
+                                $ E_Love = Statupdate("Emma", "Love", E_Love, 80, -4, 1)
+                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 30, -1, 1)
+                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, -1, 1)  
+                                $ E_RecentActions.append("angry")
+                                $ E_DailyActions.append("angry")   
+                                jump E_BJAfter        
+        elif Cnt == (5 + E_Blow) and E_SEXP <= 100 and not ApprovalCheck("Emma", 1200, "LO"):
+                    $ E_Brows = "confused"
+                    ch_e "Are you getting close here? I'm cramping up."  
+        #End Count check
+        
+        if Line and P_Focus < 100:                                                    #Player Command menu
+                    $ Cnt += 1
+                    $ Round -= 1
+                    
+                    menu:
+                        "[Line]"
+                        "Keep going. . ." if Speed:
+                                pass
+                            
+                        "Lick it. . ." if Speed != 1:
+                                $ Speed = 1   
+                        "Lick it. . . (locked)" if Speed == 1:
+                                pass  
+                            
+                        "Just the head. . ." if Speed != 2:
+                            $ Speed = 2
+                        "Just the head. . . (locked)" if Speed == 2:
+                                pass
+                            
+                        "Suck on it." if Speed != 3:
+                                $ Speed = 3  
+                                if Trigger2 == "jackin":
+                                    "She dips her head a bit lower, and you move your hand out of the way."
+                                    
+                        "Suck on it. (locked)" if Speed == 3:
+                                pass
+                            
+                        "Take it deeper." if Speed != 4:
+                                if "pushed" not in E_RecentActions and E_Blow < 5:
+                                    $ E_Love = Statupdate("Emma", "Love", E_Love, 80, -(20-(2*E_Blow))) 
+                                    $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, (30-(3*E_Blow)))
+                                    $ E_RecentActions.append("pushed")
+                                if Trigger2 == "jackin" and Speed != 3:
+                                    "She takes it to the root, and you move your hand out of the way."
+                                $ Speed = 4  
+                        "Take it deeper. (locked)" if Speed == 4:
+                                pass
+                            
+                        "Set your own pace. . .":                
+                                "Emma hums contentedly."    
+                                if "setpace" not in E_RecentActions:
+                                    $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 2)
+                                $ D20 = renpy.random.randint(1, 20)     
+                                if E_Blow < 5:
+                                    $ D20 -= 10
+                                elif E_Blow < 10:
+                                    $ D20 -= 5
+                                    
+                                if D20 > 15:
+                                    $ Speed = 4              
+                                    if "setpace" not in E_RecentActions:      
+                                        $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 3) 
+                                elif D20 > 10:
+                                    $ Speed = 3
+                                elif D20 > 5:
+                                    $ Speed = 2
+                                else:
+                                    $ Speed = 1
+                                $ E_RecentActions.append("setpace")
+                                
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                    
+                        "Maybe lose some clothes. . .":
+                                    call E_Undress  
+                                    
+                        "Shift actions":
+                            menu:
+                                "How about a handy?":
+                                        if E_Action and MultiAction:
+                                            if  E_Over == "armbinder":
+                                                call EmmaFace("sexy", 1)
+                                                ch_e "I can't do that with my arms like this [E_Petname]"
+                                                "You untie her arms and removes her blindfold"
+                                                $ E_Over = 0
+                                                $ E_Blindfold = 0
+                                                if E_Chest or E_Pants or E_Panties:
+                                                    "She drops the rest of her clothes"
+                                                    $ E_Chest = 0
+                                                    $ E_Pants = 0
+                                                    $ E_Panties = 0
+                                                    $ E_Outfit = "nude"
+                                            $ Situation = "shift"
+                                            call E_BJAfter
+                                            call E_Handjob
+                                        else:
+                                            ch_e "I'm kinda tired, could we just wrap this up. . ."
+                                "How about a titjob?":
+                                        if E_Action and MultiAction:
+                                            $ Situation = "shift"
+                                            call E_BJAfter
+                                            call E_Titjob
+                                        else:
+                                            ch_e "I'm kinda tired, could we just wrap this up. . ."
+                        
+                                        
+                        "I also want to fondle her breasts.":
+                                if E_Action and MultiAction:
+                                    $ Trigger2 = "fondle breasts"
+                                    "You start to fondle her breasts."
+                                    $ E_Action -= 1
+                                else:
+                                    ch_e "I'm kinda tired, could we just wrap this up?"  
+                                         
+                        "Let's try something else." if MultiAction: 
+                                $ Line = 0
+                                call Emma_BJ_Reset
+                                $ Situation = "shift"
+                                jump E_BJAfter
+                        "Let's stop for now." if not MultiAction: 
+                                $ Line = 0
+                                call Emma_BJ_Reset
+                                jump E_BJAfter 
+        #End menu (if Line)
+        
+        call Sex_Dialog("Emma",Partner)
+                
+        #If either of you could cum 
+        if P_Focus >= 100 or E_Lust >= 100: 
+                    #If you can cum:
+                    if P_Focus >= 100:                                                     
+                            call PE_Cumming
+                            if "angry" in E_RecentActions:  
+                                call Emma_BJ_Reset
+                                return    
+                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
+                            if 100 > E_Lust >= 70 and E_OCount < 2:             
+                                $ E_RecentActions.append("unsatisfied")                      
+                                $ E_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump E_BJAfter 
+                            $ Line = "came"
+     
+                    #If Emma can cum
+                    if E_Lust >= 100:                                                                
+                            call E_Cumming
+                            if Situation == "shift" or "angry" in E_RecentActions:
+                                jump E_BJAfter            
+                    
+                    #If you came
+                    if Line == "came":
+                            if not P_Semen:
+                                "You're pretty wiped, better stop for now."
+                            $ Line = 0
+                            jump E_BJAfter   
+                
+        #End orgasm
+        
+   
+        if Round == 10:
+            ch_e "Could we wrap this up?"  
+        elif Round == 5:
+            ch_e "Seriously, I need a break."        
+    
+    #Round = 0 loop breaks
+    call EmmaFace("bemused", 0)
+    $ Line = 0
+    ch_e "Ok, I gotta rest me jaw for a minute. . ."
+
+label E_BJAfter:    
+    call EmmaFace("sexy")  
+        
+    $ E_Blow += 1
+    $ E_Action -=1
+    $ E_Addictionrate += 1
+    if "addictive" in P_Traits:
+        $ E_Addictionrate += 1
+                
+    if R_Loc == bg_current and "noticed Emma" in R_RecentActions:
+            $ R_LikeEmma += 2 if R_LikeEmma >= 800 else 1
+            
+    if "Emma Jobber" in Achievements:
+        pass
+    elif E_Blow >= 10:
+        call EmmaFace("smile", 1)
+        ch_e "I can't get your taste out of my mind."      
+        $ Achievements.append("Emma Jobber")
+        $E_SEXP += 5
+    elif Situation == "shift":
+        pass
+    elif E_Blow == 1:
+            $E_SEXP += 15
+            if E_Love >= 500:
+                $ E_Mouth = "smile"
+                ch_e "Huh, that wasn't bad."
+            elif P_Focus <= 20:
+                $ E_Mouth = "sad"
+                ch_e "I hope you enjoyed that."     
+    elif E_Blow == 5:
+        ch_e "I'm getting better at this. . . right?"
+        menu:
+            "[[nod]":
+                call EmmaFace("smile", 1)
+                $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 15)
+                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 5)
+                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 90, 10) 
+            "[[shake head \"no\"]":        
+                if ApprovalCheck("Emma", 500, "O"):
+                    call EmmaFace("sad", 2)
+                    $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -5)
+                else:
+                    call EmmaFace("angry", 2)
+                    $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -25)
+                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 10)
+                ch_e ". . ."         
+                call EmmaFace("sad", 1)
+    
+    $ Tempmod = 0    
+    if Situation != "shift":
+        call Emma_BJ_Reset    
+    call Checkout
+    return
+    
+
+
+# end E_Blowjob                                 //////////////////////////////////////////////////////////////////////////////
+
 ## E_Titjob //////////////////////////////////////////////////////////////////////              Not finished
 # label E_Titjob:
 #     return #fix remove when this works
@@ -1147,704 +1748,6 @@ label E_HJAfter:
 #     return
 
 # ## end E_Titjob //////////////////////////////////////////////////////////////////////
-
-# # E_Blowjob //////////////////////////////////////////////////////////////////////
-
-# label E_Blowjob:
-#     call Shift_Focus("Emma")
-#     if E_Blow >= 7: # She loves it
-#         $ Tempmod += 15  
-#     elif E_Blow >= 3: #You've done it before several times
-#         $ Tempmod += 10
-#     elif E_Blow: #You've done it before
-#         $ Tempmod += 7    
-        
-#     if E_Addict >= 75 and E_Swallow >=3: #She's really strung out and has swallowed
-#         $ Tempmod += 25
-#     elif E_Addict >= 75: #She's really strung out
-#         $ Tempmod += 15
-        
-#     if Situation == "shift":
-#         $ Tempmod += 15
-#     if "exhibitionist" in E_Traits:
-#         $ Tempmod += (4*Taboo) 
-#     if "dating" in E_Traits or "sex friend" in E_Petnames:
-#         $ Tempmod += 10
-#     elif "ex" in E_Traits:
-#         $ Tempmod -= 40  
-#     if E_ForcedCount and not E_Forced:
-#         $ Tempmod -= 5 * E_ForcedCount        
-    
-#     if Taboo and "tabno" in E_DailyActions:        
-#         $ Tempmod -= 10 
-        
-#     if "no blow" in E_DailyActions:               
-#         $ Tempmod -= 5 
-#         $ Tempmod -= 10 if "no blow" in E_RecentActions else 0    
-    
-#     $ Approval = ApprovalCheck("Emma", 1300, TabM = 4) # 130, 145, 160, Taboo -160(290)
-    
-#     if Situation == "Emma":                                                                  #Emma auto-starts   
-#         if Approval > 2:                                                      # fix, add Emma auto stuff here
-#             "Emma slides down and gives your cock a little lick."
-#             menu:
-#                 "What do you do?"
-#                 "Nothing.":                    
-#                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 3) 
-#                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 40, 2)                     
-#                     "Emma continues licking at it."
-#                 "Praise her.":       
-#                     call EmmaFace("sexy, 1")                    
-#                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 3) 
-#                     ch_p "Hmmm, keep doing that, [E_Pet]."
-#                     call Emma_Namecheck
-#                     "Emma continues her actions."
-#                     $ E_Love = Statupdate("Emma", "Love", E_Love, 85, 1)
-#                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 1)
-#                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
-#                 "Ask her to stop.":     
-#                     call EmmaFace("surprised")  
-#                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 1) 
-#                     ch_p "Let's not do that for now, [E_Pet]."
-#                     call Emma_Namecheck
-#                     "Emma puts it down."
-#                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 1)
-#                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 3)
-#                     return            
-#             jump EBJ_Prep
-#         else:                
-#             $ Tempmod = 0                               # fix, add Emma auto stuff here
-#             $ Trigger2 = 0
-#             return            
-    
-#     if not E_Blow and "no blow" not in E_RecentActions:        
-#         call EmmaFace("surprised", 2)
-#         $ E_Mouth = "kiss"
-#         ch_e "You want me to suck your dick?"
-#         if E_Hand:          
-#             $ E_Mouth = "smile"
-#             ch_e "Not satisfied with handies?"        
-#         $ E_Blush = 1
-            
-#     if not E_Blow and Approval:                                                 #First time dialog        
-#         if E_Forced: 
-#             call EmmaFace("sad")
-#             $ E_Love = Statupdate("Emma", "Love", E_Love, 70, -3, 1)
-#             $ E_Love = Statupdate("Emma", "Love", E_Love, 20, -2, 1)
-#         elif E_Love >= (E_Obed + E_Inbt):
-#             call EmmaFace("sexy")
-#             $ E_Brows = "sad"
-#             $ E_Mouth = "smile" 
-#             ch_e "I have wondered what you. . . taste like."            
-#         elif E_Obed >= E_Inbt:
-#             call EmmaFace("normal")
-#             ch_e "If you want me to. . ."               
-#         elif E_Addict >= 50:
-#             call EmmaFace("manic", 1)
-#             ch_e "My mouth is watering. . ."   
-#         else: # Uninhibited 
-#             call EmmaFace("sad")
-#             $ E_Mouth = "smile"             
-#             ch_e " sure. . ."       
-#     elif Approval:                                                                       #Second time+ dialog
-#         if E_Forced: 
-#             call EmmaFace("sad")
-#             $ E_Love = Statupdate("Emma", "Love", E_Love, 70, -3, 1)
-#             $ E_Love = Statupdate("Emma", "Love", E_Love, 20, -2, 1)
-#             ch_e "You want me to do that again?"
-#         elif not Taboo and "tabno" in E_DailyActions:        
-#             ch_e "Ok, I guess this is private enough. . ."    
-#         elif "blow" in E_RecentActions:
-#             call EmmaFace("sexy", 1)
-#             ch_e "Mmm, again? [[stretches her jaw]"
-#             jump EBJ_Prep                
-#         elif "blow" in E_DailyActions:
-#             call EmmaFace("sexy", 1)
-#             $ Line = renpy.random.choice(["Back again so soon?",   
-#                 "You're going to give me lockhee- . . . jaw.", 
-#                 "Let me get some saliva going.",
-#                 "Didn't get enough earlier?",
-#                 "My jaw's still a bit sore from earlier.",
-#                 "My jaw's still a bit sore from earlier."]) 
-#             ch_e "[Line]"
-#         elif E_Blow < 3:        
-#             call EmmaFace("sexy", 1)
-#             $ E_Brows = "confused"
-#             $ E_Mouth = "kiss"
-#             ch_e "So you'd like another blowjob?"        
-#         else:       
-#             call EmmaFace("sexy", 1)
-#             $ Emma_Arms = 2
-#             $ Line = renpy.random.choice(["You want me to [mimes blowing]?",                 
-#                 "So you wanna 'nother blowjob?",                 
-#                 "A little. . . lick?", 
-#                 "You want me to suck you off?",
-#                 "A little tlc?"]) 
-#             ch_e "[Line]"
-#         $ Line = 0
-            
-#     if Approval >= 2:                                                                   #She's into it. . .               
-#         if E_Forced:
-#             call EmmaFace("sad")
-#             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 1)
-#             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 1)
-#             ch_e "Whatever."    
-#         elif "no blow" in E_DailyActions:               
-#             ch_e "Ok, fine, I suppose it isn't {i}sooo{/i} bad. . ."  
-#         else:
-#             call EmmaFace("sexy", 1)
-#             $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 1)
-#             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 3) 
-#             $ Line = renpy.random.choice(["Well, sure, ahhhhhh.",                 
-#                 "Well. . . ok.",                 
-#                 "Yum.", 
-#                 "Sure, whip it out.",
-#                 "Ok. . . [She licks her lips].",
-#                 "Lol, ok, alright."]) 
-#             ch_e "[Line]"
-#             $ Line = 0
-#         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 20, 1) 
-#         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 1)      
-#         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 2) 
-#         jump EBJ_Prep   
-    
-#     else:                                                                               #She's not into it, but maybe. . .            
-#         call EmmaFace("angry")
-#         if "no blow" in E_RecentActions:  
-#             ch_e "What did I {i}just{/i} tell you [E_Petname]."
-#         elif Taboo and "tabno" in E_DailyActions and "no blow" in E_DailyActions:  
-#             ch_e "I told you, not in public!"  
-#         elif "no blow" in E_DailyActions:       
-#             ch_e "I told you \"no,\" [E_Petname]."
-#         elif Taboo and "tabno" in E_DailyActions:  
-#             ch_e "I told you this is too public!"      
-#         elif not E_Blow:
-#             call EmmaFace("bemused")
-#             ch_e "I don't know about the taste, [E_Petname]. . ."
-#         else:
-#             call EmmaFace("bemused")
-#             ch_e "Later, [E_Petname]!"
-#         menu:
-#             extend ""
-#             "Sorry, never mind." if "no blow" in E_DailyActions:
-#                 call EmmaFace("bemused")
-#                 ch_e "Aw, it's ok, [E_Petname]."              
-#                 return
-#             "Maybe later?" if "no blow" not in E_DailyActions:
-#                 call EmmaFace("sexy")  
-#                 ch_e "You never know, [E_Petname]."
-#                 $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 2)
-#                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 2)   
-#                 if Taboo:                    
-#                     $ E_RecentActions.append("tabno")                      
-#                     $ E_DailyActions.append("tabno") 
-#                 $ E_RecentActions.append("no blow")                      
-#                 $ E_DailyActions.append("no blow")            
-#                 return
-#             "Come on, please?":             
-#                 if Approval:
-#                     call EmmaFace("sexy")     
-#                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 2)
-#                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
-#                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 3) 
-#                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 40, 2) 
-#                     $ Line = renpy.random.choice(["Well, sure, I guess.",                 
-#                         "Well. . . ok.",                 
-#                         "I could maybe give it a try.", 
-#                         "I guess I could. . .",
-#                         "Fiiine. . . [She licks her lips].",
-#                         "Heh, ok, fine."]) 
-#                     ch_e "[Line]"
-#                     $ Line = 0                   
-#                     jump EBJ_Prep
-#                 else:   
-#                     if ApprovalCheck("Emma", 1100, TabM = 3): # 110, 125, 140, Taboo -120(230)             Handy instead?    
-#                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 1) 
-#                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 3) 
-#                         call EmmaFace("confused", 1)
-#                         $ E_Arms = 1
-#                         if E_Hand:
-#                             ch_e "Maybe I could just use my hand?"
-#                         else:
-#                             ch_e "I could maybe. . . [[she makes a jerking motion with her hand]?"
-#                         menu:
-#                             ch_e "Would that work?"
-#                             "Sure, that's fine.":
-#                                 $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 2)  
-#                                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 1)                                
-#                                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 1) 
-#                                 jump EHJ_Prep
-#                             "Nah, if it's not a BJ, forget it.":
-#                                 $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -2)                                
-#                                 $ E_Arms = 0                
-#                                 ch_e "Ok, your loss."  
-#                                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 2)  
-                    
-                    
-#             "Suck it, [E_Pet]":                                               # Pressured into it                
-#                 call Emma_Namecheck
-#                 $ Approval = ApprovalCheck("Emma", 750, "OI", TabM = 3) # 75, 90, 105, -120(195)
-#                 if Approval > 1 or (Approval and E_Forced):
-#                     call EmmaFace("sad")
-#                     $ E_Love = Statupdate("Emma", "Love", E_Love, 70, -5, 1)
-#                     $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -2)                 
-#                     ch_e "Ok, fine. . ."  
-#                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 4)
-#                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 1) 
-#                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 3)  
-#                     $ E_Forced = 1
-#                     jump EBJ_Prep
-#                 else:                              
-#                     $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -15)     
-#                     $ E_RecentActions.append("angry")
-#                     $ E_DailyActions.append("angry")   
-    
-#     #She refused all offers.   
-#     if "no blow" in E_DailyActions:
-#         call EmmaFace("angry", 1)
-#         ch_e "You can eat a dick, 'cos I'm not."   
-#         $ E_RecentActions.append("angry")
-#         $ E_DailyActions.append("angry")   
-#     elif E_Forced:
-#         call EmmaFace("angry", 1)
-#         ch_e "I just can't do that!"
-#         $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5)     
-#         $ E_Love = Statupdate("Emma", "Love", E_Love, 70, -2) if E_Love > 300 else E_Love
-#         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, -2)      
-#         $ E_RecentActions.append("angry")
-#         $ E_DailyActions.append("angry")   
-#         $ E_RecentActions.append("no blow")                      
-#         $ E_DailyActions.append("no blow") 
-#         return
-#     elif Taboo:                             # she refuses and this is too public a place for her
-#         call EmmaFace("angry", 1)          
-#         $ E_DailyActions.append("tabno") 
-#         ch_e "This is way too exposed!"
-#         $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5)  
-#         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, -3)    
-#         return                
-#     elif E_Blow:
-#         call EmmaFace("sad") 
-#         ch_e "No, not this time."       
-#     else:
-#         call EmmaFace("normal", 1)
-#         ch_e "Nope."  
-#     $ E_RecentActions.append("no blow")                      
-#     $ E_DailyActions.append("no blow") 
-#     $ Tempmod = 0    
-#     return
-    
-
-# label EBJ_Prep:   
-#     if renpy.showing("Emma_HJ_Animation"):
-#         hide Emma_HJ_Animation with easeoutbottom
-#     if Taboo:
-#         $ E_Inbt += int(Taboo/10)  
-#         $ E_Lust += int(Taboo/5)
-                
-#     call EmmaFace("sexy")
-#     if E_Forced:
-#         call EmmaFace("sad")
-#     elif E_Hand:
-#         $ E_Brows = "confused"
-#         $ E_Eyes = "sexy"
-#         $ E_Mouth = "smile"
-    
-#     call Emma_BJ_Launch("L")
-#     if not E_Blow:        
-#         if E_Forced:
-#             $ E_Love = Statupdate("Emma", "Love", E_Love, 90, -70)
-#             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 45)
-#             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 60) 
-#         else:
-#             $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 5)
-#             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 35)
-#             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 40)     
-    
-#     call Seen_First_Peen(1)
-    
-#     if Situation:     
-#         $ renpy.pop_call() 
-#         $ Situation = 0  
-#     $ Line = 0
-#     $ Cnt = 0
-#     if Taboo:
-#         call DrainWord("Emma","tabno")
-#     call DrainWord("Emma","no blow")
-#     $ E_RecentActions.append("blow")                      
-#     $ E_DailyActions.append("blow")     
-
-# label EBJ_Cycle: #Repeating strokes  
-#     while Round >=0:
-#         call Shift_Focus("Emma")
-#         call Emma_BJ_Launch    
-#         call EmmaLust   
-            
-#         $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
-         
-#         if Cnt == (10 + E_Blow):
-#                 $ E_Brows = "angry"        
-#                 menu:
-#                     ch_e "I'm totally worn out here. Can we do something else?"
-#                     "How about a Handy?" if E_Action and MultiAction:
-#                             $ Situation = "shift"
-#                             call E_BJAfter
-#                             call E_Handjob 
-#                             return
-#                     "Finish up." if P_FocusX:
-#                             "You release your concentration. . ."             
-#                             $ P_FocusX = 0
-#                             $ P_Focus += 15
-#                             $ Cnt += 1
-#                             "[Line]."
-#                             jump EBJ_Cycle
-#                     "Let's try something else." if MultiAction: 
-#                             $ Line = 0
-#                             call Emma_BJ_Reset
-#                             $ Situation = "shift"
-#                             jump E_BJAfter
-#                     "No, get back down there.":
-#                             if ApprovalCheck("Emma", 1200) or ApprovalCheck("Emma", 500, "O"):
-#                                 $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -5)
-#                                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 3)
-#                                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 2)
-#                                 "She grumbles but gets back to work."
-#                             else:
-#                                 call EmmaFace("angry", 1)  
-#                                 "She scowls at you, drops you cock and pulls back."
-#                                 ch_e "Well fuck you then."
-#                                 $ E_Love = Statupdate("Emma", "Love", E_Love, 50, -3, 1)
-#                                 $ E_Love = Statupdate("Emma", "Love", E_Love, 80, -4, 1)
-#                                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 30, -1, 1)
-#                                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, -1, 1)  
-#                                 $ E_RecentActions.append("angry")
-#                                 $ E_DailyActions.append("angry")   
-#                                 jump E_BJAfter        
-#         elif Cnt == (5 + E_Blow) and E_SEXP <= 100 and not ApprovalCheck("Emma", 1200, "LO"):
-#                     $ E_Brows = "confused"
-#                     ch_e "Are you getting close here? I'm cramping up."  
-#         #End Count check
-        
-#         if Line and P_Focus < 100:                                                    #Player Command menu
-#                     $ Cnt += 1
-#                     $ Round -= 1
-#                     if ("master" in E_Petnames or "sir" in E_Petnames or E_Pet == "slave") and ApprovalCheck("Emma", 750, "O") and not E_Bondage: # bondage event
-#                         $ E_Bondage = 1
-#                         ch_e "Hey, [E_Petname], I've got some new things here, do you think we could try them?"
-#                         "She grabs what it looks like some bondage gear"
-#                         menu:
-#                             "Yep":
-#                                 call EmmaFace("sexy", 1) 
-#                                 if E_Over or E_Chest or E_Panties or E_Legs:
-#                                     "She glances up at you as her clothes drop to the ground."
-#                                 $ E_Over = 0
-#                                 $ E_Legs = 0
-#                                 $ E_Chest = 0
-#                                 $ E_Panties = 0
-#                                 "She starts dressing the new outfit"
-#                                 "You help her with the armbinder, making sure she can't move her arms"
-#                                 "And add a blindfold so she can't see a thing"
-#                                 $ E_Blindfold = 1
-#                                 $ E_Over = "armbinder"
-#                                 $ E_Chest = "bustier bra"
-#                                 $ E_Panties = "zipper panties"
-#                                 $ E_Outfit = "zipper bondage"
-#                                 $ E_Shame = E_OutfitShame[1]
-#                                 #if E_Over == "armbinder":
-#                                 #call EmmaFace("sly")
-#                                 $ Line = "Emma can't see a thing. She licks her lips in anticipation"
-#                                 $ TempLust += 3 if E_Lust < 40 else 1  
-
-#                                 if E_Blow <= 1 or (E_Obed >= 500 and E_Obed > E_Inbt):
-#                                         $ TempLust += 2 if E_Lust > 60 else 0                 
-#                                         $ Line = Line + ", but she seems to be waiting for some instruction"
-#                                 else:
-#                                         $ Line = Line + ", and then she gets started licking your cock"
-#                                 #        $ Speed = 1
-#                                 #jump E_HotdogPrep
-#                                 #pass
-#                                 #call Emma_Bottoms_Off_Legs
-#                                 #call Emma_Top_Off
-#                                 #call Emma_Bottoms_Off
-#                                 #shes gonna wear it
-#                             "Not now, but let's save it for another time":
-#                                 pass
-#                                 #nope
-#                     menu:
-#                         "[Line]"
-#                         "Keep going. . ." if Speed:
-#                                 pass
-                            
-#                         "Lick it. . ." if Speed != 1:
-#                                 $ Speed = 1   
-#                         "Lick it. . . (locked)" if Speed == 1:
-#                                 pass  
-                            
-#                         "Just the head. . ." if Speed != 2:
-#                             $ Speed = 2
-#                         "Just the head. . . (locked)" if Speed == 2:
-#                                 pass
-                            
-#                         "Suck on it." if Speed != 3:
-#                                 $ Speed = 3  
-#                                 if Trigger2 == "jackin":
-#                                     "She dips her head a bit lower, and you move your hand out of the way."
-                                    
-#                         "Suck on it. (locked)" if Speed == 3:
-#                                 pass
-                            
-#                         "Take it deeper." if Speed != 4:
-#                                 if "pushed" not in E_RecentActions and E_Blow < 5:
-#                                     $ E_Love = Statupdate("Emma", "Love", E_Love, 80, -(20-(2*E_Blow))) 
-#                                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, (30-(3*E_Blow)))
-#                                     $ E_RecentActions.append("pushed")
-#                                 if Trigger2 == "jackin" and Speed != 3:
-#                                     "She takes it to the root, and you move your hand out of the way."
-#                                 $ Speed = 4  
-#                         "Take it deeper. (locked)" if Speed == 4:
-#                                 pass
-                            
-#                         "Set your own pace. . .":                
-#                                 "Emma hums contentedly."    
-#                                 if "setpace" not in E_RecentActions:
-#                                     $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 2)
-#                                 $ D20 = renpy.random.randint(1, 20)     
-#                                 if E_Blow < 5:
-#                                     $ D20 -= 10
-#                                 elif E_Blow < 10:
-#                                     $ D20 -= 5
-                                    
-#                                 if D20 > 15:
-#                                     $ Speed = 4              
-#                                     if "setpace" not in E_RecentActions:      
-#                                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 3) 
-#                                 elif D20 > 10:
-#                                     $ Speed = 3
-#                                 elif D20 > 5:
-#                                     $ Speed = 2
-#                                 else:
-#                                     $ Speed = 1
-#                                 $ E_RecentActions.append("setpace")
-
-#                         "How about you put that bondage outfit" if E_Bondage and E_Outfit != "zipper bondage" and E_Outfit != "zipper bondage open":
-#                             call EmmaFace("sexy", 1) 
-#                             if E_Over or E_Chest or E_Panties or E_Legs:
-#                                 "She glances up at you as her clothes drop to the ground."
-#                             $ E_Over = 0
-#                             $ E_Legs = 0
-#                             $ E_Chest = 0
-#                             $ E_Panties = 0
-#                             "She starts dressing the new outfit"
-#                             "You help her with the armbinder, making sure she can't move her arms"
-#                             "And add a blindfold so she can't see a thing"
-#                             $ E_Blindfold = 1
-#                             $ E_Over = "armbinder"
-#                             $ E_Chest = "bustier bra"
-#                             $ E_Panties = "zipper panties"
-#                             $ E_Outfit = "zipper bondage"
-#                             $ E_Shame = E_OutfitShame[1]
-
-#                         "Blindfold her" if E_Bondage and not E_Blindfold:
-#                             call EmmaFace("sexy", 1) 
-#                             #if E_Over or E_Chest or E_Panties or E_Legs:
-#                             #    "She glances up at you as her clothes drop to the ground."
-#                             #$ E_Neck = 0
-#                             #$ E_Over = 0
-#                             #$ E_Legs = 0
-#                             #$ E_Chest = 0
-#                             #$ E_Panties = 0
-#                             #"She starts dressing the new outfit"
-#                             #"You help her with the armbinder, making sure she can't move her arms"
-#                             "You add a blindfold so she can't see a thing"
-#                             $ E_Blindfold = 1
-#                             #$ E_Over = "armbinder"
-#                             #$ E_Chest = "bustier bra"
-#                             #$ E_Panties = "zipper panties"
-#                             #$ E_Outfit = "zipper bondage"
-#                             #$ E_Shame = E_OutfitShame[1]
-
-#                         "Remove blindfold" if E_Blindfold:
-#                             call EmmaFace("sexy", 1) 
-#                             #if E_Over or E_Chest or E_Panties or E_Legs:
-#                             #    "She glances up at you as her clothes drop to the ground."
-#                             #$ E_Neck = 0
-#                             #$ E_Over = 0
-#                             #$ E_Legs = 0
-#                             #$ E_Chest = 0
-#                             #$ E_Panties = 0
-#                             #"She starts dressing the new outfit"
-#                             #"You help her with the armbinder, making sure she can't move her arms"
-#                             "You remove the blindfold"
-#                             $ E_Blindfold = 0
-#                             #$ E_Over = "armbinder"
-#                             #$ E_Chest = "bustier bra"
-#                             #$ E_Panties = "zipper panties"
-#                             #$ E_Outfit = "zipper bondage"
-#                             #$ E_Shame = E_OutfitShame[1]
-                                
-#                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-#                                     pass
-#                         "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-#                                     "You concentrate on not burning out too quickly."                
-#                                     $ P_FocusX = 1
-#                         "Release your focus." if P_FocusX:
-#                                     "You release your concentration. . ."                
-#                                     $ P_FocusX = 0
-                                    
-#                         "Maybe lose some clothes. . .":
-#                                     call E_Undress  
-                                    
-#                         "Shift actions":
-#                             menu:
-#                                 "How about a handy?":
-#                                         if E_Action and MultiAction:
-#                                             if  E_Over == "armbinder":
-#                                                 call EmmaFace("sexy", 1)
-#                                                 ch_e "I can't do that with my arms like this [E_Petname]"
-#                                                 "You untie her arms and removes her blindfold"
-#                                                 $ E_Over = 0
-#                                                 $ E_Blindfold = 0
-#                                                 if E_Chest or E_Pants or E_Panties:
-#                                                     "She drops the rest of her clothes"
-#                                                     $ E_Chest = 0
-#                                                     $ E_Pants = 0
-#                                                     $ E_Panties = 0
-#                                                     $ E_Outfit = "nude"
-#                                             $ Situation = "shift"
-#                                             call E_BJAfter
-#                                             call E_Handjob
-#                                         else:
-#                                             ch_e "I'm kinda tired, could we just wrap this up. . ."
-#                                 "How about a titjob?":
-#                                         if E_Action and MultiAction:
-#                                             $ Situation = "shift"
-#                                             call E_BJAfter
-#                                             call E_Titjob
-#                                         else:
-#                                             ch_e "I'm kinda tired, could we just wrap this up. . ."
-                        
-                                        
-#                         "I also want to fondle her breasts.":
-#                                 if E_Action and MultiAction:
-#                                     $ Trigger2 = "fondle breasts"
-#                                     "You start to fondle her breasts."
-#                                     $ E_Action -= 1
-#                                 else:
-#                                     ch_e "I'm kinda tired, could we just wrap this up?"  
-                                         
-#                         "Let's try something else." if MultiAction: 
-#                                 $ Line = 0
-#                                 call Emma_BJ_Reset
-#                                 $ Situation = "shift"
-#                                 jump E_BJAfter
-#                         "Let's stop for now." if not MultiAction: 
-#                                 $ Line = 0
-#                                 call Emma_BJ_Reset
-#                                 jump E_BJAfter 
-#         #End menu (if Line)
-        
-#         call Sex_Dialog("Emma",Partner)
-                
-#         #If either of you could cum 
-#         if P_Focus >= 100 or E_Lust >= 100: 
-#                     #If you can cum:
-#                     if P_Focus >= 100:                                                     
-#                             call PE_Cumming
-#                             if "angry" in E_RecentActions:  
-#                                 call Emma_BJ_Reset
-#                                 return    
-#                             $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
-#                             if 100 > E_Lust >= 70 and E_OCount < 2:             
-#                                 $ E_RecentActions.append("unsatisfied")                      
-#                                 $ E_DailyActions.append("unsatisfied") 
-                            
-#                             if P_Focus > 80:
-#                                 jump E_BJAfter 
-#                             $ Line = "came"
-     
-#                     #If Emma can cum
-#                     if E_Lust >= 100:                                                                
-#                             call E_Cumming
-#                             if Situation == "shift" or "angry" in E_RecentActions:
-#                                 jump E_BJAfter            
-                    
-#                     #If you came
-#                     if Line == "came":
-#                             if not P_Semen:
-#                                 "You're pretty wiped, better stop for now."
-#                             $ Line = 0
-#                             jump E_BJAfter   
-                
-#         #End orgasm
-        
-   
-#         if Round == 10:
-#             ch_e "Could we wrap this up?"  
-#         elif Round == 5:
-#             ch_e "Seriously, I need a break."        
-    
-#     #Round = 0 loop breaks
-#     call EmmaFace("bemused", 0)
-#     $ Line = 0
-#     ch_e "Ok, I gotta rest me jaw for a minute. . ."
-
-# label E_BJAfter:    
-#     call EmmaFace("sexy")  
-        
-#     $ E_Blow += 1
-#     $ E_Action -=1
-#     $ E_Addictionrate += 1
-#     if "addictive" in P_Traits:
-#         $ E_Addictionrate += 1
-                
-#     if R_Loc == bg_current and "noticed Emma" in R_RecentActions:
-#             $ R_LikeEmma += 2 if R_LikeEmma >= 800 else 1
-            
-#     if "Emma Jobber" in Achievements:
-#         pass
-#     elif E_Blow >= 10:
-#         call EmmaFace("smile", 1)
-#         ch_e "I can't get your taste out of my mind."      
-#         $ Achievements.append("Emma Jobber")
-#         $E_SEXP += 5
-#     elif Situation == "shift":
-#         pass
-#     elif E_Blow == 1:
-#             $E_SEXP += 15
-#             if E_Love >= 500:
-#                 $ E_Mouth = "smile"
-#                 ch_e "Huh, that wasn't bad."
-#             elif P_Focus <= 20:
-#                 $ E_Mouth = "sad"
-#                 ch_e "I hope you enjoyed that."     
-#     elif E_Blow == 5:
-#         ch_e "I'm getting better at this. . . right?"
-#         menu:
-#             "[[nod]":
-#                 call EmmaFace("smile", 1)
-#                 $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 15)
-#                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 5)
-#                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 90, 10) 
-#             "[[shake head \"no\"]":        
-#                 if ApprovalCheck("Emma", 500, "O"):
-#                     call EmmaFace("sad", 2)
-#                     $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -5)
-#                 else:
-#                     call EmmaFace("angry", 2)
-#                     $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -25)
-#                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 10)
-#                 ch_e ". . ."         
-#                 call EmmaFace("sad", 1)
-    
-#     $ Tempmod = 0    
-#     if Situation != "shift":
-#         call Emma_BJ_Reset    
-#     call Checkout
-#     return
-    
-
-
-# # end E_Blowjob                                 //////////////////////////////////////////////////////////////////////////////
 
 # # ////////////////////////////////////////////////////////////////////////Start Insert Pussy    
 # label E_Dildo_Check:
