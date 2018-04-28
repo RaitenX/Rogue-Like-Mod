@@ -524,6 +524,332 @@ image Emma_At_Podium:
         "Emma_Sprite"
         zoom 0.29
         pos (670,180) #(500,200)
+
+
+
+
+# ////////////////////////////////                                                                                      ///////////////////////////////
+# ////////////////////////////////                                                                                      ///////////////////////////////
+# Core Rogue BJ element ///////////////////////////////////////////////////////////////////////////                                     Core Rogue BJ element
+#Rogue BJ Over Sprite Compositing
+
+
+image Emma_BJ_Animation:#BJ_NewTest:                                                                #core BJ animation   
+    LiveComposite(    
+        (787,913),             
+        (0,0), ConditionSwitch(                                                                 # back of the hair, which needs to go behind the body
+            "Speed == 0", At("Emma_BJ_HairBack", BJ_Starting()),                         
+            "Speed == 1", At("Emma_BJ_HairBack", BJ_Licking()),                         
+            "Speed == 2", At("Emma_BJ_HairBack", BJ_Heading()),                        
+            "Speed == 3", At("Emma_BJ_HairBack", BJ_Sucking()),
+            "Speed == 4", At("Emma_BJ_HairBack", BJ_Deep()), 
+            "True", Null(),
+            ),    
+        (0,0), ConditionSwitch(                                                                 # body, everything below the chin
+            "Speed == 0", At("Emma_BJ_Backdrop", BJ_StartingBody()),                       
+            "Speed == 1", At("Emma_BJ_Backdrop", BJ_LickingBody()),                        
+            "Speed == 2", At("Emma_BJ_Backdrop", BJ_HeadingBody()),                 
+            "Speed == 3", At("Emma_BJ_Backdrop", BJ_SuckingBody()),
+            "Speed == 4", At("Emma_BJ_Backdrop", BJ_DeepBody()), 
+            "True", Null(),
+            ),    
+        (0,0), ConditionSwitch(                                                                 # her head
+            "Speed == 0", At("EmmaSprite_Head", BJ_Starting()),                       
+            #"Speed == 1", At("BJ_Head", BJ_Licking()),                       
+            "Speed == 1", At("EmmaSprite_Head", BJ_Licking()),                       
+            "Speed == 2", At("EmmaSprite_Head", BJ_Heading()),                     
+            "Speed == 3", At("EmmaSprite_Head", BJ_Sucking()),
+            "Speed == 4", At("EmmaSprite_Head", BJ_Deep()), 
+            "True", Null(),
+            ),   
+#        (0,0), Transform("images/RogueBJFace/Rogue_bj_markercard.png", alpha=(.2)),
+        (0,0), ConditionSwitch(                                                                 # cock
+            "Speed == 0", At("Blowcock", Cock_BJ_Starting()),   
+            "Speed == 1", At("Blowcock", Cock_BJ_Licking()),                                  
+            "Speed == 2", At("Blowcock", Cock_BJ_Straight()),
+            "Speed == 3", At("Blowcock", Cock_BJ_Straight()),                          
+            "Speed == 4", At("Blowcock", Cock_BJ_Straight()), 
+            "True", Null(),
+            ),    
+        (0,0), ConditionSwitch(                                                                 # the masked overlay for when her head overlaps the cock
+            "Speed < 3", Null(), 
+            "Speed == 3", At(AlphaMask("EmmaSprite_Head", "images/RogueBJFace/Rogue_bj_facemask.png"), BJ_Sucking()),
+            "Speed == 4", At(AlphaMask("EmmaSprite_Head", "images/RogueBJFace/Rogue_bj_facemask.png"), BJ_Deep()), 
+            "True", Null(),
+            ),    
+        (0,0), ConditionSwitch(                                                                 # same as above, but for the heading animation
+            "Speed == 2", At(AlphaMask("EmmaSprite_Head", "BJ_MaskHeadingComposite"), BJ_Heading()),
+            "True", Null(),
+            ),    
+        )
+    zoom .55
+    anchor (.5,.5)
+    
+image Emma_BJ_HairBack:
+    ConditionSwitch(                                                                            #Hair underlay
+            #"R_Water and R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack_back_wet.png",
+            #"R_Water and R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde_back_wet.png",
+            #"R_Water and R_Hair == 'evo'", "images/RogueBJFace/Rogue_bj_hair_back_wet.png",
+            #"R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack_back.png",
+            #"R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde_back.png",
+            "R_Hair", "images/EmmaSprite/EmmaSprite_Head_HairBack.png",
+            "True", Null(),
+            ),
+
+image Emma_BJ_Backdrop:                                                                        #Her Body under the head
+    "Emma"
+    zoom 4.5
+    pos (175,-110)
+    offset (-615, -125)
+
+# image Emma_BJ_Head:                                                                            #These are all the details of the face
+#     LiveComposite(    
+#         (787,913),     
+#         (0,0), ConditionSwitch(                                                                 #Hair back
+#             "R_Water and R_Hair == 'evo' and R_HairColor == 'black'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlack_back_wet.png", "BJ_Backdrop"),
+#             "R_Water and R_Hair == 'evo' and R_HairColor == 'blonde'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlonde_back_wet.png", "BJ_Backdrop"),
+#             "R_Water and R_Hair == 'evo'", AlphaMask("images/RogueBJFace/Rogue_bj_hair_back_wet.png", "BJ_Backdrop"),
+#             "R_Hair == 'evo' and R_HairColor == 'black'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlack_back.png", "BJ_Backdrop"),
+#             "R_Hair == 'evo' and R_HairColor == 'blonde'", AlphaMask("images/RogueBJFace/Rogue_bj_hairBlonde_back.png", "BJ_Backdrop"),
+#             "R_Hair == 'evo'", AlphaMask("images/RogueBJFace/Rogue_bj_hair_back.png", "BJ_Backdrop"),
+#             "True", Null(),
+#             ),   
+#         (0,0), ConditionSwitch(                     
+#             "not Speed", "images/RogueBJFace/Rogue_bj_face_base.png",    
+#             "True", "images/RogueBJFace/Rogue_bj_face_base_s.png"
+#             ),   
+#         (0,0), ConditionSwitch(                                                                                 #Mouth for under layer
+#             #"Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_lickingS_ring.png", #sucking
+#             "Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking
+#             #"Speed == 1 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_licking_ring.png", #sucking
+#             "Speed == 1 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ring.png", #sucking
+#             "Speed == 2 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_licking_ring.png", #sucking
+#             "Speed == 3 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_sucking_ring.png", #sucking
+#             "Speed == 4 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_sucking_ring.png", #deepthroat  
+#             "R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking
+#             #"R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS_ring.png", #sucking
+#             "R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ring.png", 
+#             #"R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_licking_ring.png", #sucking
+#             "Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
+#             "Speed == 1 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_licking.png", #licking
+#             "Speed == 2 and Trigger == 'blow'", Null(),                                #heading Rogue_BJ_HeadingMouth()
+#             "Speed == 3 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_sucking.png", #sucking
+#             "Speed == 4 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_sucking.png", #deepthroat         
+#             "'mouth' in R_Spunk and R_Mouth == 'sucking'", "images/RogueBJFace/Rogue_bj_mouth_surprisedS.png",
+#             "'mouth' in R_Spunk and R_Mouth == 'surprised'", "images/RogueBJFace/Rogue_bj_mouth_surprisedS.png",
+#             "'mouth' in R_Spunk and R_Mouth == 'sad'", "images/RogueBJFace/Rogue_bj_mouth_sadS.png",
+#             "'mouth' in R_Spunk and R_Mouth == 'kiss'", "images/RogueBJFace/Rogue_bj_mouth_sadS.png",
+#             "'mouth' in R_Spunk and R_Mouth == 'smile'", "images/RogueBJFace/Rogue_bj_mouth_lipbiteS.png",              
+#             "'mouth' in R_Spunk and R_Mouth == 'tongue'", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
+#             "'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lipbiteS.png",
+#             "R_Mouth == 'normal'", "images/RogueBJFace/Rogue_bj_mouth_normal.png",
+#             "R_Mouth == 'lipbite'", "images/RogueBJFace/Rogue_bj_mouth_lipbite.png",
+#             "R_Mouth == 'sucking'", "images/RogueBJFace/Rogue_bj_mouth_surprised.png",            
+#             "R_Mouth == 'kiss'", "images/RogueBJFace/Rogue_bj_mouth_kiss.png",
+#             "R_Mouth == 'sad'", "images/RogueBJFace/Rogue_bj_mouth_sad.png",
+#             "R_Mouth == 'smile'", "images/RogueBJFace/Rogue_bj_mouth_smile.png",            
+#             "R_Mouth == 'grimace'", "images/RogueBJFace/Rogue_bj_mouth_smile.png",
+#             "R_Mouth == 'surprised'", "images/RogueBJFace/Rogue_bj_mouth_surprised.png",          
+#             "R_Mouth == 'tongue'", "images/RogueBJFace/Rogue_bj_mouth_licking.png",    
+#             "True", "images/RogueBJFace/Rogue_bj_mouth_normal.png",
+#             ),       
+#         (316,590), ConditionSwitch(      #600               
+#             "Speed == 2 and not R_Gag", At("BJ_MouthHeading", BJ_MouthAnim()),     
+#             "True", Null(),
+#             ),  
+#         (0,0), ConditionSwitch(                                                                                 #cum for under layer
+#             "'facial' in R_Spunk", "images/RogueBJFace/Rogue_bj_facial_under.png",
+#             "not R_Spunk or Trigger != 'blow' or 'mouth' not in R_Spunk", Null(),
+# #            "Speed == 2", "images/RogueBJFace/Rogue_bj_face_under_heading_cum.png", 
+#             "Speed == 3", "images/RogueBJFace/Rogue_bj_face_under_sucking_cum.png",
+#             "Speed == 4", "images/RogueBJFace/Rogue_bj_face_under_sucking_cum.png",  
+#             "True", Null(),
+#             ),
+#         (0,0), ConditionSwitch(                                                                                 #cum for under layer
+#             #"'facial' in R_Spunk", "images/RogueBJFace/Rogue_bj_facial_under.png",
+#             #"not R_Spunk or Trigger != 'blow' or 'mouth' not in R_Spunk", Null(),
+# #            "Speed == 2", "images/RogueBJFace/Rogue_bj_face_under_heading_cum.png", 
+#             #"Speed == 3", "images/RogueBJFace/Rogue_bj_face_under_sucking_cum.png",
+#             #"Speed == 4", "images/RogueBJFace/Rogue_bj_face_under_sucking_cum.png",  
+#             "True", Null(),
+#             ),    
+#         (0,0), ConditionSwitch(                                                                 #Brows
+#             "R_Brows == 'normal'", "images/RogueBJFace/Rogue_bj_face_brows_normal.png",
+#             "R_Brows == 'angry'", "images/RogueBJFace/Rogue_bj_face_brows_angry.png",
+#             "R_Brows == 'sad'", "images/RogueBJFace/Rogue_bj_face_brows_sad.png",
+#             "R_Brows == 'surprised'", "images/RogueBJFace/Rogue_bj_face_brows_surprised.png",        
+#             "R_Brows == 'confused'", "images/RogueBJFace/Rogue_bj_face_brows_confused.png",
+#             "True", "images/RogueBJFace/Rogue_bj_face_brows_normal.png",
+#             ),
+#         (0,0), "BJ Blink",                                                                #Eyes
+#         (0,0), ConditionSwitch(                                                                 #cum on the face
+#                 "'facial' in R_Spunk", "images/RogueBJFace/Rogue_bj_facial_over.png",
+#                 "not R_Spunk or Trigger != 'blow' or 'mouth' not in R_Spunk", Null(),
+# #                "Speed == 2", "images/RogueBJFace/Rogue_bj_face_over_heading_cum.png", 
+#                 "Speed == 3", "images/RogueBJFace/Rogue_bj_face_over_sucking_cum.png",
+#                 "Speed == 4", "images/RogueBJFace/Rogue_bj_face_over_sucking_cum.png",  
+#                 "True", Null(),
+#                 ),
+#         (0,0), ConditionSwitch(                                                                                 #Collar
+#             "R_Glasses", "images/RogueBJFace/Rogue_BJFace_Glasses.png",   
+#             "True", Null(),                #R_Arms == 'gloved' or not R_Arms
+#             ),  
+#         (0,0), ConditionSwitch(                                                                 #Hair overlay
+#             "R_Water and R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack_wet.png",
+#             "R_Water and R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde_wet.png",
+#             "R_Water and R_Hair == 'evo'", "images/RogueBJFace/Rogue_bj_hair_wet.png",
+#             "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueBJFace/Rogue_bj_hairBlack.png",
+#             "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueBJFace/Rogue_bj_hairBlonde.png",
+#             "R_Hair == 'evo'", "images/RogueBJFace/Rogue_bj_hair.png",
+#             "True", Null(),
+#             ),
+#         )
+
+
+
+
+
+label Emma_BJ_Launch(Line = 0):    # The sequence to launch the Emma BJ animations  
+    if renpy.showing("Emma_BJ_Animation"):
+        return
+    
+    call Emma_Hide
+    if Line == "L" or Line == "cum":
+        show Emma at SpriteLoc(StageCenter) zorder EmmaLayer:
+            alpha 1
+#            zoom 1 offset (0,0)
+            ease 1 zoom 2.5 offset (70,140) #(-90,140) offset (150,80) 
+        with dissolve
+    else:
+        show Emma at SpriteLoc(StageCenter) zorder EmmaLayer:
+            alpha 1
+            zoom 2.5 offset (70,140) #(-90,140) 
+        with dissolve
+        
+#    show Emma:
+#        pos (715,50)
+#        alpha 1
+#        zoom 2.5 offset (-90,140) 
+#    with dissolve
+        
+    if Taboo and Line == "L": # Emma gets started. . .
+        if not E_Blow:
+            "Emma looks around to see if anyone can see her."
+            "Emma hesitantly pulls down your pants and touches her mouth to your cock."
+        else:
+            "Emma hesitantly looks around to see if anyone notices what she's doing, but then bends down and puts her lips around you,"
+    elif Line == "L":    
+        if not E_Blow:
+            "Emma hesitantly pulls down your pants and touches her mouth to your cock."
+        else:
+            "Emma bends down and begins to suck on your cock."    
+            
+    $ Speed = 0
+    
+    if Line != "cum":
+        $ Trigger = "blow"
+    
+    show Emma zorder EmmaLayer:
+        alpha 0
+    show Emma_BJ_Animation zorder 150: 
+        pos (645,510) 
+    return
+    
+label Emma_BJ_Reset: # The sequence to the Emma animations from BJ to default
+    if not renpy.showing("Emma_BJ_Animation"):
+        return
+    hide Emma_BJ_Animation
+    $ Speed = 0
+    
+#    show Emma at SpriteLoc(R_SpriteLoc) zorder EmmaLayer:
+#        alpha 1
+#        zoom 2 offset (70,140)
+#    with dissolve
+    show Emma SpriteLoc(R_SpriteLoc) zorder EmmaLayer:        
+        zoom 2 offset (70,140)
+        alpha 1
+        block:
+            pause .5
+            ease 1 zoom 1.5 offset (-50,50)
+            pause .5
+            ease .5 zoom 1 offset (0,0)     
+    call EmmaFace("sexy")        
+    return  
+    
+# ////////////////////////////////                                                                                      ///////////////////////////////
+# ////////////////////////////////                                                                                      ///////////////////////////////
+# ////////////////////////////////
+
+
+
+image Emma_HJ_Animation:  
+    contains:
+        ConditionSwitch(                                                # backside of the hand
+            "not Speed", Transform("Kitty_Hand_Under"), 
+            "Speed == 1", At("Kitty_Hand_Under", Kitty_Hand_1()),
+            "Speed >= 2", At("Kitty_Hand_Under", Kitty_Hand_2()),
+            "Speed", Null(),
+            ),  
+    contains:
+        ConditionSwitch(                                                # cock
+            "not Speed", Transform("Zero_Handcock"), 
+            "Speed == 1", At("Zero_Handcock", Handcock_1()),
+            "Speed >= 2", At("Zero_Handcock", Handcock_2()), 
+            "Speed", Null(),
+            ),  
+        offset (0,0)
+    contains:
+        ConditionSwitch(                                                # fingers of the hand
+            "not Speed", Transform("Kitty_Hand_Over"), 
+            "Speed == 1", At("Kitty_Hand_Over", Kitty_Hand_1()),
+            "Speed >= 2", At("Kitty_Hand_Over", Kitty_Hand_2()), 
+            "Speed", Null(),
+            ),   
+    anchor (0.51, -1.3)
+    zoom 0.4#0.6
+        
+
+
+label Emma_HJ_Launch(Line = 0): 
+    if renpy.showing("Emma_HJ_Animation"):        
+        $ Trigger = "hand"
+        return
+    call Emma_Hide
+    if Line == "L":      
+        show Emma_Sprite at SpriteLoc(StageRight) zorder EmmaLayer:
+            alpha 1
+            ease 1 zoom 1.7 offset (-50,200)
+    else:     
+        show Emma_Sprite at SpriteLoc(StageRight) zorder EmmaLayer:
+            alpha 1
+            ease 1 zoom 1.7 offset (-50,200)
+        with dissolve
+   
+    $ Speed = 0
+    if Line != "cum":
+        $ Trigger = "hand"
+    else:
+        $ Speed = 1
+    pause .5
+    show Emma_HJ_Animation at SpriteLoc(StageCenter) zorder 150 with easeinbottom:
+        #xoffset 150
+        offset (100,250)#(75,250)
+    return
+    
+label Emma_HJ_Reset: # The sequence to the Rogue animations from handjob to default
+    if not renpy.showing("Emma_HJ_Animation"):
+        return    
+    $ Speed = 0
+    hide Emma_HJ_Animation with easeoutbottom
+    show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer:
+        alpha 1
+        zoom 1.7 offset (-50,200)
+    show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer:
+        alpha 1
+        ease 1 zoom 1.5 offset (-150,50)
+        pause .5
+        ease .5 zoom 1 offset (0,0)      
+    return
             
         
 label E_Kissing_Launch(T = Trigger):    

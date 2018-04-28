@@ -762,7 +762,8 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             "True", Null(),                #R_Arms == 'gloved' or not R_Arms
             ),  
         (0,0), ConditionSwitch(                                                                                 #tanktop
-            "not R_Chest", Null(),        
+            "not R_Chest", Null(), 
+            "R_Panties == 'swimsuit1' or R_Panties == 'swimsuit2'", "images/RogueDoggy/Rogue_Doggy_Swimsuit.png",  
             "R_Chest == 'tank'", "images/RogueDoggy/Rogue_Doggy_Chest_Tank.png",
             "R_Chest == 'tank short'", "images/RogueDoggy/Rogue_Doggy_Chest_TankShort.png",
             "R_Chest == 'buttoned tank'", "images/RogueDoggy/Rogue_Doggy_Chest_ButtonTank.png",
@@ -954,7 +955,7 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
             "R_Panties == 'black large panties'", "images/RogueDoggy/Rogue_Doggy_UndiesBlack.png",          
             "R_Panties == 'lace panties'", "images/RogueDoggy/Rogue_Doggy_PantiesLace.png",                      
             "R_Panties == 'black panties'", "images/RogueDoggy/Rogue_Doggy_Panties.png", 
-            "R_Panties == 'swimsuit1' or R_Panties == 'swimsuit2'", "images/RogueDoggy/Rogue_Doggy_Swimsuit.png",  
+            "R_Panties == 'swimsuit1' or R_Panties == 'swimsuit2'", "images/RogueDoggy/Rogue_Doggy_Swimsuit_bottom.png",  
             "True", Null(),                     
             ),  
         (0,0), ConditionSwitch(                                                                         #full hose/tights  
@@ -2185,6 +2186,7 @@ image Rogue_BJFace:
             "R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking
             "R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ring.png", 
             "R_Gag == 'ballgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ball.png", 
+            "True", Null(),
             #"R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking  
             ),
         (0,0), ConditionSwitch(                                                                                 #Collar
@@ -2294,7 +2296,11 @@ image Rogue_SelfieChin:
             "R_Eyes == 'manic'", "images/RogueBJFace/Rogue_bj_face_eyes_surprised.png",
             "R_Eyes == 'squint'", "images/RogueBJFace/Rogue_bj_face_eyes_sexy.png",
             "True", "images/RogueBJFace/Rogue_bj_face_eyes_normal.png",  
-            ),    
+            ), 
+        (0,0), ConditionSwitch(                                                                                 #Collar
+            "R_Glasses", "images/RogueBJFace/Rogue_BJFace_Glasses.png",   
+            "True", Null(),                #R_Arms == 'gloved' or not R_Arms
+            ),  
         )
 
 image Rogue_BJ Blink:

@@ -2979,7 +2979,7 @@ label Study_Room_Explore:
     menu:
         "Where would you like to look?"
         "Bookshelf":
-            #if D20 >= 5 + Cnt:
+            #if D20 >= 15 + Cnt:
                     $ Line = "book"
             #else:
             #        "As you search the bookshelf, you accidentally knock one of the books off."
@@ -3003,7 +3003,7 @@ label Study_Room_Explore:
         "Right Desk Drawer":
             if K_Loc != bg_current:
                     "You can't seem to get it open, it would be nice to have someone open the catch from the inside."
-            #elif D20 >= 5 + Cnt:
+            #elif D20 >= 15 + Cnt:
             else:
                     $ Line = "right"
             #        "As you open the drawer, it makes a loud a squeak."

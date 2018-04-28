@@ -42,8 +42,8 @@ label PE_Cumming:
         "[Line]"
         "Warn her":
                 $ Situation = "warn"
-                jump E_No_Cum
-#                jump E_Warn_Her
+#                jump E_No_Cum
+                jump E_Warn_Her
             
         "Ask to cum in her mouth": 
                 $ Situation = "asked"
@@ -69,7 +69,7 @@ label PE_Cumming:
                 jump E_Creampie_A
             
         "Cum on her face":
-                jump E_No_Cum
+                #jump E_No_Cum
                 jump E_Facial            
         "Cum on her ass" if Trigger == "sex" or Trigger == "anal" or Trigger == "hotdog":
                 jump E_SpunkBack
@@ -942,7 +942,7 @@ label E_Creampied:
 # Clean-up / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label E_Orgasm_After:
     $ Line = 0
-    $ Emma_Arms = 2
+#    $ Emma_Arms = 2
     $ P_Semen -= 1
     $ P_Focus = 0
     $ P_Cock = "out"
@@ -980,7 +980,8 @@ label E_Orgasm_After:
 #                    "She wipes your cock clean." 
     call EmmaFace("sexy", 1)
     if ApprovalCheck("Emma", 1200, TabM=1):
-        $ E_Spunk.remove("hand")
+        if "hand" in E_Spunk:
+            $ E_Spunk.remove("hand")
         $ E_Spunk.append("mouth")
         "Emma wipes your cock clean, and then licks her hands clean."
         $ E_Spunk.remove("mouth")
@@ -994,7 +995,8 @@ label E_Orgasm_After:
         else:
                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 2)
     else:
-        $ E_Spunk.remove("hand")
+        if "hand" in E_Spunk:
+            $ E_Spunk.remove("hand")
         "Emma wipes your cock clean, and then wipes off her hands."
     call EmmaFace("sexy") 
     call Emma_HJ_Reset 

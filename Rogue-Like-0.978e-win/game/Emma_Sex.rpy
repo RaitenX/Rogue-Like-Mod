@@ -109,22 +109,22 @@ label Emma_SexMenu:
                     ch_e "I'm sorry, [E_Petname], but I need a break."
                     
         "Could you take care of something for me? [[Your dick, you mean your dick]":        
-#                if P_Semen and E_Action:                
-#                    menu:
-#                        ch_e "What did you want me to do?"
-#                        "Could you give me a handjob?":
-#                            call E_Handjob
+                if P_Semen and E_Action:                
+                    menu:
+                        ch_e "What did you want me to do?"
+                        "Could you give me a handjob?":
+                            call E_Handjob
 #                        "Could you give me a titjob?":
 #                            call E_Titjob         
 #                        "Could you suck my cock?":
 #                            call E_Blowjob 
 #                        "Never mind [[something else]":
 #                            jump Emma_SMenu
-#                elif not E_Action:
-#                        "I'm sorry, [E_Petname], but I need a break."
-#                else:
-#                        "You really don't have it in you, maybe take a break." 
-            ch_e "Not if you mean \"your dick\".[[Not available yet]"
+                elif not E_Action:
+                        "I'm sorry, [E_Petname], but I need a break."
+                else:
+                        "You really don't have it in you, maybe take a break." 
+#            ch_e "Not if you mean \"your dick\".[[Not available yet]"
                 
         "Could you put on a show for me?":
                     menu:
