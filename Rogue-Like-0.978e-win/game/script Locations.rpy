@@ -1800,9 +1800,6 @@ label Shower_Room:
                 call Chat
             
         "Shower" if Round > 30:
-                if E_Loc == bg_current:
-                    ch_e "I should probably be going. . ."  
-                    call Remove_Girl("Emma")
                 call Showering
         "Shower (locked)" if Round <= 30:            
                 pass
@@ -1834,13 +1831,16 @@ label Shower_Room:
 
 # Shower Room Menu End <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, Showered = 0, Line = 0):
+label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaCount = 0, Showered = 0, Line = 0):
     if R_Loc == "bg showerroom":
             $ Occupants += 1
             $ RogueCount = 1
     if K_Loc == "bg showerroom":        
             $ Occupants += 1
             $ KittyCount = 1
+    if E_Loc == "bg showerroom":        
+            $ Occupants += 1
+            $ EmmaCount = 1
         
     if Occupants:
             ch_p "I'm taking a shower, care to join me?" 
@@ -1851,8 +1851,11 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, Showe
                     ch_r "I actually just finished up, so I'll head out."
                 $ Showered = 1
             elif KittyCount and "showered" in K_RecentActions:
-                    ch_k "I actually just showered, so I'm head out."
-                    $ Showered = 1
+                ch_k "I actually just showered, so I'll head out."
+                $ Showered = 1
+            elif EmmaCount and "showered" in E_RecentActions:
+                ch_e "I just finished, [E_Petname]. Maybe some other time."
+                $ Showered = 1
             else:
                 if RogueCount:
                     if ApprovalCheck("Rogue", 1200) or (ApprovalCheck("Rogue", 600) and R_SeenChest and R_SeenPussy):
@@ -1874,10 +1877,31 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, Showe
                     else:
                         if RogueCount > 1:                          #If Rogue said yes
                             ch_k "I've really got to go though. . ."
-                        elif Occupants > 1:                     #If Rogue said no
+                        elif Occupants > 1:                     #If Rogue/Emma said no
                             ch_k "Yeah, I should head out too."
-                        else:                                   #If Rogue isn't there
+                        else:                                   #If Rogue/Emma isn't there
                             ch_k "I've got to get going."
+                if EmmaCount:
+                    if ApprovalCheck("Emma", 1200) or (ApprovalCheck("Emma", 600) and E_SeenChest and E_SeenPussy):
+                        if RogueCount > 1:                          #If Rogue said yes
+                            ch_e "I like where this is going."
+                        if KittyCount > 1:                          #If Kitty said yes
+                            ch_e "I like where this is going."
+                        elif Occupants > 1:                     #If Rogue/Kitty said no
+                            ch_e "Don't worry, [E_Petname], we can still have some fun."
+                        else:                                   #If Rogue/Kitty isn't there
+                            ch_e "Sure, but let's hurry before someone sees us."
+                        $ EmmaCount = 2
+                        $ Agreed += 1
+                    else:
+                        if RogueCount > 1:                          #If Rogue said yes
+                            ch_e "I think it's best if I leave."
+                        if KittyCount > 1:                          #If Kitty said yes
+                            ch_e "I think it's best if I leave."
+                        elif Occupants > 1:                     #If Rogue/Kitty said no
+                            ch_e "I better get going too. See you in class, [E_Petname]."
+                        else:                                   #If Rogue/Kitty isn't there
+                            ch_e "The shower is all yours, [E_Petname]."
                             
             if Occupants > Agreed:                    #if either said no     
                 # If they're at NameCount = 2 here, they have already agreed.
@@ -1889,6 +1913,8 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, Showe
                             ch_r "Yeah, later."
                         if KittyCount == 1:
                             ch_k "Bye!"
+                        if EmmaCount == 1:
+                            ch_k "Bye, [E_Petname]."
                         
                     "Sure you got every spot?" if Showered:
                         $ Line = "spot"
@@ -1920,6 +1946,16 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, Showe
                         elif Line == "watch you" and ApprovalCheck("Kitty", 600, "O"):                                
                             $ KittyCount = 2
                         #else, she doesn't agree
+                        
+                    if EmmaCount == 1:
+                        if ApprovalCheck("Emma", 1400) or (ApprovalCheck("Emma", 700) and E_SeenChest and E_SeenPussy):
+                            ch_e "Yup!"
+                            $ EmmaCount = 2
+                        elif Line == "spot" and ApprovalCheck("Emma", 1200, "LI"):                                
+                            $ EmmaCount = 2
+                        elif Line == "watch you" and ApprovalCheck("Emma", 600, "O"):                                
+                            $ EmmaCount = 2
+                        #else, she doesn't agree
                     
                     
                     if Line == "spot":      #"Sure you got every spot?"
@@ -1927,37 +1963,55 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, Showe
                                 ch_r "Fine, I could use another scrub."
                                 if KittyCount == 2:
                                     ch_k "Um, me too!"
+                                if EmmaCount == 2:
+                                    ch_e "I think I'll stay too."
                             elif KittyCount == 2:                               #Kitty only
                                 ch_k "Oh, I guess I could take another pass at it."
+                            elif EmmaCount == 2:                                #Emma only
+                                ch_e "Oh alright then!"
                             if RogueCount == 1:                                  #Kitty agreed, Rogue refused
                                 ch_r "No, [R_Petname], I think I'm covered."
                             if KittyCount == 1:                                  #Rogue agreed, Kitty refused
-                                ch_k "Ha, I'm squeeky clean, [K_Petname], see you later."          
+                                ch_k "Ha, I'm squeeky clean, [K_Petname], see you later."
+                            if EmmaCount == 1:                                   #Kitty/Rogue agreed, Emma refused
+                                ch_e "Not this time, [R_Petname]."
                         
                     elif Line == "watch me":  #"Maybe you could stay and watch?"
                             if RogueCount == 2:                                 #Rogue agreed, maybe both
                                 ch_r "Yeah, I guess I do enjoy the view."
                                 if KittyCount == 2:
                                     ch_k "Um, me too!"
+                                if EmmaCount == 2:
+                                    ch_e "This could be fun."
                             elif KittyCount == 2:                               #Kitty only
                                 ch_k "I. . . guess I wouldn't mind that. . ."
+                            elif EmmaCount == 2:                                #Emma only
+                                ch_e "Let's hope no one sees us."
                             if RogueCount == 1:                                  #Kitty agreed, Rogue refused
                                 ch_r "Yeah, I'm gonna pass on that, [R_Petname]."
                             if KittyCount == 1:                                  #Rogue agreed, Kitty refused
-                                ch_k "[K_Like]I don't need to see that."        
+                                ch_k "[K_Like]I don't need to see that."
+                            if EmmaCount == 1:                                   #Rogue/Kitty agreed, Emma refused
+                                ch_e "I should be going."
                         
                     elif Line == "watch you": #"But I didn't get to watch."
                             if RogueCount == 2:                                 #Rogue agreed, maybe both
                                 ch_r "Well, I don't mind putting on a show."
                                 if KittyCount == 2:
                                     ch_k "I- yeah, me neither!"
+                                if EmmaCount == 2:
+                                    ch_e "Here, let me help you."
                             elif KittyCount == 2:                               #Kitty only
                                 ch_k "You want to watch me. . ."
                                 ch_k "Ok."
+                            elif EmmaCount == 2:                                #Emma only
+                                ch_e "Sure, why not."
                             if RogueCount == 1:                                  #Kitty agreed, Rogue refused
                                 ch_r "Keep dreaming, [R_Petname]."
                             if KittyCount == 1:                                  #Rogue agreed, Kitty refused
                                 ch_k "[K_Like]no way!"
+                            if EmmaCount == 1:                                   #Rogue/Kitty agreed, Emma refused
+                                ch_e "You'd better leave, [E_Petname]."
                                 
                     #fix, add jeolousy angle here, if roguelikekitty low, get rid of her. . .
                         
@@ -1986,7 +2040,20 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, Showe
                     $ K_Water = 1
                     $ K_Spunk = []
                     $ K_RecentActions.append("showered")                      
-                    $ K_DailyActions.append("showered")  
+                    $ K_DailyActions.append("showered")
+
+            if EmmaCount == 1:     
+                    #If Emma leaves
+                    $ Occupants -= 1
+                    $ EmmaCount = 0
+                    call Remove_Girl("Emma")
+            elif EmmaCount == 2: 
+                    #If Emma Stays
+                    call EmmaOutfit("nude")
+                    $ E_Water = 1
+                    $ E_Spunk = []
+                    $ E_RecentActions.append("showered")                      
+                    $ E_DailyActions.append("showered")
                     
             call Seen_First_Peen (0,1) #You get naked
                 
@@ -1997,13 +2064,22 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, Showe
     
     if RogueCount and KittyCount:
                     $ Line = "You take a quick shower with Rogue and Kitty."
-                    call Shift_Focus("Rogue", "Kitty") 
+                    call Shift_Focus("Rogue", "Kitty")
+    if EmmaCount and RogueCount:
+                    $ Line = "You take a quick shower with Emma and Rogue."
+                    call Shift_Focus("Emma", "Rogue")
+    if EmmaCount and KittyCount:
+                    $ Line = "You take a quick shower with Emma and Kitty."
+                    call Shift_Focus("Emma", "Kitty")
     elif RogueCount:
                     $ Line = "You take a quick shower with Rogue."
                     call Shift_Focus("Rogue") 
     elif KittyCount:
                     $ Line = "You take a quick shower with Kitty."  
-                    call Shift_Focus("Kitty")       
+                    call Shift_Focus("Kitty")
+    elif EmmaCount:
+                    $ Line = "You take a quick shower with Emma."  
+                    call Shift_Focus("Emma")
     else:
                 $ Line = Line + renpy.random.choice([". It was fairly uneventful.", 
                         ". A few people came and went as you did so.", 
@@ -2017,11 +2093,16 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, Showe
         ch_r "That was real nice, [R_Petname]."            
         if KittyCount:
             ch_k "Yeah, I had fun."
+        if EmmaCount:
+            ch_e "We should do this again."
     elif KittyCount:
-            ch_k "that was. . . nice." 
+            ch_k "that was. . . nice."
+    elif EmmaCount:
+            ch_e "I enjoyed that, [E_Petname]"
             
     call RogueOutfit
     call KittyOutfit
+    call EmmaOutfit
     if Round < 1:
         if Current_Time != "Night":
                 call Wait
@@ -2358,7 +2439,175 @@ label Kitty_Caught_Shower:
                 call KittyOutfit               
             
     jump Shower_Room
-# End Kitty Caught Shower / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /    
+# End Kitty Caught Shower / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+label Emma_Caught_Shower:  
+    call Shift_Focus("Emma")     
+    $ E_RecentActions.append("showered")                      
+    $ E_DailyActions.append("showered")     
+    call Remove_Girl("All")
+    $ E_Loc = "bg showerroom"
+    call EmmaOutfit("nude")
+    $ E_Blush = 2
+    $ E_Water = 1
+    $ E_Spunk = []
+    menu:
+            "What do you do?"
+            "Enter":     
+                $ Line = "enter"                
+            "Knock":
+                $ Line = "knock"
+            "Come back later":
+                $ E_Loc = "bg emma"
+                call EmmaOutfit
+                $ E_Water = 0
+                jump Campus_Map
+            
+    if Line == "knock":                                                                                         
+            #You knock
+            $ Line = 0
+            "You knock on the door. You hear some shuffling inside"        
+            $ E_Over = "towel"       
+            if (D20 >=18 and K_Lust >= 70) or (D20 >=15 and E_Lust >= 80):                                          
+                    #Emma caught fapping
+                    "You hear a startled gasp, followed by some shuffling around as a shampoo bottle hits the floor."
+                    "After several seconds and some more shuffling, Emma comes to the door."
+                    $ E_Brows = "confused"
+                    $ E_Eyes = "surprised"
+                    $ E_Mouth = "smile"
+                    call Set_The_Scene(Dress=0)
+                    ch_e "Oh, it's just you, [E_Petname]. I was just finishing up."
+                    $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 90, 5)
+                    $ Tempmod += 10
+            else:                                                                                                   
+                    #Emma caught showering
+                    "You hear the rustling of a towel and some knocking around, but after a few seconds Emma comes to the door."
+                    call Set_The_Scene(Dress=0)
+                    ch_k "Oh, it's just you, [E_Petname]. I was just finishing up."
+            #end knocked
+            
+    else:                                                                                                       
+        #You don't knock   
+        if not E_SeenPussy or not E_SeenChest:
+            $ D20 -=5 if D20 > 5 else D20
+        $ Line = 0    
+        if (D20 >=18 and E_Lust >= 70) or (D20 >=15 and E_Lust >= 80):                                          
+                #Caught masturbating in the shower. 
+                call EmmaFace("sexy")
+                $ E_Eyes = "closed"
+                $ Emma_Arms = 2
+                call Set_The_Scene(Dress=0)
+                $ Count = 0        
+                "You see Emma under the shower, feeling herself up."
+                $ Trigger = "masturbation"
+                $ E_DailyActions.append("unseen") if "unseen" not in E_DailyActions else E_DailyActions   
+                $ E_RecentActions.append("unseen") if "unseen" not in E_RecentActions else E_RecentActions 
+                call Emma_SexAct("masturbate")   
+                jump Shower_Room
+        
+        #change to elif when I fix the above option
+        if D20 >= 15:                                                                                         
+                #She's just showering and naked
+                call Set_The_Scene(Dress=0)                
+                call EmmaFace("surprised", 1)
+                "As you enter the showers, you see Emma washing up."        
+                if not ApprovalCheck("Emma", 1200) or not E_SeenPussy or not E_SeenChest:
+                        $ E_Brows = "angry"     
+                        $ E_Over = "towel"
+                        "She grabs a towel and covers up."             
+                        call EmmaFace("angry", 1)
+                        $ E_Love = Statupdate("Emma", "Love", E_Love, 80, -5) 
+                else:
+                        if "exhibitionist" in E_Traits:
+                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 90, (2*D20)) 
+                        else:
+                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 80, D20)
+                        $ E_Brows = "confused"        
+                
+                call Emma_First_Topless(1)
+                call Emma_First_Bottomless(1) 
+                $ K_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 3)
+                menu:
+                    ch_e "[E_Petname]! Maybe I should have locked the door.."
+                    "Sorry, I should have knocked.":  
+                        $ E_Love = Statupdate("Emma", "Love", E_Love, 50, 2)
+                        $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 4)
+                    "Definitely.":
+                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
+                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 2)
+                        $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 1)
+                #end caught showering naked
+            
+        else:                                                                                   
+                #She's done showering and in a towel
+                $ E_Over = "towel"
+                call Set_The_Scene(Dress=0)
+                "As you enter the showers, you see Emma putting on a towel."        
+                if not ApprovalCheck("Emma", 1100) and (not E_SeenPussy or not E_SeenChest):          
+                        call EmmaFace("angry")
+                        $E_Brows = "confused"
+                        $ E_Love = Statupdate("Emma", "Love", E_Love, 80, -5)
+                else:
+                        call EmmaFace("sexy")
+                        $E_Brows = "confused"        
+                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 3)
+                menu:
+                    ch_e "[E_Petname], I had a feeling we would end up meeting here."
+                    "Sorry, I should have knocked.":   
+                            call EmmaFace("smile",1)
+                            $ E_Love = Statupdate("Emma", "Love", E_Love, 50, 2)
+                            $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 2)
+                            if ApprovalCheck("Emma", 850) and E_SeenPussy and E_SeenChest: 
+                                ch_e "Why don't you come in?"  
+                            else:
+                                ch_e "Make sure you do so next time."
+                    "Let's have some fun.":                
+                            $ E_Love = Statupdate("Emma", "Love", E_Love, 50, 2)
+                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
+                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 2)
+                            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 1)
+                            
+                            call EmmaFace("sexy")       
+                            if not ApprovalCheck("Emma", 850) and (E_SeenPussy < 3 or E_SeenChest < 3): 
+                                    ch_e "Another time, [E_Petname], someone might see us." 
+                            elif not ApprovalCheck("Kitty", 1400): 
+                                    ch_e "Another time, [E_Petname], someone might see us." 
+                            else:
+                                ch_e "Is this was you were hoping to see?"      
+                                if E_Over == "towel": 
+                                    $ E_Over = 0
+                                    pause 0.5                      
+                                    $ E_Over = "towel"  
+                                    "She flashes you real quick."                        
+                                    $ E_Over = "towel"   
+                                call Emma_First_Topless(1)
+                                call Emma_First_Bottomless(1) 
+                #end done showering naked
+    
+    menu:
+        ch_e "I'm heading up. See you later, [E_Petname]" 
+        "Sure, see you later then.":
+                hide Emma_Sprite with easeoutright
+                call Remove_Girl("Emma")
+                $ E_Water = 0
+                call EmmaOutfit
+                "Emma heads out."
+        "Actually, could you stick around a minute?":
+            if ApprovalCheck("Emma", 900):
+                call EmmaFace("sexy",1)
+                $ E_Loc = "bg showerroom"            
+                ch_e "I thought you'd never ask."
+            else: 
+                call EmmaFace("perplexed",1)
+                ch_e "You shouldn't be seeing me like this, [E_Petname]!"
+                ch_e "I'm just going to leave. Please don't mention this to anyone."
+                hide Emma_Sprite with easeoutright
+                call Remove_Girl("Emma")
+                $ E_Water = 0
+                call EmmaOutfit               
+            
+    jump Shower_Room
+# End Emma Caught Shower / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /        
 
 # end Shower Interface //////////////////////////////////////////////////////////////////////
 
