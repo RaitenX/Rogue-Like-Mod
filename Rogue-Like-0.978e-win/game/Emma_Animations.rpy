@@ -1014,7 +1014,6 @@ label Emma_HJ_Reset: # The sequence to the Rogue animations from handjob to defa
         pause .5
         ease .5 zoom 1 offset (0,0)      
     return
-            
         
 label E_Kissing_Launch(T = Trigger):    
     call Emma_Hide
@@ -1068,20 +1067,7 @@ label Emma_Hide:
     #    hide Emma_TJ_Animation 
         return
 
-label Emma_HJ_Reset: # The sequence to the Rogue animations from handjob to default
-    if not renpy.showing("Emma_HJ_Animation"):
-        return    
-    $ Speed = 0
-    hide Emma_HJ_Animation with easeoutbottom
-    show Emma_Sprite at SpriteLoc(StageRight) zorder EmmaLayer:
-        alpha 1
-        zoom 1.7 offset (-50,200)
-    show Emma_Sprite zorder EmmaLayer:
-        alpha 1
-        ease 1 zoom 1.5 offset (-150,50)
-        pause .5
-        ease .5 zoom 1 offset (0,0)      
-    return
+
 
 # Interface items //////////////////////////////////////////////////////////////////////////////
 
