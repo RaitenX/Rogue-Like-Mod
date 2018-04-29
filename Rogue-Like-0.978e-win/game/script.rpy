@@ -2488,7 +2488,7 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     $ E_Hair = "wavy"
                     $ E_Hose = 0  
         elif E_OutfitTemp == "costume":
-                    if 0 in (E_Legs,E_Over,E_Chest):
+                    if 0 in (E_Legs,E_Chest):
                             $ Undressed = 1
                     elif E_Panties == 0 and "pantyless" not in E_DailyActions:                        
                             $ Undressed = 1   
@@ -3521,7 +3521,7 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
                         call Display_Kitty(Dress)
                         call Display_Emma(Dress)
                 
-                else: #if Ch_Focus == "Rogue" and R_Loc == bg_current:   
+                elif Ch_Focus == "Rogue" and R_Loc == bg_current:   
                         $ K_SpriteLoc = StageRight
                         $ E_SpriteLoc = StageRight
                         $ R_SpriteLoc = StageCenter
@@ -3535,6 +3535,7 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
                 if bg_current == "bg study" and Current_Time != "Night":   
                         show Professor at SpriteLoc(StageLeft) zorder 25    
                 if bg_current == "bg classroom" and E_Loc == "bg teacher":  
+                        "ipon4"
                         call EmmaOutfit(Changed=1)
 #                        show Emma_At_Podium onlayer backdrop
         

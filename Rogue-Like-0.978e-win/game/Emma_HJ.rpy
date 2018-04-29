@@ -910,10 +910,10 @@ label EBJ_Cycle: #Repeating strokes
                         "Lick it. . . (locked)" if Speed == 1:
                                 pass  
                             
-                        "Just the head. . ." if Speed != 2:
-                            $ Speed = 2
-                        "Just the head. . . (locked)" if Speed == 2:
-                                pass
+                        #"Just the head. . ." if Speed != 2:
+                        #    $ Speed = 2
+                        #"Just the head. . . (locked)" if Speed == 2:
+                        #        pass
                             
                         "Suck on it." if Speed != 3:
                                 $ Speed = 3  
@@ -950,8 +950,8 @@ label EBJ_Cycle: #Repeating strokes
                                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 3) 
                                 elif D20 > 10:
                                     $ Speed = 3
-                                elif D20 > 5:
-                                    $ Speed = 2
+                                #elif D20 > 5:
+                                #    $ Speed = 2
                                 else:
                                     $ Speed = 1
                                 $ E_RecentActions.append("setpace")

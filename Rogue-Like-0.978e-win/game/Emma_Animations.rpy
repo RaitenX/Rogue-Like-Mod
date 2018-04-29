@@ -424,7 +424,7 @@ image EmmaSprite_Head:
             "True", Null(),
             ),  
         (0,0), ConditionSwitch(                                                                         #Hair
-            #"renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Emma_BJ_Animation')", Null(),
             "not E_Hair", Null(),
             "(E_Hair == 'wet' or E_Water) and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_HairWet_White.png",
             "(E_Hair == 'wet' or E_Water) and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_HairWet_Red.png",
@@ -437,13 +437,13 @@ image EmmaSprite_Head:
             "True", Null(),
             ),        
         (0,0), ConditionSwitch(                                                                         #Hair Water
-            #"renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Emma_BJ_Animation')", Null(),
             "not E_Water", Null(),
             "E_Hair == 'wet'", "images/EmmaSprite/EmmaSprite_Head_Water.png",
             "True", "images/EmmaSprite/EmmaSprite_Head_Water.png",
             ),
         (0,0), ConditionSwitch(                                                                         #hair spunk               
-            #"renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Emma_BJ_Animation')", Null(),
             "'hair' in E_Spunk and (E_Hair == 'wet' or E_Water)", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWet.png",                         
             "'hair' in E_Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWave.png",              
             "True", Null(),
@@ -586,14 +586,18 @@ image Emma_BJ_Animation:#BJ_NewTest:                                            
             ),    
          (0,0), ConditionSwitch(                                                                 # the masked overlay for when her head overlaps the cock
              "Speed < 3", Null(), 
-             "Speed == 3", At(AlphaMask("Emma_BJ_Head_2", "images/RogueBJFace/Rogue_bj_facemask.png"), BJ_Sucking()),
-             "Speed == 4", At(AlphaMask("Emma_BJ_Head_2", "images/EmmaSprite/Emma_bj_facemask.png"), BJ_Deep()), 
+             #"Speed == 2", At("Emma_BJ_Head_3", BJ_Heading()),
+             "Speed == 3", At("Emma_BJ_Head_3", BJ_Sucking()),
+             "Speed == 4", At("Emma_BJ_Head_3", BJ_Deep()), 
+             #"Speed == 3", At(AlphaMask("Emma_BJ_Head_2", "Emma_BJ_Mask"), BJ_Sucking()),
+             #"Speed == 4", At(AlphaMask("Emma_BJ_Head_2", "images/EmmaSprite/Emma_bj_facemask.png"), BJ_Deep()), 
              "True", Null(),
              ),    
-        # (0,0), ConditionSwitch(                                                                 # same as above, but for the heading animation
-        #     "Speed == 2", At(AlphaMask("Emma_BJ_Head_3", "BJ_MaskHeadingComposite"), BJ_Heading()),
-        #     "True", Null(),
-        #     ),    
+         (0,0), ConditionSwitch(                                                                 # same as above, but for the heading animation
+             #"Speed == 2", At("E_BJ_MaskHeadingComposite", BJ_Heading()),
+             #"Speed == 2", At("Emma_BJ_Head_4", BJ_Heading()),
+             "True", Null(),
+             ),    
         )
     zoom .55
     anchor (.5,.5)
@@ -617,6 +621,51 @@ image Emma_BJ_HairBack:
     zoom 2.025 
     offset (-240, -200)
 
+image E_BJ_MaskHeadingComposite:                                  #The composite for the heading mask that goes over the face
+    LiveComposite(    
+        (787,913),  
+        (0,0), ConditionSwitch(      #600               
+            #"Speed == 2", At("Emma_BJ_Mask", E_BJ_MouthAnim()),     
+            "Speed == 2", At("Emma_BJ_Head_3", E_BJ_MouthAnim()),     
+            "True", Null(),
+            ),  
+        )  
+
+transform E_BJ_MouthAnim():                                       #The animation for the heading mouth
+        subpixel True
+        zoom 0.90     #small 
+        block: #total time 10 down, 15 back up
+            pause .40            
+            easein .40 zoom 0.87
+            linear .10 zoom 0.9
+            easeout .45 zoom 0.70 
+            pause .15                       
+            easein .25 zoom 0.9
+            linear .10 zoom 0.87
+            easeout .30 zoom 0.9   
+            pause .35
+          
+            repeat
+
+transform E_BJ_Sucking():                                 #The sucking animation for her face
+    subpixel True
+    ease 0.5 offset (0,50) 
+    block:
+        ease 1 yoffset 120 #100
+        ease 1.5 offset (0,50) 
+        repeat
+
+    
+transform E_BJ_Deep():                                    #The deep animation for her face
+    subpixel True
+    ease .5 offset (0,100) 
+    block:
+        subpixel True
+        ease 1 yoffset 300
+        pause .5
+        ease 2 yoffset 100  
+        repeat
+
 image Emma_BJ_Backdrop:                                                                        #Her Body under the head
     "Emma_Sprite"
     zoom 5.4
@@ -624,16 +673,29 @@ image Emma_BJ_Backdrop:                                                         
     offset (-465, -200) #-325, -125
 
 image Emma_BJ_Head_3:
-    "Emma_BJ_Head"
-    #zoom .75
-    zoom 4.05
+    AlphaMask("Emma_BJ_Head_2", "Emma_BJ_Mask")    #zoom .75
+    #zoom 4.05
     pos (275,-110)
-    offset (-140, -125) #-140 - 125
+    offset (-240, -200) #-140 - 125
+
+image Emma_BJ_Head_4:
+    AlphaMask("Emma_BJ_Head_2", "E_BJ_MaskHeadingComposite")    #zoom .75
+    #zoom 4.05
+    pos (275,-110)
+    offset (-240, -200) #-140 - 125
 
 image Emma_BJ_Head_2:
     "Emma_BJ_Head"
     #zoom .75
     zoom 4.05
+    pos (275,-110)
+    offset (-240, -200) #-140 - 125
+
+image Emma_BJ_Mask:
+    "images/EmmaSprite/Emma_bj_facemask.png"
+    anchor (0.6, 0.0)                
+    zoom 2.025  
+    #zoom 4.05
     pos (275,-110)
     offset (-240, -200) #-140 - 125
 
@@ -803,14 +865,15 @@ image Emma_BJ_Head:
             ),  
         )                
     anchor (0.6, 0.0)                
-    zoom .5   
-
+    zoom .5 
 
 
 label Emma_BJ_Launch(Line = 0):    # The sequence to launch the Emma BJ animations  
+    if Trigger2 == "jackin":
+        $ Trigger2 = 0
     if renpy.showing("Emma_BJ_Animation"):
         return
-    
+
     call Emma_Hide
     if Line == "L" or Line == "cum":
         show Emma_Sprite at SpriteLoc(StageCenter) zorder EmmaLayer:
@@ -844,14 +907,13 @@ label Emma_BJ_Launch(Line = 0):    # The sequence to launch the Emma BJ animatio
             
     $ Speed = 0
     
-    if Line != "cum":
-        $ Trigger = "blow"
+    #if Line != "cum":
+    $ Trigger = "blow"
     
     show Emma_Sprite zorder EmmaLayer:
         alpha 0
     show Emma_BJ_Animation zorder 150: 
         pos (645,510) 
-    "t"
     return
     
 label Emma_BJ_Reset: # The sequence to the Emma animations from BJ to default
@@ -910,6 +972,9 @@ image Emma_HJ_Animation:
 
 
 label Emma_HJ_Launch(Line = 0): 
+    $ Emma_Arms = 1
+    if Trigger2 == "jackin":
+        $ Trigger2 = 0
     if renpy.showing("Emma_HJ_Animation"):        
         $ Trigger = "hand"
         return

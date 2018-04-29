@@ -47,12 +47,12 @@ label PE_Cumming:
             
         "Ask to cum in her mouth": 
                 $ Situation = "asked"
-                jump E_No_Cum
-#                jump E_In_Mouth                            
+#                jump E_No_Cum
+                jump E_In_Mouth                            
         "Cum in her mouth without asking" if Trigger == "blow" or Trigger == "hand" or Trigger == "titjob":
                 $ Situation = "auto"
-                jump E_No_Cum
-#                jump E_In_Mouth
+#                jump E_No_Cum
+                jump E_In_Mouth
         
         "Ask to cum inside her" if Trigger == "sex":
                 $ Situation = "asked"
@@ -348,7 +348,7 @@ label E_In_Mouth:
                 $ Situation = 0
                 if not renpy.showing("Emma_BJ_Animation"):
                         call Emma_BJ_Launch("cum")
-                $ Speed = 2
+                $ Speed = 3
                 "You grab her head and cum in her mouth"  
                 $E_Eyes = "closed"        
                 show Emma_BJ_Animation
@@ -492,10 +492,10 @@ label E_In_Mouth:
             call EmmaFace("sucking")
             if not renpy.showing("Emma_BJ_Animation"):
                 call Emma_BJ_Launch("cum")            
-                $ Speed = 2
+                $ Speed = 3
                 "She nods and bends down to put the tip between her lips. After you cum, she quickly gulps it down and wipes her mouth."
             else:            
-                $ Speed = 2
+                $ Speed = 3
                 "She nods and hums a \"yes\" sound."
             $ E_Spunk.append("mouth")
             ". . ."
@@ -511,10 +511,10 @@ label E_In_Mouth:
             $ E_Eyes = "manic"
             if not renpy.showing("Emma_BJ_Animation"):
                 call Emma_BJ_Launch("cum")            
-                $ Speed = 2    
+                $ Speed = 3    
                 "She gently puts the tip to her lips, just as you blow. She gags a little, but quickly swallows it."
             else:            
-                $ Speed = 2
+                $ Speed = 3
                 "She nods and hums a \"yes\" sound."
             $ E_Mouth = "sucking"
             $ E_Spunk.append("mouth")
@@ -532,10 +532,10 @@ label E_In_Mouth:
                 $ E_Brows = "confused"
                 if not renpy.showing("Emma_BJ_Animation"):
                     call Emma_BJ_Launch("cum")            
-                    $ Speed = 2    
+                    $ Speed = 3    
                     "She gently puts the tip to her lips, just as you blow. She gags a little, but quickly swallows it."
                 else:            
-                    $ Speed = 2
+                    $ Speed = 3
                     "She tilts her head and hums a \"hmm?\" sound."
                 $ E_Mouth = "sucking"
                 $ E_Spunk.append("mouth")
@@ -620,13 +620,13 @@ label E_In_Mouth:
                         return                    
                 $ E_Mouth = "sucking"
                 call Emma_BJ_Launch("cum")            
-                $ Speed = 2     
+                $ Speed = 3     
                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 10)
                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 5)
         
     if not renpy.showing("Emma_BJ_Animation"):
         call Emma_BJ_Launch("cum")            
-    $ Speed = 2    
+    $ Speed = 3    
     if ApprovalCheck("Emma", 1200):            
             "She gently puts the tip to her lips, just as you blow."
             "She coughs a little, but quickly swallows it." 
@@ -795,8 +795,8 @@ label E_Facial:
             "As you're about to finish, you aim squarely at her face, and spray all over it."  
             $ Speed = 0
     else:        
-            call Emma_HJ_Launch("cum")
-            $ Speed = 2
+            call Emma_BJ_Launch("cum")
+            $ Speed = 0
             $ E_Spunk.append("facial")
             "As you're about to finish, you pull out, aim squarely at her face, and spray all over it."
             $ Speed = 0
@@ -948,56 +948,56 @@ label E_Orgasm_After:
     $ P_Cock = "out"
     $ P_Spunk = 0
     $ Speed = 0    
-#    if Trigger == "anal" and not ApprovalCheck("Emma", 1600, TabM=1) and not E_Addict >= 80:
-#            "She wipes your cock clean."
-#    elif E_Blow > 3 or E_Swallow: 
-#            if ApprovalCheck("Emma", 1200, TabM=1) or E_Addict >= 60:
-#                    call Emma_BJ_Launch("cum")
-#                    $ Speed = 1
-#                    call EmmaFace("sucking", 1) 
-#                    if ApprovalCheck("Emma", 1500, TabM=1):
-#                        if E_Love > E_Inbt and E_Love > E_Obed:
-#                            "She looks up at you lovingly as she licks your cock clean."            
-#                        elif E_Obed > E_Inbt:
-#                            $ E_Eyes = "side"
-#                            "She dutifully licks your cock clean with lowered eyes."
-#                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 3)                
-#                        else:
-#                            "She happily licks your cock clean." 
-#                    elif E_Addict >= 60:
-#                            "She hungrily and thoroughly licks your cock clean."   
-#                    else:
-#                        "She licks you cock clean." 
-#                    call EmmaFace("sexy") 
-#                    call Emma_BJ_Reset            
-#            else:
-#                    if not renpy.showing("Emma_HJ_Animation"):
-#                        call Emma_HJ_Launch("cum") 
-#                    "She wipes your cock clean."  
-#    else:
-#                    if not renpy.showing("Emma_HJ_Animation"):
-#                        call Emma_HJ_Launch("cum") 
-#                    "She wipes your cock clean." 
-    call EmmaFace("sexy", 1)
-    if ApprovalCheck("Emma", 1200, TabM=1):
-        if "hand" in E_Spunk:
-            $ E_Spunk.remove("hand")
-        $ E_Spunk.append("mouth")
-        "Emma wipes your cock clean, and then licks her hands clean."
-        $ E_Spunk.remove("mouth")
-        $ E_Swallow += 1
-        if E_Swallow == 1:
-                $ E_SEXP += 12
-                call EmmaFace("sexy", 2, Mouth="kiss", Eyes="down")
-                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 5)
-                "She gets a very excited look on her face as she does so."
-                call EmmaFace("sexy", 1)
-        else:
-                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 2)
+    if Trigger == "anal" and not ApprovalCheck("Emma", 1600, TabM=1) and not E_Addict >= 80:
+            "She wipes your cock clean."
+    elif E_Blow > 3 or E_Swallow: 
+            if ApprovalCheck("Emma", 1200, TabM=1) or E_Addict >= 60:
+                    call Emma_BJ_Launch("cum")
+                    $ Speed = 1
+                    call EmmaFace("sucking", 1) 
+                    if ApprovalCheck("Emma", 1500, TabM=1):
+                        if E_Love > E_Inbt and E_Love > E_Obed:
+                            "She looks up at you lovingly as she licks your cock clean."            
+                        elif E_Obed > E_Inbt:
+                            $ E_Eyes = "side"
+                            "She dutifully licks your cock clean with lowered eyes."
+                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 3)                
+                        else:
+                            "She happily licks your cock clean." 
+                    elif E_Addict >= 60:
+                            "She hungrily and thoroughly licks your cock clean."   
+                    else:
+                        "She licks you cock clean." 
+                    call EmmaFace("sexy") 
+                    call Emma_BJ_Reset            
+            else:
+                    if not renpy.showing("Emma_HJ_Animation"):
+                        call Emma_HJ_Launch("cum") 
+                    "She wipes your cock clean."  
     else:
-        if "hand" in E_Spunk:
-            $ E_Spunk.remove("hand")
-        "Emma wipes your cock clean, and then wipes off her hands."
+                    if not renpy.showing("Emma_HJ_Animation"):
+                        call Emma_HJ_Launch("cum") 
+                    "She wipes your cock clean." 
+    #call EmmaFace("sexy", 1)
+    #if ApprovalCheck("Emma", 1200, TabM=1):
+    #    if "hand" in E_Spunk:
+    #        $ E_Spunk.remove("hand")
+    #    $ E_Spunk.append("mouth")
+    #    "Emma wipes your cock clean, and then licks her hands clean."
+    #    $ E_Spunk.remove("mouth")
+    #    $ E_Swallow += 1
+    #    if E_Swallow == 1:
+    #            $ E_SEXP += 12
+    #            call EmmaFace("sexy", 2, Mouth="kiss", Eyes="down")
+    #            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 5)
+    #            "She gets a very excited look on her face as she does so."
+    #            call EmmaFace("sexy", 1)
+    #    else:
+    #            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 2)
+    #else:
+    #    if "hand" in E_Spunk:
+    #        $ E_Spunk.remove("hand")
+    #    "Emma wipes your cock clean, and then wipes off her hands."
     call EmmaFace("sexy") 
     call Emma_HJ_Reset 
     if E_Spunk and not ApprovalCheck("Emma", 400, "I"):
