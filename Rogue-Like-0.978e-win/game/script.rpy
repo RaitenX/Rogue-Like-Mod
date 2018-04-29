@@ -3535,7 +3535,6 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
                 if bg_current == "bg study" and Current_Time != "Night":   
                         show Professor at SpriteLoc(StageLeft) zorder 25    
                 if bg_current == "bg classroom" and E_Loc == "bg teacher":  
-                        "ipon4"
                         call EmmaOutfit(Changed=1)
 #                        show Emma_At_Podium onlayer backdrop
         

@@ -5711,7 +5711,6 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
             elif Custom == 9 and not Taboo:
                     pass
             else:
-                    "[Tempshame]"
                     "[R_Chest], [R_Over], [R_Legs], [R_Panties]"
                     ch_r "I'll be right back, I've got to change out of this."
                     $ R_Outfit = renpy.random.choice(["evo_green", "evo_pink"])

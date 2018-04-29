@@ -3725,58 +3725,6 @@ label Emma_Clothes(Public=0,Bonus=0):
             else:                
                 ch_e "I don't think that would be appropriate. . ."  
 
-        "I like that bikini top you have." if E_Chest != "bikini":
-            if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
-                ch_e "So do I."   
-                $ E_Chest = "bikini"  
-                $ E_TitsUp = 1
-            else:                
-                ch_e "I don't think that would be appropriate. . ."  
-
-        "I like that bikini top you have." if E_Chest != "bikini":
-            if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
-                ch_e "So do I."   
-                $ E_Chest = "bikini"  
-                $ E_TitsUp = 1
-            else:                
-                ch_e "I don't think that would be appropriate. . ."  
-
-        "I like that bikini top you have." if E_Chest != "bikini":
-            if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
-                ch_e "So do I."   
-                $ E_Chest = "bikini"  
-                $ E_TitsUp = 1
-            else:                
-                ch_e "I don't think that would be appropriate. . ."  
-
-        "I like that bikini top you have." if E_Chest != "bikini":
-            if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
-                ch_e "So do I."   
-                $ E_Chest = "bikini"  
-                $ E_TitsUp = 1
-            else:                
-                ch_e "I don't think that would be appropriate. . ."           
-            
-#        "I like that strapless bra." if E_Chest != "bra":
-#            if E_SeenChest or ApprovalCheck("Emma", 1200, TabM=(3-Public)):
-#                ch_e "K."   
-#                $ E_Chest = "bra"         
-#            else:                
-#                ch_e "I'm not really comfortable with that. . ."  
-                
-#        "I like that lace bra." if "lace bra" in E_Inventory and E_Chest != "lace bra":
-#            if E_SeenChest or ApprovalCheck("Emma", 1300, TabM=(3-Public)):
-#                ch_e "K."   
-#                $ E_Chest = "lace bra"         
-#            else:                
-#                ch_e "It's pretty skimpy. . ."  
-            
-#        "I like that sports bra." if E_Chest != "sports bra":
-#            if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
-#                ch_e "K."   
-#                $ E_Chest = "sports bra"         
-#            else:                
-#                ch_e "I'm not sure about that. . ."  
                                                                                                                             #Panties        
         "You could lose those panties. . ." if E_Panties:
             call EmmaFace("bemused", 1)  
@@ -4600,7 +4548,6 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
             elif Custom == 9 and not Taboo:
                     pass
             else:
-                    "[Tempshame]"
                     ch_e "I'm afraid I'll have to change, one moment."
                     $ E_Outfit = "teacher"
 #                    $ E_Outfit = renpy.random.choice(["teacher", "costume"])
