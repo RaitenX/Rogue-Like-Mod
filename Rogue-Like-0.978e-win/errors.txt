@@ -2,32 +2,6 @@
 errors listed below, and try again.
 
 
-File "game/Rogue_Chat.rpy", line 5571: expected statement.
-    elif Tempshame <= 5:
-                   ^
-
-File "game/Rogue_Chat.rpy", line 5574: expected statement.
-    elif Tempshame <= 15 and (ApprovalCheck("Rogue", 1700, TabM=0, C = 0) or ApprovalCheck("Rogue", 400, "I", TabM=0, C = 0)):        
-                   ^
-
-File "game/Rogue_Chat.rpy", line 5576: expected statement.
-    elif Tempshame <= 15:  
-                   ^
-
-File "game/Rogue_Chat.rpy", line 5580: expected statement.
-    elif Tempshame <= 25 and (ApprovalCheck("Rogue", 2300, TabM=0, C = 0) or ApprovalCheck("Rogue", 700, "I", TabM=0, C = 0)):
-                   ^
-
-File "game/Rogue_Chat.rpy", line 5582: expected statement.
-    elif Tempshame <= 25:
-                   ^
-
-File "game/Rogue_Chat.rpy", line 5586: expected statement.
-    elif (ApprovalCheck("Rogue", 2500, TabM=0, C = 0) or ApprovalCheck("Rogue", 800, "I", TabM=0, C = 0)):
-                                                                                                         ^
-
-File "game/Rogue_Chat.rpy", line 5589: expected statement.
-    else:
-        ^
+File "game/Emma_HJ.rpy", line 409: indentation mismatch.
 
 Ren'Py Version: Ren'Py 6.99.13.2919

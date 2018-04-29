@@ -384,16 +384,6 @@ label EHJ_Cycle:
                         "Slow Down. . . (locked)" if not Speed:                
                                     pass
 
-                        # "Blindfold her" if E_Bondage and not E_Blindfold:
-                        #     call EmmaFace("sexy", 1) 
-                        #     "You add a blindfold so she can't see a thing"
-                        #     $ E_Blindfold = 1
-
-                        # "Remove blindfold" if E_Blindfold:
-                        #     call EmmaFace("sexy", 1) 
-                        #     "You remove the blindfold"
-                        #     $ E_Blindfold = 0
-                            
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
                         "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
@@ -406,15 +396,15 @@ label EHJ_Cycle:
                         "Maybe lose some clothes. . .":
                                     call E_Undress  
                                     
-                        # "Shift actions":
-                        #     menu:
-                        #         "How about a blowjob?":
-                        #                     if E_Action and MultiAction:
-                        #                         $ Situation = "shift"
-                        #                         call E_HJAfter                
-                        #                         call E_Blowjob
-                        #                     else:
-                        #                         ch_e "Actually I'm getting a bit worn out, let's finish up here. . ."
+                        "Shift actions":
+                            menu:
+                                "How about a blowjob?":
+                                            if E_Action and MultiAction:
+                                                $ Situation = "shift"
+                                                call E_HJAfter                
+                                                call E_Blowjob
+                                            else:
+                                                ch_e "Actually I'm getting a bit worn out, let's finish up here. . ."
                                        
                         "I also want to fondle her breasts." if E_Action and MultiAction:
                                     $ Trigger2 = "fondle breasts"
@@ -987,13 +977,6 @@ label EBJ_Cycle: #Repeating strokes
                                             $ Situation = "shift"
                                             call E_BJAfter
                                             call E_Handjob
-                                        else:
-                                            ch_e "I'm kinda tired, could we just wrap this up. . ."
-                                "How about a titjob?":
-                                        if E_Action and MultiAction:
-                                            $ Situation = "shift"
-                                            call E_BJAfter
-                                            call E_Titjob
                                         else:
                                             ch_e "I'm kinda tired, could we just wrap this up. . ."
                         
