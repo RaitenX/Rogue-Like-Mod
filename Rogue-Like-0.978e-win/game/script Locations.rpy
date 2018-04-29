@@ -40,6 +40,15 @@ label Worldmap:
         "The Danger Room":         
                     $ renpy.pop_call()    
                     jump Danger_Room_Entry
+
+        "The Pool": 
+                    $ renpy.pop_call() 
+                    jump Pool_Entry
+
+        "The Football Field": 
+                    $ renpy.pop_call() 
+                    jump Field_Entry
+
         "The showers":
                     $ renpy.pop_call() 
                     jump Shower_Room_Entry         
@@ -119,7 +128,7 @@ label Player_Room:
         "You are in your room. What would you like to do?"
         "Chat":
                     call Chat
-            
+
         "Would you like to study [[Rogue]?" if R_Loc == bg_current:
                     call Rogue_Study
         "Would you like to study [[Kitty]?" if K_Loc == bg_current:
@@ -127,21 +136,26 @@ label Player_Room:
                     
         "Sleep" if Current_Time == "Night":            
                     call Round10
+                    $ R_Spank = 0
                     call Girls_Location
-                    call EventCalls  
+                    call Kitty_Sent_Selfie 
+                    call Rogue_Sent_Selfie 
+                    call EventCalls 
         "Wait" if Current_Time != "Night":
                     "You wait around a bit."
                     call Wait                 
                     call Girls_Location
-                    call EventCalls      
-            
+                    call Kitty_Sent_Selfie
+                    call Rogue_Sent_Selfie
+                    call EventCalls   
+
         "Shop":
                     call Shop                
         "Special Options":
                     call SpecialMenu
         
         "Go to Rogue's Room" if TravelMode:           
-                    jump Rogue_Room_Entry 
+                    jump Rogue_Room_Entry
         "Go to Kitty's Room" if TravelMode and "met" in K_History:           
                     jump Kitty_Room_Entry 
         "Go to the Showers" if TravelMode:         
@@ -364,6 +378,7 @@ label Rogue_Room:
     call Set_The_Scene  
     
 # Rogue's Room Menu Start <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    call Kitty_Sent_Selfie
     if R_Loc == bg_current:
         $ Line = "You are in Rogue's room. What would you like to do?"
     else:
@@ -665,6 +680,13 @@ label Campus:
                         "It's late for classes and the classrooms are locked down."   
         "Go to the Danger Room" if TravelMode: 
                     jump Danger_Room_Entry
+
+        "Go to the Pool" if TravelMode: 
+                    jump Pool_Entry
+
+        "Go to the football field" if TravelMode: 
+                    jump Field_Entry     
+
         "Go to the showers" if TravelMode: 
                     jump Shower_Room_Entry            
         "Xavier's Study" if TravelMode: 
@@ -687,6 +709,8 @@ label Class_Room_Entry:
     $ P_RecentActions.append("traveling")
     call EventCalls
     call Set_The_Scene
+    call Kitty_Sent_Selfie
+    call Rogue_Sent_Selfie
     if Current_Time != "Night" and Current_Time != "Evening" and Weekday < 5:   
             call Class_Room_Seating    
     if E_Loc == "bg teacher":
@@ -704,6 +728,8 @@ label Class_Room:
     call Taboo_Level
     call QuickEvents    
     call Checkout(1)
+    if "vcame" in K_RecentActions:
+        $ K_Wet = 2
     if Round <= 10:
                 if Current_Time == "Night":   
                     "You're getting tired, you head back to your room."
@@ -735,7 +761,238 @@ label Class_Room:
             
         "Chat":
                 call Chat
-                $ Line = "You are in class right now. What would you like to do?" 
+                $ Line = "You are in class right now. What would you like to do?"
+
+        "Turn Kitty's vibrator on" if Weekday < 5 and (Current_Time == "Morning" or Current_Time == "Midday") and K_Loc == bg_current and "vibeclass" in K_Traits:
+                "You turn Kitty's vibrator on"
+                $ K_Vibrator = 1
+                play music "sounds/vibrator1.wav" fadein 1 fadeout 1
+                if K_Loc == bg_current:
+                    call KittyFaceSpecial("surprised", 1) 
+                    
+                    with Shake((0, 0, 0, 0), 3.0, dist=5)
+                    if "vibratorclass" not in K_History:
+                        ch_k "What are you doing [K_Petname]??"
+                        if "exhibitionist" in K_Traits:
+                            call KittyFaceSpecial("sexy", 1) 
+                            "Kitty starts moving in her seat. She can't keep still."
+                            "She looks at you with a sexy smile."
+                            if Adjacent == "Kitty":
+                                ch_k "I like how you think, [K_Petname]."
+                        else:
+                            call KittyFaceSpecial("sad", 1) 
+                            "Kitty starts moving in her seat. She can't keep still."
+                            "She looks at you with a begging face."
+                            if Adjacent == "Kitty":
+                                ch_k "Please stop this, [K_Petname]."
+                        $ K_History.append("vibratorclass")
+                    elif "exhibitionist" not in K_Traits:
+                        ch_k "Not this again."
+                        "She looks at you with a begging face."
+                        if Adjacent == "Kitty":
+                            ch_k "Please [K_Petname], not in public."
+                    else:
+                        ch_k "This again huh"
+                        call KittyFaceSpecial("sexy", 1)
+                        "She looks at you with a sexy smile"
+                        if Adjacent == "Kitty":
+                            ch_k "Please [K_Petname], make it go faster."
+                    
+                    label V_Kitty_On:
+
+                        if K_Vibrator == 2:
+                            with Shake((0, 0, 0, 0), 3.0, dist=5)
+    
+                            $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 100, 5)
+                            $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, 1)
+                            $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 1)
+                            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 10)
+                            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 2)  
+
+                        with Shake((0, 0, 0, 0), 3.0, dist=5)
+                        $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 100, 5)
+                        $ K_Love = Statupdate("Kitty", "Love", K_Love, 70, 1)
+                        $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 1)
+                        $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 10)
+                        $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 2)  
+
+                        if K_Lust <= 50:
+                            if K_Legs or K_Panties:
+                                $ Line = renpy.random.choice(["She tries to keep it together", 
+                                    "She keeps moving her body as if that movement would reduce the vibrations",
+                                    "She tugs her bottoms.",
+                                    "Her hands move along her sides",
+                                    "She looks around trying to see if anyone can notice the noise", 
+                                    "She moves her hands to rub her neck",
+                                    "She gasps as her movements only makes her hornier"])
+                            else:
+                                $ Line = renpy.random.choice(["She tries to keep it together", 
+                                    "She keeps moving her body as if that movement would reduce the vibrations",
+                                    "Her hands move along her sides",
+                                    "She looks around trying to see if anyone can notice the noise", 
+                                    "She moves her hands to rub her neck",
+                                    "She gasps as her movements only makes her hornier"])
+
+                        else:
+
+                            $ Line = renpy.random.choice(["Her hand traces slowly down her body", 
+                                "Her fingers move lightly across her pubic region",
+                                "Her fingers move up and down her inner thighs, slowing building towards their center",
+                                "Her hands move along her sides, carefully caressing them",
+                                "She gently rubs her breasts", 
+                                "She gently cups her breasts and moves them in slow circles",
+                                "She moves her hands from her breasts to rub her neck",
+                                "She lightly pinches one of her nipples",
+                                "She gasps as her finger brushes against an erect nipple"])  
+
+                        "[Line]"
+                        call KittyLust 
+                        if K_Lust >= 100:                                               
+                            call K_Cumming
+                            $ K_Lust = 45
+                            $ K_RecentActions.append("vcame")
+                            if Situation == "shift" or "angry" in K_RecentActions:
+                                jump KFB_After
+                        menu:
+                            "Keep it on":
+                                jump V_Kitty_On
+                            "Turn it up" if K_Vibrator != 2:
+                                play music "sounds/vibrator2.wav"
+                                $ K_Vibrator = 2
+                                $ K_Mouth = "tongue"
+                                $ K_Eyes = "surprised"
+                                $ K_Blush = 2
+                                "You increase the vibrator speed startling her"
+
+                                jump V_Kitty_On
+
+                            "Turn it off":
+                                stop music fadeout 1
+
+                                if "exhibitionist" not in K_Traits:
+                                    if Adjacent == "Kitty":
+                                        ch_k "Thanks, [K_Petname]."
+                                else:
+                                    call KittyFaceSpecial("sad", 1)
+                                    "She looks at you with a sad face"
+                                    if Adjacent == "Kitty":
+                                        ch_k "Why did you stop, [K_Petname]?"
+
+        "Turn Rogue's vibrator on" if Weekday < 5 and (Current_Time == "Morning" or Current_Time == "Midday") and R_Loc == bg_current and "vibeclass" in R_Traits:
+                "You turn Rogue's vibrator on"
+                $ R_Vibrator = 1
+                play music "sounds/vibrator1.wav" fadein 1 fadeout 1
+                if R_Loc == bg_current:
+                    call RogueFaceSpecial("surprised", 1) 
+                    
+                    with Shake((0, 0, 0, 0), 3.0, dist=5)
+                    if "vibratorclass" not in R_History:
+                        ch_r "What are you doing [R_Petname]??"
+                        if "exhibitionist" in R_Traits:
+                            call RogueFaceSpecial("sexy", 1) 
+                            "Rogue starts moving in her seat. She can't keep still."
+                            "She looks at you with a sexy smile."
+                            if Adjacent == "Rogue":
+                                ch_r "I like how you think, [R_Petname]."
+                        else:
+                            call RogueFaceSpecial("sad", 1) 
+                            "Rogue starts moving in her seat. She can't keep still."
+                            "She looks at you with a begging face."
+                            if Adjacent == "Rogue":
+                                ch_r "Please stop this, [R_Petname]."
+                        $ R_History.append("vibratorclass")
+                    elif "exhibitionist" not in R_Traits:
+                        ch_r "Not this again."
+                        "She looks at you with a begging face."
+                        if Adjacent == "Rogue":
+                            ch_r "Please [R_Petname], not in public."
+                    else:
+                        ch_r "This again huh"
+                        call RogueFaceSpecial("sexy", 1)
+                        "She looks at you with a sexy smile"
+                        if Adjacent == "Rogue":
+                            ch_r "Please [R_Petname], make it go faster."
+                    
+                    label V_Rogue_On:
+
+                        if R_Vibrator == 2:
+                            with Shake((0, 0, 0, 0), 3.0, dist=5)
+    
+                            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 100, 5)
+                            $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, 1)
+                            $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 1)
+                            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 10)
+                            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 2)  
+
+                        with Shake((0, 0, 0, 0), 3.0, dist=5)
+                        $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 100, 5)
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, 1)
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 1)
+                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 10)
+                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 2)  
+
+                        if R_Lust <= 50:
+                            if R_Legs or R_Panties:
+                                $ Line = renpy.random.choice(["She tries to keep it together", 
+                                    "She keeps moving her body as if that movement would reduce the vibrations",
+                                    "She tugs her bottoms.",
+                                    "Her hands move along her sides",
+                                    "She looks around trying to see if anyone can notice the noise", 
+                                    "She moves her hands to rub her neck",
+                                    "She gasps as her movements only makes her hornier"])
+                            else:
+                                $ Line = renpy.random.choice(["She tries to keep it together", 
+                                    "She keeps moving her body as if that movement would reduce the vibrations",
+                                    "Her hands move along her sides",
+                                    "She looks around trying to see if anyone can notice the noise", 
+                                    "She moves her hands to rub her neck",
+                                    "She gasps as her movements only makes her hornier"])
+
+                        else:
+
+                            $ Line = renpy.random.choice(["Her hand traces slowly down her body", 
+                                "Her fingers move lightly across her pubic region",
+                                "Her fingers move up and down her inner thighs, slowing building towards their center",
+                                "Her hands move along her sides, carefully caressing them",
+                                "She gently rubs her breasts", 
+                                "She gently cups her breasts and moves them in slow circles",
+                                "She moves her hands from her breasts to rub her neck",
+                                "She lightly pinches one of her nipples",
+                                "She gasps as her finger brushes against an erect nipple"])  
+
+                        "[Line]"
+                        call RogueLust 
+                        if R_Lust >= 100:                                               
+                            call R_Cumming
+                            $ R_Lust = 45
+                            $ R_RecentActions.append("vcame")
+                            if Situation == "shift" or "angry" in R_RecentActions:
+                                jump KFB_After
+                        menu:
+                            "Keep it on":
+                                jump V_Rogue_On
+                            "Turn it up" if R_Vibrator != 2:
+                                play music "sounds/vibrator2.wav"
+                                $ R_Vibrator = 2
+                                $ R_Mouth = "tongue"
+                                $ R_Eyes = "surprised"
+                                $ R_Blush = 2
+                                "You increase the vibrator speed startling her"
+
+                                jump V_Rogue_On
+
+                            "Turn it off":
+                                stop music fadeout 1
+
+                                if "exhibitionist" not in R_Traits:
+                                    if Adjacent == "Rogue":
+                                        ch_r "Thanks, [R_Petname]."
+                                else:
+                                    call RogueFaceSpecial("sad", 1)
+                                    "She looks at you with a sad face"
+                                    if Adjacent == "Rogue":
+                                        ch_r "Why did you stop, [R_Petname]?"
+
             
         "Wait" if Current_Time != "Night":
                 "You hang out for a bit."
@@ -761,6 +1018,8 @@ label Class_Room:
     
 label Take_Class:                       #Class events 
     call Set_The_Scene  
+    if "vcame" in K_RecentActions:
+        $ K_Wet = 2
     if "class" in P_DailyActions:
             $ Line = "The session begins."
     elif Round >= 80:
@@ -839,6 +1098,388 @@ label Class_Room_Seating(Line = 0):
     
 # end Class Room Interface //////////////////////////////////////////////////////////////////////
 
+# Pool Room Interface //////////////////////////////////////////////////////////////////////
+
+label Pool_Entry:
+    $ bg_current = "bg pool"    
+    call Taboo_Level
+    $ P_RecentActions.append("traveling")
+    call EventCalls
+    call Pool_Clothes("pre")#Automatically puts them in pool clothes if they've been here
+    call Set_The_Scene
+    call Kitty_Sent_Selfie
+    call Rogue_Sent_Selfie
+    "This is the Pool. What would you like to do?" 
+    
+label Pool_Room:
+    $ bg_current = "bg pool"  
+    if "traveling" in P_RecentActions:
+        $ P_RecentActions.remove("traveling")  
+
+    call Set_The_Scene
+    call Taboo_Level  
+    call QuickEvents
+  
+    if "cockout" in P_RecentActions:
+        call Checkout(1)
+        $ P_RecentActions.append("cockout")
+    else:
+        call Checkout(1)
+
+
+
+    if Round <= 10:
+                if Current_Time == "Night":   
+                    "You're getting tired, you head back to your room."
+                    jump Player_Room
+                        
+                call Wait   
+                call EventCalls
+                call Girls_Location 
+                call Set_The_Scene
+                call Pool_Clothes                
+    call GirlsAngry  
+    
+# Pool Room Menu Start <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
+    menu:
+        "This is the Pool. What would you like to do?" 
+#        extend ""        
+                    
+        "Chat":
+                call Chat
+            
+        "Wait." if Current_Time != "Night":
+                "You hang out for a bit."
+                call Wait   
+                call EventCalls
+                call Pool_Clothes
+                call Girls_Location 
+                call Pool_Clothes
+                #jump Pool_Area
+
+        "Go for a swim":
+                if R_Loc == bg_current or K_Loc == bg_current: #or E_Loc == bg_current:
+                    "Let's go for a swim"
+                    if R_Loc == bg_current:
+                        ch_r "yay"
+
+                        if R_Outfit != "swimsuit2" and R_Outfit != "swimsuit1":
+                            #ch_r "I'l be right there, let me just put on my swimsuit"
+                            call Pool_Clothes("goswim", "Rogue")
+                            ch_r "Let's go"
+                        
+                        call RogueFace("happy")                            
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 4)          
+                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 40, 2)            
+                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 4)
+                        $ R_Water = 2
+
+
+                    if K_Loc == bg_current:
+                        ch_k "yay"
+
+                        if K_Outfit != "purple bikini" and K_Outfit != "swimsuit3":
+                            #ch_k "I'l be right there, let me just put on my bikini"
+                            call Pool_Clothes("goswim", "Kitty")
+                            ch_k "Let's go"
+
+                        call KittyFace("happy")                            
+                        $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 4)          
+                        $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 40, 2)            
+                        $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 4)
+                        $ K_Water = 2
+                        #$ K_RecentActions.append("showered")                      
+                    #"You take a swim"
+
+                        #$ K_DailyActions.append("showered")
+                        #call Set_The_Scene
+                    "That felt great"
+                    call Wait   
+                    call EventCalls
+                    call Pool_Clothes
+                    call Girls_Location 
+                    call Pool_Clothes
+
+                    #if R_Loc == bg_current:
+
+                else:
+                    "You take a swim by yourself"
+                    call Wait   
+                    call EventCalls
+                    call Pool_Clothes
+                    call Girls_Location 
+                    call Pool_Clothes
+
+        "Skinny dipping?" if Current_Time == "Night":# and (R_Loc == bg_current or K_Loc == bg_current or E_Loc == bg_current):
+                call Skinny_Dipping
+
+
+            
+
+        "Leave [[Go to Campus Square]":    
+                if TravelMode:        
+                    call Pool_Clothes("change")
+                    jump Campus_Entry
+                else:
+                    call Worldmap         
+        "Go to the showers" if TravelMode:             
+                call Pool_Clothes("change")
+                jump Shower_Room_Entry         
+    jump Pool_Room
+
+# Pool Room Skinny Dipping Start <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
+
+label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, Showered = 0, Line = 0):
+
+    if R_Loc == "bg pool":
+            $ Occupants += 1
+            $ RogueCount = 1
+    if K_Loc == "bg pool":        
+            $ Occupants += 1
+            $ KittyCount = 1
+        
+    if Occupants:
+            ch_p "Hey, it's just us here, i'm going for a skinny dip, wanna join?" 
+            ch_p "It's gonna be fun" 
+            
+            #if RogueCount and "showered" in R_RecentActions:
+            #    if Occupants >1:
+            #        ch_r "We actually just finished up, so we'll head out."
+            #    else:
+            #        ch_r "I actually just finished up, so I'll head out."
+            #    $ Showered = 1
+            #elif KittyCount and "showered" in K_RecentActions:
+            #        ch_k "I actually just showered, so I'm head out."
+            #        $ Showered = 1
+            #else:   #girl not showered
+            if RogueCount:
+                if ApprovalCheck("Rogue", 1200) or (ApprovalCheck("Rogue", 600) and R_SeenChest and R_SeenPussy):
+                    ch_r "I suppose I could. . ."
+                    $ RogueCount = 2
+                    $ Agreed += 1
+                else:
+                    ch_r "Nah, I should probably get going."
+            if KittyCount:
+                if ApprovalCheck("Kitty", 1400) or (ApprovalCheck("Kitty", 700) and K_SeenChest and K_SeenPussy):
+                    if RogueCount > 1:                          #If Rogue said yes
+                        ch_k "I guess I could join too. . ."
+                    elif Occupants > 1:                     #If Rogue said no
+                        ch_k "Well, I could join you, [K_Petname]."
+                    else:                                   #If Rogue isn't there
+                        ch_k "Yeah, I could stick around, [K_Petname]."
+                    $ KittyCount = 2
+                    $ Agreed += 1
+                else:
+                    if RogueCount > 1:                          #If Rogue said yes
+                        ch_k "I've really got to go though. . ."
+                    elif Occupants > 1:                     #If Rogue said no
+                        ch_k "Yeah, I should head out too."
+                    else:                                   #If Rogue isn't there
+                        ch_k "No, I've got to get going."
+                            
+            if Occupants > Agreed:                    #if either said no     
+                # If they're at NameCount = 2 here, they have already agreed.
+                
+                menu:
+                    extend ""
+                    "Ok, see you later then.":
+                        if RogueCount == 1:
+                            ch_r "Yeah, later."
+                        if KittyCount == 1:
+                            ch_k "Bye!"
+                        
+                    "Sure you you don't wanna join? The night is perfect for a swim.":
+                        $ Line = "night"
+                                                        
+                    #fix Add "Take off your own clothes" option.
+                    
+                    "Sure you you don't wanna join? It's very dark, I won't even see a thing.":
+                        $ Line = "dark"
+                        
+                    #"But I didn't get to watch." if Showered:
+                    #    $ Line = "watch you"
+                        
+                if Line:
+                    if RogueCount == 1: 
+                        if ApprovalCheck("Rogue", 1200) or (ApprovalCheck("Rogue", 600) and R_SeenChest and R_SeenPussy):
+                            $ RogueCount = 2
+                        elif Line == "night" and ApprovalCheck("Rogue", 1000, "LI"):                                
+                            $ RogueCount = 2
+                        elif Line == "dark" and ApprovalCheck("Rogue", 600, "O"):                                
+                            $ RogueCount = 2
+                        #else, she doesn't agree
+                            
+                    if KittyCount == 1:
+                        if ApprovalCheck("Kitty", 1400) or (ApprovalCheck("Kitty", 700) and K_SeenChest and K_SeenPussy):
+                            ch_k "yes"
+                            $ KittyCount = 2
+                        elif Line == "night" and ApprovalCheck("Kitty", 1200, "LI"):                                
+                            $ KittyCount = 2
+                        elif Line == "dark" and ApprovalCheck("Kitty", 600, "O"):                                
+                            $ KittyCount = 2
+                        #else, she doesn't agree
+                    
+                    
+                    if Line == "night":      #"Sure you got every spot?"
+                            if RogueCount == 2:                                 #Rogue agreed, maybe both
+                                ch_r "Fine, I could use a good swim."
+                                if KittyCount == 2:
+                                    ch_k "Um, me too!"
+                            elif KittyCount == 2:                               #Kitty only
+                                ch_k "Oh, I guess I could enjoy a good swim before sleep."
+                            if RogueCount == 1:                                  #Kitty agreed, Rogue refused
+                                ch_r "Perfect for a swim, not a naked one."
+                            if KittyCount == 1:                                  #Rogue agreed, Kitty refused
+                                ch_k "Ha, I'm not gonna swim naked with you, [K_Petname], see you later."          
+                        
+                    elif Line == "dark":  #"Maybe you could stay and watch?"
+                            if RogueCount == 2:                                 #Rogue agreed, maybe both
+                                ch_r "Yeah, I guess it's dark enough."
+                                if KittyCount == 2:
+                                    ch_k "Um, yeah, I guess. . ."
+                            elif KittyCount == 2:                               #Kitty only
+                                ch_k "I. . . guess you're right. . ."
+                            if RogueCount == 1:                                  #Kitty agreed, Rogue refused
+                                ch_r "Yeah, not dark enough, [R_Petname]."
+                            if KittyCount == 1:                                  #Rogue agreed, Kitty refused
+                                ch_k "[K_Like]I can see everything perfect, [K_Petname], so no."        
+
+                                
+                    #fix, add jeolousy angle here, if roguelikekitty low, get rid of her. . .
+                        
+                        
+            if RogueCount == 1:     
+                    #If Rogue leaves
+                    $ Occupants -= 1
+                    $ RogueCount = 0
+                    call Remove_Girl("Rogue")
+            elif RogueCount == 2:                                    
+                    #If Rogue Stays
+                    if not R_Water:
+                        "Rogue strips naked and goes in the water"
+                        call RogueOutfit("nude")
+                    else:
+                        call RogueOutfit("nude")
+                    $ R_Water = 1
+                    $ R_Spunk = []                    
+                    #$ R_RecentActions.append("showered")                      
+                    #$ R_DailyActions.append("showered")   
+                    
+            if KittyCount == 1:     
+                    #If Kitty leaves
+                    $ Occupants -= 1
+                    $ KittyCount = 0
+                    call Remove_Girl("Kitty")
+            elif KittyCount == 2: 
+                    #If Kitty Stays
+                    if not K_Water:
+                        "Kitty strips naked and jumps on the water"
+                        call KittyOutfit("nude")
+                    else:
+                        call KittyOutfit("nude")
+                    $ K_Water = 1
+                    $ K_Spunk = []
+                    #$ K_RecentActions.append("showered")                      
+                    #$ K_DailyActions.append("showered")  
+                    
+            call Seen_First_Peen (0,1) #You get naked
+                
+            
+    $ Line = "You swim naked"
+    $ Round -= 30
+    $ Trigger = 0
+    
+    if RogueCount and KittyCount:
+                    $ Line = "You swim around with Rogue and Kitty."
+                    call Shift_Focus("Rogue", "Kitty") 
+                    $ R_Water = 1
+                    $ K_Water = 1
+    elif RogueCount:
+                    $ Line = "You swim around with Rogue."
+                    call Shift_Focus("Rogue")
+                    $ R_Water = 1
+    elif KittyCount:
+                    $ Line = "You swim around with Kitty."  
+                    call Shift_Focus("Kitty")   
+                    $ K_Water = 1
+    else:
+                $ Line = Line + renpy.random.choice([". It was fairly uneventful.", 
+                        ". It's cold.", 
+                        ". That was refreshing."])   
+                
+    #insert random events here
+    "[Line]"    
+    #$ P_DailyActions.append("showered")
+    
+    if RogueCount :
+        ch_r "That was real nice, [R_Petname]."            
+        if KittyCount:
+            ch_k "Yeah, I had fun."
+    elif KittyCount:
+            ch_k "that was. . . nice." 
+            
+    #call RogueOutfit
+    #call KittyOutfit
+    if Round < 1:
+        if Current_Time != "Night":
+                call Wait
+                call Girls_Location
+                call Set_The_Scene
+        else:
+                $ renpy.pop_call()
+                "After the swim, it's getting late, you head back to your room."
+                jump Player_Room
+    return
+# end Skinny Dipping / 
+
+# end Pool Room Interface //////////////////////////////////////////////////////////////////////
+
+# Football Field Interface //////////////////////////////////////////////////////////////////////
+  
+label Field_Entry:
+    $ bg_current = "bg field"               
+    call Taboo_Level
+    $ P_RecentActions.append("traveling")
+    call EventCalls
+    call Set_The_Scene
+    
+label Field:
+    $ bg_current = "bg field"
+    if "traveling" in P_RecentActions:
+        $ P_RecentActions.remove("traveling")
+    call Set_The_Scene
+    call Taboo_Level
+    call QuickEvents    
+    call Checkout(1)    
+    call GirlsAngry      
+
+# Football Field Menu Start <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    menu:
+        "You are at the football field. What would you like to do?"
+        
+        "Chat":
+            call Chat
+            
+        "Watch the match." if Weekday > 3 and Current_Time == "Evening":
+            "You watch the match that is going on. It was an entertaining match."
+            call Wait
+            call EventCalls
+            call Girls_Location
+            
+        "Wait." if Current_Time != "Night":
+            "You wait around a bit."
+            call Wait   
+            call EventCalls            
+            call Girls_Location
+            
+        "Leave [[Go to Campus Square]":
+                if TravelMode:
+                    jump Campus_Entry
+                else:
+                    call Worldmap               
+    jump Field
+
+# end Football Field Interface //////////////////////////////////////////////////////////////////////
 
 # Danger Room Interface //////////////////////////////////////////////////////////////////////
 
@@ -849,6 +1490,8 @@ label Danger_Room_Entry:
     call EventCalls
     call Gym_Clothes("pre")#Automatically puts them in gym clothes if they've been here
     call Set_The_Scene
+    call Kitty_Sent_Selfie
+    call Rogue_Sent_Selfie
     "This is the Danger Room. What would you like to do?" 
     
 label Danger_Room:
@@ -937,6 +1580,7 @@ label Training:
     call Wait
     call Girls_Location 
     call Set_The_Scene
+    call Gym_Clothes 
     $ Line = "The training session has ended, what would you like to do next?"
     
     jump Danger_Room
@@ -1156,6 +1800,9 @@ label Shower_Room:
                 call Chat
             
         "Shower" if Round > 30:
+                if E_Loc == bg_current:
+                    ch_e "I should probably be going. . ."  
+                    call Remove_Girl("Emma")
                 call Showering
         "Shower (locked)" if Round <= 30:            
                 pass
@@ -1166,7 +1813,9 @@ label Shower_Room:
                 "Not gonna lie, kinda weird."
                 call Wait   
                 call EventCalls            
-                call Girls_Location 
+                call Girls_Location
+                call Kitty_Sent_Selfie 
+                call Rogue_Sent_Selfie 
          
         "Go to the Danger Room" if TravelMode: 
                 jump Danger_Room_Entry 
@@ -1185,16 +1834,13 @@ label Shower_Room:
 
 # Shower Room Menu End <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaCount = 0, Showered = 0, Line = 0):
+label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, Showered = 0, Line = 0):
     if R_Loc == "bg showerroom":
             $ Occupants += 1
             $ RogueCount = 1
     if K_Loc == "bg showerroom":        
             $ Occupants += 1
             $ KittyCount = 1
-    if E_Loc == "bg showerroom":        
-            $ Occupants += 1
-            $ EmmaCount = 1
         
     if Occupants:
             ch_p "I'm taking a shower, care to join me?" 
@@ -1205,11 +1851,8 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaC
                     ch_r "I actually just finished up, so I'll head out."
                 $ Showered = 1
             elif KittyCount and "showered" in K_RecentActions:
-                ch_k "I actually just showered, so I'll head out."
-                $ Showered = 1
-            elif EmmaCount and "showered" in E_RecentActions:
-                ch_e "I just finished, [E_Petname]. Maybe some other time."
-                $ Showered = 1
+                    ch_k "I actually just showered, so I'm head out."
+                    $ Showered = 1
             else:
                 if RogueCount:
                     if ApprovalCheck("Rogue", 1200) or (ApprovalCheck("Rogue", 600) and R_SeenChest and R_SeenPussy):
@@ -1231,31 +1874,10 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaC
                     else:
                         if RogueCount > 1:                          #If Rogue said yes
                             ch_k "I've really got to go though. . ."
-                        elif Occupants > 1:                     #If Rogue/Emma said no
+                        elif Occupants > 1:                     #If Rogue said no
                             ch_k "Yeah, I should head out too."
-                        else:                                   #If Rogue/Emma isn't there
+                        else:                                   #If Rogue isn't there
                             ch_k "I've got to get going."
-                if EmmaCount:
-                    if ApprovalCheck("Emma", 1200) or (ApprovalCheck("Emma", 600) and E_SeenChest and E_SeenPussy):
-                        if RogueCount > 1:                          #If Rogue said yes
-                            ch_e "I like where this is going."
-                        if KittyCount > 1:                          #If Kitty said yes
-                            ch_e "I like where this is going."
-                        elif Occupants > 1:                     #If Rogue/Kitty said no
-                            ch_e "Don't worry, [E_Petname], we can still have some fun."
-                        else:                                   #If Rogue/Kitty isn't there
-                            ch_e "Sure, but let's hurry before someone sees us."
-                        $ EmmaCount = 2
-                        $ Agreed += 1
-                    else:
-                        if RogueCount > 1:                          #If Rogue said yes
-                            ch_e "I think it's best if I leave."
-                        if KittyCount > 1:                          #If Kitty said yes
-                            ch_e "I think it's best if I leave."
-                        elif Occupants > 1:                     #If Rogue/Kitty said no
-                            ch_e "I better get going too. See you in class, [E_Petname]."
-                        else:                                   #If Rogue/Kitty isn't there
-                            ch_e "The shower is all yours, [E_Petname]."
                             
             if Occupants > Agreed:                    #if either said no     
                 # If they're at NameCount = 2 here, they have already agreed.
@@ -1267,8 +1889,6 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaC
                             ch_r "Yeah, later."
                         if KittyCount == 1:
                             ch_k "Bye!"
-                        if EmmaCount == 1:
-                            ch_k "Bye, [E_Petname]."
                         
                     "Sure you got every spot?" if Showered:
                         $ Line = "spot"
@@ -1300,16 +1920,6 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaC
                         elif Line == "watch you" and ApprovalCheck("Kitty", 600, "O"):                                
                             $ KittyCount = 2
                         #else, she doesn't agree
-                        
-                    if EmmaCount == 1:
-                        if ApprovalCheck("Emma", 1400) or (ApprovalCheck("Emma", 700) and E_SeenChest and E_SeenPussy):
-                            ch_e "Yup!"
-                            $ EmmaCount = 2
-                        elif Line == "spot" and ApprovalCheck("Emma", 1200, "LI"):                                
-                            $ EmmaCount = 2
-                        elif Line == "watch you" and ApprovalCheck("Emma", 600, "O"):                                
-                            $ EmmaCount = 2
-                        #else, she doesn't agree
                     
                     
                     if Line == "spot":      #"Sure you got every spot?"
@@ -1317,55 +1927,37 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaC
                                 ch_r "Fine, I could use another scrub."
                                 if KittyCount == 2:
                                     ch_k "Um, me too!"
-                                if EmmaCount == 2:
-                                    ch_e "I think I'll stay too."
                             elif KittyCount == 2:                               #Kitty only
                                 ch_k "Oh, I guess I could take another pass at it."
-                            elif EmmaCount == 2:                                #Emma only
-                                ch_e "Oh alright then!"
                             if RogueCount == 1:                                  #Kitty agreed, Rogue refused
                                 ch_r "No, [R_Petname], I think I'm covered."
                             if KittyCount == 1:                                  #Rogue agreed, Kitty refused
-                                ch_k "Ha, I'm squeeky clean, [K_Petname], see you later."
-                            if EmmaCount == 1:                                   #Kitty/Rogue agreed, Emma refused
-                                ch_e "Not this time, [R_Petname]."
+                                ch_k "Ha, I'm squeeky clean, [K_Petname], see you later."          
                         
                     elif Line == "watch me":  #"Maybe you could stay and watch?"
                             if RogueCount == 2:                                 #Rogue agreed, maybe both
                                 ch_r "Yeah, I guess I do enjoy the view."
                                 if KittyCount == 2:
                                     ch_k "Um, me too!"
-                                if EmmaCount == 2:
-                                    ch_e "This could be fun."
                             elif KittyCount == 2:                               #Kitty only
                                 ch_k "I. . . guess I wouldn't mind that. . ."
-                            elif EmmaCount == 2:                                #Emma only
-                                ch_e "Let's hope no one sees us."
                             if RogueCount == 1:                                  #Kitty agreed, Rogue refused
                                 ch_r "Yeah, I'm gonna pass on that, [R_Petname]."
                             if KittyCount == 1:                                  #Rogue agreed, Kitty refused
-                                ch_k "[K_Like]I don't need to see that."
-                            if EmmaCount == 1:                                   #Rogue/Kitty agreed, Emma refused
-                                ch_e "I should be going."
+                                ch_k "[K_Like]I don't need to see that."        
                         
                     elif Line == "watch you": #"But I didn't get to watch."
                             if RogueCount == 2:                                 #Rogue agreed, maybe both
                                 ch_r "Well, I don't mind putting on a show."
                                 if KittyCount == 2:
                                     ch_k "I- yeah, me neither!"
-                                if EmmaCount == 2:
-                                    ch_e "Here, let me help you."
                             elif KittyCount == 2:                               #Kitty only
                                 ch_k "You want to watch me. . ."
                                 ch_k "Ok."
-                            elif EmmaCount == 2:                                #Emma only
-                                ch_e "Sure, why not."
                             if RogueCount == 1:                                  #Kitty agreed, Rogue refused
                                 ch_r "Keep dreaming, [R_Petname]."
                             if KittyCount == 1:                                  #Rogue agreed, Kitty refused
                                 ch_k "[K_Like]no way!"
-                            if EmmaCount == 1:                                   #Rogue/Kitty agreed, Emma refused
-                                ch_e "You'd better leave, [E_Petname]."
                                 
                     #fix, add jeolousy angle here, if roguelikekitty low, get rid of her. . .
                         
@@ -1394,20 +1986,7 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaC
                     $ K_Water = 1
                     $ K_Spunk = []
                     $ K_RecentActions.append("showered")                      
-                    $ K_DailyActions.append("showered")
-
-            if EmmaCount == 1:     
-                    #If Emma leaves
-                    $ Occupants -= 1
-                    $ EmmaCount = 0
-                    call Remove_Girl("Emma")
-            elif EmmaCount == 2: 
-                    #If Emma Stays
-                    call EmmaOutfit("nude")
-                    $ E_Water = 1
-                    $ E_Spunk = []
-                    $ E_RecentActions.append("showered")                      
-                    $ E_DailyActions.append("showered")
+                    $ K_DailyActions.append("showered")  
                     
             call Seen_First_Peen (0,1) #You get naked
                 
@@ -1418,22 +1997,13 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaC
     
     if RogueCount and KittyCount:
                     $ Line = "You take a quick shower with Rogue and Kitty."
-                    call Shift_Focus("Rogue", "Kitty")
-    if EmmaCount and RogueCount:
-                    $ Line = "You take a quick shower with Emma and Rogue."
-                    call Shift_Focus("Emma", "Rogue")
-    if EmmaCount and KittyCount:
-                    $ Line = "You take a quick shower with Emma and Kitty."
-                    call Shift_Focus("Emma", "Kitty")
+                    call Shift_Focus("Rogue", "Kitty") 
     elif RogueCount:
                     $ Line = "You take a quick shower with Rogue."
                     call Shift_Focus("Rogue") 
     elif KittyCount:
                     $ Line = "You take a quick shower with Kitty."  
-                    call Shift_Focus("Kitty")
-    elif EmmaCount:
-                    $ Line = "You take a quick shower with Emma."  
-                    call Shift_Focus("Emma")
+                    call Shift_Focus("Kitty")       
     else:
                 $ Line = Line + renpy.random.choice([". It was fairly uneventful.", 
                         ". A few people came and went as you did so.", 
@@ -1447,16 +2017,11 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaC
         ch_r "That was real nice, [R_Petname]."            
         if KittyCount:
             ch_k "Yeah, I had fun."
-        if EmmaCount:
-            ch_e "We should do this again."
     elif KittyCount:
-            ch_k "that was. . . nice."
-    elif EmmaCount:
-            ch_e "I enjoyed that, [E_Petname]"
+            ch_k "that was. . . nice." 
             
     call RogueOutfit
     call KittyOutfit
-    call EmmaOutfit
     if Round < 1:
         if Current_Time != "Night":
                 call Wait
@@ -1793,175 +2358,7 @@ label Kitty_Caught_Shower:
                 call KittyOutfit               
             
     jump Shower_Room
-# End Kitty Caught Shower / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-label Emma_Caught_Shower:  
-    call Shift_Focus("Emma")     
-    $ E_RecentActions.append("showered")                      
-    $ E_DailyActions.append("showered")     
-    call Remove_Girl("All")
-    $ E_Loc = "bg showerroom"
-    call EmmaOutfit("nude")
-    $ E_Blush = 2
-    $ E_Water = 1
-    $ E_Spunk = []
-    menu:
-            "What do you do?"
-            "Enter":     
-                $ Line = "enter"                
-            "Knock":
-                $ Line = "knock"
-            "Come back later":
-                $ E_Loc = "bg emma"
-                call EmmaOutfit
-                $ E_Water = 0
-                jump Campus_Map
-            
-    if Line == "knock":                                                                                         
-            #You knock
-            $ Line = 0
-            "You knock on the door. You hear some shuffling inside"        
-            $ E_Over = "towel"       
-            if (D20 >=18 and K_Lust >= 70) or (D20 >=15 and E_Lust >= 80):                                          
-                    #Emma caught fapping
-                    "You hear a startled gasp, followed by some shuffling around as a shampoo bottle hits the floor."
-                    "After several seconds and some more shuffling, Emma comes to the door."
-                    $ E_Brows = "confused"
-                    $ E_Eyes = "surprised"
-                    $ E_Mouth = "smile"
-                    call Set_The_Scene(Dress=0)
-                    ch_e "Oh, it's just you, [E_Petname]. I was just finishing up."
-                    $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 90, 5)
-                    $ Tempmod += 10
-            else:                                                                                                   
-                    #Emma caught showering
-                    "You hear the rustling of a towel and some knocking around, but after a few seconds Emma comes to the door."
-                    call Set_The_Scene(Dress=0)
-                    ch_k "Oh, it's just you, [E_Petname]. I was just finishing up."
-            #end knocked
-            
-    else:                                                                                                       
-        #You don't knock   
-        if not E_SeenPussy or not E_SeenChest:
-            $ D20 -=5 if D20 > 5 else D20
-        $ Line = 0    
-        if (D20 >=18 and E_Lust >= 70) or (D20 >=15 and E_Lust >= 80):                                          
-                #Caught masturbating in the shower. 
-                call EmmaFace("sexy")
-                $ E_Eyes = "closed"
-                $ Emma_Arms = 2
-                call Set_The_Scene(Dress=0)
-                $ Count = 0        
-                "You see Emma under the shower, feeling herself up."
-                $ Trigger = "masturbation"
-                $ E_DailyActions.append("unseen") if "unseen" not in E_DailyActions else E_DailyActions   
-                $ E_RecentActions.append("unseen") if "unseen" not in E_RecentActions else E_RecentActions 
-                call Emma_SexAct("masturbate")   
-                jump Shower_Room
-        
-        #change to elif when I fix the above option
-        if D20 >= 15:                                                                                         
-                #She's just showering and naked
-                call Set_The_Scene(Dress=0)                
-                call EmmaFace("surprised", 1)
-                "As you enter the showers, you see Emma washing up."        
-                if not ApprovalCheck("Emma", 1200) or not E_SeenPussy or not E_SeenChest:
-                        $ E_Brows = "angry"     
-                        $ E_Over = "towel"
-                        "She grabs a towel and covers up."             
-                        call EmmaFace("angry", 1)
-                        $ E_Love = Statupdate("Emma", "Love", E_Love, 80, -5) 
-                else:
-                        if "exhibitionist" in E_Traits:
-                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 90, (2*D20)) 
-                        else:
-                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 80, D20)
-                        $ E_Brows = "confused"        
-                
-                call Emma_First_Topless(1)
-                call Emma_First_Bottomless(1) 
-                $ K_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 3)
-                menu:
-                    ch_e "[E_Petname]! Maybe I should have locked the door.."
-                    "Sorry, I should have knocked.":  
-                        $ E_Love = Statupdate("Emma", "Love", E_Love, 50, 2)
-                        $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 4)
-                    "Definitely.":
-                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
-                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 2)
-                        $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 1)
-                #end caught showering naked
-            
-        else:                                                                                   
-                #She's done showering and in a towel
-                $ E_Over = "towel"
-                call Set_The_Scene(Dress=0)
-                "As you enter the showers, you see Emma putting on a towel."        
-                if not ApprovalCheck("Emma", 1100) and (not E_SeenPussy or not E_SeenChest):          
-                        call EmmaFace("angry")
-                        $E_Brows = "confused"
-                        $ E_Love = Statupdate("Emma", "Love", E_Love, 80, -5)
-                else:
-                        call EmmaFace("sexy")
-                        $E_Brows = "confused"        
-                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 3)
-                menu:
-                    ch_e "[E_Petname], I had a feeling we would end up meeting here."
-                    "Sorry, I should have knocked.":   
-                            call EmmaFace("smile",1)
-                            $ E_Love = Statupdate("Emma", "Love", E_Love, 50, 2)
-                            $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 2)
-                            if ApprovalCheck("Emma", 850) and E_SeenPussy and E_SeenChest: 
-                                ch_e "Why don't you come in?"  
-                            else:
-                                ch_e "Make sure you do so next time."
-                    "Let's have some fun.":                
-                            $ E_Love = Statupdate("Emma", "Love", E_Love, 50, 2)
-                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
-                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 2)
-                            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 1)
-                            
-                            call EmmaFace("sexy")       
-                            if not ApprovalCheck("Emma", 850) and (E_SeenPussy < 3 or E_SeenChest < 3): 
-                                    ch_e "Another time, [E_Petname], someone might see us." 
-                            elif not ApprovalCheck("Kitty", 1400): 
-                                    ch_e "Another time, [E_Petname], someone might see us." 
-                            else:
-                                ch_e "Is this was you were hoping to see?"      
-                                if E_Over == "towel": 
-                                    $ E_Over = 0
-                                    pause 0.5                      
-                                    $ E_Over = "towel"  
-                                    "She flashes you real quick."                        
-                                    $ E_Over = "towel"   
-                                call Emma_First_Topless(1)
-                                call Emma_First_Bottomless(1) 
-                #end done showering naked
-    
-    menu:
-        ch_e "I'm heading up. See you later, [E_Petname]" 
-        "Sure, see you later then.":
-                hide Emma_Sprite with easeoutright
-                call Remove_Girl("Emma")
-                $ E_Water = 0
-                call EmmaOutfit
-                "Emma heads out."
-        "Actually, could you stick around a minute?":
-            if ApprovalCheck("Emma", 900):
-                call EmmaFace("sexy",1)
-                $ E_Loc = "bg showerroom"            
-                ch_e "I thought you'd never ask."
-            else: 
-                call EmmaFace("perplexed",1)
-                ch_e "You shouldn't be seeing me like this, [E_Petname]!"
-                ch_e "I'm just going to leave. Please don't mention this to anyone."
-                hide Emma_Sprite with easeoutright
-                call Remove_Girl("Emma")
-                $ E_Water = 0
-                call EmmaOutfit               
-            
-    jump Shower_Room
-# End Emma Caught Shower / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /        
+# End Kitty Caught Shower / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /    
 
 # end Shower Interface //////////////////////////////////////////////////////////////////////
 
@@ -2185,6 +2582,7 @@ label Kitty_Room:
     call Set_The_Scene  
     
 # Kitty's Room Menu Start <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    call Rogue_Sent_Selfie
     if K_Loc == bg_current:
         $ Line = "You are in Kitty's room. What would you like to do?"
     else:
@@ -2577,39 +2975,39 @@ label Study_Room:
     
 label Study_Room_Explore:
     $ Line = 0
-    $ D20 = renpy.random.randint(1, 20)    
+    #$ D20 = renpy.random.randint(1, 20)    
     menu:
         "Where would you like to look?"
         "Bookshelf":
-            if D20 >= 5 + Cnt:
+            #if D20 >= 15 + Cnt:
                     $ Line = "book"
-            else:
-                    "As you search the bookshelf, you accidentally knock one of the books off."
-                    "It hammers against the floor, and a little light blinks on the desk."
+            #else:
+            #        "As you search the bookshelf, you accidentally knock one of the books off."
+            #        "It hammers against the floor, and a little light blinks on the desk."
         "Left Desk Drawer":
             if K_Loc != bg_current:
                     "You can't seem to get it open, it would be nice to have someone open the catch from the inside."
-            elif D20 >= 10 + Cnt:
-                    $ Line = "left"
+            #elif D20 >= 10 + Cnt:
             else:
-                    "As you open the drawer, it makes a loud a squeak."
-                    "As you look around, you notice a little light starts blinking on the desk."
+                    $ Line = "left"
+            #        "As you open the drawer, it makes a loud a squeak."
+            #        "As you look around, you notice a little light starts blinking on the desk."
         "Middle Desk Drawer":
             if K_Loc != bg_current:
                     "You can't seem to get it open, it would be nice to have someone open the catch from the inside."
-            elif D20 >= 15 + Cnt:
-                    $ Line = "mid"
+            #elif D20 >= 15 + Cnt:
             else:
-                    "As you open the drawer, it makes a loud a squeak."
-                    "As you look around, you notice a little light starts blinking on the desk."
+                    $ Line = "mid"
+            #        "As you open the drawer, it makes a loud a squeak."
+            #        "As you look around, you notice a little light starts blinking on the desk."
         "Right Desk Drawer":
             if K_Loc != bg_current:
                     "You can't seem to get it open, it would be nice to have someone open the catch from the inside."
-            elif D20 >= 5 + Cnt:
-                    $ Line = "right"
+            #elif D20 >= 15 + Cnt:
             else:
-                    "As you open the drawer, it makes a loud a squeak."
-                    "As you look around, you notice a little light starts blinking on the desk."
+                    $ Line = "right"
+            #        "As you open the drawer, it makes a loud a squeak."
+            #        "As you look around, you notice a little light starts blinking on the desk."
         "Never mind [[back]": 
                     jump Study_Room
     
@@ -2619,7 +3017,7 @@ label Study_Room_Explore:
                 "You slip out and head back to your room."
                 jump Player_Room_Entry 
     elif Line == "book":
-            if D20 >= 15 and "Well Studied" not in Achievements:            
+            if D20 >= 5 and "Well Studied" not in Achievements:            
                 "As you check the books on the shelf, you notice that one of them is actually a disguised lockbox."
                 if K_Loc == bg_current:
                     menu:
@@ -2647,21 +3045,19 @@ label Study_Room_Explore:
                 else:#Kitty's not there
                             "You can't think of any way to get it open, too bad you aren't a ghost or something."
                             "You place the box back on the shelf."
-            elif D20 >= 15:
+            elif D20 >= 5:
                 "There doesn't seem to be anything more of interest in here."
             else:
                 "You search through the books for a few minutes, but don't find anything."
                 "It would probably take a more thorough search."            
     elif Line == "left":
-            if D20 >= 15:
-                "yeah?"
-            if D20 >= 15 and "Xavier's photo" not in P_Inventory:            
+            if D20 >= 5 and "Xavier's photo" not in P_Inventory:            
                 "Buried under a pile of documents, you find a printed out photo."
                 "It appears to be a selfie of Mystique making out with Xavier."
                 "She's reaching down to adjust his . . . oh, {i}that's{/i} interesting."
                 "[[Xavier's photo acquired.]"
                 $ P_Inventory.append("Xavier's photo")
-            elif D20 >= 15:
+            elif D20 >= 5:
                 "There doesn't seem to be anything more of interest in here."
             else:
                 "You search through some documents, but don't find anything."
@@ -2683,3 +3079,110 @@ label Study_Room_Explore:
     $ Cnt += 3
     jump Study_Room_Explore
 # end Study's Room Interface //////////////////////////////////////////////////////////////////////
+
+label Kitty_Sent_Selfie(test=0):
+    if K_Loc != bg_current and K_Nudes == 1 and "Kitty" in Digits:
+        if test == 0:
+            $ test = renpy.random.randint(1, 3)
+            #$ test = 1
+
+        $ K_OverTemp = K_Over
+        $ K_ChestTemp = K_Chest
+        if test == 1:
+            $test = 0
+        
+            if ApprovalCheck("Kitty", 1250, TabM = 3) or (K_SeenChest and not Taboo):
+                $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 60, 5)                
+                $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
+                $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 10)   
+                $ P_Focus = Statupdate("Kitty", "Focus", P_Focus, 80, 15)    
+                #$ Line = K_Over
+                $ K_Over = 0
+                $ K_Chest = 0                         
+                if not K_SeenChest:
+                    call KittyFace("bemused", 1)
+                    $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 3)                              
+                    $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 4)
+                    $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3)
+                    $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 3)  
+                    #"She hesitantly glances your way, and then with tug her [Line] passes through her, tossing it to the ground."   
+                    call Kitty_First_Topless(1)        
+                #else: 
+                #    "She pulls her [Line] over her head, tossing it to the ground." 
+                call Set_The_Scene
+                show Kitty_Selfie at center zorder 200
+                "Kitty sent you a picture"
+                ch_k "It's hot huh, [K_Petname]?" 
+    
+            elif (ApprovalCheck("Kitty", 1000, TabM = 3) or (K_SeenChest and not Taboo)) and K_Chest != 0:
+                $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 60, 5)                
+                $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
+                $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 1)
+                $ P_Focus = Statupdate("Kitty", "Focus", P_Focus, 80, 15)      
+                #$ Line = K_Chest
+                $ K_Over = 0                        
+                if not K_SeenChest:
+                    call KittyFace("bemused", 1)
+                    $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 3)                              
+                    $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 4)
+                    $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3)
+                    $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 3)   
+                    #"She hesitantly glances your way, and then with a shrug pulls her [Line] through herself, tossing it to the ground."
+                    #call Kitty_First_Topless(1)
+                call Set_The_Scene
+                show Kitty_Selfie at center zorder 200
+                "Kitty sent you a picture" 
+        
+            elif ApprovalCheck("Kitty", 600):
+                $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 60, 5)                
+                $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2)
+                $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 1)
+                $ P_Focus = Statupdate("Kitty", "Focus", P_Focus, 80, 15)
+                call Set_The_Scene
+                show Kitty_Selfie at center zorder 200
+                "Kitty sent you a picture" 
+                ch_k "What do you think of this look, [K_Petname]?" 
+        hide Kitty_Selfie 
+        $ K_Over = K_OverTemp
+        $ K_Chest = K_ChestTemp
+        return
+
+label Rogue_Sent_Selfie(test=0):
+    if R_Loc != bg_current and R_Nudes == 1 and "Rogue" in Digits:
+        if R_Resistance and R_Addict >= 60 and not R_Event[3]:
+            return
+        if test == 0:
+            $ test = renpy.random.randint(1, 3)
+            #$ test = 1
+
+        #$ K_OverTemp = K_Over
+        #$ K_ChestTemp = K_Chest
+        if test == 1:
+            $test = 0
+        
+            if ApprovalCheck("Rogue", 1250, TabM = 3) or (K_SeenChest and not Taboo):
+                $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 60, 5)                
+                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 2)
+                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 10)   
+                $ P_Focus = Statupdate("Rogue", "Focus", P_Focus, 80, 15)    
+                $ R_Over = 0
+                $ R_Chest = 0                         
+                if not R_SeenChest:
+                    call RogueFace("bemused", 1)
+                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 3)                              
+                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, 4)
+                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3)
+                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 3)  
+                    #"She hesitantly glances your way, and then with tug her [Line] passes through her, tossing it to the ground."   
+                    call Rogue_First_Topless(1)        
+                #else: 
+                #    "She pulls her [Line] over her head, tossing it to the ground." 
+                call Set_The_Scene
+                show Rogue_Selfie at SpriteLoc(-2,-46) zorder 200
+                "Rogue sent you a picture"
+                ch_r "It's hot huh, [R_Petname]?" 
+    
+        hide Rogue_Selfie 
+
+        return
+           
