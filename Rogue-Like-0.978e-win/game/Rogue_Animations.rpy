@@ -2382,7 +2382,10 @@ image Rogue_TJ_Under:
         pos (150, -560)
         zoom .95
     contains:
-        "images/RogueBJFace/Rogue_tj_base.png" 
+        ConditionSwitch(
+            "R_Over == 'bondage'", "images/RogueBJFace/Rogue_tj_base_Binder.png",
+            "True", "images/RogueBJFace/Rogue_tj_base.png",
+            ),
     contains:
         ConditionSwitch( 
             "'tits' in R_Spunk", "images/RogueBJFace/Rogue_tj_spunkU.png",
@@ -2401,8 +2404,11 @@ image Rogue_TJ_Under:
 image Rogue_TJ_Over:     
     contains:
         ConditionSwitch( 
+            "R_Pierce == 'barbell' and R_Over == 'bondage'", "images/RogueBJFace/Rogue_tj_tits_b_Binder.png", 
             "R_Pierce == 'barbell'", "images/RogueBJFace/Rogue_tj_tits_b.png", 
+            "R_Pierce == 'ring' and R_Over == 'bondage'", "images/RogueBJFace/Rogue_tj_tits_r_Binder.png",
             "R_Pierce == 'ring'", "images/RogueBJFace/Rogue_tj_tits_r.png",
+            "R_Pierce != 'barbell' and R_Over == 'bondage'", "images/RogueBJFace/Rogue_tj_tits_Binder.png",
             "R_Pierce != 'barbell'", "images/RogueBJFace/Rogue_tj_tits.png",
             ),
     contains:
@@ -2560,6 +2566,10 @@ label Rogue_TJ_Reset: # The sequence to the Rogue animations from Titfuck to def
     if not renpy.showing("Rogue_TJ_Animation"):
         return
     hide Rogue_TJ_Animation
+
+    if R_Over == "bondage":
+            "You help her remove the bondage suit"
+            $ R_Over = 0
     
     show Rogue at SpriteLoc(R_SpriteLoc) zorder RogueLayer:
         zoom 2 xpos 550 yoffset 50 #offset (-100,50)  #zoom 2 offset (-100,50)

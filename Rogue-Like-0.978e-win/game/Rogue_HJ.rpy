@@ -942,6 +942,48 @@ label RTJ_Cycle:
         if Line and P_Focus < 100:                                                    #Player Command menu
                     $ Cnt += 1
                     $ Round -= 1
+                    if ("master" in R_Petnames or "sir" in R_Petnames or R_Pet == "slave") and ApprovalCheck("Rogue", 750, "O") and not R_Bondage: # bondage event
+                        $ R_Bondage = 1
+                        ch_k "Hey, [R_Petname], I've got some new things here, do you think we could try them?"
+                        "She grabs what it looks like some bondage gear"
+                        menu:
+                            "Yep":
+                                call RogueFace("sexy", 1) 
+                                #if R_Over or R_Chest or R_Panties or R_Legs:
+                                #    "She glances up at you as her clothes drop to the ground."
+                                #$ R_Over = 0
+                                #$ R_Legs = 0
+                                #$ R_Chest = 0
+                                #$ R_Panties = 0
+                                "She starts dressing the new outfit"
+                                "You help her with the armbinder, making sure she can't move her arms"
+                                #"And add a blindfold so she can't see a thing"
+                                #$ R_Blindfold = 1
+                                $ R_Over = "bondage"
+                                #$ R_Chest = "bustier bra"
+                                #$ R_Panties = "zipper panties"
+                                #$ R_Outfit = "zipper bondage"
+                                #$ R_Shame = R_OutfitShame[1]
+                                #if R_Over == "armbinder":
+                                #call RogueFace("sly")
+                                $ Line = "Rogue can't move her arms. She licks her lips in anticipation"
+                                $ TempLust += 3 if R_Lust < 40 else 1  
+
+                                #if R_Blow <= 1 or (R_Obed >= 500 and R_Obed > R_Inbt):
+                                #        $ TempLust += 2 if R_Lust > 60 else 0                 
+                                #        $ Line = Line + ", but she seems to be waiting for some instruction"
+                                #else:
+                                #        $ Line = Line + ", and then she gets started licking your cock"
+                                #        $ Speed = 1
+                                #jump R_HotdogPrep
+                                #pass
+                                #call Rogue_Bottoms_Off_Legs
+                                #call Rogue_Top_Off
+                                #call Rogue_Bottoms_Off
+                                #shes gonna wear it
+                            "Not now, but let's save it for another time":
+                                pass
+                                #nope
                     menu:
                         "[Line]"
                         "Keep going. . ." if Speed:
@@ -984,6 +1026,42 @@ label RTJ_Cycle:
                             else:
                                 "You remove Rogue's gag"
                                 $ R_Gag = 0
+
+                        "How about you put that bondage outfit" if R_Bondage and R_Over != "bondage":
+                            call RogueFace("sexy", 1) 
+                            #if R_Over or R_Chest or R_Panties or R_Legs:
+                            #    "She glances up at you as her clothes drop to the ground."
+                            #$ R_Over = 0
+                            #$ R_Legs = 0
+                            #$ R_Chest = 0
+                            #$ R_Panties = 0
+                            "She starts dressing the new outfit"
+                            "You help her with the suit, making sure she can't move her arms"
+                            #"And add a blindfold so she can't see a thing"
+                            #$ R_Blindfold = 1
+                            $ R_Over = "bondage"
+                            #$ R_Chest = "bustier bra"
+                            #$ R_Panties = "zipper panties"
+                            #$ R_Outfit = "zipper bondage"
+                            #$ R_Shame = R_OutfitShame[1]
+
+                        "Remove the bondage outfit" if R_Over == "bondage":
+                            call RogueFace("sexy", 1) 
+                            #if R_Over or R_Chest or R_Panties or R_Legs:
+                            #    "She glances up at you as her clothes drop to the ground."
+                            #$ R_Over = 0
+                            #$ R_Legs = 0
+                            #$ R_Chest = 0
+                            #$ R_Panties = 0
+                            #"She starts dressing the new outfit"
+                            "You help her remove the suit"
+                            #"And add a blindfold so she can't see a thing"
+                            #$ R_Blindfold = 1
+                            $ R_Over = 0
+                            #$ R_Chest = "bustier bra"
+                            #$ R_Panties = "zipper panties"
+                            #$ R_Outfit = "zipper bondage"
+                            #$ R_Shame = R_OutfitShame[1]
                             
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass

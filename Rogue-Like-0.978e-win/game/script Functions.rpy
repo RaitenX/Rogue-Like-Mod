@@ -479,10 +479,10 @@ init python:
         
         Present = []
         global Party
-        while len(Party) > 2:    
+        while len(Party) > 3:    
                 # If two or more members in the party    
                 #Culls down party size to two
-                Party.remove(Party[2])   
+                Party.remove(Party[3])   
         
         # checks to see which girls are present at a given location
         # adds members who are not currently in the party
@@ -496,7 +496,7 @@ init python:
             if "Emma" not in Party: 
                 Present.append("Emma") 
         
-        if len(Party) + len(Present) >= 2:                
+        if len(Party) + len(Present) >= 3:                
             return 1      
         else:
             return 0   
@@ -1223,10 +1223,10 @@ label Present_Check(Present = []):
     # call Present_Check(1) will _return positive if the room is filled with the current inhabitants
     # call Present Check will cull inhabitants of the room down to zero
     
-    while len(Party) > 2:    
+    while len(Party) > 3:    
             # If two or more members in the party    
             #Culls down party size to two
-            $ Party.remove(Party[2])   
+            $ Party.remove(Party[3])   
     
     # checks to see which girls are present at a given location
     # If they are in the party, makes sure they are in the room
@@ -1253,9 +1253,12 @@ label Present_Check(Present = []):
     if len(Party) == 2:
         #adds the second party member if it exists
         $ Present.append(Party[1]) 
+    if len(Party) == 3:
+        #adds the second party member if it exists
+        $ Present.append(Party[2]) 
     
     
-    while len(Present) > 2:
+    while len(Present) > 3:
             #culls the Present list down to two items (or less if the party is full)
             #Removes the rest
             if Present[0] == "Rogue": 

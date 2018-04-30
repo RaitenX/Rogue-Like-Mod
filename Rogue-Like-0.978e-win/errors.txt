@@ -2,6 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/Emma_HJ.rpy", line 409: indentation mismatch.
+File "game/Rogue_Animations.rpy", line 2570: reached end of line when expecting ':'.
+    if R_Over == "bondage"
+                          ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

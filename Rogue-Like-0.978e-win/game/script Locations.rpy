@@ -2126,6 +2126,9 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaC
     $ Round -= 30
     $ Trigger = 0
     
+    if RogueCount and KittyCount and EmmaCount:
+                    $ Line = "You take a quick shower with Rogue, Kitty and Emma."
+                    call Shift_Focus("Rogue", "Kitty")
     if RogueCount and KittyCount:
                     $ Line = "You take a quick shower with Rogue and Kitty."
                     call Shift_Focus("Rogue", "Kitty")
@@ -2160,7 +2163,9 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaC
         if EmmaCount:
             ch_e "We should do this again."
     elif KittyCount:
-            ch_k "that was. . . nice."
+        ch_k "that was. . . nice."
+        if EmmaCount:
+            ch_e "We should do this again."
     elif EmmaCount:
             ch_e "I enjoyed that, [E_Petname]"
             
@@ -3468,8 +3473,8 @@ label Rogue_Sent_Selfie(test=0):
             $ test = renpy.random.randint(1, 3)
             #$ test = 1
 
-        #$ K_OverTemp = K_Over
-        #$ K_ChestTemp = K_Chest
+        #$ R_OverTemp = K_Over
+        #$ R_ChestTemp = K_Chest
         if test == 1:
             $test = 0
         
@@ -3478,8 +3483,8 @@ label Rogue_Sent_Selfie(test=0):
                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 2)
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 10)   
                 $ P_Focus = Statupdate("Rogue", "Focus", P_Focus, 80, 15)    
-                $ R_Over = 0
-                $ R_Chest = 0                         
+                #$ R_Over = 0
+                #$ R_Chest = 0                         
                 if not R_SeenChest:
                     call RogueFace("bemused", 1)
                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 3)                              

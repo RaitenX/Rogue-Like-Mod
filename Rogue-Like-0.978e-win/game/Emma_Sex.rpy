@@ -2117,9 +2117,9 @@ label Emma_Noticed(Other = "Rogue", B = 0):
                     if "dating" in E_Traits:
                         $ B -= 200
                         
-    "She doesn't seem to be prepared to deal with this right now, and leaves the room." #remove when ready
-    call Remove_Girl("Emma")
-    return
+#    "She doesn't seem to be prepared to deal with this right now, and leaves the room." #remove when ready
+#    call Remove_Girl("Emma")
+#    return
             
     $ Partner = "Emma"
     if ApprovalCheck("Emma", 2000, TabM=2, Bonus = B) or ApprovalCheck("Emma", 950, "L", TabM=2, Bonus = (B/3)):

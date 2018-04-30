@@ -2239,7 +2239,7 @@ label Emma_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = Pr
                     $ Options[0] = Preset 
                     ch_e "Oh, very well. . ."
             else:
-                    ch_e "That doesn't rerally seem appropriate. . ."
+                    ch_e "That doesn't really seem appropriate. . ."
                     
             #Sets opening lines. . .
             if Options[0] == Action:                          

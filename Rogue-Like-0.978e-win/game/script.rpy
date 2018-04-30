@@ -260,7 +260,8 @@ init -1:
     default R_Eyes = "normal"
     default R_Hair = "evo"
     default R_Gag = 0    
-    default R_Gagx = 0    
+    default R_Gagx = 0   
+    default R_Bondage = 0  
     default R_Glasses = 0    
     default R_Blush = 0
     default R_Spunk = []
@@ -3500,21 +3501,21 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
                 call Present_Check  #culls out Party to 2, sets location to bg_current, removes extra girls, sets Focus to a girl in the room   
                 
                 if Ch_Focus == "Kitty" and K_Loc == bg_current: 
-                        $ E_SpriteLoc = StageRight   
+                        $ E_SpriteLoc = StageFarRight   
                         $ R_SpriteLoc = StageRight
                         $ K_SpriteLoc = StageCenter
                         $ RogueLayer = 75
-                        $ EmmaLayer = 75
+                        $ EmmaLayer = 50
                         $ KittyLayer = 100
                         call Display_Emma(Dress)
                         call Display_Rogue(Dress)
                         call Display_Kitty(Dress)
                         
                 elif Ch_Focus == "Emma" and E_Loc == bg_current:  
-                        $ K_SpriteLoc = StageRight  
+                        $ K_SpriteLoc = StageFarRight  
                         $ R_SpriteLoc = StageRight
                         $ E_SpriteLoc = StageCenter
-                        $ KittyLayer = 75
+                        $ KittyLayer = 50
                         $ RogueLayer = 75
                         $ EmmaLayer = 100
                         call Display_Rogue(Dress)
@@ -3522,10 +3523,10 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
                         call Display_Emma(Dress)
                 
                 elif Ch_Focus == "Rogue" and R_Loc == bg_current:   
-                        $ K_SpriteLoc = StageRight
+                        $ K_SpriteLoc = StageFarRight
                         $ E_SpriteLoc = StageRight
                         $ R_SpriteLoc = StageCenter
-                        $ KittyLayer = 75
+                        $ KittyLayer = 50
                         $ EmmaLayer = 75
                         $ RogueLayer = 100
                         call Display_Emma(Dress)
