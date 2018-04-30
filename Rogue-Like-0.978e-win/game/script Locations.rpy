@@ -133,7 +133,8 @@ label Player_Room:
                     call Rogue_Study
         "Would you like to study [[Kitty]?" if K_Loc == bg_current:
                     call Kitty_Study
-                    
+        "Would you like to help me study [[Emma]?" if E_Loc == bg_current:
+                    call Emma_Study
         "Sleep" if Current_Time == "Night":            
                     call Round10
                     $ R_Spank = 0
@@ -166,6 +167,69 @@ label Player_Room:
                     else:
                             call Worldmap
     jump Player_Room
+
+label Emma_Study:                       #study events
+            call Shift_Focus("Emma")
+            if Current_Time == "Night":
+                ch_e "Don't you think it's a bit late?"
+                return
+            elif Round <= 30:        
+                ch_e "I don't know that there's time for that, maybe if we wait a bit. . ."
+                return
+            else:
+                ch_e "Sure."
+                        
+            $ P_XP += 5
+            $ Trigger = 0
+            $ Line = renpy.random.choice(["You study for a while, it was fairly boring.", 
+                    "You study up for the mutant biology test.", 
+                    "You study for the math quiz.",
+                    "You get bored and watch a movie instead.",
+                    "You study for a few hours, that was fun.",
+                    "You spend the next few hours studying the lit test."
+                    "You study for the game design course."]) 
+            "[Line]"       
+            $ Line = 0
+            $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 2)
+            $ D20 = renpy.random.randint(1, 20)    
+            if D20 > 10:
+                call Emma_Frisky_Study   
+            else:        
+                $ P_XP += 5  
+            call Wait
+            call Emma_Leave
+            call Kitty_Leave
+            call Rogue_Leave
+            return
+#End Emma Study
+            
+label Emma_Frisky_Study:
+            if D20 > 17 and ApprovalCheck("Emma", 1000) and E_Blow > 5:
+                        "Emma reaches her hand through your textbook and you can feel it in your lap."
+                        "She unzips you pants and pulls your dick out, stroking it slowly."
+                        "She then dives her head under the book, and starts to lick it."        
+                        call Emma_SexAct("blow") 
+            elif D20 > 14 and ApprovalCheck("Emma", 1000) and E_Hand >= 5:
+                        "Emma reaches her hand through your textbook and you can feel it in your lap."
+                        "She runs her finger along your erection, her hand passing through the jeans to touch your bare skin."
+                        "She unzips you pants and pulls your dick out, stroking it slowly."  
+                        call Emma_SexAct("hand") 
+            elif D20 > 10 and (ApprovalCheck("Emma", 1300) or (E_Mast and ApprovalCheck("Emma", 1000)))and E_Lust >= 70:
+                        "Emma wriggles against your shoulder, and her hand starts to stroke her crotch."  
+                        if "unseen" in E_RecentActions:
+                                $ E_RecentActions.remove("unseen")
+                        $ Trigger = "masturbation"
+                        call Emma_SexAct("masturbate")      
+            elif D20 >5 and ApprovalCheck("Emma", 700) and E_Kissed > 1:
+                        "Emma leans close to you, and presses her lips to yours."         
+                        call Emma_SexAct("kissing")
+            elif ApprovalCheck("Emma", 500):
+                        "Emma squeezes close to you, and you spend the rest of the night cuddling."
+            else:
+                        return
+                
+            "Well that was certainly a productive use of your study time. . ."    
+            return
 
 # end Player's Room Interface //////////////////////////////////////////////////////////////////////
 
@@ -1661,8 +1725,8 @@ label Shower_Room_Entry:
             $ Options.append("Rogue")   
     if "showered" not in K_DailyActions and (K_Loc == "bg kitty" or K_Loc == "bg dangerroom") and "met" in K_History:  #Checks if Kitty is in the shower
             $ Options.append("Kitty")     
-#    if "showered" not in E_DailyActions and (E_Loc == "bg emma" or E_Loc == "bg dangerroom") and "met" in E_History:  #Checks if Emma is in the shower
-#            $ Options.append("Emma")
+    if "showered" not in E_DailyActions and (E_Loc == "bg emma" or E_Loc == "bg dangerroom") and "met" in E_History:  #Checks if Emma is in the shower
+            $ Options.append("Emma")
     
     if len(Options) == 0:
             # if nobody is around, skip it.

@@ -500,6 +500,8 @@ label Rogue_Breakup(Anger = 0):
             call RogueFace("angry")
             menu:
                 ch_r "Who is it?"
+                "Emma":
+                    $ Line = "emma"
                 "Kitty":           
                     $ Line = "kitty"
                 "I won't say.":
@@ -568,7 +570,7 @@ label Rogue_Breakup(Anger = 0):
             call RogueFace("angry")
             ch_r "With that skank?!"
             $ Anger += 2
-            
+
         if ApprovalCheck("Rogue", 2000, Bonus = Cnt):
             $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 70, 5)
             call RogueFace("sexy")
@@ -589,6 +591,65 @@ label Rogue_Breakup(Anger = 0):
                     
                 "I'd rather be with both of you.":      
                     $ Line = "threeway kitty"
+                    
+                "No, I'm sorry, never mind that.": 
+                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -3, 1)
+                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, -5)
+                    $ Line = "bargaining"
+
+    elif Line == "emma":
+        $Cnt = int((R_LikeEmma - 500)/2)       
+        if R_LikeEmma >= 800: 
+            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 70, 5)
+            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 5)
+            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, 5)
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 1)
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 5) 
+            $ R_Blush = 1
+            ch_r "Well, she is pretty hot."
+        elif R_LikeEmma >= 600:
+            $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -5, 1)
+            $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -10, 1)
+            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 5)
+            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, 3)
+            ch_r "With Emma? Really?"
+            $ Anger += 1
+        elif R_LikeEmma >= 400:
+            $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -3, 1)
+            $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -5, 1)
+            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 5)
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 1)
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 3) 
+            ch_r "I didn't expect that."
+        else: #R_LikeEmma < 400
+            $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -5, 1)
+            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 3)
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 2)
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 5) 
+            call RogueFace("angry")
+            ch_r "With a teacher?!"
+            $ Anger += 2
+            
+        if ApprovalCheck("Rogue", 2000, Bonus = Cnt):
+            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 70, 5)
+            call RogueFace("sexy")
+            ch_r "Why not both of us?"
+            $ Line = "threeway emma"
+        else:
+            call RogueFace("sad")
+            menu:
+                ch_r "You would rather be with her than with me?"
+                "Yes, I would.":    
+                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -3, 1)
+                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -5, 1)
+                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 30, 1)
+                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 1)                   
+                    $ Anger += 1
+                    ch_r "Well then I don't think I can help you." 
+                    $ Line = "bargaining"
+                    
+                "I'd rather be with both of you.":      
+                    $ Line = "threeway emma"
                     
                 "No, I'm sorry, never mind that.": 
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -3, 1)
@@ -621,7 +682,7 @@ label Rogue_Breakup(Anger = 0):
                         else:
                             ch_r "Yeah, I mean I guess so."    
                         $ R_Traits.append("poly kitty")
-                        
+
                     else:      
                         $ Anger += 2
                         $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -10, 1)
@@ -713,6 +774,124 @@ label Rogue_Breakup(Anger = 0):
                         else:
                             ch_r "Might be kind of fun sneaking around behind her back."
             #End Threeway Kitty
+
+    if Line == "threeway emma":
+            menu Rogue_Breakup_Emma:
+                ch_r "Like date us both at once? What does she think about that?"
+                "She said it would be ok with her." if "poly rogue" in K_Traits:
+                    if ApprovalCheck("Rogue", 1800, Bonus = Cnt):
+                        call RogueFace("smile", 1)
+                        $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 70, 5)     
+                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 5)
+                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 3)  
+                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3)
+                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 1)
+                        if R_LikeEmma < 400:
+                            call RogueFace("angry")
+                            ch_r "I can't stand that bitch, but for you I'll put up with her."     
+                        elif R_LikeEmma >= 700:
+                            call RogueFace("sexy")
+                            ch_r "I have to say I've kind of been thinking about it myself."                         
+                        elif R_Love >= R_Obed:
+                            call RogueFace("sad")
+                            ch_r "Just so long as we can be together, I can share."
+                        elif R_Obed >= R_Inbt:
+                            ch_r "I'm ok with that if she is."
+                        else:
+                            ch_r "Yeah, I mean I guess so."    
+                        $ R_Traits.append("poly emma")
+
+                    else:      
+                        $ Anger += 2
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -10, 1)
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -15, 1)
+                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 3)
+                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 3) 
+                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 5)
+                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 3)
+                        call RogueFace("angry", 1)
+                        ch_r "Well maybe she did, but I don't want to share."  
+                        $ Line = "bargaining"
+                        
+                "I have no idea." if not E_Break[0]:
+                    $ Line = "ask emma"
+                
+                "She's not into it." if E_Break[0]:
+                    if R_LikeEmma >= 700:
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -5)
+                    elif R_LikeEmma <= 400:
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 5)
+                                    
+                "She doesn't need to know.": 
+                    $ Line = "ask emma"  
+                    if R_LikeEmma >= 700:
+                        call RogueFace("angry")
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -5)
+                    elif R_LikeEmma <= 400:
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 5)
+            
+            if Line == "ask emma" and R_LikeEmma >= 700:
+                call RogueFace("sexy")
+                ch_r "I have to say I've kind of been thinking about it myself."  
+                menu:                         
+                    ch_r "Would you like me to ask her for you?" 
+                    "Yes, that'd be a good idea.":
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 5)
+                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 1)
+                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 5)
+                        $ R_Traits.append("ask emma")
+                    "No, let's just keep it under cover.":   
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -5, 1)
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -5, 1)
+                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 5)
+                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3)     
+                    
+        
+            if Line != "bargaining" and "poly emma" not in R_Traits:               
+                        
+                if "ask emma" not in R_Traits and not ApprovalCheck("Rogue", 1800, Bonus = -(int((R_LikeEmma - 600)/2))): #checks if Rogue likes you more than Emma
+                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -5, 1)
+                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, -10, 1)
+                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 5)
+                    call RogueFace("angry", 1)
+                    if not ApprovalCheck("Rogue", 1800):                        
+                        ch_r "Well I don't like you that much either."
+                    else:
+                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -10, 1)
+                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -5, 1)
+                        ch_r "Well then I'm not cool with that, Ms. Frost is our teacher."       
+                    $ Anger += 1
+                    $ Line = "bargaining"                                 
+                else:                
+                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 30, 5)
+                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 3)
+                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 5)
+                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 1)
+                    call RogueFace("sad")                      
+                    if R_LikeEmma < 400:
+                        call RogueFace("angry")
+                        ch_r "I can't stand that bitch, but for you I'll put up with her."    
+                    elif R_Love >= R_Obed:
+                        ch_r "I really do want to be together with you."
+                    elif R_Obed >= R_Inbt:
+                        ch_r "If that's how you want it to be."
+                    else:
+                        ch_r "I suppose that's ok."
+                    $ R_Traits.append("poly emma")
+                    if "ask emma" in R_Traits:
+                        ch_r "I'll talk to Emma about it."
+                    else:
+                        call RogueFace("sad")
+                        $ R_Traits.append("downlow")
+                        ch_r "I guess we can keep this on the downlow, for now at least."
+                    
+                        if R_LikeEmma >= 800:
+                            ch_r "Please talk to Emma about sharing you openly though."
+                        elif R_LikeEmma >= 500:
+                            ch_r "I really don't like going behind Emma's back though."
+                        else:
+                            ch_r "Might be kind of fun sneaking around behind her back."
+            #End Threeway Emma
     
     if Line == "bargaining" and Anger < 3: 
         call RogueFace("sad")

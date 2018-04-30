@@ -1000,7 +1000,7 @@ label Emma_HJ_Launch(Line = 0):
         offset (100,250)#(75,250)
     return
     
-label Emma_HJ_Reset: # The sequence to the Rogue animations from handjob to default
+label Emma_HJ_Reset: # The sequence to the Emma animations from handjob to default
     if not renpy.showing("Emma_HJ_Animation"):
         return    
     $ Speed = 0

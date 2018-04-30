@@ -606,7 +606,74 @@ label Kitty_OtherWoman:
             "You're right, I was dumb to ask.":
                 call KittyFace("sad")
                 ch_k "We had a good thing there. Maybe some day. . ."                    
-                $ renpy.pop_call()                     
+                $ renpy.pop_call()   
+
+    if "dating" in E_Traits:
+        call KittyFace("perplexed")
+        menu: 
+            ch_k "But you're with Emma right now."
+            "She said I can be with you too." if "poly kitty" in E_Traits:
+                $Cnt = int((K_LikeEmma - 500)/2)
+                if ApprovalCheck("Kitty", 1800, Bonus = Cnt):
+                    call KittyFace("smile", 1)
+                    if K_Love >= K_Obed:
+                        ch_k "Just so long as we can be together, I can share."
+                    elif K_Obed >= K_Inbt:
+                        ch_k "I'm ok with that if she is."
+                    else:
+                        ch_k "Yeah, I mean I guess so."
+                        $ K_Traits.append("poly emma")
+                else:
+                    call KittyFace("angry", 1)
+                    ch_k "Well maybe she did, but I don't want to share."  
+                    $ renpy.pop_call() 
+
+            "I could ask if she'd be ok with me dating you both." if "poly kitty" not in E_Traits:
+                $Cnt = int((K_LikeEmma - 500)/2)
+                if ApprovalCheck("Kitty", 1800, Bonus = Cnt):
+                    call KittyFace("smile", 1)
+                    if K_Love >= K_Obed:
+                        ch_k "Just so long as we can be together, I can share."
+                    elif K_Obed >= K_Inbt:
+                        ch_k "I'm ok with that if she is."
+                    else:
+                        ch_k "Yeah, I mean I guess so."                        
+                    ch_k "Go ask her, give me the night to think about it, and then come back tomorrow with her answer."
+                else:
+                    call KittyFace("angry", 1)
+                    ch_k "Well maybe she would, but I don't want to share."      
+                $ renpy.pop_call()
+            
+            "What she doesn't know won't hurt her.":
+                $Cnt = int((K_LikeEmma - 500)/2)
+                if not ApprovalCheck("Kitty", 1800, Bonus = -(int((K_LikeEmma - 600)/2))): #checks if Emma likes you more than Kitty
+                    call KittyFace("angry", 1)
+                    if not ApprovalCheck("Kitty", 1800):
+                        ch_k "Well I don't like you that much either."
+                    else:
+                        ch_k "Well I'm not cool with that, Emma's a friend of mine."                    
+                    $ renpy.pop_call() 
+                    
+                else:
+                    call KittyFace("smile", 1)
+                    if K_Love >= K_Obed:
+                        ch_k "I really do want to be together with you."
+                    elif K_Obed >= K_Inbt:
+                        ch_k "If that's how you want it to be."
+                    else:
+                        ch_k "I suppose that's true."
+                    $ K_Traits.append("poly emma")
+                    $ K_Traits.append("downlow")
+                
+            "I can break it off with her.":
+                call KittyFace("sad")
+                ch_k "Well then maybe I'll see you tomorrow after you have."                                   
+                $ renpy.pop_call()
+                
+            "You're right, I was dumb to ask.":
+                call KittyFace("sad")
+                ch_k "We had a good thing there. Maybe some day. . ."                    
+                $ renpy.pop_call()                   
                 
     return
     
@@ -4265,7 +4332,7 @@ label Kitty_Clothes:
         "Let's talk about your tan":
             menu Kitty_Clothes_Misc_Tan:
 
-                "I like the first tan style" if K_Tan == 0 or K_Tan == 'tan2':
+                "I like the first tan style" if K_Tan != 'tan':
                     if ApprovalCheck("Kitty", 600):
                         ch_k "Like this?"
                         $ K_Tan = "tan"
@@ -4273,14 +4340,21 @@ label Kitty_Clothes:
                         ch_k "Yeah, I know that."
                     jump Kitty_Clothes_Misc_Tan
     
-                "I like the second tan style" if K_Tan == 0 or K_Tan == 'tan':
+                "I like the second tan style" if K_Tan != 'tan2':
                     if ApprovalCheck("Kitty", 600):
                         ch_k "Like this?"
                         $ K_Tan = "tan2"
                     else:
                         ch_k "Yeah, I know that."
                     jump Kitty_Clothes_Misc_Tan
-    
+
+                "I like the third tan style" if K_Tan != 'tan3':
+                    if ApprovalCheck("Kitty", 600):
+                        ch_k "Like this?"
+                        $ K_Tan = "tan3"
+                    else:
+                        ch_k "Yeah, I know that."
+                    jump Kitty_Clothes_Misc_Tan
         
                 "I prefer without the tan" if K_Tan != 0:
                     if ApprovalCheck("Kitty", 600):

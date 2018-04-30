@@ -62,8 +62,7 @@ label Emma_Chat:
                         ch_e "No thanks, [E_Petname]."          
                                 
         "I just wanted to talk. . .":
-#                    call Emma_Chitchat
-                ch_e "I really don't have anything to talk about at the moment.[[Not in yet]"   
+                    call Emma_Chitchat   
                     
         "Emma's settings":
                     ch_p "Let's talk about you."
@@ -71,14 +70,13 @@ label Emma_Chat:
         
         "Relationship status":      
                     ch_p "Could we talk about us?"       
-#                    if "relationship" in E_DailyActions:
-#                        ch_e "Now you're starting to bore me."
-#                    elif E_Loc == bg_current:
-#                        call Emma_Relationship
-#                    else:
-#                        ch_e "This seems a bit serious to discuss over the phone."
-#                        ch_e "Later, perhaps."
-                    ch_e "I'm not sure that's an appropriate discussion at the moment.[[Not in yet]"
+                    if "relationship" in E_DailyActions:
+                        ch_e "Now you're starting to bore me."
+                    elif E_Loc == bg_current:
+                        call Emma_Relationship
+                    else:
+                        ch_e "This seems a bit serious to discuss over the phone."
+                        ch_e "Later, perhaps."
                         
         "Could I get your number?" if "Emma" not in Digits:
                     if ApprovalCheck("Emma", 800, "LI"):
@@ -92,9 +90,8 @@ label Emma_Chat:
                         
         "Gifts" if E_Loc == bg_current:
                 ch_p "I'd like to give you something."
-#                    call Emma_Gifts
-                ch_e "I'm not sure that would be appropriate at the moment.[[Not in yet]"
-                        
+                call Emma_Gifts
+                    
         "Add her to party" if "Emma" not in Party and E_Loc == bg_current:
                     ch_p "Could you follow me for a bit?"                                             
                     if ApprovalCheck("Emma", 1250):
@@ -179,7 +176,6 @@ label Emma_Chat_Minimal:
         
         "Relationship status":   
                     ch_p "Could we talk about us?"
-                    ch_e "I'm not sure that's an appropriate discussion at the moment.[[Not in yet]"
                         
         "Could I get your number?" if "Emma" not in Digits:
                     if ApprovalCheck("Emma", 800, "LI"):
@@ -368,54 +364,54 @@ label Emma_Relationship:
 #            else:
 #                $ R_DailyActions.append("asked threesome")                
 #                $Cnt = int((R_LikeEmma - 500)/2)
-#                menu:
-#                    ch_r "What does she think about this?"
+                menu:
+                    ch_r "What does she think about this?"
                         
-#                    "She said I can be with you too." if "poly rogue" in E_Traits:
-#                        if ApprovalCheck("Rogue", 1800, Bonus = Cnt):
-#                            call RogueFace("smile", 1)
-#                            if R_Love >= R_Obed:
-#                                ch_r "Just so long as we can be together, I can share."
-#                            elif R_Obed >= R_Inbt:
-#                                ch_r "I'm ok with that if she is."
-#                            else:
-#                                ch_r "Yeah, I mean I guess so."
-#                                $ R_Traits.append("poly emma")
-#                        else:
-#                            call RogueFace("angry", 1)
-#                            ch_r "Well maybe she did, but I don't want to share."  
+                    "She said I can be with you too." if "poly rogue" in E_Traits:
+                        if ApprovalCheck("Rogue", 1800, Bonus = Cnt):
+                            call RogueFace("smile", 1)
+                            if R_Love >= R_Obed:
+                                ch_r "Just so long as we can be together, I can share."
+                            elif R_Obed >= R_Inbt:
+                                ch_r "I'm ok with that if she is."
+                            else:
+                                ch_r "Yeah, I mean I guess so."
+                                $ R_Traits.append("poly emma")
+                        else:
+                            call RogueFace("angry", 1)
+                            ch_r "Well maybe she did, but I don't want to share."  
                     
-#                    "I could ask if she'd be ok with me dating you both." if "poly rogue" not in E_Traits:
-#                        if ApprovalCheck("Rogue", 1800, Bonus = Cnt) or :
-#                            call RogueFace("smile", 1)
-#                            if R_Love >= R_Obed:
-#                                ch_r "Just so long as we can be together, I can share."
-#                            elif R_Obed >= R_Inbt:
-#                                ch_r "I'm ok with that if she is."
-#                            else:
-#                                ch_r "Yeah, I mean I guess so."                        
-#                            ch_r "Go ask her, give me the night to think about it, and then come back tomorrow with her answer."
-#                        else:
-#                            call RogueFace("angry", 1)
-#                            ch_r "Well maybe she would, but I don't want to share."  
+                    "I could ask if she'd be ok with me dating you both." if "poly rogue" not in E_Traits:
+                        if ApprovalCheck("Rogue", 1800, Bonus = Cnt) or :
+                            call RogueFace("smile", 1)
+                            if R_Love >= R_Obed:
+                                ch_r "Just so long as we can be together, I can share."
+                            elif R_Obed >= R_Inbt:
+                                ch_r "I'm ok with that if she is."
+                            else:
+                                ch_r "Yeah, I mean I guess so."                        
+                            ch_r "Go ask her, give me the night to think about it, and then come back tomorrow with her answer."
+                        else:
+                            call RogueFace("angry", 1)
+                            ch_r "Well maybe she would, but I don't want to share."  
                     
-#                    "Could you ask?":
-#                        if R_LikeEmma >= 700:
-#                            ch_r "I have to say I've kind of been thinking about it myself."  
-#                            $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 5)
-#                            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 1)
-#                            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 5)
-#                        elif R_LikeEmma >= 500:
-#                            ch_r "I guess, if that's what you want. . ." 
-#                        elif R_Obed >= 700:
-#                            ch_r "If that's what you want. . ." 
-#                        else:
-#                            ch_r "I can't really stand her, I don't think so."  
+                    "Could you ask?":
+                        if R_LikeEmma >= 700:
+                            ch_r "I have to say I've kind of been thinking about it myself."  
+                            $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 5)
+                            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 1)
+                            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 5)
+                        elif R_LikeEmma >= 500:
+                            ch_r "I guess, if that's what you want. . ." 
+                        elif R_Obed >= 700:
+                            ch_r "If that's what you want. . ." 
+                        else:
+                            ch_r "I can't really stand her, I don't think so."  
                             
                         
-#                    "You're right, I was dumb to ask.":
-#                        call RogueFace("sad")
-#                        ch_r "Yeah, you were."  
+                    "You're right, I was dumb to ask.":
+                        call RogueFace("sad")
+                        ch_r "Yeah, you were."  
                         
             #end Emma Threesome
                 
@@ -749,18 +745,18 @@ label Emma_Chitchat(O=0, Options = ["default","default","default"]):
         if (bg_current == "bg emma" or bg_current == "bg player") and "relationship" not in E_DailyActions:
             if "boyfriend" not in E_Petnames and ApprovalCheck("Emma", 750, "L"): # E_Event[5]
                 $ Options.append("boyfriend?")
-#            elif "lover" not in E_Petnames and ApprovalCheck("Emma", 900, "L"): # E_Event[6]        
-#                $ Options.append("lover?")
+            elif "lover" not in E_Petnames and ApprovalCheck("Emma", 900, "L"): # E_Event[6]        
+                $ Options.append("lover?")
             elif "sir" not in E_Petnames and ApprovalCheck("Emma", 500, "O"): # E_Event[7]
                 $ Options.append("sir?")      
-#            elif "daddy" not in E_Petnames and ApprovalCheck("Emma", 750, "L") and ApprovalCheck("Emma", 500, "O") and ApprovalCheck("Emma", 500, "I"): # E_Event[5]
-#                $ Options.append("daddy?")
+            elif "daddy" not in E_Petnames and ApprovalCheck("Emma", 750, "L") and ApprovalCheck("Emma", 500, "O") and ApprovalCheck("Emma", 500, "I"): # E_Event[5]
+                $ Options.append("daddy?")
             elif "master" not in E_Petnames and ApprovalCheck("Emma", 900, "O"): # E_Event[8]
                 $ Options.append("master?")
-#            elif "sex friend" not in E_Petnames and ApprovalCheck("Emma", 500, "I"): # E_Event[9]
-#                $ Options.append("sexfriend?")
-#            elif "fuck buddy" not in E_Petnames and ApprovalCheck("Emma", 900, "I"): # E_Event[10]
-#                $ Options.append("fuckbuddy?")  
+            elif "sex friend" not in E_Petnames and ApprovalCheck("Emma", 500, "I"): # E_Event[9]
+                $ Options.append("sexfriend?")
+            elif "fuck buddy" not in E_Petnames and ApprovalCheck("Emma", 900, "I"): # E_Event[10]
+                $ Options.append("fuckbuddy?")  
             
         
         if not ApprovalCheck("Emma", 300):            #She dislikes you
@@ -773,7 +769,7 @@ label Emma_Chitchat(O=0, Options = ["default","default","default"]):
         call EmmaFace("confused")
         ch_e "(sniff, sniff). . . is that. . . chimp? . . ."
         call EmmaFace("perplexed", 1)
-        ch_e ". . . but it's[E_like]. . . {i}sexy{/i} chimp?"    
+        ch_e ". . . but it's. . . {i}sexy{/i} chimp?"    
     elif Options[0] == "purple":              
         $ E_DailyActions.append("cologne chat") 
         call EmmaFace("sly",1)
@@ -809,7 +805,7 @@ label Emma_Chitchat(O=0, Options = ["default","default","default"]):
         
     elif Options[0] == "cheek":
             #Emma's response to having her cheek touched.
-            ch_e "So,[E_Petname]. . .y'know how you[E_like]kinda just brushed my cheek before?"
+            ch_e "So,[E_Petname]. . .y'know how you kinda just brushed my cheek before?"
             ch_p "Yeah?  Was that okay?"
             call EmmaFace("smile",1)
             ch_e "More than just {i}okay{/i}."
@@ -817,31 +813,31 @@ label Emma_Chitchat(O=0, Options = ["default","default","default"]):
             
     elif Options[0] == "dated":
             #Emma's response to having gone on a date with the Player.
-            ch_e "Heya,[E_Petname].  I[E_like]had a lot of fun last night.  We should do that again sometime."
+            ch_e "Heya,[E_Petname].  I had a lot of fun last night.  We should do that again sometime."
 
     elif Options[0] == "kissed":
             #Emma's response to having been kissed by the Player.
             call EmmaFace("sly",1)
-            ch_e "[E_Like]. . .anybody ever tell you how good a kisser you are, [E_Petname]?"
+            ch_e " . . .anybody ever tell you how good a kisser you are, [E_Petname]?"
             menu:
                 extend ""
                 "Hey. . .when you're good, you're good.":
                         call EmmaFace("smile",1)
-                        ch_e "I think maybe you can show me {i}how{/i} good[E_like]whenever you want."
+                        ch_e "I think maybe you can show me {i}how{/i} good whenever you want."
                 "No. You think?":
-                        ch_e "Yeah.  I do. [E_Like]a {i}lot{/i}."
+                        ch_e "Yeah.  I do.  a {i}lot{/i}."
 
     elif Options[0] == "dangerroom":
             #Emma's response to Player working out in the Danger Room while Emma is present
             call EmmaFace("sly",1)
-            ch_e "Hey,[E_Petname].  I watched you working out in the Danger Room, earlier.  You looked[E_like]{i}so{/i} cute in your X-Men uniform!"
+            ch_e "Hey,[E_Petname].  I watched you working out in the Danger Room, earlier.  You looked {i}so{/i} cute in your X-Men uniform!"
 
     elif Options[0] == "showercaught":
             #Emma's response to being caught in the shower.
             if "shower" in E_Chat: 
                 ch_e "Hope you liked the view earlier. . ."                       
             else:
-                ch_e "So, you run into a lot of people in the shower. . .or just[E_like]me?"            
+                ch_e "So, you run into a lot of people in the shower. . .or just me?"            
                 $ E_Chat.append("shower") 
                 menu:
                     extend ""
@@ -850,7 +846,7 @@ label Emma_Chitchat(O=0, Options = ["default","default","default"]):
                             $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 2) 
                             if ApprovalCheck("Emma", 1200):
                                 call EmmaFace("sly",1)
-                                ch_e "Yeah?  {i}Maybe{/i} you should[E_like]have accidents like that more often."
+                                ch_e "Yeah?  {i}Maybe{/i} you should have accidents like that more often."
                             call EmmaFace("smile")
                             ch_e "It's cool, [E_Petname]. Eveybody makes mistakes. . . sometimes."
                     "Just you.":        
@@ -869,7 +865,7 @@ label Emma_Chitchat(O=0, Options = ["default","default","default"]):
                                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 10)            
                                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5) 
                                     call EmmaFace("sly",1)
-                                    ch_e "Hmm. . .next time, we'll have to[E_like]take advantage of the moment."
+                                    ch_e "Hmm. . .next time, we'll have to take advantage of the moment."
                             elif ApprovalCheck("Emma", 800):                          
                                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 60, 5)            
                                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5) 
@@ -888,16 +884,16 @@ label Emma_Chitchat(O=0, Options = ["default","default","default"]):
             if E_FondleB + E_FondleP + E_FondleA >= 15:
                 ch_e "I want your hands on me." 
             else:                
-                ch_e "You know how you felt me up earlier?  I could kinda[E_like]get used to having your hands on me."
+                ch_e "You know how you felt me up earlier?  I could kinda get used to having your hands on me."
 
     elif Options[0] == "booked":
             #Emma's response after a Player gives her the books from the shop.
-            ch_e "So..I[E_like]read the books you gave me."
+            ch_e "So..I read the books you gave me."
             menu:
                 extend ""
                 "Yeah?  Did you like them?":
                         call EmmaFace("sly",2)
-                        ch_e "They were[E_like]. . .{i}interesting{/i}."
+                        ch_e "They were . . .{i}interesting{/i}."
                 "Good.  You looked like you could use to learn a thing or two from them.":                     
                         $ E_Love = Statupdate("Emma", "Love", E_Love, 90, -3)          
                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 5)            
@@ -917,8 +913,8 @@ label Emma_Chitchat(O=0, Options = ["default","default","default"]):
     elif Options[0] == "handy":
             #Emma's response after giving the Player a handjob.
             call EmmaFace("sly",2)
-            ch_e "I was just thinking about how I[E_like]stroked your cock the other day. . ."
-            ch_e "I loved the expression on your face. . .knowing I could[E_like]make you {i}feel{/i} like that."
+            ch_e "I was just thinking about how I stroked your cock the other day. . ."
+            ch_e "I loved the expression on your face. . .knowing I could make you {i}feel{/i} like that."
             $ E_Blush = 1
 
     elif Options[0] == "blow":
@@ -951,7 +947,7 @@ label Emma_Chitchat(O=0, Options = ["default","default","default"]):
                                 $ E_Love = Statupdate("Emma", "Love", E_Love, 90, -10)          
                                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 60, 10)   
                                 call EmmaFace("angry",2)
-                                ch_e "Guess you're gonna have to[E_like]figure out a way to get it to suck itself then from now on. . .{i}jerk{/i}."
+                                ch_e "Guess you're gonna have to figure out a way to get it to suck itself then from now on. . .{i}jerk{/i}."
                     $ E_Blush = 1
                     $ E_Chat.append("blow") 
             else:
@@ -966,21 +962,21 @@ label Emma_Chitchat(O=0, Options = ["default","default","default"]):
             if "swallow" in E_Chat:                
                 ch_e "I'd like another taste sometime."
             else:
-                ch_e "So. . .I was[E_like]just thinking about the other day.  Y'know, that was the first time I[E_like]swallowed."
+                ch_e "So. . .I was just thinking about the other day.  Y'know, that was the first time I swallowed."
                 call EmmaFace("sly",1)
                 ch_e "Not bad. . ."
                 $ E_Chat.append("swallow") 
 
     elif Options[0] == "facial":
             #Emma's response after taking a facial from the Player.
-            ch_e "Hey. . .this is gonna sound kinda[E_like]weird, but. . ."
+            ch_e "Hey. . .this is gonna sound kinda weird, but. . ."
             call EmmaFace("sexy",2)
             ch_e "I feel so {i}sexy{/i} when you cum on my face."
             $ E_Blush = 1
 
     elif Options[0] == "sleepover":
             #Emma's response after sleeping with the Player.
-            ch_e "I[E_like] totally can't stop thinking about the other night.  It was {i}so{/i} perfect."
+            ch_e "I  totally can't stop thinking about the other night.  It was {i}so{/i} perfect."
 
     elif Options[0] == "creampie":
             #Another of Emma's responses after having sex with the Player.
@@ -991,14 +987,14 @@ label Emma_Chitchat(O=0, Options = ["default","default","default"]):
             #A final response from Emma after having sex with the Player.
             ch_e "So. . .I want you to know something. . ."
             call EmmaFace("sexy",2)
-            ch_e ". . .[E_Like]every time I masturbate. . ."
+            ch_e ". . . every time I masturbate. . ."
             ch_e "I think about how it felt, with you inside of me."
             $ E_Blush = 1
 
     elif Options[0] == "anal":
             #Emma's response after getting anal from the Player.
             call EmmaFace("sly",2)
-            ch_e "Y'know. . .after the other night, I'm kinda having trouble[E_like]sitting down."
+            ch_e "Y'know. . .after the other night, I'm kinda having trouble sitting down."
             call EmmaFace("sexy",2)
             ch_e "{i}Totally{/i} worth it, though."
             $ E_Blush = 1
@@ -1029,49 +1025,49 @@ label Emma_Chitchat(O=0, Options = ["default","default","default"]):
             $ D20 = renpy.random.randint(1, 15)        
             if D20 == 1:
                     call EmmaFace("smile")
-                    ch_e "I'm[E_like]{i}so{/i} excited [E_Petname]! I {i}totally{/i} aced Professor McCoy's Computer Science test!"
+                    ch_e "I'm {i}so{/i} excited [E_Petname]! I {i}totally{/i} aced Professor McCoy's Computer Science test!"
             elif D20 == 2:
                     call EmmaFace("down")
-                    ch_e "Ever have[E_like]one of those days where it seems like the whole world's out to get you?"
+                    ch_e "Ever have one of those days where it seems like the whole world's out to get you?"
             elif D20 == 3:
                     call EmmaFace("surprised")
                     ch_e "I can't believe how much stuff I've gotta get done today!"
             elif D20 == 4:
                     call EmmaFace("down")
-                    ch_e "Hey, [E_Petname]. I got[E_like]the world's worst sleep last night. I feel like I could[E_like]curl up and go to bed right here."
+                    ch_e "Hey, [E_Petname]. I got the world's worst sleep last night. I feel like I could curl up and go to bed right here."
             elif D20 == 5:
                     call EmmaFace("smile")
-                    ch_e "Wow! Isn't it[E_like]{i}so{/i} nice out right now?"
+                    ch_e "Wow! Isn't it {i}so{/i} nice out right now?"
             elif D20 == 6:
                     call EmmaFace("startled")
-                    ch_e "I had[E_like]the worst nightmare last night. I dreamed the N'Garai demon was chasing me throught the Mansion!"
+                    ch_e "I had the worst nightmare last night. I dreamed the N'Garai demon was chasing me throught the Mansion!"
             elif D20 == 7:
                     call EmmaFace("smile")
-                    ch_e "So awesome. I have[E_like]a lunch date tomorrow with my total bestie!"
+                    ch_e "So awesome. I have a lunch date tomorrow with my total bestie!"
             elif D20 == 8:
                     call EmmaFace("sad")
                     ch_e "Y'know, I totally love it here in Salem Center. But I have to admit. . .I kinda miss Deerfield sometimes."
             elif D20 == 9:
                     call EmmaFace("confused")
-                    ch_e "So weird. Ever since Professor Xavier telepathically taught me Russian, I kinda find myself[E_like]daydreaming in Cyrillic."
+                    ch_e "So weird. Ever since Professor Xavier telepathically taught me Russian, I kinda find myself daydreaming in Cyrillic."
             elif D20 == 10:
                     call EmmaFace("smile")
-                    ch_e "{i}So{/i} nerdy, I know. But I[E_like]totally had the best idea for this OS I'm writing for the Mansion's computers in the shower today!"
+                    ch_e "{i}So{/i} nerdy, I know. But I totally had the best idea for this OS I'm writing for the Mansion's computers in the shower today!"
             elif D20 == 11:
                     call EmmaFace("smile")
-                    ch_e "I[E_like]totally can't wait 'til dance class tomorrow! We're starting modern this semester!"
+                    ch_e "I totally can't wait 'til dance class tomorrow! We're starting modern this semester!"
             elif D20 == 12:
                     call EmmaFace("down")
-                    ch_e "I heard a few of the others are going to Harry's Hideaway tomorrow. I have[E_like]{i}so{/i}much homework to do, though!"
+                    ch_e "I heard a few of the others are going to Harry's Hideaway tomorrow. I have {i}so{/i}much homework to do, though!"
             elif D20 == 13:
                     call EmmaFace("smile")
-                    ch_e "This probably sounds[E_like]totally random, but, I could {i}so{/i} go for ice cream right now!"
+                    ch_e "This probably sounds totally random, but, I could {i}so{/i} go for ice cream right now!"
             elif D20 == 14:
                     call EmmaFace("sad")
-                    ch_e "I hate thinking about how so many people[E_like]totally hate mutants for no good reason. It's so depressing."
+                    ch_e "I hate thinking about how so many people totally hate mutants for no good reason. It's so depressing."
             elif D20 == 15:
                     call EmmaFace("startled")
-                    ch_e "I think I[E_like]tweaked something in my thigh in the Danger Room, yesterday. It feel like I have a bruise that goes right through it!"
+                    ch_e "I think I tweaked something in my thigh in the Danger Room, yesterday. It feel like I have a bruise that goes right through it!"
             else:
                     call EmmaFace("startled")
                     ch_e "You're fun to hang with."
@@ -4619,10 +4615,10 @@ label Emma_First_Les(Silent = 0, Undress = 0, GirlsNum = 0): #checked when she e
         
         if Taboo and not ApprovalCheck("Emma", 1500):
                 call EmmaFace("surprised", 2)  
-                ch_e "Um, you should[E_like]put that away in public."
+                ch_e "Um, you should put that away in public."
                 call EmmaFace("bemused", 1)  
                 if E_SeenPeen == 1: 
-                    ch_e "Or[E_like]maybe. . ."
+                    ch_e "Or maybe. . ."
                     $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 15)                
                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 20)
                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 35)  
@@ -4658,7 +4654,7 @@ label Emma_First_Les(Silent = 0, Undress = 0, GirlsNum = 0): #checked when she e
                     ch_e "Huh."
                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 2)  
                 elif E_SeenPeen == 10: 
-                    ch_e "[E_Like]put that away."               
+                    ch_e " put that away."               
                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 7)
                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 3)  
     

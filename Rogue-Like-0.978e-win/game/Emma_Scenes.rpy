@@ -588,9 +588,9 @@ label Emma_Morning:
                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 12)
                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 12)  
                         $ E_Blush = 2
-                        ch_e "Yeah, I. . [E_like]I had fun too."
+                        ch_e "Yeah, I. .  I had fun too."
                         $ E_Blush = 1
-                        ch_e "I wouldn't[E_like]mind doing it again."   
+                        ch_e "I wouldn't mind doing it again."   
                         $ E_Blush = 2
                         ch_e "You know, some other time. . . "
                         $ E_Blush = 1
@@ -707,7 +707,7 @@ label Emma_MorningWood: #Emma_Update
             "She pulls back with a pop."
             if Line == "question":
                     call EmmaFace("smile")
-                    ch_e "I wasn't[E_like]being subtle about it, [E_Petname]." 
+                    ch_e "I wasn't being subtle about it, [E_Petname]." 
             elif Line == "praise":
                     call EmmaFace("smile")
                     ch_e "Mmm, hehe."
@@ -1215,7 +1215,7 @@ label Emma_Key: #Emma_Update
             call Set_The_Scene
             call EmmaFace("bemused")
             $ Emma_Arms = 2
-            ch_e "So you've[E_like]been dropping by a lot lately, I figured you might want a key. . ."
+            ch_e "So you've been dropping by a lot lately, I figured you might want a key. . ."
             ch_p "Thanks."
             $ Emma_Arms = 1    
             $ Keys.append("Emma")
@@ -1489,7 +1489,7 @@ label Emma_BF: #Emma_Update
     call CleartheRoom("Emma")
     $ E_DailyActions.append("relationship")
     call EmmaFace("bemused", 1)
-    ch_e "So, [E_Petname], we've[E_like]been hanging for a while, right?"
+    ch_e "So, [E_Petname], we've been hanging for a while, right?"
     ch_e ". . ."
     $ E_Eyes = "sexy"
     menu:
@@ -1504,24 +1504,24 @@ label Emma_BF: #Emma_Update
     if E_SEXP >= 10:
         ch_e "I mean, I've gone further with you than I've ever been with anybody before. . ."
     if E_SEXP >= 15:
-        ch_e "You know[E_like]. . .in the {i}bedroom{/i}. . ."
+        ch_e "You know . . .in the {i}bedroom{/i}. . ."
     if "dating" in R_Traits and "dating?" in E_Traits:    
-        ch_e "I know you're kinda[E_like]Rogue's boyfriend and all. . . but she and I were talking and[E_like]. . ."
+        ch_e "I know you're kinda Rogue's boyfriend and all. . . but she and I were talking and . . ."
     elif "dating" in E_Traits:
-        ch_e "I know you're kinda[E_like]Rogue's boyfriend and all. . ."
+        ch_e "I know you're kinda Rogue's boyfriend and all. . ."
     if not E_Event[5]:
         ch_e "So, uhm. . ."
-        ch_e "It’s not like I[E_like]haven’t gone out with guys before."
-        ch_e "I just[E_like]..wow, this is so awkward.  I really like you a lot and. . ."
-        ch_e "I mean. . . do you wanna[E_like]be my boyfriend?"
-        ch_e "[E_Like]maybe we could make it official?"
+        ch_e "It’s not like I haven’t gone out with guys before."
+        ch_e "I just ..wow, this is so awkward.  I really like you a lot and. . ."
+        ch_e "I mean. . . do you wanna be my boyfriend?"
+        ch_e " maybe we could make it official?"
     elif "dating?" in E_Traits: 
-        ch_e "Rogue said it’d totally be cool if we were[E_like]dating, too." 
+        ch_e "Rogue said it’d totally be cool if we were dating, too." 
     elif "dating" in R_Traits: 
         ch_e "If you were okay with it. . . I’d still like to be your girlfriend, too."
     else:        
-        ch_e "I wish you weren’t[E_like]such a jerk sometimes, but still. . . I’m totally serious about this."
-        ch_e "I wanna be your girlfriend[E_like]officially."
+        ch_e "I wish you weren’t such a jerk sometimes, but still. . . I’m totally serious about this."
+        ch_e "I wanna be your girlfriend officially."
     $ E_Event[5] += 1
     menu: 
         extend ""
@@ -1532,7 +1532,7 @@ label Emma_BF: #Emma_Update
             "Emma wraps her arms around you and starts kissing you passionately."
             call EmmaFace("kiss") 
             $ E_Kissed += 1
-        "Uhm[E_like]okay.":
+        "Uhm okay.":
             $ E_Petnames.append("boyfriend")
             $ E_Traits.append("dating")
             $E_Brows = "confused"
@@ -1540,7 +1540,7 @@ label Emma_BF: #Emma_Update
             "Still, she must think it’s a good first step, at least, because she leans into you and gives you a hug."    
         "I'm with Rogue now." if "dating" in R_Traits:             
             call EmmaFace("sad",1)    
-            ch_e "I know.  I just[E_like]. . . I thought maybe you could go out with me, too, maybe?"
+            ch_e "I know.  I just . . . I thought maybe you could go out with me, too, maybe?"
             menu:
                 extend ""
                 "Yes.  Absolutely.":
@@ -1558,7 +1558,7 @@ label Emma_BF: #Emma_Update
         "Not really.":
             jump Emma_BF_Jerk
     call EmmaFace("sexy")    
-    ch_e "Now. . . boyfriend. . . how about you and I[E_like]celebrate, huh?"
+    ch_e "Now. . . boyfriend. . . how about you and I celebrate, huh?"
     $ Tempmod = 10
     call Emma_SexMenu
     $ Tempmod = 0
@@ -1566,22 +1566,22 @@ label Emma_BF: #Emma_Update
     
 label Emma_BF_Jerk:
     call EmmaFace("angry", 1)
-    ch_e "Fine![E_Like]. . .be that way!" 
+    ch_e "Fine! . . .be that way!" 
     $ Count = (20* E_Event[5])
     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 40)
     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, Count)
     if E_Event[5] >= 3:
         call EmmaFace("sad")
-        ch_e "Yeah?  Well. . .[E_like]I don’t care what you want!  We’re dating!  Deal."   
+        ch_e "Yeah?  Well. . . I don’t care what you want!  We’re dating!  Deal."   
         $ E_Petnames.append("boyfriend")
         $ E_Traits.append("dating")
         $ Achievements.append("I am not your Boyfriend!")
-        ch_e "I. . .uhm. . .think I need to[E_like]be alone for a little while."
+        ch_e "I. . .uhm. . .think I need to be alone for a little while."
         $ bg_current = "bg player"   
         call Set_The_Scene
         return        
     if E_Event[5] > 1:
-        ch_e "It was such a mistake asking you again.  You’re[E_like]still such a jerk!"          
+        ch_e "It was such a mistake asking you again.  You’re still such a jerk!"          
     $ Count = (50* E_Event[5])                                  #fix test to see if negatives can work here.
     $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -Count)
     ch_e "Get out, you big jerk!"
@@ -1619,16 +1619,16 @@ label Emma_Love: #Emma_Update
     $ E_Event[6] += 1
     if E_Event[6] == 1:
             if "dating" in E_Traits:
-                ch_e "We've[E_like]been together for a while now, and I've been thinking. . ."
+                ch_e "We've been together for a while now, and I've been thinking. . ."
             else:
-                ch_e "We've[E_like]know each other for a while now, and I've been thinking. . ."
-            ch_e "It's been[E_like]kinda hard for me to really get invested in anyone. . ."
+                ch_e "We've know each other for a while now, and I've been thinking. . ."
+            ch_e "It's been kinda hard for me to really get invested in anyone. . ."
             $ E_Eyes = "down"
-            ch_e ". . . to[E_like]be comfortable with who they are and be myself. . ."
+            ch_e ". . . to be comfortable with who they are and be myself. . ."
             $ E_Eyes = "sly"
             ch_e "I just feel like sometimes you. . ."
             $ E_Eyes = "side"
-            ch_e "and me[E_like] . ."
+            ch_e "and me  . ."
             call EmmaFace("perplexed", 2)
             $ E_Eyes = "surprised"
             ch_e "Never mind!"
@@ -1795,7 +1795,7 @@ label Emma_Love: #Emma_Update
                             $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -30) 
                             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 20)
                             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 10)  
-                            ch_e "But[E_like]not \"nothing\". . ."
+                            ch_e "But not \"nothing\". . ."
                         else:
                             $ Line = "awkward"
                     "Not really.":     
@@ -1924,7 +1924,7 @@ label Emma_Love_Redux:
             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 10)
             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 90, 10) 
             call EmmaFace("smile")    
-            ch_e "I[E_like]love you too!"
+            ch_e "I love you too!"
             if E_Event[6] < 25:             
                 call EmmaFace("sly")   
                 "She slugs you in the arm"
@@ -1950,7 +1950,7 @@ label Emma_Sub:     #Emma_Update
     call EmmaFace("bemused", 1)
     
     $ Line = 0
-    ch_e "So, uhm. . .you've really kinda[E_like]taken control in our relationship lately."
+    ch_e "So, uhm. . .you've really kinda taken control in our relationship lately."
     menu:    
         extend ""        
         "I guess. That's just kind of what comes naturally for me.":   
@@ -1972,7 +1972,7 @@ label Emma_Sub:     #Emma_Update
                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 10)
                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5)
                         call EmmaFace("angry")
-                        ch_e "I {i}was{/i} going to tell you I kinda liked it.  But I didn't think you'd be[E_like]a {i}jerk{/i} about it!" #(Loss of points)
+                        ch_e "I {i}was{/i} going to tell you I kinda liked it.  But I didn't think you'd be a {i}jerk{/i} about it!" #(Loss of points)
                         menu:        
                             extend ""
                             "Guess you don't know me so well, huh?":
@@ -2004,7 +2004,7 @@ label Emma_Sub:     #Emma_Update
                             call EmmaFace("sadside", 1)
                             $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -5)
                             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 10)                      
-                            ch_e "You don't have to do it[E_like]{i}all{/i} the time.  You could still be nice once in a while."
+                            ch_e "You don't have to do it {i}all{/i} the time.  You could still be nice once in a while."
                             menu:      
                                 extend ""
                                 "Whatever.  That's how it is.  Take it or leave it.":
@@ -2019,20 +2019,20 @@ label Emma_Sub:     #Emma_Update
                                         $ E_Love = Statupdate("Emma", "Love", E_Love, 95, 5)
                                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 3)
                                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5)
-                                        ch_e "Uhm. . .yeah.  It's[E_like]. . kinda hot."
+                                        ch_e "Uhm. . .yeah.  It's . . kinda hot."
                                 
                 "Yeah?  You think it's sexy?":
                             call EmmaFace("bemused", 2)
                             $ E_Eyes = "side"
                             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 5)
                             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 10)
-                            ch_e "Uhm. . .yeah.  It's[E_like]. . kinda hot."
+                            ch_e "Uhm. . .yeah.  It's . . kinda hot."
                         
                 "You sure you don't want me to back off a little?":  
                         call EmmaFace("startled", 1)
                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, -5)
                         menu:
-                            ch_e "Only if you think it might be[E_Like]weird. But I think it's kinda hot."
+                            ch_e "Only if you think it might be weird. But I think it's kinda hot."
                             "Only if you're okay with it.":
                                 call EmmaFace("bemused", 2)
                                 $ E_Love = Statupdate("Emma", "Love", E_Love, 95, 10)
@@ -2054,7 +2054,7 @@ label Emma_Sub:     #Emma_Update
     if not Line:
         call EmmaFace("bemused", 1)
         $ E_Eyes = "down"
-        ch_e "Cool.  So. . .just so you know. . .I don't mind[E_like]you being in control."
+        ch_e "Cool.  So. . .just so you know. . .I don't mind you being in control."
         if "256 Shades of Grey" in E_Inventory:
                 ch_e "Like in that '256 Shades of Grey' book."
         menu Emma_Sub_Choice:
@@ -2073,14 +2073,14 @@ label Emma_Sub:     #Emma_Update
                     call EmmaFace("sly", 1)
                     ch_e "You think I wouldn't read something you bought me?  I think you {i}maybe{/i} don't realize how much I like you."
                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5)
-                    ch_e "Well, I {i}did{/i} read it.  And. . .it turns out it kinda[E_like]. . {i}really{/i} turned me on."
-                    ch_e "So. . .what d'you think?  Think[E_like]maybe you'd like that?"
+                    ch_e "Well, I {i}did{/i} read it.  And. . .it turns out it kinda . . {i}really{/i} turned me on."
+                    ch_e "So. . .what d'you think?  Think maybe you'd like that?"
                     $ Line = "grey"
                     jump Emma_Sub_Choice
 
     if not Line:
         call EmmaFace("smile", 1)
-        ch_e "Awesome.  So. . .if you wanted me to, I could[E_like]call you {i}sir{/i} or something."
+        ch_e "Awesome.  So. . .if you wanted me to, I could call you {i}sir{/i} or something."
         call EmmaFace("sly", 2)
         ch_e "Think you'd like that?"        
         $ E_Blush = 1  
@@ -2098,7 +2098,7 @@ label Emma_Sub:     #Emma_Update
                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -5)
                 call EmmaFace("sadside", 1)
                 menu:
-                    ch_e ". . . Well. . . maybe you can still kinda[E_Like]be in control, anyway?"
+                    ch_e ". . . Well. . . maybe you can still kinda be in control, anyway?"
                     "I like that idea.":
                             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 10)
                             call EmmaFace("smile", 1)
@@ -2124,9 +2124,9 @@ label Emma_Sub:     #Emma_Update
             "Emma phases through the floor in a huff, leaving you alone."
     elif Line == "embarrassed":
             call EmmaFace("sadside", 2)
-            ch_e "Oh!  Uhm, yeah! [E_Like]I mean. . .."
+            ch_e "Oh!  Uhm, yeah!  I mean. . .."
             $ E_Mouth = "smile"
-            ch_e "I was just kidding.  I[E_like]. . yeah.  That's kinda weird."
+            ch_e "I was just kidding.  I . . yeah.  That's kinda weird."
             ch_e "I should go.  I think I hear Professor Xavier calling me."
             $ E_Blush = 1            
             hide Emma_Sprite with easeoutbottom                     
@@ -2138,7 +2138,7 @@ label Emma_Sub:     #Emma_Update
 label Emma_Sub_Asked: #Emma_Update   
     $ Line = 0
     call EmmaFace("sadside", 1)
-    ch_e "Yeah.  And I also[E_like]remember what a {i}jerk{/i} you were to me about it."
+    ch_e "Yeah.  And I also remember what a {i}jerk{/i} you were to me about it."
     menu:
         extend ""
         "Well, I wanted to say I was sorry.  And I was hoping maybe we could give it another shot.":
@@ -2149,7 +2149,7 @@ label Emma_Sub_Asked: #Emma_Update
                         #if it's instead about earning the "sir" title, and her approval is over 500 
                         pass
                 else: #if it failed both those things,    
-                        ch_e "Well maybe {i}I'm{/i}[E_like]over that. . ." #Failed again. :(       
+                        ch_e "Well maybe {i}I'm{/i} over that. . ." #Failed again. :(       
                         $ Line = "rude"
                         
                 if Line != "rude":    
@@ -2157,7 +2157,7 @@ label Emma_Sub_Asked: #Emma_Update
                         call EmmaFace("sly", 1)
                         ch_e "Well. . .okay.  I {i}did{/i} think that was pretty hot.  Also, you're super-cute when you apologize." 
                         #Blushing expression.  Emma kisses player and big addition of points
-                        ch_e "Okay.  We can[E_like]try again." 
+                        ch_e "Okay.  We can try again." 
 
         "Listen. . .I know it's what you want.  Do you want to try again, or not?":
                 call EmmaFace("bemused", 1)
@@ -2168,9 +2168,9 @@ label Emma_Sub_Asked: #Emma_Update
                 else: 
                         #if it's instead about earning the "sir" title, and her approval is over 500
                         call EmmaFace("sadside", 1) 
-                        ch_e "You're[E_like]totally impossible."
+                        ch_e "You're totally impossible."
                         $ E_Eyes = "squint"
-                        ch_e "Maybe you're right.  But I still think you should[E_like] apologize for being a jerk to me."
+                        ch_e "Maybe you're right.  But I still think you should  apologize for being a jerk to me."
                         menu:
                             extend ""
                             "Okay, I'm sorry I was mean about it.":
@@ -2205,7 +2205,7 @@ label Emma_Sub_Asked: #Emma_Update
                                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, -10)
                                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -15)
                                     ch_e "Y'know, if you're gonna throw that in my face, forget it."
-                                    ch_e "I should've[E_like]expected you'd be like that."
+                                    ch_e "I should've expected you'd be like that."
                                     $ Line = "rude"
     
     $ E_RecentActions.append("asked sub")   
@@ -2251,12 +2251,12 @@ label Emma_Master:  #Emma_Update
     $ Line = 0
     call EmmaFace("bemused", 1)
     ch_e "[E_Petname], if you don't mind me saying so. . ."
-    ch_e "I think having you be[E_like]in control of our relationship is working out pretty awesome."
+    ch_e "I think having you be in control of our relationship is working out pretty awesome."
     menu:
         extend ""
         "I like it too.":
                 call EmmaFace("sly", 1)
-                ch_e "Cool.  Maybe we could[E_like]kick it up a notch?"
+                ch_e "Cool.  Maybe we could kick it up a notch?"
                 menu:
                     extend ""
                     "Nah.  This is just about perfect.":
@@ -2267,9 +2267,9 @@ label Emma_Master:  #Emma_Update
                             $ Line = "fail"                      
                     "What'd you have in mind?":
                             $ E_Eyes = "side"
-                            ch_e "I dunno. I was thinking[E_like]maybe I could start calling you. . . {i}master{/i}?"
+                            ch_e "I dunno. I was thinking maybe I could start calling you. . . {i}master{/i}?"
                             $ E_Eyes = "squint"
-                            ch_e "Would you like that?  I think that'd be kinda[E_like]hot."
+                            ch_e "Would you like that?  I think that'd be kinda hot."
                             menu:
                                 extend ""
                                 "Oh, yeah.  I'd like that.":
@@ -2294,7 +2294,7 @@ label Emma_Master:  #Emma_Update
                             $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -10)
                             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, -50)
                             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -15)
-                            ch_e "Oh.  Sorry.  I guess I got[E_like]carried away with it."
+                            ch_e "Oh.  Sorry.  I guess I got carried away with it."
                             $ E_Blush = 1
                             $ Line = "embarrassed"
                             
@@ -2325,7 +2325,7 @@ label Emma_Master:  #Emma_Update
                             $ E_Love = Statupdate("Emma", "Love", E_Love, 200, 10)
                             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 10)
                             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5)
-                            ch_e "Oh, okay.  Just. . .try not to be so[E_like]mean about it, 'kay?" 
+                            ch_e "Oh, okay.  Just. . .try not to be so mean about it, 'kay?" 
 
         "Not me.  It's kind of creepy.":
                     call EmmaFace("sad", 2)
@@ -2367,7 +2367,7 @@ label Emma_Sexfriend:   #Emma_Update
     call Taboo_Level
     $ Line = 0
     call EmmaFace("bemused", 1)
-    ch_e "So, [E_Petname]. . .you[E_like]got a second?" #blushing expression
+    ch_e "So, [E_Petname]. . .you got a second?" #blushing expression
     menu:
             extend ""
             "Not really.":
@@ -2379,7 +2379,7 @@ label Emma_Sexfriend:   #Emma_Update
 
             "This doesn't sound good.":
                 call EmmaFace("perplexed", 1)
-                ch_e "I promise.  It's nothing[E_like]bad." 
+                ch_e "I promise.  It's nothing bad." 
                     
             "Yeah.  What's up?":
                 pass
@@ -2397,7 +2397,7 @@ label Emma_Sexfriend:   #Emma_Update
                             ch_e "I was {i}really{/i} hoping you'd say that [E_Petname]." #Blushing expression
                 
                         "Really?":
-                            ch_e "Uhm. . . [E_like]yeah.  I really do." #Blushing expression
+                            ch_e "Uhm. . .  yeah.  I really do." #Blushing expression
 
                         "Ugh.  Gross":
                             call EmmaFace("angry", 1)
@@ -2409,7 +2409,7 @@ label Emma_Sexfriend:   #Emma_Update
                             
             elif ApprovalCheck("Emma", 1000, "LI"): 
                     call EmmaFace("sexy", 1)
-                    ch_e "I just wanted to tell you. . .I think you're[E_like]kinda cute." 
+                    ch_e "I just wanted to tell you. . .I think you're kinda cute." 
                     menu:
                         extend ""
                         "That's really nice of you to say.":
@@ -2429,11 +2429,11 @@ label Emma_Sexfriend:   #Emma_Update
                     $ E_Mouth = "smile"
                     $ E_Brows = "sad"
                     $ E_Eyes = "side"
-                    ch_e "This is gonna sound[E_like]really weird."
+                    ch_e "This is gonna sound really weird."
                     menu:
                         extend ""
                         "Well, you've got me intrigued.  Now you {i}have{/i} to tell me.":
-                            ch_e "Promise you won't think[E_like]{i}badly{/i}of me?"  #Nervous expression
+                            ch_e "Promise you won't think {i}badly{/i}of me?"  #Nervous expression
                             menu:
                                 extend ""
                                 "Emma. . . I really like you.  I promise.":
@@ -2453,11 +2453,11 @@ label Emma_Sexfriend:   #Emma_Update
 
                         "Uhm, I think I've had my fill of {i}weird{/i}, thanks":
                             call EmmaFace("angry",1)
-                            ch_e "Fine. [E_Like]whatever."
+                            ch_e "Fine.  whatever."
                             $ Line = "rude"
                                 
     if not Line: #again, if the Line has been changed to "rude" or "embarrassed" then it skips past here.                          
-            ch_e "Anyway. . . I was[E_like]kinda thinking. . . we get along pretty well, right?"
+            ch_e "Anyway. . . I was kinda thinking. . . we get along pretty well, right?"
             menu:
                 extend ""
                 "Right. . . ":
@@ -2470,7 +2470,7 @@ label Emma_Sexfriend:   #Emma_Update
                         $ Line = "embarrassed"
                     
     if not Line:                
-            ch_e "And we've[E_like]known each other for a little while, right?"
+            ch_e "And we've known each other for a little while, right?"
             menu:
                 extend ""
                 "Right. . . ":
@@ -2482,7 +2482,7 @@ label Emma_Sexfriend:   #Emma_Update
                         ch_e "Sorry.  I knew this was a mistake." 
                         $ Line = "embarrassed"
     if not Line:            
-            ch_e "Well. . . I was just kinda thinking. . . [E_like]we could take our relationship a little further, if you wanted to."
+            ch_e "Well. . . I was just kinda thinking. . .  we could take our relationship a little further, if you wanted to."
             menu:
                 extend ""
                 "You mean. . . like, being {i}friends with benefits{/i}?":
@@ -2503,7 +2503,7 @@ label Emma_Sexfriend:   #Emma_Update
                                     $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -30) 
                                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 10)
                                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, -40)  
-                                    ch_e "You're the biggest asshole[E_like]ever, [E_Petname]!" #Angry expression.  HUGE loss of points
+                                    ch_e "You're the biggest asshole ever, [E_Petname]!" #Angry expression.  HUGE loss of points
                                     $ Line = "rude"
 
                 "Uhm, to be honest, I'd rather not.":
@@ -2511,7 +2511,7 @@ label Emma_Sexfriend:   #Emma_Update
                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 15)
                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, -15)  
                         ch_e "Oh.  Okay."  #Sad expression
-                        ch_e "I[E_like]think I should go now.  I've got[E_like]stuff to do."
+                        ch_e "I think I should go now.  I've got stuff to do."
                         $ Line = "sad"
 
     if Line == "rude":    
@@ -2669,7 +2669,7 @@ label Emma_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the other
                 else:
                     $ Line = "angry"
         "I have no idea what you're talking about.":
-                ch_e "I can't believe you just said that. I gave you[E_like]a lot more credit than that."
+                ch_e "I can't believe you just said that. I gave you a lot more credit than that."
                 ch_p "[E_Pet], I'm being serious. Why're you so upset?"
                 if ApprovalCheck("Emma", 900, "LO"):
                     $ Resolution += 1
@@ -2680,7 +2680,7 @@ label Emma_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the other
                 call EmmaFace("sad",2)                
                 $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -10) 
                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 40, 5, 1) 
-                ch_e "I didn't like what happened already. How much[E_like]worse can it get?"
+                ch_e "I didn't like what happened already. How much worse can it get?"
                 ch_p "You'd better start making some sense, or you're gonna find out."
                 if ApprovalCheck("Emma", 500, "O"):
                     $ Resolution += 1  
@@ -2694,10 +2694,10 @@ label Emma_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the other
             #this section only triggers if you didn't trigger the "angry" response in the previous section
             call EmmaFace("angry",2)
             if Other == "Rogue":
-                ch_e "I {i}saw{/i} you and Rogue! I can't[E_like]believe you'd do that, [E_Petname]."
+                ch_e "I {i}saw{/i} you and Rogue! I can't believe you'd do that, [E_Petname]."
             else:
-                ch_e "I {i}saw{/i} you with her! I can't[E_like]believe you'd do that, [E_Petname]."
-            ch_e "I thought we had something. . . [E_like]{i}special{/i} going on."
+                ch_e "I {i}saw{/i} you with her! I can't believe you'd do that, [E_Petname]."
+            ch_e "I thought we had something. . .  {i}special{/i} going on."
             menu:
                 extend ""
                 "I'm sorry. . . ":
@@ -2719,15 +2719,15 @@ label Emma_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the other
                                             $ E_Love = Statupdate("Emma", "Love", E_Love, 200, 5) 
                                             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5)   
                                             call EmmaFace("embarrassed")
-                                            ch_e "[E_Like]. . . really?"
+                                            ch_e " . . . really?"
                                             menu:
                                                 extend ""
-                                                "[E_Like]really.":
+                                                " really.":
                                                         call EmmaFace("embarrassed")
                                                         if Other == "Rogue":
-                                                            ch_e "Then. . .[E_like]why did you do that with {i}Rogue?{/i} You had to know that would[E_like]hurt me."
+                                                            ch_e "Then. . . why did you do that with {i}Rogue?{/i} You had to know that would hurt me."
                                                         else:
-                                                            ch_e "Then. . .[E_like]why did you do that with {i}her?{/i} You had to know that would[E_like]hurt me."                                                        
+                                                            ch_e "Then. . . why did you do that with {i}her?{/i} You had to know that would hurt me."                                                        
                                                         menu:
                                                             extend ""
                                                             "It was a mistake. And I promise I'll never do it again.":
@@ -2735,9 +2735,9 @@ label Emma_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the other
                                                                     $ E_Love = Statupdate("Emma", "Love", E_Love, 200, 5)
                                                                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5)   
                                                                     call EmmaFace("happy",2)
-                                                                    ch_e "Okay. I understand. Just. . .[E_like]remember how much I care about you, 'kay?"
-                                                                    ch_e "I can forgive you[E_like]this time."
-                                                                    ch_e "Because I'm[E_like]in love with you, too."
+                                                                    ch_e "Okay. I understand. Just. . . remember how much I care about you, 'kay?"
+                                                                    ch_e "I can forgive you this time."
+                                                                    ch_e "Because I'm in love with you, too."
                                                                     call E_Kissing_Launch("kissing")
                                                                     call E_Pos_Reset
                                                             "I was trying to maybe include her in what we have going.":
@@ -2779,7 +2779,7 @@ label Emma_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the other
             # Maybe threesome?            
             if ApprovalCheck("Emma", 1250):
                     call EmmaFace("confused")
-                    ch_e "What're you even[E_like]{i}talking{/i} about?"
+                    ch_e "What're you even {i}talking{/i} about?"
                     if Other == "Rogue":
                         ch_p "Look. . .be totally honest with me for a second. Rogue's your best friend, right?"
                     else:
@@ -2797,9 +2797,9 @@ label Emma_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the other
                         ch_p "Thought about what it might be like if we invited her into what we have together."                    
                     if ApprovalCheck("Emma", 1500) and Resolution >= 3:
                             call EmmaFace("embarrassed")
-                            ch_e "You mean[E_like]. . .a {i}threesome{/i}?"
+                            ch_e "You mean . . .a {i}threesome{/i}?"
                             call EmmaFace("sly")
-                            ch_e "I can't believe I'm saying this but. . . I'm[E_like]vaguely intrigued."
+                            ch_e "I can't believe I'm saying this but. . . I'm vaguely intrigued."
                             if Other == "Rogue":
                                 ch_e "Assuming I'm interested. . . how're you going to convince Rogue?"
                             else:
@@ -2807,12 +2807,12 @@ label Emma_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the other
                             ch_p "If you see us together again, just play it cool."
                             ch_p "Make sure she notices that you're watching us, but don't give her the impression it puts you off."
                             call EmmaFace("sly",1)
-                            ch_e ". . . which should[E_like]make her wonder what's up."
+                            ch_e ". . . which should make her wonder what's up."
                             ch_p "Right. Eventually, she'll ask me what our arrangement is."
                             ch_e "By then, with any luck, she'll be comfortable enough with me that I can ask her how she feels about it."
                             call EmmaFace("sly",2)
                             ch_e "Gotta admit, [E_Petname]. . . you're pretty smooth."
-                            ch_e "Consider me[E_like]on board with that plan."
+                            ch_e "Consider me on board with that plan."
                             ch_e "Just be sure to be careful with her. She's still my friend."
                             #have Emma kiss the Player here.
                             ch_e "And remember, you're still {i}my{/i} guy."                            
@@ -2825,9 +2825,9 @@ label Emma_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the other
                     #then this section gets skipped. 
                     call EmmaFace("angry")
                     if Other == "Rogue":
-                        ch_e "So, you're telling me[E_like]you being with Rogue like that was your way of seeing if I'd be up for a threesome?"
+                        ch_e "So, you're telling me you being with Rogue like that was your way of seeing if I'd be up for a threesome?"
                     else:
-                        ch_e "So, you're telling me[E_like]you being with her like that was your way of seeing if I'd be up for a threesome?"
+                        ch_e "So, you're telling me you being with her like that was your way of seeing if I'd be up for a threesome?"
                     ch_p "Pretty much. I. . .take it you're not down with that?"
                     $ Line = "angry"
             # End "maybe threesome?"
