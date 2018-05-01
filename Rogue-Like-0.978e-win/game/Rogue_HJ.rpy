@@ -959,7 +959,7 @@ label RTJ_Cycle:
                                 "You help her with the armbinder, making sure she can't move her arms"
                                 #"And add a blindfold so she can't see a thing"
                                 #$ R_Blindfold = 1
-                                $ R_Over = "bondage cuffs"
+                                $ R_Over = "bondage"
                                 #$ R_Chest = "bustier bra"
                                 #$ R_Panties = "zipper panties"
                                 #$ R_Outfit = "zipper bondage"
@@ -1027,7 +1027,7 @@ label RTJ_Cycle:
                                 "You remove Rogue's gag"
                                 $ R_Gag = 0
 
-                        "How about you put that bondage outfit" if R_Bondage and R_Over != "bondage cuffs":
+                        "How about you put that bondage outfit" if R_Bondage and R_Over != "bondage":
                             call RogueFace("sexy", 1) 
                             #if R_Over or R_Chest or R_Panties or R_Legs:
                             #    "She glances up at you as her clothes drop to the ground."
@@ -1037,6 +1037,24 @@ label RTJ_Cycle:
                             #$ R_Panties = 0
                             "She starts dressing the new outfit"
                             "You help her with the suit, making sure she can't move her arms"
+                            #"And add a blindfold so she can't see a thing"
+                            #$ R_Blindfold = 1
+                            $ R_Over = "bondage"
+                            #$ R_Chest = "bustier bra"
+                            #$ R_Panties = "zipper panties"
+                            #$ R_Outfit = "zipper bondage"
+                            #$ R_Shame = R_OutfitShame[1]
+
+                        "How about you put that bondage cuffs" if R_Bondage and R_Over != "bondage cuffs":
+                            call RogueFace("sexy", 1) 
+                            #if R_Over or R_Chest or R_Panties or R_Legs:
+                            #    "She glances up at you as her clothes drop to the ground."
+                            #$ R_Over = 0
+                            #$ R_Legs = 0
+                            #$ R_Chest = 0
+                            #$ R_Panties = 0
+                            "She starts dressing the new outfit"
+                            "You help her with the binder, making sure she can't move her arms"
                             #"And add a blindfold so she can't see a thing"
                             #$ R_Blindfold = 1
                             $ R_Over = "bondage cuffs"
@@ -1054,7 +1072,7 @@ label RTJ_Cycle:
                             #$ R_Chest = 0
                             #$ R_Panties = 0
                             #"She starts dressing the new outfit"
-                            "You help her remove the suit"
+                            "You help her remove the binder"
                             #"And add a blindfold so she can't see a thing"
                             #$ R_Blindfold = 1
                             $ R_Over = 0

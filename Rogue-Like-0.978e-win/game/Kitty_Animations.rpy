@@ -432,6 +432,11 @@ image Kitty_Head:
             "K_Hair == 'wet'", "images/KittySprite/Kitty_Sprite_Hair_Wet.png",
             "True and K_HairColor == 'black'", "images/KittySprite/Kitty_Sprite_HairBlack_Evo.png",
             "True", "images/KittySprite/Kitty_Sprite_Hair_Evo.png",
+            ),   
+        (0,0), ConditionSwitch(
+            "K_Headband == 'pink'", "images/KittySprite/Kitty_Catband_Pink.png",
+            "K_Headband == 'black'", "images/KittySprite/Kitty_Catband_Black.png",
+            "True", Null(),
             ),     
         (0,0), ConditionSwitch(
             "K_Water", "images/KittySprite/Kitty_Sprite_Wet_Head.png",
@@ -1957,6 +1962,11 @@ image Kitty_BJ_Head:                                                            
             "K_Hair == 'evo'", "images/KittyBJFace/Kitty_BJ_Hair_Evo.png",
             "True", Null(),
             ),
+        (0,0), ConditionSwitch(
+            "K_Headband == 'pink'", "images/KittyBJFace/Kitty_BJ_Pink_Headband.png",
+            "K_Headband == 'black'", "images/KittyBJFace/Kitty_BJ_Black_Headband.png",
+            "True", Null(),
+            ),   
         (0,0), ConditionSwitch(                                                                 
             #Hair water overlay
             "not K_Water", Null(),            
@@ -2176,6 +2186,11 @@ image Kitty_Selfie:
             "K_Hair == 'evo'", "images/KittySelfie/Kitty_selfie_hair_evo.png",
             "True", Null(),
             ),
+        (0,0), ConditionSwitch(
+            "K_Headband == 'pink'", "images/KittyBJFace/Kitty_BJ_Pink_Headband.png",
+            "K_Headband == 'black'", "images/KittyBJFace/Kitty_BJ_Black_Headband.png",
+            "True", Null(),
+            ),   
 
         (0,0), "images/KittySelfie/Kitty_selfie_cellphone.png",
         )

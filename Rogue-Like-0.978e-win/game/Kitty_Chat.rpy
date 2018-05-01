@@ -4331,6 +4331,36 @@ label Kitty_Clothes:
                 "Go back":
                     jump Kitty_Clothes_Misc
 
+        "Let's talk about your headband":
+            menu Kitty_Clothes_Misc_Headband:                                                                                                                    #Misc
+        
+                "You look good with the black kitty headband." if K_Headband != "black":
+                    if ApprovalCheck("Kitty", 600):
+                        ch_k "Like this?"
+                        $ K_Headband = "black"
+                    else:
+                        ch_k "Yeah, I know that."
+                    jump Kitty_Clothes_Misc_Headband
+
+                "You look good with  the pink kitty headband." if K_Headband != "pink":
+                    if ApprovalCheck("Kitty", 600):
+                        ch_k "Like this?"
+                        $ K_Headband = "pink"
+                    else:
+                        ch_k "Yeah, I know that."
+                    jump Kitty_Clothes_Misc_Headband
+
+                "You look good without the headband." if K_Headband == "black" or K_Headband == "pink":
+                    if ApprovalCheck("Kitty", 600):
+                        ch_k "Like this?"
+                        $ K_Headband = 0
+                    else:
+                        ch_k "Yeah, I know that."
+                    jump Kitty_Clothes_Misc_Headband
+
+                "Go back":
+                    jump Kitty_Clothes_Misc
+
         "Let's talk about your tan":
             menu Kitty_Clothes_Misc_Tan:
 
