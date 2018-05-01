@@ -3609,10 +3609,14 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                             #if Rogue is there, shift her to second position
                             $ R_SpriteLoc = StageRight
                             $ RogueLayer = 75
-                        if E_Loc == bg_current:
-                            #if Emma is there, shift her to second position
-                            $ E_SpriteLoc = StageRight
-                            $ EmmaLayer = 75
+                            if E_Loc == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ E_SpriteLoc = StageFarRight
+                                $ EmmaLayer = 50
+                        elif E_Loc == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ E_SpriteLoc = StageRight
+                                $ EmmaLayer = 75
                         #and move Kitty to first position
                         $ K_SpriteLoc = StageCenter
                         $ KittyLayer = 100
@@ -3633,7 +3637,11 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                             #if Rogue is there, shift her to second position
                             $ R_SpriteLoc = StageRight
                             $ RogueLayer = 75
-                        if K_Loc == bg_current:
+                            if K_Loc == bg_current:
+                                #if Kitty is there, shift her to third position
+                                $ K_SpriteLoc = StageFarRight
+                                $ KittyLayer = 50
+                        elif K_Loc == bg_current:
                             #if Kitty is there, shift her to second position
                             $ K_SpriteLoc = StageRight
                             $ KittyLayer = 75
@@ -3657,7 +3665,11 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                             #if Kitty is there, shift her to second position
                             $ K_SpriteLoc = StageRight
                             $ KittyLayer = 75
-                        if E_Loc == bg_current:
+                            if E_Loc == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ E_SpriteLoc = StageFarRight
+                                $ EmmaLayer = 50
+                        elif E_Loc == bg_current:
                             #if Emma is there, shift her to second position
                             $ E_SpriteLoc = StageRight
                             $ EmmaLayer = 75
