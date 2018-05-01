@@ -385,10 +385,15 @@ image Kitty_Head:
             "True", "images/KittySprite/Kitty_Sprite_Brows_Normal.png",
             ),
         (0,0), ConditionSwitch(
+            "K_Mouth == 'normal' and K_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_TMouth_Normal.png",
             "K_Mouth == 'normal'", "images/KittySprite/Kitty_Sprite_Mouth_Normal.png",
+            "K_Mouth == 'lipbite' and K_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_TMouth_Lipbite.png",
             "K_Mouth == 'lipbite'", "images/KittySprite/Kitty_Sprite_Mouth_Lipbite.png",
+            "K_Mouth == 'kiss' and K_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_TMouth_Kiss.png",
             "K_Mouth == 'kiss'", "images/KittySprite/Kitty_Sprite_Mouth_Kiss.png",
+            "K_Mouth == 'sad' and K_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_TMouth_Sad.png",
             "K_Mouth == 'sad'", "images/KittySprite/Kitty_Sprite_Mouth_Sad.png",
+            "K_Mouth == 'smile' and K_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_TMouth_Smile.png",
             "K_Mouth == 'smile'", "images/KittySprite/Kitty_Sprite_Mouth_Smile.png",
             "K_Mouth == 'surprised'", "images/KittySprite/Kitty_Sprite_Mouth_Surprised.png",
             "K_Mouth == 'tongue'", "images/KittySprite/Kitty_Sprite_Mouth_Tongue.png",
@@ -871,13 +876,18 @@ image Kitty_Sex_Pussy:
     # This is the visual for her pussy during the Speed 0 mode (static).     
     contains:
             # The background plate of her pussy            
-            ConditionSwitch(    
+            ConditionSwitch(
+                "P_Sprite and P_Cock == 'in' and Speed >= 2 and K_Tan == 'tan3'", "images/KittySex/Kitty_Sex_T3Pussy_Fucking.png",
                 "P_Sprite and P_Cock == 'in' and Speed >= 2", "images/KittySex/Kitty_Sex_Pussy_Fucking.png",
+                "P_Sprite and P_Cock == 'in' and Speed and K_Tan == 'tan3'", "images/KittySex/Kitty_Sex_T3Pussy_Open.png",
                 "P_Sprite and P_Cock == 'in' and Speed", "images/KittySex/Kitty_Sex_Pussy_Open.png",
-                "P_Sprite and P_Cock == 'in'", "images/KittySex/Kitty_Sex_Pussy_Closed.png",    
-                "Trigger == 'lick pussy'", "images/KittySex/Kitty_Sex_Pussy_Open.png",   
+                "P_Sprite and P_Cock == 'in' and K_Tan == 'tan3'", "images/KittySex/Kitty_Sex_T3Pussy_Closed.png",
+                "P_Sprite and P_Cock == 'in'", "images/KittySex/Kitty_Sex_Pussy_Closed.png",
+                "Trigger == 'lick pussy' and K_Tan == 'tan3'", "images/KittySex/Kitty_Sex_T3Pussy_Open.png",
+                "Trigger == 'lick pussy'", "images/KittySex/Kitty_Sex_Pussy_Open.png",
+                "True and K_Tan == 'tan3'", "images/KittySex/Kitty_Sex_T3Pussy_Closed.png",
                 "True", "images/KittySex/Kitty_Sex_Pussy_Closed.png",
-                )
+                )    
     contains:
             # The background plate of her pussy            
             ConditionSwitch(    
@@ -1869,12 +1879,18 @@ image Kitty_BJ_Head:                                                            
             "Speed == 3", "images/KittyBJFace/Kitty_BJ_Mouth_Sucking.png", #sucking
             "Speed == 4", "images/KittyBJFace/Kitty_BJ_Mouth_Sucking.png", #deepthroat     
             "Speed == 6", "images/KittyBJFace/Kitty_BJ_Mouth_Sucking.png", #cumming        
+            "K_Mouth == 'normal' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TMouth_Smile.png",
             "K_Mouth == 'normal'", "images/KittyBJFace/Kitty_BJ_Mouth_Smile.png",
+            "K_Mouth == 'lipbite' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TMouth_Lipbite.png",
             "K_Mouth == 'lipbite'", "images/KittyBJFace/Kitty_BJ_Mouth_Lipbite.png",
             "K_Mouth == 'sucking'", "images/KittyBJFace/Kitty_BJ_Mouth_Sucking.png",            
+            "K_Mouth == 'kiss' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TMouth_Kiss.png",
             "K_Mouth == 'kiss'", "images/KittyBJFace/Kitty_BJ_Mouth_Kiss.png",
+            "K_Mouth == 'sad' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TMouth_Sad.png",
             "K_Mouth == 'sad'", "images/KittyBJFace/Kitty_BJ_Mouth_Sad.png",
-            "K_Mouth == 'smile'", "images/KittyBJFace/Kitty_BJ_Mouth_Smile.png",            
+            "K_Mouth == 'smile' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TMouth_Smile.png",
+            "K_Mouth == 'smile'", "images/KittyBJFace/Kitty_BJ_Mouth_Smile.png",
+            "K_Mouth == 'grimace' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TMouth_Smile.png",
             "K_Mouth == 'grimace'", "images/KittyBJFace/Kitty_BJ_Mouth_Smile.png",
             "K_Mouth == 'surprised'", "images/KittyBJFace/Kitty_BJ_Mouth_Surprised.png",          
             "K_Mouth == 'tongue'", "images/KittyBJFace/Kitty_BJ_Mouth_Tongue.png",    
@@ -1908,10 +1924,15 @@ image Kitty_BJ_Head:                                                            
             ),       
         (0,0), ConditionSwitch(                                                                         
             #Brows
+            "K_Brows == 'normal' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TBrows_Normal.png",
             "K_Brows == 'normal'", "images/KittyBJFace/Kitty_BJ_Brows_Normal.png",
+            "K_Brows == 'angry' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TBrows_Angry.png",
             "K_Brows == 'angry'", "images/KittyBJFace/Kitty_BJ_Brows_Angry.png",
+            "K_Brows == 'sad' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TBrows_Sad.png",
             "K_Brows == 'sad'", "images/KittyBJFace/Kitty_BJ_Brows_Sad.png",
+            "K_Brows == 'surprised' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TBrows_Surprised.png",
             "K_Brows == 'surprised'", "images/KittyBJFace/Kitty_BJ_Brows_Surprised.png",        
+            "K_Brows == 'confused' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TBrows_Confused.png",
             "K_Brows == 'confused'", "images/KittyBJFace/Kitty_BJ_Brows_Confused.png",
             "True", "images/KittyBJFace/Kitty_BJ_Brows_Normal.png",
             ),
@@ -2099,12 +2120,18 @@ image Kitty_Selfie:
         
         (0,0), ConditionSwitch(                                                                         
             #Mouth
+            "K_Mouth == 'normal' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TMouth_Smile.png",
             "K_Mouth == 'normal'", "images/KittyBJFace/Kitty_BJ_Mouth_Smile.png",
+            "K_Mouth == 'lipbite' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TMouth_Lipbite.png",
             "K_Mouth == 'lipbite'", "images/KittyBJFace/Kitty_BJ_Mouth_Lipbite.png",
             "K_Mouth == 'sucking'", "images/KittyBJFace/Kitty_BJ_Mouth_Sucking.png",            
+            "K_Mouth == 'kiss' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TMouth_Kiss.png",
             "K_Mouth == 'kiss'", "images/KittyBJFace/Kitty_BJ_Mouth_Kiss.png",
+            "K_Mouth == 'sad' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TMouth_Sad.png",
             "K_Mouth == 'sad'", "images/KittyBJFace/Kitty_BJ_Mouth_Sad.png",
-            "K_Mouth == 'smile'", "images/KittyBJFace/Kitty_BJ_Mouth_Smile.png",            
+            "K_Mouth == 'smile' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TMouth_Smile.png",
+            "K_Mouth == 'smile'", "images/KittyBJFace/Kitty_BJ_Mouth_Smile.png",
+            "K_Mouth == 'grimace' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TMouth_Smile.png",
             "K_Mouth == 'grimace'", "images/KittyBJFace/Kitty_BJ_Mouth_Smile.png",
             "K_Mouth == 'surprised'", "images/KittyBJFace/Kitty_BJ_Mouth_Surprised.png",          
             "K_Mouth == 'tongue'", "images/KittyBJFace/Kitty_BJ_Mouth_Tongue.png",    
@@ -2113,10 +2140,15 @@ image Kitty_Selfie:
    
         (0,0), ConditionSwitch(                                                                         
             #Brows
+            "K_Brows == 'normal' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TBrows_Normal.png",
             "K_Brows == 'normal'", "images/KittyBJFace/Kitty_BJ_Brows_Normal.png",
+            "K_Brows == 'angry' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TBrows_Angry.png",
             "K_Brows == 'angry'", "images/KittyBJFace/Kitty_BJ_Brows_Angry.png",
+            "K_Brows == 'sad' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TBrows_Sad.png",
             "K_Brows == 'sad'", "images/KittyBJFace/Kitty_BJ_Brows_Sad.png",
+            "K_Brows == 'surprised' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TBrows_Surprised.png",
             "K_Brows == 'surprised'", "images/KittyBJFace/Kitty_BJ_Brows_Surprised.png",        
+            "K_Brows == 'confused' and K_Tan == 'tan3'", "images/KittyBJFace/Kitty_BJ_TBrows_Confused.png",
             "K_Brows == 'confused'", "images/KittyBJFace/Kitty_BJ_Brows_Confused.png",
             "True", "images/KittyBJFace/Kitty_BJ_Brows_Normal.png",
             ),
