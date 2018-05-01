@@ -3,6 +3,8 @@
 label Kitty_Chat:
     call KittyFace    
     call Shift_Focus("Kitty")
+    call Change_Focus("Kitty")
+    
     if K_Loc != bg_current:
                 show Cellphone at SpriteLoc(StageLeft)
     else:

@@ -3,6 +3,8 @@
 label Rogue_Chat:
     call RogueFace      
     call Shift_Focus("Rogue")
+    call Change_Focus("Rogue")
+
     if R_Loc != bg_current:
                 show Cellphone at SpriteLoc(StageLeft)
     else:

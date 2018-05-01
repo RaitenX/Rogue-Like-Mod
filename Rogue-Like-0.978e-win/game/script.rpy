@@ -3601,7 +3601,83 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
         
         
         
-label Shift_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like Shift_Focus("Kitty"), changes the focus character and relative default positions
+label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus("Kitty"), changes the focus character and relative default positions
+        if Chr == "Kitty":
+                if K_Loc == bg_current:
+                        #If Kitty is where you're at. . .
+                        if R_Loc == bg_current:
+                            #if Rogue is there, shift her to second position
+                            $ R_SpriteLoc = StageRight
+                            $ RogueLayer = 75
+                        if E_Loc == bg_current:
+                            #if Emma is there, shift her to second position
+                            $ E_SpriteLoc = StageRight
+                            $ EmmaLayer = 75
+                        #and move Kitty to first position
+                        $ K_SpriteLoc = StageCenter
+                        $ KittyLayer = 100
+                        
+                if Ch_Focus == "Kitty": 
+                    #If Kitty was already the focal character, return
+                    pass
+                elif Second:
+                    $ Partner = Second
+                elif Partner == "Kitty": 
+                    #If Kitty was the Partner in a scene, make the existing focal character the Partner
+                    $ Partner = Ch_Focus
+                $ Ch_Focus = "Kitty"
+        elif Chr == "Emma":
+                if E_Loc == bg_current:
+                        #If Emma is where you're at. . .
+                        if R_Loc == bg_current:
+                            #if Rogue is there, shift her to second position
+                            $ R_SpriteLoc = StageRight
+                            $ RogueLayer = 75
+                        if K_Loc == bg_current:
+                            #if Kitty is there, shift her to second position
+                            $ K_SpriteLoc = StageRight
+                            $ KittyLayer = 75
+                        #and move Emma to first position
+                        $ E_SpriteLoc = StageCenter
+                        $ EmmaLayer = 100
+                        
+                if Ch_Focus == "Emma": 
+                    #If Emma was already the focal character, return
+                    pass
+                elif Second:
+                    $ Partner = Second
+                elif Partner == "Kitty": 
+                    #If Emma was the Partner in a scene, make the existing focal character the Partner
+                    $ Partner = Ch_Focus
+                $ Ch_Focus = "Emma"
+        else: #if Chr == "Rogue":
+                if R_Loc == bg_current:
+                        #If Rogue is where you're at. . .
+                        if K_Loc == bg_current:
+                            #if Kitty is there, shift her to second position
+                            $ K_SpriteLoc = StageRight
+                            $ KittyLayer = 75
+                        if E_Loc == bg_current:
+                            #if Emma is there, shift her to second position
+                            $ E_SpriteLoc = StageRight
+                            $ EmmaLayer = 75
+                        #and move Rogue to first position
+                        $ R_SpriteLoc = StageCenter
+                        $ RogueLayer = 100
+                        
+                if Ch_Focus == "Rogue": 
+                    #If Rogue was already the focal character, return
+                    pass
+                elif Second:
+                    $ Partner = Second
+                elif Partner == "Rogue": 
+                    #If Rogue was the Partner in a scene, make the existing focal character the Partner
+                    $ Partner = Ch_Focus
+                $ Ch_Focus = "Rogue"
+        $ renpy.restart_interaction() 
+        return
+
+label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like Shift_Focus("Kitty"), changes the focus character and relative default positions
         if Chr == "Kitty":
                 if K_Loc == bg_current:
                         #If Kitty is where you're at. . .

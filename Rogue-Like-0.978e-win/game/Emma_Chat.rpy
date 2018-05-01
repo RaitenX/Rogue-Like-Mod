@@ -3,6 +3,8 @@
 label Emma_Chat:
     call EmmaFace    
     call Shift_Focus("Emma")
+    call Change_Focus("Emma")
+    
     if E_Loc != bg_current:
                 show Cellphone at SpriteLoc(StageLeft)
     else:

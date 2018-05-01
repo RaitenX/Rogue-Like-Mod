@@ -2561,7 +2561,6 @@ label Rogue_TJ_Launch(Line = 0):    # The sequence to launch the Rogue Titfuck a
     show blackscreen onlayer black with dissolve
     show Rogue zorder RogueLayer:
         alpha 0
-    "test"
     $ Speed = 0
     if Line != "cum":
         $ Trigger = "titjob"
