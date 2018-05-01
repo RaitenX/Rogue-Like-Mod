@@ -3500,38 +3500,91 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
         if Chr:
                 call Present_Check  #culls out Party to 2, sets location to bg_current, removes extra girls, sets Focus to a girl in the room   
                 
-                if Ch_Focus == "Kitty" and K_Loc == bg_current: 
-                        $ E_SpriteLoc = StageFarRight   
-                        $ R_SpriteLoc = StageRight
-                        $ K_SpriteLoc = StageCenter
-                        $ RogueLayer = 75
-                        $ EmmaLayer = 50
-                        $ KittyLayer = 100
-                        call Display_Emma(Dress)
-                        call Display_Rogue(Dress)
-                        call Display_Kitty(Dress)
-                        
-                elif Ch_Focus == "Emma" and E_Loc == bg_current:  
-                        $ K_SpriteLoc = StageFarRight  
-                        $ R_SpriteLoc = StageRight
-                        $ E_SpriteLoc = StageCenter
-                        $ KittyLayer = 50
-                        $ RogueLayer = 75
-                        $ EmmaLayer = 100
-                        call Display_Rogue(Dress)
-                        call Display_Kitty(Dress)
-                        call Display_Emma(Dress)
-                
-                elif Ch_Focus == "Rogue" and R_Loc == bg_current:   
-                        $ K_SpriteLoc = StageFarRight
-                        $ E_SpriteLoc = StageRight
-                        $ R_SpriteLoc = StageCenter
-                        $ KittyLayer = 50
-                        $ EmmaLayer = 75
-                        $ RogueLayer = 100
-                        call Display_Emma(Dress)
-                        call Display_Kitty(Dress)
-                        call Display_Rogue(Dress)
+                $ Grils = 0
+
+                if "Rogue" in Party: 
+                    $ R_Loc = bg_current
+                elif R_Loc == bg_current:       
+                                $ Grils += 1
+                if "Kitty" in Party: 
+                    $ K_Loc = bg_current
+                elif K_Loc == bg_current:       
+                                $ Grils += 1
+                if "Emma" in Party: 
+                    $ E_Loc = bg_current
+                elif E_Loc == bg_current:       
+                                $ Grils += 1
+  
+    
+                if Grils == 3:
+
+                    if Ch_Focus == "Kitty" and K_Loc == bg_current: 
+                            $ E_SpriteLoc = StageFarRight   
+                            $ R_SpriteLoc = StageRight
+                            $ K_SpriteLoc = StageCenter
+                            $ RogueLayer = 75
+                            $ EmmaLayer = 50
+                            $ KittyLayer = 100
+                            call Display_Emma(Dress)
+                            call Display_Rogue(Dress)
+                            call Display_Kitty(Dress)
+                            
+                    elif Ch_Focus == "Emma" and E_Loc == bg_current:  
+                            $ K_SpriteLoc = StageFarRight  
+                            $ R_SpriteLoc = StageRight
+                            $ E_SpriteLoc = StageCenter
+                            $ KittyLayer = 50
+                            $ RogueLayer = 75
+                            $ EmmaLayer = 100
+                            call Display_Rogue(Dress)
+                            call Display_Kitty(Dress)
+                            call Display_Emma(Dress)
+                    
+                    elif Ch_Focus == "Rogue" and R_Loc == bg_current:   
+                            $ K_SpriteLoc = StageFarRight
+                            $ E_SpriteLoc = StageRight
+                            $ R_SpriteLoc = StageCenter
+                            $ KittyLayer = 50
+                            $ EmmaLayer = 75
+                            $ RogueLayer = 100
+                            call Display_Emma(Dress)
+                            call Display_Kitty(Dress)
+                            call Display_Rogue(Dress)
+
+                else:
+
+                    if Ch_Focus == "Kitty" and K_Loc == bg_current: 
+                            $ E_SpriteLoc = StageRight   
+                            $ R_SpriteLoc = StageRight
+                            $ K_SpriteLoc = StageCenter
+                            $ RogueLayer = 75
+                            $ EmmaLayer = 75
+                            $ KittyLayer = 100
+                            call Display_Emma(Dress)
+                            call Display_Rogue(Dress)
+                            call Display_Kitty(Dress)
+                            
+                    elif Ch_Focus == "Emma" and E_Loc == bg_current:  
+                            $ K_SpriteLoc = StageRight  
+                            $ R_SpriteLoc = StageRight
+                            $ E_SpriteLoc = StageCenter
+                            $ KittyLayer = 75
+                            $ RogueLayer = 75
+                            $ EmmaLayer = 100
+                            call Display_Rogue(Dress)
+                            call Display_Kitty(Dress)
+                            call Display_Emma(Dress)
+                    
+                    elif Ch_Focus == "Rogue" and R_Loc == bg_current:   
+                            $ K_SpriteLoc = StageRight
+                            $ E_SpriteLoc = StageRight
+                            $ R_SpriteLoc = StageCenter
+                            $ KittyLayer = 75
+                            $ EmmaLayer = 75
+                            $ RogueLayer = 100
+                            call Display_Emma(Dress)
+                            call Display_Kitty(Dress)
+                            call Display_Rogue(Dress)
                         
                 if bg_current == "bg study" and Current_Time != "Night":   
                         show Professor at SpriteLoc(StageLeft) zorder 25    
@@ -3548,7 +3601,7 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
         
         
         
-label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus("Kitty"), changes the focus character and relative default positions
+label Shift_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like Shift_Focus("Kitty"), changes the focus character and relative default positions
         if Chr == "Kitty":
                 if K_Loc == bg_current:
                         #If Kitty is where you're at. . .
@@ -3556,13 +3609,20 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                             #if Rogue is there, shift her to second position
                             $ R_SpriteLoc = StageRight
                             $ RogueLayer = 75
-                        if E_Loc == bg_current:
-                            #if Emma is there, shift her to second position
-                            $ E_SpriteLoc = StageRight
-                            $ EmmaLayer = 75
+                            if E_Loc == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ E_SpriteLoc = StageFarRight
+                                $ EmmaLayer = 50
+                        elif E_Loc == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ E_SpriteLoc = StageRight
+                                $ EmmaLayer = 75
                         #and move Kitty to first position
                         $ K_SpriteLoc = StageCenter
                         $ KittyLayer = 100
+                        call Display_Emma(Dress)
+                        call Display_Kitty(Dress)
+                        call Display_Rogue(Dress)
                         
                 if Ch_Focus == "Kitty": 
                     #If Kitty was already the focal character, return
@@ -3580,13 +3640,20 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                             #if Rogue is there, shift her to second position
                             $ R_SpriteLoc = StageRight
                             $ RogueLayer = 75
-                        if K_Loc == bg_current:
+                            if K_Loc == bg_current:
+                                #if Kitty is there, shift her to third position
+                                $ K_SpriteLoc = StageFarRight
+                                $ KittyLayer = 50
+                        elif K_Loc == bg_current:
                             #if Kitty is there, shift her to second position
                             $ K_SpriteLoc = StageRight
                             $ KittyLayer = 75
                         #and move Emma to first position
                         $ E_SpriteLoc = StageCenter
                         $ EmmaLayer = 100
+                        call Display_Emma(Dress)
+                        call Display_Kitty(Dress)
+                        call Display_Rogue(Dress)
                         
                 if Ch_Focus == "Emma": 
                     #If Emma was already the focal character, return
@@ -3604,13 +3671,20 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                             #if Kitty is there, shift her to second position
                             $ K_SpriteLoc = StageRight
                             $ KittyLayer = 75
-                        if E_Loc == bg_current:
+                            if E_Loc == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ E_SpriteLoc = StageFarRight
+                                $ EmmaLayer = 50
+                        elif E_Loc == bg_current:
                             #if Emma is there, shift her to second position
                             $ E_SpriteLoc = StageRight
                             $ EmmaLayer = 75
                         #and move Rogue to first position
                         $ R_SpriteLoc = StageCenter
                         $ RogueLayer = 100
+                        call Display_Emma(Dress)
+                        call Display_Kitty(Dress)
+                        call Display_Rogue(Dress)
                         
                 if Ch_Focus == "Rogue": 
                     #If Rogue was already the focal character, return

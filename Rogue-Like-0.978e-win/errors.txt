@@ -2,8 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/Rogue_Animations.rpy", line 2570: reached end of line when expecting ':'.
-    if R_Over == "bondage"
-                          ^
+File "game/script.rpy", line 3519: if statement expects a non-empty block.
+    if len(Present) == 3:
+                         ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

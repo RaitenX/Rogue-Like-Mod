@@ -1484,6 +1484,7 @@ label RM_Cycle:
                                 jump RM_Interupted      
                         "Slap her ass":    
                                 if "unseen" in R_RecentActions:
+                                        $ renpy.play('sounds/slap.mp3')
                                         "You smack Rogue firmly on the ass!"
                                         jump RM_Interupted                                          
                                 else:

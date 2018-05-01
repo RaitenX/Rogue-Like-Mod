@@ -1468,6 +1468,7 @@ label KM_Cycle:
                                 jump KM_Interupted      
                         "Slap her ass":    
                                 if "unseen" in K_RecentActions:
+                                        $ renpy.play('sounds/slap.mp3')
                                         "You smack Kitty firmly on the ass!"
                                         jump KM_Interupted                                          
                                 else:
