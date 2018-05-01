@@ -944,7 +944,7 @@ label RTJ_Cycle:
                     $ Round -= 1
                     if ("master" in R_Petnames or "sir" in R_Petnames or R_Pet == "slave") and ApprovalCheck("Rogue", 750, "O") and not R_Bondage: # bondage event
                         $ R_Bondage = 1
-                        ch_k "Hey, [R_Petname], I've got some new things here, do you think we could try them?"
+                        ch_r "Hey, [R_Petname], I've got some new things here, do you think we could try them?"
                         "She grabs what it looks like some bondage gear"
                         menu:
                             "Yep":
@@ -959,7 +959,7 @@ label RTJ_Cycle:
                                 "You help her with the armbinder, making sure she can't move her arms"
                                 #"And add a blindfold so she can't see a thing"
                                 #$ R_Blindfold = 1
-                                $ R_Over = "bondage"
+                                $ R_Over = "bondage cuffs"
                                 #$ R_Chest = "bustier bra"
                                 #$ R_Panties = "zipper panties"
                                 #$ R_Outfit = "zipper bondage"
@@ -1027,7 +1027,7 @@ label RTJ_Cycle:
                                 "You remove Rogue's gag"
                                 $ R_Gag = 0
 
-                        "How about you put that bondage outfit" if R_Bondage and R_Over != "bondage":
+                        "How about you put that bondage outfit" if R_Bondage and R_Over != "bondage cuffs":
                             call RogueFace("sexy", 1) 
                             #if R_Over or R_Chest or R_Panties or R_Legs:
                             #    "She glances up at you as her clothes drop to the ground."
@@ -1039,13 +1039,13 @@ label RTJ_Cycle:
                             "You help her with the suit, making sure she can't move her arms"
                             #"And add a blindfold so she can't see a thing"
                             #$ R_Blindfold = 1
-                            $ R_Over = "bondage"
+                            $ R_Over = "bondage cuffs"
                             #$ R_Chest = "bustier bra"
                             #$ R_Panties = "zipper panties"
                             #$ R_Outfit = "zipper bondage"
                             #$ R_Shame = R_OutfitShame[1]
 
-                        "Remove the bondage outfit" if R_Over == "bondage":
+                        "Remove the bondage outfit" if R_Over == "bondage cuffs" or R_Over == "bondage":
                             call RogueFace("sexy", 1) 
                             #if R_Over or R_Chest or R_Panties or R_Legs:
                             #    "She glances up at you as her clothes drop to the ground."

@@ -198,6 +198,7 @@ image Rogue:
         (0,0), ConditionSwitch(                                                                         #chest clothes layer
             "R_Chest == 'tank'", "images/RogueSprite/Rogue_chest_tank.png",
             "R_Chest == 'tank short'", "images/RogueSprite/Rogue_chest_tankshort.png",
+            "R_Chest == 'slut tank short'", "images/RogueSprite/Rogue_chest_tankshort_slut.png",
             "Rogue_Arms == 1 and R_Chest == 'green crop top'", "images/RogueSprite/Rogue_Sprite_Green_Crop_Top_Arms1.png",
             "R_Chest == 'green crop top'", "images/RogueSprite/Rogue_Sprite_Green_Crop_Top_Arms2.png",
             "Rogue_Arms == 1 and R_Chest == 'black crop top'", "images/RogueSprite/Rogue_Sprite_Black_Crop_Top_Arms1.png",
@@ -766,6 +767,7 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             "R_Panties == 'swimsuit1' or R_Panties == 'swimsuit2'", "images/RogueDoggy/Rogue_Doggy_Swimsuit.png",  
             "R_Chest == 'tank'", "images/RogueDoggy/Rogue_Doggy_Chest_Tank.png",
             "R_Chest == 'tank short'", "images/RogueDoggy/Rogue_Doggy_Chest_TankShort.png",
+            "R_Chest == 'slut tank short'", "images/RogueDoggy/Rogue_Doggy_Chest_TankShort.png",
             "R_Chest == 'buttoned tank'", "images/RogueDoggy/Rogue_Doggy_Chest_ButtonTank.png",
             "R_Chest == 'green crop top'", "images/RogueDoggy/Rogue_Doggy_Green_Crop_Top.png",
             "R_Chest == 'black crop top'", "images/RogueDoggy/Rogue_Doggy_Black_Crop_Top.png",
@@ -2384,6 +2386,7 @@ image Rogue_TJ_Under:
     contains:
         ConditionSwitch(
             "R_Over == 'bondage'", "images/RogueBJFace/Rogue_tj_base_Binder.png",
+            "R_Over == 'bondage cuffs'", "images/RogueBJFace/Rogue_tj_base_ArmCuffs.png",
             "True", "images/RogueBJFace/Rogue_tj_base.png",
             ),
     contains:
@@ -2404,10 +2407,13 @@ image Rogue_TJ_Under:
 image Rogue_TJ_Over:     
     contains:
         ConditionSwitch( 
+            "R_Pierce == 'barbell' and R_Over == 'bondage cuffs'", "images/RogueBJFace/Rogue_tj_tits_b_Binder.png", 
             "R_Pierce == 'barbell' and R_Over == 'bondage'", "images/RogueBJFace/Rogue_tj_tits_b_Binder.png", 
             "R_Pierce == 'barbell'", "images/RogueBJFace/Rogue_tj_tits_b.png", 
+            "R_Pierce == 'ring' and R_Over == 'bondage cuffs'", "images/RogueBJFace/Rogue_tj_tits_r_Binder.png",
             "R_Pierce == 'ring' and R_Over == 'bondage'", "images/RogueBJFace/Rogue_tj_tits_r_Binder.png",
             "R_Pierce == 'ring'", "images/RogueBJFace/Rogue_tj_tits_r.png",
+            "R_Pierce != 'barbell' and R_Over == 'bondage cuffs'", "images/RogueBJFace/Rogue_tj_tits_Binder.png",
             "R_Pierce != 'barbell' and R_Over == 'bondage'", "images/RogueBJFace/Rogue_tj_tits_Binder.png",
             "R_Pierce != 'barbell'", "images/RogueBJFace/Rogue_tj_tits.png",
             ),
@@ -2555,6 +2561,7 @@ label Rogue_TJ_Launch(Line = 0):    # The sequence to launch the Rogue Titfuck a
     show blackscreen onlayer black with dissolve
     show Rogue zorder RogueLayer:
         alpha 0
+    "test"
     $ Speed = 0
     if Line != "cum":
         $ Trigger = "titjob"
@@ -2567,7 +2574,7 @@ label Rogue_TJ_Reset: # The sequence to the Rogue animations from Titfuck to def
         return
     hide Rogue_TJ_Animation
 
-    if R_Over == "bondage":
+    if R_Over == "bondage" or R_Over == "bondage cuffs":
             "You help her remove the bondage suit"
             $ R_Over = 0
     

@@ -4896,6 +4896,10 @@ label Rogue_Clothes:
                                 $ R_Chest = "tank short" 
                                 jump Rogue_Clothes_Under_Top
 
+                "Try on that short black slut tank top." if R_Chest != "slut tank short":
+                                $ R_Chest = "slut tank short" 
+                                jump Rogue_Clothes_Under_Top
+
                 "Try on that green crop top." if R_Chest != "green crop top":
                                 $ R_Chest = "green crop top" 
                                 jump Rogue_Clothes_Under_Top
@@ -5559,8 +5563,8 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                 $ Count = 20
             elif R_Chest == "cheerleader":                                              
                 $ Count = 20
-            elif R_Chest == "tank short":                                              
-                $ Count = 5
+            elif R_Chest == "slut tank short":                                              
+                $ Count = -5
             elif R_Chest == "green crop top":                                              
                 $ Count = 20
             elif R_Chest == "black crop top":                                              

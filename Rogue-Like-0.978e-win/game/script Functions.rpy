@@ -3339,6 +3339,8 @@ label RogueWardrobe:
                         $ R_Chest = "tank"
                     "Add short tank top":
                         $ R_Chest = "tank short"
+                    "Add short slut tank top":
+                        $ R_Chest = "slut tank short"
                     "Add sports bra":
                         $ R_Chest = "sports bra"
                     "Add buttoned tank top" if R_Over != "mesh top":
