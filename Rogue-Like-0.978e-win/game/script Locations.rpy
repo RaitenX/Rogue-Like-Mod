@@ -1947,10 +1947,10 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaC
                             ch_k "I've got to get going."
                 if EmmaCount:
                     if ApprovalCheck("Emma", 1200) or (ApprovalCheck("Emma", 600) and E_SeenChest and E_SeenPussy):
-                        if RogueCount > 1:                          #If Rogue said yes
+                        if RogueCount > 1 or KittyCount > 1:                          #If Rogue said yes
                             ch_e "I like where this is going."
-                        if KittyCount > 1:                          #If Kitty said yes
-                            ch_e "I like where this is going."
+                        #if KittyCount > 1:                          #If Kitty said yes
+                        #    ch_e "I like where this is going."
                         elif Occupants > 1:                     #If Rogue/Kitty said no
                             ch_e "Don't worry, [E_Petname], we can still have some fun."
                         else:                                   #If Rogue/Kitty isn't there
@@ -1958,10 +1958,10 @@ label Showering(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaC
                         $ EmmaCount = 2
                         $ Agreed += 1
                     else:
-                        if RogueCount > 1:                          #If Rogue said yes
+                        if RogueCount > 1 or KittyCount > 1:                          #If Rogue said yes
                             ch_e "I think it's best if I leave."
-                        if KittyCount > 1:                          #If Kitty said yes
-                            ch_e "I think it's best if I leave."
+                        #if KittyCount > 1:                          #If Kitty said yes
+                        #    ch_e "I think it's best if I leave."
                         elif Occupants > 1:                     #If Rogue/Kitty said no
                             ch_e "I better get going too. See you in class, [E_Petname]."
                         else:                                   #If Rogue/Kitty isn't there

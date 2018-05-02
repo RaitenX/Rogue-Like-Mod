@@ -1067,7 +1067,7 @@ label EventCalls:
                                 return
         
         #Cues a dating event if Rogue is asked by Kitty to join a poly situation
-        if "dating?" in R_Traits and "dating" not in R_Traits:
+        if "dating?" in R_Traits and "dating" not in R_Traits and "stop asking" not in R_Traits:
                     if bg_current == "bg rogue" or bg_current == "bg player":
                         call Rogue_BF        
                         return
@@ -1077,7 +1077,7 @@ label EventCalls:
                 
         #Rogue relationship stuff        
         if "relationship" not in R_DailyActions: 
-                if "boyfriend" not in R_Petnames and R_Love >= 800: # R_Event[5]
+                if "boyfriend" not in R_Petnames and R_Love >= 800 and "stop asking" not in R_Traits: # R_Event[5]
                         if bg_current == "bg rogue" or bg_current == "bg player":
                             jump Rogue_BF
                         else:
@@ -2494,7 +2494,7 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                             $ Undressed = 1
                     elif E_Panties == 0 and "pantyless" not in E_DailyActions:                        
                             $ Undressed = 1   
-                    $ E_Arms = 1
+                    $ E_Arms = "white gloves"
                     $ E_Legs = "pants"
                     $ E_Over = 0
                     $ E_Chest = "corset"

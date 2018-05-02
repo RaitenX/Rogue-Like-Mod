@@ -3828,10 +3828,10 @@ label Emma_Clothes(Public=0,Bonus=0):
         "Maybe lose the gloves." if E_Arms:
             $ E_Arms = 0
             ch_e "Ok."
-        "Put your gloves on." if not E_Arms:
-            $ E_Arms = 1
+        "Put your white gloves on." if E_Arms != "white gloves":
+            $ E_Arms = "white gloves"
             ch_e "Ok." 
-        "Put your black gloves on." if not E_Arms:
+        "Put your black gloves on." if E_Arms != "black gloves":
             $ E_Arms = "black gloves"
             ch_e "Ok."     
 

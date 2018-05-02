@@ -1732,7 +1732,7 @@ label Rogue_Chitchat(O=0, Options = ["default","default","default"]):
                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 4)
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 10)
     
-    elif Options[0] == "boyfriend?":
+    elif Options[0] == "boyfriend?" and "stop asking" not in R_Traits:
         call Rogue_BF
         $ R_DailyActions.append("nametag chat") 
     elif Options[0] == "lover?":

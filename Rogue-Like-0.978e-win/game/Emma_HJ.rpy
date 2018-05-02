@@ -723,7 +723,7 @@ label E_Blowjob:
                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 1) 
                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 3) 
                         call EmmaFace("confused", 1)
-                        $ E_Arms = 1
+                        #$ E_Arms = 1
                         if E_Hand:
                             ch_e "Maybe I could just use my hand?"
                         else:

@@ -1053,10 +1053,27 @@ label Rogue_BF_Jerk:
     if R_Event[5] >= 3:
         call RogueFace("sad")
         ch_r "Hrmph. I don't care what you want, we're dating. Deal with it."   
-        $ R_Petnames.append("boyfriend")
-        $ R_Traits.append("dating")
-        $ Achievements.append("I am not your Boyfriend!")
-        ch_r "Now I need some alone time though."
+        menu:
+            "Whatever":
+                $ R_Petnames.append("boyfriend")
+                $ R_Traits.append("dating")
+                $ Achievements.append("I am not your Boyfriend!")
+                ch_r "Now I need some alone time though."
+            "No, and fuck off with that":
+                call RogueFace("surprised", 1)
+                ch_r "You serious?"
+                call RogueFace("angry", 1)
+                ch_r "You're such a jerk."
+                $ Achievements.append("I am not your Boyfriend!")
+            "No, and stop fucking asking me that":
+                call RogueFace("surprised", 1)
+                ch_r "You serious?"
+                ch_r RogueFace("angry", 1)
+                $ R_Traits.append("stop asking")
+                ch_r "You're such a jerk."
+                ch_r RogueFace("sad", 1)
+                ch_r "I'll stop asking."
+                $ Achievements.append("I am not your Boyfriend!")
         $ bg_current = "bg player"          
         call Remove_Girl("Rogue")
         call Set_The_Scene

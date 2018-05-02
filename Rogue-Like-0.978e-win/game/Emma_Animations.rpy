@@ -101,7 +101,7 @@ image Emma_Sprite:
             "not E_Arms", Null(),  
             "Emma_Arms == 2 and E_Arms == 'black gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms2_Black.png",   
             "E_Arms == 'black gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms1_Black.png", #if E_Arms == 1         
-            "Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Gloves_Arms2.png",   
+            "Emma_Arms == 2 and E_Arms == 'white gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms2.png",   
             "True", "images/EmmaSprite/EmmaSprite_Gloves_Arms1.png", #if E_Arms == 1         
             ),   
         (0,0), ConditionSwitch(                                                                         #tits
@@ -941,14 +941,33 @@ label Emma_BJ_Reset: # The sequence to the Emma animations from BJ to default
 # ////////////////////////////////                                                                                      ///////////////////////////////
 # ////////////////////////////////
 
+image Emma_Hand_Under:
+    ConditionSwitch(
+        "E_Arms == 'black gloves'", "images/EmmaSprite/handemma2_black.png",
+        "E_Arms == 'white gloves'", "images/EmmaSprite/handemma2_white.png",
+        "True", "images/EmmaSprite/handemma2.png",
+        ),
+    anchor (0.5,0.5)
+    pos (0,0)
+    
+    
+image Emma_Hand_Over:
+    ConditionSwitch(
+        "E_Arms == 'black gloves'", "images/EmmaSprite/handemma1_black.png", 
+        "E_Arms == 'white gloves'", "images/EmmaSprite/handemma1_white.png",
+        "True", "images/EmmaSprite/handemma1.png",
+        ),
+    anchor (0.5,0.5)
+    pos (0,0)
+
 
 
 image Emma_HJ_Animation:  
     contains:
         ConditionSwitch(                                                # backside of the hand
-            "not Speed", Transform("Kitty_Hand_Under"), 
-            "Speed == 1", At("Kitty_Hand_Under", Kitty_Hand_1()),
-            "Speed >= 2", At("Kitty_Hand_Under", Kitty_Hand_2()),
+            "not Speed", Transform("Emma_Hand_Under"), 
+            "Speed == 1", At("Emma_Hand_Under", Kitty_Hand_1()),
+            "Speed >= 2", At("Emma_Hand_Under", Kitty_Hand_2()),
             "Speed", Null(),
             ),  
     contains:
@@ -961,9 +980,9 @@ image Emma_HJ_Animation:
         offset (0,0)
     contains:
         ConditionSwitch(                                                # fingers of the hand
-            "not Speed", Transform("Kitty_Hand_Over"), 
-            "Speed == 1", At("Kitty_Hand_Over", Kitty_Hand_1()),
-            "Speed >= 2", At("Kitty_Hand_Over", Kitty_Hand_2()), 
+            "not Speed", Transform("Emma_Hand_Over"), 
+            "Speed == 1", At("Emma_Hand_Over", Kitty_Hand_1()),
+            "Speed >= 2", At("Emma_Hand_Over", Kitty_Hand_2()), 
             "Speed", Null(),
             ),   
     anchor (0.51, -1.3)
