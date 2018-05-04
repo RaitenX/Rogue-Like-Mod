@@ -547,6 +547,14 @@ label K_Sex_Cycle: #Repeating strokes
                                     call K_Slap_Ass                                    
                                     jump K_Sex_Cycle 
 
+                        "Put her legs up" if not K_LegsUp:
+                                    $ K_LegsUp = 1
+                                    "You put her legs up."
+
+                        "Put her legs down" if K_LegsUp:
+                                    $ K_LegsUp = 0
+                                    "You put her legs down."
+
                         "Blindfold her" if K_Bondage and not K_Blindfold:
                             call KittyFace("sexy", 1) 
                             "You add a blindfold so she can't see a thing"
@@ -1321,6 +1329,14 @@ label K_Anal_Cycle: #Repeating strokes
                                     call K_Slap_Ass                                    
                                     jump K_Anal_Cycle  
 
+                        "Put her legs up" if not K_LegsUp:
+                                    $ K_LegsUp = 1
+                                    "You put her legs up."
+
+                        "Put her legs down" if K_LegsUp:
+                                    $ K_LegsUp = 0
+                                    "You put her legs down."
+
                         "Blindfold her" if K_Bondage and not K_Blindfold:
                             call KittyFace("sexy", 1) 
                             "You add a blindfold so she can't see a thing"
@@ -1947,6 +1963,14 @@ label K_Hotdog_Cycle: #Repeating strokes
                         "Slap her ass":                     
                                     call K_Slap_Ass                                    
                                     jump K_Hotdog_Cycle  
+
+                        "Put her legs up" if not K_LegsUp:
+                                    $ K_LegsUp = 1
+                                    "You put her legs up."
+
+                        "Put her legs down" if K_LegsUp:
+                                    $ K_LegsUp = 0
+                                    "You put her legs down."
 
                         "Blindfold her" if K_Bondage and not K_Blindfold:
                             call KittyFace("sexy", 1) 

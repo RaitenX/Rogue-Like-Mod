@@ -1610,7 +1610,7 @@ label Kitty_Flirt:
                         $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 4) 
                     #End Flip her Skirt   
 
-            "Pull her shorts down" if (K_Legs == "shorts" or K_Legs == "blue shorts") and not K_PantiesDown and not K_Upskirt:
+            "Pull her shorts down" if (K_Legs == "shorts" or K_Legs == "blue shorts" or K_Legs == "white shorts") and not K_PantiesDown and not K_Upskirt:
                     call KittyFace("surprised", 1)
                     $ K_Upskirt = 1
                     #$ K_PantiesDown = 1
@@ -1896,7 +1896,7 @@ label Kitty_Flirt:
 label Kitty_AskPanties(Store = 0):
     $ Store = Tempmod  
     $ Line = 0
-    if not K_Panties or K_Panties == "shorts" or K_Panties == "blue shorts":
+    if not K_Panties or K_Panties == "shorts" or K_Panties == "blue shorts" or K_Panties == "white shorts":
         if ApprovalCheck("Kitty", 900):
             call KittyFace("sexy", 1)
             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 80, 5) 
@@ -3901,7 +3901,7 @@ label Kitty_Clothes:
             else:
                 call Kitty_First_Bottomless
         
-        "Why don't you lose the shorts?" if K_Legs == "shorts" or K_Legs == "blue shorts":
+        "Why don't you lose the shorts?" if K_Legs == "shorts" or K_Legs == "blue shorts" or K_Legs == "white shorts":
             call KittyFace("sexy", 1)
             if K_SeenPussy and ApprovalCheck("Kitty", 900, TabM=4): 
                 # You've seen her pussy
@@ -3962,11 +3962,19 @@ label Kitty_Clothes:
 
         "What about wearing your blue shorts?" if K_Legs != "blue shorts":
             ch_k "K, no problem."
-            $ K_Legs = "blue shorts"    
+            $ K_Legs = "blue shorts" 
+
+        "What about wearing your white shorts?" if K_Legs != "white shorts":
+            ch_k "K, no problem."
+            $ K_Legs = "white shorts"    
 
         "Your butt looks cute in that orange skirt." if K_Legs != "orange skirt":
             ch_k "Meoww~"
             $ K_Legs = "orange skirt"
+
+        "Your butt looks cute in that white skirt." if K_Legs != "white skirt":
+            ch_k "Meoww~"
+            $ K_Legs = "white skirt"
 
         "Your butt looks cute in that black skirt." if K_Legs != "black skirt":
             ch_k "Meoww~"
@@ -4183,6 +4191,14 @@ label Kitty_Clothes:
                     else:                
                             ch_k "I don't think that's any of your beeswax."
                     jump Kitty_Clothes_Under_Panties
+
+                "Why don't you wear the white panties instead?" if K_Panties and K_Panties != "white panties":
+                    if ApprovalCheck("Kitty", 1100, TabM=3):
+                            ch_k "K."
+                            $ K_Panties = "white panties"  
+                    else:                
+                            ch_k "I don't think that's any of your beeswax."
+                    jump Kitty_Clothes_Under_Panties
                         
                 "Why don't you wear the lace panties instead?" if "lace panties" in K_Inventory and K_Panties and K_Panties != "lace panties":
                     if ApprovalCheck("Kitty", 1300, TabM=3):
@@ -4216,6 +4232,9 @@ label Kitty_Clothes:
                         "How about the green ones?":
                             ch_k "Sure, ok."
                             $ K_Panties = "green panties"
+                        "How about the white ones?":
+                            ch_k "Sure, ok."
+                            $ K_Panties = "white panties"
                         "How about the purple bikini?":
                             ch_k "Sure, ok."
                             $ K_Panties = "purple bikini panties"
@@ -4226,6 +4245,43 @@ label Kitty_Clothes:
                             ch_k "Alright."                
                             $ K_Panties  = "darker lace panties"
                     jump Kitty_Clothes_Under_Panties
+
+                "Go back":  
+                    jump Kitty_Clothes_Under
+
+        "Socks and Stockings": 
+            
+            menu Kitty_Clothes_Under_Hoses:  
+
+                "You could lose those socks. . ." if K_Hose and K_Hose != "stockings":
+                    ch_k "K."
+                    $ K_Hose = 0
+                    jump Kitty_Clothes_Under_Hoses  
+
+                "You could lose those stockings. . ." if K_Hose == "stockings":
+                    ch_k "K."
+                    $ K_Hose = 0
+                    jump Kitty_Clothes_Under_Hoses  
+
+                "Why don't you wear those stockings?" if K_Hose != "stockings":
+                    ch_k "K."
+                    $ K_Hose = "stockings"  
+                    jump Kitty_Clothes_Under_Hoses
+
+                "Why don't you wear those black socks" if K_Hose != "black socks":
+                    ch_k "K."
+                    $ K_Hose = "black socks"  
+                    jump Kitty_Clothes_Under_Hoses
+
+                "Why don't you wear those white socks" if K_Hose != "white socks":
+                    ch_k "K."
+                    $ K_Hose = "white socks"  
+                    jump Kitty_Clothes_Under_Hoses
+
+                "Why don't you wear those pink socks" if K_Hose != "pink socks":
+                    ch_k "K."
+                    $ K_Hose = "pink socks"  
+                    jump Kitty_Clothes_Under_Hoses
 
                 "Go back":  
                     jump Kitty_Clothes_Under
@@ -4906,7 +4962,11 @@ label Kitty_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                             $ Count = 20 
                         elif K_Legs == "blue shorts":                #If wearing shorts
                             $ Count = 20 
+                        elif K_Legs == "white shorts":                #If wearing shorts
+                            $ Count = 20 
                         elif K_Legs == "orange skirt":                #If wearing shorts
+                            $ Count = 20 
+                        elif K_Legs == "white skirt":                #If wearing shorts
                             $ Count = 20 
                         elif K_Legs == "black skirt":                #If wearing shorts
                             $ Count = 20  
@@ -4915,6 +4975,8 @@ label Kitty_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                         elif K_Panties == "purple bikini panties":      #If wearing only bikini purple
                             $ Count = 15      
                         elif K_Panties == "green panties":      #If wearing only green panties
+                            $ Count = 10
+                        elif K_Panties == "white panties":      #If wearing only green panties
                             $ Count = 10
                         elif K_Panties == "lace panties":       #If wearing only lace panties
                             $ Count = 5
@@ -4948,7 +5010,11 @@ label Kitty_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                             ch_k "and these are cute shorts." 
                         elif K_Legs == "blue shorts":
                             ch_k "and these are cute shorts." 
+                        elif K_Legs == "white shorts":
+                            ch_k "and these are cute shorts." 
                         elif K_Legs == "orange skirt":
+                            ch_k "and this is a cute skirt." 
+                        elif K_Legs == "white skirt":
                             ch_k "and this is a cute skirt." 
                         elif K_Legs == "black skirt":
                             ch_k "and this is a cute skirt."  

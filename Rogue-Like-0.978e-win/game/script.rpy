@@ -345,6 +345,7 @@ init -1:
     default K_Pubes = 1
     default K_Nudes = 1
     default K_Tan = 0
+    default K_LegsUp = 0
     default K_HairColor = 0
     default R_HairColor = 0
     default K_Wet = 0

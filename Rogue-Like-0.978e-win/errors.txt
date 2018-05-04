@@ -2,8 +2,12 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 3519: if statement expects a non-empty block.
-    if len(Present) == 3:
-                         ^
+File "game/Rogue_Scenes.rpy", line 1071: expected statement.
+    ch_r RogueFace("angry", 1)
+                  ^
+
+File "game/Rogue_Scenes.rpy", line 1074: expected statement.
+    ch_r RogueFace("sad", 1)
+                  ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

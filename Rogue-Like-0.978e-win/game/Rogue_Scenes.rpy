@@ -1068,10 +1068,10 @@ label Rogue_BF_Jerk:
             "No, and stop fucking asking me that":
                 call RogueFace("surprised", 1)
                 ch_r "You serious?"
-                ch_r RogueFace("angry", 1)
+                call RogueFace("angry", 1)
                 $ R_Traits.append("stop asking")
                 ch_r "You're such a jerk."
-                ch_r RogueFace("sad", 1)
+                call RogueFace("sad", 1)
                 ch_r "I'll stop asking."
                 $ Achievements.append("I am not your Boyfriend!")
         $ bg_current = "bg player"          

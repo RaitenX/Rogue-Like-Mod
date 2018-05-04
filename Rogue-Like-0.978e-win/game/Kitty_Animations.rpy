@@ -84,10 +84,12 @@ image Kitty_Sprite:
             "not K_Panties", Null(),
             "K_PantiesDown and (not K_Legs or K_Upskirt)", Null(), #If panties are down, and pants are either off or down, skip this
             "K_Wet and K_Panties == 'green panties'", "images/KittySprite/Kitty_Sprite_Panties_Green_Wet.png",
+            "K_Wet and K_Panties == 'white panties'", "images/KittySprite/Kitty_Sprite_Panties_White_Wet.png",
             "K_Wet and K_Panties == 'purple bikini panties'", "images/KittySprite/Kitty_Sprite_Panties_Bikini1_Wet.png",
             "K_Wet and K_Panties == 'lace panties'", "images/KittySprite/Kitty_Sprite_Panties_Lace_Wet.png",            
             "K_Wet and K_Panties == 'darker lace panties'", "images/KittySprite/Kitty_Sprite_Panties_DarkerLace_Wet.png",            
             "K_Panties == 'green panties'", "images/KittySprite/Kitty_Sprite_Panties_Green.png",
+            "K_Panties == 'white panties'", "images/KittySprite/Kitty_Sprite_Panties_White.png",
             "K_Panties == 'lace panties'", "images/KittySprite/Kitty_Sprite_Panties_Lace.png",
             "K_Panties == 'darker lace panties'", "images/KittySprite/Kitty_Sprite_Panties_DarkerLace.png",
             "K_Panties == 'purple bikini panties'", "images/KittySprite/Kitty_Sprite_Panties_Bikini1.png",
@@ -100,10 +102,12 @@ image Kitty_Sprite:
             "not K_Panties", Null(),
             "not K_PantiesDown or (K_Legs and not K_Upskirt)", Null(), #If panties are not down or if  pants are on and up, skip this
             "K_Wet and K_Panties == 'green panties'", "images/KittySprite/Kitty_Sprite_Panties_Green_Down_Wet.png",
+            "K_Wet and K_Panties == 'white panties'", "images/KittySprite/Kitty_Sprite_Panties_White_Down_Wet.png",
             "K_Wet and K_Panties == 'purple bikini panties'", "images/KittySprite/Kitty_Sprite_Panties_Bikini1_Down_Wet.png",
             "K_Wet and K_Panties == 'lace panties'", "images/KittySprite/Kitty_Sprite_Panties_Lace_Down_Wet.png",
             "K_Wet and K_Panties == 'darker lace panties'", "images/KittySprite/Kitty_Sprite_Panties_DarkerLace_Down_Wet.png",
             "K_Panties == 'green panties'", "images/KittySprite/Kitty_Sprite_Panties_Green_Down.png",
+            "K_Panties == 'white panties'", "images/KittySprite/Kitty_Sprite_Panties_White_Down.png",
             "K_Panties == 'lace panties'", "images/KittySprite/Kitty_Sprite_Panties_Lace_Down.png",
             "K_Panties == 'darker lace panties'", "images/KittySprite/Kitty_Sprite_Panties_DarkerLace_Down.png",
             "K_Panties == 'purple bikini panties'", "images/KittySprite/Kitty_Sprite_Panties_Bikini1_Down.png",
@@ -119,20 +123,31 @@ image Kitty_Sprite:
             "True", "images/KittySprite/Kitty_Sprite_Wet1.png",
             ),  
         (0,0), ConditionSwitch(                                                                         #pants         
+            "K_Hose == 'pink socks'", "images/KittySprite/Kitty_PSocks_Thigh.png",            
+            "K_Hose == 'white socks'", "images/KittySprite/Kitty_WSocks_Thigh.png",            
+            "K_Hose == 'black socks'", "images/KittySprite/Kitty_BSocks_Thigh.png",            
+            "K_Hose == 'stockings'", "images/KittySprite/Kitty_Stockings.png",            
+            "True", Null(),
+            ),   
+        (0,0), ConditionSwitch(                                                                         #pants         
             "K_Legs == 'shorts' and K_Upskirt", "images/KittySprite/Kitty_Sprite_Shorts_Down.png",            
             "K_Legs == 'blue shorts' and K_Upskirt", "images/KittySprite/Kitty_Sprite_BlueShorts_Down.png",            
+            "K_Legs == 'white shorts' and K_Upskirt", "images/KittySprite/Kitty_Sprite_WhiteShorts_Down.png",            
             "not K_Legs or K_Upskirt", Null(),
             "K_Legs == 'capris'", "images/KittySprite/Kitty_Sprite_Pants_Blue.png",
             "K_Legs == 'black jeans'", "images/KittySprite/Kitty_Sprite_Pants_Black.png",
             "K_Legs == 'leather pants'", "images/KittySprite/Kitty_Sprite_Pants_Leather.png",
             "K_Legs == 'orange skirt'", "images/KittySprite/Kitty_Sprite_Pants_Orange.png",
             "K_Legs == 'black skirt'", "images/KittySprite/Kitty_Sprite_Pants_OBlack.png",
+            "K_Legs == 'white skirt'", "images/KittySprite/Kitty_Sprite_Pants_OWhite.png",
             "K_Wet and K_Legs == 'yoga pants'", "images/KittySprite/Kitty_Sprite_Pants_Yoga_Wet.png",   
             "K_Legs == 'yoga pants'", "images/KittySprite/Kitty_Sprite_Pants_Yoga.png",  
             "K_Wet and K_Legs == 'shorts'", "images/KittySprite/Kitty_Sprite_Shorts_Wet.png",    
             "K_Legs == 'shorts'", "images/KittySprite/Kitty_Sprite_Shorts.png",            
             "K_Wet and K_Legs == 'blue shorts'", "images/KittySprite/Kitty_Sprite_BlueShorts_Wet.png",    
             "K_Legs == 'blue shorts'", "images/KittySprite/Kitty_Sprite_BlueShorts.png",            
+            "K_Wet and K_Legs == 'white shorts'", "images/KittySprite/Kitty_Sprite_WhiteShorts_Wet.png",    
+            "K_Legs == 'white shorts'", "images/KittySprite/Kitty_Sprite_WhiteShorts.png",            
             "True", Null(),
             ),    
         (0,0), ConditionSwitch(                                                                         #Arms2               
@@ -675,13 +690,15 @@ image Kitty_Sex_Legs:
         #the legs used in the sex pose, referenced by Kitty_SexSprite
         (1120,840), 
         (0,0), ConditionSwitch(
+            "K_LegsUp", "images/KittySex/Kitty_Sex_Legs_LegsUp.png",
             "K_Tan == 'tan'", "images/KittySex/Kitty_Sex_TLegs.png",                                              #Legs Base                                                      #Legs Base
             "K_Tan == 'tan2'", "images/KittySex/Kitty_Sex_T2Legs.png",                                            #Legs Base                                                      #Legs Base
             "K_Tan == 'tan3'", "images/KittySex/Kitty_Sex_T3Legs.png",
             "True", "images/KittySex/Kitty_Sex_Legs.png",
             ),
             
-        (0,0), ConditionSwitch(                                                                                 #Wet look
+        (0,0), ConditionSwitch( 
+            "K_LegsUp", Null(),
             "K_Water", "images/KittySex/Kitty_Sex_Water_Legs.png",   
             "True", Null(),              
             ),  
@@ -694,6 +711,8 @@ image Kitty_Sex_Legs:
             "K_PantiesDown", Null(),     
             "K_Panties == 'green panties' and K_Wet", "images/KittySex/Kitty_Sex_Panties_Green_Wet.png",          
             "K_Panties == 'green panties'", "images/KittySex/Kitty_Sex_Panties_Green.png",  
+            "K_Panties == 'white panties' and K_Wet", "images/KittySex/Kitty_Sex_Panties_White_Wet.png",          
+            "K_Panties == 'white panties'", "images/KittySex/Kitty_Sex_Panties_White.png",  
             "K_Panties == 'purple bikini panties' and K_Wet", "images/KittySex/Kitty_Sex_Panties_Bikini1_Wet.png",          
             "K_Panties == 'purple bikini panties'", "images/KittySex/Kitty_Sex_Panties_Bikini1.png",  
             "K_Panties == 'lace panties' and K_Wet", "images/KittySex/Kitty_Sex_Panties_Lace_Wet.png",       
@@ -706,15 +725,25 @@ image Kitty_Sex_Legs:
             "True", Null(),                     
             ),  
         (0,0), ConditionSwitch(                                                                                 #Legs Layer
-            "K_Upskirt", Null(),                               
-            "K_Legs == 'capris' and K_Wet > 1", "images/KittySex/Kitty_Sex_Pants_Blue_Wet.png",
-            "K_Legs == 'capris'", "images/KittySex/Kitty_Sex_Pants_Blue.png",
-            "K_Legs == 'black jeans' and K_Wet > 1", "images/KittySex/Kitty_Sex_Pants_Black_Wet.png",
-            "K_Legs == 'black jeans'", "images/KittySex/Kitty_Sex_Pants_Black.png",
+            "K_Hose == 'stockings'", "images/KittySex/Kitty_Sex_Stockings_Legs.png",
+            "K_Hose == 'white socks'", "images/KittySex/Kitty_Sex_WSocks_Thigh_Legs.png",
+            "K_Hose == 'black socks'", "images/KittySex/Kitty_Sex_BSocks_Thigh_Legs.png",
+            "K_Hose == 'pink socks'", "images/KittySex/Kitty_Sex_PSocks_Thigh_Legs.png",
+            "True", Null(),                      
+            ), 
+        (0,0), ConditionSwitch(                                                                                 #Legs Layer
+            "K_Upskirt", Null(),  
             "K_Legs == 'shorts' and K_Wet > 1", "images/KittySex/Kitty_Sex_Shorts_Wet.png",
             "K_Legs == 'shorts'", "images/KittySex/Kitty_Sex_Shorts.png",
             "K_Legs == 'blue shorts' and K_Wet > 1", "images/KittySex/Kitty_Sex_BlueShorts_Wet.png",
             "K_Legs == 'blue shorts'", "images/KittySex/Kitty_Sex_BlueShorts.png",
+            "K_Legs == 'white shorts' and K_Wet > 1", "images/KittySex/Kitty_Sex_WhiteShorts_Wet.png",
+            "K_Legs == 'white shorts'", "images/KittySex/Kitty_Sex_WhiteShorts.png",                             
+            "K_LegsUp", Null(),
+            "K_Legs == 'capris' and K_Wet > 1", "images/KittySex/Kitty_Sex_Pants_Blue_Wet.png",
+            "K_Legs == 'capris'", "images/KittySex/Kitty_Sex_Pants_Blue.png",
+            "K_Legs == 'black jeans' and K_Wet > 1", "images/KittySex/Kitty_Sex_Pants_Black_Wet.png",
+            "K_Legs == 'black jeans'", "images/KittySex/Kitty_Sex_Pants_Black.png",
             "K_Legs == 'yoga pants' and K_Wet > 1", "images/KittySex/Kitty_Sex_Pants_Yoga_Wet.png",
             "True", Null(),                      
             ),   
@@ -751,6 +780,7 @@ image Kitty_Sex_Legs:
 #            ),   
         (0,0), ConditionSwitch(                                                         #Shows different lower body motion depending on events
             "not Speed", "Kitty_Sex_Feet",  
+            "K_LegsUp and (P_Cock == 'anal' or P_Cock == 'in' or P_Cock == 'out')", "Kitty_Sex_Feet", 
             "P_Cock == 'anal' or P_Cock == 'in' or P_Cock == 'out'", AlphaMask("Kitty_Sex_Feet", "images/KittySex/Kitty_Sex_FeetMask.png"), 
             "True", "Kitty_Sex_Feet",            
             ),
@@ -760,14 +790,25 @@ image Kitty_Sex_Feet = LiveComposite(
         #the lower legs used in the sex pose, referenced by Kitty_Sex_Legs
         (1120,840), 
         (0,0), ConditionSwitch(
+            #"K_LegsUp", Null(),
+            "K_LegsUp", "images/KittySex/Kitty_Sex_Feet_LegsUp.png",
             "K_Tan", "images/KittySex/Kitty_Sex_TFeet.png",                                                         #Legs Base
             "True", "images/KittySex/Kitty_Sex_Feet.png",
+            ),
+        (0,0), ConditionSwitch(
+            "K_LegsUp", Null(),
+            "K_Hose == 'stockings'", "images/KittySex/Kitty_Sex_Stockings_Feet.png",  
+            "K_Hose == 'white socks'", "images/KittySex/Kitty_Sex_WSocks_Thigh_Feet.png",
+            "K_Hose == 'black socks'", "images/KittySex/Kitty_Sex_BSocks_Thigh_Feet.png",
+            "K_Hose == 'pink socks'", "images/KittySex/Kitty_Sex_PSocks_Thigh_Feet.png",                                                       #Legs Base
+            "True", Null(),
             ),
         (0,0), ConditionSwitch(                                                                                 #Wet look
             "K_Water", "images/KittySex/Kitty_Sex_Water_Feet.png",   
             "True", Null(),              
             ),  
         (0,0), ConditionSwitch(                                                                                 #Legs Layer
+            "K_LegsUp", Null(),
             "K_Upskirt", Null(),                               
             "K_Legs == 'capris'", "images/KittySex/Kitty_Sex_Feet_Blue.png",
             "K_Legs == 'black jeans'", "images/KittySex/Kitty_Sex_Feet_Black.png",
