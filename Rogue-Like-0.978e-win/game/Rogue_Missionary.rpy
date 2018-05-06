@@ -85,7 +85,7 @@ label R_Sex_P:
                             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 1)
                             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 30, 2)
                             return            
-                    jump R_SexPrep
+                    jump R_Missionary_SexPrep
                     # End high approval
                 else:                
                     $ Tempmod = 0                               # fix, add Rogue auto stuff here
@@ -118,7 +118,7 @@ label R_Sex_P:
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3) 
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 1) 
                     ch_r "Oh. . . game on, [R_Petname]."            
-                    jump R_SexPrep         
+                    jump R_Missionary_SexPrep         
                 else:                                                                                                            
                     #she's questioning it
                     $ R_Brows = "angry"                
@@ -131,14 +131,14 @@ label R_Sex_P:
                                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3) 
                                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 1) 
                                     ch_r "{i}Well. . .{/i} I didn't say I didn't want to. . ."
-                                    jump R_SexPrep
+                                    jump R_Missionary_SexPrep
                             else:
                                     "You pull back before you really get it in."                    
                                     call RogueFace("bemused", 1)
                                     if R_Sex:
-                                        ch_r "Maybe you could[R_like]warn me?" 
+                                        ch_r "Maybe you could warn me?" 
                                     else:
-                                        ch_r "Maybe you could[R_like]warn me? I don't know that I'm[R_like]ready for that sort of thing. . ."                                            
+                                        ch_r "Maybe you could warn me? I don't know that I'm ready for that sort of thing. . ."                                            
                         "Just fucking.":                    
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -10, 1)  
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -10)
@@ -161,7 +161,7 @@ label R_Sex_P:
                             else:
                                 call RogueFace("sad")
                                 "Rogue doesn't seem to be into this, you're lucky she's so obedient."                        
-                                jump R_SexPrep
+                                jump R_Missionary_SexPrep
                 return   
     #End Auto
     
@@ -211,7 +211,7 @@ label R_Sex_P:
                 ch_r "I guess this is more secluded. . ."        
             elif "sex" in R_RecentActions:
                 ch_r "Another round? {i}Fine.{/i}"
-                jump R_SexPrep
+                jump R_Missionary_SexPrep
             elif "sex" in R_DailyActions:
                 $ Line = renpy.random.choice(["Back again so soon?",                 
                     "So you'd like another round?",                 
@@ -256,25 +256,25 @@ label R_Sex_P:
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 20, 1)
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 60, 1)
             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 2) 
-            jump R_SexPrep   
+            jump R_Missionary_SexPrep   
     
     else:                                                                               
             #She's not into it, but maybe. . .    
             call RogueFace("angry")       
             if "no sex" in R_RecentActions:  
-                ch_r "I{i}just{/i}[R_like]told you \"no!\""
+                ch_r "I{i}just{/i} told you \"no!\""
             elif Taboo and "tabno" in R_DailyActions and "no sex" in R_DailyActions:  
                 ch_r "I already told you. . .not in public!" 
             elif "no sex" in R_DailyActions:       
-                ch_r "I already[R_like]told you \"no.\""
+                ch_r "I already told you \"no.\""
             elif Taboo and "tabno" in R_DailyActions:  
                 ch_r "I already told you this is too public!"     
             elif not R_Sex:
                 call RogueFace("bemused")
-                ch_r "I don't know that I'm. . .[R_like]ready? . ."
+                ch_r "I don't know that I'm. . . ready? . ."
             else:
                 call RogueFace("bemused")
-                ch_r "Maybe[R_like]not right now? . ."
+                ch_r "Maybe not right now? . ."
             menu:
                 extend ""
                 "Sorry, never mind." if "no sex" in R_DailyActions:
@@ -304,7 +304,7 @@ label R_Sex_P:
                                 "That's. . . that's a good point. . ."]) 
                             ch_r "[Line]"
                             $ Line = 0                   
-                            jump R_SexPrep       
+                            jump R_Missionary_SexPrep       
                 "Just deal with it.":                                               # Pressured into it
                         $ Approval = ApprovalCheck("Rogue", 1150, "OI", TabM = 3) # 115, 130, 145, -120(235)
                         if Approval > 1 or (Approval and R_Forced):
@@ -316,7 +316,7 @@ label R_Sex_P:
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 1) 
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 3)  
                             $ R_Forced = 1  
-                            jump R_SexPrep
+                            jump R_Missionary_SexPrep
                         else:                          
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -20)   
                             $ R_RecentActions.append("angry")
@@ -327,7 +327,7 @@ label R_Sex_P:
     #She refused all offers.
     $ Rogue_Arms = 1  
     if "no sex" in R_DailyActions:
-        ch_r "Maybe[R_like]take \"no\" for an answer?" 
+        ch_r "Maybe take \"no\" for an answer?" 
         $ R_RecentActions.append("angry")
         $ R_DailyActions.append("angry")   
     elif R_Forced:
@@ -347,7 +347,7 @@ label R_Sex_P:
         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -3)
     elif R_Sex:
         call RogueFace("sad") 
-        ch_r "Maybe just[R_like]fuck yourself, huh?."       
+        ch_r "Maybe just fuck yourself, huh?."       
     else:
         call RogueFace("normal", 1)
         ch_r "Nuhuh."     
@@ -356,7 +356,7 @@ label R_Sex_P:
     $ Tempmod = 0    
     return
 
-label R_SexPrep:
+label R_Missionary_SexPrep:
     call Rogue_Sex_Launch("hotdog")
     
     if Situation != "auto":
@@ -463,7 +463,7 @@ label R_SexPrep:
     $ R_RecentActions.append("sex")                      
     $ R_DailyActions.append("sex") 
 
-label R_Sex_Cycle: #Repeating strokes
+label R_Missionary_Sex_Cycle: #Repeating strokes
     while Round >=0:  
         call Shift_Focus("Rogue")
         call Rogue_Sex_Launch("sex") 
@@ -479,7 +479,7 @@ label R_Sex_Cycle: #Repeating strokes
             pass
         elif Cnt == (5 + R_Sex):
                     $ R_Brows = "confused"
-                    ch_r "So are we[R_like]getting close here?"   
+                    ch_r "So are we getting close here?"   
         elif Cnt == (10 + R_Sex):
                     $ R_Brows = "angry"        
                     ch_r "I'm . . .getting . . kinda tired. . . here. . ."
@@ -487,7 +487,7 @@ label R_Sex_Cycle: #Repeating strokes
                         ch_r "Can we. . . do something. . . else?"
                         "How about a BJ?" if R_Action and MultiAction:
                                 $ Situation = "shift"
-                                call R_SexAfter
+                                call R_Missionary_SexAfter
                                 call R_Blowjob       
                         "Finish up." if P_FocusX:
                                 "You release your concentration. . ."             
@@ -495,12 +495,12 @@ label R_Sex_Cycle: #Repeating strokes
                                 $ P_Focus += 15
                                 $ Cnt += 1
                                 "[Line]"
-                                jump R_Sex_Cycle
+                                jump R_Missionary_Sex_Cycle
                         "Let's try something else." if MultiAction: 
                                 $ Line = 0
                                 call Rogue_Sex_Reset
                                 $ Situation = "shift"
-                                jump R_SexAfter
+                                jump R_Missionary_SexAfter
                         "No, get back down there.":                                
                                 if ApprovalCheck("Rogue", 1200) or ApprovalCheck("Rogue", 500, "O"):                        
                                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -5)
@@ -518,7 +518,7 @@ label R_Sex_Cycle: #Repeating strokes
                                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -1, 1)  
                                     $ R_RecentActions.append("angry")
                                     $ R_DailyActions.append("angry")   
-                                    jump R_SexAfter
+                                    jump R_Missionary_SexAfter
         #End Count check
         
         if Line and P_Focus < 100:                                                    #Player Command menu
@@ -545,7 +545,7 @@ label R_Sex_Cycle: #Repeating strokes
                             
                         "Slap her ass":                     
                                     call R_Slap_Ass                                    
-                                    jump R_Sex_Cycle 
+                                    jump R_Missionary_Sex_Cycle 
 
                         "Put her legs up" if not R_LegsUp:
                                     $ R_LegsUp = 1
@@ -554,16 +554,6 @@ label R_Sex_Cycle: #Repeating strokes
                         "Put her legs down" if R_LegsUp:
                                     $ R_LegsUp = 0
                                     "You put her legs down."
-
-                        "Blindfold her" if R_Bondage and not R_Blindfold:
-                            call RogueFace("sexy", 1) 
-                            "You add a blindfold so she can't see a thing"
-                            $ R_Blindfold = 1
-
-                        "Remove blindfold" if R_Blindfold:
-                            call RogueFace("sexy", 1) 
-                            "You remove the blindfold"
-                            $ R_Blindfold = 0
                                     
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
@@ -582,20 +572,20 @@ label R_Sex_Cycle: #Repeating strokes
                                 menu:
                                     "How about anal?":
                                             $ Situation = "shift"
-                                            call R_SexAfter
+                                            call R_Missionary_SexAfter
                                             call R_Sex_A
                                     "Just stick it in her ass [[without asking].":
                                             $ Situation = "auto"
-                                            call R_SexAfter
+                                            call R_Missionary_SexAfter
                                             call R_Sex_A
                                     "Pull back to hotdog her.":
                                             $ Situation = "pullback"
-                                            call R_SexAfter
+                                            call R_Missionary_SexAfter
                                             call R_Sex_H
                                     "Never Mind":
                                             pass
                             else:
-                                ch_r "I'm[R_like]kinda tired here? Could we wrap it up?" 
+                                ch_r "I'm kinda tired here? Could we wrap it up?" 
                     
                         "I also want to. . . [[Offhand]":
                                 if R_Action and MultiAction:
@@ -603,17 +593,17 @@ label R_Sex_Cycle: #Repeating strokes
                                     if Trigger2:
                                          $ R_Action -= 1
                                 else:
-                                    ch_r "I'm[R_like]kinda tired here? Could we wrap it up?"  
+                                    ch_r "I'm kinda tired here? Could we wrap it up?"  
                            
                         "Let's try something else." if MultiAction: 
                                     call Rogue_Sex_Reset
                                     $ Situation = "shift"
                                     $ Line = 0
-                                    jump R_SexAfter
+                                    jump R_Missionary_SexAfter
                         "Let's stop for now." if not MultiAction: 
                                     call Rogue_Sex_Reset
                                     $ Line = 0
-                                    jump R_SexAfter
+                                    jump R_Missionary_SexAfter
         #End menu (if Line)
         
         call Sex_Dialog("Rogue",Partner)
@@ -632,7 +622,7 @@ label R_Sex_Cycle: #Repeating strokes
                                 $ R_DailyActions.append("unsatisfied") 
                             
                             if P_Focus > 80:
-                                jump R_SexAfter 
+                                jump R_Missionary_SexAfter 
                             $ Line = "came"
      
                     #If Rogue can cum
@@ -640,13 +630,13 @@ label R_Sex_Cycle: #Repeating strokes
                         if R_Lust >= 100:                                               
                             call R_Cumming
                             if Situation == "shift" or "angry" in R_RecentActions:
-                                jump R_SexAfter
+                                jump R_Missionary_SexAfter
                        
                     if Line == "came": #ex P_Focus <= 20: #If you've just cum,  
                         $ Line = 0
                         if not P_Semen:
                             "She's emptied you out, you'll need to take a break."
-                            jump R_SexAfter
+                            jump R_Missionary_SexAfter
                         elif "unsatisfied" in R_RecentActions:#And Rogue is unsatisfied,                    
                             call Rogue_Sex_Launch(Trigger)
                             $ Line = renpy.random.choice(["She continues to shake a little with pleasure.", 
@@ -658,13 +648,13 @@ label R_Sex_Cycle: #Repeating strokes
                                 extend ""
                                 "Yes, keep going for a bit." if P_Semen:
                                     $ Line = "You get back into it" 
-                                    jump R_Sex_Cycle  
+                                    jump R_Missionary_Sex_Cycle  
                                 "No, I'm done." if P_Semen:
                                     "You pull back."
-                                    jump R_SexAfter
+                                    jump R_Missionary_SexAfter
                                 "No, I'm spent." if not P_Semen:
                                     "You pull back."
-                                    jump R_SexAfter
+                                    jump R_Missionary_SexAfter
         #End orgasm
         
    
@@ -681,7 +671,7 @@ label R_Sex_Cycle: #Repeating strokes
     
 
     
-label R_SexAfter:
+label R_Missionary_SexAfter:
     if not Situation: #fix  Situation != "shift" and Situation != "auto" and Situation != "pullback": 
         $ P_Sprite = 0
         $ P_Cock = "out"
@@ -713,7 +703,7 @@ label R_SexAfter:
             $R_SEXP += 20        
             if not Situation: 
                 if R_Love >= 500 and "unsatisfied" not in R_RecentActions:
-                    ch_r "I feel like I've been waiting[R_like]a million years for that."
+                    ch_r "I feel like I've been waiting a million years for that."
                 elif R_Obed <= 500 and P_Focus <= 20:
                     $ R_Mouth = "sad"
                     ch_r "I hope that was worth the wait."
@@ -730,7 +720,7 @@ label R_SexAfter:
      
     $ Tempmod = 0  
     if Situation == "shift":
-        ch_r "Did you[R_like]want to try something else?"
+        ch_r "Did you want to try something else?"
     call Checkout
     return   
 
@@ -828,7 +818,7 @@ label R_Sex_A:
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 1)
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 30, 2)                    
                         return            
-                jump R_AnalPrep
+                jump R_Missionary_AnalPrep
             else:                
                 $ Tempmod = 0                               # fix, add Rogue auto stuff here
                 $ Trigger2 = 0
@@ -863,27 +853,27 @@ label R_Sex_A:
                 else:
                     "Rogue is briefly startled, but shrugs."
                     ch_r "Oookay. . ."                  
-                jump R_AnalPrep         
+                jump R_Missionary_AnalPrep         
             else:                                                                                                            
                 #she's questioning it
                 $ R_Brows = "angry"                
                 menu:
-                    ch_r "Um[R_like]what are you doing back there?!" 
+                    ch_r "Um what are you doing back there?!" 
                     "Sorry, sorry! Never mind.":
                         if Approval:     
                             call RogueFace("sexy", 1)
                             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 3)
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3) 
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 1) 
-                            ch_r "Well[R_like]just take it easy, ok? . ."
-                            jump R_AnalPrep
+                            ch_r "Well just take it easy, ok? . ."
+                            jump R_Missionary_AnalPrep
                         "You pull back before you really get it in."                    
                         call RogueFace("bemused", 1)
                         
                         if R_Anal:
-                            ch_r "Maybe you could[R_like]warn me?" 
+                            ch_r "Maybe you could warn me?" 
                         else:
-                            ch_r "Maybe you could[R_like]warn me? I don't know that I'm[R_like]ready for that sort of thing. . ."                                           
+                            ch_r "Maybe you could warn me? I don't know that I'm ready for that sort of thing. . ."                                           
                     "Just fucking.":                    
                         $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -10, 1)  
                         $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -8)
@@ -906,7 +896,7 @@ label R_Sex_A:
                         else:
                             call RogueFace("sad")
                             "Rogue doesn't seem to be into this, you're lucky she's so obedient."                        
-                            jump R_AnalPrep
+                            jump R_Missionary_AnalPrep
             return  
             #end "auto" 
     
@@ -928,7 +918,7 @@ label R_Sex_A:
     elif "anal" in R_RecentActions:
             call RogueFace("sexy", 1)
             ch_r "Again? K."
-            jump R_AnalPrep
+            jump R_Missionary_AnalPrep
         
     
     if not R_Anal and Approval:                                                 
@@ -966,7 +956,7 @@ label R_Sex_A:
                 pass      
             elif "anal" in R_RecentActions:
                 ch_r "I guess I'm warmed up. . ."
-                jump R_AnalPrep
+                jump R_Missionary_AnalPrep
             elif "anal" in R_DailyActions:
                 call RogueFace("sexy", 1)
                 $ Line = renpy.random.choice(["Back again so soon?",                 
@@ -1009,28 +999,28 @@ label R_Sex_A:
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 20, 1)
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 60, 1)
             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 2) 
-            jump R_AnalPrep   
+            jump R_Missionary_AnalPrep   
                
     else:                                                                               
             #She's not into it, but maybe. . .            
             call RogueFace("angry")
             if "no anal" in R_RecentActions:  
-                ch_r "I{i}just{/i}[R_like]told you \"no!\""
+                ch_r "I{i}just{/i} told you \"no!\""
             elif Taboo and "tabno" in R_DailyActions and "no anal" in R_DailyActions:
                 ch_r "I already told you. . .not in public!" 
             elif "no anal" in R_DailyActions:       
-                ch_r "I already[R_like]told you \"no.\""
+                ch_r "I already told you \"no.\""
             elif Taboo and "tabno" in R_DailyActions:  
                 ch_r "I already told you this is too public!"      
             elif not R_Anal:
                 call RogueFace("bemused")
-                ch_r "I don't know that I'm. . .[R_like]that kind of girl?"
+                ch_r "I don't know that I'm. . . that kind of girl?"
             elif not R_Loose and "anal" not in R_DailyActions:
                 call RogueFace("perplexed")
                 ch_r "That was kind of. . . rough last time?"
             else:
                 call RogueFace("bemused")
-                ch_r "Maybe[R_like]not right now? . ."
+                ch_r "Maybe not right now? . ."
             menu:
                 extend ""
                 "Sorry, never mind." if "no anal" in R_DailyActions:
@@ -1060,7 +1050,7 @@ label R_Sex_A:
                             "That's. . . that's a good point. . ."]) 
                         ch_r "[Line]"
                         $ Line = 0                   
-                        jump R_AnalPrep
+                        jump R_Missionary_AnalPrep
                     else:   
                         pass
                         
@@ -1075,7 +1065,7 @@ label R_Sex_A:
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 1) 
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 3)  
                         $ R_Forced = 1  
-                        jump R_AnalPrep
+                        jump R_Missionary_AnalPrep
                     else:                              
                         $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -20)    
                         $ R_RecentActions.append("angry")
@@ -1084,7 +1074,7 @@ label R_Sex_A:
     #She refused all offers.
     $ Rogue_Arms = 1  
     if "no anal" in R_DailyActions:
-        ch_r "Maybe[R_like]take \"no\" for an answer?"   
+        ch_r "Maybe take \"no\" for an answer?"   
         $ R_RecentActions.append("angry")
         $ R_DailyActions.append("angry")   
     elif R_Forced:
@@ -1105,10 +1095,10 @@ label R_Sex_A:
         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -3) 
     elif not R_Loose and "anal" in R_DailyActions:
         call RogueFace("bemused")
-        ch_r "I'm[R_like]a little sore here?"    
+        ch_r "I'm a little sore here?"    
     elif R_Anal:
         call RogueFace("sad") 
-        ch_r "That's[R_like]totally off the table."
+        ch_r "That's totally off the table."
     else:
         call RogueFace("normal", 1)
         ch_r "Noooop."    
@@ -1117,7 +1107,7 @@ label R_Sex_A:
     $ Tempmod = 0    
     return
 
-label R_AnalPrep:    
+label R_Missionary_AnalPrep:    
             
     call Rogue_Sex_Launch("hotdog")
     
@@ -1232,7 +1222,7 @@ label R_AnalPrep:
     $ R_RecentActions.append("anal")                      
     $ R_DailyActions.append("anal") 
 
-label R_Anal_Cycle: #Repeating strokes
+label R_Missionary_Anal_Cycle: #Repeating strokes
     while Round >=0:  
         call Shift_Focus("Rogue")
         call Rogue_Sex_Launch("anal") 
@@ -1249,9 +1239,9 @@ label R_Anal_Cycle: #Repeating strokes
         elif Cnt == (5 + R_Anal):
                     $ R_Brows = "confused"
                     if R_Loose:
-                        ch_r "So are we[R_like]getting close here?"  
+                        ch_r "So are we getting close here?"  
                     else:
-                        ch_r "So are we[R_like]getting close here? This is not super pleasant. . ."   
+                        ch_r "So are we getting close here? This is not super pleasant. . ."   
         elif Cnt == (10 + R_Anal):
                     $ R_Brows = "angry"        
                     ch_r "I'm . . .getting . . kinda tired. . . of this. . ."
@@ -1260,16 +1250,16 @@ label R_Anal_Cycle: #Repeating strokes
                         "How about a BJ?" if R_Action and MultiAction:
                                 if R_Anal >= 5 and R_Blow >= 10 and R_SEXP >= 50:
                                     $ Situation = "shift"
-                                    call R_AnalAfter
+                                    call R_Missionary_AnalAfter
                                     call R_Blowjob      
                                 else:
                                     ch_r "No thanks, [R_Petname]. Maybe a Handy instead?"
                                     $ Situation = "shift"
-                                    call R_AnalAfter
+                                    call R_Missionary_AnalAfter
                                     call RHJ_Prep   
                         "How about a Handy?" if R_Action and MultiAction:
                                 $ Situation = "shift"
-                                call R_AnalAfter
+                                call R_Missionary_AnalAfter
                                 call R_Handjob     
                         "Finish up." if P_FocusX:
                                 "You release your concentration. . ."             
@@ -1277,12 +1267,12 @@ label R_Anal_Cycle: #Repeating strokes
                                 $ P_Focus += 15
                                 $ Cnt += 1
                                 "[Line]"
-                                jump R_Anal_Cycle
+                                jump R_Missionary_Anal_Cycle
                         "Let's try something else." if MultiAction: 
                                 $ Line = 0
                                 call Rogue_Sex_Reset
                                 $ Situation = "shift"
-                                jump R_AnalAfter
+                                jump R_Missionary_AnalAfter
                         "No, get back down there.":                                
                                 if ApprovalCheck("Rogue", 1200) or ApprovalCheck("Rogue", 500, "O"):                        
                                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -5)
@@ -1300,7 +1290,7 @@ label R_Anal_Cycle: #Repeating strokes
                                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -1, 1)  
                                     $ R_RecentActions.append("angry")
                                     $ R_DailyActions.append("angry")   
-                                    jump R_AnalAfter
+                                    jump R_Missionary_AnalAfter
         #End Count check
         
         if Line and P_Focus < 100:                                                    #Player Command menu
@@ -1327,7 +1317,7 @@ label R_Anal_Cycle: #Repeating strokes
                             
                         "Slap her ass":                     
                                     call R_Slap_Ass                                    
-                                    jump R_Anal_Cycle  
+                                    jump R_Missionary_Anal_Cycle  
 
                         "Put her legs up" if not R_LegsUp:
                                     $ R_LegsUp = 1
@@ -1336,16 +1326,6 @@ label R_Anal_Cycle: #Repeating strokes
                         "Put her legs down" if R_LegsUp:
                                     $ R_LegsUp = 0
                                     "You put her legs down."
-
-                        "Blindfold her" if R_Bondage and not R_Blindfold:
-                            call RogueFace("sexy", 1) 
-                            "You add a blindfold so she can't see a thing"
-                            $ R_Blindfold = 1
-
-                        "Remove blindfold" if R_Blindfold:
-                            call RogueFace("sexy", 1) 
-                            "You remove the blindfold"
-                            $ R_Blindfold = 0
                                     
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
@@ -1364,20 +1344,20 @@ label R_Anal_Cycle: #Repeating strokes
                                 menu:
                                     "How about sex?":
                                             $ Situation = "shift"
-                                            call R_AnalAfter
+                                            call R_Missionary_AnalAfter
                                             call R_Sex_P
                                     "Just stick it in her pussy [[without asking].":
                                             $ Situation = "auto"
-                                            call R_AnalAfter
+                                            call R_Missionary_AnalAfter
                                             call R_Sex_P
                                     "Pull back to hotdog her.":
                                             $ Situation = "pullback"
-                                            call R_AnalAfter
+                                            call R_Missionary_AnalAfter
                                             call R_Sex_H
                                     "Never Mind":
                                             pass
                             else:
-                                ch_r "I'm[R_like]kinda tired here? Could we wrap it up?" 
+                                ch_r "I'm kinda tired here? Could we wrap it up?" 
                     
                         "I also want to. . . [[Offhand]":
                                 if R_Action and MultiAction:
@@ -1385,17 +1365,17 @@ label R_Anal_Cycle: #Repeating strokes
                                     if Trigger2:
                                          $ R_Action -= 1
                                 else:
-                                    ch_r "I'm[R_like]kinda tired here? Could we wrap it up?"  
+                                    ch_r "I'm kinda tired here? Could we wrap it up?"  
                            
                         "Let's try something else." if MultiAction: 
                                     call Rogue_Sex_Reset
                                     $ Situation = "shift"
                                     $ Line = 0
-                                    jump R_AnalAfter
+                                    jump R_Missionary_AnalAfter
                         "Let's stop for now." if not MultiAction: 
                                     call Rogue_Sex_Reset
                                     $ Line = 0
-                                    jump R_AnalAfter
+                                    jump R_Missionary_AnalAfter
         #End menu (if Line)
         
         call Sex_Dialog("Rogue",Partner)
@@ -1414,7 +1394,7 @@ label R_Anal_Cycle: #Repeating strokes
                                 $ R_DailyActions.append("unsatisfied") 
                             
                             if P_Focus > 80:
-                                jump R_AnalAfter 
+                                jump R_Missionary_AnalAfter 
                             $ Line = "came"
      
                     #If Rogue can cum
@@ -1422,13 +1402,13 @@ label R_Anal_Cycle: #Repeating strokes
                         if R_Lust >= 100:                                               
                             call R_Cumming
                             if Situation == "shift" or "angry" in R_RecentActions:
-                                jump R_AnalAfter
+                                jump R_Missionary_AnalAfter
                        
                     if Line == "came": #ex P_Focus <= 20: #If you've just cum,  
                         $ Line = 0
                         if not P_Semen:
                             "She's emptied you out, you'll need to take a break."
-                            jump R_SexAfter
+                            jump R_Missionary_SexAfter
                         elif "unsatisfied" in R_RecentActions:#And Rogue is unsatisfied,                    
                             call Rogue_Sex_Launch(Trigger)
                             $ Line = renpy.random.choice(["She continues to shake a little with pleasure.", 
@@ -1440,13 +1420,13 @@ label R_Anal_Cycle: #Repeating strokes
                                 extend ""
                                 "Yes, keep going for a bit." if P_Semen:
                                     $ Line = "You get back into it" 
-                                    jump R_Anal_Cycle  
+                                    jump R_Missionary_Anal_Cycle  
                                 "No, I'm done." if P_Semen:
                                     "You pull back."                                
-                                    jump R_AnalAfter
+                                    jump R_Missionary_AnalAfter
                                 "No, I'm spent." if not P_Semen:
                                     "You pull back."                                
-                                    jump R_AnalAfter
+                                    jump R_Missionary_AnalAfter
         #End orgasm
         
    
@@ -1463,7 +1443,7 @@ label R_Anal_Cycle: #Repeating strokes
     
 
     
-label R_AnalAfter:
+label R_Missionary_AnalAfter:
     if not Situation: #fix  Situation != "shift" and Situation != "auto" and Situation != "pullback": 
         $ P_Sprite = 0
         $ P_Cock = "out"
@@ -1583,7 +1563,7 @@ label R_Sex_H:
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 1)
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 30, 2)                    
                         return            
-                jump R_HotdogPrep
+                jump R_Missionary_HotdogPrep
             else:                
                 $ Tempmod = 0                               # fix, add Rogue auto stuff here
                 $ Trigger2 = 0
@@ -1602,7 +1582,7 @@ label R_Sex_H:
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3) 
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 1) 
                 ch_r "Hmm, I've apparently got someone's attention. . ."            
-                jump R_HotdogPrep         
+                jump R_Missionary_HotdogPrep         
             else:                                                                                                            #she's questioning it
                 $ R_Brows = "angry"                
                 menu:
@@ -1614,7 +1594,7 @@ label R_Sex_H:
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3) 
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 1) 
                             ch_r "I guess it doesn't feel so bad. . ."
-                            jump R_HotdogPrep
+                            jump R_Missionary_HotdogPrep
                         "You pull back from her."                    
                         call RogueFace("bemused", 1)
                         ch_r "Thanks, not that it's {i}so{/i} bad, just maybe ask first?"                                             
@@ -1640,7 +1620,7 @@ label R_Sex_H:
                         else:
                             call RogueFace("sad")
                             "Rogue doesn't seem to be into this, but she's knows her place."                        
-                            jump R_HotdogPrep
+                            jump R_Missionary_HotdogPrep
             return     
             #end auto
     
@@ -1690,7 +1670,7 @@ label R_Sex_H:
             elif "hotdog" in R_RecentActions:
                 call RogueFace("sexy", 1)
                 ch_r "Again? Ok."
-                jump R_HotdogPrep
+                jump R_Missionary_HotdogPrep
             elif "hotdog" in R_DailyActions:
                 call RogueFace("sexy", 1)
                 $ Line = renpy.random.choice(["Back again so soon?",                 
@@ -1731,19 +1711,19 @@ label R_Sex_H:
                 $ Line = 0
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 60, 1)
             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 2) 
-            jump R_HotdogPrep   
+            jump R_Missionary_HotdogPrep   
     
     else:                                                                               
             #She's not into it, but maybe. . .            
             call RogueFace("angry")
             if "no hotdog" in R_RecentActions:  
-                ch_r "I{i}just{/i}[R_like]told you \"no!\""
+                ch_r "I{i}just{/i} told you \"no!\""
             elif Taboo and "tabno" in R_DailyActions and "no hotdog" in R_DailyActions: 
-                ch_r "I{i}just{/i}[R_like]told, not in public!" 
+                ch_r "I{i}just{/i} told, not in public!" 
             elif "no hotdog" in R_DailyActions:       
-                ch_r "I{i}just{/i}[R_like]told you \"no\" earlier!"
+                ch_r "I{i}just{/i} told you \"no\" earlier!"
             elif Taboo and "tabno" in R_DailyActions:  
-                ch_r "I{i}just{/i}[R_like]told you, not in public!"  
+                ch_r "I{i}just{/i} told you, not in public!"  
             elif not R_Hotdog:
                 call RogueFace("bemused")
                 ch_r "That's kinda hot, [R_Petname]. . ."
@@ -1777,7 +1757,7 @@ label R_Sex_H:
                             "That's. . . that's a good point. . ."]) 
                         ch_r "[Line]"
                         $ Line = 0                   
-                        jump R_HotdogPrep
+                        jump R_Missionary_HotdogPrep
                     else:   
                         pass
                         
@@ -1791,7 +1771,7 @@ label R_Sex_H:
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 4)
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 2)  
                         $ R_Forced = 1  
-                        jump R_HotdogPrep
+                        jump R_Missionary_HotdogPrep
                     else:                              
                         $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -10)     
                         $ R_RecentActions.append("angry")
@@ -1816,7 +1796,7 @@ label R_Sex_H:
         call RogueFace("angry", 1)        
         $ R_RecentActions.append("tabno")                      
         $ R_DailyActions.append("tabno") 
-        ch_r "[R_Like]not here though?"  
+        ch_r " not here though?"  
         $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5)  
         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -3)  
     elif R_Hotdog:
@@ -1830,7 +1810,7 @@ label R_Sex_H:
     $ Tempmod = 0    
     return
 
-label R_HotdogPrep:  
+label R_Missionary_HotdogPrep:  
     call Rogue_Sex_Launch("hotdog")
     
     if Situation != "auto":
@@ -1882,7 +1862,7 @@ label R_HotdogPrep:
     $ R_RecentActions.append("hotdog")                      
     $ R_DailyActions.append("hotdog") 
 
-label R_Hotdog_Cycle: #Repeating strokes  
+label R_Missionary_Hotdog_Cycle: #Repeating strokes  
     
     while Round >=0:  
         call Shift_Focus("Rogue")
@@ -1904,7 +1884,7 @@ label R_Hotdog_Cycle: #Repeating strokes
                         ch_r "This is getting a bit dull."
                         "How about a BJ?" if R_Action and MultiAction:
                                 $ Situation = "shift"
-                                call R_HotdogAfter
+                                call R_Missionary_HotdogAfter
                                 call R_Blowjob       
                         "Finish up." if P_FocusX:
                                 "You release your concentration. . ."             
@@ -1912,12 +1892,12 @@ label R_Hotdog_Cycle: #Repeating strokes
                                 $ P_Focus += 15
                                 $ Cnt += 1
                                 "[Line]"
-                                jump R_Hotdog_Cycle
+                                jump R_Missionary_Hotdog_Cycle
                         "Let's try something else." if MultiAction: 
                                 $ Line = 0
                                 call Rogue_Sex_Reset
                                 $ Situation = "shift"
-                                jump R_HotdogAfter
+                                jump R_Missionary_HotdogAfter
                         "No, get back down there.":                                
                                 if ApprovalCheck("Rogue", 1200) or ApprovalCheck("Rogue", 500, "O"):                        
                                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -5)
@@ -1935,7 +1915,7 @@ label R_Hotdog_Cycle: #Repeating strokes
                                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -1, 1)  
                                     $ R_RecentActions.append("angry")
                                     $ R_DailyActions.append("angry")   
-                                    jump R_HotdogAfter
+                                    jump R_Missionary_HotdogAfter
         #End Count check
         
         if Line and P_Focus < 100:                                                    #Player Command menu
@@ -1962,7 +1942,7 @@ label R_Hotdog_Cycle: #Repeating strokes
                             
                         "Slap her ass":                     
                                     call R_Slap_Ass                                    
-                                    jump R_Hotdog_Cycle  
+                                    jump R_Missionary_Hotdog_Cycle  
 
                         "Put her legs up" if not R_LegsUp:
                                     $ R_LegsUp = 1
@@ -1971,16 +1951,6 @@ label R_Hotdog_Cycle: #Repeating strokes
                         "Put her legs down" if R_LegsUp:
                                     $ R_LegsUp = 0
                                     "You put her legs down."
-
-                        "Blindfold her" if R_Bondage and not R_Blindfold:
-                            call RogueFace("sexy", 1) 
-                            "You add a blindfold so she can't see a thing"
-                            $ R_Blindfold = 1
-
-                        "Remove blindfold" if R_Blindfold:
-                            call RogueFace("sexy", 1) 
-                            "You remove the blindfold"
-                            $ R_Blindfold = 0
                                     
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
@@ -1999,24 +1969,24 @@ label R_Hotdog_Cycle: #Repeating strokes
                                 menu:
                                     "How about sex?":
                                         $ Situation = "shift"
-                                        call R_HotdogAfter
+                                        call R_Missionary_HotdogAfter
                                         call R_Sex_P
                                     "Just stick it in her pussy [[without asking].":
                                         $ Situation = "auto"
-                                        call R_HotdogAfter
+                                        call R_Missionary_HotdogAfter
                                         call R_Sex_P
                                     "How about anal?":
                                         $ Situation = "shift"
-                                        call R_HotdogAfter
+                                        call R_Missionary_HotdogAfter
                                         call R_Sex_A
                                     "Just stick it in her ass [[without asking].":
                                         $ Situation = "auto"
-                                        call R_HotdogAfter
+                                        call R_Missionary_HotdogAfter
                                         call R_Sex_A
                                     "Never Mind":
                                         pass
                             else:
-                                ch_r "I'm[R_like]kinda tired here? Could we wrap it up?"  
+                                ch_r "I'm kinda tired here? Could we wrap it up?"  
                     
                         "I also want to. . .[[Offhand]":
                                 if R_Action and MultiAction:
@@ -2024,17 +1994,17 @@ label R_Hotdog_Cycle: #Repeating strokes
                                     if Trigger2:
                                          $ R_Action -= 1
                                 else:
-                                    ch_r "I'm[R_like]kinda tired here? Could we wrap it up?"  
+                                    ch_r "I'm kinda tired here? Could we wrap it up?"  
                            
                         "Let's try something else." if MultiAction: 
                                     call Rogue_Sex_Reset
                                     $ Situation = "shift"
                                     $ Line = 0
-                                    jump R_HotdogAfter
+                                    jump R_Missionary_HotdogAfter
                         "Let's stop for now." if not MultiAction: 
                                     call Rogue_Sex_Reset
                                     $ Line = 0
-                                    jump R_HotdogAfter
+                                    jump R_Missionary_HotdogAfter
         #End menu (if Line)
         
         call Sex_Dialog("Rogue",Partner)
@@ -2053,7 +2023,7 @@ label R_Hotdog_Cycle: #Repeating strokes
                                 $ R_DailyActions.append("unsatisfied") 
                             
                             if P_Focus > 80:
-                                jump R_HotdogAfter 
+                                jump R_Missionary_HotdogAfter 
                             $ Line = "came"
      
      
@@ -2062,13 +2032,13 @@ label R_Hotdog_Cycle: #Repeating strokes
                         if R_Lust >= 100:                                               
                             call R_Cumming
                             if Situation == "shift" or "angry" in R_RecentActions:
-                                jump R_HotdogAfter
+                                jump R_Missionary_HotdogAfter
                        
                     if Line == "came": #ex P_Focus <= 20: #If you've just cum,  
                         $ Line = 0
                         if not P_Semen:
                             "She's emptied you out, you'll need to take a break."
-                            jump R_SexAfter
+                            jump R_Missionary_SexAfter
                         elif "unsatisfied" in R_RecentActions:#And Rogue is unsatisfied,                    
                             call Rogue_Sex_Launch("hotdog")
                             $ Line = renpy.random.choice(["She continues to shake a little with pleasure.", 
@@ -2080,13 +2050,13 @@ label R_Hotdog_Cycle: #Repeating strokes
                                 extend ""
                                 "Yes, keep going for a bit." if P_Semen:
                                     $ Line = "You get back into it" 
-                                    jump R_Hotdog_Cycle  
+                                    jump R_Missionary_Hotdog_Cycle  
                                 "No, I'm done." if P_Semen:
                                     "You pull back."                                    
-                                    jump R_HotdogAfter
+                                    jump R_Missionary_HotdogAfter
                                 "No, I'm spent." if not P_Semen:
                                     "You pull back."
-                                    jump R_HotdogAfter
+                                    jump R_Missionary_HotdogAfter
                         
         #End orgasm
         
@@ -2104,7 +2074,7 @@ label R_Hotdog_Cycle: #Repeating strokes
     
 
     
-label R_HotdogAfter:
+label R_Missionary_HotdogAfter:
     if not Situation: #fix  Situation != "shift" and Situation != "auto" and Situation != "pullback": 
         $ P_Sprite = 0
         $ P_Cock = "out"
