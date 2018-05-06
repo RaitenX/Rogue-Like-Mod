@@ -24,7 +24,10 @@ image Rogue:
             "R_Over == 'white hoodie'", "images/RogueSprite/Rogue_over_whoodieB.png",
             "True", Null(), 
             ),     
-        (0,0), "images/RogueSprite/Rogue_body_bare.png",         
+        (0,0), ConditionSwitch(                                                                         #body 
+            "R_Tan == 'tan'", "images/RogueSprite/Rogue_tbody_bare.png",
+            "True", "images/RogueSprite/Rogue_body_bare.png",         
+            ),  
         (0,0), ConditionSwitch(                                                                         #body 
             "R_Pubes and R_HairColor == 'black'", "images/RogueSprite/Rogue_bodyhaired_pubesblack.png",
             "R_Pubes and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_bodyhaired_pubesblonde.png",
@@ -52,10 +55,15 @@ image Rogue:
         #    ),              
         (0,0), ConditionSwitch(                                                                         #head 
             "renpy.showing('Rogue_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Rogue_TJ_Animation')", Null(),
+            "R_Tan == 'tan' and R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_thead_evowet.png",
             "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_head_evowet.png",
+            "R_Tan == 'tan' and R_Hair == 'evo' and R_Blush == 2", "images/RogueSprite/Rogue_thead_evo_blush2.png",
             "R_Hair == 'evo' and R_Blush == 2", "images/RogueSprite/Rogue_head_evo_blush2.png",
+            "R_Tan == 'tan' and R_Hair == 'evo' and R_Blush", "images/RogueSprite/Rogue_thead_evo_blush.png",
             "R_Hair == 'evo' and R_Blush", "images/RogueSprite/Rogue_head_evo_blush.png",
+            "R_Tan == 'tan' and R_Hair == 'evo'", "images/RogueSprite/Rogue_thead_evo.png",
             "R_Hair == 'evo'", "images/RogueSprite/Rogue_head_evo.png",
+            "R_Tan == 'tan'", "images/RogueSprite/Rogue_thead_evo.png",
             "True", "images/RogueSprite/Rogue_head_evo.png",
             ),  
         (0,0), ConditionSwitch(                                                                         #pants backing/hose    
@@ -138,8 +146,10 @@ image Rogue:
             "'mouth' in R_Spunk and R_Mouth == 'kiss'", "images/RogueSprite/Rogue_mouth_sad_w.png",
             "'mouth' in R_Spunk and R_Mouth == 'smile'", "images/RogueSprite/Rogue_mouth_smile_w.png",
             "'mouth' in R_Spunk and R_Mouth == 'tongue'", "images/RogueSprite/Rogue_mouth_tongue_w.png",
+            "R_Tan == 'tan' and 'mouth' in R_Spunk", "images/RogueSprite/Rogue_tmouth_lipbite_w.png",
             "'mouth' in R_Spunk", "images/RogueSprite/Rogue_mouth_lipbite_w.png",
             "R_Mouth == 'normal'", "images/RogueSprite/Rogue_mouth_normal.png",
+            "R_Tan == 'tan' and R_Mouth == 'lipbite'", "images/RogueSprite/Rogue_tmouth_lipbite.png",
             "R_Mouth == 'lipbite'", "images/RogueSprite/Rogue_mouth_lipbite.png",
             "R_Mouth == 'sucking'", "images/RogueSprite/Rogue_mouth_sucking.png",            
             "R_Mouth == 'kiss'", "images/RogueSprite/Rogue_mouth_kiss.png",
@@ -171,16 +181,22 @@ image Rogue:
             "True", Null(),   
             ),
         (0,0), ConditionSwitch(                                                                         #Arms and gloves
+            "R_Tan == 'tan' and Rogue_Arms == 1 and R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_tarms1a_gloved.png",       #Gloves and collar 
             "Rogue_Arms == 1 and R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms1a_gloved.png",       #Gloves and collar 
+            "R_Tan == 'tan' and Rogue_Arms == 1 and R_Arms == 'gloved'", "images/RogueSprite/Rogue_tarms1b_gloved.png",                                     #Gloves, no collar
             "Rogue_Arms == 1 and R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms1b_gloved.png",                                     #Gloves, no collar
+            "R_Tan == 'tan' and Rogue_Arms == 1 and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_tarms1a_bare.png",                                #No Gloves, collar 
             "Rogue_Arms == 1 and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms1a_bare.png",                                #No Gloves, collar 
+            "R_Tan == 'tan' and Rogue_Arms == 1", "images/RogueSprite/Rogue_tarms1b_bare.png",                                                              #No gloves, no collar
             "Rogue_Arms == 1", "images/RogueSprite/Rogue_arms1b_bare.png",                                                              #No gloves, no collar
+            "R_Tan == 'tan' and R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_tarms2a_gloved.png",                           #Gloves and collar 
             "R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_gloved.png",                           #Gloves and collar 
+            "R_Tan == 'tan' and R_Arms == 'gloved'", "images/RogueSprite/Rogue_tarms2b_gloved.png",                                                         #Gloved, no collar
             "R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms2b_gloved.png",                                                         #Gloved, no collar
+            "R_Tan == 'tan' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_tarms2a_bare.png",                                                    #No gloves, collar
             "R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_bare.png",                                                    #No gloves, collar
+            "R_Tan == 'tan'", "images/RogueSprite/Rogue_tarms2b_bare.png",                                                                         #No gloves, no collar
             "True", "images/RogueSprite/Rogue_arms2b_bare.png",                                                                         #No gloves, no collar
-            
-            
 #            "Rogue_Arms == 1 and R_Arms == 'collargloved'", "images/RogueSprite/Rogue_arms1a_gloved.png",  
 #            "Rogue_Arms == 1 and R_Arms == 'collarbare'", "images/RogueSprite/Rogue_arms1a_bare.png", 
 #            "Rogue_Arms == 1 and R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms1b_gloved.png",                   
@@ -191,8 +207,11 @@ image Rogue:
 #            "True", "images/RogueSprite/Rogue_arms2b_bare.png",          
             ), 
         (0,0), ConditionSwitch(                                                                         #chest layer
+            "R_Tan == 'tan' and R_Pierce == 'barbell'", "images/RogueSprite/Rogue_tchest_barbell.png",            
             "R_Pierce == 'barbell'", "images/RogueSprite/Rogue_chest_barbell.png",            
+            "R_Tan == 'tan' and R_Pierce == 'ring'", "images/RogueSprite/Rogue_tchest_rings.png",      
             "R_Pierce == 'ring'", "images/RogueSprite/Rogue_chest_rings.png",      
+            "R_Tan == 'tan'", "images/RogueSprite/Rogue_tchest_bare.png",     
             "True", "images/RogueSprite/Rogue_chest_bare.png",     
             ),   
         (0,0), ConditionSwitch(                                                                         #chest clothes layer
@@ -448,7 +467,10 @@ image Rogue_Selfie:
             pos (370, 90)
             zoom .4
         contains:
-            "images/RogueSelfie/Rogue_selfie_base.png" 
+            ConditionSwitch(
+                "R_Tan == 'tan'", "images/RogueSelfie/Rogue_tselfie_base.png",
+                "True", "images/RogueSelfie/Rogue_selfie_base.png",
+                ),
             pos (320, 320)
             zoom .4
 
@@ -708,36 +730,62 @@ image Rogue_Doggy_Body = LiveComposite(                                         
             "R_Hair == 'evo'", "images/RogueDoggy/Rogue_Doggy_HairB.png",   
             "True", Null(),                   
             ),   
-        (0,0), ConditionSwitch(                                                                                 #Mouth
+        (0,0), ConditionSwitch(  
+            "R_Tan == 'tan' and R_Gag == 'ballgag'", "images/RogueDoggy/Rogue_tDoggy_BallGag.png", 
             "R_Gag == 'ballgag'", "images/RogueDoggy/Rogue_Doggy_BallGag.png",
             "True", Null(), #Rogue_Doggy_BallGag
             ),
-        (0,0), "images/RogueDoggy/Rogue_Doggy_Body.png",  
+        (0,0), ConditionSwitch(  
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Body.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Body.png",
+            ),
         (0,0), ConditionSwitch(                                                                                 #Mouth
+            "R_Tan == 'tan' and R_Gag == 'ballgag'", "images/RogueDoggy/Rogue_tDoggy_BallGagTop.png",
             "R_Gag == 'ballgag'", "images/RogueDoggy/Rogue_Doggy_BallGagTop.png",
+            "R_Tan == 'tan' and 'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueDoggy/Rogue_tDoggy_Mouth_BlowW.png",
             "'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueDoggy/Rogue_Doggy_Mouth_BlowW.png",
+            "R_Tan == 'tan' and R_Gag == 'ringgag'", "images/RogueDoggy/Rogue_tDoggy_Mouth_Blow.png",
             "R_Gag == 'ringgag'", "images/RogueDoggy/Rogue_Doggy_Mouth_Blow.png",
+            "R_Tan == 'tan' and 'mouth' in R_Spunk and R_Mouth == 'lipbite'", "images/RogueDoggy/Rogue_tDoggy_Mouth_LipbiteW.png",
             "'mouth' in R_Spunk and R_Mouth == 'lipbite'", "images/RogueDoggy/Rogue_Doggy_Mouth_LipbiteW.png",
+            "R_Tan == 'tan' and 'mouth' in R_Spunk and R_Mouth == 'surprised'", "images/RogueDoggy/Rogue_tDoggy_Mouth_SurprisedW.png",
             "'mouth' in R_Spunk and R_Mouth == 'surprised'", "images/RogueDoggy/Rogue_Doggy_Mouth_SurprisedW.png",
+            "R_Tan == 'tan' and 'mouth' in R_Spunk and R_Mouth == 'sucking'", "images/RogueDoggy/Rogue_tDoggy_Mouth_BlowW.png",
             "'mouth' in R_Spunk and R_Mouth == 'sucking'", "images/RogueDoggy/Rogue_Doggy_Mouth_BlowW.png",
+            "R_Tan == 'tan' and 'mouth' in R_Spunk and R_Mouth == 'sad'", "images/RogueDoggy/Rogue_tDoggy_Mouth_SadW.png",
             "'mouth' in R_Spunk and R_Mouth == 'sad'", "images/RogueDoggy/Rogue_Doggy_Mouth_SadW.png",
+            "R_Tan == 'tan' and 'mouth' in R_Spunk and R_Mouth == 'smile'", "images/RogueDoggy/Rogue_tDoggy_Mouth_SmileW.png",   
             "'mouth' in R_Spunk and R_Mouth == 'smile'", "images/RogueDoggy/Rogue_Doggy_Mouth_SmileW.png",   
+            "R_Tan == 'tan' and 'mouth' in R_Spunk and R_Mouth == 'tongue'", "images/RogueDoggy/Rogue_tDoggy_Mouth_TongueW.png",  
             "'mouth' in R_Spunk and R_Mouth == 'tongue'", "images/RogueDoggy/Rogue_Doggy_Mouth_TongueW.png",  
+            "R_Tan == 'tan' and 'mouth' in R_Spunk", "images/RogueDoggy/Rogue_tDoggy_Mouth_NormalW.png",   
             "'mouth' in R_Spunk", "images/RogueDoggy/Rogue_Doggy_Mouth_NormalW.png",   
+            "R_Tan == 'tan' and R_Mouth == 'normal'", "images/RogueDoggy/Rogue_tDoggy_Mouth_Normal.png",
             "R_Mouth == 'normal'", "images/RogueDoggy/Rogue_Doggy_Mouth_Normal.png",
+            "R_Tan == 'tan' and R_Mouth == 'lipbite'", "images/RogueDoggy/Rogue_tDoggy_Mouth_Lipbite.png",
             "R_Mouth == 'lipbite'", "images/RogueDoggy/Rogue_Doggy_Mouth_Lipbite.png",
+            "R_Tan == 'tan' and R_Mouth == 'sucking'", "images/RogueDoggy/Rogue_tDoggy_Mouth_Blow.png",            
             "R_Mouth == 'sucking'", "images/RogueDoggy/Rogue_Doggy_Mouth_Blow.png",            
+            "R_Tan == 'tan' and R_Mouth == 'kiss'", "images/RogueDoggy/Rogue_tDoggy_Mouth_Surprised.png",
             "R_Mouth == 'kiss'", "images/RogueDoggy/Rogue_Doggy_Mouth_Surprised.png",
+            "R_Tan == 'tan' and R_Mouth == 'sad'", "images/RogueDoggy/Rogue_tDoggy_Mouth_Sad.png",
             "R_Mouth == 'sad'", "images/RogueDoggy/Rogue_Doggy_Mouth_Sad.png",
+            "R_Tan == 'tan' and R_Mouth == 'smile'", "images/RogueDoggy/Rogue_tDoggy_Mouth_Smile.png",
             "R_Mouth == 'smile'", "images/RogueDoggy/Rogue_Doggy_Mouth_Smile.png",
+            "R_Tan == 'tan' and R_Mouth == 'grimace'", "images/RogueDoggy/Rogue_tDoggy_Mouth_Smile.png",
             "R_Mouth == 'grimace'", "images/RogueDoggy/Rogue_Doggy_Mouth_Smile.png",
+            "R_Tan == 'tan' and R_Mouth == 'surprised'", "images/RogueDoggy/Rogue_tDoggy_Mouth_Surprised.png",       
             "R_Mouth == 'surprised'", "images/RogueDoggy/Rogue_Doggy_Mouth_Surprised.png",       
+            "R_Tan == 'tan' and R_Mouth == 'tongue'", "images/RogueDoggy/Rogue_tDoggy_Mouth_Tongue.png", 
             "R_Mouth == 'tongue'", "images/RogueDoggy/Rogue_Doggy_Mouth_Tongue.png", 
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Mouth_Smile.png", 
             "True", "images/RogueDoggy/Rogue_Doggy_Mouth_Smile.png", 
             ),
                                                               #Body base
         (0,0), ConditionSwitch(                                                                                 #Blush
+            "R_Tan == 'tan' and R_Blush and R_Gag == 'ballgag'", "images/RogueDoggy/Rogue_tDoggy_BlushEvoBallGag.png",
             "R_Blush and R_Gag == 'ballgag'", "images/RogueDoggy/Rogue_Doggy_BlushEvoBallGag.png",
+            "R_Tan == 'tan' and R_Blush", "images/RogueDoggy/Rogue_tDoggy_BlushEvo.png",
             "R_Blush", "images/RogueDoggy/Rogue_Doggy_BlushEvo.png",
             "True", Null(), 
             ),
@@ -843,7 +891,10 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
             #"R_Panties == 'swimsuit1' or R_Panties == 'swimsuit2'", "images/RogueDoggy/Rogue_Doggy_Swimsuit.png",  
             "True", Null(),                     
             ),  
-        (0,0), "images/RogueDoggy/Rogue_Doggy_Ass.png",   
+        (0,0), ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Ass.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Ass.png", 
+            ), 
         (0,0), ConditionSwitch(                                                                                 #Wet look
             "R_Water", "images/RogueDoggy/Rogue_Doggy_WetAss.png",   
             "True", Null(),              
@@ -1169,23 +1220,33 @@ image Rogue_Pussy_Mask:                 #AlphaMask used to prevent the cock from
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>              #Pussy fucking animations    
 image Rogue_Pussy:                                                                                              #Full Animation for speed 0    
     contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Pussy_FBase.png"    
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Pussy_FBase.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Pussy_FBase.png", 
+            ),    
     contains:                                                                                   #Cock
         "Zero_Doggy_Insert"
         pos (169,460) #Out stroke
     contains:                                                                                   #Mask
-        "images/RogueDoggy/Rogue_Doggy_Pussy_FMask.png"
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Pussy_FMask.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Pussy_FMask.png", 
+            ),
         
 
 image Rogue_Pussy_Moving:                                                                                       #Full Animation for speed 1
     subpixel True
     contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Pussy_FBase.png"    
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Pussy_FBase.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Pussy_FBase.png", 
+            ),    
         anchor (0.52,0.69)
         pos (220,518) # fix this back once re-exported(217,518) 
         xzoom 1
     contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Pussy_FHole.png"    
+        #"images/RogueDoggy/Rogue_Doggy_Pussy_FHole.png" 
+        "Rogue_Doggy_Pussy_FHole"   
         subpixel True
         anchor (0.52,0.69)
         pos (217,518) 
@@ -1204,7 +1265,8 @@ image Rogue_Pussy_Moving:                                                       
         
 image Rogue_Pussy_Hole_Mask: # This is the alpha used for the little flap in the heading animation "Rogue_Pussy_Moving"
     contains:                                                                                   #Base
-        AlphaMask("images/RogueDoggy/Rogue_Doggy_Pussy_FHole.png", "images/RogueDoggy/Rogue_Doggy_SexMask.png")
+        #AlphaMask("images/RogueDoggy/Rogue_Doggy_Pussy_FHole.png", "images/RogueDoggy/Rogue_Doggy_SexMask.png")
+        AlphaMask("Rogue_Doggy_Pussy_FHole", "images/RogueDoggy/Rogue_Doggy_SexMask.png")
         subpixel True
         anchor (0.52,0.69)
         pos (217,518) 
@@ -1230,28 +1292,46 @@ image Rogue_Pussy_Heading: #This is the image impacted by the mask for the pussy
 
 image Rogue_Pussy_Fucking2:                                                                                      #Full Animation for speed 2
     contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Pussy_FBase.png"    
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Pussy_FBase.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Pussy_FBase.png", 
+            ),    
     contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Pussy_FHole.png"  
+        #"images/RogueDoggy/Rogue_Doggy_Pussy_FHole.png"  
+        "Rogue_Doggy_Pussy_FHole"
     contains:                                                                                   #Cock        
         AlphaMask("Zero_Doggy_Fucking2", "images/RogueDoggy/Rogue_Doggy_SexMask.png")
         
 
 image Rogue_Pussy_Fucking3:                                                                                      #Full Animation for speed 3
     contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Pussy_FBase.png"    
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Pussy_FBase.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Pussy_FBase.png", 
+            ),  
     contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Pussy_FHole.png"  
+        #"images/RogueDoggy/Rogue_Doggy_Pussy_FHole.png"  
+        "Rogue_Doggy_Pussy_FHole"
     contains:                                                                                   #Cock        
         AlphaMask("Zero_Doggy_Fucking3", "images/RogueDoggy/Rogue_Doggy_SexMask.png")
         
-        
+image Rogue_Doggy_Pussy_FHole:
+    ConditionSwitch(                                                                                 #Pussy Composite           
+        "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Pussy_FHole.png", 
+        "True", "images/RogueDoggy/Rogue_Doggy_Pussy_FHole.png", 
+        ),         
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
 image Rogue_Anal2:                                                                                               #Anal static
-    contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullBase.png"        
+    contains:     
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullBase.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullBase.png", 
+            ),                                                                               #Base
     contains:
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png"                                       #Hole
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullHole.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png", 
+            ),                                                 #Hole
         anchor (0.52,0.69)
         pos (218,518)
         zoom .5
@@ -1259,12 +1339,18 @@ image Rogue_Anal2:                                                              
         "Zero_Doggy_Insert"
         pos (172,500)
     contains:                                                                                   #Mask
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullMask.png"
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullMask.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullMask.png", 
+            ),
         anchor (0.52,0.69)
         pos (218,518)
         zoom .5    
     contains:                                                                                   #Cheeks
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png"
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullCheeks.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png", 
+            ), 
 
 
 image Rogue_Anal:                                                                                               #Anal static Loose
@@ -1294,9 +1380,15 @@ image Rogue_Anal_Plug:                                                          
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 image Rogue_Anal_Heading:                                                                                       #Animation for speed 1
     contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullBase.png"    
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullBase.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullBase.png", 
+            ),        
     contains:
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png"                                       #Hole
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullHole.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png", 
+            ),                                       #Hole
         anchor (0.52,0.69)
         pos (218,518)
         zoom .5
@@ -1314,7 +1406,10 @@ image Rogue_Anal_Heading:                                                       
             ease 1.75 ypos 500#505
             repeat
     contains:                                                                                   #Mask
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullMask.png"
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullMask.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullMask.png", 
+            ),
         anchor (0.52,0.69)
         pos (218,518)
         zoom .5
@@ -1324,14 +1419,23 @@ image Rogue_Anal_Heading:                                                       
             ease 1.5 zoom .5
             repeat             
     contains:                                                                                   #Cheeks
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png"
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullCheeks.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png", 
+            ), 
 
 image Rogue_Anal_Plug_Heading:                                                                                       #Animation for speed 1
     contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullBase.png"   
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullBase.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullBase.png", 
+            ),       
         #"images/RogueDoggy/Rogue_Doggy_Anal_HeadingBase.png"    
     contains:
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png"                                       #Hole
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullHole.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png", 
+            ),                                       #Hole
         #"images/RogueDoggy/Rogue_Doggy_Anal_HeadingBase.png"                                       #Hole
         anchor (0.52,0.69)
         pos (218,518)
@@ -1358,7 +1462,10 @@ image Rogue_Anal_Plug_Heading:                                                  
             ease 1.5 ypos 500#505  down
             repeat
     contains:                                                                                   #Mask
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullMask_Plug.png"
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullMask_Plug.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullMask_Plug.png", 
+            ), 
         #"images/RogueDoggy/Rogue_Doggy_Anal_HeadingMask_Plug.png"
         anchor (0.52,0.69)
         pos (218,518)
@@ -1385,7 +1492,10 @@ image Rogue_Anal_Plug_Heading:                                                  
             ease 1.5 ypos 500#505
             repeat            
     contains:                                                                                   #Cheeks
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png"
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullCheeks.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png", 
+            ), 
 
 
 
@@ -1427,17 +1537,29 @@ image Zero_Doggy_Anal1:                                                         
             
 image Rogue_Anal_Fucking:                                                                                       #Animation for speed 2 Ass
     contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullBase.png"    
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullBase.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullBase.png", 
+            ),        
     contains:                                                                                   #Hole
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png"  
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullHole.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png", 
+            ),  
     contains:
         "images/RogueDoggy/Rogue_Doggy_Asshole_Loose.png"
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal1", "images/RogueDoggy/Rogue_Doggy_AnalMask.png")
     contains:                                                                                   #Mask
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullMask.png"
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullMask.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullMask.png", 
+            ),
     contains:                                                                                   #Cheeks
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png"
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullCheeks.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png", 
+            ), 
 
 
 image Rogue_Doggy_Fuck_Top:                #animation for anal fucking top half
@@ -1507,31 +1629,55 @@ image Zero_Doggy_Anal3:                                                         
                       
 image Rogue_Anal_Fucking2:                                                                                      #Animation for speed 3 Ass
     contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullBase.png"    
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullBase.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullBase.png", 
+            ),       
     contains:                                                                                   #Hole
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png"  
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullHole.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png", 
+            ),  
     contains:
         "images/RogueDoggy/Rogue_Doggy_Asshole_Loose.png"
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal2", "images/RogueDoggy/Rogue_Doggy_AnalMask.png")       
     contains:                                                                                   #Mask
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullMask.png"
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullMask.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullMask.png", 
+            ),
     contains:                                                                                   #Cheeks
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png"
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullCheeks.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png", 
+            ), 
 
 image Rogue_Anal_Fucking3:                                                                                      #Animation for speed 3 Ass
     contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullBase.png"    
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullBase.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullBase.png", 
+            ),      
     contains:                                                                                   #Hole
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png"  
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullHole.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png", 
+            ),  
     contains:
         "images/RogueDoggy/Rogue_Doggy_Asshole_Loose.png"
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal3", "images/RogueDoggy/Rogue_Doggy_AnalMask.png")       
     contains:                                                                                   #Mask
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullMask3.png"
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullMask3.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullMask3.png", 
+            ), 
     contains:                                                                                   #Cheeks
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png"
+        ConditionSwitch(                                                                                 #Pussy Composite           
+            "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullCheeks.png", 
+            "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png", 
+            ), 
 
 
 image Rogue_Doggy_Fuck3_Top:                #animation for anal fucking2 top half
@@ -1710,7 +1856,53 @@ label Rogue_Doggy_Reset:
                     anchor (0.6, 0.0)
     $ Speed = 0
     return
+
+
+
+
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                                     Sex Launch/Reset
+label Rogue_Sex_Launch(Line = "solo"): 
+    if Line == "sex":        
+        $ P_Cock = "in"
+    elif Line == "anal":
+        $ P_Cock = "anal"
+    elif Line == "solo":   
+        $ P_Sprite = 0
+        $ P_Cock = "out"
+    elif Line == "hotdog":          
+        $ P_Cock = "out"
+    elif Line == "foot":          
+        $ P_Cock = "foot"
+    if not Trigger:
+        $ Trigger = Line
+    if renpy.showing("Rogue_SexSprite"):
+        return     
+    $ P_Sprite = 1
+    $ Speed = 0
+    hide Rogue_Sprite  
+    show Rogue_SexSprite zorder 150        
+#    show Rogue_SexSprite zorder 150:
+#        pos (750,230)
+
+    with dissolve
+    return
     
+label Rogue_Sex_Reset:
+    if not renpy.showing("Rogue_SexSprite"):
+        return
+    $ Rogue_Arms = 2     
+    hide Rogue_SexSprite
+#    call Set_The_Scene(Dress = 0)    
+    show Rogue_Sprite at SpriteLoc(K_SpriteLoc) zorder RogueLayer:
+        alpha 1
+        zoom 1 offset (0,0) 
+        anchor (0.5, 0.0)
+    with dissolve
+    $ Speed = 0
+    return
+    
+# End Rogue Sex pose Animations / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /    
+        
     
                
 # ////////////////////////////////                                                                                      ///////////////////////////////
@@ -1799,16 +1991,21 @@ image BJ_Head:                                                                  
             "True", Null(),
             ),   
         (0,0), ConditionSwitch(                     
+            "R_Tan == 'tan' and not Speed", "images/RogueBJFace/Rogue_tbj_face_base.png",    
             "not Speed", "images/RogueBJFace/Rogue_bj_face_base.png",    
-            "True", "images/RogueBJFace/Rogue_bj_face_base_s.png"
+            "R_Tan == 'tan'", "images/RogueBJFace/Rogue_tbj_face_base_s.png",
+            "True", "images/RogueBJFace/Rogue_bj_face_base_s.png",
             ),   
         (0,0), ConditionSwitch(                                                                                 #Mouth for under layer
             #"Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_lickingS_ring.png", #sucking
             "Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking
             #"Speed == 1 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_licking_ring.png", #sucking
             "Speed == 1 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_tj_ring.png", #sucking
+            "R_Tan == 'tan' and Speed == 2 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_tbj_mouth_licking_ring.png", #sucking
             "Speed == 2 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_licking_ring.png", #sucking
+            "R_Tan == 'tan' and Speed == 3 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_tbj_mouth_sucking_ring.png", #sucking
             "Speed == 3 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_sucking_ring.png", #sucking
+            "R_Tan == 'tan' and Speed == 4 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_tbj_mouth_sucking_ring.png", #deepthroat  
             "Speed == 4 and Trigger == 'blow' and R_Gag == 'ringgag'", "images/RogueBJFace/Rogue_bj_mouth_sucking_ring.png", #deepthroat  
             "R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking
             #"R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS_ring.png", #sucking
@@ -1817,16 +2014,21 @@ image BJ_Head:                                                                  
             "Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
             "Speed == 1 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_licking.png", #licking
             "Speed == 2 and Trigger == 'blow'", Null(),                                #heading Rogue_BJ_HeadingMouth()
+            "R_Tan == 'tan' and Speed == 3 and Trigger == 'blow'", "images/RogueBJFace/Rogue_tbj_mouth_sucking.png", #sucking
             "Speed == 3 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_sucking.png", #sucking
+            "R_Tan == 'tan' and Speed == 4 and Trigger == 'blow'", "images/RogueBJFace/Rogue_tbj_mouth_sucking.png", #deepthroat         
             "Speed == 4 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_sucking.png", #deepthroat         
             "'mouth' in R_Spunk and R_Mouth == 'sucking'", "images/RogueBJFace/Rogue_bj_mouth_surprisedS.png",
             "'mouth' in R_Spunk and R_Mouth == 'surprised'", "images/RogueBJFace/Rogue_bj_mouth_surprisedS.png",
             "'mouth' in R_Spunk and R_Mouth == 'sad'", "images/RogueBJFace/Rogue_bj_mouth_sadS.png",
             "'mouth' in R_Spunk and R_Mouth == 'kiss'", "images/RogueBJFace/Rogue_bj_mouth_sadS.png",
+            "R_Tan == 'tan' and 'mouth' in R_Spunk and R_Mouth == 'smile'", "images/RogueBJFace/Rogue_tbj_mouth_lipbiteS.png",              
             "'mouth' in R_Spunk and R_Mouth == 'smile'", "images/RogueBJFace/Rogue_bj_mouth_lipbiteS.png",              
             "'mouth' in R_Spunk and R_Mouth == 'tongue'", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
+            "R_Tan == 'tan' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_tbj_mouth_lipbiteS.png",
             "'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lipbiteS.png",
             "R_Mouth == 'normal'", "images/RogueBJFace/Rogue_bj_mouth_normal.png",
+            "R_Tan == 'tan' and R_Mouth == 'lipbite'", "images/RogueBJFace/Rogue_tbj_mouth_lipbite.png",
             "R_Mouth == 'lipbite'", "images/RogueBJFace/Rogue_bj_mouth_lipbite.png",
             "R_Mouth == 'sucking'", "images/RogueBJFace/Rogue_bj_mouth_surprised.png",            
             "R_Mouth == 'kiss'", "images/RogueBJFace/Rogue_bj_mouth_kiss.png",
@@ -1845,7 +2047,9 @@ image BJ_Head:                                                                  
             "'facial' in R_Spunk", "images/RogueBJFace/Rogue_bj_facial_under.png",
             "not R_Spunk or Trigger != 'blow' or 'mouth' not in R_Spunk", Null(),
 #            "Speed == 2", "images/RogueBJFace/Rogue_bj_face_under_heading_cum.png", 
+            "R_Tan == 'tan' and Speed == 3", "images/RogueBJFace/Rogue_tbj_face_under_sucking_cum.png",
             "Speed == 3", "images/RogueBJFace/Rogue_bj_face_under_sucking_cum.png",
+            "R_Tan == 'tan' and Speed == 4", "images/RogueBJFace/Rogue_tbj_face_under_sucking_cum.png",  
             "Speed == 4", "images/RogueBJFace/Rogue_bj_face_under_sucking_cum.png",  
             "True", Null(),
             ),
@@ -1915,7 +2119,10 @@ image BJ Blink:                                                                 
 
 image BJ_MouthHeading:                                          #the mouth used for the heading animations
     contains:
-        "images/RogueBJFace/Rogue_bj_mouth_sucking.png"
+        ConditionSwitch(
+            "R_Tan == 'tan'", "images/RogueBJFace/Rogue_tbj_mouth_sucking.png",
+            "True", "images/RogueBJFace/Rogue_bj_mouth_sucking.png",
+        ),
         anchor (0.40,0.65) 
         
 image BJ_MaskHeading:                                           #the mask used for the heading image 
@@ -2164,14 +2371,22 @@ image Rogue_BJFace:
     LiveComposite(    
         (787,912),     
         (0,0), ConditionSwitch(
+            "R_Tan == 'tan' and R_Blush and Trigger != 'blow'", "images/RogueBJFace/Rogue_tbj_face_over_blush.png",
             "R_Blush and Trigger != 'blow'", "images/RogueBJFace/Rogue_bj_face_over_blush.png",
             "Trigger != 'blow'", Null(),
+            "R_Tan == 'tan' and Speed == 3 and R_Blush", "images/RogueBJFace/Rogue_tbj_face_over_suckingB.png",
             "Speed == 3 and R_Blush", "images/RogueBJFace/Rogue_bj_face_over_suckingB.png",
+            "R_Tan == 'tan' and Speed == 3 and not R_Blush", "images/RogueBJFace/Rogue_tbj_face_over_sucking.png",
             "Speed == 3 and not R_Blush", "images/RogueBJFace/Rogue_bj_face_over_sucking.png",
+            "R_Tan == 'tan' and Speed == 2 and R_Blush", "images/RogueBJFace/Rogue_tbj_face_over_headingB.png",
             "Speed == 2 and R_Blush", "images/RogueBJFace/Rogue_bj_face_over_headingB.png",
+            "R_Tan == 'tan' and Speed == 2 and not R_Blush", "images/RogueBJFace/Rogue_tbj_face_over_heading.png",
             "Speed == 2 and not R_Blush", "images/RogueBJFace/Rogue_bj_face_over_heading.png",
+            "R_Tan == 'tan' and Speed == 4 and R_Blush", "images/RogueBJFace/Rogue_tbj_face_over_suckingB.png",
             "Speed == 4 and R_Blush", "images/RogueBJFace/Rogue_bj_face_over_suckingB.png",
+            "R_Tan == 'tan' and Speed == 4 and not R_Blush", "images/RogueBJFace/Rogue_tbj_face_over_sucking.png",
             "Speed == 4 and not R_Blush", "images/RogueBJFace/Rogue_bj_face_over_sucking.png",
+            "R_Tan == 'tan' and R_Blush", "images/RogueBJFace/Rogue_tbj_face_over_blush.png",
             "R_Blush", "images/RogueBJFace/Rogue_bj_face_over_blush.png",
             "True", Null(),
             ),       
@@ -2219,7 +2434,10 @@ image Rogue_BJFace:
 image Rogue_BJChin:
     LiveComposite(
         (787,912),     
-        (0,0), "images/RogueBJFace/Rogue_bj_face_under.png", 
+        (0,0), ConditionSwitch(
+            "R_Tan == 'tan'", "images/RogueBJFace/Rogue_tbj_face_under.png",
+            "True", "images/RogueBJFace/Rogue_bj_face_under.png",
+            ),   
         (0,0), ConditionSwitch(  
             "R_Gag", Null(),
             "R_Gag == 'ringgag' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_tjS_ring.png", #sucking
@@ -2229,16 +2447,21 @@ image Rogue_BJChin:
             "Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
             "Speed == 1 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_licking.png",
             "Speed == 2 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_heading.png", 
+            "R_Tan == 'tan1' and Speed == 3 and Trigger == 'blow'", "images/RogueBJFace/Rogue_tbj_mouth_sucking.png",
             "Speed == 3 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_sucking.png",
+            "R_Tan == 'tan1' and Speed == 4 and Trigger == 'blow'", "images/RogueBJFace/Rogue_tbj_mouth_sucking.png",           
             "Speed == 4 and Trigger == 'blow'", "images/RogueBJFace/Rogue_bj_mouth_sucking.png",           
             "'mouth' in R_Spunk and R_Mouth == 'sucking'", "images/RogueBJFace/Rogue_bj_mouth_surprisedS.png",
             "'mouth' in R_Spunk and R_Mouth == 'surprised'", "images/RogueBJFace/Rogue_bj_mouth_surprisedS.png",
             "'mouth' in R_Spunk and R_Mouth == 'sad'", "images/RogueBJFace/Rogue_bj_mouth_sadS.png",
             "'mouth' in R_Spunk and R_Mouth == 'kiss'", "images/RogueBJFace/Rogue_bj_mouth_sadS.png",
+            "R_Tan == 'tan' and 'mouth' in R_Spunk and R_Mouth == 'smile'", "images/RogueBJFace/Rogue_tbj_mouth_lipbiteS.png",              
             "'mouth' in R_Spunk and R_Mouth == 'smile'", "images/RogueBJFace/Rogue_bj_mouth_lipbiteS.png",              
             "'mouth' in R_Spunk and R_Mouth == 'tongue'", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
+            "R_Tan == 'tan' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_tbj_mouth_lipbiteS.png",
             "'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lipbiteS.png",
             "R_Mouth == 'normal'", "images/RogueBJFace/Rogue_bj_mouth_normal.png",
+            "R_Tan == 'tan' and R_Mouth == 'lipbite'", "images/RogueBJFace/Rogue_tbj_mouth_lipbite.png",
             "R_Mouth == 'lipbite'", "images/RogueBJFace/Rogue_bj_mouth_lipbite.png",
             "R_Mouth == 'sucking'", "images/RogueBJFace/Rogue_bj_mouth_surprised.png",            
             "R_Mouth == 'kiss'", "images/RogueBJFace/Rogue_bj_mouth_kiss.png",
@@ -2266,9 +2489,13 @@ image Rogue_BJChin:
 image Rogue_SelfieChin:
     LiveComposite(
         (787,912),     
-        (0,0), "images/RogueSelfie/Rogue_selfie_face_under.png", 
+        (0,0), ConditionSwitch(    
+            "R_Tan == 'tan'", "images/RogueSelfie/Rogue_tselfie_face_under.png",
+            "True", "images/RogueSelfie/Rogue_selfie_face_under.png",
+            ),
         (0,0), ConditionSwitch(    
             "R_Mouth == 'normal'", "images/RogueBJFace/Rogue_bj_mouth_normal.png",
+            "R_Tan == 'tan' and R_Mouth == 'lipbite'", "images/RogueBJFace/Rogue_tbj_mouth_lipbite.png",
             "R_Mouth == 'lipbite'", "images/RogueBJFace/Rogue_bj_mouth_lipbite.png",
             "R_Mouth == 'sucking'", "images/RogueBJFace/Rogue_bj_mouth_surprised.png",            
             "R_Mouth == 'kiss'", "images/RogueBJFace/Rogue_bj_mouth_kiss.png",
@@ -2385,8 +2612,11 @@ image Rogue_TJ_Under:
         zoom .95
     contains:
         ConditionSwitch(
+            "R_Tan == 'tan' and R_Over == 'bondage'", "images/RogueBJFace/Rogue_ttj_base_Binder.png",
             "R_Over == 'bondage'", "images/RogueBJFace/Rogue_tj_base_Binder.png",
+            "R_Tan == 'tan' and R_Over == 'bondage cuffs'", "images/RogueBJFace/Rogue_ttj_base_ArmCuffs.png",
             "R_Over == 'bondage cuffs'", "images/RogueBJFace/Rogue_tj_base_ArmCuffs.png",
+            "R_Tan == 'tan'", "images/RogueBJFace/Rogue_ttj_base.png",
             "True", "images/RogueBJFace/Rogue_tj_base.png",
             ),
     contains:
@@ -2407,14 +2637,17 @@ image Rogue_TJ_Under:
 image Rogue_TJ_Over:     
     contains:
         ConditionSwitch( 
-            "R_Pierce == 'barbell' and R_Over == 'bondage cuffs'", "images/RogueBJFace/Rogue_tj_tits_b_Binder.png", 
-            "R_Pierce == 'barbell' and R_Over == 'bondage'", "images/RogueBJFace/Rogue_tj_tits_b_Binder.png", 
+            "R_Tan == 'tan' and R_Pierce == 'barbell' and (R_Over == 'bondage cuffs' or R_Over == 'bondage')", "images/RogueBJFace/Rogue_ttj_tits_b_Binder.png", 
+            "R_Pierce == 'barbell' and (R_Over == 'bondage cuffs' or R_Over == 'bondage')", "images/RogueBJFace/Rogue_tj_tits_b_Binder.png", 
+            "R_Tan == 'tan' and R_Pierce == 'barbell'", "images/RogueBJFace/Rogue_ttj_tits_b.png", 
             "R_Pierce == 'barbell'", "images/RogueBJFace/Rogue_tj_tits_b.png", 
-            "R_Pierce == 'ring' and R_Over == 'bondage cuffs'", "images/RogueBJFace/Rogue_tj_tits_r_Binder.png",
-            "R_Pierce == 'ring' and R_Over == 'bondage'", "images/RogueBJFace/Rogue_tj_tits_r_Binder.png",
+            "R_Tan == 'tan' and R_Pierce == 'ring' and (R_Over == 'bondage cuffs' or R_Over == 'bondage')", "images/RogueBJFace/Rogue_ttj_tits_r_Binder.png",
+            "R_Pierce == 'ring' and (R_Over == 'bondage cuffs' or R_Over == 'bondage')", "images/RogueBJFace/Rogue_tj_tits_r_Binder.png",
+            "R_Tan == 'tan' and R_Pierce == 'ring'", "images/RogueBJFace/Rogue_ttj_tits_r.png",
             "R_Pierce == 'ring'", "images/RogueBJFace/Rogue_tj_tits_r.png",
-            "R_Pierce != 'barbell' and R_Over == 'bondage cuffs'", "images/RogueBJFace/Rogue_tj_tits_Binder.png",
-            "R_Pierce != 'barbell' and R_Over == 'bondage'", "images/RogueBJFace/Rogue_tj_tits_Binder.png",
+            "R_Tan == 'tan' and R_Pierce != 'barbell' and (R_Over == 'bondage cuffs' or R_Over == 'bondage')", "images/RogueBJFace/Rogue_ttj_tits_Binder.png",
+            "R_Pierce != 'barbell' and (R_Over == 'bondage cuffs' or R_Over == 'bondage')", "images/RogueBJFace/Rogue_tj_tits_Binder.png",
+            "R_Tan == 'tan' and R_Pierce != 'barbell'", "images/RogueBJFace/Rogue_ttj_tits.png",
             "R_Pierce != 'barbell'", "images/RogueBJFace/Rogue_tj_tits.png",
             ),
     contains:
@@ -2603,13 +2836,19 @@ image Zero_Handcock:
     pos (200,400)#(200,400)
         
 image Rogue_Hand_Under:
-    "images/RogueBJFace/hand2.png"
+    ConditionSwitch(
+        "R_Tan == 'tan'", "images/RogueBJFace/thand2.png",
+        "True", "images/RogueBJFace/hand2.png",
+    ),
     anchor (0.5,0.5)
     pos (0,0)
     
     
 image Rogue_Hand_Over:
-    "images/RogueBJFace/hand1.png"    
+    ConditionSwitch(
+        "R_Tan == 'tan'", "images/RogueBJFace/thand1.png",
+        "True", "images/RogueBJFace/hand1.png",
+    ),   
     anchor (0.5,0.5)
     pos (0,0)
 

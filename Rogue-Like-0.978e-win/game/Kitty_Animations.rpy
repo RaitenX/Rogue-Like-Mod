@@ -690,10 +690,13 @@ image Kitty_Sex_Legs:
         #the legs used in the sex pose, referenced by Kitty_SexSprite
         (1120,840), 
         (0,0), ConditionSwitch(
-            "K_LegsUp", "images/KittySex/Kitty_Sex_Legs_LegsUp.png",
+            "K_Tan == 'tan' and K_LegsUp", "images/KittySex/Kitty_Sex_TLegs_LegsUp.png",
             "K_Tan == 'tan'", "images/KittySex/Kitty_Sex_TLegs.png",                                              #Legs Base                                                      #Legs Base
+            "K_Tan == 'tan2' and K_LegsUp", "images/KittySex/Kitty_Sex_T2Legs_LegsUp.png",
             "K_Tan == 'tan2'", "images/KittySex/Kitty_Sex_T2Legs.png",                                            #Legs Base                                                      #Legs Base
+            "K_Tan == 'tan3' and K_LegsUp", "images/KittySex/Kitty_Sex_T3Legs_LegsUp.png",
             "K_Tan == 'tan3'", "images/KittySex/Kitty_Sex_T3Legs.png",
+            "K_LegsUp", "images/KittySex/Kitty_Sex_Legs_LegsUp.png",
             "True", "images/KittySex/Kitty_Sex_Legs.png",
             ),
             
@@ -724,7 +727,8 @@ image Kitty_Sex_Legs:
             "K_Panties == 'zipper panties open'", "images/KittySex/KittySexBDPantyOpen.png",
             "True", Null(),                     
             ),  
-        (0,0), ConditionSwitch(                                                                                 #Legs Layer
+        (0,0), ConditionSwitch(        
+            "K_LegsUp", Null(),                                                                         #Legs Layer
             "K_Hose == 'stockings'", "images/KittySex/Kitty_Sex_Stockings_Legs.png",
             "K_Hose == 'white socks'", "images/KittySex/Kitty_Sex_WSocks_Thigh_Legs.png",
             "K_Hose == 'black socks'", "images/KittySex/Kitty_Sex_BSocks_Thigh_Legs.png",
@@ -791,6 +795,7 @@ image Kitty_Sex_Feet = LiveComposite(
         (1120,840), 
         (0,0), ConditionSwitch(
             #"K_LegsUp", Null(),
+            "K_Tan and K_LegsUp", "images/KittySex/Kitty_Sex_TFeet_LegsUp.png",
             "K_LegsUp", "images/KittySex/Kitty_Sex_Feet_LegsUp.png",
             "K_Tan", "images/KittySex/Kitty_Sex_TFeet.png",                                                         #Legs Base
             "True", "images/KittySex/Kitty_Sex_Feet.png",
@@ -1801,9 +1806,9 @@ image Kitty_BJ_Animation:#BJ_NewTest:                                           
 image Kitty_BJ_HairBack:
     #Hair underlay
     ConditionSwitch(                                                                            
-            "K_Water and K_Hair == 'evo'and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlaclBackWet.png",
+            "K_Water and K_Hair == 'evo' and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlaclBackWet.png",
             "K_Water and K_Hair == 'evo'", "images/KittyBJFace/Kitty_BJ_HairBackWet.png",
-            "K_Hair == 'wet'and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlackBackWet.png",            
+            "K_Hair == 'wet' and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlackBackWet.png",            
             "K_Hair == 'wet'", "images/KittyBJFace/Kitty_BJ_HairBackWet.png",            
             "True", Null(),
             ),
@@ -1889,7 +1894,7 @@ image Kitty_BJ_Head:                                                            
         (858,928), 
         (0,0), ConditionSwitch(                                                                 
             #Hair back
-            "K_Water or K_Hair == 'wet'and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlackBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
+            "K_Water or K_Hair == 'wet' and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlackBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
             "K_Water or K_Hair == 'wet'", "images/KittyBJFace/Kitty_BJ_HairBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
             "True", Null(),
             ),   
@@ -1995,7 +2000,7 @@ image Kitty_BJ_Head:                                                            
             ),
         (0,0), ConditionSwitch(                                                                 
             #Hair overlay
-            "K_Water or K_Hair == 'wet' and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlack_Wet.png",
+            "(K_Water or K_Hair == 'wet') and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlack_Wet.png",
             "K_Water or K_Hair == 'wet'", "images/KittyBJFace/Kitty_BJ_Hair_Wet.png",
             "K_Hair == 'long' and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlack_Long.png",
             "K_Hair == 'long'", "images/KittyBJFace/Kitty_BJ_Hair_Long.png",
@@ -2152,7 +2157,7 @@ image Kitty_Selfie:
             ), 
         (0,0), ConditionSwitch(                                                                 
             #Hair back
-            "K_Water or K_Hair == 'wet'and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlackBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
+            "(K_Water or K_Hair == 'wet') and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlackBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
             "K_Water or K_Hair == 'wet'", "images/KittyBJFace/Kitty_BJ_HairBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
             "True", Null(),
             ),   
@@ -2219,7 +2224,7 @@ image Kitty_Selfie:
 
         (0,0), ConditionSwitch(                                                                 
             #Hair overlay
-            "K_Water or K_Hair == 'wet' and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlack_Wet.png",
+            "(K_Water or K_Hair == 'wet') and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlack_Wet.png",
             "K_Water or K_Hair == 'wet'", "images/KittyBJFace/Kitty_BJ_Hair_Wet.png",
             "K_Hair == 'long' and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlack_Long.png",
             "K_Hair == 'long'", "images/KittyBJFace/Kitty_BJ_Hair_Long.png",

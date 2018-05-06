@@ -1,6 +1,6 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' 'images/KittySex/Kitty_Sex_Panties_White.png'>:
+While loading <'Image' 'images/KittySex/Kitty_Sex_T3Legs.png'>:
   File "game/script Locations.rpy", line 1115, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
@@ -123,43 +123,17 @@ While loading <'Image' 'images/KittySex/Kitty_Sex_Panties_White.png'>:
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 827, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1176, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 160, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 81, in script call
-    call R_Makeout
-  File "game/Rogue_Sex.rpy", line 996, in script call
-    call Sex_Dialog("Rogue",Partner)
-  File "game/script Locations.rpy", line 1115, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2279, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1595, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1176, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 160, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 158, in script call
-    call R_Doggy_H
-  File "game/Rogue_Sex.rpy", line 2026, in script call
-    call Rogue_Caught
-  File "game/script Locations.rpy", line 130, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1186, in script call
-    call Kitty_Chat
-  File "game/Kitty_Chat.rpy", line 245, in script call
-    call Kitty_SexMenu
+  File "game/script Locations.rpy", line 2918, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1074, in script call
+    call Kitty_Sleepover
+  File "game/Kitty_Scenes.rpy", line 329, in script call
+    call Kitty_SexAct("morningwood")
   File "game/Kitty_Sex.rpy", line 183, in script call
     call K_Sex_H
-  File "game/Kitty_Missionary.rpy", line 1818, in script call
-    call Kitty_Sex_Launch("hotdog")
-  File "game/Kitty_Animations.rpy", line 1695, in script
-    with dissolve
-IOError: Couldn't find file 'images/KittySex/Kitty_Sex_Panties_White.png'.
+  File "game/Kitty_Missionary.rpy", line 1944, in script
+    menu:
+IOError: Couldn't find file 'images/KittySex/Kitty_Sex_T3Legs.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -286,48 +260,24 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 827, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1176, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 160, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 81, in script call
-    call R_Makeout
-  File "game/Rogue_Sex.rpy", line 996, in script call
-    call Sex_Dialog("Rogue",Partner)
-  File "game/script Locations.rpy", line 1115, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2279, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1595, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1176, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 160, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 158, in script call
-    call R_Doggy_H
-  File "game/Rogue_Sex.rpy", line 2026, in script call
-    call Rogue_Caught
-  File "game/script Locations.rpy", line 130, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1186, in script call
-    call Kitty_Chat
-  File "game/Kitty_Chat.rpy", line 245, in script call
-    call Kitty_SexMenu
+  File "game/script Locations.rpy", line 2918, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1074, in script call
+    call Kitty_Sleepover
+  File "game/Kitty_Scenes.rpy", line 329, in script call
+    call Kitty_SexAct("morningwood")
   File "game/Kitty_Sex.rpy", line 183, in script call
     call K_Sex_H
-  File "game/Kitty_Missionary.rpy", line 1818, in script call
-    call Kitty_Sex_Launch("hotdog")
-  File "game/Kitty_Animations.rpy", line 1695, in script
-    with dissolve
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1289, in execute
-    renpy.exports.with_statement(trans, paired)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\exports.py", line 1406, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 2123, in do_with
-    clear=clear)
+  File "game/Kitty_Missionary.rpy", line 1944, in script
+    menu:
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1483, in execute
+    choice = renpy.exports.menu(choices, self.set)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\exports.py", line 868, in menu
+    rv = renpy.store.menu(items)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\exports.py", line 1054, in display_menu
+    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ui.py", line 287, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 2553, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 2916, in interact_core
@@ -340,12 +290,6 @@ Full traceback:
     rv = d.render(widtho, heighto, st, at)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
     surf = render(child, width, height, cst, cat)
-  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
-    cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
-    rv = d.render(widtho, heighto, st, at)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\transition.py", line 361, in render
-    top = render(self.new_widget, width, height, st, at)
   File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
     cpdef render(d, object widtho, object heighto, double st, double at):
   File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
@@ -464,7 +408,7 @@ Full traceback:
     surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\loader.py", line 548, in load
     raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'images/KittySex/Kitty_Sex_Panties_White.png'.
+IOError: Couldn't find file 'images/KittySex/Kitty_Sex_T3Legs.png'.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.13.2919

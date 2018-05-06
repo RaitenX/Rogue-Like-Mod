@@ -1221,8 +1221,8 @@ label Pool_Room:
                 call Pool_Clothes
                 #jump Pool_Area
 
-        "Go for a swim":
-                if R_Loc == bg_current or K_Loc == bg_current: #or E_Loc == bg_current:
+        "Go for a swim." if Current_Time != "Night":
+                if R_Loc == bg_current or K_Loc == bg_current or E_Loc == bg_current:
                     "Let's go for a swim"
                     if R_Loc == bg_current:
                         ch_r "yay"
@@ -1252,6 +1252,21 @@ label Pool_Room:
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 40, 2)            
                         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 4)
                         $ K_Water = 2
+
+
+                    if E_Loc == bg_current:
+                        ch_e "yay"
+
+                        if E_Outfit != "bikini":
+                            #ch_e "I'l be right there, let me just put on my bikini"
+                            call Pool_Clothes("goswim", "Emma")
+                            ch_e "Let's go"
+
+                        call KittyFace("happy")                            
+                        $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 4)          
+                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 40, 2)            
+                        $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, 4)
+                        $ E_Water = 2
                         #$ K_RecentActions.append("showered")                      
                     #"You take a swim"
 
@@ -1293,7 +1308,7 @@ label Pool_Room:
 
 # Pool Room Skinny Dipping Start <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
 
-label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, Showered = 0, Line = 0):
+label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaCount = 0, Showered = 0, Line = 0):
 
     if R_Loc == "bg pool":
             $ Occupants += 1
@@ -1301,6 +1316,9 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
     if K_Loc == "bg pool":        
             $ Occupants += 1
             $ KittyCount = 1
+    if E_Loc == "bg pool":        
+            $ Occupants += 1
+            $ EmmaCount = 1
         
     if Occupants:
             ch_p "Hey, it's just us here, i'm going for a skinny dip, wanna join?" 
@@ -1340,6 +1358,24 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
                         ch_k "Yeah, I should head out too."
                     else:                                   #If Rogue isn't there
                         ch_k "No, I've got to get going."
+
+            if EmmaCount:
+                if ApprovalCheck("Emma", 1500) or (ApprovalCheck("Emma", 800) and E_SeenChest and E_SeenPussy):
+                    if RogueCount > 1 or KittyCount > 1:                          #If Rogue or Kitty said yes
+                        ch_e "I guess I could join too. . ."
+                    elif Occupants > 1:                     #If Rogue and Kitty said no
+                        ch_e "Well, I could join you, [E_Petname]."
+                    else:                                   #If Rogue and Kitty aren't there
+                        ch_e "Yeah, I could stick around, [E_Petname]."
+                    $ EmmaCount = 2
+                    $ Agreed += 1
+                else:
+                    if RogueCount > 1 or KittyCount > 1:                          #If Rogue or Kitty said yes
+                        ch_e "I've really got to go though. . ."
+                    elif Occupants > 1:                     #If Rogue and Kitty said no
+                        ch_e "Yeah, I should head out too."
+                    else:                                   #If Rogue and Kitty aren't there
+                        ch_e "No, I've got to get going."
                             
             if Occupants > Agreed:                    #if either said no     
                 # If they're at NameCount = 2 here, they have already agreed.
@@ -1351,6 +1387,8 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
                             ch_r "Yeah, later."
                         if KittyCount == 1:
                             ch_k "Bye!"
+                        if EmmaCount == 1:
+                            ch_e "Bye, [E_Petname]!"
                         
                     "Sure you you don't wanna join? The night is perfect for a swim.":
                         $ Line = "night"
@@ -1382,6 +1420,15 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
                         elif Line == "dark" and ApprovalCheck("Kitty", 600, "O"):                                
                             $ KittyCount = 2
                         #else, she doesn't agree
+
+                    if EmmaCount == 1:
+                        if ApprovalCheck("Emma", 1500) or (ApprovalCheck("Emma", 800) and E_SeenChest and E_SeenPussy):
+                            ch_e "yes"
+                            $ EmmaCount = 2
+                        elif Line == "night" and ApprovalCheck("Emma", 1300, "LI"):                                
+                            $ EmmaCount = 2
+                        elif Line == "dark" and ApprovalCheck("Emma", 700, "O"):                                
+                            $ EmmaCount = 2
                     
                     
                     if Line == "night":      #"Sure you got every spot?"
@@ -1389,24 +1436,42 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
                                 ch_r "Fine, I could use a good swim."
                                 if KittyCount == 2:
                                     ch_k "Um, me too!"
+                                if EmmaCount == 2:
+                                    ch_e "Yeah, me too!"
                             elif KittyCount == 2:                               #Kitty only
                                 ch_k "Oh, I guess I could enjoy a good swim before sleep."
+                                if EmmaCount == 2:
+                                    ch_e "Yeah, me too!"
+                            elif EmmaCount == 2:
+                                ch_e "Yeah, I guess I could use a good swim."
+                            
                             if RogueCount == 1:                                  #Kitty agreed, Rogue refused
                                 ch_r "Perfect for a swim, not a naked one."
                             if KittyCount == 1:                                  #Rogue agreed, Kitty refused
-                                ch_k "Ha, I'm not gonna swim naked with you, [K_Petname], see you later."          
+                                ch_k "Ha, I'm not gonna swim naked with you, [K_Petname], see you later."
+                            if EmmaCount == 1:                                  #Rogue agreed, Emma refused
+                                ch_e "Ha, I'm not gonna swim, [E_Petname], specially not with a student."          
                         
-                    elif Line == "dark":  #"Maybe you could stay and watch?"
+                    elif Line == "dark":  #"its dark"
                             if RogueCount == 2:                                 #Rogue agreed, maybe both
                                 ch_r "Yeah, I guess it's dark enough."
                                 if KittyCount == 2:
                                     ch_k "Um, yeah, I guess. . ."
-                            elif KittyCount == 2:                               #Kitty only
+                                if EmmaCount == 2:
+                                    ch_e "Yeah, me too!"
+                            elif KittyCount == 2:                               #Kitty
                                 ch_k "I. . . guess you're right. . ."
+                                if EmmaCount == 2:
+                                    ch_e "Yeah, I guess so!"
+                            elif EmmaCount == 2:                               #Emma only
+                                ch_e "You do have a point there, [E_Petname]."
+                            
                             if RogueCount == 1:                                  #Kitty agreed, Rogue refused
                                 ch_r "Yeah, not dark enough, [R_Petname]."
                             if KittyCount == 1:                                  #Rogue agreed, Kitty refused
-                                ch_k "[K_Like]I can see everything perfect, [K_Petname], so no."        
+                                ch_k "[K_Like]I can see everything perfect, [K_Petname], so no."
+                            if EmmaCount == 1:                                  #Rogue agreed, Kitty refused
+                                ch_e "Are you sure you're not blind, [E_Petname]? I can see everything perfectly."        
 
                                 
                     #fix, add jeolousy angle here, if roguelikekitty low, get rid of her. . .
@@ -1444,7 +1509,22 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
                     $ K_Water = 1
                     $ K_Spunk = []
                     #$ K_RecentActions.append("showered")                      
-                    #$ K_DailyActions.append("showered")  
+                    #$ K_DailyActions.append("showered") 
+
+            if EmmaCount == 1:     
+                    #If Emma leaves
+                    $ Occupants -= 1
+                    $ EmmaCount = 0
+                    call Remove_Girl("Emma")
+            elif EmmaCount == 2: 
+                    #If Emma Stays
+                    if not E_Water:
+                        "Emma strips naked and jumps on the water"
+                        call EmmaOutfit("nude")
+                    else:
+                        call EmmaOutfit("nude")
+                    $ E_Water = 1
+                    $ E_Spunk = []
                     
             call Seen_First_Peen (0,1) #You get naked
                 
@@ -1453,15 +1533,17 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
     $ Round -= 30
     $ Trigger = 0
     
-    if RogueCount and KittyCount:
-                    $ Line = "You swim around with Rogue and Kitty."
-                    call Shift_Focus("Rogue", "Kitty") 
+    if RogueCount and KittyCount and EmmaCount:
+                    $ Line = "You swim around with Rogue, Kitty and Emma."
+                    call Change_Focus("Rogue", "Kitty") 
                     $ R_Water = 1
                     $ K_Water = 1
-    elif RogueCount:
-                    $ Line = "You swim around with Rogue."
-                    call Shift_Focus("Rogue")
+                    $ E_Water = 1
+    elif RogueCount and KittyCount:
+                    $ Line = "You swim around with Rogue and Kitty."
+                    call Shift_Focus("Rogue, Kitty")
                     $ R_Water = 1
+                    $ K_Water = 1
     elif KittyCount:
                     $ Line = "You swim around with Kitty."  
                     call Shift_Focus("Kitty")   
@@ -1479,8 +1561,14 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
         ch_r "That was real nice, [R_Petname]."            
         if KittyCount:
             ch_k "Yeah, I had fun."
+        if EmmaCount:
+            ch_e "Really nice indeed."
     elif KittyCount:
-            ch_k "that was. . . nice." 
+        ch_k "That was. . . nice." 
+        if EmmaCount:
+            ch_e "Really nice indeed."
+    elif EmmaCount:
+        ch_e "That was. . . nice."
             
     #call RogueOutfit
     #call KittyOutfit

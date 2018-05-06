@@ -3053,6 +3053,7 @@ label K_Vibrator_Check:                                                         
     
 ## K_Footjob //////////////////////////////////////////////////////////////////////
 label K_Footjob:
+    $ K_LegsUp = 0
     call Shift_Focus("Kitty")
     if K_Foot >= 7: # She loves it
         $ Tempmod += 10

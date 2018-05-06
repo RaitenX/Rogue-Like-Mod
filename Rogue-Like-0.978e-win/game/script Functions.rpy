@@ -4127,6 +4127,7 @@ label Failsafe:
     $ R_Sperm = [] if "R_Sperm" not in globals().keys() else R_Sperm
     $ R_Pubes = 1 if "R_Pubes" not in globals().keys() else R_Pubes
     $ R_Nudes = 1 if "R_Nudes" not in globals().keys() else R_Nudes
+    $ R_Tan = 0 if "R_Tan" not in globals().keys() else R_Tan
     $ R_Wet = 0 if "R_Wet" not in globals().keys() else R_Wet
     $ R_Water = 0 if "R_Water" not in globals().keys() else R_Water
     $ R_Upskirt = 0 if "R_Upskirt" not in globals().keys() else R_Upskirt

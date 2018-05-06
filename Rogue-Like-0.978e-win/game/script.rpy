@@ -268,6 +268,7 @@ init -1:
     default R_Sperm = []
     default R_Pubes = 1
     default R_Nudes = 1
+    default R_Tan = 0
     default R_Wet = 0
     default R_Water = 0
     default R_Upskirt = 0
@@ -2504,7 +2505,7 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     $ E_Hair = "wavy"
                     $ E_Hose = 0 
         elif E_OutfitTemp == "bikini":
-                    if 0 in (E_Legs,E_Over,E_Chest):
+                    if E_Chest == 0:
                             $ Undressed = 1
                     elif E_Panties == 0 and "pantyless" not in E_DailyActions:                        
                             $ Undressed = 1   

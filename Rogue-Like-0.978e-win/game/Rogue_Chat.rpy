@@ -5114,7 +5114,21 @@ label Rogue_Clothes:
                 $ R_HairColor = "nope"
             else:
                 ch_r "It's too high maintenance."
-        
+
+        "You're too pale, get a tan" if R_Tan != 'tan':
+            if ApprovalCheck("Rogue", 900):
+                ch_r "Like this?"
+                $ R_Tan = "tan"
+            else:
+                ch_r "Yeah, I know that."
+
+        "I prefer your pale skin" if R_Tan != 0:
+            if ApprovalCheck("Rogue", 600):
+                ch_r "Like this?"
+                $ R_Tan = 0
+            else:
+                ch_r "Yeah, I know that."
+
         "You know, I like some nice hair down there. Maybe grow it out." if not R_Pubes and "pubes" in R_Todo:
                         call RogueFace("bemused", 1)
                         ch_r "Yeah, I know, [R_Petname]. It doesn't grow out overnight!"

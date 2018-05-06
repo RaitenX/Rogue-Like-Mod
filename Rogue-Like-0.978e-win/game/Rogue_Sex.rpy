@@ -155,7 +155,9 @@ label Rogue_SexMenu:
                         menu:
                             "What did you want to do?"
                             "Turn around, I've got something in mind. . .":
-                                call R_Doggy_H           
+                                call R_Doggy_H
+                            "Lean back, I've got something in mind. . .":
+                                call R_Sex_H           
                             "Fuck your pussy.":                        
                                 call R_Doggy_P           
                             "Fuck your ass.":                        
