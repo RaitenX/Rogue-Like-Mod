@@ -1004,6 +1004,10 @@ screen P_Inventory_screen:
             textbutton "Emma Forced 0" text_size 15 action [ SetVariable("E_ForcedCount", 0)]
         if not R_Action:
             textbutton "10 Rogue actions" text_size 15 action [ SetVariable("R_Action", 10)]
+        if not K_Action:
+            textbutton "10 Kitty actions" text_size 15 action [ SetVariable("K_Action", 10)]
+        if not E_Action:
+            textbutton "10 Emma actions" text_size 15 action [ SetVariable("E_Action", 10)]
         showif "dildo" in P_Inventory:
             $ Inventory_Count = Inventory_Check("dildo")
             text "Dildos: [Inventory_Count]" size 15        

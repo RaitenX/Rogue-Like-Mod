@@ -5115,12 +5115,19 @@ label Rogue_Clothes:
             else:
                 ch_r "It's too high maintenance."
 
-        "You're too pale, get a tan" if R_Tan != 'tan':
+        "You're too pale, get a tan (full tan)" if R_Tan != 'tan':
             if ApprovalCheck("Rogue", 900):
                 ch_r "Like this?"
                 $ R_Tan = "tan"
             else:
-                ch_r "Yeah, I know that."
+                ch_r "Yeah, how about no."
+
+        "You're too pale, get a tan (tan lines)" if R_Tan != 'tan1':
+            if ApprovalCheck("Rogue", 900):
+                ch_r "Like this?"
+                $ R_Tan = "tan1"
+            else:
+                ch_r "Yeah, how about no."
 
         "I prefer your pale skin" if R_Tan != 0:
             if ApprovalCheck("Rogue", 600):
