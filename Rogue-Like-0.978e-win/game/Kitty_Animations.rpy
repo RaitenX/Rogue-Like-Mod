@@ -808,6 +808,14 @@ image Kitty_Sex_Feet = LiveComposite(
             "K_Hose == 'pink socks'", "images/KittySex/Kitty_Sex_PSocks_Thigh_Feet.png",                                                       #Legs Base
             "True", Null(),
             ),
+        (0,0), ConditionSwitch(
+            "not K_LegsUp", Null(),
+            "K_Hose == 'stockings'", "images/KittySex/Kitty_Sex_Stockings_Thigh_LegsUp_.png",  
+            "K_Hose == 'white socks'", "images/KittySex/Kitty_Sex_WSocks_Thigh_LegsUp_.png",
+            "K_Hose == 'black socks'", "images/KittySex/Kitty_Sex_BSocks_Thigh_LegsUp_.png",
+            "K_Hose == 'pink socks'", "images/KittySex/Kitty_Sex_PSocks_Thigh_LegsUp_.png",                                                       #Legs Base
+            "True", Null(),
+            ),
         (0,0), ConditionSwitch(                                                                                 #Wet look
             "K_Water", "images/KittySex/Kitty_Sex_Water_Feet.png",   
             "True", Null(),              

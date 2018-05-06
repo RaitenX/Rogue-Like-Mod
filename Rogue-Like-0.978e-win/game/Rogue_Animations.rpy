@@ -478,6 +478,14 @@ image Rogue_Selfie:
                 ),
             pos (320, 320)
             zoom .4
+        contains:
+            ConditionSwitch(
+                "R_Pierce == 'barbell'", "images/RogueBJFace/Rogue_tj_tits_barbell_only.png",
+                "R_Pierce == 'ring'", "images/RogueBJFace/Rogue_tj_tits_ring_only.png",
+                "True", Null(),
+                ),
+            pos (320, 320)
+            zoom .4
 
         #contains:
         #    "images/RogueBJFace/Rogue_tj_tits.png"
