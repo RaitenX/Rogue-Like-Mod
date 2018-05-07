@@ -393,6 +393,7 @@ init -1:
     default K_Vib = 0
     default K_Vibrator = 0
     default K_Plug = 0
+    default K_Plugged = 0
     default K_SuckB = 0
     default K_InsertP = 0
     default K_InsertA = 0

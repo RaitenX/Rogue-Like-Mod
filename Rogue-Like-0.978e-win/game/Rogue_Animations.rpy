@@ -301,7 +301,11 @@ image Rogue:
             "not R_Spunk", Null(), 
             "'facial' in R_Spunk", "images/RogueSprite/Rogue_facial.png",
             "True", Null(), 
-            ),                
+            ),  
+        (0,0), ConditionSwitch(                                                                         #belly spunk
+            "'belly' in R_Spunk", "images/RogueSprite/Rogue_Sprite_Spunk_Belly.png",
+            "True", Null(), 
+            ),               
         (0,0), ConditionSwitch(                                                                         #Props
             "not R_Held or Rogue_Arms != 2", Null(), 
             "Rogue_Arms == 2 and R_Held == 'phone'", "images/RogueSprite/Rogue_held_phone.png",
@@ -738,8 +742,8 @@ image Rogue_Doggy_Body = LiveComposite(                                         
         (420,750),
         (0,0), ConditionSwitch(                                                                                 #Hair underlayer
             "R_Water", Null(), 
-            "R_Hair == 'evo'and R_HairColor == 'black'", "images/RogueDoggy/Rogue_Doggy_HairBlackB.png",   
-            "R_Hair == 'evo'and R_HairColor == 'blonde'", "images/RogueDoggy/Rogue_Doggy_HairBlondeB.png",   
+            "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueDoggy/Rogue_Doggy_HairBlackB.png",   
+            "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueDoggy/Rogue_Doggy_HairBlondeB.png",   
             "R_Hair == 'evo'", "images/RogueDoggy/Rogue_Doggy_HairB.png",   
             "True", Null(),                   
             ),   
@@ -2203,24 +2207,7 @@ image Rogue_Anal_Fucking1:
             # The animation of Zero's moving penis, masked by her pussy shape
             AlphaMask("Rogue_Anal_Zero_Anim1", "Rogue_Anal_Fucking_Mask") 
 
-image Rogue_Anal_Fucking2:
-    # This is the visual for her pussy during the Speed 2 mode (slow). 
-    contains:
-            # The background plate of her pussy
-            "images/RogueSex/Rogue_Sex_Hole_Open.png"
-    contains:
-            # The animation of Zero's moving penis, masked by her pussy shape
-            AlphaMask("Rogue_Anal_Zero_Anim2", "Rogue_Anal_Fucking_Mask") 
-            
-image Rogue_Anal_Fucking3:  
-    # This is the visual for her pussy during the Speed 3 mode (fast). 
-    contains:
-            # The background plate of her pussy
-            "images/RogueSex/Rogue_Sex_Hole_Open.png"
-    contains:
-            # The animation of Zero's moving penis, masked by her pussy shape
-            AlphaMask("Rogue_Anal_Zero_Anim3", "Rogue_Anal_Fucking_Mask") 
-            
+    
 image Rogue_Anal_Fucking_Mask:
         #This is the mask image for Rogue's wide open pussy
         contains:

@@ -4206,6 +4206,7 @@ label Failsafe:
     $ K_Vib = 0 if "K_Vib" not in globals().keys() else K_Vib
     $ K_Vibrator = 0 if "K_Vibrator" not in globals().keys() else K_Vibrator
     $ K_Plug = 0 if "K_Plug" not in globals().keys() else K_Plug
+    $ K_Plugged = 0 if "K_Plugged" not in globals().keys() else K_Plugged
     $ K_SuckB = 0 if "K_SuckB" not in globals().keys() else K_SuckB
     $ K_InsertP = 0 if "K_InsertP" not in globals().keys() else K_InsertP
     $ K_InsertA = 0 if "K_InsertA" not in globals().keys() else K_InsertA

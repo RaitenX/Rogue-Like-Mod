@@ -180,7 +180,9 @@ label Kitty_SexMenu:
                     menu Kitty_SMenu2:
                         "What did you want to do?"
                         "Lean back, I've got something in mind. . .":
-                                call K_Sex_H           
+                                call K_Sex_H  
+                        "Turn around, I've got something in mind (DoggyStyle). . .":
+                                call K_Doggy_H         
                         "Fuck your pussy.":                        
                                 call K_Sex_P           
                         "Fuck your ass.":                        

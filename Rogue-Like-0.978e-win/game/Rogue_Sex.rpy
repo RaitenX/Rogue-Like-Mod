@@ -154,14 +154,18 @@ label Rogue_SexMenu:
                 if P_Semen and R_Action:
                         menu:
                             "What did you want to do?"
-                            "Turn around, I've got something in mind. . .":
+                            "Turn around, I've got something in mind (DoggyStyle). . .":
                                 call R_Doggy_H
-                            "Lean back, I've got something in mind. . .":
-                                call R_Sex_H           
-                            "Fuck your pussy.":                        
+                            "Fuck your pussy. (DoggyStyle)":                        
                                 call R_Doggy_P           
-                            "Fuck your ass.":                        
-                                call R_Doggy_A        
+                            "Fuck your ass. (DoggyStyle)":                        
+                                call R_Doggy_A  
+                            "Lean back, I've got something in mind (Missionary). . .":
+                                call R_Sex_H           
+                            "Fuck your pussy. (Missionary)":                        
+                                call R_Sex_P           
+                            "Fuck your ass. (Missionary)":                        
+                                call R_Sex_A       
                             "How about some toys? [[Pussy]":                        
                                 call R_Dildo_Pussy     
                             "How about some toys? [[Anal]":                        

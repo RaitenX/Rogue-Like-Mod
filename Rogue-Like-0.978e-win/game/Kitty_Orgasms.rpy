@@ -66,9 +66,13 @@ label PK_Cumming:
             jump K_Creampie_A
             
         "Cum on her face":
-            jump K_Facial                
-        "Cum on her belly" if Trigger in ("sex","anal","hotdog","foot"):
-            jump K_SpunkBelly
+            jump K_Facial    
+
+        "Cum on her ass" if Trigger in ("sex","anal","hotdog") and renpy.showing("Kitty_Doggy"):
+                jump K_SpunkBack
+
+        "Cum on her belly" if Trigger in ("sex","anal","hotdog","foot") and renpy.showing("Kitty_SexSprite"):
+                jump K_SpunkBelly
                 
         "Pull back":
             if renpy.showing("Kitty_BJ_Animation"):
@@ -797,6 +801,57 @@ label K_SpunkBelly:
     call Kitty_Sex_Reset
     jump K_Orgasm_After
     
+# Start Spunk back  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+label K_SpunkBack: 
+    call Kitty_Doggy_Launch("hotdog")
+    $ Speed = 0
+    if K_Addict >= 60 and ApprovalCheck("Kitty", 1000, "I", Bonus = ((K_Addict*10)- K_Obed))  and K_Swallow:
+            $ K_Eyes = "manic"
+            $ K_Blush = 1
+            call Kitty_BJ_Launch("cum")
+            if Trigger == "sex":
+                "You pull out of her pussy with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
+            elif Trigger == "anal":                
+                "You pull out of her ass with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
+            $ K_Mouth = "lipbite"
+            $ K_Spunk.append("mouth")
+            "When she finishes, she licks her lips."
+            call KittyFace("bemused")
+            $ K_Spunk.remove("mouth")
+            ch_k "Sorry, [K_Petname], I just couldn't let that go to waste."
+            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, -5)
+            $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 200, 10)
+            jump K_Swallowed
+    $ P_Cock = "out"
+    $ P_Spunk = "out"
+    $ K_Spunk.append("back")
+    if Trigger == "sex":
+            "You pull out of her pussy with a pop and spray all over her backside."
+    elif Trigger == "anal":
+            "You pull out of her ass with a pop and spray all over her backside."
+    else:
+            "You pick up the pace and with a grunt you spray all over her backside."
+        
+                  
+    if K_Addict >= 60 and ApprovalCheck("Kitty", 800, "I", Bonus = ((K_Addict*10)- K_Obed)) and K_Swallow: 
+            #if she's manic and has swallowed
+            $ K_Eyes = "manic"
+            $ K_Blush = 1        
+            "Kitty's eyes widen with desire, and she quickly wipes a bit off with her hand, then licks her fingers clean."
+            call KittyFace("manic", 1)
+            $ K_Spunk.append("mouth")
+            $ K_Mouth = "smile"
+            ch_k "Well, [K_Petname], I just couldn't let that go to waste."
+            $ K_Spunk.remove("mouth")
+            $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 3)
+            jump K_Swallowed
+          
+        
+    #else . . .
+    call KittyFace("sexy", 1)
+    ch_k "Thanks for the courtesy, [K_Petname]. Such a mess though. . ." 
+    call Kitty_Doggy_Reset
+    jump K_Orgasm_After
 
 #Start Handy finish  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label K_Handy_Finish:                                                                                                                       #Handy start
@@ -1409,6 +1464,13 @@ label Kitty_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
             else:
                 "She wipes the spunk inside her pussy,"     
             $ Cnt += 1 
+    if "back" in K_Spunk:
+            $ K_Spunk.remove("back")
+            if Cnt:
+                "then she wipes the spunk off of her back,"   
+            else:
+                "She wipes the spunk off her lower back," 
+            $ Cnt += 1  
     if "anal" in K_Spunk and (ApprovalCheck("Kitty", 800, "I") or Line != "eat"):
             while "anal" in K_Spunk:
                 $ K_Spunk.remove("anal")
