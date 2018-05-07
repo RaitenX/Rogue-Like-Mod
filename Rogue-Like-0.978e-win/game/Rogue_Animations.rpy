@@ -4662,7 +4662,7 @@ label R_Pos_Reset(Pose = 0):
     return
     
 label Rogue_Hide:
-    if renpy.showing("Rogue_Doggy"):
+    if renpy.showing("Rogue_Doggy") or renpy.showing("Rogue_SexSprite"):
         call Rogue_Doggy_Reset
     hide Rogue_Doggy       
     hide Rogue_HJ_Animation

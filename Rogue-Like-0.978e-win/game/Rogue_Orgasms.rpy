@@ -67,8 +67,11 @@ label PR_Cumming:
             
         "Cum on her face":
                 jump R_Facial            
-        "Cum on her ass" if Trigger == "sex" or Trigger == "anal" or Trigger == "hotdog":
+        "Cum on her ass" if (Trigger == "sex" or Trigger == "anal" or Trigger == "hotdog") and renpy.showing("Rogue_Doggy"):
                 jump R_SpunkBack
+
+        "Cum on her belly" if Trigger in ("sex","anal","hotdog","foot") and renpy.showing("Rogue_SexSprite"):
+                jump R_SpunkBelly
             
         "Pull back":
             if renpy.showing("Rogue_BJ_Animation"):
@@ -790,6 +793,57 @@ label R_Facial:
                 
     jump R_Orgasm_After
 
+# Start Spunk Belly / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+label R_SpunkBelly:
+    call Rogue_Sex_Launch("hotdog")
+    $ Speed = 0
+    if R_Addict >= 60 and ApprovalCheck("Rogue", 1000, "I", Bonus = ((R_Addict*10)- R_Obed)) and R_Swallow:
+            $ R_Eyes = "manic"
+            $ R_Blush = 1
+            call Rogue_BJ_Launch("cum")
+            if Trigger == "sex":
+                "You pull out of her pussy with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
+            elif Trigger == "anal":                
+                "You pull out of her ass with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
+            $ R_Mouth = "lipbite"
+            $ R_Spunk.append("mouth")
+            "When she finishes, she licks her lips."
+            call RogueFace("bemused")
+            $ R_Spunk.remove("mouth")  
+            ch_r "Sorry, that's just sooooo good."
+            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, -5)
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 10)
+            jump R_Swallowed
+    $ P_Cock = "out"
+    $ P_Spunk = "out"
+    $ R_Spunk.append("belly")
+    if Trigger == "sex":
+            "You pull out of her pussy with a pop and spray all over her belly."
+    elif Trigger == "anal":
+            "You pull out of her ass with a pop and spray all over her belly."
+    else:
+            "You pick up the pace and with a grunt you spray all over her belly."
+        
+                  
+    if R_Addict >= 60 and ApprovalCheck("Rogue", 800, "I", Bonus = ((R_Addict*10)- R_Obed)) and R_Swallow: 
+            #if she's manic and has swallowed
+            $ R_Eyes = "manic"
+            $ R_Blush = 1        
+            "Rogue's eyes widen with desire, and she quickly wipes a bit off with her hand, then licks her fingers clean."
+            call RogueFace("manic", 1)
+            $ R_Spunk.append("mouth")
+            $ R_Mouth = "smile"
+            ch_r "Sorry, that's just sooooo good."
+            $ R_Spunk.remove("mouth")  
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3)
+            jump R_Swallowed
+          
+        
+    #else . . .
+    call RogueFace("sexy", 1)    
+    ch_r "Mmmm, all over the place. . ."
+    call Rogue_Sex_Reset
+    jump R_Orgasm_After
 
 # Start Spunk back  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label R_SpunkBack: 
