@@ -2,8 +2,11 @@
 errors listed below, and try again.
 
 
-File "game/script Locations.rpy", line 1445: reached end of line when expecting ':'.
-    elif EmmaCount == 2
-                       ^
+File "game/Kitty_Animations_Doggy.rpy", line 170: Line is indented, but the preceding image statement statement does not expect a block. Please check this line's indentation.
+    (0,0), ConditionSwitch(                                                                                 
+    ^
+                "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Ear.png",   
+                "True", Null(),              
+                ),
 
 Ren'Py Version: Ren'Py 6.99.13.2919

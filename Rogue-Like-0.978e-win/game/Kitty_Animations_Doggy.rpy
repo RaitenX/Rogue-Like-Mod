@@ -37,17 +37,22 @@ image Kitty_Doggy_Body = LiveComposite(                                         
             #"R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueDoggy/Rogue_Doggy_HairBlondeB.png",   
             #"R_Hair == 'evo'", "images/RogueDoggy/Rogue_Doggy_HairB.png",   
             #"True", Null(),                   
+            "K_HairColor == 'black'", "images/KittyDoggy/Kitty_Doggy_Hair_Black.png",
             "True", "images/KittyDoggy/Kitty_Doggy_Hair.png",
             ),   
         #(0,0), ConditionSwitch(                                                                                 #Mouth
         #    "R_Gag == 'ballgag'", "images/RogueDoggy/Rogue_Doggy_BallGag.png",
         #    "True", Null(), #Rogue_Doggy_BallGag
         #    ),
-        (0,0), "images/KittyDoggy/Kitty_Doggy_Body.png",  
+        (0,0), ConditionSwitch(          
+            "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Body.png",
+            "True", "images/KittyDoggy/Kitty_Doggy_Body.png",
+            ),  
         (0,0), ConditionSwitch(                                                                                 #Mouth
             #"R_Gag == 'ballgag'", "images/RogueDoggy/Rogue_Doggy_BallGagTop.png",
             #"'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueDoggy/Rogue_Doggy_Mouth_BlowW.png",
             #"R_Gag == 'ringgag'", "images/RogueDoggy/Rogue_Doggy_Mouth_Blow.png",
+            "K_Tan", Null(),
             "'mouth' in K_Spunk and K_Mouth == 'lipbite'", "images/KittyDoggy/Kitty_Doggy_Mouth_LipbiteW.png",
             "'mouth' in K_Spunk and K_Mouth == 'surprised'", "images/KittyDoggy/Kitty_Doggy_Mouth_SurprisedW.png",
             "'mouth' in K_Spunk and K_Mouth == 'sucking'", "images/KittyDoggy/Kitty_Doggy_Mouth_BlowW.png",
@@ -65,6 +70,29 @@ image Kitty_Doggy_Body = LiveComposite(                                         
             "K_Mouth == 'surprised'", "images/KittyDoggy/Kitty_Doggy_Mouth_Surprised.png",       
             "K_Mouth == 'tongue'", "images/KittyDoggy/Kitty_Doggy_Mouth_Tongue.png", 
             "True", "images/KittyDoggy/Kitty_Doggy_Mouth_Smile.png", 
+            ),
+        (0,0), ConditionSwitch(                                                                                 #Mouth
+            #"R_Gag == 'ballgag'", "images/RogueDoggy/Rogue_Doggy_BallGagTop.png",
+            #"'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueDoggy/Rogue_Doggy_Mouth_BlowW.png",
+            #"R_Gag == 'ringgag'", "images/RogueDoggy/Rogue_Doggy_Mouth_Blow.png",
+            "not K_Tan", Null(),
+            "'mouth' in K_Spunk and K_Mouth == 'lipbite'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_LipbiteW.png",
+            "'mouth' in K_Spunk and K_Mouth == 'surprised'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_SurprisedW.png",
+            "'mouth' in K_Spunk and K_Mouth == 'sucking'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_BlowW.png",
+            "'mouth' in K_Spunk and K_Mouth == 'sad'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_SadW.png",
+            "'mouth' in K_Spunk and K_Mouth == 'smile'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_SmileW.png",   
+            "'mouth' in K_Spunk and K_Mouth == 'tongue'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_TongueW.png",  
+            "'mouth' in K_Spunk", "images/KittyDoggy/Kitty_Doggy_T3Mouth_NormalW.png",   
+            "K_Mouth == 'normal'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_Normal.png",
+            "K_Mouth == 'lipbite'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_Lipbite.png",
+            "K_Mouth == 'sucking'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_Blow.png",            
+            "K_Mouth == 'kiss'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_Surprised.png",
+            "K_Mouth == 'sad'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_Sad.png",
+            "K_Mouth == 'smile'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_Smile.png",
+            "K_Mouth == 'grimace'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_Smile.png",
+            "K_Mouth == 'surprised'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_Surprised.png",       
+            "K_Mouth == 'tongue'", "images/KittyDoggy/Kitty_Doggy_T3Mouth_Tongue.png", 
+            "True", "images/KittyDoggy/Kitty_Doggy_T3Mouth_Smile.png", 
             ),
                                                               #Body base
         #(0,0), ConditionSwitch(                                                                                 #Blush
@@ -105,7 +133,7 @@ image Kitty_Doggy_Body = LiveComposite(                                         
         (0,0), ConditionSwitch(                                                                                 #Wet look
             "K_Water", "images/RogueDoggy/Rogue_Doggy_WetTop.png",   
             "True", Null(),              
-            ),  
+            ), 
         #(0,0), ConditionSwitch(                                                                                 #Overshirt
         #    "not R_Over", Null(),
         #    "R_Over == 'mesh top'", "images/RogueDoggy/Rogue_Doggy_Over_Mesh.png",
@@ -135,8 +163,13 @@ image Kitty_Doggy_Body = LiveComposite(                                         
             #"R_Hair == 'evo'", "images/RogueDoggy/Rogue_Doggy_HairF.png",   
             #"True and R_HairColor == 'black'", "images/RogueDoggy/Rogue_Doggy_HairBlackF.png",                     
             #"True and R_HairColor == 'blonde'", "images/RogueDoggy/Rogue_Doggy_HairBlondeF.png",                     
-            "True", "images/KittyDoggy/Kitty_Doggy_Hair.png",                     
-            ),  
+            "K_HairColor == 'black'", "images/KittyDoggy/Kitty_Doggy_Hair_Black.png",
+            "True", "images/KittyDoggy/Kitty_Doggy_Hair.png",
+            ),                     
+        (0,0), ConditionSwitch(                                                                                 #Wet look
+            "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Ear.png",   
+            "True", Null(),              
+            ),
         (0,0), ConditionSwitch(                                                                                 #face spunk
             "not K_Spunk", Null(),
             "'facial' in K_Spunk", "images/RogueDoggy/Rogue_Doggy_Facial.png",
@@ -166,7 +199,10 @@ image Kitty_Doggy_Ass = LiveComposite(                                          
             #"K_Panties == 'swimsuit1' or K_Panties == 'swimsuit2'", "images/RogueDoggy/Rogue_Doggy_Swimsuit.png",  
             "True", Null(),                     
             ),  
-        (0,0), "images/KittyDoggy/Kitty_Doggy_Ass.png",   
+        (0,0), ConditionSwitch(                                                                                 #Wet look
+            "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Ass.png",   
+            "True", "images/KittyDoggy/Kitty_Doggy_Ass.png",              
+            ), 
         (0,0), ConditionSwitch(                                                                                 #Wet look
             "K_Water", "images/RogueDoggy/Rogue_Doggy_WetAss.png",   
             "True", Null(),              
@@ -195,7 +231,9 @@ image Kitty_Doggy_Ass = LiveComposite(                                          
             "P_Sprite and P_Cock == 'in' and Speed > 1", "Kitty_Pussy_Fucking2",
             "P_Sprite and P_Cock == 'in' and Speed", "Kitty_Pussy_Moving",
             "P_Sprite and P_Cock == 'in'", "Kitty_Pussy",    
+            "K_Tan == 'tan3' and Trigger == 'lick pussy'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_Open.png",   
             "Trigger == 'lick pussy'", "images/KittyDoggy/Kitty_Doggy_Pussy_Open.png",   
+            "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_Closed.png", 
             "True", "images/KittyDoggy/Kitty_Doggy_Pussy_Closed.png", 
             ),   
         #(0,0), ConditionSwitch(                                                                                 #pubes              
@@ -233,7 +271,9 @@ image Kitty_Doggy_Ass = LiveComposite(                                          
             #"P_Sprite and P_Cock == 'plug' and R_Plugged", "images/KittyDoggy/Kitty_Doggy_Plugged.png",  
             #"P_Sprite and P_Cock == 'plug'", "Kitty_Anal_Plug",  
             #"R_Plugged", "images/KittyDoggy/Kitty_Doggy_Plugged.png",   
+            "K_Tan == 'tan3' and K_Loose", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",   
             "K_Loose", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",   
+            "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Tight.png", 
             "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Tight.png", 
             ),
         #(0,0), ConditionSwitch(                                                                                 #Hose
@@ -359,24 +399,35 @@ image Kitty Doggy Blink:                                                        
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>              #Pussy fucking animations    
 image Kitty_Pussy:                                                                                              #Full Animation for speed 0    
-    contains:                                                                                   #Base
-        "images/KittyDoggy/Kitty_Doggy_Pussy_FBase.png"    
+    contains:  
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FBase.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FBase.png",
+        ),                                                                                 #Base
     contains:                                                                                   #Cock
         "Zero_Doggy_Insert"
         pos (169,460) #Out stroke
-    contains:                                                                                   #Mask
-        "images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png"
-        
+    contains:
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FMask.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FMask.png",
+        ),                                                                                   #Mask
 
 image Kitty_Pussy_Moving:                                                                                       #Full Animation for speed 1
     subpixel True
     contains:                                                                                   #Base
-        "images/KittyDoggy/Kitty_Doggy_Pussy_FBase.png"    
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FBase.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FBase.png",
+        ),    
         anchor (0.52,0.69)
         pos (220,518) # fix this back once re-exported(217,518) 
         xzoom 1
     contains:                                                                                   #Base
-        "images/KittyDoggy/Kitty_Doggy_Pussy_FHole.png"    
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FHole.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FHole.png",
+        ),    
         subpixel True
         anchor (0.52,0.69)
         pos (217,518) 
@@ -395,7 +446,10 @@ image Kitty_Pussy_Moving:                                                       
             
 image Kitty_Pussy_Heading: #This is the image impacted by the mask for the pussy flap in "Kitty_Pussy_Moving"
     contains:                                                                                   #Mask
-        "images/KittyDoggy/Kitty_Doggy_Pussy_FHeading.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FHeading.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FHeading.png",
+        ), 
         anchor (0.52,0.69)
         pos (217,515)
         zoom 1
@@ -408,18 +462,30 @@ image Kitty_Pussy_Heading: #This is the image impacted by the mask for the pussy
 
 image Kitty_Pussy_Fucking2:                                                                                      #Full Animation for speed 2
     contains:                                                                                   #Base
-        "images/KittyDoggy/Kitty_Doggy_Pussy_FBase.png"    
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FBase.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FBase.png",
+        ),   
     contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Pussy_FHole.png"  
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FHole.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FHole.png",
+        ),  
     contains:                                                                                   #Cock        
         AlphaMask("Zero_Doggy_Fucking2", "images/RogueDoggy/Rogue_Doggy_SexMask.png")
         
 
 image Kitty_Pussy_Fucking3:                                                                                      #Full Animation for speed 3
     contains:                                                                                   #Base
-        "images/KittyDoggy/Kitty_Doggy_Pussy_FBase.png"    
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FBase.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FBase.png",
+        ),   
     contains:                                                                                   #Base
-        "images/RogueDoggy/Rogue_Doggy_Pussy_FHole.png"  
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Pussy_FHole.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Pussy_FHole.png",
+        ),   
     contains:                                                                                   #Cock        
         AlphaMask("Zero_Doggy_Fucking3", "images/RogueDoggy/Rogue_Doggy_SexMask.png")
         
@@ -427,9 +493,15 @@ image Kitty_Pussy_Fucking3:                                                     
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
 image Kitty_Anal2:                                                                                               #Anal static
     contains:                                                                                   #Base
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png"        
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
+        ),         
     contains:
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png"                                       #Hole
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
+        ),                                         #Hole
         anchor (0.52,0.69)
         pos (218,518)
         zoom .5
@@ -437,17 +509,26 @@ image Kitty_Anal2:                                                              
         "Zero_Doggy_Insert"
         pos (172,500)
     contains:                                                                                   #Mask
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png",
+        ),  
         anchor (0.52,0.69)
         pos (218,518)
         zoom .5    
     contains:                                                                                   #Cheeks
-        "images/RogueDoggy/Rogue_Doggy_Anal_FullCheeks.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
+        ),  
 
 
 image Kitty_Anal:                                                                                               #Anal static Loose
     contains:                                                                                   #Base
-        "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png"   
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
+        ),    
         anchor (0.50,0.69)
         pos (208,500)
         zoom 1.25
@@ -457,7 +538,10 @@ image Kitty_Anal:                                                               
 
 image Kitty_Anal_Plug:                                                                                               #Anal static Loose
     contains:                                                                                   #Base
-        "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png"   
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
+        ),     
         anchor (0.50,0.69)
         pos (208,500)
         zoom 1.25
@@ -472,9 +556,15 @@ image Kitty_Anal_Plug:                                                          
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 image Kitty_Anal_Heading:                                                                                       #Animation for speed 1
     contains:                                                                                   #Base
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png"    
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
+        ),     
     contains:
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png"                                       #Hole
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
+        ),                                         #Hole
         anchor (0.52,0.69)
         pos (218,518)
         zoom .5
@@ -492,7 +582,10 @@ image Kitty_Anal_Heading:                                                       
             ease 1.75 ypos 500#505
             repeat
     contains:                                                                                   #Mask
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png",
+        ),  
         anchor (0.52,0.69)
         pos (218,518)
         zoom .5
@@ -502,14 +595,23 @@ image Kitty_Anal_Heading:                                                       
             ease 1.5 zoom .5
             repeat             
     contains:                                                                                   #Cheeks
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
+        ),  
 
 image Kitty_Anal_Plug_Heading:                                                                                       #Animation for speed 1
     contains:                                                                                   #Base
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png"   
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
+        ),     
         #"images/KittyDoggy/Kitty_Doggy_Anal_HeadingBase.png"    
     contains:
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png"                                       #Hole
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
+        ),                                         #Hole
         #"images/KittyDoggy/Kitty_Doggy_Anal_HeadingBase.png"                                       #Hole
         anchor (0.52,0.69)
         pos (218,518)
@@ -536,7 +638,10 @@ image Kitty_Anal_Plug_Heading:                                                  
             ease 1.5 ypos 500#505  down
             repeat
     contains:                                                                                   #Mask
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullMask_Plug.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask_Plug.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask_Plug.png",
+        ),  
         #"images/KittyDoggy/Kitty_Doggy_Anal_HeadingMask_Plug.png"
         anchor (0.52,0.69)
         pos (218,518)
@@ -563,7 +668,10 @@ image Kitty_Anal_Plug_Heading:                                                  
             ease 1.5 ypos 500#505
             repeat            
     contains:                                                                                   #Cheeks
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
+        ),  
 
 
 
@@ -605,17 +713,32 @@ image Zero_Doggy_Anal1:                                                         
             
 image Kitty_Anal_Fucking:                                                                                       #Animation for speed 2 Ass
     contains:                                                                                   #Base
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png"    
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
+        ),     
     contains:                                                                                   #Hole
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png"  
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
+        ),    
     contains:
-        "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
+        ),  
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal1", "images/KittyDoggy/Kitty_Doggy_AnalMask.png")
     contains:                                                                                   #Mask
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png",
+        ),  
     contains:                                                                                   #Cheeks
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
+        ),  
 
 
 image Kitty_Doggy_Fuck_Top:                #animation for anal fucking top half
@@ -667,31 +790,61 @@ image Zero_Doggy_Anal3:                                                         
 
 image Kitty_Anal_Fucking2:                                                                                      #Animation for speed 3 Ass
     contains:                                                                                   #Base
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png"    
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
+        ),     
     contains:                                                                                   #Hole
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png"  
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
+        ),    
     contains:
-        "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
+        ),  
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal2", "images/KittyDoggy/Kitty_Doggy_AnalMask.png")       
     contains:                                                                                   #Mask
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask.png",
+        ),  
     contains:                                                                                   #Cheeks
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
+        ),  
 
 image Kitty_Anal_Fucking3:                                                                                      #Animation for speed 3 Ass
     contains:                                                                                   #Base
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png"    
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
+        ),      
     contains:                                                                                   #Hole
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png"  
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
+        ),    
     contains:
-        "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
+        ),  
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal3", "images/KittyDoggy/Kitty_Doggy_AnalMask.png")       
     contains:                                                                                   #Mask
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullMask3.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullMask3.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullMask3.png",
+        ),  
     contains:                                                                                   #Cheeks
-        "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png"
+        ConditionSwitch(          
+        "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullCheeks.png",
+        "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
+        ),  
 
 
 image Kitty_Doggy_Fuck3_Top:                #animation for anal fucking2 top half

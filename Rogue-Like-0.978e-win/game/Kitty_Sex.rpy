@@ -179,14 +179,18 @@ label Kitty_SexMenu:
 
                     menu Kitty_SMenu2:
                         "What did you want to do?"
-                        "Lean back, I've got something in mind. . .":
+                        "Lean back, I've got something in mind (Missionary). . .":
                                 call K_Sex_H  
-                        "Turn around, I've got something in mind (DoggyStyle). . .":
-                                call K_Doggy_H         
-                        "Fuck your pussy.":                        
+                        "Fuck your pussy. (Missionary)":                        
                                 call K_Sex_P           
-                        "Fuck your ass.":                        
+                        "Fuck your ass. (Missionary)":                        
                                 call K_Sex_A    
+                        "Turn around, I've got something in mind (DoggyStyle). . .":
+                                call K_Doggy_H  
+                        "Fuck your pussy. (DoggyStyle)":                        
+                                call K_Doggy_P           
+                        "Fuck your ass. (DoggyStyle)":                        
+                                call K_Doggy_A 
                         "How about you put that bondage outfit" if K_Bondage and K_Outfit != "zipper bondage" and K_Outfit != "zipper bondage open":
                             call KittyFace("sexy", 1) 
                             if K_Over or K_Chest or K_Panties or K_Legs:
