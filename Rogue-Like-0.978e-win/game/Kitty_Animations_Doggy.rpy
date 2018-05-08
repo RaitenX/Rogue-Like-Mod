@@ -262,10 +262,10 @@ image Kitty_Doggy_Ass = LiveComposite(                                          
             "True", Null(),  
             ),   
         (0,0), ConditionSwitch(                                                                                 #Anus Composite            
-            "P_Sprite and P_Cock == 'anal' and Speed > 3", "Kitty_Anal_Fucking3",         
-            "P_Sprite and P_Cock == 'anal' and Speed > 2", "Kitty_Anal_Fucking2",         
-            "P_Sprite and P_Cock == 'anal' and Speed > 1", "Kitty_Anal_Fucking",
-            "P_Sprite and P_Cock == 'anal' and Speed", "Kitty_Anal_Heading",
+            "P_Sprite and P_Cock == 'anal' and Speed > 3", "Kitty_Doggy_Anal_Fucking3",         
+            "P_Sprite and P_Cock == 'anal' and Speed > 2", "Kitty_Doggy_Anal_Fucking2",         
+            "P_Sprite and P_Cock == 'anal' and Speed > 1", "Kitty_Doggy_Anal_Fucking",
+            "P_Sprite and P_Cock == 'anal' and Speed", "Kitty_Doggy_Anal_Heading",
             "P_Sprite and P_Cock == 'anal'", "Kitty_Anal",  
             "P_Sprite and P_Cock == 'plug' and Speed", "Kitty_Anal_Plug_Heading",
             #"P_Sprite and P_Cock == 'plug' and R_Plugged", "images/KittyDoggy/Kitty_Doggy_Plugged.png",  
@@ -554,7 +554,7 @@ image Kitty_Anal_Plug:                                                          
 
         
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-image Kitty_Anal_Heading:                                                                                       #Animation for speed 1
+image Kitty_Doggy_Anal_Heading:                                                                                       #Animation for speed 1
     contains:                                                                                   #Base
         ConditionSwitch(          
         "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
@@ -711,7 +711,7 @@ image Zero_Doggy_Anal1:                                                         
             ease 1.75 ypos 460
             repeat
             
-image Kitty_Anal_Fucking:                                                                                       #Animation for speed 2 Ass
+image Kitty_Doggy_Anal_Fucking:                                                                                       #Animation for speed 2 Ass
     contains:                                                                                   #Base
         ConditionSwitch(          
         "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
@@ -788,7 +788,7 @@ image Zero_Doggy_Anal3:                                                         
             ease .3 ypos 465
             repeat
 
-image Kitty_Anal_Fucking2:                                                                                      #Animation for speed 3 Ass
+image Kitty_Doggy_Anal_Fucking2:                                                                                      #Animation for speed 3 Ass
     contains:                                                                                   #Base
         ConditionSwitch(          
         "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
@@ -817,7 +817,7 @@ image Kitty_Anal_Fucking2:                                                      
         "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullCheeks.png",
         ),  
 
-image Kitty_Anal_Fucking3:                                                                                      #Animation for speed 3 Ass
+image Kitty_Doggy_Anal_Fucking3:                                                                                      #Animation for speed 3 Ass
     contains:                                                                                   #Base
         ConditionSwitch(          
         "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
