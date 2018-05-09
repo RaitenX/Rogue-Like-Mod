@@ -339,6 +339,7 @@ init -1:
     default K_Eyes = "normal"
     default K_Hair = "evo"
     default K_Gag = 0    
+    default K_Gagx = 0    
     default K_Blindfold = 0    
     default K_Headband = 0    
     default K_Bondage = 0    
@@ -377,6 +378,7 @@ init -1:
     default K_Hand = 0
     default K_Foot = 0
     default K_Slap = 0
+    default K_Spank = 0
     default K_Strip = 0
     default K_Tit = 0
     default K_Sex = 0
@@ -2447,7 +2449,10 @@ label Kitty_Todo:
                 $ K_Todo.remove("ring")
         if "barbell" in K_Todo:
                 $ K_Pierce = "barbell"
-                $ K_Todo.remove("barbell")            
+                $ K_Todo.remove("barbell")    
+
+        $ K_Spank = 0   
+
         return
  
 

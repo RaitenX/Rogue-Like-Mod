@@ -7,7 +7,11 @@ image Kitty_Sprite:
             "renpy.showing('Kitty_BJ_Animation')", Null(),
             "True", "Kitty_HairBack",   
             ),         
-        (0,0), ConditionSwitch(                                                                         #Arms1               
+        (0,0), ConditionSwitch(   
+            "K_Tan == 'tan' and K_Over == 'armbinder'", "images/KittySprite/Kitty_Sprite_TArms_Armbinder.png",                                                                      #Arms1               
+            "K_Tan == 'tan2' and K_Over == 'armbinder'", "images/KittySprite/Kitty_Sprite_T2Arms_Armbinder.png",                                                                      #Arms1               
+            "K_Tan == 'tan3' and K_Over == 'armbinder'", "images/KittySprite/Kitty_Sprite_T3Arms_Armbinder.png",                                                                      #Arms1               
+            "K_Over == 'armbinder'", "images/KittySprite/Kitty_Sprite_Arms_Armbinder.png",                                                                      #Arms1               
             "not K_Arms and K_Tan == 'tan'", "images/KittySprite/Kitty_Sprite_TArms1.png",
             "not K_Arms and K_Tan == 'tan2'", "images/KittySprite/Kitty_Sprite_T2Arms1.png",
             "not K_Arms and K_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_T3Arms1.png",
@@ -23,6 +27,10 @@ image Kitty_Sprite:
             "True", Null(),               
             ),
         (0,0), ConditionSwitch(                                                                     #body
+            "K_Tan == 'tan' and K_Over == 'armbinder'", "images/KittySprite/Kitty_Sprite_TBody_Bare1.png",                                                                      #Arms1               
+            "K_Tan == 'tan2' and K_Over == 'armbinder'", "images/KittySprite/Kitty_Sprite_T2Body_Bare1.png",                                                                      #Arms1               
+            "K_Tan == 'tan3' and K_Over == 'armbinder'", "images/KittySprite/Kitty_Sprite_T3Body_Bare1.png",                                                                      #Arms1               
+            "K_Over == 'armbinder'", "images/KittySprite/Kitty_Sprite_Body_Bare1.png",                                                                      #Arms1               
             #"K_Arms and K_Pubes and K_Tan == 'tan'", "images/KittySprite/Kitty_Sprite_TBody_Hair2.png",     
             #"K_Arms and K_Pubes and K_Tan == 'tan2'", "images/KittySprite/Kitty_Sprite_T2Body_Hair2.png",
             #"K_Arms and K_Pubes and K_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_T3Body_Hair2.png",			
@@ -151,6 +159,7 @@ image Kitty_Sprite:
             "True", Null(),
             ),    
         (0,0), ConditionSwitch(                                                                         #Arms2               
+            "K_Over == 'armbinder'", Null(),                                                                                  
             "K_Arms and K_Tan == 'tan'", "images/KittySprite/Kitty_Sprite_TArms2.png",
             "K_Arms and K_Tan == 'tan2'", "images/KittySprite/Kitty_Sprite_T2Arms2.png",
             "K_Arms and K_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_T3Arms2.png",
@@ -231,6 +240,7 @@ image Kitty_Sprite:
             "K_Over == 'red shirt'", "images/KittySprite/Kitty_Sprite_Over_Crew1.png",
             "K_Over == 'towel'", "images/KittySprite/Kitty_Sprite_Over_Towel1.png",
             "K_Over == 'black dress'", "images/KittySprite/Kitty_Sprite_Dress.png",
+            "K_Over == 'armbinder'", "images/KittySprite/Kitty_Sprite_Overshirt_Armbinder.png",                                                                     #Arms1               
             "True", Null(),
             ),     
         (124,0), ConditionSwitch(
@@ -602,18 +612,28 @@ image Kitty_Sex_Body = LiveComposite(
 #            ),   
         (260,-350), "Kitty_HairBack_Sex",                                                                                      #Hair underlayer
         (0,0), ConditionSwitch(                                                                                 #Body Base
-            "K_Pierce == 'barbell' and K_Tan == 'tan'", "images/KittySex/Kitty_Sex_TBody_Barbell.png",   
-            "K_Pierce == 'barbell' and K_Tan == 'tan2'", "images/KittySex/Kitty_Sex_T2Body_Barbell.png",
-            "K_Pierce == 'barbell' and K_Tan == 'tan3'", "images/KittySex/Kitty_Sex_T3Body_Barbell.png",
-            "K_Pierce == 'barbell'", "images/KittySex/Kitty_Sex_Body_Barbell.png",   
-            "K_Pierce == 'ring' and K_Tan == 'tan'", "images/KittySex/Kitty_Sex_TBody_Ring.png",   
-            "K_Pierce == 'ring' and K_Tan == 'tan2'", "images/KittySex/Kitty_Sex_T2Body_Ring.png",
-            "K_Pierce == 'ring' and K_Tan == 'tan3'", "images/KittySex/Kitty_Sex_T3Body_Ring.png",
-            "K_Pierce == 'ring'", "images/KittySex/Kitty_Sex_Body_Ring.png",   
-            "True and K_Tan == 'tan'", "images/KittySex/Kitty_Sex_TBody.png",             
-            "True and K_Tan == 'tan2'", "images/KittySex/Kitty_Sex_T2Body.png",
-            "True and K_Tan == 'tan3'", "images/KittySex/Kitty_Sex_T3Body.png",
+            #"K_Pierce == 'barbell' and K_Tan == 'tan'", "images/KittySex/Kitty_Sex_TBody_Barbell.png",   
+            #"K_Pierce == 'barbell' and K_Tan == 'tan2'", "images/KittySex/Kitty_Sex_T2Body_Barbell.png",
+            #"K_Pierce == 'barbell' and K_Tan == 'tan3'", "images/KittySex/Kitty_Sex_T3Body_Barbell.png",
+            #"K_Pierce == 'barbell'", "images/KittySex/Kitty_Sex_Body_Barbell.png",   
+            #"K_Pierce == 'ring' and K_Tan == 'tan'", "images/KittySex/Kitty_Sex_TBody_Ring.png",   
+            #"K_Pierce == 'ring' and K_Tan == 'tan2'", "images/KittySex/Kitty_Sex_T2Body_Ring.png",
+            #"K_Pierce == 'ring' and K_Tan == 'tan3'", "images/KittySex/Kitty_Sex_T3Body_Ring.png",
+            #"K_Pierce == 'ring'", "images/KittySex/Kitty_Sex_Body_Ring.png", 
+            "K_Over == 'armbinder' and K_Tan == 'tan'", "images/KittySex/Kitty_Sex_TBody_Armbinder.png",             
+            "K_Over == 'armbinder' and K_Tan == 'tan2'", "images/KittySex/Kitty_Sex_T2Body_Armbinder.png",
+            "K_Over == 'armbinder' and K_Tan == 'tan3'", "images/KittySex/Kitty_Sex_T3Body_Armbinder.png",
+            "K_Over == 'armbinder'", "images/KittySex/Kitty_Sex_Body_Armbinder.png", 
+            "K_Tan == 'tan'", "images/KittySex/Kitty_Sex_TBody.png",             
+            "K_Tan == 'tan2'", "images/KittySex/Kitty_Sex_T2Body.png",
+            "K_Tan == 'tan3'", "images/KittySex/Kitty_Sex_T3Body.png",
             "True", "images/KittySex/Kitty_Sex_Body.png",             
+            ), 
+        (0,0), ConditionSwitch(                                                                                 #Body Base
+            "not K_Pierce", Null(),             
+            "K_Pierce == 'barbell'", "images/KittySex/Kitty_Sex_Body_Tits_Barbell.png",   
+            "K_Pierce == 'ring'", "images/KittySex/Kitty_Sex_Body_Tits_Ring.png",   
+            "True", Null(),             
             ),            
         (260,-350), "Kitty_Head_Sex",  #check positioning (400,-300)
         #Eyes

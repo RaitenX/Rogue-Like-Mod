@@ -492,29 +492,29 @@ label K_Doggy_Sex_Cycle: #Repeating strokes
                         "Speed up. . . (locked)" if Speed >= 3:
                                     pass
 
-                        # "Gag":
-                        #     if not K_Gag:
-                        #         #"You put a gag on Kitty"
-                        #     #            $ K_Gag = 2
-                        #     #        
-                        #         menu:
-                        #             "How about using a ballgag?":
-                        #                 $ Situation = "shift"
-                        #                 call K_Gagging("ballgag")
-                        #             "Just put the ballgag in her mouth [[without asking].":
-                        #                 $ Situation = "auto"
-                        #                 call K_Gagging("ballgag")
-                        #             "How about using a ringgag?":
-                        #                 $ Situation = "shift"
-                        #                 call K_Gagging("ringgag")
-                        #             "Just put the ringgag in her mouth [[without asking].":
-                        #                 $ Situation = "auto"
-                        #                 call K_Gagging("ringgag")
-                        #             "Nevermind.":
-                        #                 pass
-                        #     else:
-                        #         "You remove Kitty's gag"
-                        #         $ K_Gag = 0
+                        "Gag":
+                            if not K_Gag:
+                                #"You put a gag on Kitty"
+                            #            $ K_Gag = 2
+                            #        
+                                menu:
+                                    "How about using a ballgag?":
+                                        $ Situation = "shift"
+                                        call K_Gagging("ballgag")
+                                    "Just put the ballgag in her mouth [[without asking].":
+                                        $ Situation = "auto"
+                                        call K_Gagging("ballgag")
+                                    #"How about using a ringgag?":
+                                    #    $ Situation = "shift"
+                                    #    call K_Gagging("ringgag")
+                                    #"Just put the ringgag in her mouth [[without asking].":
+                                    #    $ Situation = "auto"
+                                    #    call K_Gagging("ringgag")
+                                    "Nevermind.":
+                                        pass
+                            else:
+                                "You remove Kitty's gag"
+                                $ K_Gag = 0
                             
                         "Slow Down. . ." if Speed:                    
                                     $ Speed -= 1
@@ -1939,30 +1939,30 @@ label K_Anal_Plug_Cycle: #Repeating strokes
                         "Start moving? . ." if not Speed:
                                     $ Speed = 1
 
-                        # "Gag":
-                        #     if not K_Gag:
-                        #         #"You put a gag on Kitty"
-                        #     #            $ K_Gag = "ballgag"
-                        #     #        
-                        #         menu:
-                        #             "How about using a ballgag?":
-                        #                 $ Situation = "shift"
-                        #                 call K_Gagging("ballgag")
-                        #             "Just put the ballgag in her mouth [[without asking].":
-                        #                 $ Situation = "auto"
-                        #                 call K_Gagging("ballgag")
-                        #             "How about using a ringgag?":
-                        #                 $ Situation = "shift"
-                        #                 call K_Gagging("ringgag")
-                        #             "Just put the ringgag in her mouth [[without asking].":
-                        #                 $ Situation = "auto"
-                        #                 call K_Gagging("ringgag")
-                        #             "Nevermind.":
-                        #                 pass
-                        #     else:
-                        #         "You remove Kitty's gag"
-                        #         $ K_Gag = 0
-                            
+                        "Gag":
+                            if not K_Gag:
+                                #"You put a gag on Kitty"
+                            #            $ K_Gag = "ballgag"
+                            #        
+                                menu:
+                                    "How about using a ballgag?":
+                                        $ Situation = "shift"
+                                        call K_Gagging("ballgag")
+                                    "Just put the ballgag in her mouth [[without asking].":
+                                        $ Situation = "auto"
+                                        call K_Gagging("ballgag")
+                                    #"How about using a ringgag?":
+                                    #    $ Situation = "shift"
+                                    #    call K_Gagging("ringgag")
+                                    #"Just put the ringgag in her mouth [[without asking].":
+                                    #    $ Situation = "auto"
+                                    #    call K_Gagging("ringgag")
+                                    "Nevermind.":
+                                        pass
+                            else:
+                                "You remove Kitty's gag"
+                                $ K_Gag = 0
+                           
                         #"Leave it in" if Speed:                    
                         #            $ Speed = 2
                         #            $ K_Plugged = 1
@@ -2294,29 +2294,29 @@ label K_Doggy_Anal_Cycle: #Repeating strokes
                         "Speed up. . . (locked)" if Speed >= 3:
                                     pass
 
-                        # "Gag":
-                        #     if not K_Gag:
-                        #         #"You put a gag on Kitty"
-                        #     #            $ K_Gag = 2
-                        #     #        
-                        #         menu:
-                        #             "How about using a ballgag?":
-                        #                 $ Situation = "shift"
-                        #                 call K_Gagging("ballgag")
-                        #             "Just put the ballgag in her mouth [[without asking].":
-                        #                 $ Situation = "auto"
-                        #                 call K_Gagging("ballgag")
-                        #             "How about using a ringgag?":
-                        #                 $ Situation = "shift"
-                        #                 call K_Gagging("ringgag")
-                        #             "Just put the ringgag in her mouth [[without asking].":
-                        #                 $ Situation = "auto"
-                        #                 call K_Gagging("ringgag")
-                        #             "Nevermind.":
-                        #                 pass
-                        #     else:
-                        #         "You remove Kitty's gag"
-                        #         $ K_Gag = 0
+                        "Gag":
+                            if not K_Gag:
+                                #"You put a gag on Kitty"
+                            #            $ K_Gag = 2
+                            #        
+                                menu:
+                                    "How about using a ballgag?":
+                                        $ Situation = "shift"
+                                        call K_Gagging("ballgag")
+                                    "Just put the ballgag in her mouth [[without asking].":
+                                        $ Situation = "auto"
+                                        call K_Gagging("ballgag")
+                                    #"How about using a ringgag?":
+                                    #    $ Situation = "shift"
+                                    #    call K_Gagging("ringgag")
+                                    #"Just put the ringgag in her mouth [[without asking].":
+                                    #    $ Situation = "auto"
+                                    #    call K_Gagging("ringgag")
+                                    "Nevermind.":
+                                        pass
+                            else:
+                                "You remove Kitty's gag"
+                                $ K_Gag = 0
                             
                         "Slow Down. . ." if Speed:                    
                                     $ Speed -= 1
@@ -2942,29 +2942,29 @@ label K_Doggy_Hotdog_Cycle: #Repeating strokes
                         "Speed up. . . (locked)" if Speed >= 2:
                                     pass
 
-                        # "Gag":
-                        #     if not K_Gag:
-                        #         #"You put a gag on Kitty"
-                        #     #            $ K_Gag = 2
-                        #     #        
-                        #         menu:
-                        #             "How about using a ballgag?":
-                        #                 $ Situation = "shift"
-                        #                 call K_Gagging("ballgag")
-                        #             "Just put the ballgag in her mouth [[without asking].":
-                        #                 $ Situation = "auto"
-                        #                 call K_Gagging("ballgag")
-                        #             "How about using a ringgag?":
-                        #                 $ Situation = "shift"
-                        #                 call K_Gagging("ringgag")
-                        #             "Just put the ringgag in her mouth [[without asking].":
-                        #                 $ Situation = "auto"
-                        #                 call K_Gagging("ringgag")
-                        #             "Nevermind.":
-                        #                 pass
-                        #     else:
-                        #         "You remove Kitty's gag"
-                        #         $ K_Gag = 0
+                        "Gag":
+                            if not K_Gag:
+                                #"You put a gag on Kitty"
+                            #            $ K_Gag = 2
+                            #        
+                                menu:
+                                    "How about using a ballgag?":
+                                        $ Situation = "shift"
+                                        call K_Gagging("ballgag")
+                                    "Just put the ballgag in her mouth [[without asking].":
+                                        $ Situation = "auto"
+                                        call K_Gagging("ballgag")
+                                    #"How about using a ringgag?":
+                                    #    $ Situation = "shift"
+                                    #    call K_Gagging("ringgag")
+                                    #"Just put the ringgag in her mouth [[without asking].":
+                                    #    $ Situation = "auto"
+                                    #    call K_Gagging("ringgag")
+                                    "Nevermind.":
+                                        pass
+                            else:
+                                "You remove Kitty's gag"
+                                $ K_Gag = 0
                             
                         "Slow Down. . ." if Speed:                    
                                     $ Speed -= 1

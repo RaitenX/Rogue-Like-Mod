@@ -759,6 +759,9 @@ label K_Slap_Ass:
     if renpy.showing("Kitty_SexSprite"):
             show Kitty_SexSprite #fix, test this
             with vpunch
+    if renpy.showing("Kitty_Doggy"):
+            show Kitty_Doggy #fix, test this
+            with vpunch
     elif renpy.showing("Kitty_BJ_Animation"):           #fix, make this animation work better when paused for this effect.
             show Kitty_BJ_Animation
             with vpunch
@@ -771,7 +774,8 @@ label K_Slap_Ass:
     else:
             show Kitty_Sprite
             with vpunch
-    $ K_Slap += 1                               #add in slap-base obedience        
+    $ K_Slap += 1                               #add in slap-base obedience    
+    $ K_Spank += 1    
     if ApprovalCheck("Kitty", 300, "O", TabM=1):   
         call KittyFace("sexy", 1)  
         $ K_Mouth = "surprised"
@@ -781,16 +785,38 @@ label K_Slap_Ass:
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2) if K_Slap <= 5 else K_Obed
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 1) if K_Slap <= 10 else K_Obed
         $ Line = "You slap her ass and she jumps with pleasure"
+        if renpy.showing("Kitty_Doggy"):
+            #$ Line2 = "This feels good"
+            if K_Spank == 1:
+                $ Line2 = "This feels good" 
+            elif K_Spank < 4:
+                $ Line2 = "Keep hitting me"
+            elif K_Spank < 10:
+                $ Line2 = "Harder!"  
+            else:
+                $ Line2 = "Don't stop, " + K_Petname
     else:                
         call KittyFace("surprised", 1)        
         if Action_Check("Kitty", "recent", "slap") < 4:
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 2)        
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -1)
         $ Line = "You slap her ass and she looks back at you a bit startled"  
+        if renpy.showing("Kitty_Doggy"):
+            if K_Spank == 1:
+                $ Line2 = K_Petname + "?" 
+            elif K_Spank < 4:
+                $ Line2 = "Ouch"
+            elif K_Spank < 10:
+                $ Line2 = "This hurts, " + K_Petname
+            else:
+                $ Line2 = "Please stop, " + K_Petname
     
     if Taboo:    
         $ K_Blush = 2
         "[Line]."
+        if renpy.showing("Kitty_Doggy"):
+            ch_k "[Line2]"
+            $ Line2 = 0
         if not ApprovalCheck("Kitty", 900, TabM=2):
             if K_Slap <= 5:
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 2)  
@@ -809,9 +835,12 @@ label K_Slap_Ass:
             $ Line = "She gives you a naughty grin" 
         $ K_Blush = 1
         
-    if not Trigger:
-        "[Line]."
-        $ Line = 0
+    #if not Trigger:
+    "[Line]."
+    $ Line = 0
+    if renpy.showing("Kitty_Doggy") and Line2:
+        ch_k "[Line2]"
+        $ Line2 = 0
         
     $ K_RecentActions.append("slap") if Action_Check("Kitty", "recent", "slap") < 4 else K_RecentActions
     $ K_DailyActions.append("slap") if Action_Check("Kitty", "daily", "slap") < 10 else K_DailyActions

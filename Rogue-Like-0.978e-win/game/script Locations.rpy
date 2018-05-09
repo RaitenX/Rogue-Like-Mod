@@ -138,6 +138,7 @@ label Player_Room:
         "Sleep" if Current_Time == "Night":            
                     call Round10
                     $ R_Spank = 0
+                    $ K_Spank = 0
                     call Girls_Location
                     call Kitty_Sent_Selfie 
                     call Rogue_Sent_Selfie 

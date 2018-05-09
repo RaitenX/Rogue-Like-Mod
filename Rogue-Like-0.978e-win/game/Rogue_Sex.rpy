@@ -715,6 +715,9 @@ label R_Slap_Ass:
     if renpy.showing("Rogue_Doggy"):
             show Rogue_Doggy #fix, test this
             with vpunch
+    if renpy.showing("Rogue_SexSprite"):
+            show Rogue_SexSprite #fix, test this
+            with vpunch
     elif renpy.showing("Rogue_BJ_Animation"):           #fix, make this animation work better when paused for this effect.
             show Rogue_BJ_Animation
             with vpunch

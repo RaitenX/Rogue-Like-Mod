@@ -4190,6 +4190,7 @@ label Failsafe:
     $ K_Kissed = 0 if "K_Kissed" not in globals().keys() else K_Kissed              #How many times they've kissed
     $ K_Hand = 0 if "K_Hand" not in globals().keys() else K_Hand
     $ K_Slap = 0 if "K_Slap" not in globals().keys() else K_Slap
+    $ K_Spank = 0 if "K_Spank" not in globals().keys() else K_Spank
     $ K_Strip = 0 if "K_Strip" not in globals().keys() else K_Strip
     $ K_Tit = 0 if "K_Tit" not in globals().keys() else K_Tit
     $ K_Sex = 0 if "K_Sex" not in globals().keys() else K_Sex
@@ -4250,6 +4251,7 @@ label Failsafe:
     $ K_HairColor = 0 if "K_HairColor" not in globals().keys() else K_HairColor
     $ K_Blush = 0 if "K_Blush" not in globals().keys() else K_Blush
     $ K_Gag = 0 if "K_Gag" not in globals().keys() else K_Gag
+    $ K_Gagx = 0 if "K_Gagx" not in globals().keys() else K_Gagx
     $ K_Blindfold = 0 if "K_Blindfold" not in globals().keys() else K_Blindfold
     $ K_Headband = 0 if "K_Headband" not in globals().keys() else K_Headband
     $ K_Bondage = 0 if "K_Bondage" not in globals().keys() else K_Bondage
