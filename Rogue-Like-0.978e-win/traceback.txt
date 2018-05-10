@@ -1,6 +1,6 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' u'images/RogueDoggy/Kitty_Doggy_Ballgagold.png'>:
+While loading <'Image' u'images/KittyDoggy/Kitty_Doggy_PussyRing.png'>:
   File "game/script Locations.rpy", line 1116, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
@@ -151,15 +151,17 @@ While loading <'Image' u'images/RogueDoggy/Kitty_Doggy_Ballgagold.png'>:
     call Chat
   File "game/script Functions.rpy", line 1186, in script call
     call Kitty_Chat
-  File "game/Kitty_Chat.rpy", line 245, in script call
+  File "game/Kitty_Chat.rpy", line 314, in script call
     call Kitty_SexMenu
   File "game/Kitty_Sex.rpy", line 189, in script call
     call K_Doggy_H
-  File "game/Kitty_Doggy.rpy", line 3044, in script call
-    call Sex_Dialog("Kitty",Partner)
-  File "game/script Functions.rpy", line 3053, in script
-    "[Line1]"
-IOError: Couldn't find file 'images/RogueDoggy/Kitty_Doggy_Ballgagold.png'.
+  File "game/Kitty_Doggy.rpy", line 3045, in script call
+    call K_Plug_Ass
+  File "game/Kitty_Doggy.rpy", line 1806, in script call
+    call Kitty_Bottoms_Off
+  File "game/Kitty_Stripping.rpy", line 960, in script
+    ch_p "This might be easier without your [K_Legs] on."
+IOError: Couldn't find file 'images/KittyDoggy/Kitty_Doggy_PussyRing.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -314,14 +316,16 @@ Full traceback:
     call Chat
   File "game/script Functions.rpy", line 1186, in script call
     call Kitty_Chat
-  File "game/Kitty_Chat.rpy", line 245, in script call
+  File "game/Kitty_Chat.rpy", line 314, in script call
     call Kitty_SexMenu
   File "game/Kitty_Sex.rpy", line 189, in script call
     call K_Doggy_H
-  File "game/Kitty_Doggy.rpy", line 3044, in script call
-    call Sex_Dialog("Kitty",Partner)
-  File "game/script Functions.rpy", line 3053, in script
-    "[Line1]"
+  File "game/Kitty_Doggy.rpy", line 3045, in script call
+    call K_Plug_Ass
+  File "game/Kitty_Doggy.rpy", line 1806, in script call
+    call Kitty_Bottoms_Off
+  File "game/Kitty_Stripping.rpy", line 960, in script
+    ch_p "This might be easier without your [K_Legs] on."
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 624, in execute
     renpy.exports.say(who, what, interact=self.interact, *args, **kwargs)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\exports.py", line 1173, in say
@@ -442,7 +446,7 @@ Full traceback:
     surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\loader.py", line 548, in load
     raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'images/RogueDoggy/Kitty_Doggy_Ballgagold.png'.
+IOError: Couldn't find file 'images/KittyDoggy/Kitty_Doggy_PussyRing.png'.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.13.2919

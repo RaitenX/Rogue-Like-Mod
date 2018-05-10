@@ -278,7 +278,7 @@ image Kitty_Doggy_Ass = LiveComposite(                                          
         #    ),  
         (0,0), ConditionSwitch(                                                                                 #Pussy Piercings          
             "P_Sprite", Null(),             
-            "K_Pierce == 'ring'", "images/KittyDoggy/Kitty_Doggy_PussyRing.png",            
+            "K_Pierce == 'ring'", "images/KittyDoggy/Kitty_Doggy_Pussy_Ring.png",            
             #"R_Pierce == 'barbell'", "images/RogueDoggy/Rogue_Doggy_PussyBarbell.png",
             "True", Null(),  
             ),   
@@ -291,7 +291,7 @@ image Kitty_Doggy_Ass = LiveComposite(                                          
             "P_Sprite and P_Cock == 'plug' and Speed", "Kitty_Anal_Plug_Heading",
             "P_Sprite and P_Cock == 'plug' and K_Plugged", "images/KittyDoggy/Kitty_Doggy_Plugged.png",  
             "P_Sprite and P_Cock == 'plug'", "Kitty_Anal_Plug",  
-            "R_Plugged", "images/KittyDoggy/Kitty_Doggy_Plugged.png",   
+            "K_Plugged", "images/KittyDoggy/Kitty_Doggy_Plugged.png",   
             "K_Tan == 'tan3' and K_Loose", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",   
             "K_Loose", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",   
             "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Tight.png", 
@@ -557,7 +557,7 @@ image Kitty_Anal:                                                               
         "Zero_Doggy_Insert"
         pos (172,500)
 
-image Kitty_Anal_Plug:                                                                                               #Anal static Loose
+image Kitty_Anal_Plug_Stopped:                                                                                               #Anal static Loose
     contains:                                                                                   #Base
         ConditionSwitch(          
         "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
@@ -566,6 +566,22 @@ image Kitty_Anal_Plug:                                                          
         anchor (0.50,0.69)
         pos (208,500)
         zoom 1.25
+    contains:                                                                                   #Cock
+        "Plug_Doggy_Insert"
+        pos (172,500)
+        #anchor (0.50,0.69)
+        #pos (208,500)
+        #zoom 1.25
+
+image Kitty_Anal_Plug:                                                                                               #Anal static Loose
+    #contains:                                                                                   #Base
+    #    ConditionSwitch(          
+    #    "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullBase.png",
+    #    "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullBase.png",
+    #    ),     
+    #    anchor (0.50,0.69)
+    #    pos (208,500)
+    #    zoom 1.25
     contains:                                                                                   #Cock
         "Plug_Doggy_Insert"
         pos (172,500)

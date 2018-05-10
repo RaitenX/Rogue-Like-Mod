@@ -81,6 +81,77 @@ label Kitty_Chat:
         "Flirt with her. (locked)" if K_Chat[5]:  
                     pass
 
+        "Show me the plug." if K_Plugged:
+
+                    if ApprovalCheck("Kitty", 1450, TabM = 3) or ApprovalCheck("Kitty", 800, "O") or "exhibitionist" in K_Traits: # 145, 160, 175, Taboo -160(355)
+                        call KittyFaceSpecial("sexy",1)
+                        ch_k "Ok [K_Petname]."
+                        call Kitty_Doggy_Launch("plug")
+                        "Kitty points her ass towards you."
+                        #if K_Legs == "skirt" or K_Legs == "skirtshort" or K_Legs == "cheerleader skirt" or K_Legs == "cheerleader skirtshort":
+                        if K_Legs:
+                            $ K_Upskirt = 1
+                            if K_Legs == "orange skirt" or K_Legs == "black skirt" or K_Legs == "white skirt":
+                                "Lifts up her skirt."
+                            else:
+                                "She pulls down her [K_Legs]"
+                            pause .1
+                            #if K_Hose == "tights":
+                            #    $ Temp_K_Hose = K_Hose            
+                            #    $ K_Hose = 0
+                            #    "And pulls down her tights"
+                            #    pause .1
+                            #if K_Panties and K_Panties != "lace panties" and K_Panties != "black panties":
+                            #    $ K_PantiesDown = 1
+                            #    "And pulls down her [K_Panties]"
+                            #    pause .1
+                            ch_k "There, you happy?"
+                            call Kitty_Show_Plug
+                            $ K_PantiesDown = 0
+                            pause .1
+                            #if Temp_K_Hose:
+                            #    $ K_Hose = Temp_K_Hose
+                            #    pause .1
+                            $ K_Upskirt = 0
+                            pause
+                        #elif K_Legs == "pants":
+                        #    #$ Temp_K_Legs = K_Legs            
+                        #    $ K_Upskirt = 1
+                        #    #$ K_Legs = 0
+                        #    "Kitty pulls down her pants."  
+                        #    pause .1
+                        #    if K_Panties and K_Panties != "lace panties" and K_Panties != "black panties":
+                        #        $ K_PantiesDown = 1
+                        #        "And pulls down her [K_Panties]"
+                        #        pause .1
+                        #    ch_k "There, you happy?"
+                        #    pause .1
+                        #    call Kitty_Show_Plug
+                        #    $ K_PantiesDown = 0
+                        #    pause .1
+                        #    #$ K_Legs = Temp_K_Legs
+                        #    $ K_Upskirt = 0
+                        #    pause
+                        #elif K_Panties and K_Panties != "lace panties" and K_Panties != "black panties" and K_Panties != "swimsuit1" and K_Panties != "swimsuit2":
+                        #    $ K_PantiesDown = 1
+                        #    "And pulls down her [K_Panties]"
+                        #    ch_k "There, you happy?"
+                        #    call Kitty_Show_Plug
+                        #    $ K_PantiesDown = 0
+                        #    pause
+                        else:
+                            ch_k "There, you happy?"
+                            call Kitty_Show_Plug
+                            pause
+
+
+                        call Kitty_Doggy_Reset 
+                    else:
+                        if Taboo:
+                            ch_k "Not here [K_Petname]"
+                        else:
+                            ch_k "No"
+
         "Take Rogue's clothes off" if R_Loc == bg_current:
                     "Hey, let's prank Rogue, why don't you phase her clothes off?"
                     if ApprovalCheck("Kitty", 600):
@@ -5398,4 +5469,22 @@ label Kitty_First_Les(Silent = 0, Undress = 0, GirlsNum = 0): #checked when she 
     
     return
 # End Kitty first Les / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /   
+
+label Kitty_Show_Plug:
     
+    menu:
+        "Slap her ass.":
+            $ D20A = renpy.random.randint(1, 20) #Sets random seed factor for the encounter
+
+            show Slap_Ass2 zorder 200
+            call K_Slap_Ass 
+            hide Slap_Ass2
+            if Taboo and (D20A + (int(Taboo/10)) - Stealth) >= 10:        #If there is a Taboo level, and your modified roll is over 10
+                call Kitty_Taboo
+            jump Kitty_Show_Plug
+            
+
+        "Very happy.":
+            pass
+
+    return

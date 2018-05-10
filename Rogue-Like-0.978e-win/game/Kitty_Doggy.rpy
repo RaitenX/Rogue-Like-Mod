@@ -515,6 +515,16 @@ label K_Doggy_Sex_Cycle: #Repeating strokes
                             else:
                                 "You remove Kitty's gag"
                                 $ K_Gag = 0
+
+                        "Blindfold her" if K_Bondage and not K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
+            
+                        "Remove blindfold" if K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You remove the blindfold"
+                            $ K_Blindfold = 0
                             
                         "Slow Down. . ." if Speed:                    
                                     $ Speed -= 1
@@ -1531,7 +1541,7 @@ label K_Plug_Ass:
             return            
     
     if Situation == "auto":    
-            call Kitty_Doggy_Launch("plug")  
+            call Kitty_Doggy_Launch("massage")  
 
             "You rub the plug across her body, and against her tight anus."
             call KittyFace("surprised", 1)
@@ -1790,7 +1800,7 @@ label K_Plug_Ass:
 
 label KPA_Prep:  
             
-    call Kitty_Doggy_Launch("plug")
+    call Kitty_Doggy_Launch("massage")
     
     if Situation != "auto":
         call Kitty_Bottoms_Off        
@@ -1845,6 +1855,8 @@ label KPA_Prep:
         call Kitty_First_Bottomless(1)
         
     #call Seen_First_Peen(1)
+    call Kitty_Doggy_Reset
+    call Kitty_Doggy_Launch("plug")
     
     if not K_Anal:                                                      #First time stat buffs       
         if K_Forced:
@@ -2317,6 +2329,16 @@ label K_Doggy_Anal_Cycle: #Repeating strokes
                             else:
                                 "You remove Kitty's gag"
                                 $ K_Gag = 0
+
+                        "Blindfold her" if K_Bondage and not K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
+            
+                        "Remove blindfold" if K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You remove the blindfold"
+                            $ K_Blindfold = 0
                             
                         "Slow Down. . ." if Speed:                    
                                     $ Speed -= 1
@@ -2965,6 +2987,16 @@ label K_Doggy_Hotdog_Cycle: #Repeating strokes
                             else:
                                 "You remove Kitty's gag"
                                 $ K_Gag = 0
+
+                        "Blindfold her" if K_Bondage and not K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You add a blindfold so she can't see a thing"
+                            $ K_Blindfold = 1
+            
+                        "Remove blindfold" if K_Blindfold:
+                            call KittyFace("sexy", 1) 
+                            "You remove the blindfold"
+                            $ K_Blindfold = 0
                             
                         "Slow Down. . ." if Speed:                    
                                     $ Speed -= 1

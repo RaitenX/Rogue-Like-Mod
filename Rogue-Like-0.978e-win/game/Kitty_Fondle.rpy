@@ -2789,6 +2789,10 @@ label K_Insert_Ass:
     if "no insert ass" in K_DailyActions:               
         $ Tempmod -= 5 
         $ Tempmod -= 10 if "no insert ass" in K_RecentActions else 0   
+
+    if K_Plugged:
+        "You remove the plug from her ass"
+        $ K_Plugged = 0
             
     $ Approval = ApprovalCheck("Kitty", 1300, TabM = 3) # 130, 145, 160, Taboo -120(250)
     

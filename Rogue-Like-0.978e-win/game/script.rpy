@@ -1975,6 +1975,10 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
         if renpy.showing("NightMask", layer='nightmask') and Current_Time == "Morning":
             #Skips theis check if it's a sleepover
             return
+
+        if K_Gag:
+            "She removes her gag"
+            $ K_Gag = 0
         
         if K_Blindfold:
             "She removes the blindfold"

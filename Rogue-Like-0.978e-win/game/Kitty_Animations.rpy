@@ -1744,6 +1744,8 @@ label Kitty_Sex_Reset:
       hide Kitty_SexSprite
     elif renpy.showing("Kitty_Doggy"):
       hide Kitty_Doggy
+      if K_Gag == "ballgag":
+        $ K_Gag = 0
 #    call Set_The_Scene(Dress = 0)    
     show Kitty_Sprite at SpriteLoc(K_SpriteLoc) zorder KittyLayer:
         alpha 1
@@ -2748,6 +2750,9 @@ label Kitty_Hide:
         if renpy.showing("Kitty_SexSprite") or renpy.showing("Kitty_Doggy"):
             call Kitty_Sex_Reset
         hide Kitty_SexSprite
+        if renpy.showing("Kitty_Doggy"):
+            if K_Gag == "ballgag":
+                $ K_Gag = 0
         hide Kitty_Doggy
         hide Kitty_HJ_Animation
         hide Kitty_BJ_Animation
