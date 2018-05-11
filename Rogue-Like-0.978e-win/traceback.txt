@@ -1,6 +1,6 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' u'images/KittyDoggy/Kitty_Doggy_PussyRing.png'>:
+While loading <'Image' u'images/RogueSex/Rogue_tSex_Body_Armbinder.png'>:
   File "game/script Locations.rpy", line 1116, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
@@ -147,21 +147,15 @@ While loading <'Image' u'images/KittyDoggy/Kitty_Doggy_PussyRing.png'>:
     call R_Titjob
   File "game/Rogue_Sex.rpy", line 2035, in script call
     call Rogue_Caught
-  File "game/script Locations.rpy", line 3001, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1186, in script call
-    call Kitty_Chat
-  File "game/Kitty_Chat.rpy", line 314, in script call
-    call Kitty_SexMenu
-  File "game/Kitty_Sex.rpy", line 189, in script call
-    call K_Doggy_H
-  File "game/Kitty_Doggy.rpy", line 3045, in script call
-    call K_Plug_Ass
-  File "game/Kitty_Doggy.rpy", line 1806, in script call
-    call Kitty_Bottoms_Off
-  File "game/Kitty_Stripping.rpy", line 960, in script
-    ch_p "This might be easier without your [K_Legs] on."
-IOError: Couldn't find file 'images/KittyDoggy/Kitty_Doggy_PussyRing.png'.
+  File "game/script Locations.rpy", line 468, in script call
+    call EventCalls
+  File "game/Rogue_Scenes.rpy", line 1426, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 164, in script call
+    call R_Sex_H
+  File "game/Rogue_Missionary.rpy", line 2122, in script
+    menu:
+IOError: Couldn't find file 'images/RogueSex/Rogue_tSex_Body_Armbinder.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -312,30 +306,20 @@ Full traceback:
     call R_Titjob
   File "game/Rogue_Sex.rpy", line 2035, in script call
     call Rogue_Caught
-  File "game/script Locations.rpy", line 3001, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1186, in script call
-    call Kitty_Chat
-  File "game/Kitty_Chat.rpy", line 314, in script call
-    call Kitty_SexMenu
-  File "game/Kitty_Sex.rpy", line 189, in script call
-    call K_Doggy_H
-  File "game/Kitty_Doggy.rpy", line 3045, in script call
-    call K_Plug_Ass
-  File "game/Kitty_Doggy.rpy", line 1806, in script call
-    call Kitty_Bottoms_Off
-  File "game/Kitty_Stripping.rpy", line 960, in script
-    ch_p "This might be easier without your [K_Legs] on."
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 624, in execute
-    renpy.exports.say(who, what, interact=self.interact, *args, **kwargs)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\exports.py", line 1173, in say
-    who(what, *args, **kwargs)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\character.py", line 911, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, **display_args)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\character.py", line 747, in do_display
-    **display_args)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\character.py", line 523, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "game/script Locations.rpy", line 468, in script call
+    call EventCalls
+  File "game/Rogue_Scenes.rpy", line 1426, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 164, in script call
+    call R_Sex_H
+  File "game/Rogue_Missionary.rpy", line 2122, in script
+    menu:
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1483, in execute
+    choice = renpy.exports.menu(choices, self.set)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\exports.py", line 868, in menu
+    rv = renpy.store.menu(items)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\exports.py", line 1054, in display_menu
+    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ui.py", line 287, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 2553, in interact
@@ -364,10 +348,6 @@ Full traceback:
     surf = render(child, width, height, cst, cat)
   File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
     cpdef render(d, object widtho, object heighto, double st, double at):
-  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
-    rv = d.render(widtho, heighto, st, at)
-  File "renpy/display/accelerator.pyx", line 108, in renpy.display.accelerator.transform_render (gen\renpy.display.accelerator.c:2047)
-    cr = render(child, widtho, heighto, st - self.child_st_base, at)
   File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
     rv = d.render(widtho, heighto, st, at)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\image.py", line 392, in render
@@ -404,6 +384,28 @@ Full traceback:
     return renpy.display.render.render(self.child, w, h, st, at)
   File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
     cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\image.py", line 392, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\image.py", line 213, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "renpy/display/accelerator.pyx", line 108, in renpy.display.accelerator.transform_render (gen\renpy.display.accelerator.c:2047)
+    cr = render(child, widtho, heighto, st - self.child_st_base, at)
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
+    surf = render(child, width, height, cst, cat)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "renpy/display/accelerator.pyx", line 108, in renpy.display.accelerator.transform_render (gen\renpy.display.accelerator.c:2047)
+    cr = render(child, widtho, heighto, st - self.child_st_base, at)
   File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
     rv = d.render(widtho, heighto, st, at)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\image.py", line 392, in render
@@ -446,7 +448,7 @@ Full traceback:
     surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\loader.py", line 548, in load
     raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'images/KittyDoggy/Kitty_Doggy_PussyRing.png'.
+IOError: Couldn't find file 'images/RogueSex/Rogue_tSex_Body_Armbinder.png'.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.13.2919

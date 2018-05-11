@@ -2671,19 +2671,32 @@ image Rogue_Sex_Body = LiveComposite(
         (0,0), ConditionSwitch(                                                                                 #Body Base
             #"R_Pierce == 'barbell' and R_Tan == 'tan2'", "images/RogueSex/Rogue_Sex_T2Body_Barbell.png",
             #"R_Pierce == 'barbell' and R_Tan == 'tan3'", "images/RogueSex/Rogue_Sex_T3Body_Barbell.png",
-            "R_Pierce == 'barbell' and R_Tan == 'tan1'", "images/RogueSex/Rogue_t1Sex_Body_Barbell.png",   
-            "R_Pierce == 'barbell' and R_Tan == 'tan'", "images/RogueSex/Rogue_tSex_Body_Barbell.png",   
-            "R_Pierce == 'barbell'", "images/RogueSex/Rogue_Sex_Body_Barbell.png",   
+            
+            #"R_Pierce == 'barbell' and R_Tan == 'tan1'", "images/RogueSex/Rogue_t1Sex_Body_Barbell.png",   
+            #"R_Pierce == 'barbell' and R_Tan == 'tan'", "images/RogueSex/Rogue_tSex_Body_Barbell.png",   
+            #"R_Pierce == 'barbell'", "images/RogueSex/Rogue_Sex_Body_Barbell.png",   
+            
             #"R_Pierce == 'ring' and R_Tan == 'tan2'", "images/RogueSex/Rogue_Sex_T2Body_Ring.png",
             #"R_Pierce == 'ring' and R_Tan == 'tan3'", "images/RogueSex/Rogue_Sex_T3Body_Ring.png",
-            "R_Pierce == 'ring' and R_Tan == 'tan1'", "images/RogueSex/Rogue_t1Sex_Body_Ring.png",   
-            "R_Pierce == 'ring' and R_Tan == 'tan'", "images/RogueSex/Rogue_tSex_Body_Ring.png",   
-            "R_Pierce == 'ring'", "images/RogueSex/Rogue_Sex_Body_Ring.png",   
+            
+            #"R_Pierce == 'ring' and R_Tan == 'tan1'", "images/RogueSex/Rogue_t1Sex_Body_Ring.png",   
+            #"R_Pierce == 'ring' and R_Tan == 'tan'", "images/RogueSex/Rogue_tSex_Body_Ring.png",   
+            #"R_Pierce == 'ring'", "images/RogueSex/Rogue_Sex_Body_Ring.png",   
+            
             #"True and R_Tan == 'tan2'", "images/RogueSex/Rogue_Sex_T2Body.png",
             #"True and R_Tan == 'tan3'", "images/RogueSex/Rogue_Sex_T3Body.png",
+            "True and R_Tan == 'tan1' and R_Over == 'armbinder'", "images/RogueSex/Rogue_t1Sex_Body_Armbinder.png",             
             "True and R_Tan == 'tan1'", "images/RogueSex/Rogue_t1Sex_Body.png",             
+            "True and R_Tan == 'tan' and R_Over == 'armbinder'", "images/RogueSex/Rogue_tSex_Body_Armbinder.png",             
             "True and R_Tan == 'tan'", "images/RogueSex/Rogue_tSex_Body.png",             
+            "R_Over == 'armbinder'", "images/RogueSex/Rogue_Sex_Body_Armbinder.png",             
             "True", "images/RogueSex/Rogue_Sex_Body.png",             
+            ), 
+        (0,0), ConditionSwitch(                                                                                 #Body Base
+            "not R_Pierce", Null(),
+            "R_Pierce == 'barbell'", "images/RogueSex/Rogue_Sex_Tits_Barbell.png",   
+            "R_Pierce == 'ring'", "images/RogueSex/Rogue_Sex_Tits_Ring.png",   
+            "True", Null(),             
             ),            
         (140,-240), "Rogue_Head_Sex",  #check positioning (400,-300)
         #Eyes
@@ -2726,6 +2739,7 @@ image Rogue_Sex_Body = LiveComposite(
         
         (0,0), ConditionSwitch(                                                                                 #Overshirt
             "not R_Over", Null(),
+            "R_Over == 'armbinder'", "images/RogueSex/RogueSexArmbinderOvershirt.png",
             #"R_Over == 'dark top'", "images/RogueSex/Rogue_Sex_Over_darkShirt.png",           
             #"R_Over == 'pink top'", "images/RogueSex/Rogue_Sex_Over_PinkShirt.png",           
             #"R_Over == 'purple shirt'", "images/RogueSex/Rogue_Sex_Over_purpleShirt.png",   
@@ -2941,6 +2955,9 @@ label Rogue_Sex_Reset:
     $ Rogue_Arms = 2     
     $ R_SpriteVer = 0
     hide Rogue_SexSprite
+    if R_Over == "armbinder":
+        "You help her remove the armbinder"
+        $ R_Over = 0
 #    call Set_The_Scene(Dress = 0)    
     show Rogue at SpriteLoc(R_SpriteLoc) zorder RogueLayer:
         alpha 1

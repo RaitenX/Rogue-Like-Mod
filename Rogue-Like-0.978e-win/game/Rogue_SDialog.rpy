@@ -1542,7 +1542,7 @@ label Rogue_Self_Lines(Mode = "T3", Action = Trigger3, TempLustX = 0):
                     $ Action = Trigger5  
             if not Action: 
                     return
-            elif (R_Over == "bondage" or R_Over == "bondage cuffs") and not Line:
+            elif (R_Over == "bondage" or R_Over == "bondage cuffs" or R_Over == "armbinder") and not Line:
                     $ Line = "Also, Rogue continues stroke your cock. "
             elif Action == "hand" and not Line: 
                     $ Line = "Also, Rogue continues stroke your cock. "
@@ -1550,7 +1550,7 @@ label Rogue_Self_Lines(Mode = "T3", Action = Trigger3, TempLustX = 0):
                     $ Line = "Also, Rogue continues to masturbate. "      
     elif Action == "hand": 
             $ Line = "Rogue continues stroke your cock. "
-    elif R_Over == "bondage" or R_Over == "bondage cuffs": 
+    elif R_Over == "bondage" or R_Over == "bondage cuffs" or R_Over == "armbinder": 
             $ Line = renpy.random.choice(["Rogue tries to move her arms around. ", 
                     "Rogue can't keep still. ",
                     "Rogue can't keep still. "])
@@ -1809,7 +1809,7 @@ label Rogue_Self_Set(Mode = "T3", Action = Trigger3, Length=0, Count2=0, Options
     $ Count2 = Length if Count2 > Length else Count2
     if Action != Options[Count2]: #If the action remains the same as it was.
             $ Action = Options[Count2] #Sets Action to the selected Option
-            if R_Over == "bondage" or R_Over == "bondage cuffs":
+            if R_Over == "bondage" or R_Over == "bondage cuffs" or R_Over == "armbinder":
                     $ Line = "Rogue presses her tits together against your cock. "
             elif Action == "hand": 
                     $ Line = "Rogue slides her hand down and firmly grabs your dick. "
@@ -1825,9 +1825,9 @@ label Rogue_Self_Set(Mode = "T3", Action = Trigger3, Length=0, Count2=0, Options
                     $ Line = "Rogue pulls out her vibrator and strokes it across her body. "      
             else: # Action == "fondle breasts"
                     $ Line = "Rogue's hands slide up her body and begin to kneed her breasts. "
-    elif R_Over == "bondage" or R_Over == "bondage cuffs":
+    elif R_Over == "bondage" or R_Over == "bondage cuffs" or R_Over == "armbinder":
             $ Line = "Also, Rogue continues stroke your cock. "
-    elif Action == "hand" or R_Over == "bondage" or R_Over == "bondage cuffs": 
+    elif Action == "hand" or R_Over == "bondage" or R_Over == "bondage cuffs" or R_Over == "armbinder": 
             $ Line = "Also, Rogue continues stroke your cock. "
     else:        
             $ Line = "Also, Rogue continues to masturbate. "

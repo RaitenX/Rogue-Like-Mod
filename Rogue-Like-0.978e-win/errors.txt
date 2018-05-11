@@ -2,11 +2,7 @@
 errors listed below, and try again.
 
 
-File "game/Kitty_Animations_Doggy.rpy", line 170: Line is indented, but the preceding image statement statement does not expect a block. Please check this line's indentation.
-    (0,0), ConditionSwitch(                                                                                 
-    ^
-                "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Ear.png",   
-                "True", Null(),              
-                ),
+File "game/Kitty_Animations_Doggy.rpy", line 210: is not terminated with a newline. (Check strings and parenthesis.)
+    image Kitty_Doggy_Ass = LiveComposite(                                                                                          
 
 Ren'Py Version: Ren'Py 6.99.13.2919
