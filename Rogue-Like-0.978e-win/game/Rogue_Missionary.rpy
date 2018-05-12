@@ -620,6 +620,60 @@ label R_Missionary_Sex_Cycle: #Repeating strokes
                             #$ R_Panties = "zipper panties"
                             #$ R_Outfit = "zipper bondage"
                             #$ R_Shame = R_OutfitShame[1]
+
+                        "How about you put that bondage outfit" if R_Bondage and R_Over != "bondage":
+                            call RogueFace("sexy", 1) 
+                            #if R_Over or R_Chest or R_Panties or R_Legs:
+                            #    "She glances up at you as her clothes drop to the ground."
+                            #$ R_Over = 0
+                            #$ R_Legs = 0
+                            #$ R_Chest = 0
+                            #$ R_Panties = 0
+                            "She starts dressing the new outfit"
+                            "You help her with the binder, making sure she can't move her arms"
+                            #"And add a blindfold so she can't see a thing"
+                            #$ R_Blindfold = 1
+                            $ R_Over = "bondage"
+                            #$ R_Chest = "bustier bra"
+                            #$ R_Panties = "zipper panties"
+                            #$ R_Outfit = "zipper bondage"
+                            #$ R_Shame = R_OutfitShame[1]
+
+                        "How about you put those bondage cuffs" if R_Bondage and R_Over != "bondage cuffs":
+                            call RogueFace("sexy", 1) 
+                            #if R_Over or R_Chest or R_Panties or R_Legs:
+                            #    "She glances up at you as her clothes drop to the ground."
+                            #$ R_Over = 0
+                            #$ R_Legs = 0
+                            #$ R_Chest = 0
+                            #$ R_Panties = 0
+                            #"She starts dressing the new outfit"
+                            "You help her with the binder, making sure she can't move her arms"
+                            #"And add a blindfold so she can't see a thing"
+                            #$ R_Blindfold = 1
+                            $ R_Over = "bondage cuffs"
+                            #$ R_Chest = "bustier bra"
+                            #$ R_Panties = "zipper panties"
+                            #$ R_Outfit = "zipper bondage"
+                            #$ R_Shame = R_OutfitShame[1]
+
+                        "Remove the bondage outfit" if R_Over == "bondage" or R_Over == "bondage cuffs":
+                            call RogueFace("sexy", 1) 
+                            #if R_Over or R_Chest or R_Panties or R_Legs:
+                            #    "She glances up at you as her clothes drop to the ground."
+                            #$ R_Over = 0
+                            #$ R_Legs = 0
+                            #$ R_Chest = 0
+                            #$ R_Panties = 0
+                            #"She starts dressing the new outfit"
+                            "You help her remove the binder"
+                            #"And add a blindfold so she can't see a thing"
+                            #$ R_Blindfold = 1
+                            $ R_Over = 0
+                            #$ R_Chest = "bustier bra"
+                            #$ R_Panties = "zipper panties"
+                            #$ R_Outfit = "zipper bondage"
+                            #$ R_Shame = R_OutfitShame[1]
                             
                         "Slap her ass":                     
                                     call R_Slap_Ass                                    
@@ -1470,6 +1524,60 @@ label R_Missionary_Anal_Cycle: #Repeating strokes
                             #$ R_Panties = "zipper panties"
                             #$ R_Outfit = "zipper bondage"
                             #$ R_Shame = R_OutfitShame[1]
+
+                        "How about you put that bondage outfit" if R_Bondage and R_Over != "bondage":
+                            call RogueFace("sexy", 1) 
+                            #if R_Over or R_Chest or R_Panties or R_Legs:
+                            #    "She glances up at you as her clothes drop to the ground."
+                            #$ R_Over = 0
+                            #$ R_Legs = 0
+                            #$ R_Chest = 0
+                            #$ R_Panties = 0
+                            "She starts dressing the new outfit"
+                            "You help her with the binder, making sure she can't move her arms"
+                            #"And add a blindfold so she can't see a thing"
+                            #$ R_Blindfold = 1
+                            $ R_Over = "bondage"
+                            #$ R_Chest = "bustier bra"
+                            #$ R_Panties = "zipper panties"
+                            #$ R_Outfit = "zipper bondage"
+                            #$ R_Shame = R_OutfitShame[1]
+
+                        "How about you put those bondage cuffs" if R_Bondage and R_Over != "bondage cuffs":
+                            call RogueFace("sexy", 1) 
+                            #if R_Over or R_Chest or R_Panties or R_Legs:
+                            #    "She glances up at you as her clothes drop to the ground."
+                            #$ R_Over = 0
+                            #$ R_Legs = 0
+                            #$ R_Chest = 0
+                            #$ R_Panties = 0
+                            #"She starts dressing the new outfit"
+                            "You help her with the binder, making sure she can't move her arms"
+                            #"And add a blindfold so she can't see a thing"
+                            #$ R_Blindfold = 1
+                            $ R_Over = "bondage cuffs"
+                            #$ R_Chest = "bustier bra"
+                            #$ R_Panties = "zipper panties"
+                            #$ R_Outfit = "zipper bondage"
+                            #$ R_Shame = R_OutfitShame[1]
+
+                        "Remove the bondage outfit" if R_Over == "bondage" or R_Over == "bondage cuffs":
+                            call RogueFace("sexy", 1) 
+                            #if R_Over or R_Chest or R_Panties or R_Legs:
+                            #    "She glances up at you as her clothes drop to the ground."
+                            #$ R_Over = 0
+                            #$ R_Legs = 0
+                            #$ R_Chest = 0
+                            #$ R_Panties = 0
+                            #"She starts dressing the new outfit"
+                            "You help her remove the binder"
+                            #"And add a blindfold so she can't see a thing"
+                            #$ R_Blindfold = 1
+                            $ R_Over = 0
+                            #$ R_Chest = "bustier bra"
+                            #$ R_Panties = "zipper panties"
+                            #$ R_Outfit = "zipper bondage"
+                            #$ R_Shame = R_OutfitShame[1]
                             
                         "Slap her ass":                     
                                     call R_Slap_Ass                                    
@@ -2157,6 +2265,60 @@ label R_Missionary_Hotdog_Cycle: #Repeating strokes
                             #$ R_Shame = R_OutfitShame[1]
 
                         "Remove the armbinder" if R_Over == "armbinder":
+                            call RogueFace("sexy", 1) 
+                            #if R_Over or R_Chest or R_Panties or R_Legs:
+                            #    "She glances up at you as her clothes drop to the ground."
+                            #$ R_Over = 0
+                            #$ R_Legs = 0
+                            #$ R_Chest = 0
+                            #$ R_Panties = 0
+                            #"She starts dressing the new outfit"
+                            "You help her remove the binder"
+                            #"And add a blindfold so she can't see a thing"
+                            #$ R_Blindfold = 1
+                            $ R_Over = 0
+                            #$ R_Chest = "bustier bra"
+                            #$ R_Panties = "zipper panties"
+                            #$ R_Outfit = "zipper bondage"
+                            #$ R_Shame = R_OutfitShame[1]
+
+                        "How about you put that bondage outfit" if R_Bondage and R_Over != "bondage":
+                            call RogueFace("sexy", 1) 
+                            #if R_Over or R_Chest or R_Panties or R_Legs:
+                            #    "She glances up at you as her clothes drop to the ground."
+                            #$ R_Over = 0
+                            #$ R_Legs = 0
+                            #$ R_Chest = 0
+                            #$ R_Panties = 0
+                            "She starts dressing the new outfit"
+                            "You help her with the binder, making sure she can't move her arms"
+                            #"And add a blindfold so she can't see a thing"
+                            #$ R_Blindfold = 1
+                            $ R_Over = "bondage"
+                            #$ R_Chest = "bustier bra"
+                            #$ R_Panties = "zipper panties"
+                            #$ R_Outfit = "zipper bondage"
+                            #$ R_Shame = R_OutfitShame[1]
+
+                        "How about you put those bondage cuffs" if R_Bondage and R_Over != "bondage cuffs":
+                            call RogueFace("sexy", 1) 
+                            #if R_Over or R_Chest or R_Panties or R_Legs:
+                            #    "She glances up at you as her clothes drop to the ground."
+                            #$ R_Over = 0
+                            #$ R_Legs = 0
+                            #$ R_Chest = 0
+                            #$ R_Panties = 0
+                            #"She starts dressing the new outfit"
+                            "You help her with the binder, making sure she can't move her arms"
+                            #"And add a blindfold so she can't see a thing"
+                            #$ R_Blindfold = 1
+                            $ R_Over = "bondage cuffs"
+                            #$ R_Chest = "bustier bra"
+                            #$ R_Panties = "zipper panties"
+                            #$ R_Outfit = "zipper bondage"
+                            #$ R_Shame = R_OutfitShame[1]
+
+                        "Remove the bondage outfit" if R_Over == "bondage" or R_Over == "bondage cuffs":
                             call RogueFace("sexy", 1) 
                             #if R_Over or R_Chest or R_Panties or R_Legs:
                             #    "She glances up at you as her clothes drop to the ground."
