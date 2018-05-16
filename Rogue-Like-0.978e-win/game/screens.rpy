@@ -153,6 +153,7 @@ screen choice(items):
             viewport:
                 yinitial 0
                 #scrollbars "vertical"
+                arrowkeys True
                 mousewheel True
                 draggable True
         
