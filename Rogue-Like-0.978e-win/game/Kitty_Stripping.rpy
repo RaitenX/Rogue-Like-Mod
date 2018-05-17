@@ -813,10 +813,10 @@ label Kitty_ToplessorNothing:
             if K_Chest:
                 $ Line = K_Chest
                 if K_Chest == "swimsuit3":
-                        if K_Panties:
-                            $ K_Panties = 0
-                            call Kitty_First_Bottomless
-                    $ K_Chest = 0 
+                    if K_Panties:
+                        $ K_Panties = 0
+                        call Kitty_First_Bottomless
+                $ K_Chest = 0 
                 "Kitty lets her [Line] drop to the floor. . ."            
                 $ Line = K_Over
                 $ K_Over = 0 
@@ -828,10 +828,10 @@ label Kitty_ToplessorNothing:
         elif K_Chest:
             $ Line = K_Chest
             if K_Chest == "swimsuit3":
-                        if K_Panties:
-                            $ K_Panties = 0
-                            call Kitty_First_Bottomless
-                    $ K_Chest = 0 
+                if K_Panties:
+                    $ K_Panties = 0
+                    call Kitty_First_Bottomless
+            $ K_Chest = 0 
             "Kitty lets her [Line] drop to the floor. . ."   
         call Kitty_First_Topless                       
     else:                                                                                                #she refuses your ultimatum

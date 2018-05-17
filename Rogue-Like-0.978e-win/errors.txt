@@ -2,60 +2,6 @@
 errors listed below, and try again.
 
 
-File "game/Rogue_Stripping.rpy", line 131: expected statement.
-    R_Panties = 0
-              ^
-
-File "game/Rogue_Stripping.rpy", line 207: expected statement.
-    R_Panties = 0
-              ^
-
-File "game/Rogue_Stripping.rpy", line 231: expected statement.
-    R_Chest = 0
-            ^
-
-File "game/Rogue_Stripping.rpy", line 557: expected statement.
-    R_Panties = 0
-              ^
-
-File "game/Rogue_Stripping.rpy", line 565: expected statement.
-    R_Panties = 0
-              ^
-
-File "game/Rogue_Stripping.rpy", line 604: expected statement.
-    R_Panties = 0
-              ^
-
-File "game/Rogue_Stripping.rpy", line 613: expected statement.
-    R_Panties = 0
-              ^
-
-File "game/Rogue_Stripping.rpy", line 625: expected statement.
-    R_Panties = 0
-              ^
-
-File "game/Rogue_Stripping.rpy", line 746: expected statement.
-    R_Panties = 0
-              ^
-
-File "game/Rogue_Stripping.rpy", line 754: expected statement.
-    R_Panties = 0
-              ^
-
-File "game/Rogue_Stripping.rpy", line 835: expected statement.
-    R_Panties = 0
-              ^
-
-File "game/Rogue_Stripping.rpy", line 843: expected statement.
-    R_Panties = 0
-              ^
-
-File "game/Rogue_Stripping.rpy", line 1226: expected statement.
-    R_Chest = 0
-            ^
-
-File "game/Rogue_Stripping.rpy", line 1273: expected statement.
-    R_Chest = 0
-            ^
+File "game/Kitty_Stripping.rpy", line 819: indentation mismatch.
 
 Ren'Py Version: Ren'Py 6.99.13.2919

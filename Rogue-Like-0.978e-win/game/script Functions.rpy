@@ -4287,4 +4287,6 @@ label Failsafe:
     $ X_Psychic = 0 if "X_Psychic" not in globals().keys() else X_Psychic
     $ X_Emote = "happy" if "X_Emote" not in globals().keys() else X_Emote
     $ XSpriteLoc = StageCenter if "XSpriteLoc" not in globals().keys() else XSpriteLoc
+
+    $ E_LegsUp = 0 if "E_LegsUp" not in globals().keys() else E_LegsUp
     return

@@ -154,26 +154,26 @@ label Emma_SexMenu:
                           
                 
         "Could we maybe?. . . [[fuck]":
-#                if P_Semen and E_Action:
-#                    menu:
-#                        "What did you want to do?"
-#                        "Lean back, I've got something in mind. . .":
-#                                call E_Sex_H           
-#                        "Fuck your pussy.":                        
-#                                call E_Sex_P           
-#                        "Fuck your ass.":                        
-#                                call E_Sex_A    
-#                        "How about some toys? [[Pussy]":                        
-#                            call E_Dildo_Pussy     
-#                        "How about some toys? [[Anal]":                        
-#                            call E_Dildo_Ass   
-#                        "Never mind [[something else]":
-#                                jump Emma_SMenu
-#                elif not E_Action:
-#                        "I'm sorry, [E_Petname], but I need a break."
-#                else:
-#                        "The spirit is apparently willing, but the flesh is spongy and bruised." 
-            ch_e "Doubtful.[[Not available yet]"
+               if P_Semen and E_Action:
+                   menu:
+                       "What did you want to do?"
+                       "Lean back, I've got something in mind. . .":
+                               call E_Sex_H           
+                       "Fuck your pussy.":                        
+                               call E_Sex_P           
+                       "Fuck your ass.":                        
+                               call E_Sex_A    
+                       # "How about some toys? [[Pussy]":                        
+                       #     call E_Dildo_Pussy     
+                       # "How about some toys? [[Anal]":                        
+                       #     call E_Dildo_Ass   
+                       "Never mind [[something else]":
+                               jump Emma_SMenu
+               elif not E_Action:
+                       "I'm sorry, [E_Petname], but I need a break."
+               else:
+                       "The spirit is apparently willing, but the flesh is spongy and bruised." 
+            #ch_e "Doubtful.[[Not available yet]"
 
         "Cheat Menu" if config.developer:                                                   #Remove
             call Emma_Cheat_Menu

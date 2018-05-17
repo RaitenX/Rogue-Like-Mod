@@ -475,6 +475,7 @@ init -1:
     default E_Spunk = []
     default E_Pubes = 0
     default E_Wet = 0
+    default E_LegsUp = 0
     default E_Water = 0
     default E_TitsUp = 1
     default E_Upskirt = 0

@@ -2929,6 +2929,7 @@ label E_BJAfter:
     
 # ## E_Footjob //////////////////////////////////////////////////////////////////////
 # label E_Footjob:
+#    $ E_LegsUp = 0
 #     call Shift_Focus("Emma")
 #     if E_Foot >= 7: # She loves it
 #         $ Tempmod += 10

@@ -171,6 +171,10 @@ image Emma_Sprite:
             "Emma_Arms != 2 or 'hand' not in E_Spunk", Null(),  
             "'mouth' in E_Spunk", "images/EmmaSprite/EmmaSprite_Spunk_HandM.png",  
             "True", "images/EmmaSprite/EmmaSprite_Spunk_Hand.png",   
+            ), 
+        (0,0), ConditionSwitch(                                                                         #belly spunk
+            "'belly' in E_Spunk", "images/EmmaSprite/Emma_Sprite_Spunk_Belly.png",
+            "True", Null(), 
             ),  
 #        (0,0), ConditionSwitch(                                                                         #Props
 #            "not E_Held or Emma_Arms != 2", Null(), 
@@ -1078,8 +1082,8 @@ label E_Pos_Reset(Pose = 0):
     return
     
 label Emma_Hide:
-#        if renpy.showing("Emma_SexSprite"):
-#            call Emma_Sex_Reset
+        if renpy.showing("Emma_SexSprite"):
+            call Emma_Sex_Reset
         hide Emma_SexSprite
         hide Emma_HJ_Animation
         hide Emma_BJ_Animation

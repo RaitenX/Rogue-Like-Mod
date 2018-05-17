@@ -1,6 +1,6 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' u'images/RogueSex/Rogue_Sex_Tits_Barbell.png'>:
+While loading <'Image' 'images/EmmaSex/Emma_Sex_FeetMask.png'>:
   File "game/script Locations.rpy", line 1116, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
@@ -91,20 +91,22 @@ While loading <'Image' u'images/RogueSex/Rogue_Sex_Tits_Barbell.png'>:
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1953, in script call
+  File "game/script Locations.rpy", line 1614, in script call
     call Chat
-  File "game/script Functions.rpy", line 1211, in script call
-    call Emma_Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 81, in script call
+    call R_Makeout
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
   File "game/script Locations.rpy", line 1116, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2279, in script call
-    call Rogue_Leave
+  File "game/script Functions.rpy", line 2284, in script call
+    call Kitty_Leave(GirlsNum)
   File "game/script Locations.rpy", line 1734, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2279, in script call
-    call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 4005, in script call
-    call Pool_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
   File "game/script Locations.rpy", line 3007, in script call
@@ -115,6 +117,28 @@ While loading <'Image' u'images/RogueSex/Rogue_Sex_Tits_Barbell.png'>:
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 828, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 104, in script call
+    call Rogue_Show_Plug
+  File "game/script Locations.rpy", line 1684, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1186, in script call
+    call Kitty_Chat
+  File "game/Kitty_Chat.rpy", line 316, in script call
+    call Kitty_SexMenu
+  File "game/script Locations.rpy", line 1684, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 158, in script call
+    call R_Doggy_H
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
   File "game/script Locations.rpy", line 1116, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
@@ -123,47 +147,57 @@ While loading <'Image' u'images/RogueSex/Rogue_Sex_Tits_Barbell.png'>:
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 828, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1176, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 160, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 81, in script call
-    call R_Makeout
-  File "game/Rogue_Sex.rpy", line 1005, in script call
-    call Sex_Dialog("Rogue",Partner)
-  File "game/script Locations.rpy", line 1116, in script call
+  File "game/script Locations.rpy", line 1620, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1684, in script call
+  File "game/script Locations.rpy", line 724, in script call
     call Chat
-  File "game/script Functions.rpy", line 1176, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 160, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 112, in script call
-    call R_Titjob
-  File "game/Rogue_Sex.rpy", line 2035, in script call
-    call Rogue_Caught
-  File "game/script Locations.rpy", line 468, in script call
-    call EventCalls
-  File "game/Rogue_Scenes.rpy", line 1426, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 164, in script call
-    call R_Sex_H
-  File "game/Rogue_Missionary.rpy", line 2406, in script call
-    call Sex_Dialog("Rogue",Partner)
-  File "game/script Functions.rpy", line 3053, in script call
-    "[Line1]"
-  File "renpy/common/00console.rpy", line 765, in script
-    python in _console:
-  File "renpy/common/00console.rpy", line 766, in <module>
-    console.interact()
-  File "renpy/common/00console.rpy", line 325, in interact
-    line = ui.interact()
-IOError: Couldn't find file 'images/RogueSex/Rogue_Sex_Tits_Barbell.png'.
+  File "game/script Functions.rpy", line 1186, in script call
+    call Kitty_Chat
+  File "game/Kitty_Chat.rpy", line 316, in script call
+    call Kitty_SexMenu
+  File "game/script Locations.rpy", line 1214, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1186, in script call
+    call Kitty_Chat
+  File "game/Kitty_Chat.rpy", line 316, in script call
+    call Kitty_SexMenu
+  File "game/script Locations.rpy", line 3013, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2284, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1614, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1186, in script call
+    call Kitty_Chat
+  File "game/script Locations.rpy", line 730, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2279, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 327, in script call
+    call Rogue_Caught_Changing
+  File "game/script Locations.rpy", line 130, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1211, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 130, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1211, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 130, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1199, in script call
+    call Emma_Chat
+  File "game/Emma_Chat.rpy", line 57, in script call
+    call Emma_SexMenu
+  File "game/Emma_Sex.rpy", line 161, in script call
+    call E_Sex_H
+  File "game/Emma_Missionary.rpy", line 747, in script call
+    call PE_Cumming
+  File "game/Emma_Orgasms.rpy", line 41, in script
+    menu:
+IOError: Couldn't find file 'images/EmmaSex/Emma_Sex_FeetMask.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -258,20 +292,22 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1953, in script call
+  File "game/script Locations.rpy", line 1614, in script call
     call Chat
-  File "game/script Functions.rpy", line 1211, in script call
-    call Emma_Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 81, in script call
+    call R_Makeout
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
   File "game/script Locations.rpy", line 1116, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2279, in script call
-    call Rogue_Leave
+  File "game/script Functions.rpy", line 2284, in script call
+    call Kitty_Leave(GirlsNum)
   File "game/script Locations.rpy", line 1734, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2279, in script call
-    call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 4005, in script call
-    call Pool_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
   File "game/script Locations.rpy", line 3007, in script call
@@ -282,6 +318,28 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 828, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 104, in script call
+    call Rogue_Show_Plug
+  File "game/script Locations.rpy", line 1684, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1186, in script call
+    call Kitty_Chat
+  File "game/Kitty_Chat.rpy", line 316, in script call
+    call Kitty_SexMenu
+  File "game/script Locations.rpy", line 1684, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 158, in script call
+    call R_Doggy_H
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
   File "game/script Locations.rpy", line 1116, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
@@ -290,50 +348,62 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 828, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1176, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 160, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 81, in script call
-    call R_Makeout
-  File "game/Rogue_Sex.rpy", line 1005, in script call
-    call Sex_Dialog("Rogue",Partner)
-  File "game/script Locations.rpy", line 1116, in script call
+  File "game/script Locations.rpy", line 1620, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1684, in script call
+  File "game/script Locations.rpy", line 724, in script call
     call Chat
-  File "game/script Functions.rpy", line 1176, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 160, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 112, in script call
-    call R_Titjob
-  File "game/Rogue_Sex.rpy", line 2035, in script call
-    call Rogue_Caught
-  File "game/script Locations.rpy", line 468, in script call
-    call EventCalls
-  File "game/Rogue_Scenes.rpy", line 1426, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 164, in script call
-    call R_Sex_H
-  File "game/Rogue_Missionary.rpy", line 2406, in script call
-    call Sex_Dialog("Rogue",Partner)
-  File "game/script Functions.rpy", line 3053, in script call
-    "[Line1]"
-  File "renpy/common/00console.rpy", line 765, in script
-    python in _console:
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 827, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1764, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "renpy/common/00console.rpy", line 766, in <module>
-    console.interact()
-  File "renpy/common/00console.rpy", line 325, in interact
-    line = ui.interact()
+  File "game/script Functions.rpy", line 1186, in script call
+    call Kitty_Chat
+  File "game/Kitty_Chat.rpy", line 316, in script call
+    call Kitty_SexMenu
+  File "game/script Locations.rpy", line 1214, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1186, in script call
+    call Kitty_Chat
+  File "game/Kitty_Chat.rpy", line 316, in script call
+    call Kitty_SexMenu
+  File "game/script Locations.rpy", line 3013, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2284, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1614, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1186, in script call
+    call Kitty_Chat
+  File "game/script Locations.rpy", line 730, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2279, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 327, in script call
+    call Rogue_Caught_Changing
+  File "game/script Locations.rpy", line 130, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1211, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 130, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1211, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 130, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1199, in script call
+    call Emma_Chat
+  File "game/Emma_Chat.rpy", line 57, in script call
+    call Emma_SexMenu
+  File "game/Emma_Sex.rpy", line 161, in script call
+    call E_Sex_H
+  File "game/Emma_Missionary.rpy", line 747, in script call
+    call PE_Cumming
+  File "game/Emma_Orgasms.rpy", line 41, in script
+    menu:
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1483, in execute
+    choice = renpy.exports.menu(choices, self.set)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\exports.py", line 868, in menu
+    rv = renpy.store.menu(items)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\exports.py", line 1054, in display_menu
+    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ui.py", line 287, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 2553, in interact
@@ -430,6 +500,10 @@ Full traceback:
     cpdef render(d, object widtho, object heighto, double st, double at):
   File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
     rv = d.render(widtho, heighto, st, at)
+  File "renpy/display/accelerator.pyx", line 108, in renpy.display.accelerator.transform_render (gen\renpy.display.accelerator.c:2047)
+    cr = render(child, widtho, heighto, st - self.child_st_base, at)
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
     surf = render(child, width, height, cst, cat)
   File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
@@ -454,6 +528,12 @@ Full traceback:
     cpdef render(d, object widtho, object heighto, double st, double at):
   File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
     rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 1792, in render
+    mr = renpy.display.render.render(self.mask, width, height, st, at)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\im.py", line 503, in render
     texture = cache.get(self, texture=True)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\im.py", line 212, in get
@@ -462,7 +542,7 @@ Full traceback:
     surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\loader.py", line 548, in load
     raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'images/RogueSex/Rogue_Sex_Tits_Barbell.png'.
+IOError: Couldn't find file 'images/EmmaSex/Emma_Sex_FeetMask.png'.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.13.2919
