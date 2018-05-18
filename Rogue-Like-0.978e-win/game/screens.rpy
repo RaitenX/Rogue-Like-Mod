@@ -44,6 +44,8 @@ screen say(who, what, side_image=None, two_window=False, CountWords = 0): #Count
             $ CountWords = 1
         elif who == "Kitty" and K_Gag: 
             $ CountWords = 1
+        elif who == "Emma" and E_Gag: 
+            $ CountWords = 1
         if CountWords == 1:
             $ CountWords = what.count(" ") if what.count(" ") <= 10 else 10
             $ CountWords = CountWords - what.count(".")
@@ -93,6 +95,13 @@ screen say(who, what, side_image=None, two_window=False, CountWords = 0): #Count
                     elif K_SpriteLoc == StageFarLeft:
                         add "arrow" xalign 0.1 #xzoom -1
                     else: #K_SpriteLoc == StageCenter, Left, etc.:
+                        add "arrow" xalign 0.8   
+            elif who == "Emma": 
+                    if E_SpriteLoc == StageRight or E_SpriteLoc == StageFarRight:
+                        add "arrow" rotate -90 xzoom -1 xpos 1.03 ypos -0.85                        
+                    elif E_SpriteLoc == StageFarLeft:
+                        add "arrow" xalign 0.1 #xzoom -1
+                    else: #E_SpriteLoc == StageCenter, Left, etc.:
                         add "arrow" xalign 0.8   
             elif who == EmmaName: 
                     if E_SpriteLoc == StageRight or E_SpriteLoc == StageFarRight:

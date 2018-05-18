@@ -221,7 +221,12 @@ label Rogue_Chat:
                     ch_p "Do you want to go on a date tonight?"
                     call Rogue_Date_Night
             
-                
+        "Talk with Emma" if E_Loc == bg_current:
+                jump Emma_Chat
+
+        "Talk with Kitty" if K_Loc == bg_current:
+                jump Kitty_Ch
+
         "Never mind.":
                     return
     jump Rogue_Chat

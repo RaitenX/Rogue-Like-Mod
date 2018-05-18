@@ -471,6 +471,7 @@ init -1:
     default E_Hair = "wavy"
     default E_HairColor = 0
     default E_Gag = 0    
+    default E_Gagx = 0    
     default E_Blush = 0
     default E_Spunk = []
     default E_Pubes = 0
@@ -499,6 +500,7 @@ init -1:
     default E_Hand = 0
     default E_Foot = 0
     default E_Slap = 0
+    default E_Spank = 0
     default E_Strip = 0
     default E_Tit = 0
     default E_Sex = 0
@@ -514,6 +516,7 @@ init -1:
     default E_DildoA = 0
     default E_Vib = 0
     default E_Plug = 0
+    default E_Plugged = 0
     default E_SuckB = 0
     default E_InsertP = 0
     default E_InsertA = 0
@@ -2468,6 +2471,10 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
         if renpy.showing("NightMask", layer='nightmask') and Current_Time == "Morning":
             #Skips theis check if it's a sleepover
             return
+
+        if E_Gag:
+            "She removes her gag"
+            $ E_Gag = 0
         
         if E_OutfitTemp != E_Outfit:
                 #if her new outfit is not what she was wearing before,

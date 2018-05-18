@@ -154,25 +154,31 @@ label Emma_SexMenu:
                           
                 
         "Could we maybe?. . . [[fuck]":
-               if P_Semen and E_Action:
-                   menu:
-                       "What did you want to do?"
-                       "Lean back, I've got something in mind. . .":
-                               call E_Sex_H           
-                       "Fuck your pussy.":                        
-                               call E_Sex_P           
-                       "Fuck your ass.":                        
-                               call E_Sex_A    
+                if P_Semen and E_Action:
+                    menu:
+                        "What did you want to do?"
+                        "Lean back, I've got something in mind (Missionary). . .":
+                                call E_Sex_H           
+                        "Fuck your pussy. (Missionary)":                        
+                                call E_Sex_P           
+                        "Fuck your ass. (Missionary)":                        
+                                call E_Sex_A    
+                        "Turn around, I've got something in mind (DoggyStyle). . .":
+                                call E_Doggy_H  
+                        "Fuck your pussy. (DoggyStyle)":                        
+                                call E_Doggy_P           
+                        "Fuck your ass. (DoggyStyle)":                        
+                                call E_Doggy_A 
                        # "How about some toys? [[Pussy]":                        
                        #     call E_Dildo_Pussy     
                        # "How about some toys? [[Anal]":                        
                        #     call E_Dildo_Ass   
-                       "Never mind [[something else]":
-                               jump Emma_SMenu
-               elif not E_Action:
-                       "I'm sorry, [E_Petname], but I need a break."
-               else:
-                       "The spirit is apparently willing, but the flesh is spongy and bruised." 
+                        "Never mind [[something else]":
+                                jump Emma_SMenu
+                elif not E_Action:
+                        "I'm sorry, [E_Petname], but I need a break."
+                else:
+                        "The spirit is apparently willing, but the flesh is spongy and bruised." 
             #ch_e "Doubtful.[[Not available yet]"
 
         "Cheat Menu" if config.developer:                                                   #Remove
@@ -715,6 +721,9 @@ label E_Slap_Ass:
     if renpy.showing("Emma_SexSprite"):
             show Emma_SexSprite #fix, test this
             with vpunch
+    if renpy.showing("Emma_Doggy"):
+            show Emma_Doggy #fix, test this
+            with vpunch
     elif renpy.showing("Emma_BJ_Animation"):           #fix, make this animation work better when paused for this effect.
             show Emma_BJ_Animation
             with vpunch
@@ -728,6 +737,7 @@ label E_Slap_Ass:
             show Emma_Sprite
             with vpunch
     $ E_Slap += 1                               #add in slap-base obedience        
+    $ E_Spank += 1    
     if ApprovalCheck("Emma", 300, "O", TabM=1):   
         call EmmaFace("sexy", 1)  
         $ E_Mouth = "surprised"
@@ -737,15 +747,37 @@ label E_Slap_Ass:
             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2) if E_Slap <= 5 else E_Obed
             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 1) if E_Slap <= 10 else E_Obed
         $ Line = "You slap her ass and she jumps with pleasure"
+        if renpy.showing("Emma_Doggy"):
+            #$ Line2 = "This feels good"
+            if E_Spank == 1:
+                $ Line2 = "This feels good" 
+            elif E_Spank < 4:
+                $ Line2 = "Keep hitting me"
+            elif E_Spank < 10:
+                $ Line2 = "Harder!"  
+            else:
+                $ Line2 = "Don't stop, " + E_Petname
     else:                
         call EmmaFace("surprised", 1)        
         if Action_Check("Emma", "recent", "slap") < 4:
             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 2)        
             $ E_Love = Statupdate("Emma", "Love", E_Love, 50, -1)
-        $ Line = "You slap her ass and she looks back at you a bit startled"  
+        $ Line = "You slap her ass and she looks back at you a bit startled" 
+        if renpy.showing("Emma_Doggy"):
+            if E_Spank == 1:
+                $ Line2 = E_Petname + "?" 
+            elif E_Spank < 4:
+                $ Line2 = "Ouch"
+            elif E_Spank < 10:
+                $ Line2 = "This hurts, " + E_Petname
+            else:
+                $ Line2 = "Please stop, " + E_Petname 
     
     if Taboo:    
         "[Line]."
+        if renpy.showing("Emma_Doggy"):
+            ch_e "[Line2]"
+            $ Line2 = 0
         if not ApprovalCheck("Emma", 900, TabM=3) and "public" not in E_History:
             call EmmaFace("angry",1)
             if E_Slap <= 5:
@@ -766,9 +798,12 @@ label E_Slap_Ass:
             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 1) if E_Slap <= 5 else E_Obed
             $ Line = "She gives you a naughty grin" 
         
-    if not Trigger:
-        "[Line]."
-        $ Line = 0
+    #if not Trigger:
+    "[Line]."
+    $ Line = 0
+    if renpy.showing("Emma_Doggy") and Line2:
+        ch_e "[Line2]"
+        $ Line2 = 0
         
     $ E_RecentActions.append("slap") if Action_Check("Emma", "recent", "slap") < 4 else E_RecentActions
     $ E_DailyActions.append("slap") if Action_Check("Emma", "daily", "slap") < 10 else E_DailyActions

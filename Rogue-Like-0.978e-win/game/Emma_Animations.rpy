@@ -1082,9 +1082,13 @@ label E_Pos_Reset(Pose = 0):
     return
     
 label Emma_Hide:
-        if renpy.showing("Emma_SexSprite"):
+        if renpy.showing("Emma_SexSprite") or renpy.showing("Emma_Doggy"):
             call Emma_Sex_Reset
         hide Emma_SexSprite
+        if renpy.showing("Emma_Doggy"):
+            if E_Gag == "ballgag":
+                $ E_Gag = 0
+        hide Emma_Doggy
         hide Emma_HJ_Animation
         hide Emma_BJ_Animation
     #    hide Emma_TJ_Animation 

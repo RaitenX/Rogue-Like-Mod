@@ -4288,5 +4288,10 @@ label Failsafe:
     $ X_Emote = "happy" if "X_Emote" not in globals().keys() else X_Emote
     $ XSpriteLoc = StageCenter if "XSpriteLoc" not in globals().keys() else XSpriteLoc
 
-    $ E_LegsUp = 0 if "E_LegsUp" not in globals().keys() else E_LegsUp
+    $ E_LegsUp = 0 if "E_LegsUp" not in globals().keys() else E_LegsUp    
+    $ E_Gag = 0 if "E_Gag" not in globals().keys() else E_Gag
+    $ E_Gagx = 0 if "E_Gagx" not in globals().keys() else E_Gagx
+    $ E_Slap = 0 if "E_Slap" not in globals().keys() else E_Slap
+    $ E_Spank = 0 if "E_Spank" not in globals().keys() else E_Spank
+    $ E_Plugged = 0 if "E_Plugged" not in globals().keys() else E_Plugged
     return

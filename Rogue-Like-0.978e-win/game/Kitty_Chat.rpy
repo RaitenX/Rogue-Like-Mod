@@ -383,6 +383,12 @@ label Kitty_Chat:
         "Date" if Current_Time == "Evening":
                     ch_p "Do you want to go on a date tonight?"
                     call Kitty_Date_Night
+
+        "Talk with Rogue" if R_Loc == bg_current:
+                jump Rogue_Chat
+
+        "Talk with Emma" if E_Loc == bg_current:
+                jump Emma_Chat
                 
         "Never mind.":
                     return

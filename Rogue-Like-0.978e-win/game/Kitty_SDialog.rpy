@@ -1447,7 +1447,7 @@ label Kitty_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         $ TempLust -= 3
                                 elif K_Loose < 2:
                                         $ TempLust += 1   
-    # end R dildo ass   
+    # end R plug ass   
 
     elif Trigger == "masturbation":
                         call Kitty_Self_Lines  

@@ -136,6 +136,12 @@ label Emma_Chat:
                 ch_p "Do you want to go on a date tonight?"
 #                    call Emma_Date_Night
                 ch_e "Well that certainly doesn't seem appropriate at the moment [[Not in yet]."
+
+        "Talk with Rogue" if R_Loc == bg_current:
+                jump Rogue_Chat
+
+        "Talk with Kitty" if K_Loc == bg_current:
+                jump Kitty_Chat
                 
         "Never mind.":
                     return

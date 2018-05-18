@@ -866,7 +866,7 @@ label E_SpunkBelly:
 
 # Start Spunk back  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label E_SpunkBack: 
-    call Emma_Sex_Launch("hotdog")
+    call Emma_Doggy_Launch("hotdog")
     $ Speed = 0
     if E_Addict >= 60 and ApprovalCheck("Emma", 1000, "I", Bonus = ((E_Addict*10)- E_Obed))  and E_Swallow:
             $ E_Eyes = "manic"

@@ -1256,6 +1256,68 @@ label Emma_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         $ TempLust += 1   
     # end E dildo ass                              /////////////////////////////////////////////////////////////////////////////
     
+    elif Trigger == "plug":
+                        if (E_Legs == "pants" or E_Legs == "black pants") and not E_Upskirt:
+                                $ Line = renpy.random.choice(["You rub the plug against the outside of her pants", 
+                                        "You slap the plug lightly against her ass"])
+                                $ TempFocus += 1 if P_Focus < 50 else 0  
+                                $ TempLust += 3 if E_Lust < 50 else 1
+                        if (E_Legs == "NewX" or E_Legs == "NewX black") and not E_Upskirt:
+                                $ Line = renpy.random.choice(["You rub the plug against the outside of her shorts", 
+                                        "You slap the plug lightly against her ass"])
+                                $ TempFocus += 1 if P_Focus < 50 else 0  
+                                $ TempLust += 3 if E_Lust < 50 else 1
+                        elif HoseNum("Emma") >= 10:
+                                $ Line = renpy.random.choice(["You rub the plug against the outside of her tights", 
+                                        "You slap the plug lightly at the outside of her tights"])
+                                $ TempFocus += 1 if P_Focus < 50 else 0  
+                                $ TempLust += 3 if E_Lust < 50 else 1
+                        elif HoseNum("Emma") >= 5:
+                                $ Line = renpy.random.choice(["You rub the plug against the outside of her hose", 
+                                        "You slap the plug lightly at the outside of her hose"])
+                                $ TempFocus += 1 if P_Focus < 50 else 0  
+                                $ TempLust += 3 if E_Lust < 50 else 1
+                        else:
+                                if (E_Legs == "skirt") and E_Panties:            
+                                    $ Line = renpy.random.choice(["You push her skirt and panties aside, and slide the plug into her ass", 
+                                            "You slide the toy deep into her ass", 
+                                            "She gasps as you rotate the plug within her tight asshole",
+                                            "You rub her clit with your thumb as you dive into her ass with the rubber phallus"])
+                                    $ TempFocus += 2 if P_Focus < 50 else 1  
+                                    $ TempLust += 8 if E_Lust > 70 else 5
+                                elif (E_Legs == "skirt"):           
+                                    $ Line = renpy.random.choice(["You push her skirt aside, and slide the plug into her tight hole", 
+                                            "You slide the toy deep into her ass",
+                                            "You lift her skirt a bit and she gasps as you slide the plug firmly into her tight anus", 
+                                            "She gasps as you rotate the plug within her ass",
+                                            "You rub her clit with your thumb as you dive into her ass with the rubber phallus"])
+                                    $ TempFocus += 2 if P_Focus < 50 else 1  
+                                    $ TempLust += 8 if E_Lust > 70 else 5
+                                elif E_Panties and not E_PantiesDown:            
+                                    $ Line = renpy.random.choice(["You push her panties aside, and slide the plug into her tight ass", 
+                                            "You slide the plug into her ass and stroke it rapidly", 
+                                            "You lift her panties a bit and she gasps as you slide the plug between her cheeks", 
+                                            "She gasps as you rub her tight asshole with the toy",
+                                            "You rub her clit with your thumb as you dive into her asshole with the plug",
+                                            "You reach into her gap and she gasps as you slide the plug in and press against her tight anus through the thin material"])
+                                    $ TempFocus += 2 if P_Focus < 50 else 1  
+                                    $ TempLust += 8 if E_Lust > 70 else 5
+                                else:            
+                                    $ Line = renpy.random.choice(["You reach out and slide the plug between her cheeks", 
+                                            "You slide the toy into her asshole and stroke it against the sides", 
+                                            "You pull her cheeks apart and she gasps as you slide the plug between them", 
+                                            "You can feel her twitching as you press your thumb against her anus",
+                                            "She gasps as you rub her anus with the hard rubber",
+                                            "You rub her clit with your thumb as you dive into her asshole with the plug",
+                                            "You reach into her gap and she gasps as you slide the toy across and press it into her firm anus"])            
+                                    $ TempFocus += 3 if P_Focus < 50 else 1  
+                                    $ TempLust += 10 if E_Lust > 70 else 6
+                                if not E_Loose:
+                                        $ TempLust -= 3
+                                elif E_Loose < 2:
+                                        $ TempLust += 1   
+    # end R dildo ass   
+
     elif Trigger == "masturbation":
                 call Emma_Self_Lines  
                 if "unseen" not in E_RecentActions:
@@ -1699,7 +1761,7 @@ label Emma_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, TempLi
                         $ TempLust += 2 if E_Lust > 80 else 1    
                     else:
                         if D20S <= 8 and (Trigger == "blow" or Trigger == "hand"): #This is a random bonus dialog
-                            if Trigger == "blow": #If Kitty is blowing you
+                            if Trigger == "blow": #If Emma is blowing you
                                 $ Line = renpy.random.choice(["Emma's tongue brushes against " + ActiveGirl + "'s as they work",
                                         "Emma and " + ActiveGirl + " pause for a second to briefly kiss", 
                                         "Emma takes a turn to suck on the head before passing it back",

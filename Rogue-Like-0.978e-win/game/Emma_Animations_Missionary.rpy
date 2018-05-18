@@ -52,7 +52,7 @@ image Emma_Sex_Legs_Static:
 image Emma_Sex_Body = LiveComposite(                                                                                
         #the torso/head used in the sex pose, referenced by Emma_SexSprite
         (1120,840),
-        (290,-275), "Emma_HairBack_Sex",    #(260,-350)   (402 -200 with 0 rotation)                                                                                #Hair underlayer
+        (350,-275), "Emma_HairBack_Sex",    #(260,-350)   (402 -200 with 0 rotation)                                                                                #Hair underlayer
         (0,0), ConditionSwitch(                                                                                 #Body Base
         #     "E_Pierce == 'barbell'", "images/EmmaSex/Emma_Sex_Body_Barbell.png",   
         #     "E_Pierce == 'ring'", "images/EmmaSex/Emma_Sex_Body_Ring.png",   
@@ -65,7 +65,7 @@ image Emma_Sex_Body = LiveComposite(
             "E_Neck == 'black NewX'", "images/EmmaSex/Emma_Sex_New_NeckX_Black.png",
             "True", Null(),
             ),             
-        (290,-275), "Emma_Head_Sex",  #check positioning (400,-300)
+        (350,-275), "Emma_Head_Sex",  #check positioning (400,-300)
         (0,0), ConditionSwitch(                                                                                 #gloves
             "E_Arms == 'black gloves'", "images/EmmaSex/Emma_Sex_Gloves_Black.png",
             "E_Arms == 'white gloves'", "images/EmmaSex/Emma_Sex_Gloves_White.png",
@@ -256,6 +256,7 @@ image Emma_Head_Sex:
     zoom 1.5
     anchor (0.5,0.5)
     rotate 5
+    xzoom -1
     
 image Emma_HairBack_Sex:
     # The hair behind the head for the sex pose, referenced by Emma_Sex_Body            
@@ -263,6 +264,7 @@ image Emma_HairBack_Sex:
     zoom 1.5
     anchor (0.5,0.5)   
     rotate 5         
+    xzoom -1
 
 #image Emma_Sex_Legs = LiveComposite(  
 image Emma_Sex_Legs:
