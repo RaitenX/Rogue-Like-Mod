@@ -2097,6 +2097,19 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ K_Hair = "long"
                     $ K_Hose = 0 
 
+        elif K_OutfitTemp == "kitty lingerie":
+                    if 0 in (K_Hose,K_Chest):
+                            $ Undressed = 1
+                    elif K_Panties == 0 and "pantyless" not in K_DailyActions:                        
+                            $ Undressed = 1 
+                    $ K_Legs = 0
+                    $ K_Over = 0
+                    $ K_Chest = "kitty lingerie top"
+                    $ K_Panties = "kitty lingerie panties"      
+                    $ K_Neck = 0
+                    $ K_Hair = "long"
+                    $ K_Hose = "kitty lingerie socks" 
+
         elif K_OutfitTemp == "towel":
                     if K_Over == 0:
                             $ Undressed = 2
