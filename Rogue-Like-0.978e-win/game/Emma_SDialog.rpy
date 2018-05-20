@@ -1329,6 +1329,87 @@ label Emma_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
     elif Trigger == "lesbian":
                 call Emma_SexDialog_Threeway("lesbian")      
     
+    elif Trigger == "foot":
+                        $ Line = "Emma continues stroke your cock with her foot. "
+                           
+                        if not Speed:
+                                    if E_Foot > 2:
+                                            $ Line = Line + "She just seems to be enjoying the feel of it"
+                                            $ TempLust += 2 if E_Lust < 60 else 0
+                                    else:
+                                            $ Line = Line + "She just seems to be looking it over"
+                                            $ TempLust += 2 if E_Lust < 40 else 0
+                                            $ TempFocus += -3 if P_Focus > 50 else 2
+                                        
+                                    $ E_Addict -= 1 if D20S > 10 else 2
+                                    return
+                        
+                        if E_Foot > 4:                          # After the 5th time 
+                                    if Speed <= 1:                      #slow 
+                                        $ Line = Line + renpy.random.choice(["Her movements have become almost masterful, her slightest touch starts you twitching",
+                                                "She slowly caresses you in a way that makes your blood boil, then pulls back at the last second",
+                                                "She knows what to do now, and rubs your cock with smooth strokes, focusing occasionally on the head",
+                                                "She moves very smoothly, stroking casually and very gently, like she's been doing this for years",
+                                                "You can't tell where she is at any moment, all you know is that it works"])   
+                                        
+                                        $ TempFocus += 20 if P_Focus > 70 else 5
+                                              
+                                    else:                               #fast
+                                        $ Line = Line + renpy.random.choice(["Her movements have become almost masterful, her slightest touch starts you twitching", 
+                                                "Her expert strokes will have you boiling over in seconds",
+                                                "She knows what to do now, and rubs your cock with smooth strokes, focusing occasionally on the head",
+                                                "She moves very smoothly, stroking casually and very gently, like she's been doing this for years",
+                                                "You can't tell where she is at any moment, all you know is that it works"]) 
+                                        
+                                        $ TempFocus += 20 if P_Focus < 40 else 5        
+                                
+                        elif E_Foot >= 3:                       #third through 5th time
+                                    if Speed <= 1:                      #slow
+                                        $ Line = Line + renpy.random.choice(["She's begining to figure things out, her toes cause tingles as they caress the shaft", 
+                                                "She's still learning, but learning fast", 
+                                                "She has a smooth motion going now, gentle and precise",
+                                                "Her lessons are paying off, she's really becoming very talented at this",
+                                                "She gently caresses the shaft, and brushes the balls in her other foot, giving them a light massage"])  
+                                        
+                                        $ TempFocus += 15 if P_Focus > 60 else 5
+                                        
+                                    else:                               #fast
+                                        $ Line = Line + renpy.random.choice(["She's begining to figure things out, her toes cause tingles as they caress the shaft", 
+                                                "She's still learning, but learning fast", 
+                                                "Her feet glide smoothly across your cock",
+                                                "She has a smooth motion going now, gentle and precise",
+                                                "Her lessons are paying off, she's really becoming very talented at this",
+                                                "She quickly strokes your cock, with a very deft pressure"]) 
+                                        
+                                        $ TempFocus += 15 if P_Focus < 60 else 7         
+                            
+                        else:                                   #First and second time
+                                if Speed <= 1:                      #slow
+                                    $ Line = Line + renpy.random.choice(["Emma makes up for her inexperience with determination, carefully stroking your cock", 
+                                            "She moves her feet up and down the shaft. She's a little rough at this, but at least she tries", 
+                                            "She strokes you gently. She isn't quite sure what to do with the balls",
+                                            "Her toes fumble with your shaft a bit",
+                                            "She nudges one of your balls too tightly, but stops when you wince",
+                                            "She has a firm grip, and she's not letting go. This may take a few tries"])     
+                                    
+                                    $ TempFocus += 10 if P_Focus > 60 else 5         
+                                else:                               #fast 
+                                    $ Line = Line + renpy.random.choice(["She really wasn't prepared for speeding up, and your cock often slips between her feet", 
+                                            "She rapidly moves her feet up and down the shaft. She's a little rough at this, but at least she tries", 
+                                            "She strokes you a bit too quickly, the friction is a bit uncomfortable",
+                                            "Her toes fumble with your shaft a bit",
+                                            "She nudges one of your balls too tightly, but stops when you wince",
+                                            "She has a firm grip, and she's not letting go. This train is out of control"])  
+                                    
+                                    $ TempFocus += 8 if P_Focus > 60 else 2         
+                                
+                        $ TempLust += 2 if E_Lust < 60 else 0
+                        $ TempLust += 3 if E_Foot > 2 else 0
+                        $ E_Addict -= 1
+            
+    #End Footy dialog ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+
     elif Trigger == "kissing":  
                         $ E_Addict -= 3 
                         if E_Kissed > 10 and E_Love >= 700:#Loving
@@ -1766,7 +1847,7 @@ label Emma_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, TempLi
                                         "Emma and " + ActiveGirl + " pause for a second to briefly kiss", 
                                         "Emma takes a turn to suck on the head before passing it back",
                                         "Emma and " + ActiveGirl + " get into an alternating rhythm"]) 
-                            elif Trigger == "hand": #If Kitty is handying you
+                            elif Trigger == "hand": #If Emma is handying you
                                 $ Line = renpy.random.choice(["Emma's tongue brushes against " + ActiveGirl + "'s hand as they work",
                                         "Emma licks " + ActiveGirl + "'s palm as she works", 
                                         "Emma takes a turn to stroke a few times before passing it back",

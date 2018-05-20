@@ -118,8 +118,10 @@ label Emma_SexMenu:
 #                            call E_Titjob         
                         "Could you suck my cock?":
                             call E_Blowjob 
-#                        "Never mind [[something else]":
-#                            jump Emma_SMenu
+                        "Could you use your feet?":
+                            call E_Footjob 
+                        "Never mind [[something else]":
+                            jump Emma_SMenu
                 elif not E_Action:
                         "I'm sorry, [E_Petname], but I need a break."
                 else:
@@ -169,10 +171,10 @@ label Emma_SexMenu:
                                 call E_Doggy_P           
                         "Fuck your ass. (DoggyStyle)":                        
                                 call E_Doggy_A 
-                       # "How about some toys? [[Pussy]":                        
-                       #     call E_Dildo_Pussy     
-                       # "How about some toys? [[Anal]":                        
-                       #     call E_Dildo_Ass   
+                        "How about some toys? [[Pussy]":                        
+                                call E_Dildo_Pussy     
+                        "How about some toys? [[Anal]":                        
+                                call E_Dildo_Ass   
                         "Never mind [[something else]":
                                 jump Emma_SMenu
                 elif not E_Action:

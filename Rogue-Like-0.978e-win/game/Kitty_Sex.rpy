@@ -109,7 +109,7 @@ label Kitty_SexMenu:
 #                            call K_Titjob         
                         "Could you suck my cock?":
                             call K_Blowjob 
-                        "Could use your feet?":
+                        "Could you use your feet?":
                             call K_Footjob 
                         "Never mind [[something else]":
                             jump Kitty_SMenu

@@ -2,6 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/Emma_Sex.rpy", line 172: indentation mismatch.
+File "game/Emma_HJ.rpy", line 2933: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation.
+    call Shift_Focus("Emma")
+    ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

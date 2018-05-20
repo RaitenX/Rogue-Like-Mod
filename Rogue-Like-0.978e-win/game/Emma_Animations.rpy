@@ -1559,6 +1559,103 @@ label EmmaFace(Emote = E_Emote, B = E_Blush, M = 0, Mouth = 0, Eyes = 0, Brows =
                 $ E_Brows = Brows
         
         return
+
+
+label EmmaFaceSpecial(Emote = E_Emote, B = E_Blush, M = 0, Mouth = 0, Eyes = 0, Brows = 0):
+
+        # Emote is the chosen emote, B is the lush state, and M is whether the character is in a  manic state 
+            
+        if Emote == "normal":
+                $ E_Mouth = "normal"
+                $ E_Brows = "normal"
+                $ E_Eyes = "normal"
+        elif Emote == "angry":
+                $ E_Mouth = "sad"
+                $ E_Brows = "angry"
+                $ E_Eyes = "sexy"
+        elif Emote == "bemused":
+                $ E_Mouth = "normal"
+                $ E_Brows = "sad"
+                $ E_Eyes = "squint"
+        elif Emote == "closed":
+                $ E_Mouth = "normal"
+                $ E_Brows = "sad"
+                $ E_Eyes = "closed"  
+        elif Emote == "confused":
+                $ E_Mouth = "kiss"
+                $ E_Brows = "confused"
+                $ E_Eyes = "squint"
+        elif Emote == "kiss":
+                $ E_Mouth = "kiss"
+                $ E_Brows = "sad"
+                $ E_Eyes = "closed"
+        elif Emote == "tongue":
+                $ E_Mouth = "tongue"
+                $ E_Brows = "sad"
+                $ E_Eyes = "stunned" #"stunned"
+        elif Emote == "manic":
+                $ E_Mouth = "smile"
+                $ E_Brows = "sad"
+                $ E_Eyes = "surprised"
+                $ E_Blush = 1
+        elif Emote == "sad":
+                $ E_Mouth = "sad"
+                $ E_Brows = "sad"
+                $ E_Eyes = "sexy"
+        elif Emote == "sadside":
+                $ E_Mouth = "sad"
+                $ E_Brows = "sad"
+                $ E_Eyes = "side"
+        elif Emote == "sexy":
+                $ E_Mouth = "lipbite"
+                $ E_Brows = "normal"
+                $ E_Eyes = "squint"
+        elif Emote == "smile":
+                $ E_Mouth = "smile"
+                $ E_Brows = "normal"
+                $ E_Eyes = "normal"
+        elif Emote == "sucking":
+                $ E_Mouth = "sucking"
+                $ E_Brows = "surprised"
+                $ E_Eyes = "closed"
+        elif Emote == "surprised":
+                $ E_Mouth = "kiss"
+                $ E_Brows = "surprised"
+                $ E_Eyes = "surprised"
+        elif Emote == "startled":
+                $ E_Mouth = "smile"
+                $ E_Brows = "surprised"
+                $ E_Eyes = "surprised"
+        elif Emote == "down":
+                $ E_Mouth = "sad"
+                $ E_Brows = "sad"
+                $ E_Eyes = "down"  
+        elif Emote == "perplexed":
+                $ E_Mouth = "smile"
+                $ E_Brows = "sad"
+                $ E_Eyes = "normal"
+        elif Emote == "sly":
+                $ E_Mouth = "smirk"
+                $ E_Brows = "normal"
+                $ E_Eyes = "squint"
+            
+        if M:
+                $ E_Eyes = "surprised"        
+        if B > 1:
+                $ E_Blush = 2
+        elif B:
+                $ E_Blush = 1
+        else:
+                $ E_Blush = 0
+        
+        if Mouth:
+                $ E_Mouth = Mouth
+        if Eyes:
+                $ E_Eyes = Eyes
+        if Brows:
+                $ E_Brows = Brows
+        
+        return
         
         
 # Emma's Wardrobe //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

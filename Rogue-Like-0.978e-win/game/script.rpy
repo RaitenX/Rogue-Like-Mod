@@ -128,6 +128,7 @@ init -1:
     default E_Petnames = ["young man"]
     default E_Pet = "Ms. Frost"           #What you call Emma
     default E_Pets = ["Ms. Frost"]
+    default P_CockVisible = 1
     default P_Semen = 2
     default P_Semen_Max = 3
     default P_Focus = 0
@@ -556,8 +557,8 @@ init -1:
 
 label start:       
 # Official game start  ////////////////////////////////////////////////////////////////////
-
     
+    $ P_CockVisible = 1
     show screen R_Status_screen    
     show screen Inventorybutton            
         

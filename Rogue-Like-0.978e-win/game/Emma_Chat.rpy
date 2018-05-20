@@ -36,6 +36,78 @@ label Emma_Chat:
                     call Emma_Flirt               
         "Flirt with her. (locked)" if E_Chat[5]:  
                     pass
+
+        "Show me the plug." if E_Plugged:
+
+                    if ApprovalCheck("Emma", 1450, TabM = 3) or ApprovalCheck("Emma", 800, "O") or "exhibitionist" in E_Traits: # 145, 160, 175, Taboo -160(355)
+                        call EmmaFaceSpecial("sexy",1)
+                        ch_e "Ok [E_Petname]."
+                        call Emma_Doggy_Launch("plug")
+                        "Emma points her ass towards you."
+                        #if E_Legs == "skirt" or E_Legs == "skirtshort" or E_Legs == "cheerleader skirt" or E_Legs == "cheerleader skirtshort":
+                        if E_Legs:
+                            $ E_Upskirt = 1
+                            # if E_Legs == "orange skirt" or E_Legs == "black skirt" or E_Legs == "white skirt":
+                            #     "Lifts up her skirt."
+                            # else:
+                            #     "She pulls down her [E_Legs]"
+                            "She pulls down her [E_Legs]"
+                            pause .1
+                            #if E_Hose == "tights":
+                            #    $ Temp_E_Hose = E_Hose            
+                            #    $ E_Hose = 0
+                            #    "And pulls down her tights"
+                            #    pause .1
+                            #if E_Panties and E_Panties != "lace panties" and E_Panties != "black panties":
+                            #    $ E_PantiesDown = 1
+                            #    "And pulls down her [E_Panties]"
+                            #    pause .1
+                            ch_e "There, you happy?"
+                            call Emma_Show_Plug
+                            #$ E_PantiesDown = 0
+                            #pause .1
+                            #if Temp_E_Hose:
+                            #    $ E_Hose = Temp_E_Hose
+                            #    pause .1
+                            $ E_Upskirt = 0
+                            pause
+                        #elif E_Legs == "pants":
+                        #    #$ Temp_E_Legs = E_Legs            
+                        #    $ E_Upskirt = 1
+                        #    #$ E_Legs = 0
+                        #    "Emma pulls down her pants."  
+                        #    pause .1
+                        #    if E_Panties and E_Panties != "lace panties" and E_Panties != "black panties":
+                        #        $ E_PantiesDown = 1
+                        #        "And pulls down her [E_Panties]"
+                        #        pause .1
+                        #    ch_e "There, you happy?"
+                        #    pause .1
+                        #    call Emma_Show_Plug
+                        #    $ E_PantiesDown = 0
+                        #    pause .1
+                        #    #$ E_Legs = Temp_E_Legs
+                        #    $ E_Upskirt = 0
+                        #    pause
+                        #elif E_Panties and E_Panties != "lace panties" and E_Panties != "black panties" and E_Panties != "swimsuit1" and E_Panties != "swimsuit2":
+                        #    $ E_PantiesDown = 1
+                        #    "And pulls down her [E_Panties]"
+                        #    ch_e "There, you happy?"
+                        #    call Emma_Show_Plug
+                        #    $ E_PantiesDown = 0
+                        #    pause
+                        else:
+                            ch_e "There, you happy?"
+                            call Emma_Show_Plug
+                            pause
+
+
+                        call Emma_Doggy_Reset 
+                    else:
+                        if Taboo:
+                            ch_e "Not here [E_Petname]"
+                        else:
+                            ch_e "No"
             
         "Sex Menu" if E_Loc == bg_current:
                     call Taboo_Level
@@ -4707,4 +4779,23 @@ label Emma_Tits_Up:
     else:
         #if all checks fail,
         $ E_Tits = 0    
+    return
+
+label Emma_Show_Plug:
+    
+    menu:
+        "Slap her ass.":
+            $ D20A = renpy.random.randint(1, 20) #Sets random seed factor for the encounter
+
+            show Slap_Ass2 zorder 200
+            call E_Slap_Ass 
+            hide Slap_Ass2
+            if Taboo and (D20A + (int(Taboo/10)) - Stealth) >= 10:        #If there is a Taboo level, and your modified roll is over 10
+                call Emma_Taboo
+            jump Emma_Show_Plug
+            
+
+        "Very happy.":
+            pass
+
     return

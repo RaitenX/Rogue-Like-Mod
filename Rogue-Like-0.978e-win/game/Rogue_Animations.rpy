@@ -1140,6 +1140,7 @@ image Zero_Doggy_Up:                                                            
             "P_Wet", "images/RogueDoggy/Rogue_Doggy_Cock_U_W.png",
             "True", Null(), 
             ),
+    #alpha P_CockVisible
 
 image Zero_Hotdog_Static:
     contains:        
