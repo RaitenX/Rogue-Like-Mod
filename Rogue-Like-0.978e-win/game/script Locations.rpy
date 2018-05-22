@@ -3584,9 +3584,9 @@ label Study_Room_Explore:
                 #"She's reaching down to adjust his . . . oh, {i}that's{/i} interesting."
                 "Oh, {i}that's{/i} interesting."
                 show Mystique_Picture
-                pause
-                hide Mystique_Picture
                 "[[Xavier's photo acquired.]"
+                #pause
+                hide Mystique_Picture
                 $ P_Inventory.append("Xavier's photo")
             elif D20 >= 5:
                 "There doesn't seem to be anything more of interest in here."

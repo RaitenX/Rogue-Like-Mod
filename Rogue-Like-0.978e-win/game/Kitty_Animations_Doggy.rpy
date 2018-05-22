@@ -215,6 +215,18 @@ image Kitty_Doggy_Body = LiveComposite(                                         
 image Kitty_Doggy_Ass = LiveComposite(                                                                                          #Lower body
         (420,750), #(210,375), #(419,750), 
         (0,0), ConditionSwitch(                                                                                 #Panties back
+            "not K_Upskirt", Null(),  
+            #"K_Panties == 'shorts'", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png",
+            #"K_Panties == 'red shorts'", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png",
+            #"K_Panties == 'blue shorts'", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png",    
+            "K_Legs == 'shorts'", "images/KittyDoggy/Kitty_Doggy_Shorts_Back.png",   
+            #"K_Panties == 'purple bikini panties'", "images/KittyDoggy/Kitty_Doggy_Panties_Down_Back_Purple.png",   
+            #"K_Panties == 'black large panties'", "images/RogueDoggy/Rogue_Doggy_UndiesBlack_Back.png",   
+            #"K_Panties == 'lace panties' or K_Panties == 'black panties'", "images/RogueDoggy/Rogue_Doggy_Panties_Back.png",  
+            #"K_Panties == 'swimsuit1' or K_Panties == 'swimsuit2'", "images/RogueDoggy/Rogue_Doggy_Swimsuit.png",  
+            "True", Null(),                     
+            ), 
+        (0,0), ConditionSwitch(                                                                                 #Panties back
             "not K_PantiesDown or (K_Legs == 'pants' and not K_Upskirt)", Null(),  
             #"K_Panties == 'shorts'", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png",
             #"K_Panties == 'red shorts'", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png",
@@ -359,9 +371,24 @@ image Kitty_Doggy_Ass = LiveComposite(                                          
         #    "True", Null(), 
         #    ),
         (0,0), ConditionSwitch(                                                                                 #Legs Layer
-            #"K_Legs == 'capris' and K_Upskirt", "images/KittyDoggy/Kitty_Doggy_Legs_Pants_Down.png",            
-            #"K_Legs == 'capris' and K_Wet > 1", "images/KittyDoggy/Kitty_Doggy_Legs_Pants_Wet.png",
-            #"K_Legs == 'capris'", "images/KittyDoggy/Kitty_Doggy_Legs_Pants.png",
+            "K_Legs == 'shorts' and K_Upskirt and K_Wet > 1", "images/KittyDoggy/Kitty_Doggy_Shorts_Down_Wet.png",
+            "K_Legs == 'shorts' and K_Upskirt", "images/KittyDoggy/Kitty_Doggy_Shorts_Down.png",            
+            "K_Legs == 'shorts' and K_Wet > 1", "images/KittyDoggy/Kitty_Doggy_Shorts_Wet.png",
+            "K_Legs == 'shorts'", "images/KittyDoggy/Kitty_Doggy_Shorts.png",
+
+            "K_Legs == 'blue shorts' and K_Upskirt and K_Wet > 1", "images/KittyDoggy/Kitty_Doggy_BlueShorts_Down_Wet.png",
+            "K_Legs == 'blue shorts' and K_Upskirt", "images/KittyDoggy/Kitty_Doggy_BlueShorts_Down.png",            
+            "K_Legs == 'blue shorts' and K_Wet > 1", "images/KittyDoggy/Kitty_Doggy_BlueShorts_Wet.png",
+            "K_Legs == 'blue shorts'", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png",
+
+            "K_Legs == 'white shorts' and K_Upskirt and K_Wet > 1", "images/KittyDoggy/Kitty_Doggy_BlueShorts_Down_Wet.png",
+            "K_Legs == 'white shorts' and K_Upskirt", "images/KittyDoggy/Kitty_Doggy_BlueShorts_Down.png",            
+            "K_Legs == 'white shorts' and K_Wet > 1", "images/KittyDoggy/Kitty_Doggy_BlueShorts_Wet.png",
+            "K_Legs == 'white shorts'", "images/KittyDoggy/Kitty_Doggy_BlueShorts.png",
+
+            "K_Legs == 'capris' and K_Upskirt", "images/KittyDoggy/Kitty_Doggy_Legs_Capris_Down.png",            
+            "K_Legs == 'capris' and K_Wet > 1", "images/KittyDoggy/Kitty_Doggy_Legs_Capris_Wet.png",
+            "K_Legs == 'capris'", "images/KittyDoggy/Kitty_Doggy_Legs_Capris.png",
             "K_Legs == 'black jeans' and K_Upskirt", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans_Down.png",            
             "K_Legs == 'black jeans' and K_Wet > 1", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans_Wet.png",
             "K_Legs == 'black jeans'", "images/KittyDoggy/Kitty_Doggy_Legs_BlackJeans.png",
