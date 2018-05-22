@@ -48,7 +48,12 @@ image Emma_Sprite:
             "E_Panties == 'white panties'", "images/EmmaSprite/EmmaSprite_Panties_Down.png",  
             "E_Panties == 'bikini'", "images/EmmaSprite/EmmaSprite_Panties_Down.png",  
             "True", Null(),        
-            ),        
+            ),   
+        (0,0), ConditionSwitch(                                                                         #pants    
+            "not E_PantiesDown or (E_Legs and not E_Upskirt)", Null(),   
+            "E_Panties and E_Wet", "images/EmmaSprite/EmmaSprite_WetCrotch_Down_Overlay.png", 
+            "True", Null(), 
+            ),      
         (0,0), ConditionSwitch(                                                                         #panties up
             "E_PantiesDown and (not E_Legs or E_Upskirt)", Null(),   
             "E_Panties == 'black panties'", "images/EmmaSprite/EmmaSprite_Panties_Black.png",  
@@ -57,6 +62,11 @@ image Emma_Sprite:
             "True", Null(),        
             ),  
         (0,0), ConditionSwitch(                                                                         #pants    
+            "E_PantiesDown and (not E_Legs or E_Upskirt)", Null(),   
+            "E_Panties and E_Wet", "images/EmmaSprite/EmmaSprite_WetCrotch_Overlay.png", 
+            "True", Null(), 
+            ), 
+        (0,0), ConditionSwitch(                                                                         #pants    
             "E_Legs == 'black pants' and not E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_Black.png", 
             "E_Legs == 'pants' and not E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants.png", 
             "E_Legs == 'NewX' and not E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_NewX.png", 
@@ -64,13 +74,26 @@ image Emma_Sprite:
             "E_Legs == 'NewX' and E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_NewX_unzip.png", 
             "E_Legs == 'NewX black' and E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_NewXBlack_unzip.png", 
             "True", Null(), 
-            ),     
+            ), 
+        (0,0), ConditionSwitch(                                                                         #pants    
+            "not E_Legs", Null(),
+            "E_Legs and E_Wet", "images/EmmaSprite/EmmaSprite_WetCrotch_Overlay.png", 
+            "True", Null(), 
+            ), 
+
+        # (0,0), ConditionSwitch(                                                                         #Personal Wetness            
+        #     "not E_Wet", Null(), EmmaSprite_WetCrotch_Overlay.png
+        #     "E_Legs and E_Wet <= 1", Null(),
+        #     "E_Legs", "images/EmmaSprite/EmmaSprite_Wet.png",
+        #     "E_Wet == 1", "images/EmmaSprite/EmmaSprite_Wet.png",
+        #     "True", "images/EmmaSprite/EmmaSprite_Wet.png",       #E_Wet >1
+        #     ),  
         (0,0), ConditionSwitch(                                                                         #Personal Wetness            
-            "not E_Wet", Null(),
-            "E_Legs and E_Wet <= 1", Null(),
-            "E_Legs", "images/EmmaSprite/EmmaSprite_Wet.png",
-            "E_Wet == 1", "images/EmmaSprite/EmmaSprite_Wet.png",
-            "True", "images/EmmaSprite/EmmaSprite_Wet.png",       #E_Wet >1
+            "E_Legs or not E_Wet", Null(),
+            "E_Panties and not E_PantiesDown and E_Wet < 2", Null(),
+            "E_Panties and not E_PantiesDown", "images/EmmaSprite/Emma_Sprite_Wet1.png",
+            "E_Wet == 2", "images/EmmaSprite/Emma_Sprite_Wet2.png",
+            "True", "images/EmmaSprite/Emma_Sprite_Wet1.png",
             ),     
         (0,0), ConditionSwitch(                                                                         #pussy spunk 
             "E_Legs", Null(),

@@ -571,7 +571,19 @@ image Xavier Blink:
     # This randomizes the time between blinking.
     "images/NPC/Xavier_eyes_closed.png"
     .25
-    repeat        
+    repeat     
+
+image Mystique:
+    "images/NPC/Xavier_Picture.png"
+    xalign 0.5 
+    yalign 0.5
+    zoom 0.7
+
+
+screen Mystique_Pic:
+    add "images/NPC/Xavier_Picture.png" xalign 0.5 yalign 0.5 zoom 0.7
+    key "mouseup_1" action Hide("Mystique_Pic")
+    #timer 10.0 action Hide("Mystique_Pic")
 
 
 #Night composite
@@ -1140,16 +1152,73 @@ image Zero_Doggy_Up:                                                            
             "P_Wet", "images/RogueDoggy/Rogue_Doggy_Cock_U_W.png",
             "True", Null(), 
             ),
+    # ConditionSwitch(    
+    #     "P_CockVisible", alpha 1,
+    #     "not P_CockVisible", alpha 0.4,
+    #     "True", Null(), 
+    #     ),
     #alpha P_CockVisible
+    alpha 1
+
+image Zero_Doggy_Up_alpha0_5:                                                                                    #Cock when out (hotdog)
+    contains:
+        ConditionSwitch(    
+            "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Cock_U_P.png",
+            "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_U_B.png",             
+            "True", "images/RogueDoggy/Rogue_Doggy_Cock_U_G.png", 
+            ), 
+    contains:
+        ConditionSwitch(    
+            "P_Wet", "images/RogueDoggy/Rogue_Doggy_Cock_U_W.png",
+            "True", Null(), 
+            ),
+    # ConditionSwitch(    
+    #     "P_CockVisible", alpha 1,
+    #     "not P_CockVisible", alpha 0.4,
+    #     "True", Null(), 
+    #     ),
+    #alpha P_CockVisible
+    alpha 0.5
+
+image Zero_Doggy_Up_alpha0:                                                                                    #Cock when out (hotdog)
+    contains:
+        ConditionSwitch(    
+            "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Cock_U_P.png",
+            "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_U_B.png",             
+            "True", "images/RogueDoggy/Rogue_Doggy_Cock_U_G.png", 
+            ), 
+    contains:
+        ConditionSwitch(    
+            "P_Wet", "images/RogueDoggy/Rogue_Doggy_Cock_U_W.png",
+            "True", Null(), 
+            ),
+    # ConditionSwitch(    
+    #     "P_CockVisible", alpha 1,
+    #     "not P_CockVisible", alpha 0.4,
+    #     "True", Null(), 
+    #     ),
+    #alpha P_CockVisible
+    alpha 0
 
 image Zero_Hotdog_Static:
-    contains:        
-        "Zero_Doggy_Up"
+    contains:
+        ConditionSwitch(    
+            "P_CockVisible == 1", "Zero_Doggy_Up",
+            "P_CockVisible == 0.5", "Zero_Doggy_Up_alpha0_5",
+            "P_CockVisible == 0", "Zero_Doggy_Up_alpha0",
+            "True", "Zero_Doggy_Up", 
+            ),        
+        # "Zero_Doggy_Up"
         pos (175, 370)
 
 image Zero_Hotdog_Moving:
     contains:
-        "Zero_Doggy_Up"
+        ConditionSwitch(    
+            "P_CockVisible == 1", "Zero_Doggy_Up",
+            "P_CockVisible == 0.5", "Zero_Doggy_Up_alpha0_5",
+            "P_CockVisible == 0", "Zero_Doggy_Up_alpha0",
+            "True", "Zero_Doggy_Up", 
+            ),
         pos (175, 370) 
         block:
             ease 1 ypos 330
@@ -1157,7 +1226,7 @@ image Zero_Hotdog_Moving:
             repeat
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                                                                                                  #Insert cock animations
-image Zero_Doggy_Insert:                                                                                #Insert cock
+image Zero_Doggy_Insert_alpha1:                                                                                #Insert cock
     contains:
         ConditionSwitch(    
             "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Cock_In_P.png",
@@ -1173,6 +1242,53 @@ image Zero_Doggy_Insert:                                                        
         ConditionSwitch(    
             "P_Spunk", "images/RogueDoggy/Rogue_Doggy_Cock_In_Spunk.png",           
             "True", Null(),
+            ), 
+    alpha 1
+
+image Zero_Doggy_Insert_alpha0_5:                                                                                #Insert cock
+    contains:
+        ConditionSwitch(    
+            "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Cock_In_P.png",
+            "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_In_B.png",             
+            "True", "images/RogueDoggy/Rogue_Doggy_Cock_In_G.png", 
+            ), 
+    contains:
+        ConditionSwitch(    
+            "P_Wet", "images/RogueDoggy/Rogue_Doggy_Cock_In_Wet.png",           
+            "True", Null(),
+            ), 
+    contains:
+        ConditionSwitch(    
+            "P_Spunk", "images/RogueDoggy/Rogue_Doggy_Cock_In_Spunk.png",           
+            "True", Null(),
+            ), 
+    alpha 0.5
+
+image Zero_Doggy_Insert_alpha0:                                                                                #Insert cock
+    contains:
+        ConditionSwitch(    
+            "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Cock_In_P.png",
+            "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_In_B.png",             
+            "True", "images/RogueDoggy/Rogue_Doggy_Cock_In_G.png", 
+            ), 
+    contains:
+        ConditionSwitch(    
+            "P_Wet", "images/RogueDoggy/Rogue_Doggy_Cock_In_Wet.png",           
+            "True", Null(),
+            ), 
+    contains:
+        ConditionSwitch(    
+            "P_Spunk", "images/RogueDoggy/Rogue_Doggy_Cock_In_Spunk.png",           
+            "True", Null(),
+            ), 
+    alpha 0
+
+image Zero_Doggy_Insert:                                                                                #Insert cock
+    ConditionSwitch(    
+            "P_CockVisible == 1", "Zero_Doggy_Insert_alpha1",
+            "P_CockVisible == 0.5", "Zero_Doggy_Insert_alpha0_5",
+            "P_CockVisible == 0", "Zero_Doggy_Insert_alpha0",
+            "True", "Zero_Doggy_Insert_alpha1", 
             ), 
 
 image Plug_Doggy_Insert:                                                                                #Insert cock
@@ -4054,7 +4170,9 @@ label Rogue_HJ_Reset: # The sequence to the Rogue animations from handjob to def
 # All Reset ////////////////////////////////////////////////////////////////////////////////////
 label AllReset(chr = "Rogue"): 
     if chr == "Rogue":
-        if renpy.showing("Rogue_Doggy"): 
+        if renpy.showing("Rogue_SexSprite"): 
+            call Rogue_Sex_Reset
+        elif renpy.showing("Rogue_Doggy"): 
             call Rogue_Doggy_Reset
         elif renpy.showing("Rogue_HJ_Animation"): 
             call Rogue_HJ_Reset
@@ -4070,6 +4188,8 @@ label AllReset(chr = "Rogue"):
     elif chr == "Kitty":
         if renpy.showing("Kitty_SexSprite"): 
             call Kitty_Sex_Reset
+        elif renpy.showing("Kitty_Doggy"): 
+            call Kitty_Doggy_Reset
         elif renpy.showing("Kitty_HJ_Animation"): 
             call Kitty_HJ_Reset
         elif renpy.showing("Kitty_BJ_Animation"):   
@@ -4084,6 +4204,8 @@ label AllReset(chr = "Rogue"):
     elif chr == "Emma":
         if renpy.showing("Emma_SexSprite"): 
             call Emma_Sex_Reset
+        elif renpy.showing("Emma_Doggy"): 
+            call Emma_Doggy_Reset
         elif renpy.showing("Emma_HJ_Animation"): 
             call Emma_HJ_Reset
         elif renpy.showing("Emma_BJ_Animation"):   

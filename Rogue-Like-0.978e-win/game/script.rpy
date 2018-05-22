@@ -516,6 +516,7 @@ init -1:
     default E_DildoP = 0
     default E_DildoA = 0
     default E_Vib = 0
+    default E_Vibrator = 0
     default E_Plug = 0
     default E_Plugged = 0
     default E_SuckB = 0
@@ -2109,6 +2110,8 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                     $ K_Neck = 0
                     $ K_Hair = "long"
                     $ K_Hose = "kitty lingerie socks" 
+                    if K_Headband != "black" and K_Headband != "pink":
+                        $ K_Headband = "black"
 
         elif K_OutfitTemp == "towel":
                     if K_Over == 0:

@@ -3619,6 +3619,9 @@ label Kitty_Clothes:
             menu:
                 "You should wear this one out. [[set current outfit]":
                     $ K_Outfit = "kitty lingerie"
+                    if K_Headband != "black" and K_Headband != "pink":
+                        "test"
+                        $ K_Headband = "black"
                     $ K_Shame = K_OutfitShame[1]
                     ch_k "This is [K_like] so sexy!"
                 "Let's try something else though.":

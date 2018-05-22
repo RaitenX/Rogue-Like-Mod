@@ -1201,9 +1201,9 @@ label Chat:
                         ch_e "We can speak after class, [E_Petname]."     
                 "Text [EmmaName]" if E_Loc != bg_current and "met" in E_History: 
                         if "Emma" in Digits:
-                            if E_Loc == "bg teacher" and bg_current == "bg classroom":
-                                    "She texts back, \"We can speak after class, [E_Petname].\"" 
-                                    return
+                            # if E_Loc == "bg teacher" and bg_current == "bg classroom":
+                            #         "She texts back, \"We can speak after class, [E_Petname].\"" 
+                            #         return
                             "You send [EmmaName] a text."                 
                             if "classcaught" not in E_History:
                                     call Emma_Chat_Minimal
@@ -4287,7 +4287,8 @@ label Failsafe:
     $ X_Psychic = 0 if "X_Psychic" not in globals().keys() else X_Psychic
     $ X_Emote = "happy" if "X_Emote" not in globals().keys() else X_Emote
     $ XSpriteLoc = StageCenter if "XSpriteLoc" not in globals().keys() else XSpriteLoc
-
+    
+    $ E_Vibrator = 0 if "E_Vibrator" not in globals().keys() else E_Vibrator
     $ E_LegsUp = 0 if "E_LegsUp" not in globals().keys() else E_LegsUp    
     $ E_Gag = 0 if "E_Gag" not in globals().keys() else E_Gag
     $ E_Gagx = 0 if "E_Gagx" not in globals().keys() else E_Gagx

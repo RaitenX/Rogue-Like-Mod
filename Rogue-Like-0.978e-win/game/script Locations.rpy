@@ -1032,7 +1032,7 @@ label Class_Room:
                             $ R_Lust = 45
                             $ R_RecentActions.append("vcame")
                             if Situation == "shift" or "angry" in R_RecentActions:
-                                jump KFB_After
+                                jump RFB_After
                         menu:
                             "Keep it on":
                                 jump V_Rogue_On
@@ -1057,6 +1057,121 @@ label Class_Room:
                                     "She looks at you with a sad face"
                                     if Adjacent == "Rogue":
                                         ch_r "Why did you stop, [R_Petname]?"
+
+        "Turn Emma's vibrator on" if Weekday < 5 and (Current_Time == "Morning" or Current_Time == "Midday") and (E_Loc == bg_current or E_Loc == "bg teacher") and "vibeclass" in E_Traits:
+                "You turn Emma's vibrator on"
+                $ E_Vibrator = 1
+                play music "sounds/vibrator1.wav" fadein 1 fadeout 1
+                if (E_Loc == bg_current or E_Loc == "bg teacher"):
+                    call EmmaFaceSpecial("surprised", 1) 
+                    
+                    with Shake((0, 0, 0, 0), 3.0, dist=5)
+                    if "vibratorclass" not in E_History:
+                        #ch_e "What are you doing [E_Petname]??"
+                        if "exhibitionist" in E_Traits:
+                            call EmmaFaceSpecial("sexy", 1) 
+                            "Emma starts moving her body. She can't keep still."
+                            "She looks at you with a sexy smile."
+                            if Adjacent == "Emma":
+                                ch_e "I like how you think, [E_Petname]."
+                        else:
+                            call EmmaFaceSpecial("sad", 1) 
+                            "Emma starts moving her body. She can't keep still."
+                            "She looks at you with a begging face."
+                            if Adjacent == "Emma":
+                                ch_e "Please stop this, [E_Petname]."
+                        $ E_History.append("vibratorclass")
+                    elif "exhibitionist" not in E_Traits:
+                        #ch_e "Not this again."
+                        "She looks at you with a begging face."
+                        if Adjacent == "Emma":
+                            ch_e "Please [E_Petname], not in public."
+                    else:
+                        #ch_e "This again huh"
+                        call EmmaFaceSpecial("sexy", 1)
+                        "She looks at you with a sexy smile"
+                        if Adjacent == "Emma":
+                            ch_e "Please [E_Petname], make it go faster."
+                    
+                    label V_Emma_On:
+
+                        if E_Vibrator == 2:
+                            with Shake((0, 0, 0, 0), 3.0, dist=5)
+    
+                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 100, 5)
+                            $ E_Love = Statupdate("Emma", "Love", E_Love, 70, 1)
+                            $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 1)
+                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 10)
+                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 2)  
+
+                        with Shake((0, 0, 0, 0), 3.0, dist=5)
+                        $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 100, 5)
+                        $ E_Love = Statupdate("Emma", "Love", E_Love, 70, 1)
+                        $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 1)
+                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 10)
+                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 2)  
+
+                        if E_Lust <= 50:
+                            if E_Legs or E_Panties:
+                                $ Line = renpy.random.choice(["She tries to keep it together", 
+                                    "She keeps moving her body as if that movement would reduce the vibrations",
+                                    "She tugs her bottoms.",
+                                    "Her hands move along her sides",
+                                    "She looks around trying to see if anyone can notice the noise", 
+                                    "She moves her hands to rub her neck",
+                                    "She gasps as her movements only makes her hornier"])
+                            else:
+                                $ Line = renpy.random.choice(["She tries to keep it together", 
+                                    "She keeps moving her body as if that movement would reduce the vibrations",
+                                    "Her hands move along her sides",
+                                    "She looks around trying to see if anyone can notice the noise", 
+                                    "She moves her hands to rub her neck",
+                                    "She gasps as her movements only makes her hornier"])
+
+                        else:
+
+                            $ Line = renpy.random.choice(["Her hand traces slowly down her body", 
+                                "Her fingers move lightly across her pubic region",
+                                "Her fingers move up and down her inner thighs, slowing building towards their center",
+                                "Her hands move along her sides, carefully caressing them",
+                                "She gently rubs her breasts", 
+                                "She gently cups her breasts and moves them in slow circles",
+                                "She moves her hands from her breasts to rub her neck",
+                                "She lightly pinches one of her nipples",
+                                "She gasps as her finger brushes against an erect nipple"])  
+
+                        "[Line]"
+                        call EmmaLust 
+                        if E_Lust >= 100:                                               
+                            call E_Cumming
+                            $ E_Lust = 45
+                            $ E_RecentActions.append("vcame")
+                            if Situation == "shift" or "angry" in E_RecentActions:
+                                jump E_FB_After
+                        menu:
+                            "Keep it on":
+                                jump V_Emma_On
+                            "Turn it up" if E_Vibrator != 2:
+                                play music "sounds/vibrator2.wav"
+                                $ E_Vibrator = 2
+                                $ E_Mouth = "tongue"
+                                $ E_Eyes = "surprised"
+                                $ E_Blush = 2
+                                "You increase the vibrator speed startling her"
+
+                                jump V_Emma_On
+
+                            "Turn it off":
+                                stop music fadeout 1
+
+                                if "exhibitionist" not in E_Traits:
+                                    if Adjacent == "Emma":
+                                        ch_e "Thanks, [E_Petname]."
+                                else:
+                                    call EmmaFaceSpecial("sad", 1)
+                                    "She looks at you with a sad face"
+                                    if Adjacent == "Emma":
+                                        ch_e "Why did you stop, [E_Petname]?"
 
             
         "Wait" if Current_Time != "Night":
@@ -1085,6 +1200,10 @@ label Take_Class:                       #Class events
     call Set_The_Scene  
     if "vcame" in K_RecentActions:
         $ K_Wet = 2
+    if "vcame" in R_RecentActions:
+        $ R_Wet = 2
+    if "vcame" in E_RecentActions:
+        $ E_Wet = 2
     if "class" in P_DailyActions:
             $ Line = "The session begins."
     elif Round >= 80:
@@ -3462,6 +3581,9 @@ label Study_Room_Explore:
                 "Buried under a pile of documents, you find a printed out photo."
                 "It appears to be a selfie of Mystique making out with Xavier."
                 "She's reaching down to adjust his . . . oh, {i}that's{/i} interesting."
+                show Mystique_Picture
+                pause
+                hide Mystique_Picture
                 "[[Xavier's photo acquired.]"
                 $ P_Inventory.append("Xavier's photo")
             elif D20 >= 5:

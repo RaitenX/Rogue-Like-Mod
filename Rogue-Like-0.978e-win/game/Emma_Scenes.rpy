@@ -1239,9 +1239,17 @@ label Emma_Caught: #Emma_Update
     call EmmaOutfit
     $ bg_current = "bg study"  
     $ E_Loc = "bg study"
-    call Set_The_Scene
-    show Professor at center
-    with fade
+    call Set_The_Scene(0)
+
+    show Professor at SpriteLoc(StageLeft)    
+    show Emma_Sprite at SpriteLoc(StageRight) with ease
+    if K_Loc == bg_current:         
+        show Kitty_Sprite at SpriteLoc(StageFarRight) with ease
+    if R_Loc == bg_current:         
+        show Rogue at SpriteLoc(StageFarRight) with ease
+
+    # show Professor at center
+    # with fade
     call XavierFace("shocked")
     call EmmaFace("sad")
     ch_x "I'm very disappointed in your behavior, the both of you."
@@ -1316,9 +1324,9 @@ label Emma_Caught: #Emma_Update
             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, -20)   
             ch_x "I've had enough of you, begone."
             
-        "Just this. . . Plan Kappa, Emma!" if "Xavier's photo" in P_Inventory and P_Lvl >= 5:
+        "Just this. . . Plan Psi, Emma!" if "Xavier's photo" in P_Inventory and P_Lvl >= 5:
             if ApprovalCheck("Emma", 1500, TabM=1, Loc="No"):                   
-                    jump Plan_Kappa
+                    jump Plan_Psi
             elif ApprovalCheck("Emma", 1000, TabM=1, Loc="No"):
                     call EmmaFace("perplexed") 
                     $ E_Brows = "sad"
@@ -1334,7 +1342,7 @@ label Emma_Caught: #Emma_Update
             else:
                     call EmmaFace("confused") 
                     ch_e "Wait, Plan what??"
-                    ch_p "Plan {i}Kappa!{/i} . . you know. . ."
+                    ch_p "Plan {i}Psi!{/i} . . you know. . ."
                     ch_e "I have no {i}idea{/i} what you're talking about."
                     ch_p "oh, yeah, I guess I haven't mentioned that. . ."
                     call EmmaFace("bemused") 
@@ -1386,7 +1394,7 @@ label Emma_Caught: #Emma_Update
 label Plan_Psi: #Emma_Update   
     call EmmaFace("sly")         
     "As you say this, a sly grin crosses Emma's face."
-    $ E_Arms = 0
+    #$ E_Arms = 0
     $ Emma_Arms = 2
     "You quickly approach Xavier and place your hands on his head."
     call XavierFace("psychic")
@@ -1432,12 +1440,12 @@ label Plan_Psi: #Emma_Update
             "You know, it's kinda fun dodging you, catch us if you can." if not Rules:
                     ch_x "If you. . . want me to, I suppose. . ."
                     $ Rules = 1
-            "Raise my stipend." if P_Income < 30 and "Kappa" not in P_Traits:    
+            "Raise my stipend." if P_Income < 30 and "Psi" not in P_Traits:    
                     ch_x "Very well. . . but I can only raise it by so much. . ."        
                     $ P_Income += 2
-            "Raise my stipend. [[Used](locked)" if P_Income >= 30 or "Kappa" in P_Traits:           
+            "Raise my stipend. [[Used](locked)" if P_Income >= 30 or "Psi" in P_Traits:           
                     pass
-            "In was interested in a key. . . ":
+            "I was interested in a key. . . ":
                 menu:
                     "Give me the key to your study." if "Xavier" not in Keys:  
                             ch_x "Fine, although you don't seem to need it. . ."  
@@ -1462,12 +1470,12 @@ label Plan_Psi: #Emma_Update
             "That should do it.":
                 $ Count = 0
     ch_x "Very well, that should conlude our business. Please leave." 
-    if "Kappa" not in P_Traits:
+    if "Psi" not in P_Traits:
         $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 90, 10)
         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 10)
         $ E_Love = Statupdate("Emma", "Love", E_Love, 70, 10)
         $ E_Love = Statupdate("Emma", "Love", E_Love, 200, 20)
-        $ P_Traits.append("Kappa")
+        $ P_Traits.append("Psi")
     $ Emma_Arms = 1
     "You return to your room"
     jump Player_Room

@@ -40,13 +40,13 @@ label Emma_SexAct(Act = 0):
 
 label Emma_SexMenu: 
     call CleartheRoom("Emma",Check=1)
-    if _return >= 1:
-            # if there are other girls in the room. . .
-            ch_e "I don't really feel comfortable with these other girls around just yet."
-            return  
-    elif Taboo:
-            ch_e "I think this is a bit too exposed. . ."
-            return          
+    # if _return >= 1:
+    #         # if there are other girls in the room. . .
+    #         ch_e "I don't really feel comfortable with these other girls around just yet."
+    #         return  
+    # elif Taboo:
+    #         ch_e "I think this is a bit too exposed. . ."
+    #         return          
     call Shift_Focus("Emma")
     $ Trigger = 0    
     $ Trigger2 = 0

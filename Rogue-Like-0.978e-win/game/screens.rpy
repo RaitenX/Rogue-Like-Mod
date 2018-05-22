@@ -1018,6 +1018,12 @@ screen P_Inventory_screen:
             textbutton "10 Kitty actions" text_size 15 action [ SetVariable("K_Action", 10)]
         if not E_Action:
             textbutton "10 Emma actions" text_size 15 action [ SetVariable("E_Action", 10)]
+        textbutton "Dick Opacity 0" text_size 15 action [ SetVariable("P_CockVisible", 0)]
+        textbutton "Dick Opacity 0_5" text_size 15 action [ SetVariable("P_CockVisible", 0.5)]
+        textbutton "Dick Opacity 1" text_size 15 action [ SetVariable("P_CockVisible", 1)]
+        if "Xavier's photo" in P_Inventory:
+            textbutton "Mystique Picture" text_size 15 action Show("Mystique_Pic",transition=Pause(1))
+            textbutton "hide Picture" text_size 15 action Hide("Mystique_Pic",transition=Pause(1))
         showif "dildo" in P_Inventory:
             $ Inventory_Count = Inventory_Check("dildo")
             text "Dildos: [Inventory_Count]" size 15        

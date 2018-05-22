@@ -15,8 +15,12 @@ label Emma_Chat:
     if "angry" in E_RecentActions:
                 ch_e "I would not press my luck if I were you."
                 return
+
+    if E_Loc == bg_current:
+            ch_e "What was it you wanted to discuss, [E_Petname]?"
+    #else:
     menu:
-        ch_e "What was it you wanted to discuss, [E_Petname]?"
+        "What would you like to do?"
         "Come on over." if E_Loc != bg_current:
                     if Room_Full():
                         "It's already pretty crowded here."
@@ -28,6 +32,62 @@ label Emma_Chat:
                                 call Kitty_Dismissed
                     else:
                         call Emma_Summon  
+
+        "Send a dick pic." if E_Loc != bg_current:
+
+                    "You send Emma a picture of your dick"
+
+                    if E_Loc == "bg teacher" and bg_current == "bg classroom":
+                            $ E_Eyes = "down"
+                            "Emma looks down at her phone for a while"
+                    if ApprovalCheck("Emma", 1200, TabM = 3):
+                            if E_Loc == "bg teacher" and bg_current == "bg classroom":
+                                call EmmaFaceSpecial("sly", 1)
+                                "She then, scans the class with her eyes, until she finds you"
+                                call EmmaFaceSpecial("sexy", 1)
+                                "Emma gives you a sexy smile and starts typing something on her phone"
+                                #call EmmaFace("surprised", 1) 
+                                $ E_Eyes = "down"
+                            ch_e "I miss your 8=====D"
+                            call EmmaFace("sly", 1)
+                            if E_Loc == "bg teacher" and bg_current == "bg classroom":
+                                if "exhibitionist" in E_Traits:
+                                    ch_e "Thinking about it in front of everyone is making me so wet"
+                                    $ E_Wet = 1
+                                else:
+                                    ch_e "And you should be paying attention to class, [E_Petname]"
+                            #call Emma_Sent_Selfie(1)
+                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 70, 8)
+                    elif ApprovalCheck("Emma", 500, "I", TabM=2):
+                            if E_Loc == "bg teacher" and bg_current == "bg classroom":
+                                call EmmaFaceSpecial("smile", 1) 
+                                $ E_Eyes = "down"
+                                "Emma glances at it, but just smiles in amusement."
+                                call EmmaFaceSpecial("sly", 1)
+                                "She then, scans the class with her eyes, until she finds you"
+                                "She looks down at her phone and starts typing something"
+                            $ E_Eyes = "down"
+                            ch_e "wow [E_Petname]"            
+                            call EmmaFaceSpecial("sly", 1) 
+                            if E_Loc == "bg teacher" and bg_current == "bg classroom":
+                                ch_e "Should you really be sending dick pics during class, [E_Petname]?"
+                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 70, 10)
+                    else:
+                            if E_Loc == "bg teacher" and bg_current == "bg classroom":
+                                call EmmaFaceSpecial("angry", 1) 
+                                $ E_Eyes = "down"
+                                "Emma glances down at your cock with a scowl."  
+                                call EmmaFaceSpecial("angry", 1)
+                                "She then, scans the class with her eyes, until she finds you"      
+                                "She looks down at her phone and starts typing something"
+                            $ E_Eyes = "down"
+                            ch_e "You shouldn't be sending these kind of texts to your teacher [E_Petname]"
+                            call EmmaFaceSpecial("sly", 1) 
+                            if E_Loc == "bg teacher" and bg_current == "bg classroom":
+                                ch_e "Specially not during classes"
+                            $ E_RecentActions.append("angry")
+                            $ E_DailyActions.append("angry") 
+
         "Ask Emma to leave" if E_Loc == bg_current:
                     call Emma_Dismissed    
                     return
@@ -118,11 +178,11 @@ label Emma_Chat:
                     call CleartheRoom("Emma",Check=1)
                     if "angry" in E_RecentActions:  
                         ch_e "You should know better than that."
-                    elif Taboo:
-                            ch_e "I don't really think we should be doing anything in public just yet. . ."                        
-                    elif _return >= 1:
-                            # if there are other girls in the room. . .
-                            ch_e "I don't really feel comfortable with these other girls around just yet."
+                    # elif Taboo:
+                    #         ch_e "I don't really think we should be doing anything in public just yet. . ."                        
+                    # elif _return >= 1:
+                    #         # if there are other girls in the room. . .
+                    #         ch_e "I don't really feel comfortable with these other girls around just yet."
                     elif ApprovalCheck("Emma", 600, "LI"):
                         call EmmaFace("sexy")
                         ch_e "I suppose. . ."
@@ -232,8 +292,11 @@ label Emma_Chat_Minimal:
     if "angry" in E_RecentActions:
                 ch_e "I would not press my luck if I were you."
                 return
+    if E_Loc == bg_current:
+            ch_e "What was it you wanted to discuss, [E_Petname]?"
+    #else:
     menu:
-        ch_e "What was it you wanted to discuss, [E_Petname]?"
+        "What would you like to do?"
         "Come on over." if E_Loc != bg_current:
                     ch_e "I don't think I should be visiting students at their whim."
                     ch_e "You know my office hours."
