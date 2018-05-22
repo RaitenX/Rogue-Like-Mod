@@ -573,15 +573,15 @@ image Xavier Blink:
     .25
     repeat     
 
-image Mystique:
-    "images/NPC/Xavier_Picture.png"
+image Mystique_Picture:
+    "images/NPC/Xavier_Picture2.png"
     xalign 0.5 
     yalign 0.5
     zoom 0.7
 
 
 screen Mystique_Pic:
-    add "images/NPC/Xavier_Picture.png" xalign 0.5 yalign 0.5 zoom 0.7
+    add "images/NPC/Xavier_Picture2.png" xalign 0.5 yalign 0.5 zoom 0.7
     key "mouseup_1" action Hide("Mystique_Pic")
     #timer 10.0 action Hide("Mystique_Pic")
 

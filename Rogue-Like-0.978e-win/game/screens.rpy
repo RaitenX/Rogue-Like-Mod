@@ -1023,7 +1023,8 @@ screen P_Inventory_screen:
         textbutton "Dick Opacity 1" text_size 15 action [ SetVariable("P_CockVisible", 1)]
         if "Xavier's photo" in P_Inventory:
             textbutton "Mystique Picture" text_size 15 action Show("Mystique_Pic",transition=Pause(1))
-            textbutton "hide Picture" text_size 15 action Hide("Mystique_Pic",transition=Pause(1))
+            if renpy.get_screen("Mystique_Pic"):
+                textbutton "Hide Picture" text_size 15 action Hide("Mystique_Pic",transition=Pause(1))
         showif "dildo" in P_Inventory:
             $ Inventory_Count = Inventory_Check("dildo")
             text "Dildos: [Inventory_Count]" size 15        

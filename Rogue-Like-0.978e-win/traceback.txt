@@ -1,39 +1,23 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script Locations.rpy", line 1233, in script call
+While loading <'Image' u'images/NPC/Xavier_Picture2.png'>:
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1233, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2279, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 461, in script call
-    call Round10
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 461, in script call
     call Round10
-  File "game/script Functions.rpy", line 1056, in script call
-    call Rogue_Sleepover
-  File "game/Rogue_Scenes.rpy", line 546, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2279, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1233, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2279, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1737, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
@@ -45,7 +29,23 @@ While running game code:
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2279, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1739, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2279, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2279, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1333, in script call
     call Chat
   File "game/script Functions.rpy", line 1176, in script call
     call Rogue_Chat
@@ -59,7 +59,7 @@ While running game code:
     call Rogue_Study
   File "game/script Locations.rpy", line 521, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1851, in script call
+  File "game/script Locations.rpy", line 1853, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
@@ -67,19 +67,19 @@ While running game code:
     call Rogue_Study
   File "game/script Locations.rpy", line 521, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1851, in script call
+  File "game/script Locations.rpy", line 1853, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1851, in script call
+  File "game/script Locations.rpy", line 1853, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1737, in script call
+  File "game/script Locations.rpy", line 1739, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
@@ -91,15 +91,15 @@ While running game code:
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 2070, in script call
+  File "game/script Locations.rpy", line 2072, in script call
     call Chat
   File "game/script Functions.rpy", line 1211, in script call
     call Emma_Chat
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1851, in script call
+  File "game/script Locations.rpy", line 1853, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
@@ -107,7 +107,7 @@ While running game code:
     call Pool_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 3124, in script call
+  File "game/script Locations.rpy", line 3126, in script call
     call Round10
   File "game/script Functions.rpy", line 1074, in script call
     call Kitty_Sleepover
@@ -115,11 +115,11 @@ While running game code:
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1851, in script call
+  File "game/script Locations.rpy", line 1853, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
@@ -133,11 +133,11 @@ While running game code:
     call R_Makeout
   File "game/Rogue_Sex.rpy", line 1005, in script call
     call Sex_Dialog("Rogue",Partner)
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1801, in script call
+  File "game/script Locations.rpy", line 1803, in script call
     call Chat
   File "game/script Functions.rpy", line 1176, in script call
     call Rogue_Chat
@@ -147,41 +147,30 @@ While running game code:
     call R_Titjob
   File "game/Rogue_Sex.rpy", line 2035, in script call
     call Rogue_Caught
-  File "game/script Locations.rpy", line 127, in script
+  File "game/script Locations.rpy", line 3505, in script
     menu:
-  File "renpy/common/00action_control.rpy", line 127, in __call__
-    renpy.show_screen(self.screen, *self.args, **self.kwargs)
-Exception: Screen Mystique is not known.
-
+IOError: Couldn't find file 'images/NPC/Xavier_Picture2.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\bootstrap.py", line 305, in bootstrap
-    renpy.main.main()
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\main.py", line 499, in main
-    run(restart)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\main.py", line 147, in run
-    renpy.execution.run_context(True)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\execution.py", line 795, in run_context
-    context.run()
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 461, in script call
     call Round10
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
@@ -193,11 +182,11 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1737, in script call
+  File "game/script Locations.rpy", line 1739, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
@@ -209,7 +198,7 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1331, in script call
+  File "game/script Locations.rpy", line 1333, in script call
     call Chat
   File "game/script Functions.rpy", line 1176, in script call
     call Rogue_Chat
@@ -223,7 +212,7 @@ Full traceback:
     call Rogue_Study
   File "game/script Locations.rpy", line 521, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1851, in script call
+  File "game/script Locations.rpy", line 1853, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
@@ -231,19 +220,19 @@ Full traceback:
     call Rogue_Study
   File "game/script Locations.rpy", line 521, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1851, in script call
+  File "game/script Locations.rpy", line 1853, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1851, in script call
+  File "game/script Locations.rpy", line 1853, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1737, in script call
+  File "game/script Locations.rpy", line 1739, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
@@ -255,15 +244,15 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 2070, in script call
+  File "game/script Locations.rpy", line 2072, in script call
     call Chat
   File "game/script Functions.rpy", line 1211, in script call
     call Emma_Chat
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1851, in script call
+  File "game/script Locations.rpy", line 1853, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
@@ -271,7 +260,7 @@ Full traceback:
     call Pool_Clothes("auto", "Rogue")
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 3124, in script call
+  File "game/script Locations.rpy", line 3126, in script call
     call Round10
   File "game/script Functions.rpy", line 1074, in script call
     call Kitty_Sleepover
@@ -279,11 +268,11 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1851, in script call
+  File "game/script Locations.rpy", line 1853, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2284, in script call
     call Kitty_Leave(GirlsNum)
@@ -297,11 +286,11 @@ Full traceback:
     call R_Makeout
   File "game/Rogue_Sex.rpy", line 1005, in script call
     call Sex_Dialog("Rogue",Partner)
-  File "game/script Locations.rpy", line 1233, in script call
+  File "game/script Locations.rpy", line 1235, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2279, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 1801, in script call
+  File "game/script Locations.rpy", line 1803, in script call
     call Chat
   File "game/script Functions.rpy", line 1176, in script call
     call Rogue_Chat
@@ -311,7 +300,7 @@ Full traceback:
     call R_Titjob
   File "game/Rogue_Sex.rpy", line 2035, in script call
     call Rogue_Caught
-  File "game/script Locations.rpy", line 127, in script
+  File "game/script Locations.rpy", line 3505, in script
     menu:
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1483, in execute
     choice = renpy.exports.menu(choices, self.set)
@@ -323,34 +312,65 @@ Full traceback:
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 2553, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 3237, in interact_core
-    rv = root_widget.event(ev, x, y, 0)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 969, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 969, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 969, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\screen.py", line 653, in event
-    rv = self.child.event(ev, x, y, st)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 969, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 232, in event
-    rv = d.event(ev, x - xo, y - yo, st)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 969, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\behavior.py", line 897, in event
-    return handle_click(self.clicked)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\behavior.py", line 832, in handle_click
-    rv = run(action)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\behavior.py", line 306, in run
-    return action(*args, **kwargs)
-  File "renpy/common/00action_control.rpy", line 127, in __call__
-    renpy.show_screen(self.screen, *self.args, **self.kwargs)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\screen.py", line 1022, in show_screen
-    raise Exception("Screen %s is not known.\n" % (name[0],))
-Exception: Screen Mystique is not known.
-
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 2916, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\core.py", line 1980, in draw_screen
+    renpy.config.screen_height,
+  File "renpy/display/render.pyx", line 430, in renpy.display.render.render_screen (gen\renpy.display.render.c:6938)
+    rv = render(root, width, height, 0, 0)
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
+    surf = render(child, width, height, cst, cat)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\transition.py", line 85, in render
+    return null_render(self, width, height, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\transition.py", line 59, in null_render
+    st, at)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
+    surf = render(child, width, height, cst, cat)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
+    surf = render(child, width, height, cst, cat)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\screen.py", line 625, in render
+    child = renpy.display.render.render(self.child, w, h, st, at)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\layout.py", line 702, in render
+    surf = render(child, width, height, cst, cat)
+  File "renpy/display/render.pyx", line 110, in renpy.display.render.render (gen\renpy.display.render.c:3445)
+    cpdef render(d, object widtho, object heighto, double st, double at):
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "renpy/display/accelerator.pyx", line 108, in renpy.display.accelerator.transform_render (gen\renpy.display.accelerator.c:2047)
+    cr = render(child, widtho, heighto, st - self.child_st_base, at)
+  File "renpy/display/render.pyx", line 196, in renpy.display.render.render (gen\renpy.display.render.c:2983)
+    rv = d.render(widtho, heighto, st, at)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\im.py", line 503, in render
+    texture = cache.get(self, texture=True)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\im.py", line 212, in get
+    surf = image.load()
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\display\im.py", line 553, in load
+    surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\loader.py", line 548, in load
+    raise IOError("Couldn't find file '%s'." % name)
+IOError: Couldn't find file 'images/NPC/Xavier_Picture2.png'.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.13.2919

@@ -663,7 +663,7 @@ image Kitty_Sex_Body = LiveComposite(
             "K_Chest == 'bra'", "images/KittySex/Kitty_Sex_Under_Bra.png",
             "K_Chest == 'lace bra'", "images/KittySex/Kitty_Sex_Under_LaceBra.png",
             "K_Chest == 'darker lace bra'", "images/KittySex/Kitty_Sex_Under_DarkerLaceBra.png",
-            #"K_Chest == 'kitty lingerie top'", "images/KittySex/Kitty_Sex_KittyLingerie_Top.png",
+            "K_Chest == 'kitty lingerie top'", "images/KittySex/Kitty_Sex_KittyLingerie_Top.png",
             "K_Chest == 'orange top'", "images/KittySex/Kitty_Sex_Under_Orange.png",
             "K_Chest == 'black top'", "images/KittySex/Kitty_Sex_Under_Black.png",
             "K_Chest == 'leather top'", "images/KittySex/Kitty_Sex_Under_Leather.png",

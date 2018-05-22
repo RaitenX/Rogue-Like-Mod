@@ -225,7 +225,7 @@ label Rogue_Chat:
                 jump Emma_Chat
 
         "Talk with Kitty" if K_Loc == bg_current:
-                jump Kitty_Ch
+                jump Kitty_Chat
 
         "Never mind.":
                     return

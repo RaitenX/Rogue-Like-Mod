@@ -3579,8 +3579,10 @@ label Study_Room_Explore:
     elif Line == "left":
             if D20 >= 5 and "Xavier's photo" not in P_Inventory:            
                 "Buried under a pile of documents, you find a printed out photo."
-                "It appears to be a selfie of Mystique making out with Xavier."
-                "She's reaching down to adjust his . . . oh, {i}that's{/i} interesting."
+                #"It appears to be a selfie of Mystique making out with Xavier."
+                "It appears to be a selfie of Mystique naked with Xavier."
+                #"She's reaching down to adjust his . . . oh, {i}that's{/i} interesting."
+                "Oh, {i}that's{/i} interesting."
                 show Mystique_Picture
                 pause
                 hide Mystique_Picture
