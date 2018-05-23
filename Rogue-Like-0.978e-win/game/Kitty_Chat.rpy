@@ -4139,7 +4139,7 @@ label Kitty_Clothes:
         "Tops and bras":
             menu Kitty_Clothes_Under_Tops:  
 
-                "How about you lose the [K_Chest]?" if K_Chest:
+                "How about you lose the [K_Chest]?" if K_Chest and "swimsuit" not in K_Chest:
                     call KittyFace("bemused", 1)
                     if K_SeenChest and ApprovalCheck("Kitty", 900, TabM=2.7):
                         ch_k "Sure."    
@@ -4167,32 +4167,38 @@ label Kitty_Clothes:
                     jump Kitty_Clothes_Under_Tops 
             
                 "Try on that yellow camisole." if K_Chest != "cami":
+                    call Kitty_Swimsuit_Change_Top
                     ch_k "Ok."
                     $ K_Chest = "cami"
                     jump Kitty_Clothes_Under_Tops
 
                 "Try on that white camisole." if K_Chest != "white cami":
+                    call Kitty_Swimsuit_Change_Top
                     ch_k "Ok."
                     $ K_Chest = "white cami"
                     jump Kitty_Clothes_Under_Tops
                              
                 "Try on that orange top." if K_Chest != "orange top":
+                    call Kitty_Swimsuit_Change_Top
                     ch_k "Ok."
                     $ K_Chest = "orange top" 
                     jump Kitty_Clothes_Under_Tops  
 
                 "Try on that black mfg top." if K_Chest != "black top":
+                    call Kitty_Swimsuit_Change_Top
                     ch_k "Ok."
                     $ K_Chest = "black top" 
                     jump Kitty_Clothes_Under_Tops          
         
                 "How about that leather top?" if K_Chest != "leather top":
+                    call Kitty_Swimsuit_Change_Top
                     ch_k "Mkay."
                     $ K_Chest = "leather top"
                     jump Kitty_Clothes_Under_Tops
                     
                 "I like that strapless bra." if K_Chest != "bra":
                     if K_SeenChest or ApprovalCheck("Kitty", 1200, TabM=2):
+                        call Kitty_Swimsuit_Change_Top
                         ch_k "K."   
                         $ K_Chest = "bra"         
                     else:                
@@ -4201,6 +4207,7 @@ label Kitty_Clothes:
                         
                 "I like that lace bra." if "lace bra" in K_Inventory and K_Chest != "lace bra":
                     if K_SeenChest or ApprovalCheck("Kitty", 1300, TabM=2):
+                        call Kitty_Swimsuit_Change_Top
                         ch_k "K."   
                         $ K_Chest = "lace bra"         
                     else:                
@@ -4209,6 +4216,7 @@ label Kitty_Clothes:
 
                 "I like that darker lace bra." if "lace bra" in K_Inventory and K_Chest != "darker lace bra":
                     if K_SeenChest or ApprovalCheck("Kitty", 1300, TabM=2):
+                        call Kitty_Swimsuit_Change_Top
                         ch_k "K."   
                         $ K_Chest = "darker lace bra"         
                     else:                
@@ -4217,6 +4225,7 @@ label Kitty_Clothes:
 
                 "I like that kitty lingerie top." if K_Chest != "kitty lingerie top":
                     if K_SeenChest or ApprovalCheck("Kitty", 1300, TabM=2):
+                        call Kitty_Swimsuit_Change_Top
                         ch_k "K."   
                         $ K_Chest = "kitty lingerie top"         
                     else:                
@@ -4225,6 +4234,7 @@ label Kitty_Clothes:
                     
                 "I like that sports bra." if K_Chest != "sports bra":
                     if K_SeenChest or ApprovalCheck("Kitty", 1000, TabM=2):
+                        call Kitty_Swimsuit_Change_Top
                         ch_k "K."   
                         $ K_Chest = "sports bra"         
                     else:                
@@ -4236,11 +4246,12 @@ label Kitty_Clothes:
 
                 
                                                                                                                             #Panties        
+        
         "Panties": 
             
             menu Kitty_Clothes_Under_Panties:  
 
-                "You could lose those panties. . ." if K_Panties:
+                "You could lose those panties. . ." if K_Panties and "swimsuit" not in K_Panties:
                     call KittyFace("bemused", 1)  
                     if ApprovalCheck("Kitty", 900) and (K_Legs or (K_SeenPussy and not Taboo)):
                         #If you've got decent approval and either she's wearing pants or you've seen her pussy and it's not in public
@@ -4284,6 +4295,7 @@ label Kitty_Clothes:
 
                 "Why don't you wear the green panties instead?" if K_Panties and K_Panties != "green panties":
                     if ApprovalCheck("Kitty", 1100, TabM=3):
+                            call Kitty_Swimsuit_Change_Bottom
                             ch_k "K."
                             $ K_Panties = "green panties"  
                     else:                
@@ -4292,6 +4304,7 @@ label Kitty_Clothes:
 
                 "Why don't you wear the white panties instead?" if K_Panties and K_Panties != "white panties":
                     if ApprovalCheck("Kitty", 1100, TabM=3):
+                            call Kitty_Swimsuit_Change_Bottom
                             ch_k "K."
                             $ K_Panties = "white panties"  
                     else:                
@@ -4300,6 +4313,7 @@ label Kitty_Clothes:
                         
                 "Why don't you wear the lace panties instead?" if "lace panties" in K_Inventory and K_Panties and K_Panties != "lace panties":
                     if ApprovalCheck("Kitty", 1300, TabM=3):
+                            call Kitty_Swimsuit_Change_Bottom
                             ch_k "I guess."
                             $ K_Panties = "lace panties"
                     else:
@@ -4308,6 +4322,7 @@ label Kitty_Clothes:
 
                 "Why don't you wear the darker lace panties instead?" if "lace panties" in K_Inventory and K_Panties and K_Panties != "darker lace panties":
                     if ApprovalCheck("Kitty", 1300, TabM=3):
+                            call Kitty_Swimsuit_Change_Bottom
                             ch_k "I guess."
                             $ K_Panties = "darker lace panties"
                     else:
@@ -4316,6 +4331,7 @@ label Kitty_Clothes:
 
                 "Why don't you wear the kitty lingerie panties instead?" if K_Panties != "kitty lingerie panties":
                     if ApprovalCheck("Kitty", 1300, TabM=3):
+                            call Kitty_Swimsuit_Change_Bottom
                             ch_k "I guess."
                             $ K_Panties = "kitty lingerie panties"
                     else:
@@ -4333,6 +4349,7 @@ label Kitty_Clothes:
                                 pass
                             "Ok":
                                 jump Kitty_Clothes
+                    call Kitty_Swimsuit_Change_Bottom
                     menu:
                         ch_k "I guess. . ."
                         "How about the green ones?":
@@ -4399,8 +4416,22 @@ label Kitty_Clothes:
 
             menu Kitty_Clothes_Under_SwimSuits:
 
+                "Why don't you wear the swimsuit3" if K_Panties != "swimsuit3" or K_Chest != "swimsuit3":
+                    if ApprovalCheck("Kitty", 1200, TabM=3):
+                        ch_k "Sure."
+                        $ K_Panties = "swimsuit3"
+                        $ K_Chest = "swimsuit3"
+                    else:
+                        ch_r "I don't see how that's any business of yours, [K_Petname]."
+                    jump Kitty_Clothes_Under_SwimSuits
+
+                "Remove the swimsuit" if K_Panties == "swimsuit3" or K_Chest == "swimsuit3":
+                                call Kitty_Remove_Swimsuit
+                                jump Kitty_Clothes_Under_SwimSuits
+
                 "Why don't you wear the purple bikini bra?" if K_Chest != "purple bikini bra":
                     if ApprovalCheck("Kitty", 1100, TabM=3):
+                            call Kitty_Swimsuit_Change_Top
                             ch_k "K."
                             $ K_Chest = "purple bikini bra"  
                     else:                
@@ -4409,6 +4440,7 @@ label Kitty_Clothes:
 
                 "Why don't you wear the purple bikini panties?" if K_Panties != "purple bikini panties":
                     if ApprovalCheck("Kitty", 1100, TabM=3):
+                            call Kitty_Swimsuit_Change_Bottom
                             ch_k "K."
                             $ K_Panties = "purple bikini panties"  
                     else:                
@@ -4417,20 +4449,11 @@ label Kitty_Clothes:
 
                 "Why don't you wear the red bikini bra?" if K_Chest != "red bikini bra":
                     if ApprovalCheck("Kitty", 1100, TabM=3):
+                            call Kitty_Swimsuit_Change_Top
                             ch_k "K."
                             $ K_Chest = "red bikini bra"  
                     else:                
                             ch_k "I don't think that's any of your beeswax."
-                    jump Kitty_Clothes_Under_SwimSuits
-
-                "How about that purple bikini top?" if K_Chest != "purple bikini bra":
-                    ch_k "Mkay."
-                    $ K_Chest = "purple bikini bra"
-                    jump Kitty_Clothes_Under_SwimSuits
-
-                "How about that red bikini top?" if K_Chest != "red bikini bra":
-                    ch_k "Mkay."
-                    $ K_Chest = "red bikini bra"
                     jump Kitty_Clothes_Under_SwimSuits
 
                 "Nevermind":
@@ -5529,4 +5552,126 @@ label Kitty_Show_Plug:
         "Very happy.":
             pass
 
+    return
+
+label Kitty_Swimsuit_Change_Top:
+    if K_Chest != "swimsuit3":
+        return
+
+    if ApprovalCheck("Kitty", 900) and (K_Legs or (K_SeenPussy and not Taboo)):
+        #If you've got decent approval and either she's wearing pants or you've seen her pussy and it's not in public
+        
+        if ApprovalCheck("Kitty", 850, "L"):               
+                ch_k "Well, if you ask me nicely. . ."
+        elif ApprovalCheck("Kitty", 500, "O"):
+                ch_k "For you, ok."
+        elif ApprovalCheck("Kitty", 350, "I"):
+                ch_k "[[snort]."
+        else:
+                ch_k "Yeah, I guess."         
+    else:                       #low approval or not wearing pants or in public 
+        if ApprovalCheck("Kitty", 1100, "LI", TabM=3) and K_Love > K_Inbt:               
+                ch_k "Well, not that I mind you seeing it. . ."
+        elif ApprovalCheck("Kitty", 700, "OI", TabM=3) and K_Obed > K_Inbt:
+                ch_k "I guess. . ."
+        elif ApprovalCheck("Kitty", 600, "I", TabM=3):
+                ch_k "Hrmm. . ."
+        elif ApprovalCheck("Kitty", 1300, TabM=3):
+                ch_k "Okay, okay."
+        else: 
+                call KittyFace("surprised")
+                $ K_Brows = "angry"
+                if Taboo:
+                    ch_k "Not in public, [K_Petname]!"
+                else:
+                    ch_k "I don't like you that much, [K_Petname]!"
+                jump Kitty_Clothes_Under_Top  
+    
+    $ K_Panties = 0  
+    return
+
+
+label Kitty_Swimsuit_Change_Bottom:
+    if K_Panties != "swimsuit3":
+        return
+
+    if K_SeenChest and ApprovalCheck("Kitty", 900, TabM=2.7):
+        ch_k "Sure."    
+    elif ApprovalCheck("Kitty", 1100, TabM=2):
+        if Taboo:
+            ch_k "I'm kind of nervous. . ."
+        else:
+            ch_k "If it's just you. . ."
+    elif K_Over == "pink top" or K_Over == "dark top" and ApprovalCheck("Kitty", 600, TabM=2):
+        ch_k "This look is a bit revealing. . ."  
+    elif K_Over == "red shirt" or K_Over == "purple shirt" and ApprovalCheck("Kitty", 500, TabM=2):
+        ch_k "I guess I could. . ."  
+    elif not K_Over:
+        ch_k "Not without a little coverage, for modesty."
+        jump Kitty_Clothes_Under_Panties 
+    else:
+        ch_k "I don't think so, [K_Petname]."
+        jump Kitty_Clothes_Under_Panties 
+
+    $ K_Chest = 0
+    return
+
+label Kitty_Remove_Swimsuit:
+    if K_Chest != "swimsuit3":
+        return
+
+    if ApprovalCheck("Kitty", 900) and (K_Legs or (K_SeenPussy and not Taboo)):
+        #If you've got decent approval and either she's wearing pants or you've seen her pussy and it's not in public
+        
+        if ApprovalCheck("Kitty", 850, "L"):               
+                pass
+        elif ApprovalCheck("Kitty", 500, "O"):
+                pass
+        elif ApprovalCheck("Kitty", 350, "I"):
+                pass
+        else:
+                pass
+    else:                       #low approval or not wearing pants or in public 
+        if ApprovalCheck("Kitty", 1100, "LI", TabM=3) and K_Love > K_Inbt:               
+                pass
+        elif ApprovalCheck("Kitty", 700, "OI", TabM=3) and K_Obed > K_Inbt:
+                pass
+        elif ApprovalCheck("Kitty", 600, "I", TabM=3):
+                pass
+        elif ApprovalCheck("Kitty", 1300, TabM=3):
+                pass
+        else: 
+                call KittyFace("surprised")
+                $ K_Brows = "angry"
+                if Taboo:
+                    ch_k "Not in public, [K_Petname]!"
+                else:
+                    ch_k "I don't like you that much, [K_Petname]!"
+                jump Kitty_Clothes_Under_Top  
+    
+    call Kitty_Remove_Swimsuit_Top
+    $ K_Panties = 0  
+    return
+
+label Kitty_Remove_Swimsuit_Top:
+
+    if K_SeenChest and ApprovalCheck("Kitty", 900, TabM=2.7):
+        ch_k "Sure."    
+    elif ApprovalCheck("Kitty", 1100, TabM=2):
+        if Taboo:
+            ch_k "I'm kind of nervous. . ."
+        else:
+            ch_k "If it's just you. . ."
+    elif K_Over == "pink top" or K_Over == "dark top" and ApprovalCheck("Kitty", 600, TabM=2):
+        ch_k "This look is a bit revealing. . ."  
+    elif K_Over == "red shirt" or K_Over == "purple shirt" and ApprovalCheck("Kitty", 500, TabM=2):
+        ch_k "I guess I could. . ."  
+    elif not K_Over:
+        ch_k "Not without a little coverage, for modesty."
+        jump Kitty_Clothes_Under_SwimSuits 
+    else:
+        ch_k "I don't think so, [K_Petname]."
+        jump Kitty_Clothes_Under_SwimSuits 
+
+    $ K_Chest = 0
     return

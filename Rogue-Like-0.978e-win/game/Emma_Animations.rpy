@@ -91,9 +91,9 @@ image Emma_Sprite:
         (0,0), ConditionSwitch(                                                                         #Personal Wetness            
             "E_Legs or not E_Wet", Null(),
             "E_Panties and not E_PantiesDown and E_Wet < 2", Null(),
-            "E_Panties and not E_PantiesDown", "images/EmmaSprite/Emma_Sprite_Wet1.png",
-            "E_Wet == 2", "images/EmmaSprite/Emma_Sprite_Wet2.png",
-            "True", "images/EmmaSprite/Emma_Sprite_Wet1.png",
+            "E_Panties and not E_PantiesDown", "images/EmmaSprite/EmmaSprite_Wet1.png",
+            "E_Wet == 2", "images/EmmaSprite/EmmaSprite_Wet2.png",
+            "True", "images/EmmaSprite/EmmaSprite_Wet1.png",
             ),     
         (0,0), ConditionSwitch(                                                                         #pussy spunk 
             "E_Legs", Null(),

@@ -4837,10 +4837,10 @@ label Rogue_Clothes:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
         
     menu Rogue_Clothes_Under: 
-        "Tops":
+        "Tops and bras":
             menu Rogue_Clothes_Under_Top:
                                                                                                             # Tops    
-                "How about you lose the [R_Chest]?" if R_Chest:
+                "How about you lose the [R_Chest]?" if R_Chest and "swimsuit" not in R_Chest:
                         call RogueFace("bemused", 1)
                         if R_SeenChest and ApprovalCheck("Rogue", 1100, TabM=2):
                             ch_r "Sure."    
@@ -4892,52 +4892,61 @@ label Rogue_Clothes:
                         jump Rogue_Clothes_Under_Top 
 
                 "Try on that cheerleader top." if R_Chest != "cheerleader":
+                                call Rogue_Swimsuit_Change_Top
                                 $ R_Chest = "cheerleader" 
                                 jump Rogue_Clothes_Under_Top
                     
                 "Try on that black tank top." if R_Chest != "tank":
+                                call Rogue_Swimsuit_Change_Top
                                 $ R_Chest = "tank"  
                                 jump Rogue_Clothes_Under_Top
         
                 "Try on that short black tank top." if R_Chest != "tank short":
+                                call Rogue_Swimsuit_Change_Top
                                 $ R_Chest = "tank short" 
                                 jump Rogue_Clothes_Under_Top
 
                 "Try on that short black slut tank top." if R_Chest != "slut tank short":
+                                call Rogue_Swimsuit_Change_Top
                                 $ R_Chest = "slut tank short" 
                                 jump Rogue_Clothes_Under_Top
 
                 "Try on that green crop top." if R_Chest != "green crop top":
+                                call Rogue_Swimsuit_Change_Top
                                 $ R_Chest = "green crop top" 
                                 jump Rogue_Clothes_Under_Top
 
                 "Try on that black crop top." if R_Chest != "black crop top":
+                                call Rogue_Swimsuit_Change_Top
                                 $ R_Chest = "black crop top" 
                                 jump Rogue_Clothes_Under_Top
 
                 "I like that buttoned tank top." if (R_Chest != "buttoned tank" and R_Over != "mesh top") or (R_Chest != "buttoned tank" and R_Over != "white mesh top") or (R_Chest != "buttoned tank" and R_Over != "blue mesh top") or (R_Chest != "buttoned tank" and R_Over != "yellow mesh top") or (R_Chest != "buttoned tank" and R_Over != "red mesh top") or (R_Chest != "buttoned tank" and R_Over != "black mesh top"):
+                                call Rogue_Swimsuit_Change_Top
                                 $ R_Chest = "buttoned tank"  
                                 jump Rogue_Clothes_Under_Top
                     
                 "I like your sport bras.":
                         if (R_SeenChest and ApprovalCheck("Rogue", 600)) or ApprovalCheck("Rogue", 900, TabM=2):
-                         menu:
-                           ch_r "Oh? Which color suits your fancy then?"
-                           "Green looks nice on you." if R_Chest != "sports bra":
-                               ch_r "Sure."
-                               $ R_Chest = "sports bra" 
-                           "I like the red one." if R_Chest != "red sports bra":
-                               ch_r "Sure."
-                               $ R_Chest = "red sports bra"
-                           "The blue one suits you." if R_Chest != "blue sports bra":
-                               ch_r "Sure."   
-                               $ R_Chest = "blue sports bra"         
+                            call Rogue_Swimsuit_Change_Top
+                            menu:
+                                ch_r "Oh? Which color suits your fancy then?"
+                                "Green looks nice on you." if R_Chest != "sports bra":
+                                    ch_r "Sure."
+                                    $ R_Chest = "sports bra" 
+                                "I like the red one." if R_Chest != "red sports bra":
+                                    ch_r "Sure."
+                                    $ R_Chest = "red sports bra"
+                                "The blue one suits you." if R_Chest != "blue sports bra":
+                                    ch_r "Sure."   
+                                    $ R_Chest = "blue sports bra"         
                         else:
                             ch_r "I don't know about wearing it with this. . ." 
                         jump Rogue_Clothes_Under_Top
 
                 "I like that black bra." if R_Chest != "bra":
                         if (R_SeenChest and ApprovalCheck("Rogue", 600)) or ApprovalCheck("Rogue", 1100, TabM=2):
+                            call Rogue_Swimsuit_Change_Top
                             ch_r "Sure."   
                             $ R_Chest = "bra"         
                         else:                
@@ -4946,6 +4955,7 @@ label Rogue_Clothes:
 
                 "I like that lace bra." if "lace bra" in R_Inventory and R_Chest != "lace bra":
                         if (R_SeenChest and ApprovalCheck("Rogue", 800)) or ApprovalCheck("Rogue", 1100, TabM=2):
+                            call Rogue_Swimsuit_Change_Top
                             ch_r "Sure."   
                             $ R_Chest = "lace bra"         
                         else:                
@@ -4954,6 +4964,7 @@ label Rogue_Clothes:
 
                 "Just put some tape on your nipples." if R_Chest != "tape":
                         if (R_SeenChest and ApprovalCheck("Rogue", 1000)) or ApprovalCheck("Rogue", 1200, TabM=2):
+                            call Rogue_Swimsuit_Change_Top
                             ch_r "Sure."   
                             $ R_Chest = "tape"         
                         else:                
@@ -4962,114 +4973,179 @@ label Rogue_Clothes:
 
                 "Nevermind.":
                         jump Rogue_Clothes_Under
-        
-        "The thigh-high hose would look good with that." if R_Hose != "stockings" and R_Legs != "pants":     
-                        $ R_Hose = "stockings"  
-        "The pantyhose would look good with that." if R_Hose != "pantyhose" and R_Legs != "pants":     
-                        $ R_Hose = "pantyhose" 
-        "The stockings would look good with that." if R_Hose != "stockings and garterbelt" and "stockings and garterbelt" in R_Inventory and R_Legs != "pants":     
-                        $ R_Hose = "stockings and garterbelt"  
-        "Your ripped pantyhose would look good with that." if R_Hose != "ripped pantyhose" and "ripped pantyhose" in R_Inventory and R_Legs != "pants":     
-                        $ R_Hose = "ripped pantyhose"                
-        "You could use that fishnet" if R_Hose != "fishnet" and R_Legs != "pants":
-                        $ R_Hose = "fishnet" 
 
-        "You could lose the hose." if R_Hose and R_Hose != 'ripped tights' and R_Hose != 'tights':     
-                        $ R_Hose = 0  
+        "Panties":
+            menu Rogue_Clothes_Under_Panties:
+
+                "You could lose those panties. . ." if R_Panties and (R_Panties != "shorts" or R_Panties != "red shorts" or R_Panties != "blue shorts") and "swimsuit" not in R_Panties:
+                                call RogueFace("bemused", 1)
+                                if (R_SeenPussy and ApprovalCheck("Rogue", 900)) and not Taboo: # You've seen her pussy
+                                    if ApprovalCheck("Rogue", 850, "L", TabM=2):               
+                                        ch_r "Well aren't you cheeky. . ."
+                                    elif ApprovalCheck("Rogue", 500, "O", TabM=2):
+                                        ch_r "Fine by me."
+                                    elif ApprovalCheck("Rogue", 350, "I", TabM=2):
+                                        ch_r "Oooh, naughty."                            
+                                    else:
+                                        ch_r "Oh, I guess I could."         
+                                else:                       #You've never seen it
+                                    if ApprovalCheck("Rogue", 1100, "LI", TabM=2):               
+                                        ch_r "Well aren't you cheeky. . . I suppose I could give you a show. . ."
+                                    elif ApprovalCheck("Rogue", 750, "OI", TabM=2):
+                                        ch_r "If that's what you want."
+                                    elif ApprovalCheck("Rogue", 500, "I", TabM=2):
+                                        ch_r "Oooh, naughty."
+                                    elif ApprovalCheck("Rogue", 1400, TabM=3):
+                                        ch_r "Oh, fine. You've been a good boy."
+                                    else: 
+                                        call RogueFace("surprised")
+                                        $ R_Brows = "angry"
+                                        ch_r "Not with you around,[R_Petname]!"
+                                        jump Rogue_Clothes  
+                                
+                                $ R_Panties = 0  
+                                if not R_Legs or (R_Legs == "skirtshort" or R_Legs == "cheerleader skirtshort"):                
+                                    call Rogue_First_Bottomless
+                                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 2)  
+                                jump Rogue_Clothes_Under_Panties
+                                    
+                "Why don't you wear the green panties instead?" if R_Panties and R_Panties != "green panties":
+                                if ApprovalCheck("Rogue", 1000, TabM=3):
+                                    call Rogue_Swimsuit_Change_Bottom
+                                    ch_r "Sure, ok."
+                                    $ R_Panties = "green panties"  
+                                elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
+                                    ch_r "Heh, no, I think I'll stick with these, thanks."
+                                else:
+                                    ch_r "I think I'll choose my own underwear, thank you."
         
-        "You could lose those panties. . ." if R_Panties and (R_Panties != "shorts" or R_Panties != "red shorts" or R_Panties != "blue shorts"):
-                        call RogueFace("bemused", 1)
-                        if (R_SeenPussy and ApprovalCheck("Rogue", 900)) and not Taboo: # You've seen her pussy
-                            if ApprovalCheck("Rogue", 850, "L", TabM=2):               
-                                ch_r "Well aren't you cheeky. . ."
-                            elif ApprovalCheck("Rogue", 500, "O", TabM=2):
-                                ch_r "Fine by me."
-                            elif ApprovalCheck("Rogue", 350, "I", TabM=2):
-                                ch_r "Oooh, naughty."                            
-                            else:
-                                ch_r "Oh, I guess I could."         
-                        else:                       #You've never seen it
-                            if ApprovalCheck("Rogue", 1100, "LI", TabM=2):               
-                                ch_r "Well aren't you cheeky. . . I suppose I could give you a show. . ."
-                            elif ApprovalCheck("Rogue", 750, "OI", TabM=2):
-                                ch_r "If that's what you want."
-                            elif ApprovalCheck("Rogue", 500, "I", TabM=2):
-                                ch_r "Oooh, naughty."
-                            elif ApprovalCheck("Rogue", 1400, TabM=3):
-                                ch_r "Oh, fine. You've been a good boy."
-                            else: 
-                                call RogueFace("surprised")
-                                $ R_Brows = "angry"
-                                ch_r "Not with you around,[R_Petname]!"
-                                jump Rogue_Clothes  
+                "Why don't you wear the black large panties instead?" if R_Panties and R_Panties != "black large panties":
+                                if ApprovalCheck("Rogue", 1000, TabM=3):
+                                    call Rogue_Swimsuit_Change_Bottom
+                                    ch_r "Sure, ok."
+                                    $ R_Panties = "black large panties"  
+                                elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
+                                    ch_r "Heh, no, I think I'll stick with these, thanks."
+                                else:
+                                    ch_r "I think I'll choose my own underwear, thank you."
+                                jump Rogue_Clothes_Under_Panties
+
                         
-                        $ R_Panties = 0  
-                        if not R_Legs or (R_Legs == "skirtshort" or R_Legs == "cheerleader skirtshort"):                
-                            call Rogue_First_Bottomless
-                            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 2)  
-                            
-        "Why don't you wear the green panties instead?" if R_Panties and R_Panties != "green panties":
-                        if ApprovalCheck("Rogue", 1000, TabM=3):
-                            ch_r "Sure, ok."
-                            $ R_Panties = "green panties"  
-                        elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
-                            ch_r "Heh, no, I think I'll stick with these, thanks."
-                        else:
-                            ch_r "I think I'll choose my own underwear, thank you."
+                "Why don't you wear the black panties instead?" if R_Panties and R_Panties != "black panties":
+                                if ApprovalCheck("Rogue", 1100, TabM=3):
+                                    call Rogue_Swimsuit_Change_Bottom
+                                    ch_r "Sure."
+                                    $ R_Panties = "black panties"
+                                elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
+                                    ch_r "Heh, no, I think I'll stick with these, thanks."
+                                else:
+                                    ch_r "I don't see how that's any business of yours, [R_Petname]."
+                                jump Rogue_Clothes_Under_Panties
 
-        "Why don't you wear the black large panties instead?" if R_Panties and R_Panties != "black large panties":
-                        if ApprovalCheck("Rogue", 1000, TabM=3):
-                            ch_r "Sure, ok."
-                            $ R_Panties = "black large panties"  
-                        elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
-                            ch_r "Heh, no, I think I'll stick with these, thanks."
-                        else:
-                            ch_r "I think I'll choose my own underwear, thank you."
-                
-        "Why don't you wear the black panties instead?" if R_Panties and R_Panties != "black panties":
-                        if ApprovalCheck("Rogue", 1100, TabM=3):
-                            ch_r "Sure."
-                            $ R_Panties = "black panties"
-                        elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
-                            ch_r "Heh, no, I think I'll stick with these, thanks."
-                        else:
-                            ch_r "I don't see how that's any business of yours, [R_Petname]."
-                            
-        "Why don't you wear the lace panties instead?" if "lace panties" in R_Inventory and R_Panties and R_Panties != "lace panties":
-                        if ApprovalCheck("Rogue", 1200, TabM=3):
-                            ch_r "Sure."
-                            $ R_Panties = "lace panties"
-                        elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
-                            ch_r "Heh, no, I think I'll stick with these, thanks."
-                        else:
-                            ch_r "I don't see how that's any business of yours, [R_Petname]."
-                
-        "You know, you could wear some panties with that. . ." if not R_Panties:
-                        call RogueFace("bemused", 1)
-                        if (R_Love+R_Obed) <= (1.5* R_Inbt):
-                            $ R_Mouth = "smile"
-                            ch_r "No thanks, [R_Petname]."
-                            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 2)
-                            menu:
-                                "Wear them":
-                                    pass
-                                "Ok":
-                                    jump Rogue_Clothes
-                        ch_r "Well, I suppose you're right. . ."
-                        menu:
-                            extend ""
-                            "How about the green ones?":
-                                ch_r "Sure, ok."
-                                $ R_Panties = "green panties"
-                            "How about the black large ones?":
-                                ch_r "Sure, ok."
-                                $ R_Panties = "black large panties"
-                            "How about the black ones?":
-                                ch_r "Alright."                
-                                $ R_Panties  = "black panties"
-                            "How about the lace ones?" if "lace panties" in R_Inventory:
-                                ch_r "Alright."                
-                                $ R_Panties  = "lace panties"
+                                    
+                "Why don't you wear the lace panties instead?" if "lace panties" in R_Inventory and R_Panties and R_Panties != "lace panties":
+                                if ApprovalCheck("Rogue", 1200, TabM=3):
+                                    call Rogue_Swimsuit_Change_Bottom
+                                    ch_r "Sure."
+                                    $ R_Panties = "lace panties"
+                                elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
+                                    ch_r "Heh, no, I think I'll stick with these, thanks."
+                                else:
+                                    ch_r "I don't see how that's any business of yours, [R_Petname]."
+                                jump Rogue_Clothes_Under_Panties
+        
+                "You know, you could wear some panties with that. . ." if not R_Panties:
+                                call RogueFace("bemused", 1)
+                                if (R_Love+R_Obed) <= (1.5* R_Inbt):
+                                    $ R_Mouth = "smile"
+                                    ch_r "No thanks, [R_Petname]."
+                                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 2)
+                                    menu:
+                                        "Wear them":
+                                            pass
+                                        "Ok":
+                                            jump Rogue_Clothes
+                                call Rogue_Swimsuit_Change_Bottom
+                                ch_r "Well, I suppose you're right. . ."
+                                menu:
+                                    extend ""
+                                    "How about the green ones?":
+                                        ch_r "Sure, ok."
+                                        $ R_Panties = "green panties"
+                                    "How about the black large ones?":
+                                        ch_r "Sure, ok."
+                                        $ R_Panties = "black large panties"
+                                    "How about the black ones?":
+                                        ch_r "Alright."                
+                                        $ R_Panties  = "black panties"
+                                    "How about the lace ones?" if "lace panties" in R_Inventory:
+                                        ch_r "Alright."                
+                                        $ R_Panties  = "lace panties"
+                                jump Rogue_Clothes_Under_Panties
+
+                "Nevermind.":
+                        jump Rogue_Clothes_Under
+
+        "Hoses and stockings":
+            menu Rogue_Clothes_Under_Hoses:
+        
+                "The thigh-high hose would look good with that." if R_Hose != "stockings" and R_Legs != "pants":     
+                                $ R_Hose = "stockings"  
+                                jump Rogue_Clothes_Under_Hoses
+                "The pantyhose would look good with that." if R_Hose != "pantyhose" and R_Legs != "pants":     
+                                $ R_Hose = "pantyhose" 
+                                jump Rogue_Clothes_Under_Hoses
+                "The stockings would look good with that." if R_Hose != "stockings and garterbelt" and "stockings and garterbelt" in R_Inventory and R_Legs != "pants":     
+                                $ R_Hose = "stockings and garterbelt"  
+                                jump Rogue_Clothes_Under_Hoses
+                "Your ripped pantyhose would look good with that." if R_Hose != "ripped pantyhose" and "ripped pantyhose" in R_Inventory and R_Legs != "pants":     
+                                $ R_Hose = "ripped pantyhose"                
+                                jump Rogue_Clothes_Under_Hoses
+                "You could use that fishnet" if R_Hose != "fishnet" and R_Legs != "pants":
+                                $ R_Hose = "fishnet" 
+                                jump Rogue_Clothes_Under_Hoses
+        
+                "You could lose the hose." if R_Hose and R_Hose != 'ripped tights' and R_Hose != 'tights':     
+                                $ R_Hose = 0 
+                                jump Rogue_Clothes_Under_Hoses
+
+                "Nevermind.":
+                        jump Rogue_Clothes_Under 
+
+        "Swimsuits":
+
+            menu Rogue_Clothes_Under_SwimSuits:
+
+                "Why don't you wear the swimsuit1" if R_Panties != "swimsuit1" or R_Chest != "swimsuit1":
+                                if ApprovalCheck("Rogue", 800, TabM=3):
+                                    ch_r "Sure."
+                                    $ R_Panties = "swimsuit1"
+                                    $ R_Chest = "swimsuit1"
+                                # elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
+                                #     ch_r "Heh, no, I think I'll stick with these, thanks."
+                                else:
+                                    ch_r "I don't see how that's any business of yours, [R_Petname]."
+                                jump Rogue_Clothes_Under_SwimSuits
+        
+                "Why don't you wear the swimsuit2" if R_Panties != "swimsuit2" or R_Chest != "swimsuit2":
+                                if ApprovalCheck("Rogue", 1200, TabM=3):
+                                    ch_r "Sure."
+                                    $ R_Panties = "swimsuit2"
+                                    $ R_Chest = "swimsuit2"
+                                # elif (R_Panties == "shorts" or R_Panties == "red shorts" or R_Panties == "blue shorts"):
+                                #     ch_r "Heh, no, I think I'll stick with these, thanks."
+                                else:
+                                    ch_r "I don't see how that's any business of yours, [R_Petname]."
+                                jump Rogue_Clothes_Under_SwimSuits
+
+                "Remove the swimsuit" if R_Panties == "swimsuit2" or R_Chest == "swimsuit2" or R_Panties == "swimsuit1" or R_Chest == "swimsuit1":
+                                call Rogue_Remove_Swimsuit
+                                jump Rogue_Clothes_Under_SwimSuits
+
+                "Nevermind.":
+                        jump Rogue_Clothes_Under 
+        
+        
         "Never mind":
                         pass
     jump Rogue_Clothes
@@ -6020,6 +6096,174 @@ label Rogue_Show_Plug:
             pass
 
     return
+
+label Rogue_Swimsuit_Change_Top:
+    if R_Chest != "swimsuit1" and R_Chest != "swimsuit2":
+        return
+    if (R_SeenPussy and ApprovalCheck("Rogue", 900)) and not Taboo: # You've seen her pussy
+        if ApprovalCheck("Rogue", 850, "L", TabM=2):               
+            ch_r "Well aren't you cheeky. . ."
+        elif ApprovalCheck("Rogue", 500, "O", TabM=2):
+            ch_r "Fine by me."
+        elif ApprovalCheck("Rogue", 350, "I", TabM=2):
+            ch_r "Oooh, naughty."                            
+        else:
+            ch_r "Oh, I guess I could."         
+    else:                       #You've never seen it
+        if ApprovalCheck("Rogue", 1100, "LI", TabM=2):               
+            ch_r "Well aren't you cheeky. . . I suppose I could give you a show. . ."
+        elif ApprovalCheck("Rogue", 750, "OI", TabM=2):
+            ch_r "If that's what you want."
+        elif ApprovalCheck("Rogue", 500, "I", TabM=2):
+            ch_r "Oooh, naughty."
+        elif ApprovalCheck("Rogue", 1400, TabM=3):
+            ch_r "Oh, fine. You've been a good boy."
+        else: 
+            call RogueFace("surprised")
+            $ R_Brows = "angry"
+            ch_r "Not with you around,[R_Petname]!"
+            jump Rogue_Clothes_Under_Top  
+    
+    $ R_Panties = 0  
+    return
+
+label Rogue_Swimsuit_Change_Bottom:
+    if R_Panties != "swimsuit1" and R_Panties != "swimsuit2":
+        return
+    if R_SeenChest and ApprovalCheck("Rogue", 1100, TabM=2):
+        ch_r "Sure."    
+    elif ApprovalCheck("Rogue", 1100, TabM=2):
+        ch_r "I guess I don't really mind if you see them. . ."
+    elif R_Over == "hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
+        ch_r "I guess this covers enough. . ."
+    elif R_Over == "bhoodie" and ApprovalCheck("Rogue", 500, TabM=2):
+        ch_r "I guess this covers enough. . ."
+    elif R_Over == "red hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
+        ch_r "I guess this covers enough. . ."
+    elif R_Over == "yellow hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
+        ch_r "I guess this covers enough. . ."
+    elif R_Over == "black hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
+        ch_r "I guess this covers enough. . ."
+    elif R_Over == "white hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
+        ch_r "I guess this covers enough. . ."      
+    elif R_Over == "pink top" and ApprovalCheck("Rogue", 950, TabM=2):
+        ch_r "This look is a bit revealing. . ."  
+        call Rogue_First_Topless 
+    elif R_Over == "red top" and ApprovalCheck("Rogue", 950, TabM=2):
+        ch_r "This look is a bit revealing. . ."  
+        call Rogue_First_Topless      
+    elif R_Over == "mesh top":
+        ch_r "In this top? That would leave nothing to the imagination!" 
+        jump Rogue_Clothes_Under_Panties
+    elif R_Over == "white mesh top":
+        ch_r "In this top? That would leave nothing to the imagination!" 
+        jump Rogue_Clothes_Under_Panties
+    elif R_Over == "red mesh top":
+        ch_r "In this top? That would leave nothing to the imagination!" 
+        jump Rogue_Clothes_Under_Panties
+    elif R_Over == "yellow mesh top":
+        ch_r "In this top? That would leave nothing to the imagination!" 
+        jump Rogue_Clothes_Under_Panties
+    elif R_Over == "black mesh top":
+        ch_r "In this top? That would leave nothing to the imagination!" 
+        jump Rogue_Clothes_Under_Panties
+    elif R_Over == "blue mesh top":
+        ch_r "In this top? That would leave nothing to the imagination!" 
+        jump Rogue_Clothes_Under_Panties
+    elif not R_Over:
+        ch_r "Not without a little coverage, for modesty."
+        jump Rogue_Clothes_Under_Panties                            
+    else:
+        ch_r "I don't think so, [R_Petname]."
+        jump Rogue_Clothes_Under_Panties 
+
+    $ R_Chest = 0
+    return
+
+label Rogue_Remove_Swimsuit:
+    if R_Chest != "swimsuit1" and R_Chest != "swimsuit2":
+        return
+
+    if (R_SeenPussy and ApprovalCheck("Rogue", 900)) and not Taboo: # You've seen her pussy
+        if ApprovalCheck("Rogue", 850, "L", TabM=2):               
+            pass
+        elif ApprovalCheck("Rogue", 500, "O", TabM=2):
+            pass
+        elif ApprovalCheck("Rogue", 350, "I", TabM=2):
+            pass
+        else:
+            pass
+    else:                       #You've never seen it
+        if ApprovalCheck("Rogue", 1100, "LI", TabM=2):               
+            pass
+        elif ApprovalCheck("Rogue", 750, "OI", TabM=2):
+            pass
+        elif ApprovalCheck("Rogue", 500, "I", TabM=2):
+            pass
+        elif ApprovalCheck("Rogue", 1400, TabM=3):
+            pass
+        else: 
+            call RogueFace("surprised")
+            $ R_Brows = "angry"
+            ch_r "Not with you around,[R_Petname]!"
+            jump Rogue_Clothes_Under_SwimSuits
+    
+    call Rogue_Remove_Swimsuit_Top
+    $ R_Panties = 0  
+    return
+
+label Rogue_Remove_Swimsuit_Top:
+
+    if R_SeenChest and ApprovalCheck("Rogue", 1100, TabM=2):
+        ch_r "Sure."    
+    elif ApprovalCheck("Rogue", 1100, TabM=2):
+        ch_r "I guess I don't really mind if you see them. . ."
+    elif R_Over == "hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
+        ch_r "I guess this covers enough. . ."
+    elif R_Over == "bhoodie" and ApprovalCheck("Rogue", 500, TabM=2):
+        ch_r "I guess this covers enough. . ."
+    elif R_Over == "red hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
+        ch_r "I guess this covers enough. . ."
+    elif R_Over == "yellow hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
+        ch_r "I guess this covers enough. . ."
+    elif R_Over == "black hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
+        ch_r "I guess this covers enough. . ."
+    elif R_Over == "white hoodie" and ApprovalCheck("Rogue", 500, TabM=2):
+        ch_r "I guess this covers enough. . ."      
+    elif R_Over == "pink top" and ApprovalCheck("Rogue", 950, TabM=2):
+        ch_r "This look is a bit revealing. . ."  
+        call Rogue_First_Topless 
+    elif R_Over == "red top" and ApprovalCheck("Rogue", 950, TabM=2):
+        ch_r "This look is a bit revealing. . ."  
+        call Rogue_First_Topless      
+    elif R_Over == "mesh top":
+        ch_r "In this top? That would leave nothing to the imagination!" 
+        jump Rogue_Clothes_Under_SwimSuits
+    elif R_Over == "white mesh top":
+        ch_r "In this top? That would leave nothing to the imagination!" 
+        jump Rogue_Clothes_Under_SwimSuits
+    elif R_Over == "red mesh top":
+        ch_r "In this top? That would leave nothing to the imagination!" 
+        jump Rogue_Clothes_Under_SwimSuits
+    elif R_Over == "yellow mesh top":
+        ch_r "In this top? That would leave nothing to the imagination!" 
+        jump Rogue_Clothes_Under_SwimSuits
+    elif R_Over == "black mesh top":
+        ch_r "In this top? That would leave nothing to the imagination!" 
+        jump Rogue_Clothes_Under_SwimSuits
+    elif R_Over == "blue mesh top":
+        ch_r "In this top? That would leave nothing to the imagination!" 
+        jump Rogue_Clothes_Under_SwimSuits
+    elif not R_Over:
+        ch_r "Not without a little coverage, for modesty."
+        jump Rogue_Clothes_Under_SwimSuits                            
+    else:
+        ch_r "I don't think so, [R_Petname]."
+        jump Rogue_Clothes_Under_SwimSuits 
+
+    $ R_Chest = 0
+    return
+
     
     
     

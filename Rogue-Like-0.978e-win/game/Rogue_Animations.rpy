@@ -74,6 +74,7 @@ image Rogue:
             ),
         (0,0), ConditionSwitch(                                                                         #Panties            
             "not R_Panties", Null(),
+            "R_Panties == 'swimsuit1' or R_Panties == 'swimsuit2'", Null(),
             "R_Legs == 'pants' and not R_Upskirt", "images/RogueSprite/Rogue_panties.png",             
             "R_Panties == 'shorts' and R_PantiesDown and R_Wet > 1", "images/RogueSprite/Rogue_shorts_down_wet.png",
             "R_Panties == 'red shorts' and R_PantiesDown and R_Wet > 1", "images/RogueSprite/Rogue_ryshorts_down_wet.png",
@@ -98,9 +99,71 @@ image Rogue:
             "R_Panties == 'lace panties' and R_PantiesDown", "images/RogueSprite/Rogue_panties_down.png",      
             "R_Panties == 'black panties' and R_PantiesDown", "images/RogueSprite/Rogue_panties_down.png",      
             "R_Panties == 'lace panties'", "images/RogueSprite/Rogue_lacepanties.png",         
-            "R_Panties == 'swimsuit1'", "images/RogueSprite/Rogue_Swimsuit1.png",         
-            "R_Panties == 'swimsuit2'", "images/RogueSprite/Rogue_Swimsuit2.png",         
+            #"R_Panties == 'swimsuit1'", "images/RogueSprite/Rogue_Swimsuit1.png",         
+            #"R_Panties == 'swimsuit2'", "images/RogueSprite/Rogue_Swimsuit2.png",         
             "True", "images/RogueSprite/Rogue_panties.png",            
+            ),
+        (0,0), ConditionSwitch(                                                                         #Arms and gloves
+            "R_Tan and Rogue_Arms == 1 and R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_tarms1a_gloved.png",       #Gloves and collar 
+            "Rogue_Arms == 1 and R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms1a_gloved.png",       #Gloves and collar 
+            "R_Tan and Rogue_Arms == 1 and R_Arms == 'gloved'", "images/RogueSprite/Rogue_tarms1b_gloved.png",                                     #Gloves, no collar
+            "Rogue_Arms == 1 and R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms1b_gloved.png",                                     #Gloves, no collar
+            "R_Tan and Rogue_Arms == 1 and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_tarms1a_bare.png",                                #No Gloves, collar 
+            "Rogue_Arms == 1 and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms1a_bare.png",                                #No Gloves, collar 
+            "R_Tan and Rogue_Arms == 1", "images/RogueSprite/Rogue_tarms1b_bare.png",                                                              #No gloves, no collar
+            "Rogue_Arms == 1", "images/RogueSprite/Rogue_arms1b_bare.png",                                                              #No gloves, no collar
+            "R_Tan and R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_tarms2a_gloved.png",                           #Gloves and collar 
+            "R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_gloved.png",                           #Gloves and collar 
+            "R_Tan and R_Arms == 'gloved'", "images/RogueSprite/Rogue_tarms2b_gloved.png",                                                         #Gloved, no collar
+            "R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms2b_gloved.png",                                                         #Gloved, no collar
+            "R_Tan and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_tarms2a_bare.png",                                                    #No gloves, collar
+            "R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_bare.png",                                                    #No gloves, collar
+            "R_Tan", "images/RogueSprite/Rogue_tarms2b_bare.png",                                                                         #No gloves, no collar
+            "True", "images/RogueSprite/Rogue_arms2b_bare.png",                                                                         #No gloves, no collar
+#            "Rogue_Arms == 1 and R_Arms == 'collargloved'", "images/RogueSprite/Rogue_arms1a_gloved.png",  
+#            "Rogue_Arms == 1 and R_Arms == 'collarbare'", "images/RogueSprite/Rogue_arms1a_bare.png", 
+#            "Rogue_Arms == 1 and R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms1b_gloved.png",                   
+#            "Rogue_Arms == 1", "images/RogueSprite/Rogue_arms1b_bare.png",
+#            "R_Arms == 'collargloved'", "images/RogueSprite/Rogue_arms2a_gloved.png", 
+#            "R_Arms == 'collarbare'", "images/RogueSprite/Rogue_arms2a_bare.png", 
+#            "R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms2b_gloved.png",
+#            "True", "images/RogueSprite/Rogue_arms2b_bare.png",          
+            ), 
+        (0,0), ConditionSwitch(                                                                         #chest layer
+            "R_Tan == 'tan1' and R_Pierce == 'barbell'", "images/RogueSprite/Rogue_t1chest_barbell.png",            
+            "R_Tan == 'tan' and R_Pierce == 'barbell'", "images/RogueSprite/Rogue_tchest_barbell.png",            
+            "R_Pierce == 'barbell'", "images/RogueSprite/Rogue_chest_barbell.png",            
+            "R_Tan == 'tan1' and R_Pierce == 'ring'", "images/RogueSprite/Rogue_t1chest_rings.png",      
+            "R_Tan == 'tan' and R_Pierce == 'ring'", "images/RogueSprite/Rogue_tchest_rings.png",      
+            "R_Pierce == 'ring'", "images/RogueSprite/Rogue_chest_rings.png",      
+            "R_Tan == 'tan1'", "images/RogueSprite/Rogue_t1chest_bare.png",     
+            "R_Tan == 'tan'", "images/RogueSprite/Rogue_tchest_bare.png",     
+            "True", "images/RogueSprite/Rogue_chest_bare.png",     
+            ),   
+        (0,0), ConditionSwitch(                                                                         #chest clothes layer
+            "R_Chest == 'tank'", "images/RogueSprite/Rogue_chest_tank.png",
+            "R_Chest == 'tank short'", "images/RogueSprite/Rogue_chest_tankshort.png",
+            "R_Chest == 'slut tank short'", "images/RogueSprite/Rogue_chest_tankshort_slut.png",
+            "Rogue_Arms == 1 and R_Chest == 'green crop top'", "images/RogueSprite/Rogue_Sprite_Green_Crop_Top_Arms1.png",
+            "R_Chest == 'green crop top'", "images/RogueSprite/Rogue_Sprite_Green_Crop_Top_Arms2.png",
+            "Rogue_Arms == 1 and R_Chest == 'black crop top'", "images/RogueSprite/Rogue_Sprite_Black_Crop_Top_Arms1.png",
+            "R_Chest == 'black crop top'", "images/RogueSprite/Rogue_Sprite_Black_Crop_Top_Arms2.png",
+            "R_Chest == 'tape'", "images/RogueSprite/Rogue_chest_tape.png",
+            "R_Chest == 'buttoned tank'", "images/RogueSprite/Rogue_chest_tank2.png",            
+            "R_Chest == 'bra'", "images/RogueSprite/Rogue_chest_bra.png",                         
+            "R_Chest == 'sports bra'", "images/RogueSprite/Rogue_chest_sportsbra.png",
+            "R_Chest == 'blue sports bra'", "images/RogueSprite/Rogue_chest_bysportsbra.png",
+            "R_Chest == 'red sports bra'", "images/RogueSprite/Rogue_chest_rysportsbra.png",
+            "R_Chest == 'lace bra'", "images/RogueSprite/Rogue_chest_lacebra.png",  
+            #"R_Chest == 'swimsuit1'", "images/RogueSprite/Rogue_Swimsuit1_Top.png",
+            #"R_Chest == 'swimsuit2'", "images/RogueSprite/Rogue_Swimsuit2_Top.png",
+            "R_Chest == 'cheerleader'", "images/RogueSprite/Rogue_Cheerleader_Outfit.png",
+            "True", Null(),               
+            ), 
+        (0,0), ConditionSwitch(  
+            "R_Chest == 'swimsuit1' or R_Panties == 'swimsuit1'", "images/RogueSprite/Rogue_Swimsuit1.png",
+            "R_Chest == 'swimsuit2' or R_Panties == 'swimsuit2'", "images/RogueSprite/Rogue_Swimsuit2.png",
+            "True", Null(),
             ),
         (0,0), ConditionSwitch(                                                                         #full hose/tights              
             "R_PantiesDown", Null(), 
@@ -181,63 +244,19 @@ image Rogue:
             "R_Legs == 'cheerleader skirtshort'", "images/RogueSprite/Rogue_Cheerleader_Skirt_Short_Up.png",            
             "True", Null(),   
             ),
+
         (0,0), ConditionSwitch(                                                                         #Arms and gloves
-            "R_Tan and Rogue_Arms == 1 and R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_tarms1a_gloved.png",       #Gloves and collar 
-            "Rogue_Arms == 1 and R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms1a_gloved.png",       #Gloves and collar 
-            "R_Tan and Rogue_Arms == 1 and R_Arms == 'gloved'", "images/RogueSprite/Rogue_tarms1b_gloved.png",                                     #Gloves, no collar
-            "Rogue_Arms == 1 and R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms1b_gloved.png",                                     #Gloves, no collar
-            "R_Tan and Rogue_Arms == 1 and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_tarms1a_bare.png",                                #No Gloves, collar 
-            "Rogue_Arms == 1 and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms1a_bare.png",                                #No Gloves, collar 
-            "R_Tan and Rogue_Arms == 1", "images/RogueSprite/Rogue_tarms1b_bare.png",                                                              #No gloves, no collar
-            "Rogue_Arms == 1", "images/RogueSprite/Rogue_arms1b_bare.png",                                                              #No gloves, no collar
-            "R_Tan and R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_tarms2a_gloved.png",                           #Gloves and collar 
-            "R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_gloved.png",                           #Gloves and collar 
-            "R_Tan and R_Arms == 'gloved'", "images/RogueSprite/Rogue_tarms2b_gloved.png",                                                         #Gloved, no collar
-            "R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms2b_gloved.png",                                                         #Gloved, no collar
-            "R_Tan and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_tarms2a_bare.png",                                                    #No gloves, collar
-            "R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_bare.png",                                                    #No gloves, collar
-            "R_Tan", "images/RogueSprite/Rogue_tarms2b_bare.png",                                                                         #No gloves, no collar
-            "True", "images/RogueSprite/Rogue_arms2b_bare.png",                                                                         #No gloves, no collar
-#            "Rogue_Arms == 1 and R_Arms == 'collargloved'", "images/RogueSprite/Rogue_arms1a_gloved.png",  
-#            "Rogue_Arms == 1 and R_Arms == 'collarbare'", "images/RogueSprite/Rogue_arms1a_bare.png", 
-#            "Rogue_Arms == 1 and R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms1b_gloved.png",                   
-#            "Rogue_Arms == 1", "images/RogueSprite/Rogue_arms1b_bare.png",
-#            "R_Arms == 'collargloved'", "images/RogueSprite/Rogue_arms2a_gloved.png", 
-#            "R_Arms == 'collarbare'", "images/RogueSprite/Rogue_arms2a_bare.png", 
-#            "R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms2b_gloved.png",
-#            "True", "images/RogueSprite/Rogue_arms2b_bare.png",          
+            "Rogue_Arms == 1", Null(),                                                              #No gloves, no collar
+            "R_Tan and R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_tarms2a_gloved_.png",                           #Gloves and collar 
+            "R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_gloved_.png",                           #Gloves and collar 
+            "R_Tan and R_Arms == 'gloved'", "images/RogueSprite/Rogue_tarms2b_gloved_.png",                                                         #Gloved, no collar
+            "R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms2b_gloved_.png",                                                         #Gloved, no collar
+            "R_Tan and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_tarms2a_bare_.png",                                                    #No gloves, collar
+            "R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_bare_.png",                                                    #No gloves, collar
+            "R_Tan", "images/RogueSprite/Rogue_tarms2b_bare_.png",                                                                         #No gloves, no collar
+            "True", "images/RogueSprite/Rogue_arms2b_bare_.png",  
             ), 
-        (0,0), ConditionSwitch(                                                                         #chest layer
-            "R_Tan == 'tan1' and R_Pierce == 'barbell'", "images/RogueSprite/Rogue_t1chest_barbell.png",            
-            "R_Tan == 'tan' and R_Pierce == 'barbell'", "images/RogueSprite/Rogue_tchest_barbell.png",            
-            "R_Pierce == 'barbell'", "images/RogueSprite/Rogue_chest_barbell.png",            
-            "R_Tan == 'tan1' and R_Pierce == 'ring'", "images/RogueSprite/Rogue_t1chest_rings.png",      
-            "R_Tan == 'tan' and R_Pierce == 'ring'", "images/RogueSprite/Rogue_tchest_rings.png",      
-            "R_Pierce == 'ring'", "images/RogueSprite/Rogue_chest_rings.png",      
-            "R_Tan == 'tan1'", "images/RogueSprite/Rogue_t1chest_bare.png",     
-            "R_Tan == 'tan'", "images/RogueSprite/Rogue_tchest_bare.png",     
-            "True", "images/RogueSprite/Rogue_chest_bare.png",     
-            ),   
-        (0,0), ConditionSwitch(                                                                         #chest clothes layer
-            "R_Chest == 'tank'", "images/RogueSprite/Rogue_chest_tank.png",
-            "R_Chest == 'tank short'", "images/RogueSprite/Rogue_chest_tankshort.png",
-            "R_Chest == 'slut tank short'", "images/RogueSprite/Rogue_chest_tankshort_slut.png",
-            "Rogue_Arms == 1 and R_Chest == 'green crop top'", "images/RogueSprite/Rogue_Sprite_Green_Crop_Top_Arms1.png",
-            "R_Chest == 'green crop top'", "images/RogueSprite/Rogue_Sprite_Green_Crop_Top_Arms2.png",
-            "Rogue_Arms == 1 and R_Chest == 'black crop top'", "images/RogueSprite/Rogue_Sprite_Black_Crop_Top_Arms1.png",
-            "R_Chest == 'black crop top'", "images/RogueSprite/Rogue_Sprite_Black_Crop_Top_Arms2.png",
-            "R_Chest == 'tape'", "images/RogueSprite/Rogue_chest_tape.png",
-            "R_Chest == 'buttoned tank'", "images/RogueSprite/Rogue_chest_tank2.png",            
-            "R_Chest == 'bra'", "images/RogueSprite/Rogue_chest_bra.png",                         
-            "R_Chest == 'sports bra'", "images/RogueSprite/Rogue_chest_sportsbra.png",
-            "R_Chest == 'blue sports bra'", "images/RogueSprite/Rogue_chest_bysportsbra.png",
-            "R_Chest == 'red sports bra'", "images/RogueSprite/Rogue_chest_rysportsbra.png",
-            "R_Chest == 'lace bra'", "images/RogueSprite/Rogue_chest_lacebra.png",  
-            "R_Chest == 'swimsuit1'", "images/RogueSprite/Rogue_Swimsuit1.png",
-            "R_Chest == 'swimsuit2'", "images/RogueSprite/Rogue_Swimsuit2.png",
-            "R_Chest == 'cheerleader'", "images/RogueSprite/Rogue_Cheerleader_Outfit.png",
-            "True", Null(),               
-            ),                   
+                          
         (0,0), ConditionSwitch(                                                                         #water
             "R_Water and Rogue_Arms == 1", "images/RogueSprite/Rogue_body_wet1.png",
             "R_Water", "images/RogueSprite/Rogue_body_wet2.png",

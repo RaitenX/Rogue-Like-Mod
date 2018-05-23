@@ -2,8 +2,6 @@
 errors listed below, and try again.
 
 
-File "game/Rogue_Animations.rpy", line 607: u'pause' is not a keyword argument or valid child for the screen statement.
-    pause action Hide("Mystique_Pic")
-         ^
+File "game/Kitty_Chat.rpy", line 5594: indentation mismatch.
 
 Ren'Py Version: Ren'Py 6.99.13.2919

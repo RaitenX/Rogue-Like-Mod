@@ -2574,6 +2574,14 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     $ E_Neck = 0
                     $ E_Hose = 0   
                     $ E_Shame = 50
+        elif E_OutfitTemp == "naked pool":
+                    $ E_Arms = 0
+                    $ E_Legs = 0
+                    $ E_Chest = "naked pool"
+                    $ E_Over = 0
+                    $ E_Panties = "naked pool"              
+                    $ E_Neck = 0
+                    $ E_Hose = 0   
         elif E_OutfitTemp == "custom1":
                     if not E_Legs and E_Custom[2]:            
                             $ Undressed = 1
