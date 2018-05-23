@@ -884,8 +884,8 @@ label VersionNumber:
     $ StageFarLeft = 150
     #make sure to set K_SpriteLoc etc. to new values, 
     # $ K_SpriteLoc = 200 if K_SpriteLoc = 550 else K_SpriteLoc
-    if "exhibitionist" in E_Traits:
-        $ E_Traits.remove("exhibitionist")
+    # if "exhibitionist" in E_Traits:
+    #     $ E_Traits.remove("exhibitionist")
     if len(R_Sleepwear) <= 9: #this should be the case on any busted-ass og versions
         $ R_Sleepwear.append(0)
         $ R_Sleepwear.append(0)
@@ -2577,10 +2577,11 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
         elif E_OutfitTemp == "naked pool":
                     $ E_Arms = 0
                     $ E_Legs = 0
-                    $ E_Chest = "naked pool"
                     $ E_Over = 0
+                    $ E_Chest = "naked pool"
                     $ E_Panties = "naked pool"              
                     $ E_Neck = 0
+                    $ E_Hair = "wavy"
                     $ E_Hose = 0   
         elif E_OutfitTemp == "custom1":
                     if not E_Legs and E_Custom[2]:            

@@ -2179,20 +2179,20 @@ label Pool_Clothes(Mode = 0, Girl = 0, GirlsNum = 0): #checked each time you ent
     if not Girl or Girl == "Emma":
         if E_Loc != "bg pool" or Mode == "change":  
                 #If Emma has left the pool or was told to change back
-                if E_Outfit == "bikini":
+                if E_Outfit == "bikini" or E_Outfit == "naked pool":
                         if bg_current == "bg pool" and "leaving" in E_RecentActions:
                                 #if you're in the pool, and so is Emma
                                 show blackscreen onlayer black
                         $ E_Outfit = E_OutfitDay
                         call EmmaOutfit(Changed=1)                        
-        elif E_Outfit == "bikini":
+        elif E_Outfit == "bikini" or E_Outfit == "naked pool":
                     #If it's already pool clothes, skip this
                     pass   
         elif Mode == "pre":
                 #If she was already here
                 if E_Loc == "bg pool" and "Emma" not in Party:
                     if "exhibitionist" in E_Traits:
-                        $ E_Outfit = "bikini"
+                        $ E_Outfit = "naked pool"
                     else:
                         $ E_Outfit = "bikini"
                     call EmmaOutfit(Changed=1)
@@ -2203,7 +2203,7 @@ label Pool_Clothes(Mode = 0, Girl = 0, GirlsNum = 0): #checked each time you ent
                         if E_Loc == "bg pool" and E_Loc == bg_current:
                                 show blackscreen onlayer black
                         if "exhibitionist" in E_Traits:
-                            $ E_Outfit = "bikini"
+                            $ E_Outfit = "naked pool"
                         else:
                             $ E_Outfit = "bikini"
                         call EmmaOutfit(Changed=1)
@@ -2214,7 +2214,7 @@ label Pool_Clothes(Mode = 0, Girl = 0, GirlsNum = 0): #checked each time you ent
                         ch_e "I'l be right there, let me just put on my bikini"
                         show blackscreen onlayer black
                     if "exhibitionist" in E_Traits:
-                        $ E_Outfit = "bikini"
+                        $ E_Outfit = "naked pool"
                     else:
                         $ E_Outfit = "bikini"
                     call EmmaOutfit(Changed=1)
@@ -2239,7 +2239,7 @@ label Pool_Clothes(Mode = 0, Girl = 0, GirlsNum = 0): #checked each time you ent
                             ch_e "I'll be back soon, gotta change."                       
                         show blackscreen onlayer black
                     if "exhibitionist" in E_Traits:
-                        $ E_Outfit = "bikini"
+                        $ E_Outfit = "naked pool"
                     else:
                         $ E_Outfit = "bikini"
                     call EmmaOutfit(Changed=1)
@@ -2249,23 +2249,99 @@ label Pool_Clothes(Mode = 0, Girl = 0, GirlsNum = 0): #checked each time you ent
                             ch_e "Ok, back in a bit"                       
                             show blackscreen onlayer black
                             if "exhibitionist" in E_Traits:
-                                $ E_Outfit = "bikini"
+                                $ E_Outfit = "naked pool"
                             else:
                                 $ E_Outfit = "bikini"
                             call EmmaOutfit(Changed=1)
                     #end asked
-                if E_Outfit == "bikini":
+                if E_Outfit == "bikini" or E_Outfit == "naked pool":
                     $ GirlsNum += 1 
                 $ Line = 0
         hide blackscreen onlayer black
         # End Emma
-        
+
         return
+
 # End Gym clothes / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /        
 
+label Check_Outfit_Event:
 
+    if E_Loc == "bg pool":
+        #"Emma's here"
+        if "exhibitionist" in E_Traits and E_Outfit == "naked pool" and "exhibitionist pool" not in E_History:
+            $ E_History.append("exhibitionist pool")
+            if Current_Time != "Night":
+                "You notice that Emma is completely naked, even though the pool is packed with students."
+                "You decide to approach her."
+                ch_p "Don't get me wrong, I'm enjoying the view, but are you really ok with all the students seeing you like this?"
+                call EmmaFace("confused")
+                ch_e "What do you mean, [E_Petname]?"
+                ch_p "Well, you know, naked."
+                call EmmaFace("sexy", 1)
+                ch_e "Oh, [E_Petname], I'm not naked, at least not for everyone else."
+                ch_p "What do you mean?"
+                call EmmaFace("smile", 1)
+                ch_e "I'm a telepath [E_Petname], a very powerfull one. They see what I want them to see."
+                call EmmaFace("sexy", 1)
+                $ E_Wet = 1
+                ch_e "But since my powers don't work on you, you're the only one here who can see me like this."
+            else:
+                "You notice that Emma is completely naked."
+                "You approach her."
+                ch_p "Loved the view."
+                call EmmaFace("sexy", 1)
+                ch_e "Do you now, [E_Petname]?"
+                ch_p "You're not worried someone other than me might see you?"
+                ch_e "Oh, [E_Petname], I'm not naked, at least not for everyone else."
+                ch_p "What do you mean?"
+                call EmmaFace("smile", 1)
+                ch_e "I'm a telepath [E_Petname], a very powerfull one. Everyone else would see what I want them to see."
+                call EmmaFace("sexy", 1)
+                $ E_Wet = 1
+                ch_e "But since my powers don't work on you, you're the only one that can see me like this."
 
-
+    if R_Loc == "bg pool":
+        #"Emma's here"
+        if "exhibitionist" in R_Traits and R_Outfit == "swimsuit2" and "exhibitionist pool" not in R_History:
+            $ R_History.append("exhibitionist pool")
+            if Current_Time != "Night":
+                "You notice that Rogue is wearing a very skimpy swimsuit, even though the pool is packed with students."
+                if R_Pubes:
+                    "You can even see her bush"
+                    "You decide to approach her."
+                    ch_p "Hey [R_Pet], you know everyone can see your pubes right?"
+                    call RogueFace("sexy", 1)
+                    ch_r "Maybe I should shave them. . ."
+                    call RogueFace("sly", 1)
+                    ch_r "Let me know what you think later, [R_Petname]."
+                    call RogueFace("sexy", 1)
+                else:
+                    "You decide to approach her."
+                    ch_p "Hey [R_Pet], you know everyone can almost see your pussy right?"
+                    call RogueFace("sexy", 1)
+                    ch_r "Maybe I should have gotten a more revealing swimsuit them. . ."
+                    #call RogueFace("sly", 1)
+                    #call "Let me know what you think later."
+            else:
+                "You notice that Rogue is wearing a very skimpy swimsuit."
+                if R_Pubes:
+                    "You can even see her bush"
+                    "You decide to approach her."
+                    ch_p "Hey [R_Pet], you know I can see your pubes right?"
+                    call RogueFace("sexy", 1)
+                    ch_r "Maybe I should shave them. . ."
+                    call RogueFace("sly", 1)
+                    ch_r "Let me know what you think later, [R_Petname]."
+                    call RogueFace("sexy", 1)
+                else:
+                    "You decide to approach her."
+                    ch_p "Hey [R_Pet], you know I can almost see your pussy right?"
+                    call RogueFace("sexy", 1)
+                    ch_r "Maybe I should have gotten a more revealing swimsuit them. . ."
+                    #call RogueFace("sly", 1)
+                    #call "Let me know what you think later."
+                
+    return
 
 
 

@@ -1692,7 +1692,7 @@ label Emma_Flirt:
                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 30, 3)            
                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, 2) 
                         
-            "Ask for her panties":
+            "Ask for her panties" if E_Panties != "naked pool":
                     call Emma_AskPanties
                     
             "Never mind [[exit]":
@@ -4458,6 +4458,8 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
                 $ Count = 10
             elif E_Chest == "bikini":  
                 $ Count = 15
+            elif E_Chest == "naked pool":  
+                $ Count = 15
             elif E_Chest == "NewX black":  
                 $ Count = 10
 #            elif E_Chest == "sports bra":
@@ -4528,6 +4530,8 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
                 elif E_Panties == "black panties":      #If wearing only black panties
                     $ Count = 10
                 elif E_Panties == "bikini":      #If wearing only bikini
+                    $ Count = 15
+                elif E_Panties == "naked pool":      #If wearing only bikini
                     $ Count = 15
 #                elif E_Panties == "lace panties":       #If wearing only lace panties
 #                    $ Count = 5              

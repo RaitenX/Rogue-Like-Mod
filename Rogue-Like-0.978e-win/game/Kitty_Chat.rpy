@@ -4506,7 +4506,27 @@ label Kitty_Clothes:
                         ch_k "It's too high maintenance."
                     jump Kitty_Clothes_Misc_Hair
 
-                "Change the color of you hair back." if K_HairColor == "black":
+                "Dye your hair blonde." if K_HairColor != "blonde":
+                    if ApprovalCheck("Kitty", 800):
+                        ch_k "You think so?"
+                        #"She rummages in her bag and grabs some gel, running it through her hair."
+                        ch_k "Like this?"
+                        $ K_HairColor = "blonde"
+                    else:
+                        ch_k "It's too high maintenance."
+                    jump Kitty_Clothes_Misc_Hair
+
+                "Dye your hair red." if K_HairColor != "red":
+                    if ApprovalCheck("Kitty", 800):
+                        ch_k "You think so?"
+                        #"She rummages in her bag and grabs some gel, running it through her hair."
+                        ch_k "Like this?"
+                        $ K_HairColor = "red"
+                    else:
+                        ch_k "It's too high maintenance."
+                    jump Kitty_Clothes_Misc_Hair
+
+                "Change the color of you hair back." if K_HairColor == "black" or K_HairColor == "blonde" or K_HairColor == "red":    
                     if ApprovalCheck("Kitty", 800):
                         ch_k "You think so?"
                         #"She rummages in her bag and grabs some gel, running it through her hair."

@@ -50,6 +50,7 @@ image Emma_Sprite:
             "True", Null(),        
             ),   
         (0,0), ConditionSwitch(                                                                         #pants    
+            "E_Panties == 'naked pool'", Null(),
             "not E_PantiesDown or (E_Legs and not E_Upskirt)", Null(),   
             "E_Panties and E_Wet", "images/EmmaSprite/EmmaSprite_WetCrotch_Down_Overlay.png", 
             "True", Null(), 
@@ -62,6 +63,7 @@ image Emma_Sprite:
             "True", Null(),        
             ),  
         (0,0), ConditionSwitch(                                                                         #pants    
+            "E_Panties == 'naked pool'", Null(),
             "E_PantiesDown and (not E_Legs or E_Upskirt)", Null(),   
             "E_Panties and E_Wet", "images/EmmaSprite/EmmaSprite_WetCrotch_Overlay.png", 
             "True", Null(), 
@@ -90,8 +92,9 @@ image Emma_Sprite:
         #     ),  
         (0,0), ConditionSwitch(                                                                         #Personal Wetness            
             "E_Legs or not E_Wet", Null(),
-            "E_Panties and not E_PantiesDown and E_Wet < 2", Null(),
-            "E_Panties and not E_PantiesDown", "images/EmmaSprite/EmmaSprite_Wet1.png",
+            #"E_Panties == 'naked pool'", Null(),
+            "E_Panties and E_Panties != 'naked pool' and not E_PantiesDown and E_Wet < 2", Null(),
+            "E_Panties and E_Panties != 'naked pool' and not E_PantiesDown", "images/EmmaSprite/EmmaSprite_Wet1.png",
             "E_Wet == 2", "images/EmmaSprite/EmmaSprite_Wet2.png",
             "True", "images/EmmaSprite/EmmaSprite_Wet1.png",
             ),     

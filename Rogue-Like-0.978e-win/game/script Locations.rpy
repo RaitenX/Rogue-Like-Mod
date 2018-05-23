@@ -1324,6 +1324,8 @@ label Pool_Room:
                 call Pool_Clothes                
     call GirlsAngry  
     
+    call Check_Outfit_Event
+
 # Pool Room Menu Start <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
     menu:
         "This is the Pool. What would you like to do?" 
@@ -1377,12 +1379,12 @@ label Pool_Room:
                     if E_Loc == bg_current:
                         ch_e "yay"
 
-                        if E_Outfit != "bikini":
+                        if E_Outfit != "bikini" and E_Outfit != "naked pool":
                             #ch_e "I'l be right there, let me just put on my bikini"
                             call Pool_Clothes("goswim", "Emma")
                             ch_e "Let's go"
 
-                        call KittyFace("happy")                            
+                        call EmmaFace("happy")                            
                         $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 4)          
                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 40, 2)            
                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, 4)
