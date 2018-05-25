@@ -35,6 +35,7 @@ image blackscreen:
         linear 0.5 alpha 0.0
 
 define ch_r = Character('Rogue', color="#85bb65", image = "arrow", show_two_window=True)
+define ch_m = Character('Mystique', color="#85bb65", image = "arrow", show_two_window=True)
 define ch_p = Character('[Playername]', color="#87CEEB", show_two_window=True)
 define ch_x = Character('Professor X', color="#a09400", image = "arrow", show_two_window=True)
 define ch_k = Character('Kitty', color="#F5A9D0", image = "arrow", show_two_window=True)
@@ -43,6 +44,7 @@ define ch_b = Character('Dr. McCoy', color="#1033b2", image = "arrow", show_two_
 define ch_u = Character('???', color="#85bb65", image = "arrow", show_two_window=True)
 define ch_usher = Character('Usher', color="#DF0174", show_two_window=True)
 #define e = Character("Eileen", what_color="#c8ffc8") #this sets the chat text color, handy
+
 
 
 label splashscreen:
@@ -65,6 +67,12 @@ label splashscreen:
 
 init -1:  
 
+    #default Mystique = NewGirl("Mystique", 51, "pants")
+
+    default newgirl = Girlnew("Mystique")
+    #girlnew.add_othergirls()
+    #girlnew.girls[0].add_flight(5)
+    #girlnew.girls[0].flights
 #World Stats
     default SaveVersion = 978
     default Day = 1

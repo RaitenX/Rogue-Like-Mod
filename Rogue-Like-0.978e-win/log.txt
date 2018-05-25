@@ -1,1297 +1,1219 @@
-Thu May 24 22:29:47 2018
+Fri May 25 14:38:00 2018
 Windows-8-6.2.9200
 Ren'Py 6.99.13.2919
  
 
-Bootstrap to the start of init.init took 0.08s
-Early init took 0.01s
-Loader init took 0.13s
+Bootstrap to the start of init.init took 0.07s
+Early init took 0.00s
+Loader init took 0.14s
 Loading error handling took 0.06s
-Loading script took 8.67s
-Loading persistent took 0.15s
+Loading script took 2.55s
+Loading persistent took 0.14s
+
+File "game/Mystique_Chat.rpy", line 12: reached end of line when expecting ':'.
+    if "caught" in newgirl.girls["Mystique"]["RecentActions":]
+                                                              ^
+
+File "game/Mystique_Chat.rpy", line 15: reached end of line when expecting ':'.
+    if "angry" in newgirl.girls["Mystique"]["RecentActions":]
+                                                             ^
+
+File "game/Mystique_Chat.rpy", line 54: reached end of line when expecting ':'.
+    if "exhibitionist" in newgirl.girls["Mystique"]["Traits":]
+                                                              ^
+
+File "game/Mystique_Chat.rpy", line 57: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 100: reached end of line when expecting ':'.
+    "Show me the plug." if newgirl.girls["Mystique"]["Plugged":]
+                                                                ^
+
+File "game/Mystique_Chat.rpy", line 288: reached end of line when expecting ':'.
+    if "caught" in newgirl.girls["Mystique"]["RecentActions":]
+                                                              ^
+
+File "game/Mystique_Chat.rpy", line 291: reached end of line when expecting ':'.
+    if "angry" in newgirl.girls["Mystique"]["RecentActions":]
+                                                             ^
+
+File "game/Mystique_Chat.rpy", line 306: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Love"] >= newgirl.girls["Mystique"]["Obed":]
+                                                                              ^
+
+File "game/Mystique_Chat.rpy", line 308: expected statement.
+    else: 
+        ^
+
+File "game/Mystique_Chat.rpy", line 359: reached end of line when expecting ':'.
+    "Do you want to be my girlfriend?" if "dating" not in newgirl.girls["Mystique"]["Traits"] and "ex" not in newgirl.girls["Mystique"]["Traits":]
+                                                                                                                                                  ^
+
+File "game/Mystique_Chat.rpy", line 576: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Love"] >= newgirl.girls["Mystique"]["Obed":]
+                                                                              ^
+
+File "game/Mystique_Chat.rpy", line 578: expected statement.
+    elif newgirl.girls["Mystique"]["Obed"] >= newgirl.girls["Mystique"]["Inbt":]
+                ^
+
+File "game/Mystique_Chat.rpy", line 580: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 595: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Love"] >= newgirl.girls["Mystique"]["Obed":]
+                                                                              ^
+
+File "game/Mystique_Chat.rpy", line 597: expected statement.
+    elif newgirl.girls["Mystique"]["Obed"] >= newgirl.girls["Mystique"]["Inbt":]
+                ^
+
+File "game/Mystique_Chat.rpy", line 599: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 618: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Love"] >= newgirl.girls["Mystique"]["Obed":]
+                                                                              ^
+
+File "game/Mystique_Chat.rpy", line 620: expected statement.
+    elif newgirl.girls["Mystique"]["Obed"] >= newgirl.girls["Mystique"]["Inbt":]
+                ^
+
+File "game/Mystique_Chat.rpy", line 622: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 652: reached end of line when expecting ':'.
+    if "exhibitionist" in newgirl.girls["Mystique"]["Traits":]
+                                                              ^
+
+File "game/Mystique_Chat.rpy", line 654: expected statement.
+    elif ApprovalCheck("Mystique", 900, TabM=4) or ApprovalCheck("Mystique", 400, "I", TabM=3): 
+                      ^
+
+File "game/Mystique_Chat.rpy", line 656: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 666: reached end of line when expecting ':'.
+    "Wear this vibrator to class" if "vibeclass" not in newgirl.girls["Mystique"]["Traits":]
+                                                                                            ^
+
+File "game/Mystique_Chat.rpy", line 821: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Event"[0]] and "key" not in newgirl.girls["Mystique"]["Chat":]
+                                                                                                ^
+
+File "game/Mystique_Chat.rpy", line 826: reached end of line when expecting ':'.
+    if "mandrill" in P_Traits and "cologne chat" not in newgirl.girls["Mystique"]["DailyActions":]
+                                                                                                  ^
+
+File "game/Mystique_Chat.rpy", line 828: reached end of line when expecting ':'.
+    if "purple" in P_Traits and "cologne chat" not in newgirl.girls["Mystique"]["DailyActions":]
+                                                                                                ^
+
+File "game/Mystique_Chat.rpy", line 830: reached end of line when expecting ':'.
+    if "corruption" in P_Traits and "cologne chat" not in newgirl.girls["Mystique"]["DailyActions":]
+                                                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 836: reached end of line when expecting ':'.
+    if "cheek" in newgirl.girls["Mystique"]["DailyActions"] and "cheek" not in newgirl.girls["Mystique"]["Chat":]
+                                                                                                                 ^
+
+File "game/Mystique_Chat.rpy", line 845: reached end of line when expecting ':'.
+    if "showered" in newgirl.girls["Mystique"]["DailyActions":]
+                                                               ^
+
+File "game/Mystique_Chat.rpy", line 848: reached end of line when expecting ':'.
+    if "fondle breasts" in newgirl.girls["Mystique"]["DailyActions"] or "fondle pussy" in newgirl.girls["Mystique"]["DailyActions"] or "fondle ass" in newgirl.girls["Mystique"]["DailyActions":]
+                                                                                                                                                                                                 ^
+
+File "game/Mystique_Chat.rpy", line 851: reached end of line when expecting ':'.
+    if "Dazzler and Longshot" in newgirl.girls["Mystique"]["Inventory"] and "256 Shades of Grey" in newgirl.girls["Mystique"]["Inventory"] and "Avengers Tower Penthouse" in newgirl.girls["Mystique"]["Inventory":]   
+                                                                                                                                                                                                                       ^
+
+File "game/Mystique_Chat.rpy", line 855: reached end of line when expecting ':'.
+    if "lace bra" in newgirl.girls["Mystique"]["Inventory"] or "lace panties" in newgirl.girls["Mystique"]["Inventory":]   
+                                                                                                                           ^
+
+File "game/Mystique_Chat.rpy", line 859: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Hand":]   
+                                            ^
+
+File "game/Mystique_Chat.rpy", line 862: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Swallow":]   
+                                               ^
+
+File "game/Mystique_Chat.rpy", line 865: reached end of line when expecting ':'.
+    if "cleaned" in newgirl.girls["Mystique"]["DailyActions"] or "painted" in newgirl.girls["Mystique"]["DailyActions":]
+                                                                                                                        ^
+
+File "game/Mystique_Chat.rpy", line 868: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Sleep":]
+                                          ^
+
+File "game/Mystique_Chat.rpy", line 871: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["CreamP"] or newgirl.girls["Mystique"]["CreamA":]
+                                                                                  ^
+
+File "game/Mystique_Chat.rpy", line 874: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Sex"] or newgirl.girls["Mystique"]["Anal":]
+                                                                             ^
+
+File "game/Mystique_Chat.rpy", line 877: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Anal":]
+                                         ^
+
+File "game/Mystique_Chat.rpy", line 882: reached end of line when expecting ':'.
+    if (bg_current == "bg Mystique" or bg_current == "bg player") and "relationship" not in newgirl.girls["Mystique"]["DailyActions":]
+                                                                                                                                      ^
+
+File "game/Mystique_Chat.rpy", line 923: reached end of line when expecting ':'.
+    if "caught chat" in newgirl.girls["Mystique"]["Chat":]
+                                                          ^
+
+File "game/Mystique_Chat.rpy", line 927: expected statement.
+    else:    
+        ^
+
+File "game/Mystique_Chat.rpy", line 974: reached end of line when expecting ':'.
+    if "shower" in newgirl.girls["Mystique"]["Chat":] 
+                                                      ^
+
+File "game/Mystique_Chat.rpy", line 976: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 1058: reached end of line when expecting ':'.
+    if "blow" not in newgirl.girls["Mystique"]["Chat":]
+                                                       ^
+
+File "game/Mystique_Chat.rpy", line 1090: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 1099: reached end of line when expecting ':'.
+    if "swallow" in newgirl.girls["Mystique"]["Chat":]                
+                                                                      ^
+
+File "game/Mystique_Chat.rpy", line 1101: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 1269: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Kissed":]
+                                           ^
+
+File "game/Mystique_Chat.rpy", line 1301: expected statement.
+    else:                   
+        ^
+
+File "game/Mystique_Chat.rpy", line 1343: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Love"] > newgirl.girls["Mystique"]["Obed"] and newgirl.girls["Mystique"]["Love"] > newgirl.girls["Mystique"]["Inbt":]
+                                                                                                                                                       ^
+
+File "game/Mystique_Chat.rpy", line 1345: expected statement.
+    elif newgirl.girls["Mystique"]["Obed"] > newgirl.girls["Mystique"]["Inbt":]
+                ^
+
+File "game/Mystique_Chat.rpy", line 1347: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 1708: reached end of line when expecting ':'.
+    if "exhibitionist" in newgirl.girls["Mystique"]["Traits":]
+                                                              ^
+
+File "game/Mystique_Chat.rpy", line 1712: reached end of line when expecting ':'.
+    if "no bottomless" in newgirl.girls["Mystique"]["RecentActions":] 
+                                                                      ^
+
+File "game/Mystique_Chat.rpy", line 1717: reached end of line when expecting ':'.
+    if ApprovalCheck("Mystique", 1000, "OI", TabM = 5) or "exhibitionist" in newgirl.girls["Mystique"]["Traits":]   
+                                                                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 1719: expected statement.
+    elif ApprovalCheck("Mystique", 900, TabM = 5):
+                      ^
+
+File "game/Mystique_Chat.rpy", line 1723: reached end of line when expecting ':'.
+    if ApprovalCheck("Mystique", 600, "OI", TabM = 5) or "exhibitionist" in newgirl.girls["Mystique"]["Traits":]   
+                                                                                                                   ^
+
+File "game/Mystique_Chat.rpy", line 1725: expected statement.
+    elif ApprovalCheck("Mystique", 1100, TabM = 5):
+                      ^
+
+File "game/Mystique_Chat.rpy", line 1729: reached end of line when expecting ':'.
+    if ApprovalCheck("Mystique", 1200, TabM = 5) or "exhibitionist" in newgirl.girls["Mystique"]["Traits":]
+                                                                                                           ^
+
+File "game/Mystique_Chat.rpy", line 1747: reached end of line when expecting ':'.
+    if "exhibitionist" in newgirl.girls["Mystique"]["Traits":] 
+                                                               ^
+
+File "game/Mystique_Chat.rpy", line 1864: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Love"] >= newgirl.girls["Mystique"]["Inbt"] or newgirl.girls["Mystique"]["Obed"] >= newgirl.girls["Mystique"]["Inbt":]
+                                                                                                                                                        ^
+
+File "game/Mystique_Chat.rpy", line 1866: expected statement.
+    else:       
+        ^
+
+File "game/Mystique_Chat.rpy", line 1870: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Love"] >= newgirl.girls["Mystique"]["Inbt"] or newgirl.girls["Mystique"]["Obed"] >= newgirl.girls["Mystique"]["Inbt":]
+                                                                                                                                                        ^
+
+File "game/Mystique_Chat.rpy", line 1872: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 1900: reached end of line when expecting ':'.
+    "I want you to stop taking your own initiative." if "sub" not in newgirl.girls["Mystique"]["Traits":]
+                                                                                                         ^
+
+File "game/Mystique_Chat.rpy", line 1917: reached end of line when expecting ':'.
+    if "dildo" not in newgirl.girls["Mystique"]["Inventory":]                            
+                                                                                         ^
+
+File "game/Mystique_Chat.rpy", line 1959: expected statement.
+    elif Count == 1:
+               ^
+
+File "game/Mystique_Chat.rpy", line 1961: expected statement.
+    else: 
+        ^
+
+File "game/Mystique_Chat.rpy", line 1969: reached end of line when expecting ':'.
+    if "vibrator" not in newgirl.girls["Mystique"]["Inventory":]                            
+                                                                                            ^
+
+File "game/Mystique_Chat.rpy", line 2009: expected statement.
+    else: 
+        ^
+
+File "game/Mystique_Chat.rpy", line 2017: reached end of line when expecting ':'.
+    if "lace bra" not in newgirl.girls["Mystique"]["Inventory":]                            
+                                                                                            ^
+
+File "game/Mystique_Chat.rpy", line 2063: expected statement.
+    else: 
+        ^
+
+File "game/Mystique_Chat.rpy", line 2068: reached end of line when expecting ':'.
+    if "lace panties" not in newgirl.girls["Mystique"]["Inventory":]                            
+                                                                                                ^
+
+File "game/Mystique_Chat.rpy", line 2107: expected statement.
+    else: 
+        ^
+
+File "game/Mystique_Chat.rpy", line 2113: reached end of line when expecting ':'.
+    if "Dazzler and Longshot" not in newgirl.girls["Mystique"]["Inventory":]                            
+                                                                                                        ^
+
+File "game/Mystique_Chat.rpy", line 2130: expected statement.
+    else: 
+        ^
+
+File "game/Mystique_Chat.rpy", line 2135: reached end of line when expecting ':'.
+    if "256 Shades of Grey" not in newgirl.girls["Mystique"]["Inventory":]                            
+                                                                                                      ^
+
+File "game/Mystique_Chat.rpy", line 2149: expected statement.
+    else: 
+        ^
+
+File "game/Mystique_Chat.rpy", line 2154: reached end of line when expecting ':'.
+    if "Avengers Tower Penthouse" not in newgirl.girls["Mystique"]["Inventory":]                            
+                                                                                                            ^
+
+File "game/Mystique_Chat.rpy", line 2168: expected statement.
+    else: 
+        ^
+
+File "game/Mystique_Chat.rpy", line 2191: reached end of line when expecting ':'.
+    "Call me \"darling\"." if "darling" in newgirl.girls["Mystique"]["Petnames":]
+                                                                                 ^
+
+File "game/Mystique_Chat.rpy", line 2233: reached end of line when expecting ':'.
+    if ApprovalCheck("Mystique", 700) or "classcaught" in newgirl.girls["Mystique"]["History":]
+                                                                                               ^
+
+File "game/Mystique_Chat.rpy", line 2237: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 2641: reached end of line when expecting ':'.
+    if "no summon" in newgirl.girls["Mystique"]["RecentActions":]
+                                                                 ^
+
+File "game/Mystique_Chat.rpy", line 2688: reached end of line when expecting ':'.
+    if "summoned" in newgirl.girls["Mystique"]["RecentActions":]
+                                                                ^
+
+File "game/Mystique_Chat.rpy", line 2690: end of line expected.
+    elif "goto" in newgirl.girls["Mystique"]["RecentActions":]
+                ^
+
+File "game/Mystique_Chat.rpy", line 2692: expected statement.
+    elif newgirl.girls["Mystique"]["Loc"] == "bg classroom" or newgirl.girls["Mystique"]["Loc"] == "bg teacher":
+                ^
+
+File "game/Mystique_Chat.rpy", line 2694: expected statement.
+    elif newgirl.girls["Mystique"]["Loc"] == "bg dangerroom": 
+                ^
+
+File "game/Mystique_Chat.rpy", line 2696: expected statement.
+    elif newgirl.girls["Mystique"]["Loc"] == "bg campus": 
+                ^
+
+File "game/Mystique_Chat.rpy", line 2698: expected statement.
+    elif newgirl.girls["Mystique"]["Loc"] == "bg Mystique": 
+                ^
+
+File "game/Mystique_Chat.rpy", line 2700: expected statement.
+    elif newgirl.girls["Mystique"]["Loc"] == "bg player": 
+                ^
+
+File "game/Mystique_Chat.rpy", line 2702: expected statement.
+    elif newgirl.girls["Mystique"]["Loc"] == "bg showerroom":    
+                ^
+
+File "game/Mystique_Chat.rpy", line 2709: expected statement.
+    elif newgirl.girls["Mystique"]["Loc"] == "hold":
+                ^
+
+File "game/Mystique_Chat.rpy", line 2713: expected statement.
+    else:        
+        ^
+
+File "game/Mystique_Chat.rpy", line 2717: reached end of line when expecting ':'.
+    if "summoned" in newgirl.girls["Mystique"]["RecentActions":]
+                                                                ^
+
+File "game/Mystique_Chat.rpy", line 2720: end of line expected.
+    elif "goto" in newgirl.girls["Mystique"]["RecentActions":]
+                ^
+
+File "game/Mystique_Chat.rpy", line 2747: expected statement.
+    else:  
+        ^
+
+File "game/Mystique_Chat.rpy", line 2806: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Love"] > newgirl.girls["Mystique"]["Obed":]
+                                                                             ^
+
+File "game/Mystique_Chat.rpy", line 2808: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 2882: reached end of line when expecting ':'.
+    if "leaving" in newgirl.girls["Mystique"]["RecentActions":]
+                                                               ^
+
+File "game/Mystique_Chat.rpy", line 2884: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 2892: reached end of line when expecting ':'.
+    if "Mystique" in Party or "lockedtravels" in newgirl.girls["Mystique"]["Traits":]           
+                                                                                                ^
+
+File "game/Mystique_Chat.rpy", line 2898: end of line expected.
+    elif "freetravels" in newgirl.girls["Mystique"]["Traits"] or not ApprovalCheck("Mystique", 700):
+                       ^
+
+File "game/Mystique_Chat.rpy", line 2928: reached end of line when expecting ':'.
+    if "follow" not in newgirl.girls["Mystique"]["Traits":]
+                                                           ^
+
+File "game/Mystique_Chat.rpy", line 2975: reached end of line when expecting ':'.
+    if "followed" not in newgirl.girls["Mystique"]["RecentActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 2981: reached end of line when expecting ':'.
+    if "followed" not in newgirl.girls["Mystique"]["RecentActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 2988: reached end of line when expecting ':'.
+    if "followed" not in newgirl.girls["Mystique"]["RecentActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 2993: reached end of line when expecting ':'.
+    if "followed" not in newgirl.girls["Mystique"]["RecentActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 3000: reached end of line when expecting ':'.
+    if "followed" not in newgirl.girls["Mystique"]["RecentActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 3009: reached end of line when expecting ':'.
+    if "followed" not in newgirl.girls["Mystique"]["RecentActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 3019: reached end of line when expecting ':'.
+    if "followed" not in newgirl.girls["Mystique"]["RecentActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 3023: reached end of line when expecting ':'.
+    if "followed" not in newgirl.girls["Mystique"]["RecentActions":]                       
+                                                                                           ^
+
+File "game/Mystique_Chat.rpy", line 3029: reached end of line when expecting ':'.
+    if "followed" not in newgirl.girls["Mystique"]["RecentActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 3128: reached end of line when expecting ':'.
+    if "dismissed" not in newgirl.girls["Mystique"]["DailyActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 3140: reached end of line when expecting ':'.
+    if "dismissed" not in newgirl.girls["Mystique"]["DailyActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 3154: reached end of line when expecting ':'.
+    if "dismissed" not in newgirl.girls["Mystique"]["DailyActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 3162: reached end of line when expecting ':'.
+    if "dismissed" not in newgirl.girls["Mystique"]["DailyActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 3172: reached end of line when expecting ':'.
+    if "dismissed" not in newgirl.girls["Mystique"]["DailyActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 3182: reached end of line when expecting ':'.
+    if "dismissed" not in newgirl.girls["Mystique"]["DailyActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 3191: reached end of line when expecting ':'.
+    if "dismissed" not in newgirl.girls["Mystique"]["DailyActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 3202: reached end of line when expecting ':'.
+    if "dismissed" not in newgirl.girls["Mystique"]["DailyActions":]
+                                                                    ^
+
+File "game/Mystique_Chat.rpy", line 3224: reached end of line when expecting ':'.
+    if "poly rogue" in newgirl.girls["Mystique"]["Traits":]  
+                                                             ^
+
+File "game/Mystique_Chat.rpy", line 3226: expected statement.
+    elif newgirl.girls["Mystique"]["LikeRogue"] >= 900:
+                ^
+
+File "game/Mystique_Chat.rpy", line 3228: expected statement.
+    elif newgirl.girls["Mystique"]["LikeRogue"] >= 800:
+                ^
+
+File "game/Mystique_Chat.rpy", line 3230: expected statement.
+    elif newgirl.girls["Mystique"]["LikeRogue"] >= 700:
+                ^
+
+File "game/Mystique_Chat.rpy", line 3232: expected statement.
+    elif newgirl.girls["Mystique"]["LikeRogue"] >= 600:
+                ^
+
+File "game/Mystique_Chat.rpy", line 3234: expected statement.
+    elif newgirl.girls["Mystique"]["LikeRogue"] >= 500:
+                ^
+
+File "game/Mystique_Chat.rpy", line 3236: expected statement.
+    elif newgirl.girls["Mystique"]["LikeRogue"] >= 400:
+                ^
+
+File "game/Mystique_Chat.rpy", line 3238: expected statement.
+    elif newgirl.girls["Mystique"]["LikeRogue"] >= 300:
+                ^
+
+File "game/Mystique_Chat.rpy", line 3240: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 3246: reached end of line when expecting ':'.
+    if "poly kitty" in newgirl.girls["Mystique"]["Traits":]  
+                                                             ^
+
+File "game/Mystique_Chat.rpy", line 3248: expected statement.
+    elif newgirl.girls["Mystique"]["LikeKitty"] >= 900:
+                ^
+
+File "game/Mystique_Chat.rpy", line 3250: expected statement.
+    elif newgirl.girls["Mystique"]["LikeKitty"] >= 800:
+                ^
+
+File "game/Mystique_Chat.rpy", line 3252: expected statement.
+    elif newgirl.girls["Mystique"]["LikeKitty"] >= 700:
+                ^
+
+File "game/Mystique_Chat.rpy", line 3254: expected statement.
+    elif newgirl.girls["Mystique"]["LikeKitty"] >= 600:
+                ^
+
+File "game/Mystique_Chat.rpy", line 3256: expected statement.
+    elif newgirl.girls["Mystique"]["LikeKitty"] >= 500:
+                ^
+
+File "game/Mystique_Chat.rpy", line 3258: expected statement.
+    elif newgirl.girls["Mystique"]["LikeKitty"] >= 400:
+                ^
+
+File "game/Mystique_Chat.rpy", line 3260: expected statement.
+    elif newgirl.girls["Mystique"]["LikeKitty"] >= 300:
+                ^
+
+File "game/Mystique_Chat.rpy", line 3262: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 3272: reached end of line when expecting ':'.
+    if "exhibitionist" in newgirl.girls["Mystique"]["Traits":]
+                                                              ^
+
+File "game/Mystique_Chat.rpy", line 3278: reached end of line when expecting ':'.
+    if "public" in newgirl.girls["Mystique"]["History":]
+                                                        ^
+
+File "game/Mystique_Chat.rpy", line 3307: reached end of line when expecting ':'.
+    if "wardrobe" not in newgirl.girls["Mystique"]["RecentActions":] 
+                                                                     ^
+
+File "game/Mystique_Chat.rpy", line 3420: reached end of line when expecting ':'.
+    if not newgirl.girls["Mystique"]["Chest"] and not newgirl.girls["Mystique"]["Panties"] and not newgirl.girls["Mystique"]["Over"] and not newgirl.girls["Mystique"]["Legs"] and not newgirl.girls["Mystique"]["Hose":]  
+                                                                                                                                                                                                                           ^
+
+File "game/Mystique_Chat.rpy", line 3423: expected statement.
+    elif newgirl.girls["Mystique"]["SeenChest"] and newgirl.girls["Mystique"]["SeenPussy"] and ApprovalCheck("Mystique", 1200, TabM=(5-Public)):
+                ^
+
+File "game/Mystique_Chat.rpy", line 3427: expected statement.
+    elif ApprovalCheck("Mystique", 2000, TabM=(5-Public)):
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3431: expected statement.
+    elif newgirl.girls["Mystique"]["SeenChest"] and newgirl.girls["Mystique"]["SeenPussy"] and ApprovalCheck("Mystique", 1200, TabM=0):
+                ^
+
+File "game/Mystique_Chat.rpy", line 3434: expected statement.
+    elif ApprovalCheck("Mystique", 2000, TabM=0):
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3437: expected statement.
+    elif ApprovalCheck("Mystique", 1000, TabM=0):     
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3442: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 3456: reached end of line when expecting ':'.
+    if "exhibitionist" in newgirl.girls["Mystique"]["Traits":]
+                                                              ^
+
+File "game/Mystique_Chat.rpy", line 3464: expected statement.
+    elif ApprovalCheck("Mystique", 800, "I") and ApprovalCheck("Mystique", 2800, TabM=0): 
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3468: expected statement.
+    elif ApprovalCheck("Mystique", 400, "I") and ApprovalCheck("Mystique", 1200, TabM=0): 
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3471: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 3476: reached end of line when expecting ':'.
+    if "exhibitionist" in newgirl.girls["Mystique"]["Traits":]
+                                                              ^
+
+File "game/Mystique_Chat.rpy", line 3478: expected statement.
+    elif ApprovalCheck("Mystique", 800, "I") and ApprovalCheck("Mystique", 2800, TabM=0):       
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3481: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 3499: reached end of line when expecting ':'.
+    "Why don't you go with no Overshirt?" if newgirl.girls["Mystique"]["Over":]
+                                                                               ^
+
+File "game/Mystique_Chat.rpy", line 3585: reached end of line when expecting ':'.
+    elif ApprovalCheck("Mystique", 900, TabM=2) and "lace bra" in newgirl.girls["Mystique"]["Inventory":]
+                                                                                                         ^
+
+File "game/Mystique_Chat.rpy", line 3590: expected statement.
+    elif ApprovalCheck("Mystique", 800, TabM=2):
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3594: expected statement.
+    elif ApprovalCheck("Mystique", 700, TabM=(3-Public)):
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3599: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 3604: reached end of line when expecting ':'.
+    if ApprovalCheck("Mystique", 1100, "LI", TabM=(3-Public)) and newgirl.girls["Mystique"]["Love"] > newgirl.girls["Mystique"]["Inbt":]               
+                                                                                                                                                       ^
+
+File "game/Mystique_Chat.rpy", line 3606: expected statement.
+    elif ApprovalCheck("Mystique", 700, "OI", TabM=(3-Public)) and newgirl.girls["Mystique"]["Obed"] > newgirl.girls["Mystique"]["Inbt":]
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3608: expected statement.
+    elif ApprovalCheck("Mystique", 600, "I", TabM=(3-Public)):
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3610: expected statement.
+    elif ApprovalCheck("Mystique", 1300, TabM=(3-Public)):
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3612: expected statement.
+    else: 
+        ^
+
+File "game/Mystique_Chat.rpy", line 3636: reached end of line when expecting ':'.
+    elif ApprovalCheck("Mystique", 1300, TabM=(2-Public)) and newgirl.girls["Mystique"]["Panties":]
+                                                                                                   ^
+
+File "game/Mystique_Chat.rpy", line 3638: expected statement.
+    elif ApprovalCheck("Mystique", 800) and not newgirl.girls["Mystique"]["Panties":]
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3642: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 3649: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Panties":]                
+                                                            ^
+
+File "game/Mystique_Chat.rpy", line 3651: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 3689: reached end of line when expecting ':'.
+    elif ApprovalCheck("Mystique", 800, TabM=(5-Public)) and "lace panties" in newgirl.girls["Mystique"]["Inventory":]
+                                                                                                                      ^
+
+File "game/Mystique_Chat.rpy", line 3693: expected statement.
+    elif ApprovalCheck("Mystique", 700, TabM=(5-Public)):
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3697: expected statement.
+    elif Taboo and ApprovalCheck("Mystique", 800, TabM=0):
+                                ^
+
+File "game/Mystique_Chat.rpy", line 3700: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 3705: reached end of line when expecting ':'.
+    if ApprovalCheck("Mystique", 1100, "LI", TabM=(5-Public)) and newgirl.girls["Mystique"]["Love"] > newgirl.girls["Mystique"]["Inbt":]               
+                                                                                                                                                       ^
+
+File "game/Mystique_Chat.rpy", line 3707: expected statement.
+    elif ApprovalCheck("Mystique", 700, "OI", TabM=(5-Public)) and newgirl.girls["Mystique"]["Obed"] > newgirl.girls["Mystique"]["Inbt":]
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3709: expected statement.
+    elif ApprovalCheck("Mystique", 600, "I", TabM=(5-Public)):
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3711: expected statement.
+    elif ApprovalCheck("Mystique", 1300, TabM=(5-Public)):
+                      ^
+
+File "game/Mystique_Chat.rpy", line 3713: expected statement.
+    else: 
+        ^
+
+File "game/Mystique_Chat.rpy", line 3731: reached end of line when expecting ':'.
+    "How about you lose the [E_Chest]?" if newgirl.girls["Mystique"]["Chest":]
+                                                                              ^
+
+File "game/Mystique_Chat.rpy", line 3899: reached end of line when expecting ':'.
+    "Maybe lose the gloves." if newgirl.girls["Mystique"]["Arms":]
+                                                                  ^
+
+File "game/Mystique_Chat.rpy", line 4226: reached end of line when expecting ':'.
+    if "exhibitionist" in newgirl.girls["Mystique"]["Traits":]  
+                                                                ^
+
+File "game/Mystique_Chat.rpy", line 4297: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Pierce":]
+                                           ^
+
+File "game/Mystique_Chat.rpy", line 4299: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 4345: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Legs"] or newgirl.girls["Mystique"]["Panties":]          
+                                                                                           ^
+
+File "game/Mystique_Chat.rpy", line 4383: reached end of line when expecting ':'.
+    if not newgirl.girls["Mystique"]["Panties":]
+                                                ^
+
+File "game/Mystique_Chat.rpy", line 4511: reached end of line when expecting ':'.
+    elif "exhibitionist" in newgirl.girls["Mystique"]["Traits":] 
+                                                                 ^
+
+File "game/Mystique_Chat.rpy", line 4514: expected statement.
+    elif Tempshame <= 5:
+                   ^
+
+File "game/Mystique_Chat.rpy", line 4517: expected statement.
+    elif newgirl.girls["Mystique"]["Over"] == "towel" and newgirl.girls["Mystique"]["Loc"] == "bg showerroom": 
+                ^
+
+File "game/Mystique_Chat.rpy", line 4520: expected statement.
+    elif Tempshame <= 15 and (ApprovalCheck("Mystique", 1600) or ApprovalCheck("Mystique", 550, "I")):
+                   ^
+
+File "game/Mystique_Chat.rpy", line 4523: expected statement.
+    elif Tempshame <= 20 and newgirl.girls["Mystique"]["Loc"] == "bg dangerroom": 
+                   ^
+
+File "game/Mystique_Chat.rpy", line 4526: expected statement.
+    elif Tempshame <= 30 and newgirl.girls["Mystique"]["Loc"] == "bg pool": 
+                   ^
+
+File "game/Mystique_Chat.rpy", line 4529: expected statement.
+    elif Tempshame <= 25 and (ApprovalCheck("Mystique", 2200) or ApprovalCheck("Mystique", 700, "I")):
+                   ^
+
+File "game/Mystique_Chat.rpy", line 4532: expected statement.
+    elif (ApprovalCheck("Mystique", 2500) or ApprovalCheck("Mystique", 900, "I")):
+                                                                                 ^
+
+File "game/Mystique_Chat.rpy", line 4535: expected statement.
+    elif Custom == 9 and not Taboo:
+                ^
+
+File "game/Mystique_Chat.rpy", line 4537: expected statement.
+    else:
+        ^
+
+File "game/Mystique_Chat.rpy", line 4566: reached end of line when expecting ':'.
+    if newgirl.girls["Mystique"]["Les":]
+                                        ^
+DPI scale factor: 1.000000
+Interface start took 0.06s
+
+primary display bounds: (0, 0, 1920, 1080)
+Windowed mode.
+Screen sizes: virtual=(1024, 768) physical=(1304, 978) drawable=(1304, 978)
+Vendor: 'NVIDIA Corporation'
+Renderer: 'GeForce GTX 970M/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 397.64'
+Display Info: <Info({'blit_sw_CC': False, 'refresh_rate': 60, 'bitsize': 32, 'wm': True, 'losses': (0, 0, 0, 8), 'hw': False, 'masks': (16711680L, 65280L, 255L, 0L), 'current_h': 1080, 'current_w': 1920, 'shifts': (16, 8, 0, 0), 'blit_sw_A': False, 'blit_hw': False, 'blit_sw': False, 'bytesize': 4, 'blit_hw_CC': False, 'blit_hw_A': False, 'video_mem': 268435456})>
+Fixed-function is blacklisted.
+Extensions:
+    
+    GL_AMD_multi_draw_indirect
+    GL_AMD_seamless_cubemap_per_texture
+    GL_AMD_vertex_shader_layer
+    GL_AMD_vertex_shader_viewport_index
+    GL_ARB_ES2_compatibility
+    GL_ARB_ES3_1_compatibility
+    GL_ARB_ES3_2_compatibility
+    GL_ARB_ES3_compatibility
+    GL_ARB_arrays_of_arrays
+    GL_ARB_base_instance
+    GL_ARB_bindless_texture
+    GL_ARB_blend_func_extended
+    GL_ARB_buffer_storage
+    GL_ARB_clear_buffer_object
+    GL_ARB_clear_texture
+    GL_ARB_clip_control
+    GL_ARB_color_buffer_float
+    GL_ARB_compatibility
+    GL_ARB_compressed_texture_pixel_storage
+    GL_ARB_compute_shader
+    GL_ARB_compute_variable_group_size
+    GL_ARB_conditional_render_inverted
+    GL_ARB_conservative_depth
+    GL_ARB_copy_buffer
+    GL_ARB_copy_image
+    GL_ARB_cull_distance
+    GL_ARB_debug_output
+    GL_ARB_depth_buffer_float
+    GL_ARB_depth_clamp
+    GL_ARB_depth_texture
+    GL_ARB_derivative_control
+    GL_ARB_direct_state_access
+    GL_ARB_draw_buffers
+    GL_ARB_draw_buffers_blend
+    GL_ARB_draw_elements_base_vertex
+    GL_ARB_draw_indirect
+    GL_ARB_draw_instanced
+    GL_ARB_enhanced_layouts
+    GL_ARB_explicit_attrib_location
+    GL_ARB_explicit_uniform_location
+    GL_ARB_fragment_coord_conventions
+    GL_ARB_fragment_layer_viewport
+    GL_ARB_fragment_program
+    GL_ARB_fragment_program_shadow
+    GL_ARB_fragment_shader
+    GL_ARB_fragment_shader_interlock
+    GL_ARB_framebuffer_no_attachments
+    GL_ARB_framebuffer_object
+    GL_ARB_framebuffer_sRGB
+    GL_ARB_geometry_shader4
+    GL_ARB_get_program_binary
+    GL_ARB_get_texture_sub_image
+    GL_ARB_gl_spirv
+    GL_ARB_gpu_shader5
+    GL_ARB_gpu_shader_fp64
+    GL_ARB_gpu_shader_int64
+    GL_ARB_half_float_pixel
+    GL_ARB_half_float_vertex
+    GL_ARB_imaging
+    GL_ARB_indirect_parameters
+    GL_ARB_instanced_arrays
+    GL_ARB_internalformat_query
+    GL_ARB_internalformat_query2
+    GL_ARB_invalidate_subdata
+    GL_ARB_map_buffer_alignment
+    GL_ARB_map_buffer_range
+    GL_ARB_multi_bind
+    GL_ARB_multi_draw_indirect
+    GL_ARB_multisample
+    GL_ARB_multitexture
+    GL_ARB_occlusion_query
+    GL_ARB_occlusion_query2
+    GL_ARB_parallel_shader_compile
+    GL_ARB_pipeline_statistics_query
+    GL_ARB_pixel_buffer_object
+    GL_ARB_point_parameters
+    GL_ARB_point_sprite
+    GL_ARB_polygon_offset_clamp
+    GL_ARB_post_depth_coverage
+    GL_ARB_program_interface_query
+    GL_ARB_provoking_vertex
+    GL_ARB_query_buffer_object
+    GL_ARB_robust_buffer_access_behavior
+    GL_ARB_robustness
+    GL_ARB_sample_locations
+    GL_ARB_sample_shading
+    GL_ARB_sampler_objects
+    GL_ARB_seamless_cube_map
+    GL_ARB_seamless_cubemap_per_texture
+    GL_ARB_separate_shader_objects
+    GL_ARB_shader_atomic_counter_ops
+    GL_ARB_shader_atomic_counters
+    GL_ARB_shader_ballot
+    GL_ARB_shader_bit_encoding
+    GL_ARB_shader_clock
+    GL_ARB_shader_draw_parameters
+    GL_ARB_shader_group_vote
+    GL_ARB_shader_image_load_store
+    GL_ARB_shader_image_size
+    GL_ARB_shader_objects
+    GL_ARB_shader_precision
+    GL_ARB_shader_storage_buffer_object
+    GL_ARB_shader_subroutine
+    GL_ARB_shader_texture_image_samples
+    GL_ARB_shader_texture_lod
+    GL_ARB_shader_viewport_layer_array
+    GL_ARB_shading_language_100
+    GL_ARB_shading_language_420pack
+    GL_ARB_shading_language_include
+    GL_ARB_shading_language_packing
+    GL_ARB_shadow
+    GL_ARB_sparse_buffer
+    GL_ARB_sparse_texture
+    GL_ARB_sparse_texture2
+    GL_ARB_sparse_texture_clamp
+    GL_ARB_spirv_extensions
+    GL_ARB_stencil_texturing
+    GL_ARB_sync
+    GL_ARB_tessellation_shader
+    GL_ARB_texture_barrier
+    GL_ARB_texture_border_clamp
+    GL_ARB_texture_buffer_object
+    GL_ARB_texture_buffer_object_rgb32
+    GL_ARB_texture_buffer_range
+    GL_ARB_texture_compression
+    GL_ARB_texture_compression_bptc
+    GL_ARB_texture_compression_rgtc
+    GL_ARB_texture_cube_map
+    GL_ARB_texture_cube_map_array
+    GL_ARB_texture_env_add
+    GL_ARB_texture_env_combine
+    GL_ARB_texture_env_crossbar
+    GL_ARB_texture_env_dot3
+    GL_ARB_texture_filter_anisotropic
+    GL_ARB_texture_filter_minmax
+    GL_ARB_texture_float
+    GL_ARB_texture_gather
+    GL_ARB_texture_mirror_clamp_to_edge
+    GL_ARB_texture_mirrored_repeat
+    GL_ARB_texture_multisample
+    GL_ARB_texture_non_power_of_two
+    GL_ARB_texture_query_levels
+    GL_ARB_texture_query_lod
+    GL_ARB_texture_rectangle
+    GL_ARB_texture_rg
+    GL_ARB_texture_rgb10_a2ui
+    GL_ARB_texture_stencil8
+    GL_ARB_texture_storage
+    GL_ARB_texture_storage_multisample
+    GL_ARB_texture_swizzle
+    GL_ARB_texture_view
+    GL_ARB_timer_query
+    GL_ARB_transform_feedback2
+    GL_ARB_transform_feedback3
+    GL_ARB_transform_feedback_instanced
+    GL_ARB_transform_feedback_overflow_query
+    GL_ARB_transpose_matrix
+    GL_ARB_uniform_buffer_object
+    GL_ARB_vertex_array_bgra
+    GL_ARB_vertex_array_object
+    GL_ARB_vertex_attrib_64bit
+    GL_ARB_vertex_attrib_binding
+    GL_ARB_vertex_buffer_object
+    GL_ARB_vertex_program
+    GL_ARB_vertex_shader
+    GL_ARB_vertex_type_10f_11f_11f_rev
+    GL_ARB_vertex_type_2_10_10_10_rev
+    GL_ARB_viewport_array
+    GL_ARB_window_pos
+    GL_ATI_draw_buffers
+    GL_ATI_texture_float
+    GL_ATI_texture_mirror_once
+    GL_EXTX_framebuffer_mixed_formats
+    GL_EXT_Cg_shader
+    GL_EXT_abgr
+    GL_EXT_bgra
+    GL_EXT_bindable_uniform
+    GL_EXT_blend_color
+    GL_EXT_blend_equation_separate
+    GL_EXT_blend_func_separate
+    GL_EXT_blend_minmax
+    GL_EXT_blend_subtract
+    GL_EXT_compiled_vertex_array
+    GL_EXT_depth_bounds_test
+    GL_EXT_direct_state_access
+    GL_EXT_draw_buffers2
+    GL_EXT_draw_instanced
+    GL_EXT_draw_range_elements
+    GL_EXT_fog_coord
+    GL_EXT_framebuffer_blit
+    GL_EXT_framebuffer_multisample
+    GL_EXT_framebuffer_multisample_blit_scaled
+    GL_EXT_framebuffer_object
+    GL_EXT_framebuffer_sRGB
+    GL_EXT_geometry_shader4
+    GL_EXT_gpu_program_parameters
+    GL_EXT_gpu_shader4
+    GL_EXT_import_sync_object
+    GL_EXT_memory_object
+    GL_EXT_memory_object_win32
+    GL_EXT_multi_draw_arrays
+    GL_EXT_packed_depth_stencil
+    GL_EXT_packed_float
+    GL_EXT_packed_pixels
+    GL_EXT_pixel_buffer_object
+    GL_EXT_point_parameters
+    GL_EXT_polygon_offset_clamp
+    GL_EXT_post_depth_coverage
+    GL_EXT_provoking_vertex
+    GL_EXT_raster_multisample
+    GL_EXT_rescale_normal
+    GL_EXT_secondary_color
+    GL_EXT_semaphore
+    GL_EXT_semaphore_win32
+    GL_EXT_separate_shader_objects
+    GL_EXT_separate_specular_color
+    GL_EXT_shader_image_load_formatted
+    GL_EXT_shader_image_load_store
+    GL_EXT_shader_integer_mix
+    GL_EXT_shadow_funcs
+    GL_EXT_sparse_texture2
+    GL_EXT_stencil_two_side
+    GL_EXT_stencil_wrap
+    GL_EXT_texture3D
+    GL_EXT_texture_array
+    GL_EXT_texture_buffer_object
+    GL_EXT_texture_compression_dxt1
+    GL_EXT_texture_compression_latc
+    GL_EXT_texture_compression_rgtc
+    GL_EXT_texture_compression_s3tc
+    GL_EXT_texture_cube_map
+    GL_EXT_texture_edge_clamp
+    GL_EXT_texture_env_add
+    GL_EXT_texture_env_combine
+    GL_EXT_texture_env_dot3
+    GL_EXT_texture_filter_anisotropic
+    GL_EXT_texture_filter_minmax
+    GL_EXT_texture_integer
+    GL_EXT_texture_lod
+    GL_EXT_texture_lod_bias
+    GL_EXT_texture_mirror_clamp
+    GL_EXT_texture_object
+    GL_EXT_texture_sRGB
+    GL_EXT_texture_sRGB_decode
+    GL_EXT_texture_shared_exponent
+    GL_EXT_texture_storage
+    GL_EXT_texture_swizzle
+    GL_EXT_timer_query
+    GL_EXT_transform_feedback2
+    GL_EXT_vertex_array
+    GL_EXT_vertex_array_bgra
+    GL_EXT_vertex_attrib_64bit
+    GL_EXT_win32_keyed_mutex
+    GL_EXT_window_rectangles
+    GL_IBM_rasterpos_clip
+    GL_IBM_texture_mirrored_repeat
+    GL_KHR_blend_equation_advanced
+    GL_KHR_blend_equation_advanced_coherent
+    GL_KHR_context_flush_control
+    GL_KHR_debug
+    GL_KHR_no_error
+    GL_KHR_parallel_shader_compile
+    GL_KHR_robust_buffer_access_behavior
+    GL_KHR_robustness
+    GL_KTX_buffer_region
+    GL_NVX_conditional_render
+    GL_NVX_gpu_memory_info
+    GL_NVX_multigpu_info
+    GL_NVX_nvenc_interop
+    GL_NV_ES1_1_compatibility
+    GL_NV_ES3_1_compatibility
+    GL_NV_alpha_to_coverage_dither_control
+    GL_NV_bindless_multi_draw_indirect
+    GL_NV_bindless_multi_draw_indirect_count
+    GL_NV_bindless_texture
+    GL_NV_blend_equation_advanced
+    GL_NV_blend_equation_advanced_coherent
+    GL_NV_blend_minmax_factor
+    GL_NV_blend_square
+    GL_NV_command_list
+    GL_NV_compute_program5
+    GL_NV_conditional_render
+    GL_NV_conservative_raster
+    GL_NV_conservative_raster_dilate
+    GL_NV_copy_depth_to_color
+    GL_NV_copy_image
+    GL_NV_depth_buffer_float
+    GL_NV_depth_clamp
+    GL_NV_draw_texture
+    GL_NV_draw_vulkan_image
+    GL_NV_explicit_multisample
+    GL_NV_feature_query
+    GL_NV_fence
+    GL_NV_fill_rectangle
+    GL_NV_float_buffer
+    GL_NV_fog_distance
+    GL_NV_fragment_coverage_to_color
+    GL_NV_fragment_program
+    GL_NV_fragment_program2
+    GL_NV_fragment_program_option
+    GL_NV_fragment_shader_interlock
+    GL_NV_framebuffer_mixed_samples
+    GL_NV_framebuffer_multisample_coverage
+    GL_NV_geometry_shader4
+    GL_NV_geometry_shader_passthrough
+    GL_NV_gpu_program4
+    GL_NV_gpu_program4_1
+    GL_NV_gpu_program5
+    GL_NV_gpu_program5_mem_extended
+    GL_NV_gpu_program_fp64
+    GL_NV_gpu_shader5
+    GL_NV_half_float
+    GL_NV_internalformat_sample_query
+    GL_NV_light_max_exponent
+    GL_NV_multisample_coverage
+    GL_NV_multisample_filter_hint
+    GL_NV_occlusion_query
+    GL_NV_packed_depth_stencil
+    GL_NV_parameter_buffer_object
+    GL_NV_parameter_buffer_object2
+    GL_NV_path_rendering
+    GL_NV_path_rendering_shared_edge
+    GL_NV_pixel_data_range
+    GL_NV_point_sprite
+    GL_NV_primitive_restart
+    GL_NV_query_resource
+    GL_NV_query_resource_tag
+    GL_NV_register_combiners
+    GL_NV_register_combiners2
+    GL_NV_sample_locations
+    GL_NV_sample_mask_override_coverage
+    GL_NV_shader_atomic_counters
+    GL_NV_shader_atomic_float
+    GL_NV_shader_atomic_fp16_vector
+    GL_NV_shader_atomic_int64
+    GL_NV_shader_buffer_load
+    GL_NV_shader_storage_buffer_object
+    GL_NV_shader_thread_group
+    GL_NV_shader_thread_shuffle
+    GL_NV_texgen_reflection
+    GL_NV_texture_barrier
+    GL_NV_texture_compression_vtc
+    GL_NV_texture_env_combine4
+    GL_NV_texture_multisample
+    GL_NV_texture_rectangle
+    GL_NV_texture_rectangle_compressed
+    GL_NV_texture_shader
+    GL_NV_texture_shader2
+    GL_NV_texture_shader3
+    GL_NV_transform_feedback
+    GL_NV_transform_feedback2
+    GL_NV_uniform_buffer_unified_memory
+    GL_NV_vertex_array_range
+    GL_NV_vertex_array_range2
+    GL_NV_vertex_attrib_integer_64bit
+    GL_NV_vertex_buffer_unified_memory
+    GL_NV_vertex_program
+    GL_NV_vertex_program1_1
+    GL_NV_vertex_program2
+    GL_NV_vertex_program2_option
+    GL_NV_vertex_program3
+    GL_NV_viewport_array2
+    GL_NV_viewport_swizzle
+    GL_S3_s3tc
+    GL_SGIS_generate_mipmap
+    GL_SGIS_texture_lod
+    GL_SGIX_depth_texture
+    GL_SGIX_shadow
+    GL_SUN_slice_accum
+    GL_WIN_swap_hint
+    WGL_EXT_swap_control
+Number of texture units: 4
+Using shader environment.
+Using copy RTT.
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Total time until interface ready: 4.06999993324s
+Resetting cache.
+Bootstrap to the start of init.init took 44.12s
+Early init took 0.00s
+Loader init took 0.14s
+Loading error handling took 0.06s
+Loading script took 3.55s
+Loading persistent took 0.14s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
 Set script version to: (6, 99, 13)
-Running init code took 0.24s
+Running init code took 0.22s
 Loading analysis data took 4.94s
 Analyze and compile ATL took 0.21s
-Index archives took 0.00s
-Dump and make backups. took 0.00s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-DPI scale factor: 1.000000
-Creating interface object took 0.04s
-Cleaning stores took 0.00s
-Init translation took 0.01s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.02s
-Save screen analysis took 0.09s
-Prepare screens took 0.06s
-Save pyanalysis. took 16.32s
-Save bytecode. took 0.30s
-Running _start took 0.04s
-Performance test:
-Interface start took 0.01s
-
-primary display bounds: (0, 0, 1920, 1080)
-Windowed mode.
-Screen sizes: virtual=(1024, 768) physical=(1304, 978) drawable=(1304, 978)
-Vendor: 'NVIDIA Corporation'
-Renderer: 'GeForce GTX 970M/PCIe/SSE2'
-Version: '4.6.0 NVIDIA 397.64'
-Display Info: <Info({'blit_sw_CC': False, 'refresh_rate': 60, 'bitsize': 32, 'wm': True, 'losses': (0, 0, 0, 8), 'hw': False, 'masks': (16711680L, 65280L, 255L, 0L), 'current_h': 1080, 'current_w': 1920, 'shifts': (16, 8, 0, 0), 'blit_sw_A': False, 'blit_hw': False, 'blit_sw': False, 'bytesize': 4, 'blit_hw_CC': False, 'blit_hw_A': False, 'video_mem': 268435456})>
-Fixed-function is blacklisted.
-Extensions:
-    
-    GL_AMD_multi_draw_indirect
-    GL_AMD_seamless_cubemap_per_texture
-    GL_AMD_vertex_shader_layer
-    GL_AMD_vertex_shader_viewport_index
-    GL_ARB_ES2_compatibility
-    GL_ARB_ES3_1_compatibility
-    GL_ARB_ES3_2_compatibility
-    GL_ARB_ES3_compatibility
-    GL_ARB_arrays_of_arrays
-    GL_ARB_base_instance
-    GL_ARB_bindless_texture
-    GL_ARB_blend_func_extended
-    GL_ARB_buffer_storage
-    GL_ARB_clear_buffer_object
-    GL_ARB_clear_texture
-    GL_ARB_clip_control
-    GL_ARB_color_buffer_float
-    GL_ARB_compatibility
-    GL_ARB_compressed_texture_pixel_storage
-    GL_ARB_compute_shader
-    GL_ARB_compute_variable_group_size
-    GL_ARB_conditional_render_inverted
-    GL_ARB_conservative_depth
-    GL_ARB_copy_buffer
-    GL_ARB_copy_image
-    GL_ARB_cull_distance
-    GL_ARB_debug_output
-    GL_ARB_depth_buffer_float
-    GL_ARB_depth_clamp
-    GL_ARB_depth_texture
-    GL_ARB_derivative_control
-    GL_ARB_direct_state_access
-    GL_ARB_draw_buffers
-    GL_ARB_draw_buffers_blend
-    GL_ARB_draw_elements_base_vertex
-    GL_ARB_draw_indirect
-    GL_ARB_draw_instanced
-    GL_ARB_enhanced_layouts
-    GL_ARB_explicit_attrib_location
-    GL_ARB_explicit_uniform_location
-    GL_ARB_fragment_coord_conventions
-    GL_ARB_fragment_layer_viewport
-    GL_ARB_fragment_program
-    GL_ARB_fragment_program_shadow
-    GL_ARB_fragment_shader
-    GL_ARB_fragment_shader_interlock
-    GL_ARB_framebuffer_no_attachments
-    GL_ARB_framebuffer_object
-    GL_ARB_framebuffer_sRGB
-    GL_ARB_geometry_shader4
-    GL_ARB_get_program_binary
-    GL_ARB_get_texture_sub_image
-    GL_ARB_gl_spirv
-    GL_ARB_gpu_shader5
-    GL_ARB_gpu_shader_fp64
-    GL_ARB_gpu_shader_int64
-    GL_ARB_half_float_pixel
-    GL_ARB_half_float_vertex
-    GL_ARB_imaging
-    GL_ARB_indirect_parameters
-    GL_ARB_instanced_arrays
-    GL_ARB_internalformat_query
-    GL_ARB_internalformat_query2
-    GL_ARB_invalidate_subdata
-    GL_ARB_map_buffer_alignment
-    GL_ARB_map_buffer_range
-    GL_ARB_multi_bind
-    GL_ARB_multi_draw_indirect
-    GL_ARB_multisample
-    GL_ARB_multitexture
-    GL_ARB_occlusion_query
-    GL_ARB_occlusion_query2
-    GL_ARB_parallel_shader_compile
-    GL_ARB_pipeline_statistics_query
-    GL_ARB_pixel_buffer_object
-    GL_ARB_point_parameters
-    GL_ARB_point_sprite
-    GL_ARB_polygon_offset_clamp
-    GL_ARB_post_depth_coverage
-    GL_ARB_program_interface_query
-    GL_ARB_provoking_vertex
-    GL_ARB_query_buffer_object
-    GL_ARB_robust_buffer_access_behavior
-    GL_ARB_robustness
-    GL_ARB_sample_locations
-    GL_ARB_sample_shading
-    GL_ARB_sampler_objects
-    GL_ARB_seamless_cube_map
-    GL_ARB_seamless_cubemap_per_texture
-    GL_ARB_separate_shader_objects
-    GL_ARB_shader_atomic_counter_ops
-    GL_ARB_shader_atomic_counters
-    GL_ARB_shader_ballot
-    GL_ARB_shader_bit_encoding
-    GL_ARB_shader_clock
-    GL_ARB_shader_draw_parameters
-    GL_ARB_shader_group_vote
-    GL_ARB_shader_image_load_store
-    GL_ARB_shader_image_size
-    GL_ARB_shader_objects
-    GL_ARB_shader_precision
-    GL_ARB_shader_storage_buffer_object
-    GL_ARB_shader_subroutine
-    GL_ARB_shader_texture_image_samples
-    GL_ARB_shader_texture_lod
-    GL_ARB_shader_viewport_layer_array
-    GL_ARB_shading_language_100
-    GL_ARB_shading_language_420pack
-    GL_ARB_shading_language_include
-    GL_ARB_shading_language_packing
-    GL_ARB_shadow
-    GL_ARB_sparse_buffer
-    GL_ARB_sparse_texture
-    GL_ARB_sparse_texture2
-    GL_ARB_sparse_texture_clamp
-    GL_ARB_spirv_extensions
-    GL_ARB_stencil_texturing
-    GL_ARB_sync
-    GL_ARB_tessellation_shader
-    GL_ARB_texture_barrier
-    GL_ARB_texture_border_clamp
-    GL_ARB_texture_buffer_object
-    GL_ARB_texture_buffer_object_rgb32
-    GL_ARB_texture_buffer_range
-    GL_ARB_texture_compression
-    GL_ARB_texture_compression_bptc
-    GL_ARB_texture_compression_rgtc
-    GL_ARB_texture_cube_map
-    GL_ARB_texture_cube_map_array
-    GL_ARB_texture_env_add
-    GL_ARB_texture_env_combine
-    GL_ARB_texture_env_crossbar
-    GL_ARB_texture_env_dot3
-    GL_ARB_texture_filter_anisotropic
-    GL_ARB_texture_filter_minmax
-    GL_ARB_texture_float
-    GL_ARB_texture_gather
-    GL_ARB_texture_mirror_clamp_to_edge
-    GL_ARB_texture_mirrored_repeat
-    GL_ARB_texture_multisample
-    GL_ARB_texture_non_power_of_two
-    GL_ARB_texture_query_levels
-    GL_ARB_texture_query_lod
-    GL_ARB_texture_rectangle
-    GL_ARB_texture_rg
-    GL_ARB_texture_rgb10_a2ui
-    GL_ARB_texture_stencil8
-    GL_ARB_texture_storage
-    GL_ARB_texture_storage_multisample
-    GL_ARB_texture_swizzle
-    GL_ARB_texture_view
-    GL_ARB_timer_query
-    GL_ARB_transform_feedback2
-    GL_ARB_transform_feedback3
-    GL_ARB_transform_feedback_instanced
-    GL_ARB_transform_feedback_overflow_query
-    GL_ARB_transpose_matrix
-    GL_ARB_uniform_buffer_object
-    GL_ARB_vertex_array_bgra
-    GL_ARB_vertex_array_object
-    GL_ARB_vertex_attrib_64bit
-    GL_ARB_vertex_attrib_binding
-    GL_ARB_vertex_buffer_object
-    GL_ARB_vertex_program
-    GL_ARB_vertex_shader
-    GL_ARB_vertex_type_10f_11f_11f_rev
-    GL_ARB_vertex_type_2_10_10_10_rev
-    GL_ARB_viewport_array
-    GL_ARB_window_pos
-    GL_ATI_draw_buffers
-    GL_ATI_texture_float
-    GL_ATI_texture_mirror_once
-    GL_EXTX_framebuffer_mixed_formats
-    GL_EXT_Cg_shader
-    GL_EXT_abgr
-    GL_EXT_bgra
-    GL_EXT_bindable_uniform
-    GL_EXT_blend_color
-    GL_EXT_blend_equation_separate
-    GL_EXT_blend_func_separate
-    GL_EXT_blend_minmax
-    GL_EXT_blend_subtract
-    GL_EXT_compiled_vertex_array
-    GL_EXT_depth_bounds_test
-    GL_EXT_direct_state_access
-    GL_EXT_draw_buffers2
-    GL_EXT_draw_instanced
-    GL_EXT_draw_range_elements
-    GL_EXT_fog_coord
-    GL_EXT_framebuffer_blit
-    GL_EXT_framebuffer_multisample
-    GL_EXT_framebuffer_multisample_blit_scaled
-    GL_EXT_framebuffer_object
-    GL_EXT_framebuffer_sRGB
-    GL_EXT_geometry_shader4
-    GL_EXT_gpu_program_parameters
-    GL_EXT_gpu_shader4
-    GL_EXT_import_sync_object
-    GL_EXT_memory_object
-    GL_EXT_memory_object_win32
-    GL_EXT_multi_draw_arrays
-    GL_EXT_packed_depth_stencil
-    GL_EXT_packed_float
-    GL_EXT_packed_pixels
-    GL_EXT_pixel_buffer_object
-    GL_EXT_point_parameters
-    GL_EXT_polygon_offset_clamp
-    GL_EXT_post_depth_coverage
-    GL_EXT_provoking_vertex
-    GL_EXT_raster_multisample
-    GL_EXT_rescale_normal
-    GL_EXT_secondary_color
-    GL_EXT_semaphore
-    GL_EXT_semaphore_win32
-    GL_EXT_separate_shader_objects
-    GL_EXT_separate_specular_color
-    GL_EXT_shader_image_load_formatted
-    GL_EXT_shader_image_load_store
-    GL_EXT_shader_integer_mix
-    GL_EXT_shadow_funcs
-    GL_EXT_sparse_texture2
-    GL_EXT_stencil_two_side
-    GL_EXT_stencil_wrap
-    GL_EXT_texture3D
-    GL_EXT_texture_array
-    GL_EXT_texture_buffer_object
-    GL_EXT_texture_compression_dxt1
-    GL_EXT_texture_compression_latc
-    GL_EXT_texture_compression_rgtc
-    GL_EXT_texture_compression_s3tc
-    GL_EXT_texture_cube_map
-    GL_EXT_texture_edge_clamp
-    GL_EXT_texture_env_add
-    GL_EXT_texture_env_combine
-    GL_EXT_texture_env_dot3
-    GL_EXT_texture_filter_anisotropic
-    GL_EXT_texture_filter_minmax
-    GL_EXT_texture_integer
-    GL_EXT_texture_lod
-    GL_EXT_texture_lod_bias
-    GL_EXT_texture_mirror_clamp
-    GL_EXT_texture_object
-    GL_EXT_texture_sRGB
-    GL_EXT_texture_sRGB_decode
-    GL_EXT_texture_shared_exponent
-    GL_EXT_texture_storage
-    GL_EXT_texture_swizzle
-    GL_EXT_timer_query
-    GL_EXT_transform_feedback2
-    GL_EXT_vertex_array
-    GL_EXT_vertex_array_bgra
-    GL_EXT_vertex_attrib_64bit
-    GL_EXT_win32_keyed_mutex
-    GL_EXT_window_rectangles
-    GL_IBM_rasterpos_clip
-    GL_IBM_texture_mirrored_repeat
-    GL_KHR_blend_equation_advanced
-    GL_KHR_blend_equation_advanced_coherent
-    GL_KHR_context_flush_control
-    GL_KHR_debug
-    GL_KHR_no_error
-    GL_KHR_parallel_shader_compile
-    GL_KHR_robust_buffer_access_behavior
-    GL_KHR_robustness
-    GL_KTX_buffer_region
-    GL_NVX_conditional_render
-    GL_NVX_gpu_memory_info
-    GL_NVX_multigpu_info
-    GL_NVX_nvenc_interop
-    GL_NV_ES1_1_compatibility
-    GL_NV_ES3_1_compatibility
-    GL_NV_alpha_to_coverage_dither_control
-    GL_NV_bindless_multi_draw_indirect
-    GL_NV_bindless_multi_draw_indirect_count
-    GL_NV_bindless_texture
-    GL_NV_blend_equation_advanced
-    GL_NV_blend_equation_advanced_coherent
-    GL_NV_blend_minmax_factor
-    GL_NV_blend_square
-    GL_NV_command_list
-    GL_NV_compute_program5
-    GL_NV_conditional_render
-    GL_NV_conservative_raster
-    GL_NV_conservative_raster_dilate
-    GL_NV_copy_depth_to_color
-    GL_NV_copy_image
-    GL_NV_depth_buffer_float
-    GL_NV_depth_clamp
-    GL_NV_draw_texture
-    GL_NV_draw_vulkan_image
-    GL_NV_explicit_multisample
-    GL_NV_feature_query
-    GL_NV_fence
-    GL_NV_fill_rectangle
-    GL_NV_float_buffer
-    GL_NV_fog_distance
-    GL_NV_fragment_coverage_to_color
-    GL_NV_fragment_program
-    GL_NV_fragment_program2
-    GL_NV_fragment_program_option
-    GL_NV_fragment_shader_interlock
-    GL_NV_framebuffer_mixed_samples
-    GL_NV_framebuffer_multisample_coverage
-    GL_NV_geometry_shader4
-    GL_NV_geometry_shader_passthrough
-    GL_NV_gpu_program4
-    GL_NV_gpu_program4_1
-    GL_NV_gpu_program5
-    GL_NV_gpu_program5_mem_extended
-    GL_NV_gpu_program_fp64
-    GL_NV_gpu_shader5
-    GL_NV_half_float
-    GL_NV_internalformat_sample_query
-    GL_NV_light_max_exponent
-    GL_NV_multisample_coverage
-    GL_NV_multisample_filter_hint
-    GL_NV_occlusion_query
-    GL_NV_packed_depth_stencil
-    GL_NV_parameter_buffer_object
-    GL_NV_parameter_buffer_object2
-    GL_NV_path_rendering
-    GL_NV_path_rendering_shared_edge
-    GL_NV_pixel_data_range
-    GL_NV_point_sprite
-    GL_NV_primitive_restart
-    GL_NV_query_resource
-    GL_NV_query_resource_tag
-    GL_NV_register_combiners
-    GL_NV_register_combiners2
-    GL_NV_sample_locations
-    GL_NV_sample_mask_override_coverage
-    GL_NV_shader_atomic_counters
-    GL_NV_shader_atomic_float
-    GL_NV_shader_atomic_fp16_vector
-    GL_NV_shader_atomic_int64
-    GL_NV_shader_buffer_load
-    GL_NV_shader_storage_buffer_object
-    GL_NV_shader_thread_group
-    GL_NV_shader_thread_shuffle
-    GL_NV_texgen_reflection
-    GL_NV_texture_barrier
-    GL_NV_texture_compression_vtc
-    GL_NV_texture_env_combine4
-    GL_NV_texture_multisample
-    GL_NV_texture_rectangle
-    GL_NV_texture_rectangle_compressed
-    GL_NV_texture_shader
-    GL_NV_texture_shader2
-    GL_NV_texture_shader3
-    GL_NV_transform_feedback
-    GL_NV_transform_feedback2
-    GL_NV_uniform_buffer_unified_memory
-    GL_NV_vertex_array_range
-    GL_NV_vertex_array_range2
-    GL_NV_vertex_attrib_integer_64bit
-    GL_NV_vertex_buffer_unified_memory
-    GL_NV_vertex_program
-    GL_NV_vertex_program1_1
-    GL_NV_vertex_program2
-    GL_NV_vertex_program2_option
-    GL_NV_vertex_program3
-    GL_NV_viewport_array2
-    GL_NV_viewport_swizzle
-    GL_S3_s3tc
-    GL_SGIS_generate_mipmap
-    GL_SGIS_texture_lod
-    GL_SGIX_depth_texture
-    GL_SGIX_shadow
-    GL_SUN_slice_accum
-    GL_WIN_swap_hint
-    WGL_EXT_swap_control
-Number of texture units: 4
-Using shader environment.
-Using copy RTT.
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Total time until interface ready: 32.1700000763s
-- Target is 5 frames in 0.333333333333 seconds.
-- Frame drawn at 0.000000 seconds.
-- Frame drawn at 0.091000 seconds.
-- Frame drawn at 0.098000 seconds.
-- Frame drawn at 0.113000 seconds.
-- Frame drawn at 0.114000 seconds.
-- 0.114000 seconds to render 5 frames.
-Resetting cache.
-Bootstrap to the start of init.init took 119.33s
-Early init took 0.00s
-Loader init took 0.13s
-Loading error handling took 0.06s
-Loading script took 2.21s
-Loading persistent took 0.14s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Set script version to: (6, 99, 13)
-Running init code took 0.32s
-Loading analysis data took 5.12s
-Analyze and compile ATL took 0.20s
-Index archives took 0.00s
-Dump and make backups. took 0.00s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-DPI scale factor: 1.000000
-Creating interface object took 0.00s
-Cleaning stores took 0.00s
-Init translation took 0.01s
-Build styles took 0.00s
-Load screen analysis took 0.02s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.06s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.00s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.01s
-
-primary display bounds: (0, 0, 1920, 1080)
-Windowed mode.
-Screen sizes: virtual=(1024, 768) physical=(1304, 978) drawable=(1304, 978)
-Vendor: 'NVIDIA Corporation'
-Renderer: 'GeForce GTX 970M/PCIe/SSE2'
-Version: '4.6.0 NVIDIA 397.64'
-Display Info: <Info({'blit_sw_CC': False, 'refresh_rate': 60, 'bitsize': 32, 'wm': True, 'losses': (0, 0, 0, 8), 'hw': False, 'masks': (16711680L, 65280L, 255L, 0L), 'current_h': 1080, 'current_w': 1920, 'shifts': (16, 8, 0, 0), 'blit_sw_A': False, 'blit_hw': False, 'blit_sw': False, 'bytesize': 4, 'blit_hw_CC': False, 'blit_hw_A': False, 'video_mem': 268435456})>
-Fixed-function is blacklisted.
-Extensions:
-    
-    GL_AMD_multi_draw_indirect
-    GL_AMD_seamless_cubemap_per_texture
-    GL_AMD_vertex_shader_layer
-    GL_AMD_vertex_shader_viewport_index
-    GL_ARB_ES2_compatibility
-    GL_ARB_ES3_1_compatibility
-    GL_ARB_ES3_2_compatibility
-    GL_ARB_ES3_compatibility
-    GL_ARB_arrays_of_arrays
-    GL_ARB_base_instance
-    GL_ARB_bindless_texture
-    GL_ARB_blend_func_extended
-    GL_ARB_buffer_storage
-    GL_ARB_clear_buffer_object
-    GL_ARB_clear_texture
-    GL_ARB_clip_control
-    GL_ARB_color_buffer_float
-    GL_ARB_compatibility
-    GL_ARB_compressed_texture_pixel_storage
-    GL_ARB_compute_shader
-    GL_ARB_compute_variable_group_size
-    GL_ARB_conditional_render_inverted
-    GL_ARB_conservative_depth
-    GL_ARB_copy_buffer
-    GL_ARB_copy_image
-    GL_ARB_cull_distance
-    GL_ARB_debug_output
-    GL_ARB_depth_buffer_float
-    GL_ARB_depth_clamp
-    GL_ARB_depth_texture
-    GL_ARB_derivative_control
-    GL_ARB_direct_state_access
-    GL_ARB_draw_buffers
-    GL_ARB_draw_buffers_blend
-    GL_ARB_draw_elements_base_vertex
-    GL_ARB_draw_indirect
-    GL_ARB_draw_instanced
-    GL_ARB_enhanced_layouts
-    GL_ARB_explicit_attrib_location
-    GL_ARB_explicit_uniform_location
-    GL_ARB_fragment_coord_conventions
-    GL_ARB_fragment_layer_viewport
-    GL_ARB_fragment_program
-    GL_ARB_fragment_program_shadow
-    GL_ARB_fragment_shader
-    GL_ARB_fragment_shader_interlock
-    GL_ARB_framebuffer_no_attachments
-    GL_ARB_framebuffer_object
-    GL_ARB_framebuffer_sRGB
-    GL_ARB_geometry_shader4
-    GL_ARB_get_program_binary
-    GL_ARB_get_texture_sub_image
-    GL_ARB_gl_spirv
-    GL_ARB_gpu_shader5
-    GL_ARB_gpu_shader_fp64
-    GL_ARB_gpu_shader_int64
-    GL_ARB_half_float_pixel
-    GL_ARB_half_float_vertex
-    GL_ARB_imaging
-    GL_ARB_indirect_parameters
-    GL_ARB_instanced_arrays
-    GL_ARB_internalformat_query
-    GL_ARB_internalformat_query2
-    GL_ARB_invalidate_subdata
-    GL_ARB_map_buffer_alignment
-    GL_ARB_map_buffer_range
-    GL_ARB_multi_bind
-    GL_ARB_multi_draw_indirect
-    GL_ARB_multisample
-    GL_ARB_multitexture
-    GL_ARB_occlusion_query
-    GL_ARB_occlusion_query2
-    GL_ARB_parallel_shader_compile
-    GL_ARB_pipeline_statistics_query
-    GL_ARB_pixel_buffer_object
-    GL_ARB_point_parameters
-    GL_ARB_point_sprite
-    GL_ARB_polygon_offset_clamp
-    GL_ARB_post_depth_coverage
-    GL_ARB_program_interface_query
-    GL_ARB_provoking_vertex
-    GL_ARB_query_buffer_object
-    GL_ARB_robust_buffer_access_behavior
-    GL_ARB_robustness
-    GL_ARB_sample_locations
-    GL_ARB_sample_shading
-    GL_ARB_sampler_objects
-    GL_ARB_seamless_cube_map
-    GL_ARB_seamless_cubemap_per_texture
-    GL_ARB_separate_shader_objects
-    GL_ARB_shader_atomic_counter_ops
-    GL_ARB_shader_atomic_counters
-    GL_ARB_shader_ballot
-    GL_ARB_shader_bit_encoding
-    GL_ARB_shader_clock
-    GL_ARB_shader_draw_parameters
-    GL_ARB_shader_group_vote
-    GL_ARB_shader_image_load_store
-    GL_ARB_shader_image_size
-    GL_ARB_shader_objects
-    GL_ARB_shader_precision
-    GL_ARB_shader_storage_buffer_object
-    GL_ARB_shader_subroutine
-    GL_ARB_shader_texture_image_samples
-    GL_ARB_shader_texture_lod
-    GL_ARB_shader_viewport_layer_array
-    GL_ARB_shading_language_100
-    GL_ARB_shading_language_420pack
-    GL_ARB_shading_language_include
-    GL_ARB_shading_language_packing
-    GL_ARB_shadow
-    GL_ARB_sparse_buffer
-    GL_ARB_sparse_texture
-    GL_ARB_sparse_texture2
-    GL_ARB_sparse_texture_clamp
-    GL_ARB_spirv_extensions
-    GL_ARB_stencil_texturing
-    GL_ARB_sync
-    GL_ARB_tessellation_shader
-    GL_ARB_texture_barrier
-    GL_ARB_texture_border_clamp
-    GL_ARB_texture_buffer_object
-    GL_ARB_texture_buffer_object_rgb32
-    GL_ARB_texture_buffer_range
-    GL_ARB_texture_compression
-    GL_ARB_texture_compression_bptc
-    GL_ARB_texture_compression_rgtc
-    GL_ARB_texture_cube_map
-    GL_ARB_texture_cube_map_array
-    GL_ARB_texture_env_add
-    GL_ARB_texture_env_combine
-    GL_ARB_texture_env_crossbar
-    GL_ARB_texture_env_dot3
-    GL_ARB_texture_filter_anisotropic
-    GL_ARB_texture_filter_minmax
-    GL_ARB_texture_float
-    GL_ARB_texture_gather
-    GL_ARB_texture_mirror_clamp_to_edge
-    GL_ARB_texture_mirrored_repeat
-    GL_ARB_texture_multisample
-    GL_ARB_texture_non_power_of_two
-    GL_ARB_texture_query_levels
-    GL_ARB_texture_query_lod
-    GL_ARB_texture_rectangle
-    GL_ARB_texture_rg
-    GL_ARB_texture_rgb10_a2ui
-    GL_ARB_texture_stencil8
-    GL_ARB_texture_storage
-    GL_ARB_texture_storage_multisample
-    GL_ARB_texture_swizzle
-    GL_ARB_texture_view
-    GL_ARB_timer_query
-    GL_ARB_transform_feedback2
-    GL_ARB_transform_feedback3
-    GL_ARB_transform_feedback_instanced
-    GL_ARB_transform_feedback_overflow_query
-    GL_ARB_transpose_matrix
-    GL_ARB_uniform_buffer_object
-    GL_ARB_vertex_array_bgra
-    GL_ARB_vertex_array_object
-    GL_ARB_vertex_attrib_64bit
-    GL_ARB_vertex_attrib_binding
-    GL_ARB_vertex_buffer_object
-    GL_ARB_vertex_program
-    GL_ARB_vertex_shader
-    GL_ARB_vertex_type_10f_11f_11f_rev
-    GL_ARB_vertex_type_2_10_10_10_rev
-    GL_ARB_viewport_array
-    GL_ARB_window_pos
-    GL_ATI_draw_buffers
-    GL_ATI_texture_float
-    GL_ATI_texture_mirror_once
-    GL_EXTX_framebuffer_mixed_formats
-    GL_EXT_Cg_shader
-    GL_EXT_abgr
-    GL_EXT_bgra
-    GL_EXT_bindable_uniform
-    GL_EXT_blend_color
-    GL_EXT_blend_equation_separate
-    GL_EXT_blend_func_separate
-    GL_EXT_blend_minmax
-    GL_EXT_blend_subtract
-    GL_EXT_compiled_vertex_array
-    GL_EXT_depth_bounds_test
-    GL_EXT_direct_state_access
-    GL_EXT_draw_buffers2
-    GL_EXT_draw_instanced
-    GL_EXT_draw_range_elements
-    GL_EXT_fog_coord
-    GL_EXT_framebuffer_blit
-    GL_EXT_framebuffer_multisample
-    GL_EXT_framebuffer_multisample_blit_scaled
-    GL_EXT_framebuffer_object
-    GL_EXT_framebuffer_sRGB
-    GL_EXT_geometry_shader4
-    GL_EXT_gpu_program_parameters
-    GL_EXT_gpu_shader4
-    GL_EXT_import_sync_object
-    GL_EXT_memory_object
-    GL_EXT_memory_object_win32
-    GL_EXT_multi_draw_arrays
-    GL_EXT_packed_depth_stencil
-    GL_EXT_packed_float
-    GL_EXT_packed_pixels
-    GL_EXT_pixel_buffer_object
-    GL_EXT_point_parameters
-    GL_EXT_polygon_offset_clamp
-    GL_EXT_post_depth_coverage
-    GL_EXT_provoking_vertex
-    GL_EXT_raster_multisample
-    GL_EXT_rescale_normal
-    GL_EXT_secondary_color
-    GL_EXT_semaphore
-    GL_EXT_semaphore_win32
-    GL_EXT_separate_shader_objects
-    GL_EXT_separate_specular_color
-    GL_EXT_shader_image_load_formatted
-    GL_EXT_shader_image_load_store
-    GL_EXT_shader_integer_mix
-    GL_EXT_shadow_funcs
-    GL_EXT_sparse_texture2
-    GL_EXT_stencil_two_side
-    GL_EXT_stencil_wrap
-    GL_EXT_texture3D
-    GL_EXT_texture_array
-    GL_EXT_texture_buffer_object
-    GL_EXT_texture_compression_dxt1
-    GL_EXT_texture_compression_latc
-    GL_EXT_texture_compression_rgtc
-    GL_EXT_texture_compression_s3tc
-    GL_EXT_texture_cube_map
-    GL_EXT_texture_edge_clamp
-    GL_EXT_texture_env_add
-    GL_EXT_texture_env_combine
-    GL_EXT_texture_env_dot3
-    GL_EXT_texture_filter_anisotropic
-    GL_EXT_texture_filter_minmax
-    GL_EXT_texture_integer
-    GL_EXT_texture_lod
-    GL_EXT_texture_lod_bias
-    GL_EXT_texture_mirror_clamp
-    GL_EXT_texture_object
-    GL_EXT_texture_sRGB
-    GL_EXT_texture_sRGB_decode
-    GL_EXT_texture_shared_exponent
-    GL_EXT_texture_storage
-    GL_EXT_texture_swizzle
-    GL_EXT_timer_query
-    GL_EXT_transform_feedback2
-    GL_EXT_vertex_array
-    GL_EXT_vertex_array_bgra
-    GL_EXT_vertex_attrib_64bit
-    GL_EXT_win32_keyed_mutex
-    GL_EXT_window_rectangles
-    GL_IBM_rasterpos_clip
-    GL_IBM_texture_mirrored_repeat
-    GL_KHR_blend_equation_advanced
-    GL_KHR_blend_equation_advanced_coherent
-    GL_KHR_context_flush_control
-    GL_KHR_debug
-    GL_KHR_no_error
-    GL_KHR_parallel_shader_compile
-    GL_KHR_robust_buffer_access_behavior
-    GL_KHR_robustness
-    GL_KTX_buffer_region
-    GL_NVX_conditional_render
-    GL_NVX_gpu_memory_info
-    GL_NVX_multigpu_info
-    GL_NVX_nvenc_interop
-    GL_NV_ES1_1_compatibility
-    GL_NV_ES3_1_compatibility
-    GL_NV_alpha_to_coverage_dither_control
-    GL_NV_bindless_multi_draw_indirect
-    GL_NV_bindless_multi_draw_indirect_count
-    GL_NV_bindless_texture
-    GL_NV_blend_equation_advanced
-    GL_NV_blend_equation_advanced_coherent
-    GL_NV_blend_minmax_factor
-    GL_NV_blend_square
-    GL_NV_command_list
-    GL_NV_compute_program5
-    GL_NV_conditional_render
-    GL_NV_conservative_raster
-    GL_NV_conservative_raster_dilate
-    GL_NV_copy_depth_to_color
-    GL_NV_copy_image
-    GL_NV_depth_buffer_float
-    GL_NV_depth_clamp
-    GL_NV_draw_texture
-    GL_NV_draw_vulkan_image
-    GL_NV_explicit_multisample
-    GL_NV_feature_query
-    GL_NV_fence
-    GL_NV_fill_rectangle
-    GL_NV_float_buffer
-    GL_NV_fog_distance
-    GL_NV_fragment_coverage_to_color
-    GL_NV_fragment_program
-    GL_NV_fragment_program2
-    GL_NV_fragment_program_option
-    GL_NV_fragment_shader_interlock
-    GL_NV_framebuffer_mixed_samples
-    GL_NV_framebuffer_multisample_coverage
-    GL_NV_geometry_shader4
-    GL_NV_geometry_shader_passthrough
-    GL_NV_gpu_program4
-    GL_NV_gpu_program4_1
-    GL_NV_gpu_program5
-    GL_NV_gpu_program5_mem_extended
-    GL_NV_gpu_program_fp64
-    GL_NV_gpu_shader5
-    GL_NV_half_float
-    GL_NV_internalformat_sample_query
-    GL_NV_light_max_exponent
-    GL_NV_multisample_coverage
-    GL_NV_multisample_filter_hint
-    GL_NV_occlusion_query
-    GL_NV_packed_depth_stencil
-    GL_NV_parameter_buffer_object
-    GL_NV_parameter_buffer_object2
-    GL_NV_path_rendering
-    GL_NV_path_rendering_shared_edge
-    GL_NV_pixel_data_range
-    GL_NV_point_sprite
-    GL_NV_primitive_restart
-    GL_NV_query_resource
-    GL_NV_query_resource_tag
-    GL_NV_register_combiners
-    GL_NV_register_combiners2
-    GL_NV_sample_locations
-    GL_NV_sample_mask_override_coverage
-    GL_NV_shader_atomic_counters
-    GL_NV_shader_atomic_float
-    GL_NV_shader_atomic_fp16_vector
-    GL_NV_shader_atomic_int64
-    GL_NV_shader_buffer_load
-    GL_NV_shader_storage_buffer_object
-    GL_NV_shader_thread_group
-    GL_NV_shader_thread_shuffle
-    GL_NV_texgen_reflection
-    GL_NV_texture_barrier
-    GL_NV_texture_compression_vtc
-    GL_NV_texture_env_combine4
-    GL_NV_texture_multisample
-    GL_NV_texture_rectangle
-    GL_NV_texture_rectangle_compressed
-    GL_NV_texture_shader
-    GL_NV_texture_shader2
-    GL_NV_texture_shader3
-    GL_NV_transform_feedback
-    GL_NV_transform_feedback2
-    GL_NV_uniform_buffer_unified_memory
-    GL_NV_vertex_array_range
-    GL_NV_vertex_array_range2
-    GL_NV_vertex_attrib_integer_64bit
-    GL_NV_vertex_buffer_unified_memory
-    GL_NV_vertex_program
-    GL_NV_vertex_program1_1
-    GL_NV_vertex_program2
-    GL_NV_vertex_program2_option
-    GL_NV_vertex_program3
-    GL_NV_viewport_array2
-    GL_NV_viewport_swizzle
-    GL_S3_s3tc
-    GL_SGIS_generate_mipmap
-    GL_SGIS_texture_lod
-    GL_SGIX_depth_texture
-    GL_SGIX_shadow
-    GL_SUN_slice_accum
-    GL_WIN_swap_hint
-    WGL_EXT_swap_control
-Number of texture units: 4
-Using shader environment.
-Using copy RTT.
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Total time until interface ready: 127.762000084s
-- Target is 5 frames in 0.333333333333 seconds.
-- Frame drawn at 0.000000 seconds.
-- Frame drawn at 0.116000 seconds.
-- Frame drawn at 0.118000 seconds.
-- Frame drawn at 0.118000 seconds.
-- Frame drawn at 0.119000 seconds.
-- 0.119000 seconds to render 5 frames.
-Can't find a place to rollback to. Not rolling back.
-Can't find a place to rollback to. Not rolling back.
-Resetting cache.
-Bootstrap to the start of init.init took 557.80s
-Early init took 0.00s
-Loader init took 0.14s
-Loading error handling took 0.06s
-Loading script took 2.21s
-Loading persistent took 0.16s
-
-File "game/script Locations.rpy", line 3589: expected statement.
-    Show("Mystique_Pic",transition=Pause(1))
-                                            ^
-
-File "game/script Locations.rpy", line 3595: expected statement.
-    Hide("Mystique_Pic",transition=Pause(1))
-                                            ^
-DPI scale factor: 1.000000
-Interface start took 0.01s
-
-primary display bounds: (0, 0, 1920, 1080)
-Windowed mode.
-Screen sizes: virtual=(1024, 768) physical=(1304, 978) drawable=(1304, 978)
-Vendor: 'NVIDIA Corporation'
-Renderer: 'GeForce GTX 970M/PCIe/SSE2'
-Version: '4.6.0 NVIDIA 397.64'
-Display Info: <Info({'blit_sw_CC': False, 'refresh_rate': 60, 'bitsize': 32, 'wm': True, 'losses': (0, 0, 0, 8), 'hw': False, 'masks': (16711680L, 65280L, 255L, 0L), 'current_h': 1080, 'current_w': 1920, 'shifts': (16, 8, 0, 0), 'blit_sw_A': False, 'blit_hw': False, 'blit_sw': False, 'bytesize': 4, 'blit_hw_CC': False, 'blit_hw_A': False, 'video_mem': 268435456})>
-Fixed-function is blacklisted.
-Extensions:
-    
-    GL_AMD_multi_draw_indirect
-    GL_AMD_seamless_cubemap_per_texture
-    GL_AMD_vertex_shader_layer
-    GL_AMD_vertex_shader_viewport_index
-    GL_ARB_ES2_compatibility
-    GL_ARB_ES3_1_compatibility
-    GL_ARB_ES3_2_compatibility
-    GL_ARB_ES3_compatibility
-    GL_ARB_arrays_of_arrays
-    GL_ARB_base_instance
-    GL_ARB_bindless_texture
-    GL_ARB_blend_func_extended
-    GL_ARB_buffer_storage
-    GL_ARB_clear_buffer_object
-    GL_ARB_clear_texture
-    GL_ARB_clip_control
-    GL_ARB_color_buffer_float
-    GL_ARB_compatibility
-    GL_ARB_compressed_texture_pixel_storage
-    GL_ARB_compute_shader
-    GL_ARB_compute_variable_group_size
-    GL_ARB_conditional_render_inverted
-    GL_ARB_conservative_depth
-    GL_ARB_copy_buffer
-    GL_ARB_copy_image
-    GL_ARB_cull_distance
-    GL_ARB_debug_output
-    GL_ARB_depth_buffer_float
-    GL_ARB_depth_clamp
-    GL_ARB_depth_texture
-    GL_ARB_derivative_control
-    GL_ARB_direct_state_access
-    GL_ARB_draw_buffers
-    GL_ARB_draw_buffers_blend
-    GL_ARB_draw_elements_base_vertex
-    GL_ARB_draw_indirect
-    GL_ARB_draw_instanced
-    GL_ARB_enhanced_layouts
-    GL_ARB_explicit_attrib_location
-    GL_ARB_explicit_uniform_location
-    GL_ARB_fragment_coord_conventions
-    GL_ARB_fragment_layer_viewport
-    GL_ARB_fragment_program
-    GL_ARB_fragment_program_shadow
-    GL_ARB_fragment_shader
-    GL_ARB_fragment_shader_interlock
-    GL_ARB_framebuffer_no_attachments
-    GL_ARB_framebuffer_object
-    GL_ARB_framebuffer_sRGB
-    GL_ARB_geometry_shader4
-    GL_ARB_get_program_binary
-    GL_ARB_get_texture_sub_image
-    GL_ARB_gl_spirv
-    GL_ARB_gpu_shader5
-    GL_ARB_gpu_shader_fp64
-    GL_ARB_gpu_shader_int64
-    GL_ARB_half_float_pixel
-    GL_ARB_half_float_vertex
-    GL_ARB_imaging
-    GL_ARB_indirect_parameters
-    GL_ARB_instanced_arrays
-    GL_ARB_internalformat_query
-    GL_ARB_internalformat_query2
-    GL_ARB_invalidate_subdata
-    GL_ARB_map_buffer_alignment
-    GL_ARB_map_buffer_range
-    GL_ARB_multi_bind
-    GL_ARB_multi_draw_indirect
-    GL_ARB_multisample
-    GL_ARB_multitexture
-    GL_ARB_occlusion_query
-    GL_ARB_occlusion_query2
-    GL_ARB_parallel_shader_compile
-    GL_ARB_pipeline_statistics_query
-    GL_ARB_pixel_buffer_object
-    GL_ARB_point_parameters
-    GL_ARB_point_sprite
-    GL_ARB_polygon_offset_clamp
-    GL_ARB_post_depth_coverage
-    GL_ARB_program_interface_query
-    GL_ARB_provoking_vertex
-    GL_ARB_query_buffer_object
-    GL_ARB_robust_buffer_access_behavior
-    GL_ARB_robustness
-    GL_ARB_sample_locations
-    GL_ARB_sample_shading
-    GL_ARB_sampler_objects
-    GL_ARB_seamless_cube_map
-    GL_ARB_seamless_cubemap_per_texture
-    GL_ARB_separate_shader_objects
-    GL_ARB_shader_atomic_counter_ops
-    GL_ARB_shader_atomic_counters
-    GL_ARB_shader_ballot
-    GL_ARB_shader_bit_encoding
-    GL_ARB_shader_clock
-    GL_ARB_shader_draw_parameters
-    GL_ARB_shader_group_vote
-    GL_ARB_shader_image_load_store
-    GL_ARB_shader_image_size
-    GL_ARB_shader_objects
-    GL_ARB_shader_precision
-    GL_ARB_shader_storage_buffer_object
-    GL_ARB_shader_subroutine
-    GL_ARB_shader_texture_image_samples
-    GL_ARB_shader_texture_lod
-    GL_ARB_shader_viewport_layer_array
-    GL_ARB_shading_language_100
-    GL_ARB_shading_language_420pack
-    GL_ARB_shading_language_include
-    GL_ARB_shading_language_packing
-    GL_ARB_shadow
-    GL_ARB_sparse_buffer
-    GL_ARB_sparse_texture
-    GL_ARB_sparse_texture2
-    GL_ARB_sparse_texture_clamp
-    GL_ARB_spirv_extensions
-    GL_ARB_stencil_texturing
-    GL_ARB_sync
-    GL_ARB_tessellation_shader
-    GL_ARB_texture_barrier
-    GL_ARB_texture_border_clamp
-    GL_ARB_texture_buffer_object
-    GL_ARB_texture_buffer_object_rgb32
-    GL_ARB_texture_buffer_range
-    GL_ARB_texture_compression
-    GL_ARB_texture_compression_bptc
-    GL_ARB_texture_compression_rgtc
-    GL_ARB_texture_cube_map
-    GL_ARB_texture_cube_map_array
-    GL_ARB_texture_env_add
-    GL_ARB_texture_env_combine
-    GL_ARB_texture_env_crossbar
-    GL_ARB_texture_env_dot3
-    GL_ARB_texture_filter_anisotropic
-    GL_ARB_texture_filter_minmax
-    GL_ARB_texture_float
-    GL_ARB_texture_gather
-    GL_ARB_texture_mirror_clamp_to_edge
-    GL_ARB_texture_mirrored_repeat
-    GL_ARB_texture_multisample
-    GL_ARB_texture_non_power_of_two
-    GL_ARB_texture_query_levels
-    GL_ARB_texture_query_lod
-    GL_ARB_texture_rectangle
-    GL_ARB_texture_rg
-    GL_ARB_texture_rgb10_a2ui
-    GL_ARB_texture_stencil8
-    GL_ARB_texture_storage
-    GL_ARB_texture_storage_multisample
-    GL_ARB_texture_swizzle
-    GL_ARB_texture_view
-    GL_ARB_timer_query
-    GL_ARB_transform_feedback2
-    GL_ARB_transform_feedback3
-    GL_ARB_transform_feedback_instanced
-    GL_ARB_transform_feedback_overflow_query
-    GL_ARB_transpose_matrix
-    GL_ARB_uniform_buffer_object
-    GL_ARB_vertex_array_bgra
-    GL_ARB_vertex_array_object
-    GL_ARB_vertex_attrib_64bit
-    GL_ARB_vertex_attrib_binding
-    GL_ARB_vertex_buffer_object
-    GL_ARB_vertex_program
-    GL_ARB_vertex_shader
-    GL_ARB_vertex_type_10f_11f_11f_rev
-    GL_ARB_vertex_type_2_10_10_10_rev
-    GL_ARB_viewport_array
-    GL_ARB_window_pos
-    GL_ATI_draw_buffers
-    GL_ATI_texture_float
-    GL_ATI_texture_mirror_once
-    GL_EXTX_framebuffer_mixed_formats
-    GL_EXT_Cg_shader
-    GL_EXT_abgr
-    GL_EXT_bgra
-    GL_EXT_bindable_uniform
-    GL_EXT_blend_color
-    GL_EXT_blend_equation_separate
-    GL_EXT_blend_func_separate
-    GL_EXT_blend_minmax
-    GL_EXT_blend_subtract
-    GL_EXT_compiled_vertex_array
-    GL_EXT_depth_bounds_test
-    GL_EXT_direct_state_access
-    GL_EXT_draw_buffers2
-    GL_EXT_draw_instanced
-    GL_EXT_draw_range_elements
-    GL_EXT_fog_coord
-    GL_EXT_framebuffer_blit
-    GL_EXT_framebuffer_multisample
-    GL_EXT_framebuffer_multisample_blit_scaled
-    GL_EXT_framebuffer_object
-    GL_EXT_framebuffer_sRGB
-    GL_EXT_geometry_shader4
-    GL_EXT_gpu_program_parameters
-    GL_EXT_gpu_shader4
-    GL_EXT_import_sync_object
-    GL_EXT_memory_object
-    GL_EXT_memory_object_win32
-    GL_EXT_multi_draw_arrays
-    GL_EXT_packed_depth_stencil
-    GL_EXT_packed_float
-    GL_EXT_packed_pixels
-    GL_EXT_pixel_buffer_object
-    GL_EXT_point_parameters
-    GL_EXT_polygon_offset_clamp
-    GL_EXT_post_depth_coverage
-    GL_EXT_provoking_vertex
-    GL_EXT_raster_multisample
-    GL_EXT_rescale_normal
-    GL_EXT_secondary_color
-    GL_EXT_semaphore
-    GL_EXT_semaphore_win32
-    GL_EXT_separate_shader_objects
-    GL_EXT_separate_specular_color
-    GL_EXT_shader_image_load_formatted
-    GL_EXT_shader_image_load_store
-    GL_EXT_shader_integer_mix
-    GL_EXT_shadow_funcs
-    GL_EXT_sparse_texture2
-    GL_EXT_stencil_two_side
-    GL_EXT_stencil_wrap
-    GL_EXT_texture3D
-    GL_EXT_texture_array
-    GL_EXT_texture_buffer_object
-    GL_EXT_texture_compression_dxt1
-    GL_EXT_texture_compression_latc
-    GL_EXT_texture_compression_rgtc
-    GL_EXT_texture_compression_s3tc
-    GL_EXT_texture_cube_map
-    GL_EXT_texture_edge_clamp
-    GL_EXT_texture_env_add
-    GL_EXT_texture_env_combine
-    GL_EXT_texture_env_dot3
-    GL_EXT_texture_filter_anisotropic
-    GL_EXT_texture_filter_minmax
-    GL_EXT_texture_integer
-    GL_EXT_texture_lod
-    GL_EXT_texture_lod_bias
-    GL_EXT_texture_mirror_clamp
-    GL_EXT_texture_object
-    GL_EXT_texture_sRGB
-    GL_EXT_texture_sRGB_decode
-    GL_EXT_texture_shared_exponent
-    GL_EXT_texture_storage
-    GL_EXT_texture_swizzle
-    GL_EXT_timer_query
-    GL_EXT_transform_feedback2
-    GL_EXT_vertex_array
-    GL_EXT_vertex_array_bgra
-    GL_EXT_vertex_attrib_64bit
-    GL_EXT_win32_keyed_mutex
-    GL_EXT_window_rectangles
-    GL_IBM_rasterpos_clip
-    GL_IBM_texture_mirrored_repeat
-    GL_KHR_blend_equation_advanced
-    GL_KHR_blend_equation_advanced_coherent
-    GL_KHR_context_flush_control
-    GL_KHR_debug
-    GL_KHR_no_error
-    GL_KHR_parallel_shader_compile
-    GL_KHR_robust_buffer_access_behavior
-    GL_KHR_robustness
-    GL_KTX_buffer_region
-    GL_NVX_conditional_render
-    GL_NVX_gpu_memory_info
-    GL_NVX_multigpu_info
-    GL_NVX_nvenc_interop
-    GL_NV_ES1_1_compatibility
-    GL_NV_ES3_1_compatibility
-    GL_NV_alpha_to_coverage_dither_control
-    GL_NV_bindless_multi_draw_indirect
-    GL_NV_bindless_multi_draw_indirect_count
-    GL_NV_bindless_texture
-    GL_NV_blend_equation_advanced
-    GL_NV_blend_equation_advanced_coherent
-    GL_NV_blend_minmax_factor
-    GL_NV_blend_square
-    GL_NV_command_list
-    GL_NV_compute_program5
-    GL_NV_conditional_render
-    GL_NV_conservative_raster
-    GL_NV_conservative_raster_dilate
-    GL_NV_copy_depth_to_color
-    GL_NV_copy_image
-    GL_NV_depth_buffer_float
-    GL_NV_depth_clamp
-    GL_NV_draw_texture
-    GL_NV_draw_vulkan_image
-    GL_NV_explicit_multisample
-    GL_NV_feature_query
-    GL_NV_fence
-    GL_NV_fill_rectangle
-    GL_NV_float_buffer
-    GL_NV_fog_distance
-    GL_NV_fragment_coverage_to_color
-    GL_NV_fragment_program
-    GL_NV_fragment_program2
-    GL_NV_fragment_program_option
-    GL_NV_fragment_shader_interlock
-    GL_NV_framebuffer_mixed_samples
-    GL_NV_framebuffer_multisample_coverage
-    GL_NV_geometry_shader4
-    GL_NV_geometry_shader_passthrough
-    GL_NV_gpu_program4
-    GL_NV_gpu_program4_1
-    GL_NV_gpu_program5
-    GL_NV_gpu_program5_mem_extended
-    GL_NV_gpu_program_fp64
-    GL_NV_gpu_shader5
-    GL_NV_half_float
-    GL_NV_internalformat_sample_query
-    GL_NV_light_max_exponent
-    GL_NV_multisample_coverage
-    GL_NV_multisample_filter_hint
-    GL_NV_occlusion_query
-    GL_NV_packed_depth_stencil
-    GL_NV_parameter_buffer_object
-    GL_NV_parameter_buffer_object2
-    GL_NV_path_rendering
-    GL_NV_path_rendering_shared_edge
-    GL_NV_pixel_data_range
-    GL_NV_point_sprite
-    GL_NV_primitive_restart
-    GL_NV_query_resource
-    GL_NV_query_resource_tag
-    GL_NV_register_combiners
-    GL_NV_register_combiners2
-    GL_NV_sample_locations
-    GL_NV_sample_mask_override_coverage
-    GL_NV_shader_atomic_counters
-    GL_NV_shader_atomic_float
-    GL_NV_shader_atomic_fp16_vector
-    GL_NV_shader_atomic_int64
-    GL_NV_shader_buffer_load
-    GL_NV_shader_storage_buffer_object
-    GL_NV_shader_thread_group
-    GL_NV_shader_thread_shuffle
-    GL_NV_texgen_reflection
-    GL_NV_texture_barrier
-    GL_NV_texture_compression_vtc
-    GL_NV_texture_env_combine4
-    GL_NV_texture_multisample
-    GL_NV_texture_rectangle
-    GL_NV_texture_rectangle_compressed
-    GL_NV_texture_shader
-    GL_NV_texture_shader2
-    GL_NV_texture_shader3
-    GL_NV_transform_feedback
-    GL_NV_transform_feedback2
-    GL_NV_uniform_buffer_unified_memory
-    GL_NV_vertex_array_range
-    GL_NV_vertex_array_range2
-    GL_NV_vertex_attrib_integer_64bit
-    GL_NV_vertex_buffer_unified_memory
-    GL_NV_vertex_program
-    GL_NV_vertex_program1_1
-    GL_NV_vertex_program2
-    GL_NV_vertex_program2_option
-    GL_NV_vertex_program3
-    GL_NV_viewport_array2
-    GL_NV_viewport_swizzle
-    GL_S3_s3tc
-    GL_SGIS_generate_mipmap
-    GL_SGIS_texture_lod
-    GL_SGIX_depth_texture
-    GL_SGIX_shadow
-    GL_SUN_slice_accum
-    GL_WIN_swap_hint
-    WGL_EXT_swap_control
-Number of texture units: 4
-Using shader environment.
-Using copy RTT.
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Total time until interface ready: 560.526000023s
-Resetting cache.
-Bootstrap to the start of init.init took 632.04s
-Early init took 0.00s
-Loader init took 0.14s
-Loading error handling took 0.07s
-Loading script took 3.09s
-Loading persistent took 0.14s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Set script version to: (6, 99, 13)
-Running init code took 0.17s
-Loading analysis data took 4.73s
-Analyze and compile ATL took 0.87s
 Index archives took 0.00s
 Dump and make backups. took 0.00s
 Cleaning cache took 0.00s
@@ -1306,8 +1228,8 @@ Analyze screens took 0.01s
 Save screen analysis took 0.08s
 Prepare screens took 0.05s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.30s
-Running _start took 0.00s
+Save bytecode. took 0.32s
+Running _start took 0.01s
 Performance test:
 Interface start took 0.01s
 
@@ -1704,875 +1626,980 @@ Texture testing:
 - 512px textures work.
 - 1024px textures work.
 - 2048px textures work.
-Total time until interface ready: 641.85800004s
+Total time until interface ready: 54.0180001259s
 - Target is 5 frames in 0.333333333333 seconds.
 - Frame drawn at 0.000000 seconds.
-- Frame drawn at 0.078000 seconds.
-- Frame drawn at 0.079000 seconds.
-- Frame drawn at 0.080000 seconds.
-- Frame drawn at 0.081000 seconds.
-- 0.081000 seconds to render 5 frames.
-Resetting cache.
-Bootstrap to the start of init.init took 683.44s
-Early init took 0.00s
-Loader init took 0.13s
-Loading error handling took 0.07s
-Loading script took 3.40s
-Loading persistent took 0.16s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Set script version to: (6, 99, 13)
-Running init code took 0.18s
-Loading analysis data took 7.96s
-Analyze and compile ATL took 0.32s
-Index archives took 0.00s
-Dump and make backups. took 0.00s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-DPI scale factor: 1.000000
-Creating interface object took 0.00s
-Cleaning stores took 0.00s
-Init translation took 0.01s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.02s
-Save screen analysis took 0.13s
-Prepare screens took 0.10s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.36s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.01s
+- Frame drawn at 0.114000 seconds.
+- Frame drawn at 0.116000 seconds.
+- Frame drawn at 0.116000 seconds.
+- Frame drawn at 0.117000 seconds.
+- 0.117000 seconds to render 5 frames.
 
-primary display bounds: (0, 0, 1920, 1080)
-Windowed mode.
-Screen sizes: virtual=(1024, 768) physical=(1304, 978) drawable=(1304, 978)
-Vendor: 'NVIDIA Corporation'
-Renderer: 'GeForce GTX 970M/PCIe/SSE2'
-Version: '4.6.0 NVIDIA 397.64'
-Display Info: <Info({'blit_sw_CC': False, 'refresh_rate': 60, 'bitsize': 32, 'wm': True, 'losses': (0, 0, 0, 8), 'hw': False, 'masks': (16711680L, 65280L, 255L, 0L), 'current_h': 1080, 'current_w': 1920, 'shifts': (16, 8, 0, 0), 'blit_sw_A': False, 'blit_hw': False, 'blit_sw': False, 'bytesize': 4, 'blit_hw_CC': False, 'blit_hw_A': False, 'video_mem': 268435456})>
-Fixed-function is blacklisted.
-Extensions:
-    
-    GL_AMD_multi_draw_indirect
-    GL_AMD_seamless_cubemap_per_texture
-    GL_AMD_vertex_shader_layer
-    GL_AMD_vertex_shader_viewport_index
-    GL_ARB_ES2_compatibility
-    GL_ARB_ES3_1_compatibility
-    GL_ARB_ES3_2_compatibility
-    GL_ARB_ES3_compatibility
-    GL_ARB_arrays_of_arrays
-    GL_ARB_base_instance
-    GL_ARB_bindless_texture
-    GL_ARB_blend_func_extended
-    GL_ARB_buffer_storage
-    GL_ARB_clear_buffer_object
-    GL_ARB_clear_texture
-    GL_ARB_clip_control
-    GL_ARB_color_buffer_float
-    GL_ARB_compatibility
-    GL_ARB_compressed_texture_pixel_storage
-    GL_ARB_compute_shader
-    GL_ARB_compute_variable_group_size
-    GL_ARB_conditional_render_inverted
-    GL_ARB_conservative_depth
-    GL_ARB_copy_buffer
-    GL_ARB_copy_image
-    GL_ARB_cull_distance
-    GL_ARB_debug_output
-    GL_ARB_depth_buffer_float
-    GL_ARB_depth_clamp
-    GL_ARB_depth_texture
-    GL_ARB_derivative_control
-    GL_ARB_direct_state_access
-    GL_ARB_draw_buffers
-    GL_ARB_draw_buffers_blend
-    GL_ARB_draw_elements_base_vertex
-    GL_ARB_draw_indirect
-    GL_ARB_draw_instanced
-    GL_ARB_enhanced_layouts
-    GL_ARB_explicit_attrib_location
-    GL_ARB_explicit_uniform_location
-    GL_ARB_fragment_coord_conventions
-    GL_ARB_fragment_layer_viewport
-    GL_ARB_fragment_program
-    GL_ARB_fragment_program_shadow
-    GL_ARB_fragment_shader
-    GL_ARB_fragment_shader_interlock
-    GL_ARB_framebuffer_no_attachments
-    GL_ARB_framebuffer_object
-    GL_ARB_framebuffer_sRGB
-    GL_ARB_geometry_shader4
-    GL_ARB_get_program_binary
-    GL_ARB_get_texture_sub_image
-    GL_ARB_gl_spirv
-    GL_ARB_gpu_shader5
-    GL_ARB_gpu_shader_fp64
-    GL_ARB_gpu_shader_int64
-    GL_ARB_half_float_pixel
-    GL_ARB_half_float_vertex
-    GL_ARB_imaging
-    GL_ARB_indirect_parameters
-    GL_ARB_instanced_arrays
-    GL_ARB_internalformat_query
-    GL_ARB_internalformat_query2
-    GL_ARB_invalidate_subdata
-    GL_ARB_map_buffer_alignment
-    GL_ARB_map_buffer_range
-    GL_ARB_multi_bind
-    GL_ARB_multi_draw_indirect
-    GL_ARB_multisample
-    GL_ARB_multitexture
-    GL_ARB_occlusion_query
-    GL_ARB_occlusion_query2
-    GL_ARB_parallel_shader_compile
-    GL_ARB_pipeline_statistics_query
-    GL_ARB_pixel_buffer_object
-    GL_ARB_point_parameters
-    GL_ARB_point_sprite
-    GL_ARB_polygon_offset_clamp
-    GL_ARB_post_depth_coverage
-    GL_ARB_program_interface_query
-    GL_ARB_provoking_vertex
-    GL_ARB_query_buffer_object
-    GL_ARB_robust_buffer_access_behavior
-    GL_ARB_robustness
-    GL_ARB_sample_locations
-    GL_ARB_sample_shading
-    GL_ARB_sampler_objects
-    GL_ARB_seamless_cube_map
-    GL_ARB_seamless_cubemap_per_texture
-    GL_ARB_separate_shader_objects
-    GL_ARB_shader_atomic_counter_ops
-    GL_ARB_shader_atomic_counters
-    GL_ARB_shader_ballot
-    GL_ARB_shader_bit_encoding
-    GL_ARB_shader_clock
-    GL_ARB_shader_draw_parameters
-    GL_ARB_shader_group_vote
-    GL_ARB_shader_image_load_store
-    GL_ARB_shader_image_size
-    GL_ARB_shader_objects
-    GL_ARB_shader_precision
-    GL_ARB_shader_storage_buffer_object
-    GL_ARB_shader_subroutine
-    GL_ARB_shader_texture_image_samples
-    GL_ARB_shader_texture_lod
-    GL_ARB_shader_viewport_layer_array
-    GL_ARB_shading_language_100
-    GL_ARB_shading_language_420pack
-    GL_ARB_shading_language_include
-    GL_ARB_shading_language_packing
-    GL_ARB_shadow
-    GL_ARB_sparse_buffer
-    GL_ARB_sparse_texture
-    GL_ARB_sparse_texture2
-    GL_ARB_sparse_texture_clamp
-    GL_ARB_spirv_extensions
-    GL_ARB_stencil_texturing
-    GL_ARB_sync
-    GL_ARB_tessellation_shader
-    GL_ARB_texture_barrier
-    GL_ARB_texture_border_clamp
-    GL_ARB_texture_buffer_object
-    GL_ARB_texture_buffer_object_rgb32
-    GL_ARB_texture_buffer_range
-    GL_ARB_texture_compression
-    GL_ARB_texture_compression_bptc
-    GL_ARB_texture_compression_rgtc
-    GL_ARB_texture_cube_map
-    GL_ARB_texture_cube_map_array
-    GL_ARB_texture_env_add
-    GL_ARB_texture_env_combine
-    GL_ARB_texture_env_crossbar
-    GL_ARB_texture_env_dot3
-    GL_ARB_texture_filter_anisotropic
-    GL_ARB_texture_filter_minmax
-    GL_ARB_texture_float
-    GL_ARB_texture_gather
-    GL_ARB_texture_mirror_clamp_to_edge
-    GL_ARB_texture_mirrored_repeat
-    GL_ARB_texture_multisample
-    GL_ARB_texture_non_power_of_two
-    GL_ARB_texture_query_levels
-    GL_ARB_texture_query_lod
-    GL_ARB_texture_rectangle
-    GL_ARB_texture_rg
-    GL_ARB_texture_rgb10_a2ui
-    GL_ARB_texture_stencil8
-    GL_ARB_texture_storage
-    GL_ARB_texture_storage_multisample
-    GL_ARB_texture_swizzle
-    GL_ARB_texture_view
-    GL_ARB_timer_query
-    GL_ARB_transform_feedback2
-    GL_ARB_transform_feedback3
-    GL_ARB_transform_feedback_instanced
-    GL_ARB_transform_feedback_overflow_query
-    GL_ARB_transpose_matrix
-    GL_ARB_uniform_buffer_object
-    GL_ARB_vertex_array_bgra
-    GL_ARB_vertex_array_object
-    GL_ARB_vertex_attrib_64bit
-    GL_ARB_vertex_attrib_binding
-    GL_ARB_vertex_buffer_object
-    GL_ARB_vertex_program
-    GL_ARB_vertex_shader
-    GL_ARB_vertex_type_10f_11f_11f_rev
-    GL_ARB_vertex_type_2_10_10_10_rev
-    GL_ARB_viewport_array
-    GL_ARB_window_pos
-    GL_ATI_draw_buffers
-    GL_ATI_texture_float
-    GL_ATI_texture_mirror_once
-    GL_EXTX_framebuffer_mixed_formats
-    GL_EXT_Cg_shader
-    GL_EXT_abgr
-    GL_EXT_bgra
-    GL_EXT_bindable_uniform
-    GL_EXT_blend_color
-    GL_EXT_blend_equation_separate
-    GL_EXT_blend_func_separate
-    GL_EXT_blend_minmax
-    GL_EXT_blend_subtract
-    GL_EXT_compiled_vertex_array
-    GL_EXT_depth_bounds_test
-    GL_EXT_direct_state_access
-    GL_EXT_draw_buffers2
-    GL_EXT_draw_instanced
-    GL_EXT_draw_range_elements
-    GL_EXT_fog_coord
-    GL_EXT_framebuffer_blit
-    GL_EXT_framebuffer_multisample
-    GL_EXT_framebuffer_multisample_blit_scaled
-    GL_EXT_framebuffer_object
-    GL_EXT_framebuffer_sRGB
-    GL_EXT_geometry_shader4
-    GL_EXT_gpu_program_parameters
-    GL_EXT_gpu_shader4
-    GL_EXT_import_sync_object
-    GL_EXT_memory_object
-    GL_EXT_memory_object_win32
-    GL_EXT_multi_draw_arrays
-    GL_EXT_packed_depth_stencil
-    GL_EXT_packed_float
-    GL_EXT_packed_pixels
-    GL_EXT_pixel_buffer_object
-    GL_EXT_point_parameters
-    GL_EXT_polygon_offset_clamp
-    GL_EXT_post_depth_coverage
-    GL_EXT_provoking_vertex
-    GL_EXT_raster_multisample
-    GL_EXT_rescale_normal
-    GL_EXT_secondary_color
-    GL_EXT_semaphore
-    GL_EXT_semaphore_win32
-    GL_EXT_separate_shader_objects
-    GL_EXT_separate_specular_color
-    GL_EXT_shader_image_load_formatted
-    GL_EXT_shader_image_load_store
-    GL_EXT_shader_integer_mix
-    GL_EXT_shadow_funcs
-    GL_EXT_sparse_texture2
-    GL_EXT_stencil_two_side
-    GL_EXT_stencil_wrap
-    GL_EXT_texture3D
-    GL_EXT_texture_array
-    GL_EXT_texture_buffer_object
-    GL_EXT_texture_compression_dxt1
-    GL_EXT_texture_compression_latc
-    GL_EXT_texture_compression_rgtc
-    GL_EXT_texture_compression_s3tc
-    GL_EXT_texture_cube_map
-    GL_EXT_texture_edge_clamp
-    GL_EXT_texture_env_add
-    GL_EXT_texture_env_combine
-    GL_EXT_texture_env_dot3
-    GL_EXT_texture_filter_anisotropic
-    GL_EXT_texture_filter_minmax
-    GL_EXT_texture_integer
-    GL_EXT_texture_lod
-    GL_EXT_texture_lod_bias
-    GL_EXT_texture_mirror_clamp
-    GL_EXT_texture_object
-    GL_EXT_texture_sRGB
-    GL_EXT_texture_sRGB_decode
-    GL_EXT_texture_shared_exponent
-    GL_EXT_texture_storage
-    GL_EXT_texture_swizzle
-    GL_EXT_timer_query
-    GL_EXT_transform_feedback2
-    GL_EXT_vertex_array
-    GL_EXT_vertex_array_bgra
-    GL_EXT_vertex_attrib_64bit
-    GL_EXT_win32_keyed_mutex
-    GL_EXT_window_rectangles
-    GL_IBM_rasterpos_clip
-    GL_IBM_texture_mirrored_repeat
-    GL_KHR_blend_equation_advanced
-    GL_KHR_blend_equation_advanced_coherent
-    GL_KHR_context_flush_control
-    GL_KHR_debug
-    GL_KHR_no_error
-    GL_KHR_parallel_shader_compile
-    GL_KHR_robust_buffer_access_behavior
-    GL_KHR_robustness
-    GL_KTX_buffer_region
-    GL_NVX_conditional_render
-    GL_NVX_gpu_memory_info
-    GL_NVX_multigpu_info
-    GL_NVX_nvenc_interop
-    GL_NV_ES1_1_compatibility
-    GL_NV_ES3_1_compatibility
-    GL_NV_alpha_to_coverage_dither_control
-    GL_NV_bindless_multi_draw_indirect
-    GL_NV_bindless_multi_draw_indirect_count
-    GL_NV_bindless_texture
-    GL_NV_blend_equation_advanced
-    GL_NV_blend_equation_advanced_coherent
-    GL_NV_blend_minmax_factor
-    GL_NV_blend_square
-    GL_NV_command_list
-    GL_NV_compute_program5
-    GL_NV_conditional_render
-    GL_NV_conservative_raster
-    GL_NV_conservative_raster_dilate
-    GL_NV_copy_depth_to_color
-    GL_NV_copy_image
-    GL_NV_depth_buffer_float
-    GL_NV_depth_clamp
-    GL_NV_draw_texture
-    GL_NV_draw_vulkan_image
-    GL_NV_explicit_multisample
-    GL_NV_feature_query
-    GL_NV_fence
-    GL_NV_fill_rectangle
-    GL_NV_float_buffer
-    GL_NV_fog_distance
-    GL_NV_fragment_coverage_to_color
-    GL_NV_fragment_program
-    GL_NV_fragment_program2
-    GL_NV_fragment_program_option
-    GL_NV_fragment_shader_interlock
-    GL_NV_framebuffer_mixed_samples
-    GL_NV_framebuffer_multisample_coverage
-    GL_NV_geometry_shader4
-    GL_NV_geometry_shader_passthrough
-    GL_NV_gpu_program4
-    GL_NV_gpu_program4_1
-    GL_NV_gpu_program5
-    GL_NV_gpu_program5_mem_extended
-    GL_NV_gpu_program_fp64
-    GL_NV_gpu_shader5
-    GL_NV_half_float
-    GL_NV_internalformat_sample_query
-    GL_NV_light_max_exponent
-    GL_NV_multisample_coverage
-    GL_NV_multisample_filter_hint
-    GL_NV_occlusion_query
-    GL_NV_packed_depth_stencil
-    GL_NV_parameter_buffer_object
-    GL_NV_parameter_buffer_object2
-    GL_NV_path_rendering
-    GL_NV_path_rendering_shared_edge
-    GL_NV_pixel_data_range
-    GL_NV_point_sprite
-    GL_NV_primitive_restart
-    GL_NV_query_resource
-    GL_NV_query_resource_tag
-    GL_NV_register_combiners
-    GL_NV_register_combiners2
-    GL_NV_sample_locations
-    GL_NV_sample_mask_override_coverage
-    GL_NV_shader_atomic_counters
-    GL_NV_shader_atomic_float
-    GL_NV_shader_atomic_fp16_vector
-    GL_NV_shader_atomic_int64
-    GL_NV_shader_buffer_load
-    GL_NV_shader_storage_buffer_object
-    GL_NV_shader_thread_group
-    GL_NV_shader_thread_shuffle
-    GL_NV_texgen_reflection
-    GL_NV_texture_barrier
-    GL_NV_texture_compression_vtc
-    GL_NV_texture_env_combine4
-    GL_NV_texture_multisample
-    GL_NV_texture_rectangle
-    GL_NV_texture_rectangle_compressed
-    GL_NV_texture_shader
-    GL_NV_texture_shader2
-    GL_NV_texture_shader3
-    GL_NV_transform_feedback
-    GL_NV_transform_feedback2
-    GL_NV_uniform_buffer_unified_memory
-    GL_NV_vertex_array_range
-    GL_NV_vertex_array_range2
-    GL_NV_vertex_attrib_integer_64bit
-    GL_NV_vertex_buffer_unified_memory
-    GL_NV_vertex_program
-    GL_NV_vertex_program1_1
-    GL_NV_vertex_program2
-    GL_NV_vertex_program2_option
-    GL_NV_vertex_program3
-    GL_NV_viewport_array2
-    GL_NV_viewport_swizzle
-    GL_S3_s3tc
-    GL_SGIS_generate_mipmap
-    GL_SGIS_texture_lod
-    GL_SGIX_depth_texture
-    GL_SGIX_shadow
-    GL_SUN_slice_accum
-    GL_WIN_swap_hint
-    WGL_EXT_swap_control
-Number of texture units: 4
-Using shader environment.
-Using copy RTT.
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Total time until interface ready: 696.457000017s
-- Target is 5 frames in 0.333333333333 seconds.
-- Frame drawn at 0.000000 seconds.
-- Frame drawn at 0.086000 seconds.
-- Frame drawn at 0.087000 seconds.
-- Frame drawn at 0.088000 seconds.
-- Frame drawn at 0.089000 seconds.
-- 0.089000 seconds to render 5 frames.
-Resetting cache.
-Bootstrap to the start of init.init took 935.75s
-Early init took 0.00s
-Loader init took 0.13s
-Loading error handling took 0.06s
-Loading script took 2.49s
-Loading persistent took 0.14s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Set script version to: (6, 99, 13)
-Running init code took 0.17s
-Loading analysis data took 4.92s
-Analyze and compile ATL took 0.21s
-Index archives took 0.00s
-Dump and make backups. took 0.00s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-DPI scale factor: 1.000000
-Creating interface object took 0.00s
-Cleaning stores took 0.00s
-Init translation took 0.01s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.08s
-Prepare screens took 0.06s
-Save pyanalysis. took 16.25s
-Save bytecode. took 0.33s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.01s
+Full traceback:
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1741, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1335, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 81, in script call
+    call R_Makeout
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
+  File "game/script Locations.rpy", line 458, in script call
+    call Rogue_Study
+  File "game/script Locations.rpy", line 521, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 458, in script call
+    call Rogue_Study
+  File "game/script Locations.rpy", line 521, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1741, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 2074, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1211, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/Rogue_Chat.rpy", line 4010, in script call
+    call Pool_Clothes("auto", "Rogue")
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 3128, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1074, in script call
+    call Kitty_Sleepover
+  File "game/Kitty_Scenes.rpy", line 409, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 828, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 81, in script call
+    call R_Makeout
+  File "game/Rogue_Sex.rpy", line 1005, in script call
+    call Sex_Dialog("Rogue",Partner)
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1805, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 112, in script call
+    call R_Titjob
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
+  File "game/script Locations.rpy", line 468, in script call
+    call EventCalls
+  File "game/Rogue_Scenes.rpy", line 1426, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 77, in script call
+    menu Rogue_SMenu:
+  File "renpy/common/00console.rpy", line 765, in script call
+    python in _console:
+  File "<string>", line 1, in script
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1552, in execute
+    rv = renpy.game.script.lookup(target)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\script.py", line 861, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'MystiqueChat'.
 
-primary display bounds: (0, 0, 1920, 1080)
-Windowed mode.
-Screen sizes: virtual=(1024, 768) physical=(1304, 978) drawable=(1304, 978)
-Vendor: 'NVIDIA Corporation'
-Renderer: 'GeForce GTX 970M/PCIe/SSE2'
-Version: '4.6.0 NVIDIA 397.64'
-Display Info: <Info({'blit_sw_CC': False, 'refresh_rate': 60, 'bitsize': 32, 'wm': True, 'losses': (0, 0, 0, 8), 'hw': False, 'masks': (16711680L, 65280L, 255L, 0L), 'current_h': 1080, 'current_w': 1920, 'shifts': (16, 8, 0, 0), 'blit_sw_A': False, 'blit_hw': False, 'blit_sw': False, 'bytesize': 4, 'blit_hw_CC': False, 'blit_hw_A': False, 'video_mem': 268435456})>
-Fixed-function is blacklisted.
-Extensions:
-    
-    GL_AMD_multi_draw_indirect
-    GL_AMD_seamless_cubemap_per_texture
-    GL_AMD_vertex_shader_layer
-    GL_AMD_vertex_shader_viewport_index
-    GL_ARB_ES2_compatibility
-    GL_ARB_ES3_1_compatibility
-    GL_ARB_ES3_2_compatibility
-    GL_ARB_ES3_compatibility
-    GL_ARB_arrays_of_arrays
-    GL_ARB_base_instance
-    GL_ARB_bindless_texture
-    GL_ARB_blend_func_extended
-    GL_ARB_buffer_storage
-    GL_ARB_clear_buffer_object
-    GL_ARB_clear_texture
-    GL_ARB_clip_control
-    GL_ARB_color_buffer_float
-    GL_ARB_compatibility
-    GL_ARB_compressed_texture_pixel_storage
-    GL_ARB_compute_shader
-    GL_ARB_compute_variable_group_size
-    GL_ARB_conditional_render_inverted
-    GL_ARB_conservative_depth
-    GL_ARB_copy_buffer
-    GL_ARB_copy_image
-    GL_ARB_cull_distance
-    GL_ARB_debug_output
-    GL_ARB_depth_buffer_float
-    GL_ARB_depth_clamp
-    GL_ARB_depth_texture
-    GL_ARB_derivative_control
-    GL_ARB_direct_state_access
-    GL_ARB_draw_buffers
-    GL_ARB_draw_buffers_blend
-    GL_ARB_draw_elements_base_vertex
-    GL_ARB_draw_indirect
-    GL_ARB_draw_instanced
-    GL_ARB_enhanced_layouts
-    GL_ARB_explicit_attrib_location
-    GL_ARB_explicit_uniform_location
-    GL_ARB_fragment_coord_conventions
-    GL_ARB_fragment_layer_viewport
-    GL_ARB_fragment_program
-    GL_ARB_fragment_program_shadow
-    GL_ARB_fragment_shader
-    GL_ARB_fragment_shader_interlock
-    GL_ARB_framebuffer_no_attachments
-    GL_ARB_framebuffer_object
-    GL_ARB_framebuffer_sRGB
-    GL_ARB_geometry_shader4
-    GL_ARB_get_program_binary
-    GL_ARB_get_texture_sub_image
-    GL_ARB_gl_spirv
-    GL_ARB_gpu_shader5
-    GL_ARB_gpu_shader_fp64
-    GL_ARB_gpu_shader_int64
-    GL_ARB_half_float_pixel
-    GL_ARB_half_float_vertex
-    GL_ARB_imaging
-    GL_ARB_indirect_parameters
-    GL_ARB_instanced_arrays
-    GL_ARB_internalformat_query
-    GL_ARB_internalformat_query2
-    GL_ARB_invalidate_subdata
-    GL_ARB_map_buffer_alignment
-    GL_ARB_map_buffer_range
-    GL_ARB_multi_bind
-    GL_ARB_multi_draw_indirect
-    GL_ARB_multisample
-    GL_ARB_multitexture
-    GL_ARB_occlusion_query
-    GL_ARB_occlusion_query2
-    GL_ARB_parallel_shader_compile
-    GL_ARB_pipeline_statistics_query
-    GL_ARB_pixel_buffer_object
-    GL_ARB_point_parameters
-    GL_ARB_point_sprite
-    GL_ARB_polygon_offset_clamp
-    GL_ARB_post_depth_coverage
-    GL_ARB_program_interface_query
-    GL_ARB_provoking_vertex
-    GL_ARB_query_buffer_object
-    GL_ARB_robust_buffer_access_behavior
-    GL_ARB_robustness
-    GL_ARB_sample_locations
-    GL_ARB_sample_shading
-    GL_ARB_sampler_objects
-    GL_ARB_seamless_cube_map
-    GL_ARB_seamless_cubemap_per_texture
-    GL_ARB_separate_shader_objects
-    GL_ARB_shader_atomic_counter_ops
-    GL_ARB_shader_atomic_counters
-    GL_ARB_shader_ballot
-    GL_ARB_shader_bit_encoding
-    GL_ARB_shader_clock
-    GL_ARB_shader_draw_parameters
-    GL_ARB_shader_group_vote
-    GL_ARB_shader_image_load_store
-    GL_ARB_shader_image_size
-    GL_ARB_shader_objects
-    GL_ARB_shader_precision
-    GL_ARB_shader_storage_buffer_object
-    GL_ARB_shader_subroutine
-    GL_ARB_shader_texture_image_samples
-    GL_ARB_shader_texture_lod
-    GL_ARB_shader_viewport_layer_array
-    GL_ARB_shading_language_100
-    GL_ARB_shading_language_420pack
-    GL_ARB_shading_language_include
-    GL_ARB_shading_language_packing
-    GL_ARB_shadow
-    GL_ARB_sparse_buffer
-    GL_ARB_sparse_texture
-    GL_ARB_sparse_texture2
-    GL_ARB_sparse_texture_clamp
-    GL_ARB_spirv_extensions
-    GL_ARB_stencil_texturing
-    GL_ARB_sync
-    GL_ARB_tessellation_shader
-    GL_ARB_texture_barrier
-    GL_ARB_texture_border_clamp
-    GL_ARB_texture_buffer_object
-    GL_ARB_texture_buffer_object_rgb32
-    GL_ARB_texture_buffer_range
-    GL_ARB_texture_compression
-    GL_ARB_texture_compression_bptc
-    GL_ARB_texture_compression_rgtc
-    GL_ARB_texture_cube_map
-    GL_ARB_texture_cube_map_array
-    GL_ARB_texture_env_add
-    GL_ARB_texture_env_combine
-    GL_ARB_texture_env_crossbar
-    GL_ARB_texture_env_dot3
-    GL_ARB_texture_filter_anisotropic
-    GL_ARB_texture_filter_minmax
-    GL_ARB_texture_float
-    GL_ARB_texture_gather
-    GL_ARB_texture_mirror_clamp_to_edge
-    GL_ARB_texture_mirrored_repeat
-    GL_ARB_texture_multisample
-    GL_ARB_texture_non_power_of_two
-    GL_ARB_texture_query_levels
-    GL_ARB_texture_query_lod
-    GL_ARB_texture_rectangle
-    GL_ARB_texture_rg
-    GL_ARB_texture_rgb10_a2ui
-    GL_ARB_texture_stencil8
-    GL_ARB_texture_storage
-    GL_ARB_texture_storage_multisample
-    GL_ARB_texture_swizzle
-    GL_ARB_texture_view
-    GL_ARB_timer_query
-    GL_ARB_transform_feedback2
-    GL_ARB_transform_feedback3
-    GL_ARB_transform_feedback_instanced
-    GL_ARB_transform_feedback_overflow_query
-    GL_ARB_transpose_matrix
-    GL_ARB_uniform_buffer_object
-    GL_ARB_vertex_array_bgra
-    GL_ARB_vertex_array_object
-    GL_ARB_vertex_attrib_64bit
-    GL_ARB_vertex_attrib_binding
-    GL_ARB_vertex_buffer_object
-    GL_ARB_vertex_program
-    GL_ARB_vertex_shader
-    GL_ARB_vertex_type_10f_11f_11f_rev
-    GL_ARB_vertex_type_2_10_10_10_rev
-    GL_ARB_viewport_array
-    GL_ARB_window_pos
-    GL_ATI_draw_buffers
-    GL_ATI_texture_float
-    GL_ATI_texture_mirror_once
-    GL_EXTX_framebuffer_mixed_formats
-    GL_EXT_Cg_shader
-    GL_EXT_abgr
-    GL_EXT_bgra
-    GL_EXT_bindable_uniform
-    GL_EXT_blend_color
-    GL_EXT_blend_equation_separate
-    GL_EXT_blend_func_separate
-    GL_EXT_blend_minmax
-    GL_EXT_blend_subtract
-    GL_EXT_compiled_vertex_array
-    GL_EXT_depth_bounds_test
-    GL_EXT_direct_state_access
-    GL_EXT_draw_buffers2
-    GL_EXT_draw_instanced
-    GL_EXT_draw_range_elements
-    GL_EXT_fog_coord
-    GL_EXT_framebuffer_blit
-    GL_EXT_framebuffer_multisample
-    GL_EXT_framebuffer_multisample_blit_scaled
-    GL_EXT_framebuffer_object
-    GL_EXT_framebuffer_sRGB
-    GL_EXT_geometry_shader4
-    GL_EXT_gpu_program_parameters
-    GL_EXT_gpu_shader4
-    GL_EXT_import_sync_object
-    GL_EXT_memory_object
-    GL_EXT_memory_object_win32
-    GL_EXT_multi_draw_arrays
-    GL_EXT_packed_depth_stencil
-    GL_EXT_packed_float
-    GL_EXT_packed_pixels
-    GL_EXT_pixel_buffer_object
-    GL_EXT_point_parameters
-    GL_EXT_polygon_offset_clamp
-    GL_EXT_post_depth_coverage
-    GL_EXT_provoking_vertex
-    GL_EXT_raster_multisample
-    GL_EXT_rescale_normal
-    GL_EXT_secondary_color
-    GL_EXT_semaphore
-    GL_EXT_semaphore_win32
-    GL_EXT_separate_shader_objects
-    GL_EXT_separate_specular_color
-    GL_EXT_shader_image_load_formatted
-    GL_EXT_shader_image_load_store
-    GL_EXT_shader_integer_mix
-    GL_EXT_shadow_funcs
-    GL_EXT_sparse_texture2
-    GL_EXT_stencil_two_side
-    GL_EXT_stencil_wrap
-    GL_EXT_texture3D
-    GL_EXT_texture_array
-    GL_EXT_texture_buffer_object
-    GL_EXT_texture_compression_dxt1
-    GL_EXT_texture_compression_latc
-    GL_EXT_texture_compression_rgtc
-    GL_EXT_texture_compression_s3tc
-    GL_EXT_texture_cube_map
-    GL_EXT_texture_edge_clamp
-    GL_EXT_texture_env_add
-    GL_EXT_texture_env_combine
-    GL_EXT_texture_env_dot3
-    GL_EXT_texture_filter_anisotropic
-    GL_EXT_texture_filter_minmax
-    GL_EXT_texture_integer
-    GL_EXT_texture_lod
-    GL_EXT_texture_lod_bias
-    GL_EXT_texture_mirror_clamp
-    GL_EXT_texture_object
-    GL_EXT_texture_sRGB
-    GL_EXT_texture_sRGB_decode
-    GL_EXT_texture_shared_exponent
-    GL_EXT_texture_storage
-    GL_EXT_texture_swizzle
-    GL_EXT_timer_query
-    GL_EXT_transform_feedback2
-    GL_EXT_vertex_array
-    GL_EXT_vertex_array_bgra
-    GL_EXT_vertex_attrib_64bit
-    GL_EXT_win32_keyed_mutex
-    GL_EXT_window_rectangles
-    GL_IBM_rasterpos_clip
-    GL_IBM_texture_mirrored_repeat
-    GL_KHR_blend_equation_advanced
-    GL_KHR_blend_equation_advanced_coherent
-    GL_KHR_context_flush_control
-    GL_KHR_debug
-    GL_KHR_no_error
-    GL_KHR_parallel_shader_compile
-    GL_KHR_robust_buffer_access_behavior
-    GL_KHR_robustness
-    GL_KTX_buffer_region
-    GL_NVX_conditional_render
-    GL_NVX_gpu_memory_info
-    GL_NVX_multigpu_info
-    GL_NVX_nvenc_interop
-    GL_NV_ES1_1_compatibility
-    GL_NV_ES3_1_compatibility
-    GL_NV_alpha_to_coverage_dither_control
-    GL_NV_bindless_multi_draw_indirect
-    GL_NV_bindless_multi_draw_indirect_count
-    GL_NV_bindless_texture
-    GL_NV_blend_equation_advanced
-    GL_NV_blend_equation_advanced_coherent
-    GL_NV_blend_minmax_factor
-    GL_NV_blend_square
-    GL_NV_command_list
-    GL_NV_compute_program5
-    GL_NV_conditional_render
-    GL_NV_conservative_raster
-    GL_NV_conservative_raster_dilate
-    GL_NV_copy_depth_to_color
-    GL_NV_copy_image
-    GL_NV_depth_buffer_float
-    GL_NV_depth_clamp
-    GL_NV_draw_texture
-    GL_NV_draw_vulkan_image
-    GL_NV_explicit_multisample
-    GL_NV_feature_query
-    GL_NV_fence
-    GL_NV_fill_rectangle
-    GL_NV_float_buffer
-    GL_NV_fog_distance
-    GL_NV_fragment_coverage_to_color
-    GL_NV_fragment_program
-    GL_NV_fragment_program2
-    GL_NV_fragment_program_option
-    GL_NV_fragment_shader_interlock
-    GL_NV_framebuffer_mixed_samples
-    GL_NV_framebuffer_multisample_coverage
-    GL_NV_geometry_shader4
-    GL_NV_geometry_shader_passthrough
-    GL_NV_gpu_program4
-    GL_NV_gpu_program4_1
-    GL_NV_gpu_program5
-    GL_NV_gpu_program5_mem_extended
-    GL_NV_gpu_program_fp64
-    GL_NV_gpu_shader5
-    GL_NV_half_float
-    GL_NV_internalformat_sample_query
-    GL_NV_light_max_exponent
-    GL_NV_multisample_coverage
-    GL_NV_multisample_filter_hint
-    GL_NV_occlusion_query
-    GL_NV_packed_depth_stencil
-    GL_NV_parameter_buffer_object
-    GL_NV_parameter_buffer_object2
-    GL_NV_path_rendering
-    GL_NV_path_rendering_shared_edge
-    GL_NV_pixel_data_range
-    GL_NV_point_sprite
-    GL_NV_primitive_restart
-    GL_NV_query_resource
-    GL_NV_query_resource_tag
-    GL_NV_register_combiners
-    GL_NV_register_combiners2
-    GL_NV_sample_locations
-    GL_NV_sample_mask_override_coverage
-    GL_NV_shader_atomic_counters
-    GL_NV_shader_atomic_float
-    GL_NV_shader_atomic_fp16_vector
-    GL_NV_shader_atomic_int64
-    GL_NV_shader_buffer_load
-    GL_NV_shader_storage_buffer_object
-    GL_NV_shader_thread_group
-    GL_NV_shader_thread_shuffle
-    GL_NV_texgen_reflection
-    GL_NV_texture_barrier
-    GL_NV_texture_compression_vtc
-    GL_NV_texture_env_combine4
-    GL_NV_texture_multisample
-    GL_NV_texture_rectangle
-    GL_NV_texture_rectangle_compressed
-    GL_NV_texture_shader
-    GL_NV_texture_shader2
-    GL_NV_texture_shader3
-    GL_NV_transform_feedback
-    GL_NV_transform_feedback2
-    GL_NV_uniform_buffer_unified_memory
-    GL_NV_vertex_array_range
-    GL_NV_vertex_array_range2
-    GL_NV_vertex_attrib_integer_64bit
-    GL_NV_vertex_buffer_unified_memory
-    GL_NV_vertex_program
-    GL_NV_vertex_program1_1
-    GL_NV_vertex_program2
-    GL_NV_vertex_program2_option
-    GL_NV_vertex_program3
-    GL_NV_viewport_array2
-    GL_NV_viewport_swizzle
-    GL_S3_s3tc
-    GL_SGIS_generate_mipmap
-    GL_SGIS_texture_lod
-    GL_SGIX_depth_texture
-    GL_SGIX_shadow
-    GL_SUN_slice_accum
-    GL_WIN_swap_hint
-    WGL_EXT_swap_control
-Number of texture units: 4
-Using shader environment.
-Using copy RTT.
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Total time until interface ready: 961.09100008s
-- Target is 5 frames in 0.333333333333 seconds.
-- Frame drawn at 0.000000 seconds.
-- Frame drawn at 0.119000 seconds.
-- Frame drawn at 0.121000 seconds.
-- Frame drawn at 0.122000 seconds.
-- Frame drawn at 0.123000 seconds.
-- 0.123000 seconds to render 5 frames.
+While running game code:
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1741, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1335, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 81, in script call
+    call R_Makeout
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
+  File "game/script Locations.rpy", line 458, in script call
+    call Rogue_Study
+  File "game/script Locations.rpy", line 521, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 458, in script call
+    call Rogue_Study
+  File "game/script Locations.rpy", line 521, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1741, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 2074, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1211, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/Rogue_Chat.rpy", line 4010, in script call
+    call Pool_Clothes("auto", "Rogue")
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 3128, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1074, in script call
+    call Kitty_Sleepover
+  File "game/Kitty_Scenes.rpy", line 409, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 828, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 81, in script call
+    call R_Makeout
+  File "game/Rogue_Sex.rpy", line 1005, in script call
+    call Sex_Dialog("Rogue",Partner)
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1805, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 112, in script call
+    call R_Titjob
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
+  File "game/script Locations.rpy", line 468, in script call
+    call EventCalls
+  File "game/Rogue_Scenes.rpy", line 1426, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 77, in script call
+    menu Rogue_SMenu:
+  File "renpy/common/00console.rpy", line 765, in script call
+    python in _console:
+ScriptError: could not find label 'MystiqueChat'.
+Traceback (most recent call last):
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\execution.py", line 468, in run
+    node.execute()
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1552, in execute
+    rv = renpy.game.script.lookup(target)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\script.py", line 861, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'MystiqueChat'.
+
+Full traceback:
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1741, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1335, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 81, in script call
+    call R_Makeout
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
+  File "game/script Locations.rpy", line 458, in script call
+    call Rogue_Study
+  File "game/script Locations.rpy", line 521, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 458, in script call
+    call Rogue_Study
+  File "game/script Locations.rpy", line 521, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1741, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 2074, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1211, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/Rogue_Chat.rpy", line 4010, in script call
+    call Pool_Clothes("auto", "Rogue")
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 3128, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1074, in script call
+    call Kitty_Sleepover
+  File "game/Kitty_Scenes.rpy", line 409, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 828, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 81, in script call
+    call R_Makeout
+  File "game/Rogue_Sex.rpy", line 1005, in script call
+    call Sex_Dialog("Rogue",Partner)
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1805, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 112, in script call
+    call R_Titjob
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
+  File "game/script Locations.rpy", line 468, in script call
+    call EventCalls
+  File "game/Rogue_Scenes.rpy", line 1426, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 77, in script call
+    menu Rogue_SMenu:
+  File "renpy/common/00console.rpy", line 765, in script call
+    python in _console:
+  File "game/Mystique_Chat.rpy", line 4, in script call
+    call MystiqueFace
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1336, in execute
+    rv = renpy.game.context().call(label, return_site=self.next.name)
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1741, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1335, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 81, in script call
+    call R_Makeout
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
+  File "game/script Locations.rpy", line 458, in script call
+    call Rogue_Study
+  File "game/script Locations.rpy", line 521, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 458, in script call
+    call Rogue_Study
+  File "game/script Locations.rpy", line 521, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1741, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 2074, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1211, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/Rogue_Chat.rpy", line 4010, in script call
+    call Pool_Clothes("auto", "Rogue")
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 3128, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1074, in script call
+    call Kitty_Sleepover
+  File "game/Kitty_Scenes.rpy", line 409, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 828, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 81, in script call
+    call R_Makeout
+  File "game/Rogue_Sex.rpy", line 1005, in script call
+    call Sex_Dialog("Rogue",Partner)
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1805, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 112, in script call
+    call R_Titjob
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
+  File "game/script Locations.rpy", line 468, in script call
+    call EventCalls
+  File "game/Rogue_Scenes.rpy", line 1426, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 77, in script call
+    menu Rogue_SMenu:
+  File "renpy/common/00console.rpy", line 765, in script call
+    python in _console:
+  File "game/Mystique_Chat.rpy", line 4, in script call
+    call MystiqueFace
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\script.py", line 861, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'MystiqueFace'.
+
+While running game code:
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1741, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1335, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 81, in script call
+    call R_Makeout
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
+  File "game/script Locations.rpy", line 458, in script call
+    call Rogue_Study
+  File "game/script Locations.rpy", line 521, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 458, in script call
+    call Rogue_Study
+  File "game/script Locations.rpy", line 521, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1741, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 2074, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1211, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/Rogue_Chat.rpy", line 4010, in script call
+    call Pool_Clothes("auto", "Rogue")
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 3128, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1074, in script call
+    call Kitty_Sleepover
+  File "game/Kitty_Scenes.rpy", line 409, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 828, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 81, in script call
+    call R_Makeout
+  File "game/Rogue_Sex.rpy", line 1005, in script call
+    call Sex_Dialog("Rogue",Partner)
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1805, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 112, in script call
+    call R_Titjob
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
+  File "game/script Locations.rpy", line 468, in script call
+    call EventCalls
+  File "game/Rogue_Scenes.rpy", line 1426, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 77, in script call
+    menu Rogue_SMenu:
+  File "renpy/common/00console.rpy", line 765, in script call
+    python in _console:
+  File "game/Mystique_Chat.rpy", line 4, in script call
+    call MystiqueFace
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1741, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1335, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 81, in script call
+    call R_Makeout
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
+  File "game/script Locations.rpy", line 458, in script call
+    call Rogue_Study
+  File "game/script Locations.rpy", line 521, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 458, in script call
+    call Rogue_Study
+  File "game/script Locations.rpy", line 521, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1741, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 461, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1056, in script call
+    call Rogue_Sleepover
+  File "game/Rogue_Scenes.rpy", line 546, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 2074, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1211, in script call
+    call Emma_Chat
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/Rogue_Chat.rpy", line 4010, in script call
+    call Pool_Clothes("auto", "Rogue")
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 3128, in script call
+    call Round10
+  File "game/script Functions.rpy", line 1074, in script call
+    call Kitty_Sleepover
+  File "game/Kitty_Scenes.rpy", line 409, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 1855, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2395, in script call
+    call Kitty_Leave(GirlsNum)
+  File "game/script Locations.rpy", line 828, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 81, in script call
+    call R_Makeout
+  File "game/Rogue_Sex.rpy", line 1005, in script call
+    call Sex_Dialog("Rogue",Partner)
+  File "game/script Locations.rpy", line 1235, in script call
+    call Girls_Location
+  File "game/script Functions.rpy", line 2390, in script call
+    call Rogue_Leave
+  File "game/script Locations.rpy", line 1805, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1176, in script call
+    call Rogue_Chat
+  File "game/Rogue_Chat.rpy", line 160, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 112, in script call
+    call R_Titjob
+  File "game/Rogue_Sex.rpy", line 2035, in script call
+    call Rogue_Caught
+  File "game/script Locations.rpy", line 468, in script call
+    call EventCalls
+  File "game/Rogue_Scenes.rpy", line 1426, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 77, in script call
+    menu Rogue_SMenu:
+  File "renpy/common/00console.rpy", line 765, in script call
+    python in _console:
+  File "game/Mystique_Chat.rpy", line 4, in script call
+    call MystiqueFace
+ScriptError: could not find label 'MystiqueFace'.
+Traceback (most recent call last):
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\execution.py", line 468, in run
+    node.execute()
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1336, in execute
+    rv = renpy.game.context().call(label, return_site=self.next.name)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\execution.py", line 551, in call
+    return renpy.game.script.lookup(label)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-w
