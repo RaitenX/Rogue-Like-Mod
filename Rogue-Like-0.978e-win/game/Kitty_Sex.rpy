@@ -2007,7 +2007,7 @@ label Kitty_Taboo(Cnt= 1):
     $ Cnt = 4 if Cnt > 4 else Cnt   
     
     $ D20 = renpy.random.randint(1, 20)  
-    if Rules and D20 < 10:                                              
+    if K_Rules and D20 < 10:                                              
         # If Xavier notices you can calls you in   
         if R_Loc == bg_current:
                 call Rogue_Noticed("Kitty")

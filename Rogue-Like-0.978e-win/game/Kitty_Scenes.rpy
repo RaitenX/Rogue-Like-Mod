@@ -835,12 +835,12 @@ label Plan_Kappa:
         $ Count -= 1
         menu:
             ch_k "Well, [K_Petname], what should we ask for?"
-            "Don't bother us anymore when we're having fun." if Rules:
+            "Don't bother us anymore when we're having fun." if K_Rules:
                     ch_x "Very well. . . I could offer you some. . . discretion. . ."
-                    $ Rules = 0
-            "You know, it's kinda fun dodging you, catch us if you can." if not Rules:
+                    $ K_Rules = 0
+            "You know, it's kinda fun dodging you, catch us if you can." if not K_Rules:
                     ch_x "If you. . . want me to, I suppose. . ."
-                    $ Rules = 1
+                    $ K_Rules = 1
             "Raise my stipend." if P_Income < 30 and "Kappa" not in P_Traits:    
                     ch_x "Very well. . . but I can only raise it by so much. . ."        
                     $ P_Income += 2

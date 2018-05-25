@@ -3585,10 +3585,16 @@ label Study_Room_Explore:
                 "It appears to be a selfie of Mystique naked with Xavier."
                 #"She's reaching down to adjust his . . . oh, {i}that's{/i} interesting."
                 "Oh, {i}that's{/i} interesting."
-                show Mystique_Picture
+                #show Mystique_Picture
+                show screen Mystique_Pic
+            #     textbutton "Mystique Picture" text_size 15 action Show("Mystique_Pic",transition=Pause(1))
+            # if renpy.get_screen("Mystique_Pic"):
+            #     textbutton "Hide Picture" text_size 15 action Hide("Mystique_Pic",transition=Pause(1))
                 "[[Xavier's photo acquired.]"
                 #pause
-                hide Mystique_Picture
+                hide screen Mystique_Pic
+                #Hide("Mystique_Pic",transition=Pause(1))
+                #hide Mystique_Picture
                 $ P_Inventory.append("Xavier's photo")
             elif D20 >= 5:
                 "There doesn't seem to be anything more of interest in here."

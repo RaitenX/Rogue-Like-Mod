@@ -1165,7 +1165,8 @@ image Zero_Doggy_Up:                                                            
             "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Cock_U_P.png",
             "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_U_B.png",             
             "True", "images/RogueDoggy/Rogue_Doggy_Cock_U_G.png", 
-            ), 
+            ),
+        #"Cock__U"  
     contains:
         ConditionSwitch(    
             "P_Wet", "images/RogueDoggy/Rogue_Doggy_Cock_U_W.png",
@@ -1186,6 +1187,7 @@ image Zero_Doggy_Up_alpha0_5:                                                   
             "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_U_B.png",             
             "True", "images/RogueDoggy/Rogue_Doggy_Cock_U_G.png", 
             ), 
+        #"Cock__U"  
     contains:
         ConditionSwitch(    
             "P_Wet", "images/RogueDoggy/Rogue_Doggy_Cock_U_W.png",
@@ -1206,6 +1208,7 @@ image Zero_Doggy_Up_alpha0:                                                     
             "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_U_B.png",             
             "True", "images/RogueDoggy/Rogue_Doggy_Cock_U_G.png", 
             ), 
+        #"Cock__U"  
     contains:
         ConditionSwitch(    
             "P_Wet", "images/RogueDoggy/Rogue_Doggy_Cock_U_W.png",
@@ -1251,7 +1254,8 @@ image Zero_Doggy_Insert_alpha1:                                                 
             "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Cock_In_P.png",
             "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_In_B.png",             
             "True", "images/RogueDoggy/Rogue_Doggy_Cock_In_G.png", 
-            ), 
+            ),
+        #"Cock__In" 
     contains:
         ConditionSwitch(    
             "P_Wet", "images/RogueDoggy/Rogue_Doggy_Cock_In_Wet.png",           
@@ -1271,6 +1275,7 @@ image Zero_Doggy_Insert_alpha0_5:                                               
             "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_In_B.png",             
             "True", "images/RogueDoggy/Rogue_Doggy_Cock_In_G.png", 
             ), 
+        #"Cock__In" 
     contains:
         ConditionSwitch(    
             "P_Wet", "images/RogueDoggy/Rogue_Doggy_Cock_In_Wet.png",           
@@ -1289,7 +1294,8 @@ image Zero_Doggy_Insert_alpha0:                                                 
             "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Cock_In_P.png",
             "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_In_B.png",             
             "True", "images/RogueDoggy/Rogue_Doggy_Cock_In_G.png", 
-            ), 
+            ),
+        #"Cock__In"  
     contains:
         ConditionSwitch(    
             "P_Wet", "images/RogueDoggy/Rogue_Doggy_Cock_In_Wet.png",           
@@ -1301,6 +1307,41 @@ image Zero_Doggy_Insert_alpha0:                                                 
             "True", Null(),
             ), 
     alpha 0
+
+image Cock__In:                                                                                #Insert cock
+    contains:
+        ConditionSwitch(   
+            "P_CockTorso", Null(), 
+            "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Cock_In_P.png",
+            "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_In_B.png",             
+            "True", "images/RogueDoggy/Rogue_Doggy_Cock_In_G.png", 
+            ),
+    contains:
+        ConditionSwitch(    
+            "not P_CockTorso", Null(), 
+            "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Torso_In_P.png",
+            "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Torso_In_B.png",             
+            "True", "images/RogueDoggy/Rogue_Doggy_Torso_In_G.png", 
+            ),
+        xpos -132
+
+image Cock__U:                                                                                #Insert cock
+    contains:
+        ConditionSwitch(   
+            "P_CockTorso", Null(), 
+            "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Cock_U_P.png",
+            "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_U_B.png",             
+            "True", "images/RogueDoggy/Rogue_Doggy_Cock_U_G.png", 
+            ),
+    contains:
+        ConditionSwitch(    
+            "not P_CockTorso", Null(), 
+            "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Torso_U_P.png",
+            "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Torso_U_B.png",             
+            "True", "images/RogueDoggy/Rogue_Doggy_Torso_U_G.png", 
+            ),
+        xpos -139
+        ypos 4 #-50 sobe 50 desce
 
 image Zero_Doggy_Insert:                                                                                #Insert cock
     ConditionSwitch(    
@@ -1721,8 +1762,8 @@ image Rogue_Anal_Fucking:                                                       
             "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullHole.png", 
             "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png", 
             ),  
-    contains:
-        "images/RogueDoggy/Rogue_Doggy_Asshole_Loose.png"
+    # contains:
+    #     "images/RogueDoggy/Rogue_Doggy_Asshole_Loose.png"
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal1", "images/RogueDoggy/Rogue_Doggy_AnalMask.png")
     contains:                                                                                   #Mask
@@ -1817,8 +1858,8 @@ image Rogue_Anal_Fucking2:                                                      
             "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullHole.png", 
             "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png", 
             ),  
-    contains:
-        "images/RogueDoggy/Rogue_Doggy_Asshole_Loose.png"
+    # contains:
+    #     "images/RogueDoggy/Rogue_Doggy_Asshole_Loose.png"
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal2", "images/RogueDoggy/Rogue_Doggy_AnalMask.png")       
     contains:                                                                                   #Mask
@@ -1847,8 +1888,8 @@ image Rogue_Anal_Fucking3:                                                      
             "R_Tan == 'tan'", "images/RogueDoggy/Rogue_tDoggy_Anal_FullHole.png", 
             "True", "images/RogueDoggy/Rogue_Doggy_Anal_FullHole.png", 
             ),  
-    contains:
-        "images/RogueDoggy/Rogue_Doggy_Asshole_Loose.png"
+    # contains:
+    #     "images/RogueDoggy/Rogue_Doggy_Asshole_Loose.png"
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal3", "images/RogueDoggy/Rogue_Doggy_AnalMask.png")       
     contains:                                                                                   #Mask

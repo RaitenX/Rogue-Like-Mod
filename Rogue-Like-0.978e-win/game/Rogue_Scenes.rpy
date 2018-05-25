@@ -914,10 +914,10 @@ label Plan_Omega:
         $ Count -= 1
         menu:
             ch_r "Well, [R_Petname], what would you like to do with this opportunity?"
-            "Don't bother us anymore when we're having fun." if Rules:
-                    $ Rules = 0
-            "You know, it's kinda fun dodging you, catch us if you can." if not Rules:
-                    $ Rules = 1
+            "Don't bother us anymore when we're having fun." if R_Rules:
+                    $ R_Rules = 0
+            "You know, it's kinda fun dodging you, catch us if you can." if not R_Rules:
+                    $ R_Rules = 1
             "Raise my stipend." if P_Income < 30 and "Omega" not in P_Traits:             
                     $ P_Income += 2
             "Raise my stipend. [[Used](locked)" if P_Income >= 30 or "Omega" in P_Traits:             
@@ -2513,7 +2513,7 @@ label Rogue_Frisky_Class:
                         "Dr. McCoy stops his lecture in mid-sentence when he notices that the whole class is looking at you and Rogue." 
                         ch_b "Oh, my stars and garters!"                
                         ch_b "[Playername]!?! {b}WHAT ARE YOU DOING? BOTH OF YOU, TO THE PROFESSOR'S OFFICE, IMMEDIATELY!{/b}"
-                if Rules:
+                if R_Rules:
                         jump Rogue_Caught
                 else:
                         "Since Xavier isn't concerned with your activities, you both head back to your room instead."

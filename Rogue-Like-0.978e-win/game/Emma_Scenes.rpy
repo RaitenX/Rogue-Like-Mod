@@ -1434,12 +1434,12 @@ label Plan_Psi: #Emma_Update
         $ Count -= 1
         menu:
             ch_e "Well, [E_Petname], what should we ask for?"
-            "Don't bother us anymore when we're having fun." if Rules:
+            "Don't bother us anymore when we're having fun." if E_Rules:
                     ch_x "Very well. . . I could offer you some. . . discretion. . ."
-                    $ Rules = 0
-            "You know, it's kinda fun dodging you, catch us if you can." if not Rules:
+                    $ E_Rules = 0
+            "You know, it's kinda fun dodging you, catch us if you can." if not E_Rules:
                     ch_x "If you. . . want me to, I suppose. . ."
-                    $ Rules = 1
+                    $ E_Rules = 1
             "Raise my stipend." if P_Income < 30 and "Psi" not in P_Traits:    
                     ch_x "Very well. . . but I can only raise it by so much. . ."        
                     $ P_Income += 2

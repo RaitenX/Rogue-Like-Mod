@@ -795,13 +795,13 @@ image Emma_Doggy_Anal_Fucking:                                                  
         # "E_Tan == 'tan3'", "images/EmmaDoggy/Emma_Doggy_T3Anal_FullHole.png",
         # "True", "images/EmmaDoggy/Emma_Doggy_Anal_FullHole.png",
         # ),    
-    contains:
-        "Emma_Doggy_Asshole_Loose"
-        # ConditionSwitch(          
-        # "E_Tan", "images/EmmaDoggy/Emma_Doggy_T3Asshole_Loose.png",
-        # "E_Tan == 'tan3'", "images/EmmaDoggy/Emma_Doggy_T3Asshole_Loose.png",
-        # "True", "images/EmmaDoggy/Emma_Doggy_Asshole_Loose.png",
-        # ),  
+    # contains:
+    #     "Emma_Doggy_Asshole_Loose"
+    #     # ConditionSwitch(          
+    #     # "E_Tan", "images/EmmaDoggy/Emma_Doggy_T3Asshole_Loose.png",
+    #     # "E_Tan == 'tan3'", "images/EmmaDoggy/Emma_Doggy_T3Asshole_Loose.png",
+    #     # "True", "images/EmmaDoggy/Emma_Doggy_Asshole_Loose.png",
+    #     # ),  
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal1", "images/EmmaDoggy/Emma_Doggy_AnalMask.png")
     contains:                                                                                   #Mask
@@ -882,13 +882,13 @@ image Emma_Doggy_Anal_Fucking2:                                                 
         # "E_Tan == 'tan3'", "images/EmmaDoggy/Emma_Doggy_T3Anal_FullHole.png",
         # "True", "images/EmmaDoggy/Emma_Doggy_Anal_FullHole.png",
         # ),    
-    contains:
-        "Emma_Doggy_Asshole_Loose"
-        # ConditionSwitch(          
-        # "E_Tan", "images/EmmaDoggy/Emma_Doggy_T3Asshole_Loose.png",
-        # "E_Tan == 'tan3'", "images/EmmaDoggy/Emma_Doggy_T3Asshole_Loose.png",
-        # "True", "images/EmmaDoggy/Emma_Doggy_Asshole_Loose.png",
-        # ),  
+    # contains:
+    #     "Emma_Doggy_Asshole_Loose"
+    #     # ConditionSwitch(          
+    #     # "E_Tan", "images/EmmaDoggy/Emma_Doggy_T3Asshole_Loose.png",
+    #     # "E_Tan == 'tan3'", "images/EmmaDoggy/Emma_Doggy_T3Asshole_Loose.png",
+    #     # "True", "images/EmmaDoggy/Emma_Doggy_Asshole_Loose.png",
+    #     # ),  
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal2", "images/EmmaDoggy/Emma_Doggy_AnalMask.png")       
     contains:                                                                                   #Mask
@@ -921,13 +921,13 @@ image Emma_Doggy_Anal_Fucking3:                                                 
         # "E_Tan == 'tan3'", "images/EmmaDoggy/Emma_Doggy_T3Anal_FullHole.png",
         # "True", "images/EmmaDoggy/Emma_Doggy_Anal_FullHole.png",
         # ),    
-    contains:
-        "Emma_Doggy_Asshole_Loose"
-        # ConditionSwitch(          
-        # "E_Tan", "images/EmmaDoggy/Emma_Doggy_T3Asshole_Loose.png",
-        # "E_Tan == 'tan3'", "images/EmmaDoggy/Emma_Doggy_T3Asshole_Loose.png",
-        # "True", "images/EmmaDoggy/Emma_Doggy_Asshole_Loose.png",
-        # ),  
+    # contains:
+    #     "Emma_Doggy_Asshole_Loose"
+    #     # ConditionSwitch(          
+    #     # "E_Tan", "images/EmmaDoggy/Emma_Doggy_T3Asshole_Loose.png",
+    #     # "E_Tan == 'tan3'", "images/EmmaDoggy/Emma_Doggy_T3Asshole_Loose.png",
+    #     # "True", "images/EmmaDoggy/Emma_Doggy_Asshole_Loose.png",
+    #     # ),  
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal3", "images/EmmaDoggy/Emma_Doggy_AnalMask.png")       
     contains:                                                                                   #Mask

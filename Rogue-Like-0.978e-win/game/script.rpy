@@ -79,6 +79,9 @@ init -1:
     default Party = []
     default Taboo = 0
     default Rules = 1
+    default R_Rules = 1
+    default K_Rules = 1
+    default E_Rules = 1
     default Line = 0
     default Situation = 0               #Whether Auto/Shift
     default MultiAction = 1             #0 if the action cannot continue, 1 if it can
@@ -129,6 +132,7 @@ init -1:
     default E_Pet = "Ms. Frost"           #What you call Emma
     default E_Pets = ["Ms. Frost"]
     default P_CockVisible = 1
+    default P_CockTorso = 0
     default P_Semen = 2
     default P_Semen_Max = 3
     default P_Focus = 0

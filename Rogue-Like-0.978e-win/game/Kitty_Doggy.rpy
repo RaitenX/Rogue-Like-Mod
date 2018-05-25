@@ -2245,7 +2245,7 @@ label K_Doggy_Anal_Cycle: #Repeating strokes
                                     ch_k "No thanks, [K_Petname]. Maybe a Handy instead?"
                                     $ Situation = "shift"
                                     call K_Doggy_AnalAfter
-                                    call RHJ_Prep   
+                                    call KHJ_Prep   
                         "How about a Handy?" if K_Action and MultiAction:
                                 $ Situation = "shift"
                                 call K_Doggy_AnalAfter

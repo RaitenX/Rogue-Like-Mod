@@ -1025,6 +1025,12 @@ screen P_Inventory_screen:
             textbutton "Mystique Picture" text_size 15 action Show("Mystique_Pic",transition=Pause(1))
             if renpy.get_screen("Mystique_Pic"):
                 textbutton "Hide Picture" text_size 15 action Hide("Mystique_Pic",transition=Pause(1))
+        if R_Rules:
+            textbutton "X stop bothering Rogue" text_size 15 action [ SetVariable("R_Rules", 0)]
+        if K_Rules:
+            textbutton "X stop bothering Kitty" text_size 15 action [ SetVariable("K_Rules", 0)]
+        if E_Rules:
+            textbutton "X stop bothering Emma" text_size 15 action [ SetVariable("E_Rules", 0)]
         showif "dildo" in P_Inventory:
             $ Inventory_Count = Inventory_Check("dildo")
             text "Dildos: [Inventory_Count]" size 15        

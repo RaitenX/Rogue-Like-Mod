@@ -2,6 +2,12 @@
 errors listed below, and try again.
 
 
-File "game/Kitty_Chat.rpy", line 4534: indentation mismatch.
+File "game/script Locations.rpy", line 3589: expected statement.
+    Show("Mystique_Pic",transition=Pause(1))
+                                            ^
+
+File "game/script Locations.rpy", line 3595: expected statement.
+    Hide("Mystique_Pic",transition=Pause(1))
+                                            ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

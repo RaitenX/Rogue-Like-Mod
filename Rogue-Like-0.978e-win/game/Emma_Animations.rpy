@@ -78,7 +78,7 @@ image Emma_Sprite:
             "True", Null(), 
             ), 
         (0,0), ConditionSwitch(                                                                         #pants    
-            "not E_Legs", Null(),
+            "not E_Legs or E_Upskirt", Null(),
             "E_Legs and E_Wet", "images/EmmaSprite/EmmaSprite_WetCrotch_Overlay.png", 
             "True", Null(), 
             ), 

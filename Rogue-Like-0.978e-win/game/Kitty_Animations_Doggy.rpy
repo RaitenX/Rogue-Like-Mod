@@ -866,13 +866,13 @@ image Kitty_Doggy_Anal_Fucking:                                                 
         # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
         # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
         # ),    
-    contains:
-        "Kitty_Doggy_Asshole_Loose"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
-        # ),  
+    # contains:
+    #     "Kitty_Doggy_Asshole_Loose"
+    #     # ConditionSwitch(          
+    #     # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
+    #     # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
+    #     # "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
+    #     # ),  
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal1", "images/KittyDoggy/Kitty_Doggy_AnalMask.png")
     contains:                                                                                   #Mask
@@ -953,13 +953,13 @@ image Kitty_Doggy_Anal_Fucking2:                                                
         # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
         # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
         # ),    
-    contains:
-        "Kitty_Doggy_Asshole_Loose"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
-        # ),  
+    # contains:
+    #     "Kitty_Doggy_Asshole_Loose"
+    #     # ConditionSwitch(          
+    #     # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
+    #     # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
+    #     # "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
+    #     # ),  
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal2", "images/KittyDoggy/Kitty_Doggy_AnalMask.png")       
     contains:                                                                                   #Mask
@@ -992,13 +992,13 @@ image Kitty_Doggy_Anal_Fucking3:                                                
         # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Anal_FullHole.png",
         # "True", "images/KittyDoggy/Kitty_Doggy_Anal_FullHole.png",
         # ),    
-    contains:
-        "Kitty_Doggy_Asshole_Loose"
-        # ConditionSwitch(          
-        # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
-        # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
-        # "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
-        # ),  
+    # contains:
+    #     "Kitty_Doggy_Asshole_Loose"
+    #     # ConditionSwitch(          
+    #     # "K_Tan", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
+    #     # "K_Tan == 'tan3'", "images/KittyDoggy/Kitty_Doggy_T3Asshole_Loose.png",
+    #     # "True", "images/KittyDoggy/Kitty_Doggy_Asshole_Loose.png",
+    #     # ),  
     contains:                                                                                   #Cock
         AlphaMask("Zero_Doggy_Anal3", "images/KittyDoggy/Kitty_Doggy_AnalMask.png")       
     contains:                                                                                   #Mask

@@ -2273,6 +2273,7 @@ label Check_Outfit_Event:
             if Current_Time != "Night":
                 "You notice that Emma is completely naked, even though the pool is packed with students."
                 "You decide to approach her."
+                call Change_Focus("Emma")
                 ch_p "Don't get me wrong, I'm enjoying the view, but are you really ok with all the students seeing you like this?"
                 call EmmaFace("confused")
                 ch_e "What do you mean, [E_Petname]?"
@@ -2288,6 +2289,7 @@ label Check_Outfit_Event:
             else:
                 "You notice that Emma is completely naked."
                 "You approach her."
+                call Change_Focus("Emma")
                 ch_p "Loved the view."
                 call EmmaFace("sexy", 1)
                 ch_e "Do you now, [E_Petname]?"
@@ -2301,7 +2303,7 @@ label Check_Outfit_Event:
                 ch_e "But since my powers don't work on you, you're the only one that can see me like this."
 
     if R_Loc == "bg pool":
-        #"Emma's here"
+        #"Rogue's here"
         if "exhibitionist" in R_Traits and R_Outfit == "swimsuit2" and "exhibitionist pool" not in R_History:
             $ R_History.append("exhibitionist pool")
             if Current_Time != "Night":
@@ -2309,6 +2311,7 @@ label Check_Outfit_Event:
                 if R_Pubes:
                     "You can even see her bush"
                     "You decide to approach her."
+                    call Change_Focus("Rogue")
                     ch_p "Hey [R_Pet], you know everyone can see your pubes right?"
                     call RogueFace("sexy", 1)
                     ch_r "Maybe I should shave them. . ."
@@ -2317,6 +2320,7 @@ label Check_Outfit_Event:
                     call RogueFace("sexy", 1)
                 else:
                     "You decide to approach her."
+                    call Change_Focus("Rogue")
                     ch_p "Hey [R_Pet], you know everyone can almost see your pussy right?"
                     call RogueFace("sexy", 1)
                     ch_r "Maybe I should have gotten a more revealing swimsuit them. . ."
@@ -2327,6 +2331,7 @@ label Check_Outfit_Event:
                 if R_Pubes:
                     "You can even see her bush"
                     "You decide to approach her."
+                    call Change_Focus("Rogue")
                     ch_p "Hey [R_Pet], you know I can see your pubes right?"
                     call RogueFace("sexy", 1)
                     ch_r "Maybe I should shave them. . ."
@@ -2335,12 +2340,42 @@ label Check_Outfit_Event:
                     call RogueFace("sexy", 1)
                 else:
                     "You decide to approach her."
+                    call Change_Focus("Rogue")
                     ch_p "Hey [R_Pet], you know I can almost see your pussy right?"
                     call RogueFace("sexy", 1)
                     ch_r "Maybe I should have gotten a more revealing swimsuit them. . ."
                     #call RogueFace("sly", 1)
                     #call "Let me know what you think later."
-                
+
+    if K_Loc == "bg pool":
+        #"Kitty's here"
+        if "exhibitionist" in K_Traits and K_Outfit == "naked pool" and "exhibitionist pool" not in K_History:
+            $ K_History.append("exhibitionist pool")
+            if Current_Time != "Night":
+                "You notice that Kitty is wearing a very see-through swimsuit, even though the pool is packed with students."
+                "You decide to approach her."
+                call Change_Focus("Kitty")
+                ch_p "Hey [K_Pet], you know everyone can see your entire body right?"
+                call KittyFace("sexy", 1)
+                $ K_Wet = 1
+                ch_k "I know, [K_Petname]. Don't I, [K_Like], look great in these?"
+                ch_p "You sure do"
+                call KittyFace("smile", 1)
+                ch_k "Thanks, [K_Petname]."
+                call KittyFace("sexy", 1)
+            else:
+                "You notice that Kitty is wearing a very see-through swimsuit."
+                "You decide to approach her."
+                call Change_Focus("Kitty")
+                ch_p "Hey [K_Pet], you know I can see your entire body right?"
+                call KittyFace("sexy", 1)
+                $ K_Wet = 1
+                ch_k "I know, [K_Petname], are enjoying the view?"
+                ch_p "I sure am"
+                call KittyFace("smile", 1)
+                ch_k "Enjoy the view then, [K_Petname]."
+                call KittyFace("sexy", 1)
+
     return
 
 
@@ -4024,6 +4059,9 @@ label Failsafe:
     $ Party = [] if "Party" not in globals().keys() else Party
     $ Taboo = 0 if "Taboo" not in globals().keys() else Taboo
     $ Rules = 1 if "Rules" not in globals().keys() else Rules
+    $ R_Rules = 1 if "R_Rules" not in globals().keys() else R_Rules
+    $ K_Rules = 1 if "K_Rules" not in globals().keys() else K_Rules
+    $ E_Rules = 1 if "E_Rules" not in globals().keys() else E_Rules
     $ Line = 0 if "Line" not in globals().keys() else Line 
     $ Situation = 0 if "Situation" not in globals().keys() else Situation                #Whether Auto/Shift
     $ MultiAction = 1 if "MultiAction" not in globals().keys() else MultiAction              #0 if the action cannot continue, 1 if it can
