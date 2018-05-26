@@ -1243,6 +1243,10 @@ label Present_Check(Present = []):
         $ E_Loc = bg_current
     elif E_Loc == bg_current:       
                     $ Present.append("Emma")
+    if "Mystique" in Party: 
+        $ newgirl.girls["Mystique"]["Loc"] = bg_current
+    elif newgirl.girls["Mystique"]["Loc"] == bg_current:       
+                    $ Present.append("Mystique")
         
     
     $ renpy.random.shuffle(Present) #Randomizes pool
@@ -1254,7 +1258,7 @@ label Present_Check(Present = []):
         #adds the second party member if it exists
         $ Present.append(Party[1]) 
     if len(Party) == 3:
-        #adds the second party member if it exists
+        #adds the third party member if it exists
         $ Present.append(Party[2]) 
     
     
@@ -1270,6 +1274,9 @@ label Present_Check(Present = []):
             elif Present[0] == "Emma":      
                     $ Present.remove("Emma")
                     call Remove_Girl("Emma")
+            elif Present[0] == "Mystique":      
+                    $ Present.remove("Mystique")
+                    call Remove_Girl("Mystique")
     
     if not Present:
             #if no one is there, quit now.
@@ -1284,6 +1291,8 @@ label Present_Check(Present = []):
                 call Shift_Focus("Rogue")
             elif "Emma" in Present:
                 call Shift_Focus("Emma")
+            elif "Mystique" in Present:
+                call Shift_Focus("Mystique")
     elif Ch_Focus == "Emma":        
             # if the focus is Emma, if Kitty or Rogue are around, 
             # and Emma isn't, swap, otherwise don't. 
@@ -1293,7 +1302,9 @@ label Present_Check(Present = []):
                 call Shift_Focus("Rogue")
             elif "Kitty" in Present:
                 call Shift_Focus("Kitty")
-    else: #Ch_Focus == "Rogue":
+            elif "Mystique" in Present:
+                call Shift_Focus("Mystique")
+    elif Ch_Focus == "Rogue":
             # if the focus is not one of the above, if Kitty or Emma are around, 
             # and Rogue isn't, swap, otherwise don't. 
             if "Rogue" in Present:
@@ -1302,6 +1313,19 @@ label Present_Check(Present = []):
                 call Shift_Focus("Kitty")
             elif "Emma" in Present:
                 call Shift_Focus("Emma")
+            elif "Mystique" in Present:
+                call Shift_Focus("Mystique")
+    else: #Ch_Focus == "Mystique":
+            # if the focus is not one of the above, if Kitty or Emma are around, 
+            # and Rogue isn't, swap, otherwise don't. 
+            if "Mystique" in Present:
+                pass        
+            elif "Kitty" in Present:
+                call Shift_Focus("Kitty")
+            elif "Emma" in Present:
+                call Shift_Focus("Emma")
+            elif "Rogue" in Present:
+                call Shift_Focus("Rogue")
                     
     return
 
@@ -1355,6 +1379,21 @@ label Remove_Girl(Girl = 0, HideGirl = 1):
                 if HideGirl:
                     hide Emma_Sprite
                     call Emma_Hide
+    if Girl == "Mystique" or Girl == "All": 
+            if "Mystique" in Party:        
+                    $ Party.remove("Mystique")
+            if "leaving" in newgirl.girls["Mystique"]["RecentActions"]:
+                    call DrainWord("Mystique","leaving")  
+            if "arriving" in newgirl.girls["Mystique"]["RecentActions"]:
+                    call DrainWord("Mystique","arriving")   
+            if bg_current == newgirl.girls["Mystique"]["Loc"]: 
+                if bg_current == "bg emma":
+                    $ newgirl.girls["Mystique"]["Loc"] = "bg campus"
+                else:
+                    $ newgirl.girls["Mystique"]["Loc"] = "bg emma"
+                if HideGirl:
+                    hide Mystique_Sprite
+                    call Mystique_Hide
     #end of Remove Girl
     return
     

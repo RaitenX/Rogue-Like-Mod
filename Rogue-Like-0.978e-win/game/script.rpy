@@ -35,7 +35,7 @@ image blackscreen:
         linear 0.5 alpha 0.0
 
 define ch_r = Character('Rogue', color="#85bb65", image = "arrow", show_two_window=True)
-define ch_m = Character('Mystique', color="#85bb65", image = "arrow", show_two_window=True)
+define ch_m = Character('Mystique', color="#646dbb", image = "arrow", show_two_window=True)
 define ch_p = Character('[Playername]', color="#87CEEB", show_two_window=True)
 define ch_x = Character('Professor X', color="#a09400", image = "arrow", show_two_window=True)
 define ch_k = Character('Kitty', color="#F5A9D0", image = "arrow", show_two_window=True)
@@ -2843,6 +2843,355 @@ label Emma_Todo:
         return
         
         
+
+# Mystique's Outfit //////////////////////////////////////////////
+label MystiqueOutfit(M_OutfitTemp = newgirl.girls["Mystique"]["Outfit"], Spunk = 0, Undressed = 0, Changed = 0):   
+        # M_OutfitTemp is the chosen new outfit, Spunk removes sperm on her, Undressed determines whether she is under dressed  
+        
+        if renpy.showing("NightMask", layer='nightmask') and Current_Time == "Morning":
+            #Skips theis check if it's a sleepover
+            return
+
+        if newgirl.girls["Mystique"]["Gag"]:
+            "She removes her gag"
+            $ newgirl.girls["Mystique"]["Gag"] = 0
+        
+        if M_OutfitTemp != newgirl.girls["Mystique"]["Outfit"]:
+                #if her new outfit is not what she was wearing before,
+                #don't flag the undressed mechanic
+                $ Changed = 1    
+        if "Mystique" in Party and M_OutfitTemp == newgirl.girls["Mystique"]["OutfitDay"]:
+                #this ignores her daily outfit if she's in a party
+                $ M_OutfitTemp = newgirl.girls["Mystique"]["Outfit"]
+        if newgirl.girls["Mystique"]["Loc"] == "bg showerroom" and "Mystique" not in Party and M_OutfitTemp != "nude":
+                #Automatically puts her in the towel while in the shower
+                $ M_OutfitTemp = "towel"                                  
+        elif newgirl.girls["Mystique"]["Loc"] != "bg showerroom" and newgirl.girls["Mystique"]["Loc"] != "bg pool":
+                #Dries her off
+                $ newgirl.girls["Mystique"]["Water"] = 0
+                
+        if newgirl.girls["Mystique"]["Spunk"]:
+                if "painted" not in newgirl.girls["Mystique"]["DailyActions"] or "cleaned" not in newgirl.girls["Mystique"]["DailyActions"]:        
+                    $ del newgirl.girls["Mystique"]["Spunk"][:] 
+                
+        $ newgirl.girls["Mystique"]["Upskirt"] = 0
+        $ newgirl.girls["Mystique"]["Uptop"] = 0
+        $ newgirl.girls["Mystique"]["PantiesDown"] = 0
+        if M_OutfitTemp == "teacher":
+                    if 0 in (newgirl.girls["Mystique"]["Legs"],newgirl.girls["Mystique"]["Over"],newgirl.girls["Mystique"]["Chest"]):
+                            $ Undressed = 1
+                    elif newgirl.girls["Mystique"]["Panties"] == 0 and "pantyless" not in newgirl.girls["Mystique"]["DailyActions"]:                        
+                            $ Undressed = 1   
+                    $ newgirl.girls["Mystique"]["Arms"] = 0
+                    $ newgirl.girls["Mystique"]["Legs"] = "pants"
+                    $ newgirl.girls["Mystique"]["Over"] = "jacket"
+                    $ newgirl.girls["Mystique"]["Chest"] = "corset"
+                    $ newgirl.girls["Mystique"]["Panties"] = "white panties"        
+                    $ newgirl.girls["Mystique"]["Neck"] = "choker"
+                    $ newgirl.girls["Mystique"]["Hair"] = "wavy"
+                    $ newgirl.girls["Mystique"]["Hose"] = 0  
+        elif M_OutfitTemp == "costume":
+                    if 0 in (newgirl.girls["Mystique"]["Legs"],newgirl.girls["Mystique"]["Chest"]):
+                            $ Undressed = 1
+                    elif newgirl.girls["Mystique"]["Panties"] == 0 and "pantyless" not in newgirl.girls["Mystique"]["DailyActions"]:                        
+                            $ Undressed = 1   
+                    $ newgirl.girls["Mystique"]["Arms"] = "white gloves"
+                    $ newgirl.girls["Mystique"]["Legs"] = "pants"
+                    $ newgirl.girls["Mystique"]["Over"] = 0
+                    $ newgirl.girls["Mystique"]["Chest"] = "corset"
+                    $ newgirl.girls["Mystique"]["Panties"] = "white panties"        
+                    $ newgirl.girls["Mystique"]["Neck"] = "choker"
+                    $ newgirl.girls["Mystique"]["Hair"] = "wavy"
+                    $ newgirl.girls["Mystique"]["Hose"] = 0 
+        elif M_OutfitTemp == "bikini":
+                    if newgirl.girls["Mystique"]["Chest"] == 0:
+                            $ Undressed = 1
+                    elif newgirl.girls["Mystique"]["Panties"] == 0 and "pantyless" not in newgirl.girls["Mystique"]["DailyActions"]:                        
+                            $ Undressed = 1   
+                    $ newgirl.girls["Mystique"]["Arms"] = 0
+                    $ newgirl.girls["Mystique"]["Legs"] = 0
+                    $ newgirl.girls["Mystique"]["Over"] = 0
+                    $ newgirl.girls["Mystique"]["Chest"] = "bikini"
+                    $ newgirl.girls["Mystique"]["Panties"] = "bikini"        
+                    $ newgirl.girls["Mystique"]["Neck"] = 0
+                    $ newgirl.girls["Mystique"]["Hair"] = "wavy"
+                    $ newgirl.girls["Mystique"]["Hose"] = 0     
+        elif M_OutfitTemp == "towel":
+                    if newgirl.girls["Mystique"]["Over"] == 0:
+                            $ Undressed = 2
+                    $ newgirl.girls["Mystique"]["Arms"] = 0
+                    $ newgirl.girls["Mystique"]["Legs"] = 0
+                    $ newgirl.girls["Mystique"]["Chest"] = 0
+                    $ newgirl.girls["Mystique"]["Over"] = "towel"
+                    $ newgirl.girls["Mystique"]["Panties"] = 0        
+                    $ newgirl.girls["Mystique"]["Hose"] = 0          
+                    $ newgirl.girls["Mystique"]["Neck"] = 0  
+                    $ newgirl.girls["Mystique"]["Hair"] = "bun" 
+                    $ newgirl.girls["Mystique"]["Shame"] = 35
+        elif M_OutfitTemp == "nude":
+                    $ newgirl.girls["Mystique"]["Arms"] = 0
+                    $ newgirl.girls["Mystique"]["Legs"] = 0
+                    $ newgirl.girls["Mystique"]["Chest"] = 0
+                    $ newgirl.girls["Mystique"]["Over"] = 0
+                    $ newgirl.girls["Mystique"]["Panties"] = 0              
+                    $ newgirl.girls["Mystique"]["Neck"] = 0
+                    $ newgirl.girls["Mystique"]["Hose"] = 0   
+                    $ newgirl.girls["Mystique"]["Shame"] = 50
+        elif M_OutfitTemp == "naked pool":
+                    $ newgirl.girls["Mystique"]["Arms"] = 0
+                    $ newgirl.girls["Mystique"]["Legs"] = 0
+                    $ newgirl.girls["Mystique"]["Over"] = 0
+                    $ newgirl.girls["Mystique"]["Chest"] = "naked pool"
+                    $ newgirl.girls["Mystique"]["Panties"] = "naked pool"              
+                    $ newgirl.girls["Mystique"]["Neck"] = 0
+                    $ newgirl.girls["Mystique"]["Hair"] = "wavy"
+                    $ newgirl.girls["Mystique"]["Hose"] = 0   
+        elif M_OutfitTemp == "custom1":
+                    if not newgirl.girls["Mystique"]["Legs"] and newgirl.girls["Mystique"]["Custom"][2]:            
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Over"] and newgirl.girls["Mystique"]["Custom"][3]:          
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Chest"] and newgirl.girls["Mystique"]["Custom"][5]:          
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Panties"] and newgirl.girls["Mystique"]["Custom"][6] and "pantyless" not in newgirl.girls["Mystique"]["DailyActions"]:          
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Hose"] and newgirl.girls["Mystique"]["Custom"][9]:          
+                            $ Undressed = 1
+                    
+                    $ newgirl.girls["Mystique"]["Arms"] = newgirl.girls["Mystique"]["Custom"][1]
+                    $ newgirl.girls["Mystique"]["Legs"] = newgirl.girls["Mystique"]["Custom"][2]
+                    $ newgirl.girls["Mystique"]["Over"] = newgirl.girls["Mystique"]["Custom"][3]    
+                    $ newgirl.girls["Mystique"]["Neck"] = newgirl.girls["Mystique"]["Custom"][4]
+                    $ newgirl.girls["Mystique"]["Chest"] = newgirl.girls["Mystique"]["Custom"][5]
+                    $ newgirl.girls["Mystique"]["Panties"] = newgirl.girls["Mystique"]["Custom"][6]  
+                    $ newgirl.girls["Mystique"]["Hair"] = newgirl.girls["Mystique"]["Custom"][8] if newgirl.girls["Mystique"]["Custom"][8] else newgirl.girls["Mystique"]["Hair"] 
+                    $ newgirl.girls["Mystique"]["Hose"] = newgirl.girls["Mystique"]["Custom"][9]                     
+                    $ newgirl.girls["Mystique"]["Shame"] = newgirl.girls["Mystique"]["OutfitShame"][3]
+        elif M_OutfitTemp == "custom2":
+                    if not newgirl.girls["Mystique"]["Legs"] and newgirl.girls["Mystique"]["Custom2"][2]:            
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Over"] and newgirl.girls["Mystique"]["Custom2"][3]:          
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Chest"] and newgirl.girls["Mystique"]["Custom2"][5]:          
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Panties"] and newgirl.girls["Mystique"]["Custom2"][6] and "pantyless" not in newgirl.girls["Mystique"]["DailyActions"]:          
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Hose"] and newgirl.girls["Mystique"]["Custom2"][9]:          
+                            $ Undressed = 1
+                        
+                    $ newgirl.girls["Mystique"]["Arms"] = newgirl.girls["Mystique"]["Custom2"][1]
+                    $ newgirl.girls["Mystique"]["Legs"] = newgirl.girls["Mystique"]["Custom2"][2]
+                    $ newgirl.girls["Mystique"]["Over"] = newgirl.girls["Mystique"]["Custom2"][3]   
+                    $ newgirl.girls["Mystique"]["Neck"] = newgirl.girls["Mystique"]["Custom2"][4]
+                    $ newgirl.girls["Mystique"]["Chest"] = newgirl.girls["Mystique"]["Custom2"][5]
+                    $ newgirl.girls["Mystique"]["Panties"] = newgirl.girls["Mystique"]["Custom2"][6] 
+                    $ newgirl.girls["Mystique"]["Hair"] = newgirl.girls["Mystique"]["Custom2"][8] if newgirl.girls["Mystique"]["Custom2"][8] else newgirl.girls["Mystique"]["Hair"]
+                    $ newgirl.girls["Mystique"]["Hose"] = newgirl.girls["Mystique"]["Custom2"][9]                      
+                    $ newgirl.girls["Mystique"]["Shame"] = newgirl.girls["Mystique"]["OutfitShame"][5]
+        elif M_OutfitTemp == "custom3":
+                    if not newgirl.girls["Mystique"]["Legs"] and newgirl.girls["Mystique"]["Custom3"][2]:            
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Over"] and newgirl.girls["Mystique"]["Custom3"][3]:          
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Chest"] and newgirl.girls["Mystique"]["Custom3"][5]:          
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Panties"] and newgirl.girls["Mystique"]["Custom3"][6] and "pantyless" not in newgirl.girls["Mystique"]["DailyActions"]:         
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Hose"] and newgirl.girls["Mystique"]["Custom3"][9]:          
+                            $ Undressed = 1
+                        
+                    $ newgirl.girls["Mystique"]["Arms"] = newgirl.girls["Mystique"]["Custom3"][1]
+                    $ newgirl.girls["Mystique"]["Legs"] = newgirl.girls["Mystique"]["Custom3"][2]
+                    $ newgirl.girls["Mystique"]["Over"] = newgirl.girls["Mystique"]["Custom3"][3]
+                    $ newgirl.girls["Mystique"]["Neck"] = newgirl.girls["Mystique"]["Custom3"][4]
+                    $ newgirl.girls["Mystique"]["Chest"] = newgirl.girls["Mystique"]["Custom3"][5]
+                    $ newgirl.girls["Mystique"]["Panties"] = newgirl.girls["Mystique"]["Custom3"][6]  
+                    $ newgirl.girls["Mystique"]["Hair"] = newgirl.girls["Mystique"]["Custom3"][8] if newgirl.girls["Mystique"]["Custom3"][8] else newgirl.girls["Mystique"]["Hair"]  
+                    $ newgirl.girls["Mystique"]["Hose"] = newgirl.girls["Mystique"]["Custom3"][9]                         
+                    $ newgirl.girls["Mystique"]["Shame"] = newgirl.girls["Mystique"]["OutfitShame"][6]
+        elif M_OutfitTemp == "sleep":  
+                    if not newgirl.girls["Mystique"]["Legs"] and newgirl.girls["Mystique"]["Sleepwear"][2]:            
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Over"] and newgirl.girls["Mystique"]["Sleepwear"][3]:          
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Chest"] and newgirl.girls["Mystique"]["Sleepwear"][5]:          
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Panties"] and newgirl.girls["Mystique"]["Sleepwear"][6] and "pantyless" not in newgirl.girls["Mystique"]["DailyActions"]:        
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Hose"] and newgirl.girls["Mystique"]["Sleepwear"][9]:          
+                            $ Undressed = 1
+                        
+                    $ newgirl.girls["Mystique"]["Arms"] = newgirl.girls["Mystique"]["Sleepwear"][1] #0
+                    $ newgirl.girls["Mystique"]["Legs"] = newgirl.girls["Mystique"]["Sleepwear"][2] #shorts
+                    $ newgirl.girls["Mystique"]["Over"] = newgirl.girls["Mystique"]["Sleepwear"][3] #0
+                    $ newgirl.girls["Mystique"]["Neck"] = newgirl.girls["Mystique"]["Sleepwear"][4] #0
+                    $ newgirl.girls["Mystique"]["Chest"] = newgirl.girls["Mystique"]["Sleepwear"][5] #"cami"
+                    $ newgirl.girls["Mystique"]["Panties"] = newgirl.girls["Mystique"]["Sleepwear"][6] #"green panties"
+                    $ newgirl.girls["Mystique"]["Hair"] = newgirl.girls["Mystique"]["Sleepwear"][8] if newgirl.girls["Mystique"]["Sleepwear"][8] else newgirl.girls["Mystique"]["Hair"] 
+                    $ newgirl.girls["Mystique"]["Hose"] = newgirl.girls["Mystique"]["Sleepwear"][9] #0  
+                    
+                    $ newgirl.girls["Mystique"]["Hair"] = "long"
+                    $ newgirl.girls["Mystique"]["Shame"] = newgirl.girls["Mystique"]["OutfitShame"][4]
+                    
+        elif M_OutfitTemp == "gym":
+                    if not newgirl.girls["Mystique"]["Legs"] and newgirl.girls["Mystique"]["Gym"][2]:            
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Over"] and newgirl.girls["Mystique"]["Gym"][3]:          
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Chest"] and newgirl.girls["Mystique"]["Gym"][5]:          
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Panties"] and newgirl.girls["Mystique"]["Gym"][6] and "pantyless" not in newgirl.girls["Mystique"]["DailyActions"]:        
+                            $ Undressed = 1
+                    elif not newgirl.girls["Mystique"]["Hose"] and newgirl.girls["Mystique"]["Gym"][9]:          
+                            $ Undressed = 1
+                        
+                    $ newgirl.girls["Mystique"]["Arms"] = newgirl.girls["Mystique"]["Gym"][1]
+                    $ newgirl.girls["Mystique"]["Legs"] = newgirl.girls["Mystique"]["Gym"][2]
+                    $ newgirl.girls["Mystique"]["Over"] = newgirl.girls["Mystique"]["Gym"][3] 
+                    $ newgirl.girls["Mystique"]["Neck"] = newgirl.girls["Mystique"]["Gym"][4]
+                    $ newgirl.girls["Mystique"]["Chest"] = newgirl.girls["Mystique"]["Gym"][5]
+                    $ newgirl.girls["Mystique"]["Panties"] = newgirl.girls["Mystique"]["Gym"][6]   
+                    $ newgirl.girls["Mystique"]["Hair"] = newgirl.girls["Mystique"]["Gym"][8] if newgirl.girls["Mystique"]["Gym"][8] else newgirl.girls["Mystique"]["Hair"] 
+                    $ newgirl.girls["Mystique"]["Hose"] = newgirl.girls["Mystique"]["Gym"][9]     
+                    $ newgirl.girls["Mystique"]["Shame"] = newgirl.girls["Mystique"]["OutfitShame"][7]   
+                
+        if newgirl.girls["Mystique"]["Panties"] and "pantyless" in newgirl.girls["Mystique"]["DailyActions"]:       
+                    # This checks the pantyless state from flirting 
+                    if newgirl.girls["Mystique"]["Legs"] == "pants" or HoseNum("Mystique") >= 10:
+                        $ newgirl.girls["Mystique"]["Shame"] -= 5    
+                    elif newgirl.girls["Mystique"]["Legs"]:
+                        $ newgirl.girls["Mystique"]["Shame"] -= 10  
+                    elif newgirl.girls["Mystique"]["Panties"] == "green panties":
+                        $ newgirl.girls["Mystique"]["Shame"] -= 20  
+                    elif newgirl.girls["Mystique"]["Panties"] == "lace panties":
+                        $ newgirl.girls["Mystique"]["Shame"] -= 25             
+                    else:
+                        $ newgirl.girls["Mystique"]["Shame"] -= 23  
+                    
+                    $ newgirl.girls["Mystique"]["Panties"] = 0        
+                    $ newgirl.girls["Mystique"]["Shame"] = 0 if newgirl.girls["Mystique"]["Shame"] < 0 else newgirl.girls["Mystique"]["Shame"]
+                    
+        if not Changed and M_OutfitTemp == newgirl.girls["Mystique"]["Outfit"] and newgirl.girls["Mystique"]["Loc"] == bg_current:
+                #If she was partially dressed then it says she gets dressed
+                if Undressed == 2:
+                        "She throws on a towel."
+                elif Undressed:
+                        "She throws her clothes back on."  
+        call Mystique_Tits_Up
+        
+        return
+#End Mystique's Outfits
+      
+label Mystique_Schedule(Clothes = 1, Location = 1, LocTemp = newgirl.girls["Mystique"]["Loc"]): 
+        #Mystique's natural movements   
+        # If not Clothes, don't bother with her outfit in the scheduel
+        # Clothes 2 is ordered to change regardless of time of day
+        # If not Location, don't bother with the location portion of the schedule
+        
+        if "met" not in newgirl.girls["Mystique"]["History"] or ("Mystique" in Party and Clothes != 2): 
+                #if she's in a party, never mind
+                return  
+        if LocTemp == bg_current and Current_Time == "morning":
+                #she slept over, so just forget this for now  
+                if "sleepover" not in newgirl.girls["Mystique"]["RecentActions"]:
+                    $ newgirl.girls["Mystique"]["RecentActions"].append("sleepover")
+                    return           
+                #the second time this is called, it skips through    
+        
+        $ D20 = renpy.random.randint(1, 20) 
+        
+        if (Current_Time == "Morning" and Clothes and Round >= 90) or Clothes == 2:                                                       #Pick clothes for the day
+                $ Options = ["teacher"]
+                $ Options.append("costume") if ApprovalCheck("Mystique", 1000) else Options
+                $ Options.append("custom1") if newgirl.girls["Mystique"]["Custom"][0] == 2 else Options
+                $ Options.append("custom2") if newgirl.girls["Mystique"]["Custom2"][0] == 2 else Options
+                $ Options.append("custom3") if newgirl.girls["Mystique"]["Custom3"][0] == 2 else Options
+                $ renpy.random.shuffle(Options) 
+                $ newgirl.girls["Mystique"]["OutfitDay"] = Options[0]
+                $ del Options[:]  
+                $ newgirl.girls["Mystique"]["Outfit"] = newgirl.girls["Mystique"]["OutfitDay"] 
+        #End clothing portion
+        
+        #Location portion   
+        if "Mystique" in Party or newgirl.girls["Mystique"]["Loc"] == "hold":
+                pass          
+                
+        elif Weekday == 0 or Weekday == 2 or Weekday == 4:
+        #MoWeFr   
+                if Current_Time == "Morning":
+                        $ newgirl.girls["Mystique"]["Loc"] = "bg teacher"
+                elif Current_Time == "Midday": 
+                        $ newgirl.girls["Mystique"]["Loc"] = "bg teacher"
+                else:
+                        $ newgirl.girls["Mystique"]["Loc"] = "bg Mystique"
+        elif Weekday == 1 or Weekday == 3:
+        #TuThu      
+                if Current_Time == "Morning":
+                        $ newgirl.girls["Mystique"]["Loc"] = "bg teacher"
+                elif Current_Time == "Midday":
+                        $ newgirl.girls["Mystique"]["Loc"] = "bg teacher"
+                elif Current_Time == "Evening":
+                        $ newgirl.girls["Mystique"]["Loc"] = "bg dangerroom"
+                else:
+                        $ newgirl.girls["Mystique"]["Loc"] = "bg Mystique"
+        else:
+        #Weekend                               
+                if Current_Time == "Morning":
+                        $ Options = ["bg pool", "bg Mystique"]
+                        $ renpy.random.shuffle(Options)
+                        $ newgirl.girls["Mystique"]["Loc"] = Options[0]
+                        $ del Options[:]
+                elif Current_Time == "Midday":
+                        $ Options = ["bg pool", "bg Mystique"]
+                        $ renpy.random.shuffle(Options)
+                        $ newgirl.girls["Mystique"]["Loc"] = Options[0]
+                        $ del Options[:]
+                else:
+                        $ newgirl.girls["Mystique"]["Loc"] = "bg Mystique"
+
+                if Current_Time == "Night":
+                        $ newgirl.girls["Mystique"]["Loc"] = "bg Mystique"
+                else:
+                        $ Options = ["bg pool", "bg Mystique"]
+                        $ renpy.random.shuffle(Options)
+                        $ newgirl.girls["Mystique"]["Loc"] = Options[0]
+                        $ del Options[:]
+
+                        
+        #If Mystique has moved from where she started this action. . .   
+        if newgirl.girls["Mystique"]["Loc"] != LocTemp and "Mystique" not in Party:    
+                if LocTemp == bg_current: #If she was where you were
+                    $ newgirl.girls["Mystique"]["RecentActions"].append("leaving") 
+                elif newgirl.girls["Mystique"]["Loc"] == bg_current: #If she's showed up
+                    $ newgirl.girls["Mystique"]["RecentActions"].append("arriving") 
+        return
+#End Mystique's Schedule
+
+
+label Mystique_Todo:                       
+        #Actions checked each night  
+        #causes her to grow her pubes out over a week
+        if "pubes" in newgirl.girls["Mystique"]["Todo"]:
+                $ newgirl.girls["Mystique"]["PubeC"] -= 1
+                if newgirl.girls["Mystique"]["PubeC"] >= 1:
+                        pass
+                else:            
+                        $ newgirl.girls["Mystique"]["Pubes"] = 1
+                        $ newgirl.girls["Mystique"]["Todo"].remove("pubes") 
+                        
+        #causes her to wax her pubes
+        if "shave" in newgirl.girls["Mystique"]["Todo"]:               
+                $ newgirl.girls["Mystique"]["Pubes"] = 0
+                $ newgirl.girls["Mystique"]["Todo"].remove("shave")
+                
+        #causes her to put in piercings     
+        if "ring" in newgirl.girls["Mystique"]["Todo"]:                
+                $ newgirl.girls["Mystique"]["Pierce"] = "ring"
+                $ newgirl.girls["Mystique"]["Todo"].remove("ring")
+        if "barbell" in newgirl.girls["Mystique"]["Todo"]:
+                $ newgirl.girls["Mystique"]["Pierce"] = "barbell"
+                $ newgirl.girls["Mystique"]["Todo"].remove("barbell")            
+        return
 # Xavier Faces ///////////////////////////////
 
 label XavierFace (Face = X_Emote):
@@ -3561,91 +3910,210 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
                 call Present_Check  #culls out Party to 2, sets location to bg_current, removes extra girls, sets Focus to a girl in the room   
                 
                 $ Grils = 0
-
+                $ TheGirls = []
+                # "Testt"
                 if "Rogue" in Party: 
                     $ R_Loc = bg_current
                 elif R_Loc == bg_current:       
                                 $ Grils += 1
+                                $ TheGirls.append("Rogue")
                 if "Kitty" in Party: 
                     $ K_Loc = bg_current
                 elif K_Loc == bg_current:       
                                 $ Grils += 1
+                                $ TheGirls.append("Kitty")
                 if "Emma" in Party: 
                     $ E_Loc = bg_current
                 elif E_Loc == bg_current:       
                                 $ Grils += 1
-  
-    
-                if Grils == 3:
+                                $ TheGirls.append("Emma")
 
-                    if Ch_Focus == "Kitty" and K_Loc == bg_current: 
-                            $ E_SpriteLoc = StageFarRight   
-                            $ R_SpriteLoc = StageRight
-                            $ K_SpriteLoc = StageCenter
-                            $ RogueLayer = 75
-                            $ EmmaLayer = 50
-                            $ KittyLayer = 100
-                            call Display_Emma(Dress)
-                            call Display_Rogue(Dress)
-                            call Display_Kitty(Dress)
-                            
-                    elif Ch_Focus == "Emma" and E_Loc == bg_current:  
-                            $ K_SpriteLoc = StageFarRight  
-                            $ R_SpriteLoc = StageRight
-                            $ E_SpriteLoc = StageCenter
-                            $ KittyLayer = 50
-                            $ RogueLayer = 75
-                            $ EmmaLayer = 100
-                            call Display_Rogue(Dress)
-                            call Display_Kitty(Dress)
-                            call Display_Emma(Dress)
-                    
-                    elif Ch_Focus == "Rogue" and R_Loc == bg_current:   
+                if "Mystique" in Party: 
+                    $ newgirl.girls["Mystique"]["Loc"] = bg_current
+                elif newgirl.girls["Mystique"]["Loc"] == bg_current:       
+                                $ Grils += 1
+                                $ TheGirls.append("Mystique")
+                # "[Grils]"
+                # "[TheGirls] 1"
+
+                if Ch_Focus == "Kitty" and K_Loc == bg_current: 
+                        $ K_SpriteLoc = StageCenter
+                        $ KittyLayer = 100
+                        $ TheGirls.remove("Kitty")
+
+                elif Ch_Focus == "Emma" and E_Loc == bg_current:  
+                        $ E_SpriteLoc = StageCenter
+                        $ EmmaLayer = 100
+                        $ TheGirls.remove("Emma")
+
+                elif Ch_Focus == "Rogue" and R_Loc == bg_current:   
+                        $ R_SpriteLoc = StageCenter
+                        $ RogueLayer = 100
+                        $ TheGirls.remove("Rogue")
+                
+                elif Ch_Focus == "Mystique" and newgirl.girls["Mystique"]["Loc"] == bg_current: 
+                        $ newgirl.girls["Mystique"]["SpriteLoc"] = StageCenter
+                        $ newgirl.girls["Mystique"]["GirlLayer"] = 100 
+                        $ TheGirls.remove("Mystique")
+
+                # "[TheGirls] 2"
+
+                $ renpy.random.shuffle(TheGirls)
+
+                # "[TheGirls] 3"
+                if TheGirls:
+                    # "[TheGirls]"
+                    if TheGirls[0] == "Kitty" and K_Loc == bg_current:
+                        $ K_SpriteLoc = StageRight
+                        $ KittyLayer = 70
+                    elif len(TheGirls) > 1:
+                        if TheGirls[1] == "Kitty" and K_Loc == bg_current:
                             $ K_SpriteLoc = StageFarRight
-                            $ E_SpriteLoc = StageRight
-                            $ R_SpriteLoc = StageCenter
                             $ KittyLayer = 50
-                            $ EmmaLayer = 75
-                            $ RogueLayer = 100
-                            call Display_Emma(Dress)
-                            call Display_Kitty(Dress)
-                            call Display_Rogue(Dress)
+    
+                    if TheGirls[0] == "Rogue" and R_Loc == bg_current:
+                        $ R_SpriteLoc = StageRight
+                        $ RogueLayer = 70
+                    elif len(TheGirls) > 1:
+                        if TheGirls[1] == "Rogue" and R_Loc == bg_current:
+                            $ R_SpriteLoc = StageFarRight
+                            $ RogueLayer = 50
+    
+                    if TheGirls[0] == "Emma" and E_Loc == bg_current:
+                        $ E_SpriteLoc = StageRight
+                        $ EmmaLayer = 70
+                    elif len(TheGirls) > 1:
+                        if TheGirls[1] == "Emma" and E_Loc == bg_current:
+                            $ E_SpriteLoc = StageFarRight
+                            $ EmmaLayer = 50
+    
+                    if TheGirls[0] == "Mystique" and newgirl.girls["Mystique"]["Loc"] == bg_current:
+                        $ newgirl.girls["Mystique"]["SpriteLoc"] = StageRight
+                        $ newgirl.girls["Mystique"]["GirlLayer"] = 70
+                    elif len(TheGirls) > 1:
+                        if TheGirls[1] == "Mystique" and newgirl.girls["Mystique"]["Loc"] == bg_current:
+                            $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                            $ newgirl.girls["Mystique"]["GirlLayer"] = 50
+    
+                call Display_Mystique(Dress)
+                call Display_Emma(Dress)
+                call Display_Kitty(Dress)
+                call Display_Rogue(Dress)    
 
-                else:
+                # if Grils == 3:
 
-                    if Ch_Focus == "Kitty" and K_Loc == bg_current: 
-                            $ E_SpriteLoc = StageRight   
-                            $ R_SpriteLoc = StageRight
-                            $ K_SpriteLoc = StageCenter
-                            $ RogueLayer = 75
-                            $ EmmaLayer = 75
-                            $ KittyLayer = 100
-                            call Display_Emma(Dress)
-                            call Display_Rogue(Dress)
-                            call Display_Kitty(Dress)
-                            
-                    elif Ch_Focus == "Emma" and E_Loc == bg_current:  
-                            $ K_SpriteLoc = StageRight  
-                            $ R_SpriteLoc = StageRight
-                            $ E_SpriteLoc = StageCenter
-                            $ KittyLayer = 75
-                            $ RogueLayer = 75
-                            $ EmmaLayer = 100
-                            call Display_Rogue(Dress)
-                            call Display_Kitty(Dress)
-                            call Display_Emma(Dress)
+                #     if Ch_Focus == "Kitty" and K_Loc == bg_current: 
+                #             $ R_SpriteLoc = StageRight
+                #             $ E_SpriteLoc = StageFarRight   
+                #             $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                #             $ RogueLayer = 75
+                #             $ EmmaLayer = 50
+                #             $ newgirl.girls["Mystique"]["GirlLayer"] = 50
+                #             call Display_Kitty(Dress)
+                #             call Display_Rogue(Dress)
+                #             call Display_Emma(Dress)
+                #             call Display_Mystique(Dress)
+
+                #     elif Ch_Focus == "Emma" and E_Loc == bg_current:  
+                #             $ E_SpriteLoc = StageCenter
+                #             $ R_SpriteLoc = StageRight
+                #             $ K_SpriteLoc = StageFarRight  
+                #             $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                #             $ EmmaLayer = 100
+                #             $ RogueLayer = 75
+                #             $ KittyLayer = 50
+                #             $ newgirl.girls["Mystique"]["GirlLayer"] = 50
+                #             call Display_Emma(Dress)
+                #             call Display_Rogue(Dress)
+                #             call Display_Kitty(Dress)
+                #             call Display_Mystique(Dress)
+
+                #     elif Ch_Focus == "Rogue" and R_Loc == bg_current:   
+                #             $ R_SpriteLoc = StageCenter
+                #             $ E_SpriteLoc = StageRight
+                #             $ K_SpriteLoc = StageFarRight
+                #             $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                #             $ RogueLayer = 100
+                #             $ EmmaLayer = 75
+                #             $ KittyLayer = 50
+                #             $ newgirl.girls["Mystique"]["GirlLayer"] = 50
+                #             call Display_Kitty(Dress)
+                #             call Display_Emma(Dress)
+                #             call Display_Rogue(Dress)
+                #             call Display_Mystique(Dress)
                     
-                    elif Ch_Focus == "Rogue" and R_Loc == bg_current:   
-                            $ K_SpriteLoc = StageRight
-                            $ E_SpriteLoc = StageRight
-                            $ R_SpriteLoc = StageCenter
-                            $ KittyLayer = 75
-                            $ EmmaLayer = 75
-                            $ RogueLayer = 100
-                            call Display_Emma(Dress)
-                            call Display_Kitty(Dress)
-                            call Display_Rogue(Dress)
-                        
+                #     elif Ch_Focus == "Mystique" and newgirl.girls["Mystique"]["Loc"] == bg_current:   
+                #             $ newgirl.girls["Mystique"]["SpriteLoc"] = StageCenter
+                #             $ E_SpriteLoc = StageRight
+                #             $ K_SpriteLoc = StageFarRight
+                #             $ R_SpriteLoc = StageFarRight
+                #             $ newgirl.girls["Mystique"]["GirlLayer"] = 100
+                #             $ EmmaLayer = 75
+                #             $ KittyLayer = 50
+                #             $ RogueLayer = 50
+                #             call Display_Mystique(Dress)
+                #             call Display_Emma(Dress)
+                #             call Display_Kitty(Dress)
+                #             call Display_Rogue(Dress)
+
+                # else:
+
+                #     if Ch_Focus == "Kitty" and K_Loc == bg_current: 
+                #             $ K_SpriteLoc = StageCenter
+                #             $ E_SpriteLoc = StageRight   
+                #             $ R_SpriteLoc = StageRight
+                #             $ newgirl.girls["Mystique"]["SpriteLoc"] = StageRight
+                #             $ KittyLayer = 100
+                #             $ EmmaLayer = 75
+                #             $ RogueLayer = 75
+                #             $ newgirl.girls["Mystique"]["GirlLayer"] = 75
+                #             call Display_Kitty(Dress)
+                #             call Display_Emma(Dress)
+                #             call Display_Rogue(Dress)
+                #             call Display_Mystique(Dress)
+
+                #     elif Ch_Focus == "Emma" and E_Loc == bg_current:  
+                #             $ E_SpriteLoc = StageCenter
+                #             $ K_SpriteLoc = StageRight  
+                #             $ R_SpriteLoc = StageRight
+                #             $ newgirl.girls["Mystique"]["SpriteLoc"] = StageRight
+                #             $ EmmaLayer = 100
+                #             $ KittyLayer = 75
+                #             $ RogueLayer = 75
+                #             $ newgirl.girls["Mystique"]["GirlLayer"] = 75
+                #             call Display_Emma(Dress)
+                #             call Display_Kitty(Dress)
+                #             call Display_Rogue(Dress)
+                #             call Display_Mystique(Dress)
+
+                #     elif Ch_Focus == "Rogue" and R_Loc == bg_current:   
+                #             $ R_SpriteLoc = StageCenter
+                #             $ K_SpriteLoc = StageRight
+                #             $ E_SpriteLoc = StageRight
+                #             $ newgirl.girls["Mystique"]["SpriteLoc"] = StageRight
+                #             $ RogueLayer = 100
+                #             $ KittyLayer = 75
+                #             $ EmmaLayer = 75
+                #             $ newgirl.girls["Mystique"]["GirlLayer"] = 75
+                #             call Display_Rogue(Dress)
+                #             call Display_Kitty(Dress)
+                #             call Display_Emma(Dress)
+                #             call Display_Mystique(Dress)
+
+                #     elif Ch_Focus == "Mystique" and newgirl.girls["Mystique"]["Loc"] == bg_current:   
+                #             $ newgirl.girls["Mystique"]["SpriteLoc"] = StageCenter
+                #             $ E_SpriteLoc = StageRight
+                #             $ K_SpriteLoc = StageRight
+                #             $ R_SpriteLoc = StageRight
+                #             $ newgirl.girls["Mystique"]["GirlLayer"] = 100
+                #             $ EmmaLayer = 75
+                #             $ KittyLayer = 75
+                #             $ RogueLayer = 75
+                #             call Display_Mystique(Dress)
+                #             call Display_Emma(Dress)
+                #             call Display_Kitty(Dress)
+                #             call Display_Rogue(Dress)
+
                 if bg_current == "bg study" and Current_Time != "Night":   
                         show Professor at SpriteLoc(StageLeft) zorder 25    
                 if bg_current == "bg classroom" and E_Loc == "bg teacher":  
@@ -3673,10 +4141,22 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                                 #if Emma is there, shift her to third position
                                 $ E_SpriteLoc = StageFarRight
                                 $ EmmaLayer = 50
-                        elif E_Loc == bg_current:
+                            elif newgirl.girls["Mystique"]["Loc"] == bg_current:
                                 #if Emma is there, shift her to third position
-                                $ E_SpriteLoc = StageRight
-                                $ EmmaLayer = 75
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 50
+                        elif E_Loc == bg_current:
+                            #if Emma is there, shift her to third position
+                            $ E_SpriteLoc = StageRight
+                            $ EmmaLayer = 75
+                            if newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 50
+                        elif newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 75
                         #and move Kitty to first position
                         $ K_SpriteLoc = StageCenter
                         $ KittyLayer = 100
@@ -3701,10 +4181,22 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                                 #if Kitty is there, shift her to third position
                                 $ K_SpriteLoc = StageFarRight
                                 $ KittyLayer = 50
+                            elif newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 50
                         elif K_Loc == bg_current:
                             #if Kitty is there, shift her to second position
                             $ K_SpriteLoc = StageRight
                             $ KittyLayer = 75
+                            if newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 50
+                        elif newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 75
                         #and move Emma to first position
                         $ E_SpriteLoc = StageCenter
                         $ EmmaLayer = 100
@@ -3718,7 +4210,7 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                     #If Emma was the Partner in a scene, make the existing focal character the Partner
                     $ Partner = Ch_Focus
                 $ Ch_Focus = "Emma"
-        else: #if Chr == "Rogue":
+        elif Chr == "Rogue":
                 if R_Loc == bg_current:
                         #If Rogue is where you're at. . .
                         if K_Loc == bg_current:
@@ -3729,10 +4221,22 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                                 #if Emma is there, shift her to third position
                                 $ E_SpriteLoc = StageFarRight
                                 $ EmmaLayer = 50
+                            elif newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 50
                         elif E_Loc == bg_current:
                             #if Emma is there, shift her to second position
                             $ E_SpriteLoc = StageRight
                             $ EmmaLayer = 75
+                            if newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 50
+                        elif newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 75
                         #and move Rogue to first position
                         $ R_SpriteLoc = StageCenter
                         $ RogueLayer = 100
@@ -3746,6 +4250,46 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                     #If Rogue was the Partner in a scene, make the existing focal character the Partner
                     $ Partner = Ch_Focus
                 $ Ch_Focus = "Rogue"
+        else: #if Chr == "Mystique":
+                if newgirl.girls["Mystique"]["Loc"] == bg_current:
+                        #If Mystique is where you're at. . .
+                        if K_Loc == bg_current:
+                            #if Kitty is there, shift her to second position
+                            $ K_SpriteLoc = StageRight
+                            $ KittyLayer = 75
+                            if E_Loc == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ E_SpriteLoc = StageFarRight
+                                $ EmmaLayer = 50
+                            elif R_Loc == bg_current:
+                                #if Rogue is there, shift her to third position
+                                $ R_SpriteLoc = StageFarRight
+                                $ RogueLayer = 50
+                        elif E_Loc == bg_current:
+                            #if Emma is there, shift her to second position
+                            $ E_SpriteLoc = StageRight
+                            $ EmmaLayer = 75
+                            if R_Loc == bg_current:
+                                #if Rogue is there, shift her to third position
+                                $ R_SpriteLoc = StageFarRight
+                                $ RogueLayer = 50
+                        elif R_Loc == bg_current:
+                                #if Rogue is there, shift her to third position
+                                $ R_SpriteLoc = StageRight
+                                $ RogueLayer = 75
+                        #and move Mystique to first position
+                        $ newgirl.girls["Mystique"]["SpriteLoc"] = StageCenter
+                        $ MystiqueLayer = 100
+                        
+                if Ch_Focus == "Mystique": 
+                    #If Mystique was already the focal character, return
+                    pass
+                elif Second:
+                    $ Partner = Second
+                elif Partner == "Mystique": 
+                    #If Mystique was the Partner in a scene, make the existing focal character the Partner
+                    $ Partner = Ch_Focus
+                $ Ch_Focus = "Mystique"
         $ renpy.restart_interaction() 
         return
 
@@ -3761,16 +4305,29 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
                                 #if Emma is there, shift her to third position
                                 $ E_SpriteLoc = StageFarRight
                                 $ EmmaLayer = 50
+                            elif newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 50
                         elif E_Loc == bg_current:
                                 #if Emma is there, shift her to third position
                                 $ E_SpriteLoc = StageRight
                                 $ EmmaLayer = 75
+                                if newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                    #if Mystique is there, shift her to third position
+                                    $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                                    $ newgirl.girls["Mystique"]["GirlLayer"] = 50
+                        elif newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 75
                         #and move Kitty to first position
                         $ K_SpriteLoc = StageCenter
                         $ KittyLayer = 100
                         call Display_Emma(Dress)
                         call Display_Kitty(Dress)
                         call Display_Rogue(Dress)
+                        call Display_Mystique(Dress)
                         
                 if Ch_Focus == "Kitty": 
                     #If Kitty was already the focal character, return
@@ -3792,16 +4349,29 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
                                 #if Kitty is there, shift her to third position
                                 $ K_SpriteLoc = StageFarRight
                                 $ KittyLayer = 50
+                            elif newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 50
                         elif K_Loc == bg_current:
                             #if Kitty is there, shift her to second position
                             $ K_SpriteLoc = StageRight
                             $ KittyLayer = 75
+                            if newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 50
+                        elif newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 75
                         #and move Emma to first position
                         $ E_SpriteLoc = StageCenter
                         $ EmmaLayer = 100
                         call Display_Emma(Dress)
                         call Display_Kitty(Dress)
                         call Display_Rogue(Dress)
+                        call Display_Mystique(Dress)
                         
                 if Ch_Focus == "Emma": 
                     #If Emma was already the focal character, return
@@ -3812,7 +4382,7 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
                     #If Emma was the Partner in a scene, make the existing focal character the Partner
                     $ Partner = Ch_Focus
                 $ Ch_Focus = "Emma"
-        else: #if Chr == "Rogue":
+        elif Chr == "Rogue":
                 if R_Loc == bg_current:
                         #If Rogue is where you're at. . .
                         if K_Loc == bg_current:
@@ -3823,16 +4393,29 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
                                 #if Emma is there, shift her to third position
                                 $ E_SpriteLoc = StageFarRight
                                 $ EmmaLayer = 50
+                            elif newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 50
                         elif E_Loc == bg_current:
                             #if Emma is there, shift her to second position
                             $ E_SpriteLoc = StageRight
                             $ EmmaLayer = 75
+                            if newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageFarRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 50
+                        elif newgirl.girls["Mystique"]["Loc"] == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ newgirl.girls["Mystique"]["SpriteLoc"] = StageRight
+                                $ newgirl.girls["Mystique"]["GirlLayer"] = 75
                         #and move Rogue to first position
                         $ R_SpriteLoc = StageCenter
                         $ RogueLayer = 100
                         call Display_Emma(Dress)
                         call Display_Kitty(Dress)
                         call Display_Rogue(Dress)
+                        call Display_Mystique(Dress)
                         
                 if Ch_Focus == "Rogue": 
                     #If Rogue was already the focal character, return
@@ -3843,6 +4426,50 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
                     #If Rogue was the Partner in a scene, make the existing focal character the Partner
                     $ Partner = Ch_Focus
                 $ Ch_Focus = "Rogue"
+        elif Chr == "Mystique":
+                if newgirl.girls["Mystique"]["Loc"] == bg_current:
+                        #If Emma is where you're at. . .
+                        if R_Loc == bg_current:
+                            #if Rogue is there, shift her to second position
+                            $ R_SpriteLoc = StageRight
+                            $ RogueLayer = 75
+                            if K_Loc == bg_current:
+                                #if Kitty is there, shift her to third position
+                                $ K_SpriteLoc = StageFarRight
+                                $ KittyLayer = 50
+                            elif E_Loc == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ E_SpriteLoc = StageFarRight
+                                $ EmmaLayer = 50
+                        elif K_Loc == bg_current:
+                            #if Kitty is there, shift her to second position
+                            $ K_SpriteLoc = StageRight
+                            $ KittyLayer = 75
+                            if E_Loc == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ E_SpriteLoc = StageFarRight
+                                $ EmmaLayer = 50
+                        elif E_Loc == bg_current:
+                                #if Emma is there, shift her to third position
+                                $ E_SpriteLoc = StageRight
+                                $ EmmaLayer = 75
+                        #and move Emma to first position
+                        $ newgirl.girls["Mystique"]["SpriteLoc"] = StageCenter
+                        $ newgirl.girls["Mystique"]["GirlLayer"] = 100
+                        call Display_Emma(Dress)
+                        call Display_Kitty(Dress)
+                        call Display_Rogue(Dress)
+                        call Display_Mystique(Dress)
+                        
+                if Ch_Focus == "Mystique": 
+                    #If Mystique was already the focal character, return
+                    pass
+                elif Second:
+                    $ Partner = Second
+                elif Partner == "Kitty": 
+                    #If Mystique was the Partner in a scene, make the existing focal character the Partner
+                    $ Partner = Ch_Focus
+                $ Ch_Focus = "Mystique"
         $ renpy.restart_interaction() 
         return
     
@@ -3965,6 +4592,52 @@ label Display_Emma(Dress = 1, DLoc = E_SpriteLoc, Location = E_Loc):
             # If Emma isn't there, put her away
             hide Emma_Sprite
             call Emma_Hide
+    return
+
+
+label Display_Mystique(Dress = 1, DLoc = newgirl.girls["Mystique"]["SpriteLoc"], Location = newgirl.girls["Mystique"]["Loc"]):
+    # If Dress, then check whether the character is underdressed when displaying her
+    "test"
+    if Taboo and Dress and newgirl.girls["Mystique"]["Loc"] != "bg pool": #If not in the showers, get dressed and dry off        
+            call MystiqueOutfit #add when available
+            $ newgirl.girls["Mystique"]["Wet"] = 0
+              
+    if newgirl.girls["Mystique"]["Loc"] != "bg showerroom" and newgirl.girls["Mystique"]["Loc"] != "bg pool":
+            $ newgirl.girls["Mystique"]["Water"] = 0
+        
+    $ newgirl.girls["Mystique"]["SpriteLoc"] = DLoc
+    
+    # resets triggers
+    $ Trigger = 0    
+    $ Trigger2 = 0 if Trigger2 != "jackin" else "jackin"
+    $ Trigger3 = 0
+    $ Trigger4 = 0
+    $ Trigger5 = 0
+    
+    "test2"
+    if "Mystique" in Party or Location == bg_current:         
+            "test3"
+            #displays Emma if present, Sets her as local if in a party
+            if "Mystique" in Party: 
+                    $ newgirl.girls["Mystique"]["Loc"] = bg_current 
+            
+            if Taboo and Dress:                       #If in public, check to see if clothes are too sexy, and change them if necessary
+                call Mystique_OutfitShame #restore when working
+                
+            #hide podium/desk shot
+            #hide Emma_At_Podium onlayer backdrop
+            #hide Emma_At_Desk onlayer backdrop
+            
+            #Display Emma
+            show Mystique_Sprite at SpriteLoc(DLoc) zorder newgirl.girls["Mystique"]["GirlLayer"]:
+                    alpha 1
+                    zoom 1
+                    offset (0,0)
+                    anchor (0.5, 0.0)
+    else:
+            # If Emma isn't there, put her away
+            hide Mystique_Sprite
+            #call Mystique_Hide
     return
     
 # end Scene Setting ///////////////////////////////////////////////////////////////////////
