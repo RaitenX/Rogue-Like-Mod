@@ -4119,6 +4119,7 @@ label Failsafe:
 # Player Inventory Variables 
     $ P_Income = 12 if "P_Income" not in globals().keys() else P_Income               #how much you make each day
     $ P_Cash = 20 if "P_Cash" not in globals().keys() else P_Cash
+    $ P_Hands = 0 if "P_Hands" not in globals().keys() else P_Hands
     $ P_Inventory = [] if "P_Inventory" not in globals().keys() else P_Inventory
     $ Inventory_Count = 0 if "Inventory_Count" not in globals().keys() else Inventory_Count
     $ Digits = [] if "Digits" not in globals().keys() else Digits

@@ -3344,6 +3344,17 @@ image BJ_Head:                                                                  
             "R_Hair == 'evo'", "images/RogueBJFace/Rogue_bj_hair.png",
             "True", Null(),
             ),
+        (0,0), ConditionSwitch(                                                                 
+            #Hands overlay
+            "not P_Hands", Null(),
+            "(R_Water or R_Hair == 'wet') and P_Color == 'pink'", "images/RogueBJFace/Rogue_bj_Wet_HeadHands_P.png",
+            "(R_Water or R_Hair == 'wet') and P_Color == 'green'", "images/RogueBJFace/Rogue_bj_Wet_HeadHands_G.png",
+            "(R_Water or R_Hair == 'wet') and P_Color == 'brown'", "images/RogueBJFace/Rogue_bj_Wet_HeadHands_B.png",
+            "P_Color == 'pink'", "images/RogueBJFace/Rogue_bj_HeadHands_P.png",
+            "P_Color == 'green'", "images/RogueBJFace/Rogue_bj_HeadHands_G.png",
+            "P_Color == 'brown'", "images/RogueBJFace/Rogue_bj_HeadHands_B.png",
+            "True", Null(),
+            ), 
         )
 
 
