@@ -1316,14 +1316,14 @@ image Cock__In:                                                                 
             "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_In_B.png",             
             "True", "images/RogueDoggy/Rogue_Doggy_Cock_In_G.png", 
             ),
-    contains:
-        ConditionSwitch(    
-            "not P_CockTorso", Null(), 
-            "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Torso_In_P.png",
-            "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Torso_In_B.png",             
-            "True", "images/RogueDoggy/Rogue_Doggy_Torso_In_G.png", 
-            ),
-        xpos -132
+    # contains:
+    #     ConditionSwitch(    
+    #         "not P_CockTorso", Null(), 
+    #         "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Torso_In_P.png",
+    #         "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Torso_In_B.png",             
+    #         "True", "images/RogueDoggy/Rogue_Doggy_Torso_In_G.png", 
+    #         ),
+    #     xpos -132
 
 image Cock__U:                                                                                #Insert cock
     contains:
@@ -1333,15 +1333,15 @@ image Cock__U:                                                                  
             "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Cock_U_B.png",             
             "True", "images/RogueDoggy/Rogue_Doggy_Cock_U_G.png", 
             ),
-    contains:
-        ConditionSwitch(    
-            "not P_CockTorso", Null(), 
-            "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Torso_U_P.png",
-            "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Torso_U_B.png",             
-            "True", "images/RogueDoggy/Rogue_Doggy_Torso_U_G.png", 
-            ),
-        xpos -139
-        ypos 4 #-50 sobe 50 desce
+    # contains:
+    #     ConditionSwitch(    
+    #         "not P_CockTorso", Null(), 
+    #         "P_Color == 'pink'", "images/RogueDoggy/Rogue_Doggy_Torso_U_P.png",
+    #         "P_Color == 'brown'", "images/RogueDoggy/Rogue_Doggy_Torso_U_B.png",             
+    #         "True", "images/RogueDoggy/Rogue_Doggy_Torso_U_G.png", 
+    #         ),
+    #     xpos -139
+    #     ypos 4 #-50
 
 image Zero_Doggy_Insert:                                                                                #Insert cock
     ConditionSwitch(    
