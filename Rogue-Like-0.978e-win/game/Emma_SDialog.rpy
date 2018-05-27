@@ -525,8 +525,8 @@ label Emma_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                     $ Line = "You continue to massage Emma's thighs. "   
                     
                     if E_Legs == "pants" and not E_Upskirt:
-                                $ Line = renpy.random.choice(["Her legs twitch a bit in her jeans as you caress them", 
-                                        "She gasps as you stroke her warm thighs through the jeans",
+                                $ Line = renpy.random.choice(["Her legs twitch a bit in her pants as you caress them", 
+                                        "She gasps as you stroke her warm thighs through the pants",
                                         "You draw your hand from her knee to mid-thigh, and she gasps a little",
                                         "You slide a hand up her inner thigh, to just below her . . ."])                              
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
@@ -653,12 +653,12 @@ label Emma_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "You continue to caress Emma's pussy. "])
                                             
                             if E_Legs == "pants" and not E_Upskirt:
-                                            $ Line = renpy.random.choice(["You reach out and brush your hands across her pussy through the jeans", 
+                                            $ Line = renpy.random.choice(["You reach out and brush your hands across her pussy through the pants", 
                                                     "You slide a hand down her pants, and brush your hands across her pussy underneath", 
                                                     "You put your hand against her mound and grind against it", 
                                                     "You reach into her gap and she gasps as you slide your hand across and stroke her warm mound", 
                                                     "As you dig your thumb into her, she gasps and raises up a bit",
-                                                    "She gasps as you reach under her and lightly stroke her ass through the jeans",
+                                                    "She gasps as you reach under her and lightly stroke her ass through the pants",
                                                     "You slide a hand up her inner thigh, she moans a little as you reach the point where they meet"])
                                                 
                             elif E_Legs == "skirt":
@@ -761,8 +761,8 @@ label Emma_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                             $ Line = renpy.random.choice(["You can feel her twitching as you grind your tongue against her, even through the thick material",
                                                     "She gasps as you press on her clit through the thick fabric",
                                                     "You rub her clit with your nose as you dive into her pussy with your tongue",
-                                                    "You put your hand against her mound and lick the surface of her jeans", 
-                                                    "With a little nibble, you tug at the denim", 
+                                                    "You put your hand against her mound and lick the surface of her pants", 
+                                                    "With a little nibble, you tug at the lycra", 
                                                     "She gasps as you reach under her warm lips and lightly stroke her ass"]) 
                                             $ TempFocus += 1 if P_Focus < 70 else 0  
                                             $ TempLust += 3 if E_Lust > 60 else 2
@@ -886,12 +886,12 @@ label Emma_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 "You continue to grope Emma's ass. "])
                                         
                         if E_Legs == "pants" and not E_Upskirt:
-                                        $ Line = renpy.random.choice(["You reach out and brush your hands across the back of her jeans", 
+                                        $ Line = renpy.random.choice(["You reach out and brush your hands across the back of her pants", 
                                                 "You slide a hand down her pants, and firmly cup her ass", 
                                                 "You put your hand against her rear and grind against it", 
                                                 "You reach into her gap and she gasps as you slide your hand across and stroke her warm mound", 
                                                 "As you dig your thumb into her, she gasps and raises up a bit",
-                                                "She gasps as you reach under her and lightly stroke her ass through the jeans",
+                                                "She gasps as you reach under her and lightly stroke her ass through the pants",
                                                 "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])  
                                             
                         elif E_Legs == "skirt":
@@ -1041,8 +1041,8 @@ label Emma_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                             if E_Legs == "pants" and not E_Upskirt:
                                                 $ Line = renpy.random.choice(["You can feel her twitching as you grind your tongue against her anus, even through the thick material",
                                                         "She gasps as you press on her asshole through the thick fabric",
-                                                        "You put your hand against her mound and lick the surface of her jeans", 
-                                                        "With a little nibble, you tug at the denim"])  
+                                                        "You put your hand against her mound and lick the surface of her pants", 
+                                                        "With a little nibble, you tug at the lycra"])  
                                                 $ TempFocus += 1 if P_Focus < 70 else 0  
                                                 $ TempLust += 1 if E_Lust < 60 else 0
                             else:                    

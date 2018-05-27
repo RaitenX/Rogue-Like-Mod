@@ -117,7 +117,7 @@ label E_Sex_P:
                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 3)
                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 3) 
                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 1) 
-                    ch_e "Oh. . . game on, [E_Petname]."            
+                    ch_e "Ok, show me what you can do, [E_Petname]."            
                     jump E_Missionary_SexPrep         
                 else:                                                                                                            
                     #she's questioning it
@@ -170,7 +170,7 @@ label E_Sex_P:
             #first time    
             call EmmaFace("surprised", 1)
             $ E_Mouth = "kiss"
-            ch_e "I haven't really had much experience with this. . . "    
+            ch_e "I've never done it with a student before. . . "    
             if E_Forced:
                 call EmmaFace("sad")
                 ch_e "You'd really do this when you have me over a barrel?"
@@ -196,7 +196,7 @@ label E_Sex_P:
             else: # Uninhibited 
                 call EmmaFace("sad")
                 $ E_Mouth = "smile"             
-                ch_e "I can't say it hasn't crossed my mind. . ."   
+                ch_e "I can't say i haven't thought about it sometimes. . ."   
             #End first time dialog
             
     elif Approval:                                                                      
@@ -213,7 +213,7 @@ label E_Sex_P:
                 ch_e "Another round? {i}Fine.{/i}"
                 jump E_Missionary_SexPrep
             elif "sex" in E_DailyActions:
-                $ Line = renpy.random.choice(["Back again so soon?",                 
+                $ Line = renpy.random.choice(["Back again so soon? How expectable!",                 
                     "So you'd like another round?",                 
                     "You can't stay away from this. . .", 
                     "Didn't get enough earlier?",
@@ -227,7 +227,7 @@ label E_Sex_P:
                 $ Line = renpy.random.choice(["Oooh, you want some of this?",                 
                     "So you'd like another round?",                 
                     "You can't stay away from this. . .", 
-                    "You gonna make me purr?",
+                    "Think you can make me scream?",
                     "You wanna slide into me?"]) 
                 ch_e "[Line]"
             $ Line = 0
@@ -511,7 +511,7 @@ label E_Missionary_Sex_Cycle: #Repeating strokes
                                     call EmmaFace("angry", 1)   
                                     call Emma_Sex_Reset
                                     "She scowls at you and pulls out."
-                                    ch_e "Not with that attitude, mister!"
+                                    ch_e "Not with that attitude, boy!"
                                     $ E_Love = Statupdate("Emma", "Love", E_Love, 50, -3, 1)
                                     $ E_Love = Statupdate("Emma", "Love", E_Love, 80, -4, 1)
                                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 30, -1, 1)                    
@@ -717,7 +717,7 @@ label E_Missionary_Sex_Cycle: #Repeating strokes
                                     "Never Mind":
                                             pass
                             else:
-                                ch_e "I'm kinda tired here? Could we wrap it up?" 
+                                ch_e "I'm kinda tired here? Could we end it here?" 
                     
                         "I also want to. . . [[Offhand]":
                                 if E_Action and MultiAction:
@@ -725,7 +725,7 @@ label E_Missionary_Sex_Cycle: #Repeating strokes
                                     if Trigger2:
                                          $ E_Action -= 1
                                 else:
-                                    ch_e "I'm kinda tired here? Could we wrap it up?"  
+                                    ch_e "I'm kinda tired here? Could we end it here?"  
                            
                         "Let's try something else." if MultiAction: 
                                     call Emma_Sex_Reset
@@ -791,7 +791,7 @@ label E_Missionary_Sex_Cycle: #Repeating strokes
         
    
         if Round == 10:
-            ch_e "You might want to wrap this up, it's getting late."  
+            ch_e "You might want to come to an end now, it's getting late."  
         elif Round == 5:
             ch_e "Seriously, it'll be time to stop soon."        
     
@@ -981,10 +981,10 @@ label E_Sex_A:
                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 1) 
                 if E_Loose:
                     "Emma is briefly startled, but melts into a sly smile."
-                    ch_e "Hmm, stick it in. . ."            
+                    ch_e "Yes, stick it in, haven't done it for far too long! "            
                 else:
                     "Emma is briefly startled, but shrugs."
-                    ch_e "Oookay. . ."                  
+                    ch_e "You may. . ."                  
                 jump E_Missionary_AnalPrep         
             else:                                                                                                            
                 #she's questioning it
@@ -1091,7 +1091,7 @@ label E_Sex_A:
                 jump E_Missionary_AnalPrep
             elif "anal" in E_DailyActions:
                 call EmmaFace("sexy", 1)
-                $ Line = renpy.random.choice(["Back again so soon?",                 
+                $ Line = renpy.random.choice(["Back again so soon? Just as i expected!",                 
                     "So you'd like another round?",                 
                     "I'm still a little sore from earlier.", 
                     "Didn't get enough earlier?",
@@ -1103,7 +1103,7 @@ label E_Sex_A:
                 $ Line = renpy.random.choice(["Oooh, you want some of this?",                 
                     "So you'd like another round?",                 
                     "I do have booty for days. . .", 
-                    "You gonna make me purr?",
+                    "Think you can make me scream?",
                     "You wanna slide into me?"]) 
                 ch_e "[Line]"
             $ Line = 0
@@ -1211,7 +1211,7 @@ label E_Sex_A:
         $ E_DailyActions.append("angry")   
     elif E_Forced:
         call EmmaFace("angry", 1)
-        ch_e "That's a bit much, even for you."
+        ch_e "That's a bit much, even for you, darling."
         $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5)       
         $ E_Love = Statupdate("Emma", "Love", E_Love, 70, -2) if E_Love > 300 else E_Love
         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, -2)    
@@ -1233,7 +1233,7 @@ label E_Sex_A:
         ch_e "That's totally off the table."
     else:
         call EmmaFace("normal", 1)
-        ch_e "Noooop."    
+        ch_e "No."    
     $ E_RecentActions.append("no anal")                      
     $ E_DailyActions.append("no anal") 
     $ Tempmod = 0    
@@ -1415,7 +1415,7 @@ label E_Missionary_Anal_Cycle: #Repeating strokes
                                     call EmmaFace("angry", 1)   
                                     call Emma_Sex_Reset
                                     "She scowls at you and pulls out."
-                                    ch_e "Not with that attitude, mister!"                         
+                                    ch_e "Not with that attitude, boy!"                         
                                     $ E_Love = Statupdate("Emma", "Love", E_Love, 50, -3, 1)
                                     $ E_Love = Statupdate("Emma", "Love", E_Love, 80, -4, 1)
                                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 30, -1, 1)                    
@@ -1621,7 +1621,7 @@ label E_Missionary_Anal_Cycle: #Repeating strokes
                                     "Never Mind":
                                             pass
                             else:
-                                ch_e "I'm kinda tired here? Could we wrap it up?" 
+                                ch_e "I'm kinda tired here? Could we come to an end?" 
                     
                         "I also want to. . . [[Offhand]":
                                 if E_Action and MultiAction:
@@ -1629,7 +1629,7 @@ label E_Missionary_Anal_Cycle: #Repeating strokes
                                     if Trigger2:
                                          $ E_Action -= 1
                                 else:
-                                    ch_e "I'm kinda tired here? Could we wrap it up?"  
+                                    ch_e "I'm kinda tired here? Could we come to an end?"  
                            
                         "Let's try something else." if MultiAction: 
                                     call Emma_Sex_Reset
@@ -1695,7 +1695,7 @@ label E_Missionary_Anal_Cycle: #Repeating strokes
         
    
         if Round == 10:
-            ch_e "You might want to wrap this up, it's getting late."  
+            ch_e "You might want to come to an end, it's getting late."  
         elif Round == 5:
             ch_e "Seriously, it'll be time to stop soon."        
     
@@ -1850,7 +1850,7 @@ label E_Sex_H:
             else:                                                                                                            #she's questioning it
                 $ E_Brows = "angry"                
                 menu:
-                    ch_e "Hmm, kinda rude, [E_Petname]." 
+                    ch_e "Hey, you got to earn it first, [E_Petname]." 
                     "Sorry, sorry! Never mind.":
                         if Approval:     
                             call EmmaFace("sexy", 1)
@@ -2068,7 +2068,7 @@ label E_Sex_H:
         ch_e "Yeah, not again."
     else:
         call EmmaFace("normal", 1)
-        ch_e "Noooop."    
+        ch_e "No."    
     $ E_RecentActions.append("no hotdog")                      
     $ E_DailyActions.append("no hotdog") 
     $ Tempmod = 0    
@@ -2382,7 +2382,7 @@ label E_Missionary_Hotdog_Cycle: #Repeating strokes
                                     "Never Mind":
                                         pass
                             else:
-                                ch_e "I'm kinda tired here? Could we wrap it up?"  
+                                ch_e "I'm kinda tired here? Could we come to an end?"  
                     
                         "I also want to. . .[[Offhand]":
                                 if E_Action and MultiAction:
@@ -2390,7 +2390,7 @@ label E_Missionary_Hotdog_Cycle: #Repeating strokes
                                     if Trigger2:
                                          $ E_Action -= 1
                                 else:
-                                    ch_e "I'm kinda tired here? Could we wrap it up?"  
+                                    ch_e "I'm kinda tired here? Could come to an end?"  
                            
                         "Let's try something else." if MultiAction: 
                                     call Emma_Sex_Reset
@@ -2458,7 +2458,7 @@ label E_Missionary_Hotdog_Cycle: #Repeating strokes
         
    
         if Round == 10:
-            ch_e "You might want to wrap this up, it's getting late."  
+            ch_e "You might want to come to an end, it's getting late."  
         elif Round == 5:
             ch_e "Seriously, it'll be time to stop soon."        
     
