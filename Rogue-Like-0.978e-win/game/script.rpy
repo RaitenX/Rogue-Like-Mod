@@ -70,6 +70,14 @@ init -1:
     #default Mystique = NewGirl("Mystique", 51, "pants")
 
     default newgirl = Girlnew("Mystique")
+    default M_Love = 300
+    default M_Obed = 0
+    default M_Inbt = 200
+    default M_Lust = 10
+    default M_Addict = 0
+    default M_Addictionrate = 0
+
+    #$ newgirl.girls["Mystique"]["Love"] = 300
     #girlnew.add_othergirls()
     #girlnew.girls[0].add_flight(5)
     #girlnew.girls[0].flights
@@ -4597,7 +4605,6 @@ label Display_Emma(Dress = 1, DLoc = E_SpriteLoc, Location = E_Loc):
 
 label Display_Mystique(Dress = 1, DLoc = newgirl.girls["Mystique"]["SpriteLoc"], Location = newgirl.girls["Mystique"]["Loc"]):
     # If Dress, then check whether the character is underdressed when displaying her
-    "test"
     if Taboo and Dress and newgirl.girls["Mystique"]["Loc"] != "bg pool": #If not in the showers, get dressed and dry off        
             call MystiqueOutfit #add when available
             $ newgirl.girls["Mystique"]["Wet"] = 0
@@ -4614,9 +4621,7 @@ label Display_Mystique(Dress = 1, DLoc = newgirl.girls["Mystique"]["SpriteLoc"],
     $ Trigger4 = 0
     $ Trigger5 = 0
     
-    "test2"
     if "Mystique" in Party or Location == bg_current:         
-            "test3"
             #displays Emma if present, Sets her as local if in a party
             if "Mystique" in Party: 
                     $ newgirl.girls["Mystique"]["Loc"] = bg_current 

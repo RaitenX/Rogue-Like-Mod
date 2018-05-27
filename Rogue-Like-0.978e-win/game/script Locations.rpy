@@ -84,6 +84,13 @@ label Misplaced:
                 call Remove_Girl("Emma")
                 $ Trigger = 0
                 jump Player_Room
+        if "caught" in newgirl.girls["Mystique"]["RecentActions"]:        
+                call DrainWord("Mystique","caught",1,0)
+                "You immediately return to your rooms."
+                $ bg_current = "bg player"
+                call Remove_Girl("Mystique")
+                $ Trigger = 0
+                jump Player_Room
         if bg_current == "bg player":
                 jump Player_Room 
         if bg_current == "bg rogue":
@@ -135,10 +142,14 @@ label Player_Room:
                     call Kitty_Study
         "Would you like to help me study [[Emma]?" if E_Loc == bg_current:
                     call Emma_Study
+        "Would you like to help me study [[Mystique]?" if newgirl.girls["Mystique"]["Loc"] == bg_current:
+                    call Mystique_Study
         "Sleep" if Current_Time == "Night":            
                     call Round10
                     $ R_Spank = 0
                     $ K_Spank = 0
+                    $ E_Spank = 0
+                    $ newgirl.girls["Mystique"]["Spank"] = 0
                     call Girls_Location
                     call Kitty_Sent_Selfie 
                     call Rogue_Sent_Selfie 
@@ -226,6 +237,69 @@ label Emma_Frisky_Study:
                         call Emma_SexAct("kissing")
             elif ApprovalCheck("Emma", 500):
                         "Emma squeezes close to you, and you spend the rest of the night cuddling."
+            else:
+                        return
+                
+            "Well that was certainly a productive use of your study time. . ."    
+            return
+
+label Mystique_Study:                       #study events
+            call Shift_Focus("Mystique")
+            if Current_Time == "Night":
+                ch_m "Don't you think it's a bit late?"
+                return
+            elif Round <= 30:        
+                ch_m "I don't know that there's time for that, maybe if we wait a bit. . ."
+                return
+            else:
+                ch_m "Sure."
+                        
+            $ P_XP += 5
+            $ Trigger = 0
+            $ Line = renpy.random.choice(["You study for a while, it was fairly boring.", 
+                    "You study up for the mutant biology test.", 
+                    "You study for the math quiz.",
+                    "You get bored and watch a movie instead.",
+                    "You study for a few hours, that was fun.",
+                    "You spend the next few hours studying the lit test."
+                    "You study for the game design course."]) 
+            "[Line]"       
+            $ Line = 0
+            $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 80, 2)
+            $ D20 = renpy.random.randint(1, 20)    
+            if D20 > 10:
+                call Mystique_Frisky_Study   
+            else:        
+                $ P_XP += 5  
+            call Wait
+            call Mystique_Leave
+            call Kitty_Leave
+            call Rogue_Leave
+            return
+#End Mystique Study
+            
+label Mystique_Frisky_Study:
+            if D20 > 17 and ApprovalCheck("Mystique", 1000) and newgirl.girls["Mystique"]["Blow"] > 5:
+                        "Mystique reaches her hand through your textbook and you can feel it in your lap."
+                        "She unzips you pants and pulls your dick out, stroking it slowly."
+                        "She then dives her head under the book, and starts to lick it."        
+                        call Mystique_SexAct("blow") 
+            elif D20 > 14 and ApprovalCheck("Mystique", 1000) and newgirl.girls["Mystique"]["Hand"] >= 5:
+                        "Mystique reaches her hand through your textbook and you can feel it in your lap."
+                        "She runs her finger along your erection, her hand passing through the jeans to touch your bare skin."
+                        "She unzips you pants and pulls your dick out, stroking it slowly."  
+                        call Mystique_SexAct("hand") 
+            elif D20 > 10 and (ApprovalCheck("Mystique", 1300) or (newgirl.girls["Mystique"]["Mast"] and ApprovalCheck("Mystique", 1000)))and newgirl.girls["Mystique"]["Lust"] >= 70:
+                        "Mystique wriggles against your shoulder, and her hand starts to stroke her crotch."  
+                        if "unseen" in newgirl.girls["Mystique"]["RecentActions"]:
+                                $ newgirl.girls["Mystique"]["RecentActions"].remove("unseen")
+                        $ Trigger = "masturbation"
+                        call Mystique_SexAct("masturbate")      
+            elif D20 >5 and ApprovalCheck("Mystique", 700) and newgirl.girls["Mystique"]["Kissed"] > 1:
+                        "Mystique leans close to you, and presses her lips to yours."         
+                        call Mystique_SexAct("kissing")
+            elif ApprovalCheck("Mystique", 500):
+                        "Mystique squeezes close to you, and you spend the rest of the night cuddling."
             else:
                         return
                 
@@ -1389,6 +1463,20 @@ label Pool_Room:
                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 40, 2)            
                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, 4)
                         $ E_Water = 2
+
+                    if newgirl.girls["Mystique"]["Loc"] == bg_current:
+                        ch_e "yay"
+
+                        if newgirl.girls["Mystique"]["Outfit"] != "bikini" and newgirl.girls["Mystique"]["Outfit"] != "naked pool":
+                            #ch_e "I'l be right there, let me just put on my bikini"
+                            call Pool_Clothes("goswim", "Mystique")
+                            ch_m "Let's go"
+
+                        call MystiqueFace("happy")                            
+                        $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, 4)          
+                        $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 40, 2)            
+                        $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 30, 4)
+                        $ newgirl.girls["Mystique"]["Water"] = 2
                         #$ K_RecentActions.append("showered")                      
                     #"You take a swim"
 
@@ -1441,6 +1529,9 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
     if E_Loc == "bg pool":        
             $ Occupants += 1
             $ EmmaCount = 1
+    if newgirl.girls["Mystique"]["Loc"] == "bg pool":        
+            $ Occupants += 1
+            $ MystiqueCount = 1
         
     if Occupants:
             ch_p "Hey, it's just us here, i'm going for a skinny dip, wanna join?" 
@@ -1498,6 +1589,24 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
                         ch_e "Yeah, I should head out too."
                     else:                                   #If Rogue and Kitty aren't there
                         ch_e "No, I've got to get going."
+
+            if MystiqueCount:
+                if ApprovalCheck("Mystique", 1500) or (ApprovalCheck("Mystique", 800) and E_SeenChest and E_SeenPussy):
+                    if RogueCount > 1 or KittyCount > 1:                          #If Rogue or Kitty said yes
+                        ch_m "I guess I could join too. . ."
+                    elif Occupants > 1:                     #If Rogue and Kitty said no
+                        ch_m "Well, I could join you, [E_Petname]."
+                    else:                                   #If Rogue and Kitty aren't there
+                        ch_m "Yeah, I could stick around, [E_Petname]."
+                    $ MystiqueCount = 2
+                    $ Agreed += 1
+                else:
+                    if RogueCount > 1 or KittyCount > 1:                          #If Rogue or Kitty said yes
+                        ch_m "I've really got to go though. . ."
+                    elif Occupants > 1:                     #If Rogue and Kitty said no
+                        ch_m "Yeah, I should head out too."
+                    else:                                   #If Rogue and Kitty aren't there
+                        ch_m "No, I've got to get going."
                             
             if Occupants > Agreed:                    #if either said no     
                 # If they're at NameCount = 2 here, they have already agreed.
@@ -1511,6 +1620,8 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
                             ch_k "Bye!"
                         if EmmaCount == 1:
                             ch_e "Bye, [E_Petname]!"
+                        if MystiqueCount == 1:
+                            ch_m "Bye!"
                         
                     "Sure you you don't wanna join? The night is perfect for a swim.":
                         $ Line = "night"
@@ -1551,6 +1662,15 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
                             $ EmmaCount = 2
                         elif Line == "dark" and ApprovalCheck("Emma", 700, "O"):                                
                             $ EmmaCount = 2
+
+                    if MystiqueCount == 1:
+                        if ApprovalCheck("Mystique", 1500) or (ApprovalCheck("Mystique", 800) and newgirl.girls["Mystique"]["SeenChest"] and newgirl.girls["Mystique"]["SeenPussy"]):
+                            ch_m "yes"
+                            $ MystiqueCount = 2
+                        elif Line == "night" and ApprovalCheck("Mystique", 1300, "LI"):                                
+                            $ MystiqueCount = 2
+                        elif Line == "dark" and ApprovalCheck("Mystique", 700, "O"):                                
+                            $ MystiqueCount = 2
                     
                     
                     if Line == "night":      #"Sure you got every spot?"
@@ -1560,19 +1680,29 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
                                     ch_k "Um, me too!"
                                 if EmmaCount == 2:
                                     ch_e "Yeah, me too!"
+                                if MystiqueCount == 2:
+                                    ch_m "Yeah, me too!"
                             elif KittyCount == 2:                               #Kitty only
                                 ch_k "Oh, I guess I could enjoy a good swim before sleep."
                                 if EmmaCount == 2:
                                     ch_e "Yeah, me too!"
+                                if MystiqueCount == 2:
+                                    ch_m "Yeah, me too!"
                             elif EmmaCount == 2:
                                 ch_e "Yeah, I guess I could use a good swim."
+                                if MystiqueCount == 2:
+                                    ch_m "Yeah, me too!"
+                            elif MystiqueCount == 2:
+                                    ch_m "Ok"
                             
                             if RogueCount == 1:                                  #Kitty agreed, Rogue refused
                                 ch_r "Perfect for a swim, not a naked one."
                             if KittyCount == 1:                                  #Rogue agreed, Kitty refused
                                 ch_k "Ha, I'm not gonna swim naked with you, [K_Petname], see you later."
                             if EmmaCount == 1:                                  #Rogue agreed, Emma refused
-                                ch_e "Ha, I'm not gonna swim, [E_Petname], specially not with a student."          
+                                ch_e "Ha, I'm not gonna swim, [E_Petname], specially not with a student."  
+                            if MystiqueCount == 1:                                  #Kitty agreed, Rogue refused
+                                ch_m "Perfect for a swim, not a naked one."        
                         
                     elif Line == "dark":  #"its dark"
                             if RogueCount == 2:                                 #Rogue agreed, maybe both
@@ -1581,12 +1711,18 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
                                     ch_k "Um, yeah, I guess. . ."
                                 if EmmaCount == 2:
                                     ch_e "Yeah, me too!"
+                                if MystiqueCount == 2:
+                                    ch_m "Yeah, me too!"
                             elif KittyCount == 2:                               #Kitty
                                 ch_k "I. . . guess you're right. . ."
                                 if EmmaCount == 2:
                                     ch_e "Yeah, I guess so!"
+                                if MystiqueCount == 2:
+                                    ch_m "Yeah, me too!"
                             elif EmmaCount == 2:                               #Emma only
                                 ch_e "You do have a point there, [E_Petname]."
+                                if MystiqueCount == 2:
+                                    ch_m "Yeah, me too!"
                             
                             if RogueCount == 1:                                  #Kitty agreed, Rogue refused
                                 ch_r "Yeah, not dark enough, [R_Petname]."

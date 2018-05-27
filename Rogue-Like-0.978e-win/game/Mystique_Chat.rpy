@@ -17,7 +17,7 @@ label Mystique_Chat:
                 return
 
     if newgirl.girls["Mystique"]["Loc"] == bg_current:
-            ch_m "What was it you wanted to discuss, [E_Petname]?"
+            call ch__m("What was it you wanted to discuss, "+newgirl.girls["Mystique"]["Petname"]+"?")
     #else:
     menu:
         "What would you like to do?"
@@ -57,7 +57,7 @@ label Mystique_Chat:
                                     ch_m "Thinking about it in front of everyone is making me so wet"
                                     $ newgirl.girls["Mystique"]["Wet"] = 1
                                 else:
-                                    ch_m "And you should be paying attention to class, [E_Petname]"
+                                    call ch__m("And you should be paying attention to class, "+newgirl.girls["Mystique"]["Petname"]+"")
                             #call Mystique_Sent_Selfie(1)
                             $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 70, 8)
                     elif ApprovalCheck("Mystique", 500, "I", TabM=2):
@@ -69,10 +69,10 @@ label Mystique_Chat:
                                 "She then, scans the class with her eyes, until she finds you"
                                 "She looks down at her phone and starts typing something"
                             $ newgirl.girls["Mystique"]["Eyes"] = "down"
-                            ch_m "wow [E_Petname]"            
+                            call ch__m("wow "+newgirl.girls["Mystique"]["Petname"]+""            )
                             call MystiqueFaceSpecial("sly", 1) 
                             if newgirl.girls["Mystique"]["Loc"] == "bg teacher" and bg_current == "bg classroom":
-                                ch_m "Should you really be sending dick pics during class, [E_Petname]?"
+                                call ch__m("Should you really be sending dick pics during class, "+newgirl.girls["Mystique"]["Petname"]+"?")
                             $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 70, 10)
                     else:
                             if newgirl.girls["Mystique"]["Loc"] == "bg teacher" and bg_current == "bg classroom":
@@ -83,7 +83,7 @@ label Mystique_Chat:
                                 "She then, scans the class with her eyes, until she finds you"      
                                 "She looks down at her phone and starts typing something"
                             $ newgirl.girls["Mystique"]["Eyes"] = "down"
-                            ch_m "You shouldn't be sending these kind of texts to your teacher [E_Petname]"
+                            call ch__m("You shouldn't be sending these kind of texts to your teacher "+newgirl.girls["Mystique"]["Petname"]+"")
                             call MystiqueFaceSpecial("sly", 1) 
                             if newgirl.girls["Mystique"]["Loc"] == "bg teacher" and bg_current == "bg classroom":
                                 ch_m "Specially not during classes"
@@ -103,7 +103,7 @@ label Mystique_Chat:
 
                     if ApprovalCheck("Mystique", 1450, TabM = 3) or ApprovalCheck("Mystique", 800, "O") or "exhibitionist" in newgirl.girls["Mystique"]["Traits"]: # 145, 160, 175, Taboo -160(355)
                         call MystiqueFaceSpecial("sexy",1)
-                        ch_m "Ok [E_Petname]."
+                        call ch__m("Ok "+newgirl.girls["Mystique"]["Petname"]+".")
                         call Mystique_Doggy_Launch("plug")
                         "Mystique points her ass towards you."
                         #if newgirl.girls["Mystique"]["Legs"] == "skirt" or newgirl.girls["Mystique"]["Legs"] == "skirtshort" or newgirl.girls["Mystique"]["Legs"] == "cheerleader skirt" or newgirl.girls["Mystique"]["Legs"] == "cheerleader skirtshort":
@@ -167,7 +167,7 @@ label Mystique_Chat:
                         call Mystique_Doggy_Reset 
                     else:
                         if Taboo:
-                            ch_m "Not here [E_Petname]"
+                            call ch__m("Not here "+newgirl.girls["Mystique"]["Petname"]+"")
                         else:
                             ch_m "No"
             
@@ -191,11 +191,11 @@ label Mystique_Chat:
                         call Mystique_SexMenu
                         return
                     elif ApprovalCheck("Mystique", 400, "OI"):
-                        ch_m "If that's what you want, [E_Petname]."
+                        call ch__m("If that's what you want, "+newgirl.girls["Mystique"]["Petname"]+".")
                         call Mystique_SexMenu
                         return
                     else:
-                        ch_m "No thanks, [E_Petname]."          
+                        call ch__m("No thanks, "+newgirl.girls["Mystique"]["Petname"]+"."          )
                                 
         "I just wanted to talk. . .":
                     call Mystique_Chitchat   
@@ -274,6 +274,9 @@ label Mystique_Chat:
         "Talk with Rogue" if R_Loc == bg_current:
                 jump Rogue_Chat
 
+        "Talk with Emma" if E_Loc == bg_current:
+                jump Emma_Chat
+
         "Talk with Kitty" if K_Loc == bg_current:
                 jump Kitty_Chat
                 
@@ -295,7 +298,7 @@ label Mystique_Chat_Minimal:
                 ch_m "I would not press my luck if I were you."
                 return
     if newgirl.girls["Mystique"]["Loc"] == bg_current:
-            ch_m "What was it you wanted to discuss, [E_Petname]?"
+            call ch__m("What was it you wanted to discuss, "+newgirl.girls["Mystique"]["Petname"]+"?")
     #else:
     menu:
         "What would you like to do?"
@@ -310,7 +313,7 @@ label Mystique_Chat_Minimal:
                         ch_p "Did you want to fool around?"  
                     else: 
                         ch_p "I want to get naughty."                        
-                    ch_m "With a student? You should know better than that, [E_Petname]."  
+                    call ch__m("With a student? You should know better than that, "+newgirl.girls["Mystique"]["Petname"]+"."  )
                           
         "I just wanted to talk. . .":
                     ch_m "I really don't have anything to talk about at the moment.[[Not in yet]"   
@@ -390,7 +393,7 @@ label Mystique_Relationship:
                     ch_m "I believe I asked you first."
                 else:
                     call MystiqueFace("surprised", 2)
-                    ch_m "Don't you think that might be inappropriate, [E_Petname]. . ." 
+                    call ch__m("Don't you think that might be inappropriate, "+newgirl.girls["Mystique"]["Petname"]+". . ." )
                     call MystiqueFace("smile", 1)
                 
                 call Mystique_OtherWoman
@@ -414,7 +417,7 @@ label Mystique_Relationship:
                         ch_m "I don't think we should be \"exclusive.\""
                 else:
                         call MystiqueFace("perplexed", 1)
-                        ch_m "I really couldn't get serious about a student, [E_Petname]."
+                        call ch__m("I really couldn't get serious about a student, "+newgirl.girls["Mystique"]["Petname"]+".")
                     
         "When you said you loved me. . ." if "lover" not in newgirl.girls["Mystique"]["Traits"] and newgirl.girls["Mystique"]["Event"][6] >= 20:
                 call Mystique_Love_Redux
@@ -698,7 +701,7 @@ label Mystique_Settings:
                     call Mystique_Names    
                 else:
                     $ newgirl.girls["Mystique"]["Mouth"] = "smile"
-                    ch_m "It's your name, [E_Petname]."
+                    call ch__m("It's your name, "+newgirl.girls["Mystique"]["Petname"]+".")
                 
         "Her Pet Name":
                 ch_p "I've got a pet name for you, you know?"
@@ -945,7 +948,7 @@ label Mystique_Chitchat(O=0, Options = ["default","default","default"]):
         
     elif Options[0] == "cheek":
             #Mystique's response to having her cheek touched.
-            ch_m "So,[E_Petname]. . .y'know how you kinda just brushed my cheek before?"
+            call ch__m("So,"+newgirl.girls["Mystique"]["Petname"]+". . .y'know how you kinda just brushed my cheek before?")
             ch_p "Yeah?  Was that okay?"
             call MystiqueFace("smile",1)
             ch_m "More than just {i}okay{/i}."
@@ -953,12 +956,12 @@ label Mystique_Chitchat(O=0, Options = ["default","default","default"]):
             
     elif Options[0] == "dated":
             #Mystique's response to having gone on a date with the Player.
-            ch_m "Heya,[E_Petname].  I had a lot of fun last night.  We should do that again sometime."
+            call ch__m("Heya,"+newgirl.girls["Mystique"]["Petname"]+".  I had a lot of fun last night.  We should do that again sometime.")
 
     elif Options[0] == "kissed":
             #Mystique's response to having been kissed by the Player.
             call MystiqueFace("sly",1)
-            ch_m " . . .anybody ever tell you how good a kisser you are, [E_Petname]?"
+            call ch__m(" . . .anybody ever tell you how good a kisser you are, "+newgirl.girls["Mystique"]["Petname"]+"?")
             menu:
                 extend ""
                 "Hey. . .when you're good, you're good.":
@@ -970,7 +973,7 @@ label Mystique_Chitchat(O=0, Options = ["default","default","default"]):
     elif Options[0] == "dangerroom":
             #Mystique's response to Player working out in the Danger Room while Mystique is present
             call MystiqueFace("sly",1)
-            ch_m "Hey,[E_Petname].  I watched you working out in the Danger Room, earlier.  You looked {i}so{/i} cute in your X-Men uniform!"
+            call ch__m("Hey,"+newgirl.girls["Mystique"]["Petname"]+".  I watched you working out in the Danger Room, earlier.  You looked {i}so{/i} cute in your X-Men uniform!")
 
     elif Options[0] == "showercaught":
             #Mystique's response to being caught in the shower.
@@ -988,13 +991,13 @@ label Mystique_Chitchat(O=0, Options = ["default","default","default"]):
                                 call MystiqueFace("sly",1)
                                 ch_m "Yeah?  {i}Maybe{/i} you should have accidents like that more often."
                             call MystiqueFace("smile")
-                            ch_m "It's cool, [E_Petname]. Eveybody makes mistakes. . . sometimes."
+                            call ch__m("It's cool, "+newgirl.girls["Mystique"]["Petname"]+". Eveybody makes mistakes. . . sometimes.")
                     "Just you.":        
                             $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 40, 5)   
                             if ApprovalCheck("Mystique", 1000) or ApprovalCheck("Mystique", 700, "L"):      
                                     $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, 3)    
                                     call MystiqueFace("sly",1)
-                                    ch_m "You know how to make a girl feel special, [E_Petname]."
+                                    call ch__m("You know how to make a girl feel special, "+newgirl.girls["Mystique"]["Petname"]+".")
                             else:                
                                     $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 70, -5) 
                                     call MystiqueFace("angry")
@@ -1017,7 +1020,7 @@ label Mystique_Chitchat(O=0, Options = ["default","default","default"]):
                                     $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 80, -10)          
                                     $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 50, 10)  
                                     call MystiqueFace("angry")
-                                    ch_m "You're such a creep, [E_Petname], y'know that?"
+                                    call ch__m("You're such a creep, "+newgirl.girls["Mystique"]["Petname"]+", y'know that?")
 
     elif Options[0] == "fondled":
             #Mystique's response to being felt up.
@@ -1046,7 +1049,7 @@ label Mystique_Chitchat(O=0, Options = ["default","default","default"]):
     elif Options[0] == "lingerie":
             #Mystique's response to being given lingerie.
             call MystiqueFace("sly",2)
-            ch_m "[E_Petname], I wanted to thank you again for the. . .{i}stuff{/i} you bought me.  They're so cute!"
+            call ch__m(""+newgirl.girls["Mystique"]["Petname"]+", I wanted to thank you again for the. . .{i}stuff{/i} you bought me.  They're so cute!")
             $ newgirl.girls["Mystique"]["Blush"] = 1
             $ newgirl.girls["Mystique"]["Chat"].append("lingerie") 
 
@@ -1061,7 +1064,7 @@ label Mystique_Chitchat(O=0, Options = ["default","default","default"]):
             if "blow" not in newgirl.girls["Mystique"]["Chat"]:
                     #Mystique's response after giving the Player a blowjob.
                     call MystiqueFace("sly",2)
-                    ch_m "So. . .uhm, be honest with me, [E_Petname]?"
+                    call ch__m("So. . .uhm, be honest with me, "+newgirl.girls["Mystique"]["Petname"]+"?")
                     ch_m "When I gave you head. . . was it any good?"
                     ch_m "I kinda had a hard time getting all of you into my mouth."
                     menu:
@@ -1082,7 +1085,7 @@ label Mystique_Chitchat(O=0, Options = ["default","default","default"]):
                                     $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 70, 15)            
                                     $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 50, 5) 
                                     call MystiqueFace("sexy",1)
-                                    ch_m "Yeah?  Well, I'm[E_Petname]looking forward our next training session, then."                                    
+                                    call ch__m("Yeah?  Well, I'm"+newgirl.girls["Mystique"]["Petname"]+"looking forward our next training session, then."                                    )
                         "I guess. If you're into weird sounds and too much teeth. Spoiler, I'm not.":                     
                                 $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, -10)          
                                 $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 60, 10)   
@@ -1157,7 +1160,7 @@ label Mystique_Chitchat(O=0, Options = ["default","default","default"]):
             $ D20 = renpy.random.randint(1, 15)        
             if D20 == 1:
                     call MystiqueFace("smile")
-                    ch_m "I'm {i}so{/i} excited [E_Petname]! I {i}totally{/i} aced Professor McCoy's Computer Science test!"
+                    call ch__m("I'm {i}so{/i} excited "+newgirl.girls["Mystique"]["Petname"]+"! I {i}totally{/i} aced Professor McCoy's Computer Science test!")
             elif D20 == 2:
                     call MystiqueFace("down")
                     ch_m "Ever have one of those days where it seems like the whole world's out to get you?"
@@ -1166,7 +1169,7 @@ label Mystique_Chitchat(O=0, Options = ["default","default","default"]):
                     ch_m "I can't believe how much stuff I've gotta get done today!"
             elif D20 == 4:
                     call MystiqueFace("down")
-                    ch_m "Hey, [E_Petname]. I got the world's worst sleep last night. I feel like I could curl up and go to bed right here."
+                    call ch__m("Hey, "+newgirl.girls["Mystique"]["Petname"]+". I got the world's worst sleep last night. I feel like I could curl up and go to bed right here.")
             elif D20 == 5:
                     call MystiqueFace("smile")
                     ch_m "Wow! Isn't it {i}so{/i} nice out right now?"
@@ -1237,7 +1240,7 @@ label Mystique_Flirt:
                         $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, -1)          
                         $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 60, 2)            
                         $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 40, 1) 
-                        ch_m "That's highly inappropriate, [E_Petname]"
+                        call ch__m("That's highly inappropriate, "+newgirl.girls["Mystique"]["Petname"]+"")
                         ch_m "[[mumbles] -in public, at least. . ."
                     else: 
                         call MystiqueFace("angry", 1)
@@ -1259,7 +1262,7 @@ label Mystique_Flirt:
                         $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 50, -5)            
                         $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 40, 2) 
                         "You lean close for a kiss, but Mystique gently pushes your face away."
-                        ch_m "Not in public, [E_Petname]." 
+                        call ch__m("Not in public, "+newgirl.girls["Mystique"]["Petname"]+"." )
                         return
                     else:                
                         call MystiqueFace("angry", 1)
@@ -1279,7 +1282,7 @@ label Mystique_Flirt:
                                 call MystiqueFace("sexy", 1)
                                 $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, 2)          
                                 $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 50, 2) 
-                                ch_m "Hmm, hello [E_Petname]. . ."
+                                call ch__m("Hmm, hello "+newgirl.girls["Mystique"]["Petname"]+". . .")
                             elif ApprovalCheck("Mystique", 550, "L", TabM=2):
                                 call MystiqueFace("surprised", 1)
                                 $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 70, 1) 
@@ -1310,7 +1313,7 @@ label Mystique_Flirt:
                                 ch_m ". . ."
                                 ch_m "Hmmm, that was a pleasant surprise. . ."
                                 call MystiqueFace("sexy")
-                                ch_m "I could always use some more, [E_Petname]."
+                                call ch__m("I could always use some more, "+newgirl.girls["Mystique"]["Petname"]+".")
                             elif ApprovalCheck("Mystique", 650, "L", TabM=2):
                                 call MystiqueFace("surprised", 1)
                                 $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 80, 25)            
@@ -1322,13 +1325,13 @@ label Mystique_Flirt:
                                 call MystiqueFace("surprised", 1)            
                                 $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 70, 20)
                                 $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 70, 20)
-                                ch_m "I don't think that's really appropriate, [E_Petname]."
+                                call ch__m("I don't think that's really appropriate, "+newgirl.girls["Mystique"]["Petname"]+".")
                             elif Taboo and ApprovalCheck("Mystique", 800):
                                 call MystiqueFace("angry", 1)
                                 $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 60, -5) 
                                 $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 70, 35)
                                 $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 70, 20)
-                                ch_m "We can't be seen doing that, [E_Petname]."
+                                call ch__m("We can't be seen doing that, "+newgirl.girls["Mystique"]["Petname"]+".")
                             else: 
                                 call MystiqueFace("angry", 1)
                                 $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 60, -10) 
@@ -1371,7 +1374,7 @@ label Mystique_Flirt:
                                 $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 80, -2) 
                                 $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 70, 4)
                                 $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 50, 1)
-                                ch_m "I don't appreciate games, [E_Petname]."
+                                call ch__m("I don't appreciate games, "+newgirl.girls["Mystique"]["Petname"]+".")
                     elif Taboo:
                         call MystiqueFace("sad")
                         ch_m "But we just can't."
@@ -1386,7 +1389,7 @@ label Mystique_Flirt:
                     else:                
                         call MystiqueFace("angry", 1)
                         "You lean in with your arms wide, but Mystique shoves you a step back."
-                        ch_m "What exactly is that about, [E_Petname]?" 
+                        call ch__m("What exactly is that about, "+newgirl.girls["Mystique"]["Petname"]+"?" )
                         return
                         
                     if newgirl.girls["Mystique"]["SEXP"] >= 30: 
@@ -1395,7 +1398,7 @@ label Mystique_Flirt:
                         $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 90, 3)            
                         $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 90, 2) 
                         call MystiqueFace("sexy")
-                        ch_m "Hmmm, what did you have in mind, [E_Petname]."
+                        call ch__m("Hmmm, what did you have in mind, "+newgirl.girls["Mystique"]["Petname"]+".")
                     elif ApprovalCheck("Mystique", 800, "L", TabM=2):
                         call MystiqueFace("sexy")
                         $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, 1)          
@@ -1420,7 +1423,7 @@ label Mystique_Flirt:
                         $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 40, -4)       
                         $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 50, 4)            
                         $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 30, 2) 
-                        ch_m "What was that about, [E_Petname]?"   
+                        call ch__m("What was that about, "+newgirl.girls["Mystique"]["Petname"]+"?"   )
                         
             "Slap her ass" if newgirl.girls["Mystique"]["Loc"] == bg_current:                                                              #Slap her ass
                     call E_Slap_Ass
@@ -1477,14 +1480,14 @@ label Mystique_Flirt:
                         show Mystique_Sprite
                         with vpunch
                         "She slaps your hand away and elbows you in the ribs."
-                        ch_m "You must learn to resist temptations, [E_Petname]." 
+                        call ch__m("You must learn to resist temptations, "+newgirl.girls["Mystique"]["Petname"]+"." )
                         return
                         
                     if newgirl.girls["Mystique"]["SEXP"] >= 40: 
                         $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 60, 7) 
                         $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, 2) 
                         call MystiqueFace("sly")
-                        ch_m "I do enjoy this, [E_Petname]. . ."
+                        call ch__m("I do enjoy this, "+newgirl.girls["Mystique"]["Petname"]+". . .")
                         $ Count = 10
                     elif ApprovalCheck("Mystique", 850, "L", TabM=2):
                         call MystiqueFace("sexy")
@@ -1495,7 +1498,7 @@ label Mystique_Flirt:
                     elif ApprovalCheck("Mystique", 1200, TabM=2):
                         call MystiqueFace("perplexed")  
                         $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 60, 2)         
-                        ch_m "Rather forward of you, [E_Petname]."
+                        call ch__m("Rather forward of you, "+newgirl.girls["Mystique"]["Petname"]+".")
                         $ Count = 5
                     elif Taboo and ApprovalCheck("Mystique", 900):
                         call MystiqueFace("angry")
@@ -1524,7 +1527,7 @@ label Mystique_Flirt:
                         elif Count == 3:
                             call MystiqueFace("perplexed")
                             $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 90, 2) 
-                            ch_m "Not that I don't enjoy that, [E_Petname]. . ."
+                            call ch__m("Not that I don't enjoy that, "+newgirl.girls["Mystique"]["Petname"]+". . .")
                         elif Count == 2:
                             call MystiqueFace("angry")
                             $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 90, 2) 
@@ -1532,7 +1535,7 @@ label Mystique_Flirt:
                             ch_m "Ok, enough of that. . ."
                         elif Count == 1:
                             call MystiqueFace("angry")
-                            ch_m "Time to stop, [E_Petname]."
+                            call ch__m("Time to stop, "+newgirl.girls["Mystique"]["Petname"]+".")
                             $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 90, 2) 
                             $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, -5) 
                             show Mystique_Sprite
@@ -1587,12 +1590,12 @@ label Mystique_Flirt:
                                         $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 90, 4) 
                                     elif Count == 2:
                                         $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 90, 2) 
-                                    ch_m "Um, [E_Petname]."                     
+                                    call ch__m("Um, "+newgirl.girls["Mystique"]["Petname"]+"."                     )
                                     $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 70, 2)            
                                     $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 70, 1)
                                     call MystiqueFace("perplexed")       
                     if Taboo:
-                        ch_m "Show some respect when in public, [E_Petname]."
+                        call ch__m("Show some respect when in public, "+newgirl.girls["Mystique"]["Petname"]+".")
                     elif newgirl.girls["Mystique"]["FondleB"] and ApprovalCheck("Mystique", 1200, TabM = 3): 
                         call MystiqueFace("sexy", 1)
                         ch_m "Were you just sampling, or did you want to continue?"
@@ -1632,21 +1635,21 @@ label Mystique_Flirt:
                         $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 60, 3) 
                         $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, 2)
                         "She sinks back into your hands"
-                        ch_m "Hmm, to what do I owe the pleasure, [E_Petname]?"
+                        call ch__m("Hmm, to what do I owe the pleasure, "+newgirl.girls["Mystique"]["Petname"]+"?")
                     elif ApprovalCheck("Mystique", 650, "L", TabM = 2):
                         call MystiqueFace("sexy")
                         $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 60, 1) 
                         $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, 2)
-                        ch_m "Well that's lovely, [E_Petname]."
+                        call ch__m("Well that's lovely, "+newgirl.girls["Mystique"]["Petname"]+".")
                     elif ApprovalCheck("Mystique", 500, TabM = 2):
                         call MystiqueFace("surprised", 1)
                         $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, 1)
-                        ch_m "Well hello, [E_Petname]."
+                        call ch__m("Well hello, "+newgirl.girls["Mystique"]["Petname"]+".")
                     elif ApprovalCheck("Mystique", 400):
                         call MystiqueFace("angry", 1)
                         $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, -1)
                         if Taboo:
-                            ch_m "Do I have to explain boundaries to you, [E_Petname]?"
+                            call ch__m("Do I have to explain boundaries to you, "+newgirl.girls["Mystique"]["Petname"]+"?")
                         else:
                             ch_m "I'd rather you didn't. . ."
                     else: 
@@ -1761,7 +1764,7 @@ label Mystique_AskPanties(Store = 0):
                         "OK.": 
                             $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, 5) 
                             call MystiqueFace("smile", 1)                                             
-                            ch_m "Thank you, [E_Petname]."
+                            call ch__m("Thank you, "+newgirl.girls["Mystique"]["Petname"]+".")
                             call MystiqueFace("sly", 1) 
                             $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 60, 2)         
                             $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 60, 4)            
@@ -1865,13 +1868,13 @@ label Mystique_AskPanties(Store = 0):
                 if Taboo:            
                     $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 60, 2)
                     if newgirl.girls["Mystique"]["Love"] >= newgirl.girls["Mystique"]["Inbt"] or newgirl.girls["Mystique"]["Obed"] >= newgirl.girls["Mystique"]["Inbt"]:
-                        ch_m "You know I would, [E_Petname], but not here."
+                        call ch__m("You know I would, "+newgirl.girls["Mystique"]["Petname"]+", but not here.")
                     else:       
                         $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 60, -2)    
                         ch_m "Nah, not around here, at least."
                 else:
                     if newgirl.girls["Mystique"]["Love"] >= newgirl.girls["Mystique"]["Inbt"] or newgirl.girls["Mystique"]["Obed"] >= newgirl.girls["Mystique"]["Inbt"]:
-                        ch_m "You'll have to work up to that, [E_Petname]."
+                        call ch__m("You'll have to work up to that, "+newgirl.girls["Mystique"]["Petname"]+".")
                     else:
                         call MystiqueFace("perplexed")       
                         $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 60, -2)    
@@ -1955,7 +1958,7 @@ label Mystique_Gifts:
                     $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 50, -20)
                     $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 20, 10)
                     $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 20, 20)                    
-                    ch_m "[E_Petname], I don't believe this is an appropriate gift from a student."                     
+                    call ch__m(""+newgirl.girls["Mystique"]["Petname"]+", I don't believe this is an appropriate gift from a student."                     )
                     $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 89, 10)
                     "She hands it back to you."
                     $ newgirl.girls["Mystique"]["DailyActions"].append("offered gift") 
@@ -2005,7 +2008,7 @@ label Mystique_Gifts:
                     $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 50, -20)
                     $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 20, 10)
                     $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 20, 20)       
-                    ch_m "[E_Petname], I don't believe this is an appropriate gift from a student."   
+                    call ch__m(""+newgirl.girls["Mystique"]["Petname"]+", I don't believe this is an appropriate gift from a student."   )
                     $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 89, 5)
                     "She hands it back to you."
                     $ newgirl.girls["Mystique"]["DailyActions"].append("offered gift") 
@@ -2187,34 +2190,34 @@ label Mystique_Names(TempName=0):
         "[TempName]'s fine.":
             # ie "Mr. Zero"
             $ newgirl.girls["Mystique"]["Petname"] = TempName
-            ch_m "I assumed it was, [E_Petname]."
+            call ch__m("I assumed it was, "+newgirl.girls["Mystique"]["Petname"]+".")
         "Call me by my name.":
             $ newgirl.girls["Mystique"]["Petname"] = Playername            
-            ch_m "If you'd rather, [E_Petname]."
+            call ch__m("If you'd rather, "+newgirl.girls["Mystique"]["Petname"]+".")
         "Call me \"darling\"." if "darling" in newgirl.girls["Mystique"]["Petnames"]:
             $ newgirl.girls["Mystique"]["Petname"] = "darling"
-            ch_m "Certainly, [E_Petname]."
+            call ch__m("Certainly, "+newgirl.girls["Mystique"]["Petname"]+".")
         "Call me \"boyfriend\"." if "boyfriend" in newgirl.girls["Mystique"]["Petnames"]:
             $ newgirl.girls["Mystique"]["Petname"] = "boyfriend"
-            ch_m "How pedestrian, but fine, [E_Petname]."
+            call ch__m("How pedestrian, but fine, "+newgirl.girls["Mystique"]["Petname"]+".")
         "Call me \"lover\"." if "lover" in newgirl.girls["Mystique"]["Petnames"]:
             $ newgirl.girls["Mystique"]["Petname"] = "lover"
-            ch_m "Certainly, [E_Petname]."
+            call ch__m("Certainly, "+newgirl.girls["Mystique"]["Petname"]+".")
         "Call me \"sir\"." if "sir" in newgirl.girls["Mystique"]["Petnames"]:
             $ newgirl.girls["Mystique"]["Petname"] = "sir"
-            ch_m "Yes, [E_Petname]."
+            call ch__m("Yes, "+newgirl.girls["Mystique"]["Petname"]+".")
         "Call me \"master\"." if "master" in newgirl.girls["Mystique"]["Petnames"]:
             $ newgirl.girls["Mystique"]["Petname"] = "master"
-            ch_m "As you wish, [E_Petname]."
+            call ch__m("As you wish, "+newgirl.girls["Mystique"]["Petname"]+".")
         "Call me \"sex friend\"." if "sex friend" in newgirl.girls["Mystique"]["Petnames"]:
             $ newgirl.girls["Mystique"]["Petname"] = "sex friend"
-            ch_m "You naughty boy. Very well, [E_Petname]."
+            call ch__m("You naughty boy. Very well, "+newgirl.girls["Mystique"]["Petname"]+".")
         "Call me \"fuck buddy\"." if "fuck buddy" in newgirl.girls["Mystique"]["Petnames"]:
             $ newgirl.girls["Mystique"]["Petname"] = "fuck buddy"
-            ch_m "How nasty, \"[E_Petname]\"."        
+            call ch__m("How nasty, \""+newgirl.girls["Mystique"]["Petname"]+"\"."        )
         "Call me \"daddy\"." if "daddy" in newgirl.girls["Mystique"]["Petnames"]:
             $ newgirl.girls["Mystique"]["Petname"] = "daddy"
-            ch_m "Mmm, ok, [E_Petname]."
+            call ch__m("Mmm, ok, "+newgirl.girls["Mystique"]["Petname"]+".")
         "Nevermind.":
             return
     return
@@ -2230,33 +2233,33 @@ label Mystique_Pet:
                     "I think I'll just call you Ms. Frost.":
                         $ newgirl.girls["Mystique"]["Pet"] = "Ms. Frost"            
                         $ MystiqueName = "Ms. Frost"
-                        ch_m "I don't see why not, [E_Petname]."
+                        call ch__m("I don't see why not, "+newgirl.girls["Mystique"]["Petname"]+".")
                         
                     "I think I'll just call you Mystique.":
                         if ApprovalCheck("Mystique", 700) or "classcaught" in newgirl.girls["Mystique"]["History"]:
-                            ch_m "I don't see why not, [E_Petname]."   
+                            call ch__m("I don't see why not, "+newgirl.girls["Mystique"]["Petname"]+"."   )
                             $ newgirl.girls["Mystique"]["Pet"] = "Mystique"            
                             $ MystiqueName = "Mystique"
                         else:
-                            ch_m "I'd rather you didn't, [E_Petname]."
+                            call ch__m("I'd rather you didn't, "+newgirl.girls["Mystique"]["Petname"]+".")
                         
                     "I think I'll call you \"girl\".":
                         $ newgirl.girls["Mystique"]["Pet"] = "girl"
                         if "boyfriend" in newgirl.girls["Mystique"]["Petnames"] or ApprovalCheck("Mystique", 600, "L"):
                             call MystiqueFace("sexy", 1) 
-                            ch_m "How droll, [E_Petname]."
+                            call ch__m("How droll, "+newgirl.girls["Mystique"]["Petname"]+".")
                         else:      
                             call MystiqueFace("angry")           
-                            ch_m "I wouldn't, [E_Petname]." 
+                            call ch__m("I wouldn't, "+newgirl.girls["Mystique"]["Petname"]+"." )
                             
                     "I think I'll call you \"boo\".":
                         $ newgirl.girls["Mystique"]["Pet"] = "boo"
                         if "boyfriend" in newgirl.girls["Mystique"]["Petnames"] or ApprovalCheck("Mystique", 800, "L"):
                             call MystiqueFace("bemused", 1) 
-                            ch_m "How adorable, [E_Petname]."
+                            call ch__m("How adorable, "+newgirl.girls["Mystique"]["Petname"]+".")
                         else:     
                             call MystiqueFace("angry")            
-                            ch_m "I'm no such thing,  [E_Petname]."
+                            call ch__m("I'm no such thing,  "+newgirl.girls["Mystique"]["Petname"]+".")
                             
                     "I think I'll call you \"bae\".":
                         $ newgirl.girls["Mystique"]["Pet"] = "bae"
@@ -2280,28 +2283,28 @@ label Mystique_Pet:
                     "I think I'll call you \"sweetie\".":
                         $ newgirl.girls["Mystique"]["Pet"] = "sweetie"
                         if "boyfriend" in newgirl.girls["Mystique"]["Petnames"] or ApprovalCheck("Mystique", 500, "L"):
-                            ch_m "Really, [E_Petname]?"
+                            call ch__m("Really, "+newgirl.girls["Mystique"]["Petname"]+"?")
                         else:     
                             call MystiqueFace("angry", 1)            
-                            ch_m "Too saccharine, [E_Petname]."
+                            call ch__m("Too saccharine, "+newgirl.girls["Mystique"]["Petname"]+".")
                             
                     "I think I'll call you \"sexy\".":
                         $ newgirl.girls["Mystique"]["Pet"] = "sexy"
                         if "lover" in newgirl.girls["Mystique"]["Petnames"] or ApprovalCheck("Mystique", 900):
                             call MystiqueFace("sexy", 1) 
-                            ch_m "I can't argue there, [E_Petname]."
+                            call ch__m("I can't argue there, "+newgirl.girls["Mystique"]["Petname"]+".")
                         else:        
                             call MystiqueFace("angry", 1)         
-                            ch_m "That may be a bit much, [E_Petname]."  
+                            call ch__m("That may be a bit much, "+newgirl.girls["Mystique"]["Petname"]+"."  )
                             
                     "I think I'll call you \"lover\".":
                         $ newgirl.girls["Mystique"]["Pet"] = "lover"
                         if "lover" in newgirl.girls["Mystique"]["Petnames"] or ApprovalCheck("Mystique", 900, "L"):
                             call MystiqueFace("sexy", 1) 
-                            ch_m "I do love you, [E_Petname]!"
+                            call ch__m("I do love you, "+newgirl.girls["Mystique"]["Petname"]+"!")
                         else:      
                             call MystiqueFace("angry", 1)           
-                            ch_m "Not in this lifetime, [E_Petname]."  
+                            call ch__m("Not in this lifetime, "+newgirl.girls["Mystique"]["Petname"]+"."  )
                         
                     "Back":
                         pass
@@ -2312,25 +2315,25 @@ label Mystique_Pet:
                         $ newgirl.girls["Mystique"]["Pet"] = "slave"
                         if "master" in newgirl.girls["Mystique"]["Petnames"] or ApprovalCheck("Mystique", 700, "O"):
                             call MystiqueFace("bemused", 1) 
-                            ch_m "As you wish, [E_Petname]."
+                            call ch__m("As you wish, "+newgirl.girls["Mystique"]["Petname"]+".")
                         else:      
                             call MystiqueFace("angry", 1)           
-                            ch_m "I'm not slave, [E_Petname]."
+                            call ch__m("I'm not slave, "+newgirl.girls["Mystique"]["Petname"]+".")
                                             
                     "I think I'll call you \"pet\".":
                         $ newgirl.girls["Mystique"]["Pet"] = "pet"
                         if "master" in newgirl.girls["Mystique"]["Petnames"] or ApprovalCheck("Mystique", 600, "O"):
                             call MystiqueFace("bemused", 1) 
-                            ch_m "Hmm, make sure to pet me, [E_Petname]."
+                            call ch__m("Hmm, make sure to pet me, "+newgirl.girls["Mystique"]["Petname"]+".")
                         else:             
                             call MystiqueFace("angry", 1)    
-                            ch_m "I'm no house cat, [E_Petname]."
+                            call ch__m("I'm no house cat, "+newgirl.girls["Mystique"]["Petname"]+".")
                             
                     "I think I'll call you \"slut\".":
                         $ newgirl.girls["Mystique"]["Pet"] = "slut"
                         if "sex friend" in newgirl.girls["Mystique"]["Petnames"] or ApprovalCheck("Mystique", 1000, "OI"):
                             call MystiqueFace("sexy") 
-                            ch_m "If the name fits, [E_Petname]."
+                            call ch__m("If the name fits, "+newgirl.girls["Mystique"]["Petname"]+".")
                         else:                
                             call MystiqueFace("angry", 1) 
                             $ newgirl.girls["Mystique"]["Mouth"] = "surprised"
@@ -2343,7 +2346,7 @@ label Mystique_Pet:
                             ch_m "Only for you though. . ."
                         else:        
                             call MystiqueFace("angry", 1)         
-                            ch_m "Can you say that with a fat lip, [E_Petname]?" 
+                            call ch__m("Can you say that with a fat lip, "+newgirl.girls["Mystique"]["Petname"]+"?" )
                                                    
                     "I think I'll call you \"sugartits\".":
                         $ newgirl.girls["Mystique"]["Pet"] = "sugartits"
@@ -2352,7 +2355,7 @@ label Mystique_Pet:
                             ch_m "These little things?"
                         else:     
                             call MystiqueFace("angry", 1)            
-                            ch_m "I would hope not, [E_Petname]." 
+                            call ch__m("I would hope not, "+newgirl.girls["Mystique"]["Petname"]+"." )
                             
                     "I think I'll call you \"sex friend\".":
                         $ newgirl.girls["Mystique"]["Pet"] = "sex friend"
@@ -2361,7 +2364,7 @@ label Mystique_Pet:
                             ch_m "Rreow. . ."
                         else:                
                             call MystiqueFace("angry", 1) 
-                            ch_m "Not out loud, [E_Petname]." 
+                            call ch__m("Not out loud, "+newgirl.girls["Mystique"]["Petname"]+"." )
                             
                     "I think I'll call you \"fuckbuddy\".":
                         $ newgirl.girls["Mystique"]["Pet"] = "fuckbuddy"
@@ -2371,13 +2374,13 @@ label Mystique_Pet:
                         else:                
                             call MystiqueFace("angry", 1)
                             $ newgirl.girls["Mystique"]["Mouth"] = "surprised"
-                            ch_m "Don't even joke, [E_Petname]." 
+                            call ch__m("Don't even joke, "+newgirl.girls["Mystique"]["Petname"]+"." )
                         
                     "I think I'll call you \"baby girl\".":
                         $ newgirl.girls["Mystique"]["Pet"] = "baby girl"
                         if "daddy" in newgirl.girls["Mystique"]["Petnames"] or ApprovalCheck("Mystique", 1200):
                             call MystiqueFace("smile", 1) 
-                            ch_m "You know it, [E_Petname]."
+                            call ch__m("You know it, "+newgirl.girls["Mystique"]["Petname"]+".")
                         else:                
                             call MystiqueFace("angry", 1) 
                             ch_m "I'm no kid!" 
@@ -2386,10 +2389,10 @@ label Mystique_Pet:
                         $ newgirl.girls["Mystique"]["Pet"] = "mommy"
                         if "mommy" in newgirl.girls["Mystique"]["Pets"] or ApprovalCheck("Mystique", 1500):
                             call MystiqueFace("sly", 1, Mouth="kiss") 
-                            ch_m "Oooh, [E_Petname]."
+                            call ch__m("Oooh, "+newgirl.girls["Mystique"]["Petname"]+".")
                         else:     
                             call MystiqueFace("angry")            
-                            ch_m "That's a bit much, [E_Petname]" 
+                            call ch__m("That's a bit much, "+newgirl.girls["Mystique"]["Petname"]+"" )
                             
                     "Back":
                         pass
@@ -2596,7 +2599,7 @@ label Mystique_Personality(Cnt = 0):
         ch_m "Sure, what's up?"
         "More Obedient. [[Love to Obedience]" if newgirl.girls["Mystique"]["Love"] > 900:
             ch_p "If you really love me, could you please just do what I say?"
-            ch_m "Anything to humor you, [E_Petname]."
+            call ch__m("Anything to humor you, "+newgirl.girls["Mystique"]["Petname"]+".")
             $ newgirl.girls["Mystique"]["Chat"][4] = 1
         "Less Inhibited. [[Love to Inhibition]" if newgirl.girls["Mystique"]["Love"] > 900:
             ch_p "If you really love me, could lighten up a bit, just have some fun?"
@@ -2643,7 +2646,7 @@ label Mystique_Summon(Tempmod=Tempmod):
     call MystiqueOutfit  
     if "no summon" in newgirl.girls["Mystique"]["RecentActions"]:
                 if "angry" in newgirl.girls["Mystique"]["RecentActions"]:
-                    ch_m "I'm not in the mood for this, [E_Petname]."
+                    call ch__m("I'm not in the mood for this, "+newgirl.girls["Mystique"]["Petname"]+".")
                 elif Action_Check("Mystique", "recent", "no summon") > 1:
                     ch_m "You heard me the first time."
                     $ newgirl.girls["Mystique"]["RecentActions"].append("angry") 
@@ -2662,7 +2665,7 @@ label Mystique_Summon(Tempmod=Tempmod):
                         call Set_The_Scene
                 else:                                                           
                         #It's night time and she isn't into you
-                        ch_m "It's late, [E_Petname], tell me tomorrow."       
+                        call ch__m("It's late, "+newgirl.girls["Mystique"]["Petname"]+", tell me tomorrow."       )
                         $ newgirl.girls["Mystique"]["RecentActions"].append("no summon")         
                 return
                 
@@ -2683,7 +2686,7 @@ label Mystique_Summon(Tempmod=Tempmod):
     elif not ApprovalCheck("Mystique", 700, "L") or not ApprovalCheck("Mystique", 600, "O"):                       
         #It's not night time, but she's busy 
         if not ApprovalCheck("Mystique", 300):
-                ch_m "I don't really feel up to that, [E_Petname]."       
+                call ch__m("I don't really feel up to that, "+newgirl.girls["Mystique"]["Petname"]+"."       )
                 $ newgirl.girls["Mystique"]["RecentActions"].append("no summon")         
                 return    
             
@@ -2693,20 +2696,20 @@ label Mystique_Summon(Tempmod=Tempmod):
         elif "goto" in newgirl.girls["Mystique"]["RecentActions"]:
                 ch_m "You only just left, why not return?"
         elif newgirl.girls["Mystique"]["Loc"] == "bg classroom" or newgirl.girls["Mystique"]["Loc"] == "bg teacher":
-                ch_m "You can find me in the class room, [E_Petname]."
+                call ch__m("You can find me in the class room, "+newgirl.girls["Mystique"]["Petname"]+".")
         elif newgirl.girls["Mystique"]["Loc"] == "bg dangerroom": 
-                ch_m "I'm getting some training in, [E_Petname], care to join me?"    
+                call ch__m("I'm getting some training in, "+newgirl.girls["Mystique"]["Petname"]+", care to join me?"    )
         elif newgirl.girls["Mystique"]["Loc"] == "bg campus": 
                 ch_m "I'm relaxing in the square, if you'd care to join me." 
         elif newgirl.girls["Mystique"]["Loc"] == "bg Mystique": 
-                ch_m "I'm in my room, [E_Petname]." 
+                call ch__m("I'm in my room, "+newgirl.girls["Mystique"]["Petname"]+"." )
         elif newgirl.girls["Mystique"]["Loc"] == "bg player": 
-                ch_m "I'm waiting in your room, [E_Petname]. . ."   
+                call ch__m("I'm waiting in your room, "+newgirl.girls["Mystique"]["Petname"]+". . ."   )
         elif newgirl.girls["Mystique"]["Loc"] == "bg showerroom":    
             if ApprovalCheck("Mystique", 1600):
-                ch_m "I'm in the shower right now, [E_Petname], do you need an invitation?"
+                call ch__m("I'm in the shower right now, "+newgirl.girls["Mystique"]["Petname"]+", do you need an invitation?")
             else:            
-                ch_m "I'm in the shower right now, [E_Petname], perhaps I'll see you later."       
+                call ch__m("I'm in the shower right now, "+newgirl.girls["Mystique"]["Petname"]+", perhaps I'll see you later."       )
                 $ newgirl.girls["Mystique"]["RecentActions"].append("no summon")         
                 return      
         elif newgirl.girls["Mystique"]["Loc"] == "hold":
@@ -2714,7 +2717,7 @@ label Mystique_Summon(Tempmod=Tempmod):
                 $ newgirl.girls["Mystique"]["RecentActions"].append("no summon") 
                 return      
         else:        
-                ch_m "You could always come over here, [E_Petname]."    
+                call ch__m("You could always come over here, "+newgirl.girls["Mystique"]["Petname"]+"."    )
            
            
         if "summoned" in newgirl.girls["Mystique"]["RecentActions"]:
@@ -2784,7 +2787,7 @@ label Mystique_Summon(Tempmod=Tempmod):
                         $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, -1)  
                         $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 50, 2)                                
                         $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 90, 1)  
-                        ch_m "Ok, fine, [E_Petname]."              
+                        call ch__m("Ok, fine, "+newgirl.girls["Mystique"]["Petname"]+"."              )
                         $ Line = "yes"
                         
                     elif ApprovalCheck("Mystique", 200, "O"):                                         
@@ -2809,7 +2812,7 @@ label Mystique_Summon(Tempmod=Tempmod):
         if newgirl.girls["Mystique"]["Love"] > newgirl.girls["Mystique"]["Obed"]:
             ch_m "I'd love to."
         else:
-            ch_m "I'll be right there, [E_Petname]."
+            call ch__m("I'll be right there, "+newgirl.girls["Mystique"]["Petname"]+".")
         $ Line = "yes" 
         
     if not Line:                                                                        
@@ -2820,9 +2823,9 @@ label Mystique_Summon(Tempmod=Tempmod):
     if Line == "no":                                                                    
             # She's refused, context based dialog
             if newgirl.girls["Mystique"]["Loc"] == "bg teacher":
-                ch_m "I can't exactly leave class, [E_Petname]." 
+                call ch__m("I can't exactly leave class, "+newgirl.girls["Mystique"]["Petname"]+"." )
             elif newgirl.girls["Mystique"]["Loc"] == "bg classroom":
-                ch_m "I have a lot of paperwork, [E_Petname]." 
+                call ch__m("I have a lot of paperwork, "+newgirl.girls["Mystique"]["Petname"]+"." )
             elif newgirl.girls["Mystique"]["Loc"] == "bg dangerroom": 
                 ch_m "I'm just getting warmed up here."
             else:
@@ -2961,7 +2964,7 @@ label Mystique_Leave(Tempmod=Tempmod, GirlsNum = 0):
     elif newgirl.girls["Mystique"]["Loc"] == "bg Mystique": 
         ch_m "I'm heading back to my room, but you can walk me back." 
     elif newgirl.girls["Mystique"]["Loc"] == "bg player": 
-        ch_m "I'm actually heading to your room, [E_Petname]."   
+        call ch__m("I'm actually heading to your room, "+newgirl.girls["Mystique"]["Petname"]+"."   )
     elif newgirl.girls["Mystique"]["Loc"] == "bg showerroom":    
         if ApprovalCheck("Mystique", 1600):
             ch_m "I'm catching a quick shower, care to join me?"
@@ -3048,9 +3051,9 @@ label Mystique_Leave(Tempmod=Tempmod, GirlsNum = 0):
     if Line == "no":                                                                    
             # She's refused, context based dialog
             if newgirl.girls["Mystique"]["Loc"] == "bg teacher":
-                ch_m "I'm not \"cutting class,\" [E_Petname]." 
+                call ch__m("I'm not \"cutting class,\" "+newgirl.girls["Mystique"]["Petname"]+"." )
             elif newgirl.girls["Mystique"]["Loc"] == "bg classroom":
-                ch_m "I'm afraid not, [E_Petname], I need to get this work done." 
+                call ch__m("I'm afraid not, "+newgirl.girls["Mystique"]["Petname"]+", I need to get this work done." )
             elif newgirl.girls["Mystique"]["Loc"] == "bg dangerroom": 
                 ch_m "I'm sorry, but how do you think I keep this figure?"
             else:
@@ -3120,7 +3123,7 @@ label Mystique_Dismissed(Leaving = 0):
                 if newgirl.girls["Mystique"]["Loc"] != bg_current and not ApprovalCheck("Mystique", 600, "O"):
                         ch_m "Be that as it may, I'll stick around for a bit."
                 else:
-                        ch_m "Very well, [E_Petname]"
+                        call ch__m("Very well, "+newgirl.girls["Mystique"]["Petname"]+"")
                         $ Leaving = 1                   
         "Could you give me the room please?":                            
                 if newgirl.girls["Mystique"]["Loc"] != bg_current and not ApprovalCheck("Mystique", 800, "LO"):
@@ -3168,7 +3171,7 @@ label Mystique_Dismissed(Leaving = 0):
                                         $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 60, 10)
                                         $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 80, 5)
                                 call MystiqueFace("angry") 
-                                ch_m "I'll leave, but do not test me, [E_Petname]"      
+                                call ch__m("I'll leave, but do not test me, "+newgirl.girls["Mystique"]["Petname"]+""      )
                                 $ Leaving = 1                         
                         elif newgirl.girls["Mystique"]["Loc"] != bg_current:
                                 #If she has someplace to be but is not obedient
@@ -3717,9 +3720,9 @@ label Mystique_Clothes(Public=0,Bonus=0):
                                 call MystiqueFace("surprised")
                                 $ newgirl.girls["Mystique"]["Brows"] = "angry"
                                 if Taboo:
-                                    ch_m "I'm afraid not out here, [E_Petname]!"
+                                    call ch__m("I'm afraid not out here, "+newgirl.girls["Mystique"]["Petname"]+"!")
                                 else:
-                                    ch_m "You wish, [E_Petname]!"
+                                    call ch__m("You wish, "+newgirl.girls["Mystique"]["Petname"]+"!")
                                 return 0
                                 
             "Never mind.":
@@ -3746,7 +3749,7 @@ label Mystique_Clothes(Public=0,Bonus=0):
                 ch_m "I don't think that would be appropriate."
                 jump Mystique_Clothes 
             else:
-                ch_m "I'm afraid not, [E_Petname]."
+                call ch__m("I'm afraid not, "+newgirl.girls["Mystique"]["Petname"]+".")
                 jump Mystique_Clothes 
             $ Line = newgirl.girls["Mystique"]["Chest"]
             $ newgirl.girls["Mystique"]["Chest"] = 0
@@ -3825,9 +3828,9 @@ label Mystique_Clothes(Public=0,Bonus=0):
                         call MystiqueFace("surprised")
                         $ newgirl.girls["Mystique"]["Brows"] = "angry"
                         if Taboo:
-                            ch_m "I don't think I could out here, [E_Petname]!"
+                            call ch__m("I don't think I could out here, "+newgirl.girls["Mystique"]["Petname"]+"!")
                         else:
-                            ch_m "I could, but I won't, [E_Petname]!"
+                            call ch__m("I could, but I won't, "+newgirl.girls["Mystique"]["Petname"]+"!")
                         jump Mystique_Clothes
                         
                         
@@ -4011,7 +4014,7 @@ label Mystique_Clothes(Public=0,Bonus=0):
             else: 
                 call MystiqueFace("surprised")
                 $ newgirl.girls["Mystique"]["Brows"] = "angry"
-                ch_m "I don't see how that's your concern, [E_Petname]."
+                call ch__m("I don't see how that's your concern, "+newgirl.girls["Mystique"]["Petname"]+".")
                 jump Mystique_Clothes
             $ newgirl.girls["Mystique"]["Todo"].append("pubes")
             $ newgirl.girls["Mystique"]["PubeC"] = 6
@@ -4032,7 +4035,7 @@ label Mystique_Clothes(Public=0,Bonus=0):
                 else: 
                     call MystiqueFace("surprised")
                     $ newgirl.girls["Mystique"]["Brows"] = "angry"
-                    ch_m "I don't see how that's your concern, [E_Petname]."
+                    call ch__m("I don't see how that's your concern, "+newgirl.girls["Mystique"]["Petname"]+".")
                     jump Mystique_Clothes
                 $ newgirl.girls["Mystique"]["Todo"].append("shave")        
         "Piercings. [[See what she looks like without them first] (locked)" if not newgirl.girls["Mystique"]["SeenPussy"] and not newgirl.girls["Mystique"]["SeenChest"]:
@@ -4050,7 +4053,7 @@ label Mystique_Clothes(Public=0,Bonus=0):
             else: 
                     call MystiqueFace("surprised")
                     $ newgirl.girls["Mystique"]["Brows"] = "angry"
-                    ch_m "Well, I'm just not ready for that sort of thing, [E_Petname]."
+                    call ch__m("Well, I'm just not ready for that sort of thing, "+newgirl.girls["Mystique"]["Petname"]+".")
                     jump Mystique_Clothes            
             $ newgirl.girls["Mystique"]["Todo"].append("ring")
         
@@ -4066,7 +4069,7 @@ label Mystique_Clothes(Public=0,Bonus=0):
             else: 
                 call MystiqueFace("surprised")
                 $ newgirl.girls["Mystique"]["Brows"] = "angry"
-                ch_m "Well, I'm just not ready for that sort of thing, [E_Petname]."
+                call ch__m("Well, I'm just not ready for that sort of thing, "+newgirl.girls["Mystique"]["Petname"]+".")
                 jump Mystique_Clothes                
             $ newgirl.girls["Mystique"]["Todo"].append("barbell")
             $ newgirl.girls["Mystique"]["Pierce"] = "barbell"
@@ -4382,7 +4385,7 @@ label Mystique_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agr
                         elif HoseNum("Mystique") >= 10:
                             ch_m "I guess these [E_Hose] will work fine."
                         else:
-                            ch_m "I'm unsure about wearing a towel out, [E_Petname]. . ."
+                            call ch__m("I'm unsure about wearing a towel out, "+newgirl.girls["Mystique"]["Petname"]+". . .")
                         if not newgirl.girls["Mystique"]["Panties"]:
                             if ApprovalCheck("Mystique", 500, "I", TabM=0):
                                 ch_m "I do enjoy going without panties."
@@ -4438,14 +4441,14 @@ label Mystique_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agr
                             $ Agree = 0
                             
                     #elif Tempshame >= 15 and "public" not in newgirl.girls["Mystique"]["History"]:                 #maybe remove later     
-                    #        ch_m "I doubt I could get away with this in public, [E_Petname]."
+                    # _  (    ch_m "I doubt I could get away with this in public, "+newgirl.girls["Mystique"]["Petname"]+".")
                     #        $ Agree = 0
                         
                     elif Tempshame <= 25 and (ApprovalCheck("Mystique", 2300, TabM=0, C = 0) or ApprovalCheck("Mystique", 700, "I", TabM=0, C = 0)):
                             ch_m "This is particularly inappropriate. . . in the best ways."
                     elif Tempshame <= 25:
                             call MystiqueFace("angry", 1)
-                            ch_m "I don't believe even I could pull off this look, [E_Petname]."
+                            call ch__m("I don't believe even I could pull off this look, "+newgirl.girls["Mystique"]["Petname"]+".")
                             $ Agree = 0
                     elif (ApprovalCheck("Mystique", 2500, TabM=0, C = 0) or ApprovalCheck("Mystique", 800, "I", TabM=0, C = 0)):
                             call MystiqueFace("bemused", 1)

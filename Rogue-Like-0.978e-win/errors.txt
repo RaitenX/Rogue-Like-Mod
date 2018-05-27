@@ -2,8 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 3933: expected statement.
-    Grils = 3
-          ^
+File "game/script.rpy", line 73: expected '=' not found.
+    default newgirl.girls["Mystique"]["Love"] = 300
+                         ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

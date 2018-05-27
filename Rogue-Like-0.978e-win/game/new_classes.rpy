@@ -81,9 +81,9 @@ init python:
             self.girls = {
                             name : {
 
-                                    "name" : name,
-                                    "Petname" : "young man",       #What Emma calls the player
-                                    "Petnames" : ["young man"],
+                                    "Name" : name,
+                                    "Petname" : "myyyy man",       #What Emma calls the player
+                                    "Petnames" : ["myyyy man"],
                                     "Pet" : "Ms. Frost" ,          #What you call Emma
                                     "Pets" : ["Ms. Frost"],
                                     "Rules" : 1,
@@ -94,6 +94,7 @@ init python:
                                     "Inbt" : 200,
                                     "Lust" : 10,
                                     "LikeRogue" : 500,
+                                    "LikeEmma" : 500,
                                     "LikeKitty" : 500,
                                     "Addict" : 0, #how addicted she is
                                     "Addictionrate" : 0, #How faster her addiciton rises
@@ -344,9 +345,16 @@ init python:
         
         # def add_othergirls(self):
         #     self.girls.append(Girl())
+    def NewGirlSomething(girl="Mystique", attribute="Petname"):
+        return newgirl.girls[girl][attribute]
     
     
-    
+label ch__m(text=""):
+    #if text != "":
+    $ renpy.say(ch_m,text)
+    #hide screen hermione_head #h_head2
+    return
+
 
 # girlnew = Girlnew()
 # girlnew.add_othergirls()
