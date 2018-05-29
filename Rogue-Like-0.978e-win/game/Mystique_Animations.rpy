@@ -1,323 +1,449 @@
 ﻿# Basic character Sprites
 image Mystique_Sprite:
     LiveComposite(
-        (402,965), 
-        (0,0), ConditionSwitch(       
-            'renpy.showing("Emma_BJ_Animation") or not newgirl.girls["Mystique"]["Hair"]', Null(),
-            '(newgirl.girls["Mystique"]["Hair"] == "wet" or E_Water) and newgirl.girls["Mystique"]["HairColor"] == "red"', "images/EmmaSprite/EmmaSprite_HairbackWet_Red.png",
-            '(newgirl.girls["Mystique"]["Hair"] == "wet" or E_Water) and newgirl.girls["Mystique"]["HairColor"] == "white"', "images/EmmaSprite/EmmaSprite_HairbackWet_White.png",
-            '(newgirl.girls["Mystique"]["Hair"] == "wet" or E_Water) and newgirl.girls["Mystique"]["HairColor"] == "black"', "images/EmmaSprite/EmmaSprite_HairBlackbackWet.png",
-            'newgirl.girls["Mystique"]["Hair"] == "wet" or E_Water', "images/EmmaSprite/EmmaSprite_HairbackWet.png",
-            'newgirl.girls["Mystique"]["Hair"] and newgirl.girls["Mystique"]["HairColor"] == "red"', "images/EmmaSprite/EmmaSprite_Hairback_Red.png",   
-            'newgirl.girls["Mystique"]["Hair"] and newgirl.girls["Mystique"]["HairColor"] == "white"', "images/EmmaSprite/EmmaSprite_Hairback_White.png",   
-            'newgirl.girls["Mystique"]["Hair"] and newgirl.girls["Mystique"]["HairColor"] == "black"', "images/EmmaSprite/EmmaSprite_HairBlackback.png",   
-            'newgirl.girls["Mystique"]["Hair"]', "images/EmmaSprite/EmmaSprite_Hairback.png",   
-            "True", Null(),        
-            ),  
-        (0,0), ConditionSwitch(                                                                         #hair back 
-            "E_Over == 'black cape'", "images/EmmaSprite/EmmaSprite_LongCape_Back_Black.png",   
-            "E_Over == 'cape'", "images/EmmaSprite/EmmaSprite_LongCape_Back.png",   
-            "True", Null(),        
-            ),
-        (0,0), ConditionSwitch(                                                                         #panties down back 
-            "E_PantiesDown and E_Panties == 'black panties'", "images/EmmaSprite/EmmaSprite_Panties_DownBack_Black.png",   
-            "E_PantiesDown and E_Panties == 'white panties'", "images/EmmaSprite/EmmaSprite_Panties_DownBack.png",   
-            "E_PantiesDown and E_Panties == 'bikini'", "images/EmmaSprite/EmmaSprite_Panties_DownBack.png",   
-            "True", Null(),        
-            ),  
-        (0,0), ConditionSwitch(                                                                         #legs 
-            "Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Legs_Arms2.png",   
-            "True", "images/EmmaSprite/EmmaSprite_Legs_Arms1.png", #if E_Arms == 1         
+        (480,960),
+         (0,0), ConditionSwitch(                                                                         #Overhsirt backing
+        #     "R_Over == 'mesh top' and Rogue_Arms == 1", "images/RogueSprite/Rogue_under_mesh1.png",
+        #     "R_Over == 'mesh top' and Rogue_Arms == 2", "images/RogueSprite/Rogue_under_mesh2.png",
+        #     "R_Over == 'white mesh top' and Rogue_Arms == 1", "images/RogueSprite/Rogue_under_whitemesh1.png",
+        #     "R_Over == 'white mesh top' and Rogue_Arms == 2", "images/RogueSprite/Rogue_under_whitemesh2.png",
+        #     "R_Over == 'blue mesh top' and Rogue_Arms == 1", "images/RogueSprite/Rogue_under_bluemesh1.png",
+        #     "R_Over == 'blue mesh top' and Rogue_Arms == 2", "images/RogueSprite/Rogue_under_bluemesh2.png",
+        #     "R_Over == 'red mesh top' and Rogue_Arms == 1", "images/RogueSprite/Rogue_under_redmesh1.png",
+        #     "R_Over == 'red mesh top' and Rogue_Arms == 2", "images/RogueSprite/Rogue_under_redmesh2.png",
+        #     "R_Over == 'yellow mesh top' and Rogue_Arms == 1", "images/RogueSprite/Rogue_under_yellowmesh1.png",
+        #     "R_Over == 'yellow mesh top' and Rogue_Arms == 2", "images/RogueSprite/Rogue_under_yellowmesh2.png",
+        #     "R_Over == 'black mesh top' and Rogue_Arms == 1", "images/RogueSprite/Rogue_under_blackmesh1.png",
+        #     "R_Over == 'black mesh top' and Rogue_Arms == 2", "images/RogueSprite/Rogue_under_blackmesh2.png",  
+        #     "R_Over == 'nighty'", "images/RogueSprite/Rogue_over_nighty1.png",
+        #     "R_Over == 'hoodie'", "images/RogueSprite/Rogue_over_hoodieB.png",
+        #     "R_Over == 'blue hoodie'", "images/RogueSprite/Rogue_over_bhoodieB.png",
+        #     "R_Over == 'red hoodie'", "images/RogueSprite/Rogue_over_rhoodieB.png",
+        #     "R_Over == 'yellow hoodie'", "images/RogueSprite/Rogue_over_yhoodieB.png",
+            "newgirl['Mystique'].Over == 'black hoodie'", "images/MystiqueSprite/Mystique_over_dhoodieB.png",
+        #     "R_Over == 'white hoodie'", "images/RogueSprite/Rogue_over_whoodieB.png",
+            "True", Null(), 
             ),     
-        (0,0), ConditionSwitch(                                                                         #pubes 
-            "E_Pubes", "images/EmmaSprite/EmmaSprite_Pubes.png",   
-            "True", Null(),        
-            ),      
-        (0,0), ConditionSwitch(                                                                         #Water effect 
-            "E_Water", "images/EmmaSprite/EmmaSprite_Water_Legs.png",   
-            "True", Null(),        
+        (0,0), ConditionSwitch(                                                                         #body 
+            # "R_Tan == 'tan1'", "images/RogueSprite/Rogue_t1body_bare.png",
+            # "R_Tan == 'tan'", "images/RogueSprite/Rogue_tbody_bare.png",
+            "True", "images/MystiqueSprite/Mystique_body_bare.png",         
             ),  
-        (0,0), ConditionSwitch(                                                                         #panties down if not wearing pants
-            "not E_PantiesDown or (E_Legs and not E_Upskirt)", Null(),   
-            "E_Panties == 'black panties'", "images/EmmaSprite/EmmaSprite_Panties_Down_Black.png",  
-            "E_Panties == 'white panties'", "images/EmmaSprite/EmmaSprite_Panties_Down.png",  
-            "E_Panties == 'bikini'", "images/EmmaSprite/EmmaSprite_Panties_Down.png",  
-            "True", Null(),        
-            ),   
-        (0,0), ConditionSwitch(                                                                         #pants    
-            "E_Panties == 'naked pool'", Null(),
-            "not E_PantiesDown or (E_Legs and not E_Upskirt)", Null(),   
-            "E_Panties and E_Wet", "images/EmmaSprite/EmmaSprite_WetCrotch_Down_Overlay.png", 
-            "True", Null(), 
-            ),      
-        (0,0), ConditionSwitch(                                                                         #panties up
-            "E_PantiesDown and (not E_Legs or E_Upskirt)", Null(),   
-            "E_Panties == 'black panties'", "images/EmmaSprite/EmmaSprite_Panties_Black.png",  
-            "E_Panties == 'white panties'", "images/EmmaSprite/EmmaSprite_Panties.png",  
-            "E_Panties == 'bikini'", "images/EmmaSprite/EmmaSprite_BikiniBottom.png",  
-            "True", Null(),        
-            ),  
-        (0,0), ConditionSwitch(                                                                         #pants    
-            "E_Panties == 'naked pool'", Null(),
-            "E_PantiesDown and (not E_Legs or E_Upskirt)", Null(),   
-            "E_Panties and E_Wet", "images/EmmaSprite/EmmaSprite_WetCrotch_Overlay.png", 
-            "True", Null(), 
-            ), 
-        (0,0), ConditionSwitch(                                                                         #pants    
-            "newgirl.girls['Mystique']['Legs'] == 'black pants' and not E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_Black.png", 
-            "newgirl.girls['Mystique']['Legs'] == 'pants' and not E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants.png", 
-            "newgirl.girls['Mystique']['Legs'] == 'NewX' and not E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_NewX.png", 
-            "newgirl.girls['Mystique']['Legs'] == 'NewX black' and not E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_NewXBlack.png", 
-            "newgirl.girls['Mystique']['Legs'] == 'NewX' and E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_NewX_unzip.png", 
-            "newgirl.girls['Mystique']['Legs'] == 'NewX black' and E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_NewXBlack_unzip.png", 
-            "True", Null(), 
-            ), 
-        (0,0), ConditionSwitch(                                                                         #pants    
-            "not E_Legs or E_Upskirt", Null(),
-            "E_Legs and E_Wet", "images/EmmaSprite/EmmaSprite_WetCrotch_Overlay.png", 
-            "True", Null(), 
-            ), 
-
-        # (0,0), ConditionSwitch(                                                                         #Personal Wetness            
-        #     "not E_Wet", Null(), EmmaSprite_WetCrotch_Overlay.png
-        #     "E_Legs and E_Wet <= 1", Null(),
-        #     "E_Legs", "images/EmmaSprite/EmmaSprite_Wet.png",
-        #     "E_Wet == 1", "images/EmmaSprite/EmmaSprite_Wet.png",
-        #     "True", "images/EmmaSprite/EmmaSprite_Wet.png",       #E_Wet >1
+        # (0,0), ConditionSwitch(                                                                         #body 
+        #     "R_Pubes and R_HairColor == 'black'", "images/RogueSprite/Rogue_bodyhaired_pubesblack.png",
+        #     "R_Pubes and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_bodyhaired_pubesblonde.png",
+        #     #"R_Pubes and R_Pierce == 'barbell'", "images/RogueSprite/Rogue_bodyhaired_barbell.png",
+        #     #"R_Pierce == 'ring'", "images/RogueSprite/Rogue_body_ring.png",            
+        #     #"R_Pierce == 'barbell'", "images/RogueSprite/Rogue_body_barbell.png",
+        #     "R_Pubes", "images/RogueSprite/Rogue_bodyhaired_pubes.png",   
+        #     "True", Null(),         
         #     ),  
-        (0,0), ConditionSwitch(                                                                         #Personal Wetness            
-            "E_Legs or not E_Wet", Null(),
-            #"E_Panties == 'naked pool'", Null(),
-            "E_Panties and E_Panties != 'naked pool' and not E_PantiesDown and E_Wet < 2", Null(),
-            "E_Panties and E_Panties != 'naked pool' and not E_PantiesDown", "images/EmmaSprite/EmmaSprite_Wet1.png",
-            "E_Wet == 2", "images/EmmaSprite/EmmaSprite_Wet2.png",
-            "True", "images/EmmaSprite/EmmaSprite_Wet1.png",
-            ),     
-        (0,0), ConditionSwitch(                                                                         #pussy spunk 
-            "E_Legs", Null(),
-            "'pussy' in E_Spunk", "images/EmmaSprite/EmmaSprite_Spunk_Pussy.png",
-            "True", Null(), 
-            ),    
-        (0,0), ConditionSwitch(                                                                         #Chest underlayer
-            "E_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_CorsetUnder_Black.png",   
-            "E_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_CorsetUnder.png",   
-            "E_Chest == 'NewX'", "images/EmmaSprite/EmmaSprite_CorsetUnder_NewX.png",   
-            "E_Chest == 'NewX black'", "images/EmmaSprite/EmmaSprite_CorsetUnder_NewXBlack.png",   
-            "True", Null(),              
-            ), 
-        (0,0), ConditionSwitch(                                                                         #Towel underlayer
-            "E_Over == 'towel'", "images/EmmaSprite/EmmaSprite_Towel_Under.png",   
-            "True", Null(),              
-            ), 
-        (0,0), ConditionSwitch(                                                                         #arms 
-            "Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Arms2.png",         # one hand up
-            "True", "images/EmmaSprite/EmmaSprite_Arms1.png", #if E_Arms == 1   # Crossed        
-            ),  
-        (0,0), ConditionSwitch(                                                                         #Water effect 
-            "not E_Water", Null(),             
-            "Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Water_Arms2.png",   
-            "True", "images/EmmaSprite/EmmaSprite_Water_Arms1.png", #if E_Arms == 1      
-            ), 
-        (0,0), ConditionSwitch(                                                                         #gloves 
-            "not E_Arms", Null(),  
-            "Emma_Arms == 2 and E_Arms == 'black gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms2_Black.png",   
-            "E_Arms == 'black gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms1_Black.png", #if E_Arms == 1         
-            "Emma_Arms == 2 and E_Arms == 'white gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms2.png",   
-            "True", "images/EmmaSprite/EmmaSprite_Gloves_Arms1.png", #if E_Arms == 1         
+        (0,0), ConditionSwitch(                                                                         #body 
+            #"R_Pubes and R_Pierce == 'ring'", "images/RogueSprite/Rogue_bodyhaired_ring.png",
+            #"R_Pubes and R_Pierce == 'barbell'", "images/RogueSprite/Rogue_bodyhaired_barbell.png",
+            # "newgirl['Mystique'].Pierce == 'ring'", "images/RogueSprite/Rogue_body_piercing_ring.png",            
+            # "newgirl['Mystique'].Pierce == 'barbell'", "images/RogueSprite/Rogue_body_piercing_barbell.png",
+            #"R_Pubes", "images/RogueSprite/Rogue_bodyhaired_bare.png",   
+            "True", Null(),         
             ),   
-        (0,0), ConditionSwitch(                                                                         #tits
-#            "E_Pierce == 'barbell'", "images/EmmaSprite/Emma_chest_barbell.png",            
-#            "E_Pierce == 'ring'", "images/EmmaSprite/Emma_chest_rings.png",      
-            "Emma_Arms == 1 or E_Chest == 'corset' or E_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_TitsUp.png",   # E_TitsUp = 1
-            "E_Chest == 'sports bra' or E_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_TitsUp.png",   # E_TitsUp = 1
-#            "E_TitsUp", "images/EmmaSprite/EmmaSprite_TitsUp.png",   # E_TitsUp = 1
-            "True", "images/EmmaSprite/EmmaSprite_TitsDown.png",   # E_TitsUp = 0
-            ), 
-        (0,0), ConditionSwitch(                                                                         #Water effect 
-            "not E_Water", Null(),             
-            "Emma_Arms == 1 or E_Chest == 'corset' or E_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_Water_TitsUp.png",  
-            "True", "images/EmmaSprite/EmmaSprite_Water_TitsDown.png", #if E_Arms == 1      
-            ), 
-        (0,0), ConditionSwitch(                                                                         #Chest layer
-            "E_Chest == 'black corset' and E_Over", "images/EmmaSprite/EmmaSprite_CorsetTitsX_Black.png",   
-            "E_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_CorsetTits_Black.png",   
-            "E_Chest == 'corset' and E_Over", "images/EmmaSprite/EmmaSprite_CorsetTitsX.png",   
-            "E_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_CorsetTits.png",   
-            "E_Chest == 'NewX' and Emma_Arms == 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewX_Up.png",   
-            "E_Chest == 'NewX black' and Emma_Arms == 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewXBlack_Up.png",   
-            "E_Chest == 'bikini' and Emma_Arms == 1", "images/EmmaSprite/EmmaSprite_BikiniTits_Up.png",   
-            "E_Chest == 'NewX' and Emma_Arms > 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewX_Down.png",   
-            "E_Chest == 'NewX black' and Emma_Arms > 1", "images/EmmaSprite/EmmaSprite_CorsetTits_NewXBlack_Down.png",   
-            "E_Chest == 'bikini' and Emma_Arms > 1", "images/EmmaSprite/EmmaSprite_BikiniTits_Down.png",   
-            "True", Null(),              
+        #(0,0), ConditionSwitch(                                                                         #body 
+        #    "R_Pubes and R_Pierce == 'ring'", "images/RogueSprite/Rogue_bodyhaired_ring.png",
+        #    "R_Pubes and R_Pierce == 'barbell'", "images/RogueSprite/Rogue_bodyhaired_barbell.png",
+        #    "R_Pierce == 'ring'", "images/RogueSprite/Rogue_body_ring.png",            
+        #    "R_Pierce == 'barbell'", "images/RogueSprite/Rogue_body_barbell.png",
+        #    "R_Pubes", "images/RogueSprite/Rogue_bodyhaired_bare.png",   
+        #    "True", "images/RogueSprite/Rogue_body_bare.png",         
+        #    ),              
+        (0,0), ConditionSwitch(                                                                         #head 
+            "renpy.showing('Mystique_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Mystique_TJ_Animation')", Null(),
+            # "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_head_evowet.png",
+            # "R_Hair == 'evo' and R_Blush == 2", "images/RogueSprite/Rogue_head_evo_blush2.png",
+            # "R_Hair == 'evo' and R_Blush", "images/RogueSprite/Rogue_head_evo_blush.png",
+            # "R_Hair == 'evo'", "images/RogueSprite/Rogue_head_evo.png",
+            "True", "images/MystiqueSprite/Mystique_head_base.png",
+            ),  
+        # (0,0), ConditionSwitch(                                                                         #pants backing/hose    
+        #     "R_Hose == 'stockings'", "images/RogueSprite/Rogue_hose.png",     
+        #     "R_Legs == 'pants' and R_Upskirt", "images/RogueSprite/Rogue_pantsback.png", 
+        #     "True", Null(), 
+        #     ),
+        (0,0), ConditionSwitch(                                                                         #Panties            
+            "not newgirl['Mystique'].Panties", Null(),
+            # "R_Panties == 'swimsuit1' or R_Panties == 'swimsuit2'", Null(),
+            # "R_Legs == 'pants' and not R_Upskirt", "images/RogueSprite/Rogue_panties.png",             
+            # "R_Panties == 'shorts' and R_PantiesDown and R_Wet > 1", "images/RogueSprite/Rogue_shorts_down_wet.png",
+            # "R_Panties == 'red shorts' and R_PantiesDown and R_Wet > 1", "images/RogueSprite/Rogue_ryshorts_down_wet.png",
+            # "R_Panties == 'blue shorts' and R_PantiesDown and R_Wet > 1", "images/RogueSprite/Rogue_byshorts_down_wet.png",
+            # "R_Panties == 'shorts' and R_PantiesDown", "images/RogueSprite/Rogue_shorts_down.png",
+            # "R_Panties == 'red shorts' and R_PantiesDown", "images/RogueSprite/Rogue_ryshorts_down.png",
+            # "R_Panties == 'blue shorts' and R_PantiesDown", "images/RogueSprite/Rogue_byshorts_down.png",  
+            # "R_Panties == 'shorts' and R_Wet > 1", "images/RogueSprite/Rogue_shorts_wet.png",
+            # "R_Panties == 'red shorts' and R_Wet > 1", "images/RogueSprite/Rogue_ryshorts_wet.png",
+            # "R_Panties == 'blue shorts' and R_Wet > 1", "images/RogueSprite/Rogue_byshorts_wet.png",          
+            # "R_Panties == 'shorts'", "images/RogueSprite/Rogue_shorts.png",
+            # "R_Panties == 'red shorts'", "images/RogueSprite/Rogue_ryshorts.png",
+            # "R_Panties == 'blue shorts'", "images/RogueSprite/Rogue_byshorts.png",
+            # "R_Panties == 'green panties' and R_PantiesDown and R_Wet > 1", "images/RogueSprite/Rogue_undies_down_wet.png",
+            # "R_Panties == 'green panties' and R_PantiesDown", "images/RogueSprite/Rogue_undies_down.png",  
+            # "R_Panties == 'green panties' and R_Wet > 1", "images/RogueSprite/Rogue_undies_wet.png",          
+            # "R_Panties == 'green panties'", "images/RogueSprite/Rogue_undies.png",
+            # "R_Panties == 'black large panties' and R_PantiesDown and R_Wet > 1", "images/RogueSprite/Rogue_undiesBlack_down_wet.png",
+            # "R_Panties == 'black large panties' and R_PantiesDown", "images/RogueSprite/Rogue_undiesBlack_down.png",  
+            # "R_Panties == 'black large panties' and R_Wet > 1", "images/RogueSprite/Rogue_undiesBlack_wet.png",          
+            # "R_Panties == 'black large panties'", "images/RogueSprite/Rogue_undiesBlack.png",
+            # "R_Panties == 'lace panties' and R_PantiesDown", "images/RogueSprite/Rogue_panties_down.png",      
+            # "R_Panties == 'black panties' and R_PantiesDown", "images/RogueSprite/Rogue_panties_down.png",      
+            # "R_Panties == 'lace panties'", "images/RogueSprite/Rogue_lacepanties.png",         
+            "newgirl['Mystique'].Panties and newgirl['Mystique'].PantiesDown", "images/MystiqueSprite/Mystique_panties_down.png",      
+            "True", "images/MystiqueSprite/Mystique_panties.png",            
             ),
-        (0,0), ConditionSwitch(                                                                         #cape layer       
-            "E_Over or (E_Chest != 'corset' and E_Chest != 'black corset')", Null(),  
-            "Emma_Arms == 2 and E_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Cape2.png",              
-            "E_Chest == 'corset'", "images/EmmaSprite/EmmaSprite_Cape1.png", 
-            "Emma_Arms == 2 and E_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_Cape2_Black.png",              
-            "True", "images/EmmaSprite/EmmaSprite_Cape1_Black.png",
+        (0,0), ConditionSwitch(                                                                         #Arms and gloves
+            #"newgirl['Mystique'].Girl_Arms == 1 and R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms1b_gloved.png",                                     #Gloves, no collar
+            "newgirl['Mystique'].Girl_Arms == 1", "images/MystiqueSprite/Mystique_arms1b_bare.png",                                                              #No gloves, no collar
+            #"R_Arms == 'gloved'", "images/MystiqueSprite/Mystique_arms2b_gloved.png",                                                         #Gloved, no collar
+            "True", "images/MystiqueSprite/Mystique_arms2b_bare.png",                                                                         #No gloves, no collar
             ), 
-        (0,0), ConditionSwitch(                                                                         #neck
-            "E_Neck == 'black choker'", "images/EmmaSprite/EmmaSprite_Neck_Choker_Black.png",       
-            "E_Neck == 'choker'", "images/EmmaSprite/EmmaSprite_Neck_Choker.png",       
-            "E_Neck == 'NewX'", "images/EmmaSprite/EmmaSprite_Neck_NewX.png",       
-            "E_Neck == 'NewX black'", "images/EmmaSprite/EmmaSprite_Neck_NewXBlack.png",       
-            "True", Null(), 
-            ),  
-        (0,0), ConditionSwitch(                                                                         #Overshirt layer       
-            "not E_Over", Null(),  
-            "E_Over == 'jacket' and Emma_Arms == 2 and (E_Chest == 'corset' or E_Chest == 'black corset')", "images/EmmaSprite/EmmaSprite_Jacket_2Up.png",      
-            "E_Over == 'jacket' and Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Jacket_2Down.png",        
-            "E_Over == 'jacket'", "images/EmmaSprite/EmmaSprite_Jacket_1Up.png",    
-            "E_Over == 'black jacket' and Emma_Arms == 2 and (E_Chest == 'corset' or E_Chest == 'black corset')", "images/EmmaSprite/EmmaSprite_Jacket_2Up_Black.png",      
-            "E_Over == 'black jacket' and Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Jacket_2Down_Black.png",        
-            "E_Over == 'black jacket'", "images/EmmaSprite/EmmaSprite_Jacket_1Up_Black.png",    
-            "E_Over == 'black cape' and Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_LongCape_TitsDown_Black.png",   
-            "E_Over == 'black cape'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp_Black.png",   
-            "E_Over == 'cape' and Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_LongCape_TitsDown.png",   
-            "E_Over == 'cape'", "images/EmmaSprite/EmmaSprite_LongCape_TitsUp.png",   
-            "True", Null(), 
+        (0,0), ConditionSwitch(                                                                         #chest layer
+            #"newgirl['Mystique'].Pierce == 'barbell'", "images/RogueSprite/Rogue_chest_barbell.png",            
+            #"newgirl['Mystique'].Pierce == 'ring'", "images/RogueSprite/Rogue_chest_rings.png",      
+            "True", "images/MystiqueSprite/Mystique_chest_bare.png",     
+            ),   
+        (0,0), ConditionSwitch(                                                                         #chest clothes layer
+            # "R_Chest == 'tank'", "images/RogueSprite/Rogue_chest_tank.png",
+            # "R_Chest == 'tank short'", "images/RogueSprite/Rogue_chest_tankshort.png",
+            # "R_Chest == 'slut tank short'", "images/RogueSprite/Rogue_chest_tankshort_slut.png",
+            # "Rogue_Arms == 1 and R_Chest == 'green crop top'", "images/RogueSprite/Rogue_Sprite_Green_Crop_Top_Arms1.png",
+            # "R_Chest == 'green crop top'", "images/RogueSprite/Rogue_Sprite_Green_Crop_Top_Arms2.png",
+            # "Rogue_Arms == 1 and R_Chest == 'black crop top'", "images/RogueSprite/Rogue_Sprite_Black_Crop_Top_Arms1.png",
+            # "R_Chest == 'black crop top'", "images/RogueSprite/Rogue_Sprite_Black_Crop_Top_Arms2.png",
+            # "R_Chest == 'tape'", "images/RogueSprite/Rogue_chest_tape.png",
+            # "R_Chest == 'buttoned tank'", "images/RogueSprite/Rogue_chest_tank2.png",            
+            # "R_Chest == 'bra'", "images/RogueSprite/Rogue_chest_bra.png",                         
+            # "R_Chest == 'sports bra'", "images/RogueSprite/Rogue_chest_sportsbra.png",
+            # "R_Chest == 'blue sports bra'", "images/RogueSprite/Rogue_chest_bysportsbra.png",
+            # "R_Chest == 'red sports bra'", "images/RogueSprite/Rogue_chest_rysportsbra.png",
+            # "R_Chest == 'lace bra'", "images/RogueSprite/Rogue_chest_lacebra.png",  
+            # "R_Chest == 'cheerleader'", "images/RogueSprite/Rogue_Cheerleader_Outfit.png",
+            "newgirl['Mystique'].Chest == 'slut short top'", "images/MystiqueSprite/Mystique_chest_tankshort_slut.png",
+            "newgirl['Mystique'].Chest == 'short top'", "images/MystiqueSprite/Mystique_chest_tankshort.png",
+            "newgirl['Mystique'].Chest == 'top'", "images/MystiqueSprite/Mystique_chest_top.png",
+            "True", Null(),               
             ), 
-        (0,0), ConditionSwitch(                                                                         #Towel Over layer       
-            "not E_Over", Null(),  
-            "E_Over == 'towel' and Emma_Arms == 2 and (E_Chest == 'corset' or E_Chest == 'black corset')", "images/EmmaSprite/EmmaSprite_Towel_Up2.png",      
-            "E_Over == 'towel' and Emma_Arms == 2", "images/EmmaSprite/EmmaSprite_Towel_Down2.png",        
-            "E_Over == 'towel'", "images/EmmaSprite/EmmaSprite_Towel_Up1.png",          
-            "True", Null(), 
-            ), 
-        (55,0), "EmmaSprite_Head",                                                                           #Head
-        
-        (0,0), ConditionSwitch(                                                                         #hand spunk 
-            "Emma_Arms != 2 or 'hand' not in E_Spunk", Null(),  
-            "'mouth' in E_Spunk", "images/EmmaSprite/EmmaSprite_Spunk_HandM.png",  
-            "True", "images/EmmaSprite/EmmaSprite_Spunk_Hand.png",   
-            ), 
-        (0,0), ConditionSwitch(                                                                         #belly spunk
-            "'belly' in E_Spunk", "images/EmmaSprite/Emma_Sprite_Spunk_Belly.png",
-            "True", Null(), 
-            ),  
-#        (0,0), ConditionSwitch(                                                                         #Props
-#            "not E_Held or Emma_Arms != 2", Null(), 
-#            "Emma_Arms == 2 and E_Held == 'phone'", "images/EmmaSprite/Emma_held_phone.png",
-#            "Emma_Arms == 2 and E_Held == 'dildo'", "images/EmmaSprite/Emma_held_dildo.png",
-#            "Emma_Arms == 2 and E_Held == 'vibrator'", "images/EmmaSprite/Emma_held_vibrator.png",
-#            "Emma_Arms == 2 and E_Held == 'panties'", "images/EmmaSprite/Emma_held_panties.png",
+        # (0,0), ConditionSwitch(  
+        #     "R_Chest == 'swimsuit1' or R_Panties == 'swimsuit1'", "images/RogueSprite/Rogue_Swimsuit1.png",
+        #     "R_Chest == 'swimsuit2' or R_Panties == 'swimsuit2'", "images/RogueSprite/Rogue_Swimsuit2.png",
+        #     "True", Null(),
+        #     ),
+        # (0,0), ConditionSwitch(                                                                         #full hose/tights              
+        #     "R_PantiesDown", Null(), 
+        #     "R_Hose == 'stockings and garterbelt'", "images/RogueSprite/Rogue_hose_garter.png",                  
+        #     "R_Hose == 'pantyhose'", "images/RogueSprite/Rogue_hosefull.png",       
+        #     "R_Hose == 'fishnet'", "images/RogueSprite/Rogue_hose_fishnet.png",       
+        #     "R_Hose == 'tights' and R_Wet", "images/RogueSprite/Rogue_tights_wet.png",
+        #     "R_Hose == 'tights'", "images/RogueSprite/Rogue_tights.png",
+        #     "R_Hose == 'ripped pantyhose'", "images/RogueSprite/Rogue_hose_holed.png", 
+        #     "R_Hose == 'ripped tights'", "images/RogueSprite/Rogue_tights_holed.png",   
+        #     "True", Null(), 
+        #     ),
+        (0,0), ConditionSwitch(                                                                         #Personal Wetness            
+            "not newgirl['Mystique'].Wet", Null(),
+            "newgirl['Mystique'].Legs and newgirl['Mystique'].Wet <= 1", Null(),
+            "newgirl['Mystique'].Legs", "images/RogueSprite/Rogue_wet.png",
+            "newgirl['Mystique'].Wet == 1", "images/RogueSprite/Rogue_wet.png",
+            "True", "images/RogueSprite/Rogue_wet2.png",       #R_Wet >1
+            ),              
+        (0,0), ConditionSwitch(                                                                         #brows
+            # "R_Brows == 'normal' and R_Blush == 2", "images/RogueSprite/Rogue_brows_normal_b.png",
+            # "R_Brows == 'angry' and R_Blush == 2", "images/RogueSprite/Rogue_brows_angry_b.png",
+            # "R_Brows == 'sad' and R_Blush == 2", "images/RogueSprite/Rogue_brows_sad_b.png",
+            # "R_Brows == 'surprised' and R_Blush == 2", "images/RogueSprite/Rogue_brows_surprised_b.png",        
+            # "R_Brows == 'confused' and R_Blush == 2", "images/RogueSprite/Rogue_brows_confused_b.png",
+            "newgirl['Mystique'].Brows == 'normal'", "images/MystiqueSprite/Mystique_brows_normal.png",
+            "newgirl['Mystique'].Brows == 'angry'", "images/MystiqueSprite/Mystique_brows_angry.png",
+            "newgirl['Mystique'].Brows == 'sad'", "images/MystiqueSprite/Mystique_brows_sad.png",
+            "newgirl['Mystique'].Brows == 'surprised'", "images/MystiqueSprite/Mystique_brows_surprised.png",        
+            "newgirl['Mystique'].Brows == 'confused'", "images/MystiqueSprite/Mystique_brows_confused.png",
+            "True", "images/MystiqueSprite/Mystique_brows_normal.png",
+            ),
+#        (0,0), ConditionSwitch(                                                                         #Blush
+#            "R_Blush", "images/RogueSprite/Rogue_blush.png",
 #            "True", Null(), 
-#            ),        
+#            ),
+        (0,0), ConditionSwitch(  
+            # "'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueSprite/Rogue_mouth_ringgag_w.png",                                                                       #Mouths        
+            # "R_Gag == 'ringgag'", "images/RogueSprite/Rogue_mouth_ringgag.png",                                                                       #Mouths        
+            # "R_Gag == 'ballgag'", "images/RogueSprite/Rogue_mouth_Ballgag.png",                                                                       #Mouths        
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'sucking'", "images/MystiqueSprite/Mystique_mouth_sucking_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'surprised'", "images/MystiqueSprite/Mystique_mouth_sucking_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'sad'", "images/MystiqueSprite/Mystique_mouth_sad_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'kiss'", "images/MystiqueSprite/Mystique_mouth_sad_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'smile'", "images/MystiqueSprite/Mystique_mouth_smile_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'tongue'", "images/MystiqueSprite/Mystique_mouth_tongue_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk", "images/MystiqueSprite/Mystique_mouth_lipbite_w.png",
+            "newgirl['Mystique'].Mouth == 'normal'", "images/MystiqueSprite/Mystique_mouth_normal.png",
+            "newgirl['Mystique'].Mouth == 'lipbite'", "images/MystiqueSprite/Mystique_mouth_lipbite.png",
+            "newgirl['Mystique'].Mouth == 'sucking'", "images/MystiqueSprite/Mystique_mouth_sucking.png",            
+            "newgirl['Mystique'].Mouth == 'kiss'", "images/MystiqueSprite/Mystique_mouth_kiss.png",
+            "newgirl['Mystique'].Mouth == 'sad'", "images/MystiqueSprite/Mystique_mouth_sad.png",
+            "newgirl['Mystique'].Mouth == 'smile'", "images/MystiqueSprite/Mystique_mouth_smile.png",
+            "newgirl['Mystique'].Mouth == 'surprised'", "images/MystiqueSprite/Mystique_mouth_surprised.png",            
+            "newgirl['Mystique'].Mouth == 'tongue'", "images/MystiqueSprite/Mystique_mouth_tongue.png",                
+            "newgirl['Mystique'].Mouth == 'grimace'", "images/MystiqueSprite/Mystique_mouth_grimace.png",           
+            "True", "images/MystiqueSprite/Mystique_mouth_normal.png",
+            ),            
+        (0,0), "Mystique Blink",  
+        (0,0), ConditionSwitch(                                                                                 #Collar
+            "newgirl['Mystique'].Glasses", "images/RogueSprite/Rogue_Sprite_Glasses.png",   
+            "True", Null(),                #R_Arms == 'gloved' or not R_Arms
+            ),                                                                           #Eyes
+            
+        (0,0), ConditionSwitch(                                                                         #Pants and Skirts
+            # "R_Legs == 'pants' and R_Upskirt", "images/RogueSprite/Rogue_legs_pants_down.png", 
+            # "R_Legs == 'pants'", "images/RogueSprite/Rogue_legs_pants.png",          
+            # "R_Legs == 'skirt' and R_Upskirt", "images/RogueSprite/Rogue_legs_skirt_up.png",
+            # "R_Legs == 'skirt'", "images/RogueSprite/Rogue_legs_skirt.png",
+            # "R_Legs == 'skirtshort' and R_Upskirt", "images/RogueSprite/Rogue_legs_skirtshort_up.png",
+            # "R_Legs == 'skirtshort'", "images/RogueSprite/Rogue_legs_skirtshort.png",  
+            # "R_Legs == 'cheerleader skirt' and R_Upskirt", "images/RogueSprite/Rogue_Cheerleader_Skirt_Up.png",
+            # "R_Legs == 'cheerleader skirt'", "images/RogueSprite/Rogue_Cheerleader_Skirt.png",
+            # "R_Legs == 'cheerleader skirtshort' and R_Upskirt", "images/RogueSprite/Rogue_Cheerleader_Skirt_Short.png",
+            # "R_Legs == 'cheerleader skirtshort'", "images/RogueSprite/Rogue_Cheerleader_Skirt_Short_Up.png",            
+            "newgirl['Mystique'].Legs == 'tights' and not newgirl['Mystique'].Upskirt and newgirl['Mystique'].Wet", "images/MystiqueSprite/Mystique_tights_wet.png",
+            "newgirl['Mystique'].Legs == 'tights' and not newgirl['Mystique'].Upskirt", "images/MystiqueSprite/Mystique_tights.png",
+            "newgirl['Mystique'].Legs == 'skirt short' and newgirl['Mystique'].Upskirt", "images/MystiqueSprite/Mystique_legs_skirtshort_up.png",
+            "newgirl['Mystique'].Legs == 'skirt short'", "images/MystiqueSprite/Mystique_legs_skirtshort.png",
+            "newgirl['Mystique'].Legs == 'skirt' and newgirl['Mystique'].Upskirt", "images/MystiqueSprite/Mystique_legs_skirt_up.png",
+            "newgirl['Mystique'].Legs == 'skirt'", "images/MystiqueSprite/Mystique_legs_skirt.png",
+            "True", Null(),   
+            ),
+
+        (0,0), ConditionSwitch(                                                                         #Arms and gloves
+            "newgirl['Mystique'].Girl_Arms == 1", Null(),                                                              #No gloves, no collar
+            #"R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_gloved_.png",                           #Gloves and collar 
+            #"R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms2b_gloved_.png",                                                         #Gloved, no collar
+            #"R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_bare_.png",                                                    #No gloves, collar
+            "True", "images/MystiqueSprite/Mystique_arms2b_bare_.png",  
+            ), 
+                          
+        # (0,0), ConditionSwitch(                                                                         #water
+        #     "R_Water and Rogue_Arms == 1", "images/RogueSprite/Rogue_body_wet1.png",
+        #     "R_Water", "images/RogueSprite/Rogue_body_wet2.png",
+        #     "True", Null(),                 
+        #     ),
+        # (0,0), ConditionSwitch(                                                                         #soap
+        #     "R_Water == 3", "images/RogueSprite/Rogue_body_wet3.png",
+        #     "True", Null(),                 
+        #     ),
+        (0,0), ConditionSwitch(                                                                         #Overshirt layer
+        #     "Rogue_Arms == 1 and R_Over == 'mesh top'", "images/RogueSprite/Rogue_over_mesh1.png",
+        #     "Rogue_Arms == 1 and R_Over == 'white mesh top'", "images/RogueSprite/Rogue_over_whitemesh1.png",
+        #     "Rogue_Arms == 1 and R_Over == 'blue mesh top'", "images/RogueSprite/Rogue_over_bluemesh1.png",
+        #     "Rogue_Arms == 1 and R_Over == 'red mesh top'", "images/RogueSprite/Rogue_over_redmesh1.png",
+        #     "Rogue_Arms == 1 and R_Over == 'yellow mesh top'", "images/RogueSprite/Rogue_over_yellowmesh1.png",
+        #     "Rogue_Arms == 1 and R_Over == 'black mesh top'", "images/RogueSprite/Rogue_over_blackmesh1.png",           
+        #     "Rogue_Arms == 1 and R_Over == 'pink top'", "images/RogueSprite/Rogue_over_pink1.png",
+        #     "Rogue_Arms == 1 and R_Over == 'red top'", "images/RogueSprite/Rogue_over_red1.png",
+        #     "Rogue_Arms == 1 and R_Over == 'towel'", "images/RogueSprite/Rogue_over_towel1.png",
+        #     "Rogue_Arms == 1 and R_Over == 'nighty'", "images/RogueSprite/Rogue_over_nighty1.png",
+        #     "Rogue_Arms == 1 and R_Over == 'hoodie'", "images/RogueSprite/Rogue_over_hoodie1.png",
+        #     "Rogue_Arms == 1 and R_Over == 'blue hoodie'", "images/RogueSprite/Rogue_over_bhoodie1.png",
+        #     "Rogue_Arms == 1 and R_Over == 'red hoodie'", "images/RogueSprite/Rogue_over_rhoodie1.png",
+        #     "Rogue_Arms == 1 and R_Over == 'yellow hoodie'", "images/RogueSprite/Rogue_over_yhoodie1.png",
+            "newgirl['Mystique'].Girl_Arms == 1 and newgirl['Mystique'].Over == 'black hoodie'", "images/MystiqueSprite/Mystique_over_dhoodie1.png",
+        #     "Rogue_Arms == 1 and R_Over == 'white hoodie'", "images/RogueSprite/Rogue_over_whoodie1.png",
+        #     "R_Over == 'mesh top'", "images/RogueSprite/Rogue_over_mesh2.png",
+        #     "R_Over == 'white mesh top'", "images/RogueSprite/Rogue_over_whitemesh2.png",
+        #     "R_Over == 'blue mesh top'", "images/RogueSprite/Rogue_over_bluemesh2.png",
+        #     "R_Over == 'red mesh top'", "images/RogueSprite/Rogue_over_redmesh2.png",
+        #     "R_Over == 'yellow mesh top'", "images/RogueSprite/Rogue_over_yellowmesh2.png",
+        #     "R_Over == 'black mesh top'", "images/RogueSprite/Rogue_over_blackmesh2.png", 
+        #     "R_Over == 'pink top'", "images/RogueSprite/Rogue_over_pink2.png",
+        #     "R_Over == 'red top'", "images/RogueSprite/Rogue_over_red2.png",
+        #     "R_Over == 'hoodie'", "images/RogueSprite/Rogue_over_hoodie2.png",
+        #     "R_Over == 'blue hoodie'", "images/RogueSprite/Rogue_over_bhoodie2.png",
+        #     "R_Over == 'red hoodie'", "images/RogueSprite/Rogue_over_rhoodie2.png",
+        #     "R_Over == 'yellow hoodie'", "images/RogueSprite/Rogue_over_yhoodie2.png",
+            "newgirl['Mystique'].Over == 'black hoodie'", "images/MystiqueSprite/Mystique_over_dhoodie2.png",
+        #     "R_Over == 'white hoodie'", "images/RogueSprite/Rogue_over_whoodie2.png",
+        #     "R_Over == 'nighty'", "images/RogueSprite/Rogue_over_nighty2.png",
+        #     "R_Over == 'towel'", "images/RogueSprite/Rogue_over_towel2.png",              
+            "True", Null(), 
+            ),  
+        (0,0), ConditionSwitch(                                                                         #Hair
+            "renpy.showing('Mystique_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Mystique_TJ_Animation')", Null(),
+            # "R_Hair == 'evo' and R_Water and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_wet.png",
+            # "R_Hair == 'evo' and R_Water and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_wet.png",
+            # "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_hair_wet.png",
+            # "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_evo.png",
+            # "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_evo.png",
+            "newgirl['Mystique'].Hair", "images/MystiqueSprite/Mystique_hair_basic.png",
+            "True", Null(), 
+            ),                           
+        (0,0), ConditionSwitch(                                                                         #hand spunk
+            "not newgirl['Mystique'].Spunk", Null(), 
+            "'hand' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Girl_Arms == 2", "images/RogueSprite/Rogue_spunkhand.png",                
+            "True", Null(), 
+            ),
+        (0,0), ConditionSwitch(                                                                         #face spunk
+            "not newgirl['Mystique'].Spunk", Null(), 
+            "'facial' in newgirl['Mystique'].Spunk", "images/RogueSprite/Rogue_facial.png",
+            "True", Null(), 
+            ),  
+        (0,0), ConditionSwitch(                                                                         #belly spunk
+            "'belly' in newgirl['Mystique'].Spunk", "images/RogueSprite/Rogue_Sprite_Spunk_Belly.png",
+            "True", Null(), 
+            ),               
+        (0,0), ConditionSwitch(                                                                         #Props
+            "not newgirl['Mystique'].Held or newgirl['Mystique'].Girl_Arms != 2", Null(), 
+            "newgirl['Mystique'].Girl_Arms == 2 and newgirl['Mystique'].Held == 'phone'", "images/RogueSprite/Rogue_held_phone.png",
+            "newgirl['Mystique'].Girl_Arms == 2 and newgirl['Mystique'].Held == 'dildo'", "images/RogueSprite/Rogue_held_dildo.png",            
+            "newgirl['Mystique'].Girl_Arms == 2 and newgirl['Mystique'].Held == 'vibrator'", "images/RogueSprite/Rogue_held_vibrator.png",
+            "newgirl['Mystique'].Girl_Arms == 2 and newgirl['Mystique'].Held == 'panties'", "images/RogueSprite/Rogue_held_panties.png",
+            "True", Null(), 
+            ),        
         (0,0), ConditionSwitch(
-            #UI tool for When Emma is masturbating using Trigger3 actions
-            "E_Loc == 'bg teacher'", Null(),
-            "Trigger == 'lesbian' or not Trigger3 or Ch_Focus != 'Emma'", Null(),
-            "Trigger3 == 'fondle pussy'", "GirlGropePussy_ESelf",            
-            "Trigger3 == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeLeftBreast_E",    #When zero is working the right breast, fondle left
-            "Trigger3 == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeRightBreast_E", #When zero is working the left breast, fondle right  
-            "Trigger3 == 'fondle breasts'", "GirlGropeBothBreast_E",
-            "Trigger3 == 'vibrator breasts'", "VibratorRightBreast_E",     
-            "Trigger3 == 'vibrator pussy'", "VibratorPussy_E",
-            "Trigger3 == 'vibrator pussy insert'", "VibratorPussy_E",
-            "Trigger3 == 'vibrator anal'", "VibratorAnal_E",
-            "Trigger3 == 'vibrator anal insert'", "VibratorPussy_E",            
-            "True", Null(),             
-            ),                        
+            #UI tool for When Mystique is masturbating using Trigger3 actions
+            "Trigger == 'lesbian' or not Trigger3 or Ch_Focus != 'Mystique'", Null(),
+            "Trigger3 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy",
+            "Trigger3 == 'fondle pussy'", "GirlGropePussy",
+            "Trigger3 == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
+            "Trigger3 == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeRightBreast", #When zero is working the left breast, fondle right  
+            "Trigger3 == 'fondle breasts'", "GirlGropeRightBreast",
+            "Trigger3 == 'vibrator breasts'", "VibratorRightBreast",     
+            "Trigger3 == 'vibrator pussy'", "VibratorPussy",
+            "Trigger3 == 'vibrator pussy insert'", "VibratorPussy",
+            "Trigger3 == 'vibrator anal'", "VibratorAnal",
+            "Trigger3 == 'vibrator anal insert'", "VibratorPussy",  
+            "True", Null(), 
+            ),     
         (0,0), ConditionSwitch(  
             #UI tool for Trigger5(Threesome masutrbation) actions
-            "E_Loc == 'bg teacher'", Null(),
-            "not Trigger5 or Trigger4 != 'masturbation' or Ch_Focus == 'Emma'", Null(), 
-            #this doesn't activate unless Kitty is not primary, and actively masturbating
-            "Trigger5 == 'fondle pussy' and Trigger != 'sex' and K_Lust >= 70", "GirlFingerPussy_E",
-            "Trigger5 == 'fondle pussy'", "GirlGropePussy_E",
-            "Trigger5 == 'fondle breasts'", "GirlGropeRightBreast_E",
+            "not Trigger5 or Trigger4 != 'masturbation' or Ch_Focus == 'Mystique'", Null(), 
+            #this doesn't activate unless Mystique is not primary, and is actively masturbating
+            "Trigger5 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy",
+            "Trigger5 == 'fondle pussy'", "GirlGropePussy",
+            "Trigger5 == 'fondle breasts'", "GirlGropeRightBreast",
             "Trigger5 == 'vibrator breasts'", "VibratorRightBreast",     
             "Trigger5 == 'vibrator pussy'", "VibratorPussy",
             "Trigger5 == 'vibrator pussy insert'", "VibratorPussy",
             "Trigger5 == 'vibrator anal'", "VibratorAnal",
             "Trigger5 == 'vibrator anal insert'", "VibratorPussy",
             "True", Null(), 
-            ),               
-        (0,0), ConditionSwitch(                
+            ),   
+        (0,0), ConditionSwitch(                                                                          
             #UI tool for Trigger1(primary) actions
-            "E_Loc == 'bg teacher'", Null(),
-            "not Trigger or Ch_Focus != 'Emma'", Null(),
-            "Trigger == 'vibrator breasts'", "VibratorLeftBreast_E",
-            "Trigger == 'fondle thighs'", "GropeThigh_E",
-            "Trigger == 'fondle breasts'", "GropeLeftBreast_E",
-            "Trigger == 'suck breasts'", "LickRightBreast_E",
-            "Trigger == 'fondle pussy' and Speed == 2", "FingerPussy_E",
-            "Trigger == 'fondle pussy'", "GropePussy_E",
-            "Trigger == 'lick pussy'", "Lickpussy_E",
-            "Trigger == 'vibrator pussy'", "VibratorPussy_E",
-            "Trigger == 'vibrator pussy insert'", "VibratorPussy_E",
-            "Trigger == 'vibrator anal'", "VibratorAnal_E",
-            "Trigger == 'vibrator anal insert'", "VibratorPussy_E",
+            "not Trigger or Ch_Focus != 'Mystique'", Null(),
+            "Trigger == 'vibrator breasts'", "VibratorLeftBreast",
+            "Trigger == 'fondle thighs'", "GropeThigh",
+            "Trigger == 'fondle breasts'", "GropeRightBreast",
+            "Trigger == 'suck breasts'", "LickRightBreast",
+            "Trigger == 'vibrator pussy'", "VibratorPussy",
+            "Trigger == 'vibrator pussy insert'", "VibratorPussy",
+            "Trigger == 'vibrator anal'", "VibratorAnal",
+            "Trigger == 'vibrator anal insert'", "VibratorPussy",
+            "Trigger == 'fondle pussy' and Speed == 2", "FingerPussy",
+            "Trigger == 'fondle pussy'", "GropePussy",
+            "Trigger == 'lick pussy'", "Lickpussy",
             "True", Null(), 
             ),
-        (0,0), ConditionSwitch(                
+        (0,0), ConditionSwitch(                                                                        
             #UI tool for Trigger2(secondary) actions
-            "E_Loc == 'bg teacher'", Null(),
-            "not Trigger2 or Ch_Focus != 'Emma'", Null(),
-            "not Trigger2 and not Trigger4 and Trigger == 'fondle breasts'", "GropeRightBreast_E",        
+            "not Trigger2 or Ch_Focus != 'Mystique'", Null(),
+            "Trigger == 'fondle breasts' and not Trigger3 and not Trigger4 and not Trigger5", "GropeRightBreast",        
             #When doing nothing offhand, use both hands on breasts.
-            "Trigger2 == 'fondle breasts' and Trigger == 'suck breasts'", "GropeLeftBreast_E",            
+            "Trigger2 == 'fondle breasts' and Trigger == 'suck breasts'", "GropeLeftBreast",            
             #When sucking right breast, fondle left
-            "Trigger2 == 'fondle breasts'", "GropeRightBreast_E",
-            "Trigger2 == 'vibrator breasts' and Trigger == 'suck breasts'", "VibratorLeftBreast_E",       
+            "Trigger2 == 'fondle breasts'", "GropeLeftBreast",
+            "Trigger2 == 'vibrator breasts' and Trigger == 'suck breasts'", "VibratorLeftBreast",       
             #When sucking right breast, vibrator left
-            "Trigger2 == Trigger", Null(),
-            #When both triggers are the same, do nothing              
-            "Trigger2 == 'suck breasts'", "LickLeftBreast_E",        
-            "Trigger2 == 'fondle pussy'", "GropePussy_E",
-            "Trigger2 == 'lick pussy'", "Lickpussy_E",       
-            "Trigger2 == 'vibrator breasts'", "VibratorRightBreast_E",
-            "Trigger2 == 'vibrator pussy'", "VibratorPussy_E",
-            "Trigger2 == 'vibrator pussy insert'", "VibratorPussy_E",
-            "Trigger2 == 'vibrator anal'", "VibratorAnal_E",
-            "Trigger2 == 'vibrator anal insert'", "VibratorPussy_E",
+            "Trigger2 == Trigger", Null(),                                              
+            #When both triggers are the same, do nothing  
+            "Trigger2 == 'vibrator breasts'", "VibratorRightBreast",
+            "Trigger2 == 'suck breasts'", "LickLeftBreast",  
+            "Trigger2 == 'vibrator pussy'", "VibratorPussy",
+            "Trigger2 == 'vibrator pussy insert'", "VibratorPussy",
+            "Trigger2 == 'vibrator anal'", "VibratorAnal",
+            "Trigger2 == 'vibrator anal insert'", "VibratorPussy",
+            "Trigger2 == 'fondle pussy'", "GropePussy",
+            "Trigger2 == 'lick pussy'", "Lickpussy",
+            "Trigger2 == 'fondle thighs'", "GropeThigh",
             "True", Null(), 
-            ),    
+            ),     
         (0,0), ConditionSwitch(  
-            #UI tool for Trigger4(Threesome) actions (ie Rogue's hand on her)
-            "E_Loc == 'bg teacher'", Null(),
-            "not Trigger4 or Ch_Focus != 'Emma'", Null(),
-            "Trigger4 == 'fondle pussy' and Trigger != 'sex' and K_Lust >= 70", "GirlFingerPussy_E",
-            "Trigger4 == 'fondle pussy'", "GirlGropePussy_E",            
-            "Trigger4 == 'lick pussy'", "Lickpussy_E",
-            "Trigger4 == 'suck breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast_E", 
-            "Trigger4 == 'suck breasts'", "LickRightBreast_E",  
-            "Trigger4 == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast_E",    #When zero is working the right breast, fondle left
-            "Trigger4 == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast_E", #When zero is working the left breast, fondle right  
-            "Trigger4 == 'fondle breasts' and (Trigger3 == 'fondle breasts' or Trigger3 == 'suck breasts')", "GirlGropeLeftBreast_E", #When zero is working the left breast, fondle right  
-            "Trigger4 == 'fondle breasts'", "GirlGropeRightBreast_E",
+            #UI tool for Trigger4(Threesome) actions (ie Kitty's hand on her)
+            "not Trigger4 or Ch_Focus != 'Mystique'", Null(),
+            "Trigger4 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy",
+            "Trigger4 == 'fondle pussy'", "GirlGropePussy",            
+            "Trigger4 == 'lick pussy'", "Lickpussy",
+            "Trigger4 == 'suck breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast", 
+            "Trigger4 == 'suck breasts'", "LickRightBreast",          
             "Trigger4 == 'vibrator breasts'", "VibratorRightBreast",     
             "Trigger4 == 'vibrator pussy'", "VibratorPussy",
             "Trigger4 == 'vibrator pussy insert'", "VibratorPussy",
             "Trigger4 == 'vibrator anal'", "VibratorAnal",
             "Trigger4 == 'vibrator anal insert'", "VibratorPussy",
-            "True", Null(),             
-            ),    
-        (0,0), ConditionSwitch(             
-            #UI tool for Trigger3(lesbian) actions (ie Rogue's hand on her when Emma is secondary)
-            "E_Loc == 'bg teacher'", Null(),
-            "not Trigger3 or Ch_Focus == 'Emma'", Null(),
-            "Trigger3 == 'fondle pussy' and Trigger != 'sex' and K_Lust >= 70", "GirlFingerPussy_E",
-            "Trigger3 == 'fondle pussy'", "GirlGropePussy_E",            
-            "Trigger3 == 'lick pussy'", "Lickpussy_E",
-            "Trigger3 == 'suck breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast_E", 
-            "Trigger3 == 'suck breasts'", "LickRightBreast_E",  
-            "Trigger3 == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast_E",    #When zero is working the right breast, fondle left
-            "Trigger3 == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast_E", #When zero is working the left breast, fondle right  
-            "Trigger3 == 'fondle breasts' and (Trigger3 == 'fondle breasts' or Trigger3 == 'suck breasts')", "GirlGropeLeftBreast_E", #When zero is working the left breast, fondle right  
-            "Trigger3 == 'fondle breasts'", "GirlGropeRightBreast_E",
+            "Trigger4 == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
+            "Trigger4 == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast", #When zero is working the left breast, fondle right  
+            "Trigger4 == 'fondle breasts'", "GirlGropeRightBreast",
+            "True", Null(), 
+            ),   
+        (0,0), ConditionSwitch(  
+            #UI tool for Trigger3(lesbian) actions (ie Kitty's hand on her when Mystique is secondary)
+            "not Trigger3 or Ch_Focus == 'Mystique'", Null(),
+            "Trigger3 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy",
+            "Trigger3 == 'fondle pussy'", "GirlGropePussy",            
+            "Trigger3 == 'lick pussy'", "Lickpussy",
+            "Trigger3 == 'suck breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast", 
+            "Trigger3 == 'suck breasts'", "LickRightBreast",          
+            "Trigger3 == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
+            "Trigger3 == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast", #When zero is working the left breast, fondle right  
+            "Trigger3 == 'fondle breasts'", "GirlGropeRightBreast",
             "Trigger3 == 'vibrator breasts'", "VibratorRightBreast",     
-            "Trigger3 == 'vibrator pussy'", "VibratorPussy",
+            "Trigger3 == 'vibrator pussy'", "VibratorPussy",                 
             "Trigger3 == 'vibrator pussy insert'", "VibratorPussy",
             "Trigger3 == 'vibrator anal'", "VibratorAnal",
             "Trigger3 == 'vibrator anal insert'", "VibratorPussy",
             "True", Null(),             
-            ),         
-        )                
-    anchor (0.6, 0.0)                
-    zoom .75                
+            ),            
+        )                 
+    anchor (0.6, 0.0)               
+    zoom .75             
+    
+image Mystique Blink:
+    ConditionSwitch(
+    "newgirl['Mystique'].Eyes == 'sexy'", "images/MystiqueSprite/Mystique_eyes_sexy.png",
+    "newgirl['Mystique'].Eyes == 'side'", "images/MystiqueSprite/Mystique_eyes_side.png",
+    "newgirl['Mystique'].Eyes == 'surprised'", "images/MystiqueSprite/Mystique_eyes_surprised.png",
+    "newgirl['Mystique'].Eyes == 'normal'", "images/MystiqueSprite/Mystique_eyes_normal.png",    
+    "newgirl['Mystique'].Eyes == 'stunned'", "images/MystiqueSprite/Mystique_eyes_stunned.png",
+    "newgirl['Mystique'].Eyes == 'down'", "images/MystiqueSprite/Mystique_eyes_down.png",
+    "newgirl['Mystique'].Eyes == 'closed'", "images/MystiqueSprite/Mystique_eyes_closed.png",
+    "newgirl['Mystique'].Eyes == 'manic'", "images/MystiqueSprite/Mystique_eyes_manic.png",
+    "newgirl['Mystique'].Eyes == 'squint'", "Mystique_Squint",
+    "True", "images/MystiqueSprite/Mystique_eyes_normal.png", 
+    ),
+    choice:
+        3.5
+    choice:
+        3.25
+    choice:
+        3    
+    "images/MystiqueSprite/Mystique_eyes_closed.png"
+    .25
+    repeat                
+
+image Mystique_Squint:
+    "images/MystiqueSprite/Mystique_eyes_sexy.png"
+    choice:
+        3.5
+    choice:
+        3.25
+    choice:
+        3    
+    "images/MystiqueSprite/Mystique_eyes_squint.png"
+    .25
+    repeat  
+           
 
 image TempHairBack:
     (0,0), ConditionSwitch( 
@@ -893,7 +1019,7 @@ image Emma_BJ_Head:
     zoom .5 
 
 
-label Emma_BJ_Launch(Line = 0):    # The sequence to launch the Emma BJ animations  
+label Mystique_BJ_Launch(Line = 0):    # The sequence to launch the Emma BJ animations  
     if Trigger2 == "jackin":
         $ Trigger2 = 0
     if renpy.showing("Emma_BJ_Animation"):
@@ -941,7 +1067,7 @@ label Emma_BJ_Launch(Line = 0):    # The sequence to launch the Emma BJ animatio
         pos (645,510) 
     return
     
-label Emma_BJ_Reset: # The sequence to the Emma animations from BJ to default
+label Mystique_BJ_Reset: # The sequence to the Emma animations from BJ to default
     if not renpy.showing("Emma_BJ_Animation"):
         return
     hide Emma_BJ_Animation
@@ -1015,7 +1141,7 @@ image Emma_HJ_Animation:
         
 
 
-label Emma_HJ_Launch(Line = 0): 
+label Mystique_HJ_Launch(Line = 0): 
     $ Emma_Arms = 1
     if Trigger2 == "jackin":
         $ Trigger2 = 0
@@ -1044,7 +1170,7 @@ label Emma_HJ_Launch(Line = 0):
         offset (100,250)#(75,250)
     return
     
-label Emma_HJ_Reset: # The sequence to the Emma animations from handjob to default
+label Mystique_HJ_Reset: # The sequence to the Emma animations from handjob to default
     if not renpy.showing("Emma_HJ_Animation"):
         return    
     $ Speed = 0
@@ -1059,7 +1185,7 @@ label Emma_HJ_Reset: # The sequence to the Emma animations from handjob to defau
         ease .5 zoom 1 offset (0,0)      
     return
         
-label E_Kissing_Launch(T = Trigger):    
+label Mystique_Kissing_Launch(T = Trigger):    
     call Emma_Hide
     $ Trigger = T
     show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer
@@ -1067,7 +1193,7 @@ label E_Kissing_Launch(T = Trigger):
         ease 0.5 zoom 2
     return
     
-label E_Kissing_Smooch:   
+label Mystique_Kissing_Smooch:   
     call EmmaFace("kiss")  
     show Emma_Sprite at SpriteLoc(StageCenter) zorder EmmaLayer:
         ease 0.5 xpos StageCenter zoom 2
@@ -1076,7 +1202,7 @@ label E_Kissing_Smooch:
     call EmmaFace("sexy")  
     return
             
-label E_Breasts_Launch(T = Trigger):    
+label Mystique_Breasts_Launch(T = Trigger):    
     call Emma_Hide
     $ Trigger = T
     show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer:
@@ -1084,14 +1210,14 @@ label E_Breasts_Launch(T = Trigger):
         ease 0.5 pos (700,-50) zoom 2
     return
         
-label E_Pussy_Launch(T = Trigger):
+label Mystique_Pussy_Launch(T = Trigger):
     call Emma_Hide    
     $ Trigger = T
     show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer:
         ease 0.5 pos (700,-400) zoom 2
     return
         
-label E_Pos_Reset(Pose = 0):
+label Mystique_Pos_Reset(Pose = 0):
     show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer:
         ease .5 offset (0,0) anchor (0.5, 0.0) zoom 1   
     show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer:
@@ -1102,7 +1228,7 @@ label E_Pos_Reset(Pose = 0):
     $ Trigger = Pose
     return
     
-label Emma_Hide:
+label Mystique_Hide:
         if renpy.showing("Emma_SexSprite") or renpy.showing("Emma_Doggy"):
             call Emma_Sex_Reset
         hide Emma_SexSprite
@@ -1481,206 +1607,206 @@ image GirlFingerPussy_E:
             repeat
 
 # Start Emma Faces / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-label MystiqueFace(Emote = newgirl.girls["Mystique"]["Emote"], B = newgirl.girls["Mystique"]["Blush"], M = 0, Mouth = 0, Eyes = 0, Brows = 0):
+label MystiqueFace(Emote = newgirl["Mystique"].Emote, B = newgirl["Mystique"].Blush, M = 0, Mouth = 0, Eyes = 0, Brows = 0):
 
         # Emote is the chosen emote, B is the lush state, and M is whether the character is in a  manic state 
-        if (newgirl.girls["Mystique"]["Forced"] or "angry" in newgirl.girls["Mystique"]["RecentActions"]) and Emote in ("normal", "bemused", "sexy", "sly", "smile", "startled"):
+        if (newgirl["Mystique"].Forced or "angry" in newgirl["Mystique"].RecentActions) and Emote in ("normal", "bemused", "sexy", "sly", "smile", "startled"):
                 $ Emote = "angry"     
-        elif newgirl.girls["Mystique"]["ForcedCount"] and Emote in ("normal", "bemused", "sexy", "sly", "smile", "startled"):
+        elif newgirl["Mystique"].ForcedCount and Emote in ("normal", "bemused", "sexy", "sly", "smile", "startled"):
                 $ Emote = "sad"  
             
         if Emote == "normal":
-                $ newgirl.girls["Mystique"]["Mouth"] = "normal"
-                $ newgirl.girls["Mystique"]["Brows"] = "normal"
-                $ newgirl.girls["Mystique"]["Eyes"] = "normal"
+                $ newgirl["Mystique"].Mouth = "normal"
+                $ newgirl["Mystique"].Brows = "normal"
+                $ newgirl["Mystique"].Eyes = "normal"
         elif Emote == "angry":
-                $ newgirl.girls["Mystique"]["Mouth"] = "sad"
-                $ newgirl.girls["Mystique"]["Brows"] = "angry"
-                $ newgirl.girls["Mystique"]["Eyes"] = "sexy"
+                $ newgirl["Mystique"].Mouth = "sad"
+                $ newgirl["Mystique"].Brows = "angry"
+                $ newgirl["Mystique"].Eyes = "sexy"
         elif Emote == "bemused":
-                $ newgirl.girls["Mystique"]["Mouth"] = "normal"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "squint"
+                $ newgirl["Mystique"].Mouth = "normal"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "squint"
         elif Emote == "closed":
-                $ newgirl.girls["Mystique"]["Mouth"] = "normal"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "closed"  
+                $ newgirl["Mystique"].Mouth = "normal"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "closed"  
         elif Emote == "confused":
-                $ newgirl.girls["Mystique"]["Mouth"] = "kiss"
-                $ newgirl.girls["Mystique"]["Brows"] = "confused"
-                $ newgirl.girls["Mystique"]["Eyes"] = "squint"
+                $ newgirl["Mystique"].Mouth = "kiss"
+                $ newgirl["Mystique"].Brows = "confused"
+                $ newgirl["Mystique"].Eyes = "squint"
         elif Emote == "kiss":
-                $ newgirl.girls["Mystique"]["Mouth"] = "kiss"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "closed"
+                $ newgirl["Mystique"].Mouth = "kiss"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "closed"
         elif Emote == "tongue":
-                $ newgirl.girls["Mystique"]["Mouth"] = "tongue"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "stunned" #"stunned"
+                $ newgirl["Mystique"].Mouth = "tongue"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "stunned" #"stunned"
         elif Emote == "manic":
-                $ newgirl.girls["Mystique"]["Mouth"] = "smile"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "surprised"
-                $ newgirl.girls["Mystique"]["Blush"] = 1
+                $ newgirl["Mystique"].Mouth = "smile"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "surprised"
+                $ newgirl["Mystique"].Blush = 1
         elif Emote == "sad":
-                $ newgirl.girls["Mystique"]["Mouth"] = "sad"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "sexy"
+                $ newgirl["Mystique"].Mouth = "sad"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "sexy"
         elif Emote == "sadside":
-                $ newgirl.girls["Mystique"]["Mouth"] = "sad"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "side"
+                $ newgirl["Mystique"].Mouth = "sad"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "side"
         elif Emote == "sexy":
-                $ newgirl.girls["Mystique"]["Mouth"] = "lipbite"
-                $ newgirl.girls["Mystique"]["Brows"] = "normal"
-                $ newgirl.girls["Mystique"]["Eyes"] = "squint"
+                $ newgirl["Mystique"].Mouth = "lipbite"
+                $ newgirl["Mystique"].Brows = "normal"
+                $ newgirl["Mystique"].Eyes = "squint"
         elif Emote == "smile":
-                $ newgirl.girls["Mystique"]["Mouth"] = "smile"
-                $ newgirl.girls["Mystique"]["Brows"] = "normal"
-                $ newgirl.girls["Mystique"]["Eyes"] = "normal"
+                $ newgirl["Mystique"].Mouth = "smile"
+                $ newgirl["Mystique"].Brows = "normal"
+                $ newgirl["Mystique"].Eyes = "normal"
         elif Emote == "sucking":
-                $ newgirl.girls["Mystique"]["Mouth"] = "sucking"
-                $ newgirl.girls["Mystique"]["Brows"] = "surprised"
-                $ newgirl.girls["Mystique"]["Eyes"] = "closed"
+                $ newgirl["Mystique"].Mouth = "sucking"
+                $ newgirl["Mystique"].Brows = "surprised"
+                $ newgirl["Mystique"].Eyes = "closed"
         elif Emote == "surprised":
-                $ newgirl.girls["Mystique"]["Mouth"] = "kiss"
-                $ newgirl.girls["Mystique"]["Brows"] = "surprised"
-                $ newgirl.girls["Mystique"]["Eyes"] = "surprised"
+                $ newgirl["Mystique"].Mouth = "kiss"
+                $ newgirl["Mystique"].Brows = "surprised"
+                $ newgirl["Mystique"].Eyes = "surprised"
         elif Emote == "startled":
-                $ newgirl.girls["Mystique"]["Mouth"] = "smile"
-                $ newgirl.girls["Mystique"]["Brows"] = "surprised"
-                $ newgirl.girls["Mystique"]["Eyes"] = "surprised"
+                $ newgirl["Mystique"].Mouth = "smile"
+                $ newgirl["Mystique"].Brows = "surprised"
+                $ newgirl["Mystique"].Eyes = "surprised"
         elif Emote == "down":
-                $ newgirl.girls["Mystique"]["Mouth"] = "sad"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "down"  
+                $ newgirl["Mystique"].Mouth = "sad"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "down"  
         elif Emote == "perplexed":
-                $ newgirl.girls["Mystique"]["Mouth"] = "smile"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "normal"
+                $ newgirl["Mystique"].Mouth = "smile"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "normal"
         elif Emote == "sly":
-                $ newgirl.girls["Mystique"]["Mouth"] = "smirk"
-                $ newgirl.girls["Mystique"]["Brows"] = "normal"
-                $ newgirl.girls["Mystique"]["Eyes"] = "squint"
+                $ newgirl["Mystique"].Mouth = "smirk"
+                $ newgirl["Mystique"].Brows = "normal"
+                $ newgirl["Mystique"].Eyes = "squint"
             
         if M:
-                $ newgirl.girls["Mystique"]["Eyes"] = "surprised"        
+                $ newgirl["Mystique"].Eyes = "surprised"        
         if B > 1:
-                $ newgirl.girls["Mystique"]["Blush"] = 2
+                $ newgirl["Mystique"].Blush = 2
         elif B:
-                $ newgirl.girls["Mystique"]["Blush"] = 1
+                $ newgirl["Mystique"].Blush = 1
         else:
-                $ newgirl.girls["Mystique"]["Blush"] = 0
+                $ newgirl["Mystique"].Blush = 0
         
         if Mouth:
-                $ newgirl.girls["Mystique"]["Mouth"] = Mouth
+                $ newgirl["Mystique"].Mouth = Mouth
         if Eyes:
-                $ newgirl.girls["Mystique"]["Eyes"] = Eyes
+                $ newgirl["Mystique"].Eyes = Eyes
         if Brows:
-                $ newgirl.girls["Mystique"]["Brows"] = Brows
+                $ newgirl["Mystique"].Brows = Brows
         
         return
 
 
-label MystiqueFaceSpecial(Emote = newgirl.girls["Mystique"]["Emote"], B = newgirl.girls["Mystique"]["Blush"], M = 0, Mouth = 0, Eyes = 0, Brows = 0):
+label MystiqueFaceSpecial(Emote = newgirl["Mystique"].Emote, B = newgirl["Mystique"].Blush, M = 0, Mouth = 0, Eyes = 0, Brows = 0):
 
         # Emote is the chosen emote, B is the lush state, and M is whether the character is in a  manic state 
             
         if Emote == "normal":
-                $ newgirl.girls["Mystique"]["Mouth"] = "normal"
-                $ newgirl.girls["Mystique"]["Brows"] = "normal"
-                $ newgirl.girls["Mystique"]["Eyes"] = "normal"
+                $ newgirl["Mystique"].Mouth = "normal"
+                $ newgirl["Mystique"].Brows = "normal"
+                $ newgirl["Mystique"].Eyes = "normal"
         elif Emote == "angry":
-                $ newgirl.girls["Mystique"]["Mouth"] = "sad"
-                $ newgirl.girls["Mystique"]["Brows"] = "angry"
-                $ newgirl.girls["Mystique"]["Eyes"] = "sexy"
+                $ newgirl["Mystique"].Mouth = "sad"
+                $ newgirl["Mystique"].Brows = "angry"
+                $ newgirl["Mystique"].Eyes = "sexy"
         elif Emote == "bemused":
-                $ newgirl.girls["Mystique"]["Mouth"] = "normal"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "squint"
+                $ newgirl["Mystique"].Mouth = "normal"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "squint"
         elif Emote == "closed":
-                $ newgirl.girls["Mystique"]["Mouth"] = "normal"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "closed"  
+                $ newgirl["Mystique"].Mouth = "normal"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "closed"  
         elif Emote == "confused":
-                $ newgirl.girls["Mystique"]["Mouth"] = "kiss"
-                $ newgirl.girls["Mystique"]["Brows"] = "confused"
-                $ newgirl.girls["Mystique"]["Eyes"] = "squint"
+                $ newgirl["Mystique"].Mouth = "kiss"
+                $ newgirl["Mystique"].Brows = "confused"
+                $ newgirl["Mystique"].Eyes = "squint"
         elif Emote == "kiss":
-                $ newgirl.girls["Mystique"]["Mouth"] = "kiss"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "closed"
+                $ newgirl["Mystique"].Mouth = "kiss"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "closed"
         elif Emote == "tongue":
-                $ newgirl.girls["Mystique"]["Mouth"] = "tongue"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "stunned" #"stunned"
+                $ newgirl["Mystique"].Mouth = "tongue"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "stunned" #"stunned"
         elif Emote == "manic":
-                $ newgirl.girls["Mystique"]["Mouth"] = "smile"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "surprised"
-                $ newgirl.girls["Mystique"]["Blush"] = 1
+                $ newgirl["Mystique"].Mouth = "smile"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "surprised"
+                $ newgirl["Mystique"].Blush = 1
         elif Emote == "sad":
-                $ newgirl.girls["Mystique"]["Mouth"] = "sad"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "sexy"
+                $ newgirl["Mystique"].Mouth = "sad"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "sexy"
         elif Emote == "sadside":
-                $ newgirl.girls["Mystique"]["Mouth"] = "sad"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "side"
+                $ newgirl["Mystique"].Mouth = "sad"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "side"
         elif Emote == "sexy":
-                $ newgirl.girls["Mystique"]["Mouth"] = "lipbite"
-                $ newgirl.girls["Mystique"]["Brows"] = "normal"
-                $ newgirl.girls["Mystique"]["Eyes"] = "squint"
+                $ newgirl["Mystique"].Mouth = "lipbite"
+                $ newgirl["Mystique"].Brows = "normal"
+                $ newgirl["Mystique"].Eyes = "squint"
         elif Emote == "smile":
-                $ newgirl.girls["Mystique"]["Mouth"] = "smile"
-                $ newgirl.girls["Mystique"]["Brows"] = "normal"
-                $ newgirl.girls["Mystique"]["Eyes"] = "normal"
+                $ newgirl["Mystique"].Mouth = "smile"
+                $ newgirl["Mystique"].Brows = "normal"
+                $ newgirl["Mystique"].Eyes = "normal"
         elif Emote == "sucking":
-                $ newgirl.girls["Mystique"]["Mouth"] = "sucking"
-                $ newgirl.girls["Mystique"]["Brows"] = "surprised"
-                $ newgirl.girls["Mystique"]["Eyes"] = "closed"
+                $ newgirl["Mystique"].Mouth = "sucking"
+                $ newgirl["Mystique"].Brows = "surprised"
+                $ newgirl["Mystique"].Eyes = "closed"
         elif Emote == "surprised":
-                $ newgirl.girls["Mystique"]["Mouth"] = "kiss"
-                $ newgirl.girls["Mystique"]["Brows"] = "surprised"
-                $ newgirl.girls["Mystique"]["Eyes"] = "surprised"
+                $ newgirl["Mystique"].Mouth = "kiss"
+                $ newgirl["Mystique"].Brows = "surprised"
+                $ newgirl["Mystique"].Eyes = "surprised"
         elif Emote == "startled":
-                $ newgirl.girls["Mystique"]["Mouth"] = "smile"
-                $ newgirl.girls["Mystique"]["Brows"] = "surprised"
-                $ newgirl.girls["Mystique"]["Eyes"] = "surprised"
+                $ newgirl["Mystique"].Mouth = "smile"
+                $ newgirl["Mystique"].Brows = "surprised"
+                $ newgirl["Mystique"].Eyes = "surprised"
         elif Emote == "down":
-                $ newgirl.girls["Mystique"]["Mouth"] = "sad"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "down"  
+                $ newgirl["Mystique"].Mouth = "sad"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "down"  
         elif Emote == "perplexed":
-                $ newgirl.girls["Mystique"]["Mouth"] = "smile"
-                $ newgirl.girls["Mystique"]["Brows"] = "sad"
-                $ newgirl.girls["Mystique"]["Eyes"] = "normal"
+                $ newgirl["Mystique"].Mouth = "smile"
+                $ newgirl["Mystique"].Brows = "sad"
+                $ newgirl["Mystique"].Eyes = "normal"
         elif Emote == "sly":
-                $ newgirl.girls["Mystique"]["Mouth"] = "smirk"
-                $ newgirl.girls["Mystique"]["Brows"] = "normal"
-                $ newgirl.girls["Mystique"]["Eyes"] = "squint"
+                $ newgirl["Mystique"].Mouth = "smirk"
+                $ newgirl["Mystique"].Brows = "normal"
+                $ newgirl["Mystique"].Eyes = "squint"
             
         if M:
-                $ newgirl.girls["Mystique"]["Eyes"] = "surprised"        
+                $ newgirl["Mystique"].Eyes = "surprised"        
         if B > 1:
-                $ newgirl.girls["Mystique"]["Blush"] = 2
+                $ newgirl["Mystique"].Blush = 2
         elif B:
-                $ newgirl.girls["Mystique"]["Blush"] = 1
+                $ newgirl["Mystique"].Blush = 1
         else:
-                $ newgirl.girls["Mystique"]["Blush"] = 0
+                $ newgirl["Mystique"].Blush = 0
         
         if Mouth:
-                $ newgirl.girls["Mystique"]["Mouth"] = Mouth
+                $ newgirl["Mystique"].Mouth = Mouth
         if Eyes:
-                $ newgirl.girls["Mystique"]["Eyes"] = Eyes
+                $ newgirl["Mystique"].Eyes = Eyes
         if Brows:
-                $ newgirl.girls["Mystique"]["Brows"] = Brows
+                $ newgirl["Mystique"].Brows = Brows
         
         return
         
         
 # Emma's Wardrobe //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-label EmmaWardrobe:
+label MystiqueWardrobe:
     menu:      
         "View":
             while True:
@@ -1885,7 +2011,7 @@ label EmmaWardrobe:
     jump EmmaWardrobe
 return
 
-label EmmaEmotionEditor(CountStore = "normal"):
+label MystiqueEmotionEditor(CountStore = "normal"):
     menu:
         "Emotions1: Normal Angry Smiling Sexy Surprised Bemused Manic.":        
             menu:

@@ -653,7 +653,9 @@ label Display_Background(Entry = 0):
                             else:
                                 scene bg_pool_d onlayer backdrop 
         elif bg_current == "bg field":        
-                                scene bg_field onlayer backdrop            
+                                scene bg_field onlayer backdrop  
+        elif bg_current == "bg mystique":        
+                                scene bg_mystique onlayer backdrop            
         elif bg_current == "bg showerroom":        
                                 scene bg_shower onlayer backdrop  
         elif bg_current == "bg study":        
@@ -728,6 +730,7 @@ image bg_pool_d = "images/pool_day.png"
 image bg_pool_e = "images/pool_evening.png"
 image bg_pool_n = "images/pool_night.png"
 image bg_field = "images/Football_Field.png"       
+image bg_mystique = "images/mystiqueroom.png"       
 image bg_shower = "images/Shower.jpg"
 image bg_study = "images/study.jpg"
 image bg_movies = "images/Movies.jpg"     

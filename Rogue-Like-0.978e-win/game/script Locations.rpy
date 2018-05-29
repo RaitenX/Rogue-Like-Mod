@@ -16,13 +16,16 @@ label Worldmap:
                     jump Player_Room_Entry  
         "Testbed" if config.developer:          
                     $ renpy.pop_call() 
-                    jump Rogue_Room_Test
+                    #jump Rogue_Room_Test
         "Rogue's Room":   
                     $ renpy.pop_call() 
                     jump Rogue_Room_Entry 
         "Kitty's Room" if "met" in K_History:   
                     $ renpy.pop_call() 
-                    jump Kitty_Room_Entry            
+                    jump Kitty_Room_Entry   
+        "Mystique's Room": #if "met" in K_History:   
+                    $ renpy.pop_call() 
+                    jump Mystique_Room_Entry            
         "University Square":
                     $ renpy.pop_call() 
                     jump Campus_Entry 
@@ -84,7 +87,7 @@ label Misplaced:
                 call Remove_Girl("Emma")
                 $ Trigger = 0
                 jump Player_Room
-        if "caught" in newgirl.girls["Mystique"]["RecentActions"]:        
+        if "caught" in newgirl["Mystique"].RecentActions:        
                 call DrainWord("Mystique","caught",1,0)
                 "You immediately return to your rooms."
                 $ bg_current = "bg player"
@@ -142,14 +145,14 @@ label Player_Room:
                     call Kitty_Study
         "Would you like to help me study [[Emma]?" if E_Loc == bg_current:
                     call Emma_Study
-        "Would you like to help me study [[Mystique]?" if newgirl.girls["Mystique"]["Loc"] == bg_current:
+        "Would you like to help me study [[Mystique]?" if newgirl["Mystique"].Loc == bg_current:
                     call Mystique_Study
         "Sleep" if Current_Time == "Night":            
                     call Round10
                     $ R_Spank = 0
                     $ K_Spank = 0
                     $ E_Spank = 0
-                    $ newgirl.girls["Mystique"]["Spank"] = 0
+                    $ newgirl["Mystique"].Spank = 0
                     call Girls_Location
                     call Kitty_Sent_Selfie 
                     call Rogue_Sent_Selfie 
@@ -171,6 +174,8 @@ label Player_Room:
                     jump Rogue_Room_Entry
         "Go to Kitty's Room" if TravelMode and "met" in K_History:           
                     jump Kitty_Room_Entry 
+        "Go to Mystique's Room" if TravelMode:# and "met" in K_History:  
+                    jump Mystique_Room_Entry
         "Go to the Showers" if TravelMode:         
                     jump Shower_Room_Entry
         "Leave [[Go to Campus Square]":
@@ -265,7 +270,7 @@ label Mystique_Study:                       #study events
                     "You study for the game design course."]) 
             "[Line]"       
             $ Line = 0
-            $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 80, 2)
+            $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 80, 2)
             $ D20 = renpy.random.randint(1, 20)    
             if D20 > 10:
                 call Mystique_Frisky_Study   
@@ -279,23 +284,23 @@ label Mystique_Study:                       #study events
 #End Mystique Study
             
 label Mystique_Frisky_Study:
-            if D20 > 17 and ApprovalCheck("Mystique", 1000) and newgirl.girls["Mystique"]["Blow"] > 5:
+            if D20 > 17 and ApprovalCheck("Mystique", 1000) and newgirl["Mystique"].Blow > 5:
                         "Mystique reaches her hand through your textbook and you can feel it in your lap."
                         "She unzips you pants and pulls your dick out, stroking it slowly."
                         "She then dives her head under the book, and starts to lick it."        
                         call Mystique_SexAct("blow") 
-            elif D20 > 14 and ApprovalCheck("Mystique", 1000) and newgirl.girls["Mystique"]["Hand"] >= 5:
+            elif D20 > 14 and ApprovalCheck("Mystique", 1000) and newgirl["Mystique"].Hand >= 5:
                         "Mystique reaches her hand through your textbook and you can feel it in your lap."
                         "She runs her finger along your erection, her hand passing through the jeans to touch your bare skin."
                         "She unzips you pants and pulls your dick out, stroking it slowly."  
                         call Mystique_SexAct("hand") 
-            elif D20 > 10 and (ApprovalCheck("Mystique", 1300) or (newgirl.girls["Mystique"]["Mast"] and ApprovalCheck("Mystique", 1000)))and newgirl.girls["Mystique"]["Lust"] >= 70:
+            elif D20 > 10 and (ApprovalCheck("Mystique", 1300) or (newgirl["Mystique"].Mast and ApprovalCheck("Mystique", 1000)))and newgirl["Mystique"].Lust >= 70:
                         "Mystique wriggles against your shoulder, and her hand starts to stroke her crotch."  
-                        if "unseen" in newgirl.girls["Mystique"]["RecentActions"]:
-                                $ newgirl.girls["Mystique"]["RecentActions"].remove("unseen")
+                        if "unseen" in newgirl["Mystique"].RecentActions:
+                                $ newgirl["Mystique"].RecentActions.remove("unseen")
                         $ Trigger = "masturbation"
                         call Mystique_SexAct("masturbate")      
-            elif D20 >5 and ApprovalCheck("Mystique", 700) and newgirl.girls["Mystique"]["Kissed"] > 1:
+            elif D20 >5 and ApprovalCheck("Mystique", 700) and newgirl["Mystique"].Kissed > 1:
                         "Mystique leans close to you, and presses her lips to yours."         
                         call Mystique_SexAct("kissing")
             elif ApprovalCheck("Mystique", 500):
@@ -545,6 +550,8 @@ label Rogue_Room:
                     jump Player_Room_Entry         
         "Go to Kitty's Room" if TravelMode and "met" in K_History:             
                 jump Kitty_Room_Entry 
+        "Go to Mystique's Room" if TravelMode:# and "met" in K_History:  
+                jump Mystique_Room_Entry
         "Go to the Showers" if TravelMode:            
                     jump Shower_Room_Entry
         "Leave [[Go to Campus Square]":
@@ -809,6 +816,8 @@ label Campus:
                     jump Rogue_Room_Entry 
         "Go to Kitty's Room" if TravelMode and "met" in K_History:
                     jump Kitty_Room_Entry 
+        "Go to Mystique's Room" if TravelMode:# and "met" in K_History:  
+                    jump Mystique_Room_Entry
         "Go to the classroom" if TravelMode: 
                     if Current_Time != "Night":
                         jump Class_Room_Entry 
@@ -1464,19 +1473,19 @@ label Pool_Room:
                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, 4)
                         $ E_Water = 2
 
-                    if newgirl.girls["Mystique"]["Loc"] == bg_current:
+                    if newgirl["Mystique"].Loc == bg_current:
                         ch_e "yay"
 
-                        if newgirl.girls["Mystique"]["Outfit"] != "bikini" and newgirl.girls["Mystique"]["Outfit"] != "naked pool":
+                        if newgirl["Mystique"].Outfit != "bikini" and newgirl["Mystique"].Outfit != "naked pool":
                             #ch_e "I'l be right there, let me just put on my bikini"
                             call Pool_Clothes("goswim", "Mystique")
                             ch_m "Let's go"
 
                         call MystiqueFace("happy")                            
-                        $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, 4)          
-                        $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 40, 2)            
-                        $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 30, 4)
-                        $ newgirl.girls["Mystique"]["Water"] = 2
+                        $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 4)          
+                        $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 40, 2)            
+                        $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 30, 4)
+                        $ newgirl["Mystique"].Water = 2
                         #$ K_RecentActions.append("showered")                      
                     #"You take a swim"
 
@@ -1529,7 +1538,7 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
     if E_Loc == "bg pool":        
             $ Occupants += 1
             $ EmmaCount = 1
-    if newgirl.girls["Mystique"]["Loc"] == "bg pool":        
+    if newgirl["Mystique"].Loc == "bg pool":        
             $ Occupants += 1
             $ MystiqueCount = 1
         
@@ -1664,7 +1673,7 @@ label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, 
                             $ EmmaCount = 2
 
                     if MystiqueCount == 1:
-                        if ApprovalCheck("Mystique", 1500) or (ApprovalCheck("Mystique", 800) and newgirl.girls["Mystique"]["SeenChest"] and newgirl.girls["Mystique"]["SeenPussy"]):
+                        if ApprovalCheck("Mystique", 1500) or (ApprovalCheck("Mystique", 800) and newgirl["Mystique"].SeenChest and newgirl["Mystique"].SeenPussy):
                             ch_m "yes"
                             $ MystiqueCount = 2
                         elif Line == "night" and ApprovalCheck("Mystique", 1300, "LI"):                                
@@ -2231,7 +2240,9 @@ label Shower_Room:
         "Go to Rogue's Room" if TravelMode:  
                 jump Rogue_Room_Entry   
         "Go to Kitty's Room" if TravelMode and "met" in K_History:  
-                jump Kitty_Room_Entry        
+                jump Kitty_Room_Entry 
+        "Go to Mystique's Room" if TravelMode:# and "met" in K_History:  
+                jump Mystique_Room_Entry        
         "Leave [[Go to Campus Square]":
                 if TravelMode:
                     jump Campus_Entry
@@ -3860,4 +3871,266 @@ label Rogue_Sent_Selfie(test=0):
         hide Rogue_Selfie 
 
         return
-           
+
+# Kitty's Room Interface //////////////////////////////////////////////////////////////////////
+label Mystique_Room_Entry:
+    call Shift_Focus("Mystique")
+    $ bg_current = "bg mystique"           
+    call Gym_Clothes
+    call Set_The_Scene(Entry = 1)    
+    call Taboo_Level
+    $ D20 = renpy.random.randint(1, 20)
+    
+    # if "Kitty" in Party:
+    #                 if Current_Time == "Night" or (Current_Time == "Evening" and Round <= 10):                         
+    #                     if ApprovalCheck("Kitty", 1000, "LI") or ApprovalCheck("Kitty", 600, "OI"):     #It's late but she really likes you
+    #                             ch_k "It's kinda late, [K_Petname], but you can have a minute."    
+    #                     elif K_Addict >= 50:
+    #                             ch_k "I'd really like to see you. . ."            
+    #                     elif ApprovalCheck("Kitty", 500, "LI") or ApprovalCheck("Kitty", 300, "OI"):      #she likes you well enough but it's late
+    #                             ch_k "It's a little late [K_Petname]. Tmorrow?"
+    #                             $ K_RecentActions.append("noentry")                      
+    #                             $ K_DailyActions.append("noentry")  
+    #                             "She heads inside and closes the door behind her."
+    #                             jump Campus_Map         
+    #                 else: #If Kitty is in the party and it's not late in the day        
+    #                             ch_k "Come on in!"
+    #                 call EventCalls
+    #                 jump Kitty_Room   
+    # #End if Kitty in Party
+    
+                    
+    # if Round >= 10 and K_Loc == "bg kitty" and (D20 >=15 and K_Lust >= 70): #Kitty caught fapping      
+    #             "As you approach her room, you hear soft moaning from inside, and notice that the door is slightly ajar."
+    #             menu:
+    #                 extend ""
+    #                 "Knock politely":
+    #                     $ Line = "knock"
+    #                 "Peek inside":
+    #                     call Set_The_Scene
+    #                     "You see Kitty, eyes closed and stroking herself vigorously."
+    #                     menu:
+    #                         extend ""
+    #                         "Enter Quietly":
+    #                                 call Kitty_Caught_Masturbating
+    #                         "Pull back and knock":                        
+    #                                 $ Line = "knock"
+    #                         "Leave quietly":
+    #                                 "You leave Kitty to her business and slip out."
+    #                                 $ K_Lust = 20
+    #                                 jump Campus_Map
+    #                 "Enter quietly":
+    #                         call Kitty_Caught_Masturbating
+    #                 "Leave quietly":
+    #                         "You leave Kitty to her business and slip out."
+    #                         $ K_Lust = 20
+    #                         jump Campus_Map
+    #             if Line == "knock":
+    #                     "You hear some soft moans, followed by some shuffling around as items tumble to the ground."
+    #                     "After several seconds and some more shuffling of clothing, Kitty comes to the door."
+    #                     $ K_Brows = "confused"
+    #                     $ K_Eyes = "surprised"
+    #                     $ K_Mouth = "smile"
+    #                     $ K_Blush = 1
+    #                     call Set_The_Scene
+    #                     ch_k "Oh, hey, [K_Petname], I was. . . never mind."
+    #                     $ Tempmod += 10
+    # # End Kitty caught Fapping
+    
+    # else: #not auto-caught fapping
+    #         if "Kitty" in Keys:
+    #             menu:
+    #                 "You have a key, what do you do?"
+    #                 "Knock politely":
+    #                         $ Line = "knock"
+                            
+    #                 "Use the key to enter.":
+    #                         $ bg_current = "bg kitty"
+    #                         call Set_The_Scene
+                        
+    #         if Line != "knock" and "Kitty" in Keys: 
+    #             if K_Loc == "bg kitty":
+    #                     if Round <= 10:        
+    #                             if K_RecentActions in ("noentry", "angry"):
+    #                                     call KittyFace("angry")
+    #                                     ch_k "GTFO."    
+    #                                     "Kitty shoves you back into the hall."
+    #                                     jump Campus_Map   
+    #                             if Current_Time == "Night" :    
+    #                                     "She's asleep in bed. You slip out quietly." #fix add options here.                            
+    #                                     jump Campus_Map   
+    #                     elif (D20 >=19 and K_Lust >= 50) or (D20 >=15 and K_Lust >= 70) or (D20 >=10 and K_Lust >= 80):     
+    #                             #Kitty caught fapping
+    #                             call Kitty_Caught_Masturbating 
+    #                     elif D20 >=15 and (Current_Time == "Night" or Current_Time == "Morning"):                           
+    #                             #Kitty caught changing
+    #                             call Kitty_Caught_Changing
+    #         #End "if you enter without knocking"
+                
+    #         else:#You knocked
+    #                     $ Round -= 10 
+    #                     "You knock on Kitty's door."        
+    #                     if K_Loc != "bg kitty":
+    #                             "Looks like she's not home right now."
+    #                             jump Campus_Map
+                            
+    #                     if Round <= 10:
+    #                             if Current_Time == "Night" :
+    #                                 "There's no answer, she's probably asleep."  
+    #                                 jump Campus_Map    
+                    
+    #                     if (D20 >=19 and K_Lust >= 50) or (D20 >=15 and K_Lust >= 70) or (D20 >=10 and K_Lust >= 80):    
+    #                             #Kitty caught fapping
+    #                             "You hear some soft moans, followed by some shuffling around as items tumble to the ground."
+    #                             "After several seconds and some more shuffling of clothing, Kitty comes to the door."
+    #                             $ K_Brows = "confused"
+    #                             $ K_Eyes = "surprised"
+    #                             $ K_Mouth = "smile"
+    #                             $ K_Blush = 1
+    #                             call Set_The_Scene
+    #                             ch_k "Oh, hey, [K_Petname], I was. . . never mind."
+    #                             $ Tempmod += 10
+    #                     elif D20 >=15 and (Current_Time == "Night" or Current_Time == "Morning"):                          
+    #                             #Kitty caught changing
+    #                             "You hear the rustling of fabric and some knocking around, but after a few seconds Kitty comes to the door."
+    #                             call Set_The_Scene
+    #                             ch_k "Oh, hi [K_Petname], I was[K_like]just getting changed."   
+    #                     elif "angry" in K_RecentActions:
+    #                             ch_k "Nooope."
+    #                             "Kitty pushes you back into the hall and slams the door."
+    #                             $ Trigger = 0
+    #                             jump Campus_Map    
+    #                     else:
+    #                             call Set_The_Scene
+    #                             "Kitty opens it a bit and pops out and you ask if you can come inside."
+    #         #End "if you knocked"
+                    
+    #         #if you reach this point then you've asked to enter.               
+    #         if K_Loc != "bg kitty":
+    #                 "Looks like she's not home right now."                
+    #                 if "Kitty" in Keys:
+    #                         menu:
+    #                             "Go in and wait for her?"
+    #                             "Yes":
+    #                                     $ Line = 0
+    #                                     jump Kitty_Room
+    #                             "No":
+    #                                     pass
+    #                 "You head back."
+    #                 jump Campus_Map 
+                    
+    #         elif K_RecentActions in ("noentry", "angry"):
+    #                 call KittyFace("angry")
+    #                 ch_k "What part of \"GTFO\" was unclear?"  
+    #                 jump Campus_Map    
+                    
+    #         elif Current_Time == "Night" and "noentry" in K_RecentActions:
+    #                 ch_k "Scram. I'll see you tomorrow"  
+    #                 jump Campus_Map 
+                    
+    #         elif "noentry" in K_RecentActions:
+    #                 call KittyFace("angry")
+    #                 ch_k "GTFO."
+    #                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -5)
+    #                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, -2)
+    #                 $ K_RecentActions.append("angry")                      
+    #                 $ K_DailyActions.append("angry") 
+    #                 jump Campus_Map  
+            
+    #         elif Current_Time == "Night" and (K_Sleep or K_SEXP >= 30):                                                   
+    #                 #It's late but she really likes you
+    #                 ch_k "It's late, [K_Petname], but you're so cute."                   
+    #         elif Current_Time == "Night" and (ApprovalCheck("Kitty", 1000, "LI") or ApprovalCheck("Kitty", 600, "OI")):     
+    #                 #It's late but she really likes you
+    #                 ch_k "It's late, [K_Petname], but I could hang out a bit."                  
+    #         elif K_Addict >= 50:
+    #                 ch_k "I could use some attention. . ."
+                    
+    #         elif Current_Time == "Night" and (ApprovalCheck("Kitty", 500, "LI") or ApprovalCheck("Kitty", 300, "OI")):     
+    #                 #she likes you well enough but it's late
+    #                 ch_k "It's late [K_Petname]. Tomorrow?"
+    #                 $ K_RecentActions.append("noentry")                      
+    #                 $ K_DailyActions.append("noentry")  
+    #                 jump Campus_Map    
+                    
+    #         elif ApprovalCheck("Kitty", 600, "LI") or ApprovalCheck("Kitty", 300, "OI"):                                    
+    #                 #She quite likes you and lets you in   
+    #                 ch_k "Sure, come on in [K_Petname]."        
+    #         else:                                                                                                          
+    #                 #She doesn't like you      
+    #                 ch_k "Nah, you can stay out."
+    #                 $ K_RecentActions.append("noentry")                      
+    #                 $ K_DailyActions.append("noentry")  
+    #                 jump Campus_Map
+    
+    # If you get this far, she's allowed you in
+    $ bg_current = "bg mystique"         
+    call EventCalls
+    # if K_Loc == "bg kitty" and "angry" in K_RecentActions:
+    #     "Kitty pushes you back into the hall and slams the door. You head back to your room."
+    #     $ Line = 0
+    #     $ Trigger = 0
+    #     jump Player_Room
+    if bg_current != "bg mystique":
+        jump Misplaced
+            
+label Mystique_Room:
+    $ bg_current = "bg mystique"
+    call Set_The_Scene
+    if "traveling" in P_RecentActions:
+        $ P_RecentActions.remove("traveling")
+    call Taboo_Level
+    call QuickEvents
+    call Checkout(1)
+    if Round <= 10: 
+                call Round10
+                call Girls_Location
+                call EventCalls 
+    
+    call GirlsAngry            
+    call Set_The_Scene  
+    
+# Kitty's Room Menu Start <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    call Rogue_Sent_Selfie
+    call Kitty_Sent_Selfie
+    if newgirl["Mystique"].Loc == bg_current:
+        $ Line = "You are in Mystique's room. What would you like to do?"
+    else:
+        $ Line = "You are in Mystique's room, but she isn't here. What would you like to do?"
+    menu:
+        "[Line]"
+        
+        "Chat":
+                    call Chat
+        
+        "Would you like to study?" if newgirl["Mystique"].Loc == bg_current:                
+                    call Mystique_Study
+            
+        "Sleep." if Current_Time == "Night" and newgirl["Mystique"].Loc == bg_current:
+                    call Round10
+                    call Girls_Location
+                    call EventCalls 
+                    
+        "Wait." if Current_Time != "Night":
+                    call Round10
+                    call Girls_Location
+                    call EventCalls 
+                            
+        "Return to Your Room" if TravelMode:            
+                    jump Player_Room_Entry 
+        "Go to the Showers" if TravelMode:            
+                    jump Shower_Room_Entry
+        "Leave [[Go to Campus Square]":
+                    if TravelMode:
+                        jump Campus_Entry
+                    else:
+                        call Worldmap 
+    
+    if "angry" in newgirl["Mystique"].RecentActions:
+            call MystiqueFace("angry")
+            ch_m "Go. Now."
+            "Mystique pushes you back into the hall and slams the door. You head back to your room."
+            $ Line = 0
+            $ Trigger = 0
+            jump Player_Room
+    jump Mystique_Room           

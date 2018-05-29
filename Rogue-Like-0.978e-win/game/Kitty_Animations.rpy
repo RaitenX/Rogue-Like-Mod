@@ -2312,7 +2312,7 @@ image Kitty_Selfie:
             "K_Hair == 'evo' and K_HairColor == 'blonde'", "images/KittySelfie/Kitty_selfie_hairblonde_evo.png",
             "K_Hair == 'evo' and K_HairColor == 'black'", "images/KittySelfie/Kitty_selfie_hairblack_evo.png",
             "K_Hair == 'evo'", "images/KittySelfie/Kitty_selfie_hair_evo.png",
-            "True", Null(),
+            "True", "images/KittySelfie/Kitty_selfie_hair_evo.png",
             ),
         (0,0), ConditionSwitch(
             "K_Headband == 'pink'", "images/KittyBJFace/Kitty_BJ_Pink_Headband.png",

@@ -127,36 +127,36 @@ init python:
                         E_Inbt = 1000 if E_Inbt > 1000 else E_Inbt
                 #End Emma content
 
-                elif Name == "Mystique" and newgirl.girls["Mystique"]["Chat"][4]:
-                        #global newgirl.girls["Mystique"]["Love"]
-                        #global newgirl.girls["Mystique"]["Obed"]                    
-                        #global newgirl.girls["Mystique"]["Inbt"]
+                elif Name == "Mystique" and newgirl["Mystique"].Chat[4]:
+                        #global newgirl["Mystique"].Love
+                        #global newgirl["Mystique"].Obed                    
+                        #global newgirl["Mystique"].Inbt
                         
                         Value = Type - 1000
                         if Flavor == "Love":                    
-                                if newgirl.girls["Mystique"]["Chat"][4] == 1:
-                                    newgirl.girls["Mystique"]["Obed"] += Value    #[Love to Obedience]
+                                if newgirl["Mystique"].Chat[4] == 1:
+                                    newgirl["Mystique"].Obed += Value    #[Love to Obedience]
                                     Flavor = "Obed"
-                                elif newgirl.girls["Mystique"]["Chat"][4] == 2:
-                                    newgirl.girls["Mystique"]["Inbt"] += Value   #[Love to Inhibition] 
+                                elif newgirl["Mystique"].Chat[4] == 2:
+                                    newgirl["Mystique"].Inbt += Value   #[Love to Inhibition] 
                                     Flavor = "Inbt"
                         elif Flavor == "Obed":             
-                                if newgirl.girls["Mystique"]["Chat"][4] == 3:
-                                    newgirl.girls["Mystique"]["Inbt"] += Value    #[Obedience to Inhibition]
+                                if newgirl["Mystique"].Chat[4] == 3:
+                                    newgirl["Mystique"].Inbt += Value    #[Obedience to Inhibition]
                                     Flavor = "Inbt"
-                                elif newgirl.girls["Mystique"]["Chat"][4] == 4:
-                                    newgirl.girls["Mystique"]["Love"] += Value    #[Obedience to Love] 
+                                elif newgirl["Mystique"].Chat[4] == 4:
+                                    newgirl["Mystique"].Love += Value    #[Obedience to Love] 
                                     Flavor = "Love"  
                         elif Flavor == "Inbt":            
-                                if newgirl.girls["Mystique"]["Chat"][4] == 5:
-                                    newgirl.girls["Mystique"]["Obed"] += Value    #[Inhibition to Obedience]
+                                if newgirl["Mystique"].Chat[4] == 5:
+                                    newgirl["Mystique"].Obed += Value    #[Inhibition to Obedience]
                                     Flavor = "Obed"
-                                elif newgirl.girls["Mystique"]["Chat"][4] == 6:
-                                    newgirl.girls["Mystique"]["Love"] += Value    #[Inhibition to Love]
+                                elif newgirl["Mystique"].Chat[4] == 6:
+                                    newgirl["Mystique"].Love += Value    #[Inhibition to Love]
                                     Flavor = "Love"
-                        newgirl.girls["Mystique"]["Love"] = 1000 if newgirl.girls["Mystique"]["Love"] > 1000 else newgirl.girls["Mystique"]["Love"]  #fix, check this works, not sure.
-                        newgirl.girls["Mystique"]["Obed"] = 1000 if newgirl.girls["Mystique"]["Obed"] > 1000 else newgirl.girls["Mystique"]["Obed"]
-                        newgirl.girls["Mystique"]["Inbt"] = 1000 if newgirl.girls["Mystique"]["Inbt"] > 1000 else newgirl.girls["Mystique"]["Inbt"]
+                        newgirl["Mystique"].Love = 1000 if newgirl["Mystique"].Love > 1000 else newgirl["Mystique"].Love  #fix, check this works, not sure.
+                        newgirl["Mystique"].Obed = 1000 if newgirl["Mystique"].Obed > 1000 else newgirl["Mystique"].Obed
+                        newgirl["Mystique"].Inbt = 1000 if newgirl["Mystique"].Inbt > 1000 else newgirl["Mystique"].Inbt
                 #End Mystique content
                 
                 Type = 1000
@@ -190,7 +190,7 @@ init python:
             elif Name == "Emma":
                     XPOS = E_SpriteLoc
             elif Name == "Mystique":
-                    XPOS = newgirl.girls["Mystique"]["SpriteLoc"]
+                    XPOS = newgirl["Mystique"].SpriteLoc
             else:
                     XPOS = 0.75
                 
@@ -344,11 +344,11 @@ init python:
                 if Act in E_DailyActions:
                     Count = E_DailyActions.count(Act) 
             elif Chr == "Mystique" and Time == "recent":
-                if Act in newgirl.girls["Mystique"]["RecentActions"]:
-                    Count = newgirl.girls["Mystique"]["RecentActions"].count(Act) 
+                if Act in newgirl["Mystique"].RecentActions:
+                    Count = newgirl["Mystique"].RecentActions.count(Act) 
             elif Chr == "Mystique":
-                if Act in newgirl.girls["Mystique"]["DailyActions"]:
-                    Count = newgirl.girls["Mystique"]["DailyActions"].count(Act) 
+                if Act in newgirl["Mystique"].DailyActions:
+                    Count = newgirl["Mystique"].DailyActions.count(Act) 
                     
             return Count
 
@@ -440,10 +440,10 @@ init python:
                 Loc = R_Loc if not Loc else Loc
         elif Chr == "Mystique":                                 
                 #sets the data based on Rogue's data
-                L = newgirl.girls["Mystique"]["Love"]
-                O = newgirl.girls["Mystique"]["Obed"]
-                I = newgirl.girls["Mystique"]["Inbt"]
-                Loc = newgirl.girls["Mystique"]["Loc"] if not Loc else Loc
+                L = newgirl["Mystique"].Love
+                O = newgirl["Mystique"].Obed
+                I = newgirl["Mystique"].Inbt
+                Loc = newgirl["Mystique"].Loc if not Loc else Loc
         
         if Loc == bg_current:
                 #Bumps stats based on colognes
@@ -541,7 +541,7 @@ init python:
         if E_Loc == bg_current:
             if "Emma" not in Party: 
                 Present.append("Emma")
-        if newgirl.girls["Mystique"]["Loc"] == bg_current:
+        if newgirl["Mystique"].Loc == bg_current:
             if "Mystique" not in Party: 
                 Present.append("Mystique") 
         
@@ -582,7 +582,7 @@ init python:
                             else:
                                 return 0
                 elif Chr == "Mystique":
-                            if newgirl.girls["Mystique"]["Hose"] == "stockings":
+                            if newgirl["Mystique"].Hose == "stockings":
                                 return 1
                             else:
                                 return 0
@@ -618,7 +618,7 @@ init python:
                         else:
                             return 0
                 elif Chr == "Mystique":
-                        if newgirl.girls["Mystique"]["Legs"] == "pants":
+                        if newgirl["Mystique"].Legs == "pants":
                             return 1
                         else:
                             return 0
@@ -662,15 +662,15 @@ init python:
                         if E_Panties:
                             C += 1
                 elif Chr == "Mystique":
-                        if newgirl.girls["Mystique"]["Over"]:
+                        if newgirl["Mystique"].Over:
                             C += 1
-                        if newgirl.girls["Mystique"]["Chest"]:
+                        if newgirl["Mystique"].Chest:
                             C += 1
-                        if newgirl.girls["Mystique"]["Legs"]:
+                        if newgirl["Mystique"].Legs:
                             C += 1
                         if HoseNum("Mystique") >= 5:
                             C += 1
-                        if newgirl.girls["Mystique"]["Panties"]:
+                        if newgirl["Mystique"].Panties:
                             C += 1
                 return C 
             
@@ -942,20 +942,20 @@ label Faces(Character="All"):
             call EmmaFace   
 
     if Character == "Mystique" or Character == "All":
-            if newgirl.girls["Mystique"]["Lust"] >= 50 and ApprovalCheck("Mystique", 1000):
-                    $ newgirl.girls["Mystique"]["Emote"] = "sexy"           
-            elif newgirl.girls["Mystique"]["Addict"] > 75:
-                    $ newgirl.girls["Mystique"]["Emote"] = "manic"
-            elif newgirl.girls["Mystique"]["Love"] >= newgirl.girls["Mystique"]["Obed"] and newgirl.girls["Mystique"]["Love"] >= 500:
-                    $ newgirl.girls["Mystique"]["Emote"] = "smile"      
-            elif newgirl.girls["Mystique"]["Inbt"] >= newgirl.girls["Mystique"]["Obed"] and newgirl.girls["Mystique"]["Inbt"] >= 500:
-                    $ newgirl.girls["Mystique"]["Emote"] = "smile"      
-            elif newgirl.girls["Mystique"]["Addict"] > 50:
-                    $ newgirl.girls["Mystique"]["Emote"] = "manic"
-            elif (newgirl.girls["Mystique"]["Love"] + newgirl.girls["Mystique"]["Obed"]) < 300:
-                    $ newgirl.girls["Mystique"]["Emote"] = "angry"
+            if newgirl["Mystique"].Lust >= 50 and ApprovalCheck("Mystique", 1000):
+                    $ newgirl["Mystique"].Emote = "sexy"           
+            elif newgirl["Mystique"].Addict > 75:
+                    $ newgirl["Mystique"].Emote = "manic"
+            elif newgirl["Mystique"].Love >= newgirl["Mystique"].Obed and newgirl["Mystique"].Love >= 500:
+                    $ newgirl["Mystique"].Emote = "smile"      
+            elif newgirl["Mystique"].Inbt >= newgirl["Mystique"].Obed and newgirl["Mystique"].Inbt >= 500:
+                    $ newgirl["Mystique"].Emote = "smile"      
+            elif newgirl["Mystique"].Addict > 50:
+                    $ newgirl["Mystique"].Emote = "manic"
+            elif (newgirl["Mystique"].Love + newgirl["Mystique"].Obed) < 300:
+                    $ newgirl["Mystique"].Emote = "angry"
             else:
-                    $ newgirl.girls["Mystique"]["Emote"] = "normal"
+                    $ newgirl["Mystique"].Emote = "normal"
             call MystiqueFace   
     return
                    
@@ -996,12 +996,12 @@ label DrainWord(Character = "Rogue", Word = "word", Recent = 1, Daily = 1):
                                 while Word in R_DailyActions:
                                         $ R_DailyActions.remove(Word)  
             elif Character == "Mystique" or Character == "All":
-                            if Word in newgirl.girls["Mystique"]["RecentActions"] and Recent:
-                                while Word in newgirl.girls["Mystique"]["RecentActions"]:
-                                        $ newgirl.girls["Mystique"]["RecentActions"].remove(Word) 
-                            if Word in newgirl.girls["Mystique"]["DailyActions"] and Daily:
-                                while Word in newgirl.girls["Mystique"]["DailyActions"]:
-                                        $ newgirl.girls["Mystique"]["DailyActions"].remove(Word)    
+                            if Word in newgirl["Mystique"].RecentActions and Recent:
+                                while Word in newgirl["Mystique"].RecentActions:
+                                        $ newgirl["Mystique"].RecentActions.remove(Word) 
+                            if Word in newgirl["Mystique"].DailyActions and Daily:
+                                while Word in newgirl["Mystique"].DailyActions:
+                                        $ newgirl["Mystique"].DailyActions.remove(Word)    
             return
 
 
@@ -1105,13 +1105,13 @@ label CleartheRoom(Character = "Rogue", Passive = 0, Silent = 0, Check = 0):
                 else:
                     $ Check += 1    
 
-            if Character != "Mystique" and (newgirl.girls["Mystique"]["Loc"] == bg_current or "Mystique" in Party):        
+            if Character != "Mystique" and (newgirl["Mystique"].Loc == bg_current or "Mystique" in Party):        
                 if not Check:                        
                     #if the character asking is not Mystique, this removes Mystique from the room
                     if Silent:
                         pass
                     elif Passive:
-                        ch_m "I think I should be going now."  
+                        ch_m "I think I should be going noww."  
                     elif Character == "Rogue" and R_Loc == bg_current:
                         ch_r "Mystique, could I talk to [Playername] alone for a minute?"
                         ch_m "Fine, I'll see you later then."  
@@ -1123,15 +1123,15 @@ label CleartheRoom(Character = "Rogue", Passive = 0, Silent = 0, Check = 0):
                         
                     if "Mystique" in Party:
                             $ Party.remove("Mystique")  
-                    if "leaving" in newgirl.girls["Mystique"]["RecentActions"]:
+                    if "leaving" in newgirl["Mystique"].RecentActions:
                             call DrainWord("Mystique","leaving")  
-                    if "arriving" in newgirl.girls["Mystique"]["RecentActions"]:
+                    if "arriving" in newgirl["Mystique"].RecentActions:
                             call DrainWord("Mystique","arriving")                   
                     if bg_current == "bg mystique":
                             #if the girl is not Mystique but you're in Mystique's room, the girl takes you to her room
                             call TaketoRoom(Character)
                     else:
-                            $ newgirl.girls["Mystique"]["Loc"] = "bg mystique"                    
+                            $ newgirl["Mystique"].Loc = "bg mystique"                    
                     hide Mystique_Sprite with easeoutright
                 else:
                     $ Check += 1                 
@@ -1154,7 +1154,7 @@ label TaketoRoom(Girl = "Rogue"):
 #                $ bg_current = "bg mystique"
 #                $ E_Loc = "bg mystique"           
                 $ bg_current = "bg playerroom"
-                $ newgirl.girls["Mystique"]["Loc"] = "bg playerroom"
+                $ newgirl["Mystique"].Loc = "bg playerroom"
         call Set_The_Scene
         call CleartheRoom(Girl)
         call Taboo_Level
@@ -1219,6 +1219,23 @@ label Round10(Options = ["none"]):
                                         jump Player_Room
                         call CleartheRoom("Emma",1)
                         call Emma_Sleepover 
+                elif bg_current == "bg mystique":         
+                        #If it's Mystique's room, she gets dibs                         
+                        if newgirl["Mystique"].Loc != bg_current: 
+                                # if Mystique isn't around. . .
+                                if newgirl["Mystique"].Sleep >= 5: 
+                                        call CleartheRoom("Mystique",1)
+                                        "She probably wouldn't mind you taking a quick nap. . ."
+                                        call Wait
+                                        if newgirl["Mystique"].Loc == bg_current:
+                                                call DrainWord("Mystique","arriving")
+                                                ch_m "Well look whos sleeping in my bed. . ."
+                                else:
+                                        "She probably wouldn't appreciate you staying over, you head back to your own room."
+                                        $ renpy.pop_call()
+                                        jump Player_Room
+                        call CleartheRoom("Mystique",1)
+                        call Mystique_Sleepover 
                 else: 
                         #You're not in anyone else's room
                         if R_Loc == bg_current and R_Sleep >= 2 and ApprovalCheck("Rogue", 1000): 
@@ -1341,6 +1358,17 @@ label Chat:
                                     call Emma_Chat  
                         else:
                             "You don't know her number, you'll have to go to her." 
+                            return  
+                
+                "Chat with Mystique" if newgirl["Mystique"].Loc == bg_current:                     
+                        call Mystique_Chat    
+
+                "Text Mystique" if newgirl["Mystique"].Loc != bg_current and "met" in E_History: 
+                        #if "Mystique" in Digits:
+                            "You send Mystique a text."                 
+                            call Mystique_Chat  
+                        #else:
+                        #    "You don't know her number, you'll have to go to her." 
                             return                 
                 "Never Mind":
                     pass
@@ -1374,8 +1402,8 @@ label Present_Check(Present = []):
     elif E_Loc == bg_current:       
                     $ Present.append("Emma")
     if "Mystique" in Party: 
-        $ newgirl.girls["Mystique"]["Loc"] = bg_current
-    elif newgirl.girls["Mystique"]["Loc"] == bg_current:       
+        $ newgirl["Mystique"].Loc = bg_current
+    elif newgirl["Mystique"].Loc == bg_current:       
                     $ Present.append("Mystique")
         
     
@@ -1512,15 +1540,15 @@ label Remove_Girl(Girl = 0, HideGirl = 1):
     if Girl == "Mystique" or Girl == "All": 
             if "Mystique" in Party:        
                     $ Party.remove("Mystique")
-            if "leaving" in newgirl.girls["Mystique"]["RecentActions"]:
+            if "leaving" in newgirl["Mystique"].RecentActions:
                     call DrainWord("Mystique","leaving")  
-            if "arriving" in newgirl.girls["Mystique"]["RecentActions"]:
+            if "arriving" in newgirl["Mystique"].RecentActions:
                     call DrainWord("Mystique","arriving")   
-            if bg_current == newgirl.girls["Mystique"]["Loc"]: 
-                if bg_current == "bg emma":
-                    $ newgirl.girls["Mystique"]["Loc"] = "bg campus"
+            if bg_current == newgirl["Mystique"].Loc: 
+                if bg_current == "bg mystique":
+                    $ newgirl["Mystique"].Loc = "bg campus"
                 else:
-                    $ newgirl.girls["Mystique"]["Loc"] = "bg emma"
+                    $ newgirl["Mystique"].Loc = "bg mystique"
                 if HideGirl:
                     hide Mystique_Sprite
                     call Mystique_Hide
@@ -1784,43 +1812,43 @@ label Favorite_Actions(Character=0, Quick=0, Temp=0, ATemp=0, PTemp=0, BTemp=0, 
     
     if not Character or Character == "Mystique":
                 #ass, pussy, blow, tits, hand, fondling, kiss
-                $ ATemp = newgirl.girls["Mystique"]["Anal"] + newgirl.girls["Mystique"]["DildoA"] + newgirl.girls["Mystique"]["FondleA"] + newgirl.girls["Mystique"]["InsertA"] + newgirl.girls["Mystique"]["LickA"]        
-                $ PTemp = newgirl.girls["Mystique"]["Sex"] + newgirl.girls["Mystique"]["DildoP"] + newgirl.girls["Mystique"]["FondleP"] + newgirl.girls["Mystique"]["InsertP"] + newgirl.girls["Mystique"]["LickP"]
-                $ BTemp = newgirl.girls["Mystique"]["Blow"]
-                $ TTemp = newgirl.girls["Mystique"]["Tit"]
-                $ HTemp = newgirl.girls["Mystique"]["Hand"]
-                $ FTemp = newgirl.girls["Mystique"]["FondleB"] + newgirl.girls["Mystique"]["FondleT"] + newgirl.girls["Mystique"]["SuckB"] + newgirl.girls["Mystique"]["Hotdog"]
+                $ ATemp = newgirl["Mystique"].Anal + newgirl["Mystique"].DildoA + newgirl["Mystique"].FondleA + newgirl["Mystique"].InsertA + newgirl["Mystique"].LickA        
+                $ PTemp = newgirl["Mystique"].Sex + newgirl["Mystique"].DildoP + newgirl["Mystique"].FondleP + newgirl["Mystique"].InsertP + newgirl["Mystique"].LickP
+                $ BTemp = newgirl["Mystique"].Blow
+                $ TTemp = newgirl["Mystique"].Tit
+                $ HTemp = newgirl["Mystique"].Hand
+                $ FTemp = newgirl["Mystique"].FondleB + newgirl["Mystique"].FondleT + newgirl["Mystique"].SuckB + newgirl["Mystique"].Hotdog
                                 
                 #This portion sets a bonus based on the player's favorite activity with her.
-                if newgirl.girls["Mystique"]["PlayerFav"] and ApprovalCheck("Emma", 1500): 
-                        if newgirl.girls["Mystique"]["PlayerFav"] == "anal":
+                if newgirl["Mystique"].PlayerFav and ApprovalCheck("Emma", 1500): 
+                        if newgirl["Mystique"].PlayerFav == "anal":
                             $ ATemp += 20
-                        elif newgirl.girls["Mystique"]["PlayerFav"] == "sex":
+                        elif newgirl["Mystique"].PlayerFav == "sex":
                             $ PTemp += 20
-                        elif newgirl.girls["Mystique"]["PlayerFav"] == "blow":
+                        elif newgirl["Mystique"].PlayerFav == "blow":
                             $ BTemp += 20
-                        elif newgirl.girls["Mystique"]["PlayerFav"] == "tit":
+                        elif newgirl["Mystique"].PlayerFav == "tit":
                             $ TTemp += 20
-                        elif newgirl.girls["Mystique"]["PlayerFav"] == "hand":
+                        elif newgirl["Mystique"].PlayerFav == "hand":
                             $ HTemp += 20
                         else:
                             $ FTemp += 20
-                elif newgirl.girls["Mystique"]["PlayerFav"] and ApprovalCheck("Emma", 800):
-                        if newgirl.girls["Mystique"]["PlayerFav"] == "anal":
+                elif newgirl["Mystique"].PlayerFav and ApprovalCheck("Emma", 800):
+                        if newgirl["Mystique"].PlayerFav == "anal":
                             $ ATemp += 5
-                        elif newgirl.girls["Mystique"]["PlayerFav"] == "sex":
+                        elif newgirl["Mystique"].PlayerFav == "sex":
                             $ PTemp += 5
-                        elif newgirl.girls["Mystique"]["PlayerFav"] == "blow":
+                        elif newgirl["Mystique"].PlayerFav == "blow":
                             $ BTemp += 5
-                        elif newgirl.girls["Mystique"]["PlayerFav"] == "tit":
+                        elif newgirl["Mystique"].PlayerFav == "tit":
                             $ TTemp += 5
-                        elif newgirl.girls["Mystique"]["PlayerFav"] == "hand":
+                        elif newgirl["Mystique"].PlayerFav == "hand":
                             $ HTemp += 5
                         else:
                             $ FTemp += 5
                 
                 #This adds the numbers together to make a large number, then generates a random number between 1 and that total
-                $ Total = ATemp + PTemp + BTemp + TTemp + HTemp + FTemp + newgirl.girls["Mystique"]["Kissed"]  
+                $ Total = ATemp + PTemp + BTemp + TTemp + HTemp + FTemp + newgirl["Mystique"].Kissed  
                 if Total <= 0:
                     $ D20F = 999
                 else:
@@ -1828,16 +1856,16 @@ label Favorite_Actions(Character=0, Quick=0, Temp=0, ATemp=0, PTemp=0, BTemp=0, 
                 
                 # This selects a favorite activity based on which number is picked.
                 if D20F <= ATemp:
-                    if newgirl.girls["Mystique"]["Anal"] >= 5:
+                    if newgirl["Mystique"].Anal >= 5:
                             $ Temp = "anal"
-                    elif newgirl.girls["Mystique"]["LickA"] >= 5:
+                    elif newgirl["Mystique"].LickA >= 5:
                             $ Temp = "lick ass"
                     else:
                             $ Temp = "insert ass"
                 elif D20F <= ATemp + PTemp:
-                        if newgirl.girls["Mystique"]["Sex"] >= 5:
+                        if newgirl["Mystique"].Sex >= 5:
                             $ Temp = "sex"
-                        elif newgirl.girls["Mystique"]["LickP"] >= 5:
+                        elif newgirl["Mystique"].LickP >= 5:
                             $ Temp = "lick pussy"
                         else:
                             $ Temp = "fondle pussy"
@@ -1849,11 +1877,11 @@ label Favorite_Actions(Character=0, Quick=0, Temp=0, ATemp=0, PTemp=0, BTemp=0, 
                             $ Temp = "hand"
                 elif D20F <= ATemp + PTemp + BTemp + TTemp + HTemp + FTemp:
                         $ D20F = renpy.random.randint(1, 20)
-                        if D20F >= 15 and newgirl.girls["Mystique"]["Hotdog"]:
+                        if D20F >= 15 and newgirl["Mystique"].Hotdog:
                             $ Temp = "hotdog"
-                        elif D20F >= 10 and newgirl.girls["Mystique"]["SuckB"]:
+                        elif D20F >= 10 and newgirl["Mystique"].SuckB:
                             $ Temp = "suck breasts"
-                        elif D20F >= 5 and newgirl.girls["Mystique"]["FondleB"]:
+                        elif D20F >= 5 and newgirl["Mystique"].FondleB:
                             $ Temp = "fondle breasts"
                         else:
                             $ Temp = "fondle thighs"
@@ -1861,7 +1889,7 @@ label Favorite_Actions(Character=0, Quick=0, Temp=0, ATemp=0, PTemp=0, BTemp=0, 
                             $ Temp = "kiss"
                 
                 if not Quick:
-                    $ newgirl.girls["Mystique"]["Favorite"] = Temp
+                    $ newgirl["Mystique"].Favorite = Temp
                 else:
                     return Temp
     #End Emma Stuff            
@@ -1893,9 +1921,9 @@ label Seen_First_Peen(Silent = 0, Undress = 0, GirlsNum = 0): #checked each time
                         #If Emma hasn't seen your cock yet, call the thing 
                         call Emma_First_Peen(Silent,Undress,GirlsNum)
                         $ GirlsNum += 1  
-        if newgirl.girls["Mystique"]["Loc"] == bg_current:  
+        if newgirl["Mystique"].Loc == bg_current:  
                 #If Emma is around, check to see if she noticed your cock yet
-                if (Ch_Focus == "Mystique" or Partner == "Mystique") and "peen" not in newgirl.girls["Mystique"]["RecentActions"]:
+                if (Ch_Focus == "Mystique" or Partner == "Mystique") and "peen" not in newgirl["Mystique"].RecentActions:
                         #If Mystique hasn't seen your cock yet, call the thing 
                         call Mystique_First_Peen(Silent,Undress,GirlsNum)
                         $ GirlsNum += 1       
@@ -1959,14 +1987,14 @@ label FlashTits(Girl = "Rogue", Timing = 1, Over = 0, Under = 0):
                     $ E_Over = Over
                     $ E_Chest = Under
     elif Girl == "Mystique":
-            $ Over = newgirl.girls["Mystique"]["Over"]
-            $ Under = newgirl.girls["Mystique"]["Chest"]
-            $ newgirl.girls["Mystique"]["Over"] = 0
-            $ newgirl.girls["Mystique"]["Chest"] = 0   
+            $ Over = newgirl["Mystique"].Over
+            $ Under = newgirl["Mystique"].Chest
+            $ newgirl["Mystique"].Over = 0
+            $ newgirl["Mystique"].Chest = 0   
             if Timing:
                     pause Timing     
-                    $ newgirl.girls["Mystique"]["Over"] = Over
-                    $ newgirl.girls["Mystique"]["Chest"] = Under
+                    $ newgirl["Mystique"].Over = Over
+                    $ newgirl["Mystique"].Chest = Under
     return
 
 # Start Gym Clothes / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
@@ -2218,50 +2246,50 @@ label Gym_Clothes(Mode = 0, Girl = 0, GirlsNum = 0): #checked each time you ente
         # End Emma 
 
     if not Girl or Girl == "Mystique":
-        if newgirl.girls["Mystique"]["Loc"] != "bg dangerroom" or Mode == "change":  
+        if newgirl["Mystique"].Loc != "bg dangerroom" or Mode == "change":  
                 #If Mystique has left the gym or was told to change back
-                if newgirl.girls["Mystique"]["Outfit"] == "gym":
-                        if bg_current == "bg dangerroom" and "leaving" in newgirl.girls["Mystique"]["RecentActions"]:
+                if newgirl["Mystique"].Outfit == "gym":
+                        if bg_current == "bg dangerroom" and "leaving" in newgirl["Mystique"].RecentActions:
                                 #if you're in the danger room, and so is Mystique
                                 show blackscreen onlayer black
-                        $ newgirl.girls["Mystique"]["Outfit"] = newgirl.girls["Mystique"]["OutfitDay"]
+                        $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitDay
                         call MystiqueOutfit(Changed=1)                        
-        elif newgirl.girls["Mystique"]["Outfit"] == "gym":
+        elif newgirl["Mystique"].Outfit == "gym":
                     #If it's already gym clothes, skip this
                     pass   
         elif Mode == "pre":
                 #If she was already here
-                if newgirl.girls["Mystique"]["Loc"] == "bg dangerroom" and "Mystique" not in Party:
-                    $ newgirl.girls["Mystique"]["Outfit"] = "gym"
+                if newgirl["Mystique"].Loc == "bg dangerroom" and "Mystique" not in Party:
+                    $ newgirl["Mystique"].Outfit = "gym"
                     call MystiqueOutfit(Changed=1)
         elif Mode == "auto":
                 #If it's set to do it automatically by the call
-                        if newgirl.girls["Mystique"]["Loc"] == "bg dangerroom" and newgirl.girls["Mystique"]["Loc"] == bg_current:
+                        if newgirl["Mystique"].Loc == "bg dangerroom" and newgirl["Mystique"].Loc == bg_current:
                                 show blackscreen onlayer black
-                        $ newgirl.girls["Mystique"]["Outfit"] = "gym"
+                        $ newgirl["Mystique"].Outfit = "gym"
                         call MystiqueOutfit(Changed=1)
-        elif newgirl.girls["Mystique"]["Loc"] == bg_current:
+        elif newgirl["Mystique"].Loc == bg_current:
                 #If Mystique is in the gym, see if she'll change clothes
-                if ApprovalCheck("Mystique", 1300, "LO") or "sub" in newgirl.girls["Mystique"]["Traits"]:
+                if ApprovalCheck("Mystique", 1300, "LO") or "sub" in newgirl["Mystique"].Traits:
                     pass
-                elif ApprovalCheck("Mystique", 900, "LO") and newgirl.girls["Mystique"]["Custom"][0]:
+                elif ApprovalCheck("Mystique", 900, "LO") and newgirl["Mystique"].Custom[0]:
                     pass
-                elif ApprovalCheck("Mystique", 700, "LO") and newgirl.girls["Mystique"]["Gym"][0]:
+                elif ApprovalCheck("Mystique", 700, "LO") and newgirl["Mystique"].Gym[0]:
                     pass
                 else:
                     $ Line = "no"
-                if Line == "no" or "asked gym" in newgirl.girls["Mystique"]["DailyActions"] or "no ask gym" in newgirl.girls["Mystique"]["Traits"]:   
+                if Line == "no" or "asked gym" in newgirl["Mystique"].DailyActions or "no ask gym" in newgirl["Mystique"].Traits:   
                     #If she decides not to ask you
                     if GirlsNum:
                         ch_m "I should change too."  
                     else:
                         ch_m "I need to change into something more appropriate."                       
                     show blackscreen onlayer black
-                    $ newgirl.girls["Mystique"]["Outfit"] = "gym"
+                    $ newgirl["Mystique"].Outfit = "gym"
                     call MystiqueOutfit(Changed=1)
                 else:
                     # She asks to change outfits
-                    $ newgirl.girls["Mystique"]["DailyActions"].append("asked gym")
+                    $ newgirl["Mystique"].DailyActions.append("asked gym")
                     if GirlsNum:
                         $ Line = "Do you think I should change as well?"  
                     else:
@@ -2270,32 +2298,32 @@ label Gym_Clothes(Mode = 0, Girl = 0, GirlsNum = 0): #checked each time you ente
                             ch_m "[Line]"
                             "Yeah, they look great.":  
                                 call MystiqueFace("smile")                              
-                                $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 60, 1)
-                                $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 50, 1)
-                                $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 30, 1)
+                                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 60, 1)
+                                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 50, 1)
+                                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 30, 1)
                                 $ Line = 1                            
                             "No, stay in that.":
                                 call MystiqueFace("confused")    
-                                $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 50, 5)
+                                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 50, 5)
                                 $ Line = 0
                             "Whichever you like.": 
                                 call MystiqueFace("confused")                                      
-                                $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 50, 1)
+                                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, 1)
                                 $ Line = renpy.random.randint(0, 3)
                             "I don't care.":        
                                 call MystiqueFace("angry")      
-                                $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 50, -3, 1)
-                                $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 50, 4)
-                                $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 50, 2)  
+                                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 50, -3, 1)
+                                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 50, 4)
+                                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, 2)  
                                 $ Line = renpy.random.randint(0, 1)
                     if Line:
                             #If she decided to change     
                             ch_m "Fine, I'll be right back."                       
                             show blackscreen onlayer black
-                            $ newgirl.girls["Mystique"]["Outfit"] = "gym"
+                            $ newgirl["Mystique"].Outfit = "gym"
                             call MystiqueOutfit(Changed=1)
                     #end asked
-                if newgirl.girls["Mystique"]["Outfit"] == "gym":
+                if newgirl["Mystique"].Outfit == "gym":
                     $ GirlsNum += 1 
                 $ Line = 0
         hide blackscreen onlayer black
@@ -2759,7 +2787,7 @@ label Girls_Location(GirlsNum = 0,Clear=0):
                 call Girls_Arrive
         elif "arriving" in E_RecentActions:
                 call Girls_Arrive
-        elif "arriving" in newgirl.girls["Mystique"]["RecentActions"]:
+        elif "arriving" in newgirl["Mystique"].RecentActions:
                 call Girls_Arrive
         return
         
@@ -2812,14 +2840,14 @@ label GirlsAngry(Girls = 0):
                 $ Party.remove("Emma")  
             $ Girls += 1
             hide Emma_Sprite with easeoutleft
-    if newgirl.girls["Mystique"]["Loc"] == bg_current and "angry" in newgirl.girls["Mystique"]["RecentActions"]:
+    if newgirl["Mystique"].Loc == bg_current and "angry" in newgirl["Mystique"].RecentActions:
             if bg_current == "bg mystique":
                 ch_m "You should leave, or do you want to test me?"
                 "You head back to your room."
                 $ renpy.pop_call()
                 jump Player_Room_Entry
             else:        
-                $ newgirl.girls["Mystique"]["Loc"] = "bg mystique"
+                $ newgirl["Mystique"].Loc = "bg mystique"
                 if Girls:
                     ". . . and so does Mystique."
                 else:
@@ -2848,7 +2876,7 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
             $ GirlsNum += 1
             $ Options.append("Emma")
             call DrainWord("Emma","arriving") 
-    if "arriving" in newgirl.girls["Mystique"]["RecentActions"] and "Mystique" not in Party: 
+    if "arriving" in newgirl["Mystique"].RecentActions and "Mystique" not in Party: 
             $ GirlsNum += 1
             $ Options.append("Mystique")
             call DrainWord("Mystique","arriving")  
@@ -2899,7 +2927,7 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                             $ Secondary = Primary
                             $ Primary = "Mystique"
                         else:
-                            $ newgirl.girls["Mystique"]["Loc"] = "bg mystique"
+                            $ newgirl["Mystique"].Loc = "bg mystique"
                         $ Options.remove("Mystique")            
             #end list clearing
             
@@ -2911,7 +2939,7 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                     call Remove_Girl("Kitty")
             if E_Loc == bg_current and "Emma" not in (Primary,Secondary) and "Emma" not in Party:
                     call Remove_Girl("Emma")
-            if newgirl.girls["Mystique"]["Loc"] == bg_current and "Mystique" not in (Primary,Secondary) and "Mystique" not in Party:
+            if newgirl["Mystique"].Loc == bg_current and "Mystique" not in (Primary,Secondary) and "Mystique" not in Party:
                     call Remove_Girl("Mystique")
     $ Options = []    
     #This sequence sets the pecking order, more important once there are more girls
@@ -2979,9 +3007,9 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                                 if Primary == "Emma":
                                         ch_e "Good."
                     if Primary == "Mystique" or Secondary == "Mystique":
-                                $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 50, 1)
-                                $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 60, 1)
-                                $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 50, 2)
+                                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 50, 1)
+                                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 60, 1)
+                                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, 2)
                                 if Primary == "Mystique":
                                         ch_m "Good."
                     #end "sure"
@@ -3014,10 +3042,10 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                                         ch_e "If that's how you wish to play it. . ."
                                 call Remove_Girl("Emma")
                     if Primary == "Mystique" or Secondary == "Mystique":  
-                                $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, -2)
-                                $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 50, -5)
-                                $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 70, 5) 
-                                $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 30, -7) 
+                                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -2)
+                                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 50, -5)
+                                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 70, 5) 
+                                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 30, -7) 
                                 call MystiqueFace("confused") 
                                 if Primary == "Mystique": 
                                         ch_m "If that's how you wish to play it. . ."
@@ -3064,16 +3092,16 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                                     ch_e "We'll see how long that attitude lasts. . ."
                                 call Remove_Girl("Emma")
                     if Primary == "Mystique" or Secondary == "Mystique":  
-                                $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 50, 7)         
+                                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 50, 7)         
                                 if ApprovalCheck("Mystique", 2000) or ApprovalCheck("Mystique", 500, "O"):
-                                    $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 80, 2)
+                                    $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 2)
                                     ch_m "I suppose you can have your personal space. . ."
                                 else:    
                                     call MystiqueFace("angry") 
-                                    $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 60, -6, 1)
-                                    $ newgirl.girls["Mystique"]["Love"] = Statupdate("Mystique", "Love", newgirl.girls["Mystique"]["Love"], 90, -4)
-                                    $ newgirl.girls["Mystique"]["Obed"] = Statupdate("Mystique", "Obed", newgirl.girls["Mystique"]["Obed"], 80, 5)
-                                    $ newgirl.girls["Mystique"]["Inbt"] = Statupdate("Mystique", "Inbt", newgirl.girls["Mystique"]["Inbt"], 50, 1) 
+                                    $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 60, -6, 1)
+                                    $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -4)
+                                    $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
+                                    $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, 1) 
                                     ch_e "We'll see how long that attitude lasts. . ."
                                 call Remove_Girl("Mystique")
                     if Secondary:
@@ -3632,10 +3660,10 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
                 $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, SecondaryLust)
                 call EmmaLust
         elif Secondary == "Mystique":
-                $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Rogue" and newgirl.girls["Mystique"]["LikeRogue"] >= 50 else 0   
-                $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Kitty" and newgirl.girls["Mystique"]["LikeKitty"] >= 50 else 0     
-                $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Emma" and newgirl.girls["Mystique"]["LikeEmma"] >= 50 else 0     
-                $ newgirl.girls["Mystique"]["Lust"] = Statupdate("Mystique", "Lust", newgirl.girls["Mystique"]["Lust"], 200, SecondaryLust)
+                $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Rogue" and newgirl["Mystique"].LikeRogue >= 50 else 0   
+                $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Kitty" and newgirl["Mystique"].LikeKitty >= 50 else 0     
+                $ SecondaryLust += (int(PrimaryLust/10)) if Primary == "Emma" and newgirl["Mystique"].LikeEmma >= 50 else 0     
+                $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 200, SecondaryLust)
                 call MystiqueLust 
         
         
