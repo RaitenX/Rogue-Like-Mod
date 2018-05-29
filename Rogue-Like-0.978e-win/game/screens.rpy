@@ -46,6 +46,8 @@ screen say(who, what, side_image=None, two_window=False, CountWords = 0): #Count
             $ CountWords = 1
         elif who == "Emma" and E_Gag: 
             $ CountWords = 1
+        elif who == "Mystique" and newgirl["Mystique"].Gag: 
+            $ CountWords = 1
         if CountWords == 1:
             $ CountWords = what.count(" ") if what.count(" ") <= 10 else 10
             $ CountWords = CountWords - what.count(".")
@@ -107,6 +109,13 @@ screen say(who, what, side_image=None, two_window=False, CountWords = 0): #Count
                     if E_SpriteLoc == StageRight or E_SpriteLoc == StageFarRight:
                         add "arrow" rotate -90 xzoom -1 xpos 1.03 ypos -0.85                        
                     elif E_SpriteLoc == StageFarLeft:
+                        add "arrow" xalign 0.1 #xzoom -1
+                    else: #E_SpriteLoc == StageCenter, Left, etc.:
+                        add "arrow" xalign 0.8   
+            elif who == "Mystique": 
+                    if newgirl["Mystique"].SpriteLoc == StageRight or newgirl["Mystique"].SpriteLoc == StageFarRight:
+                        add "arrow" rotate -90 xzoom -1 xpos 1.03 ypos -0.85                        
+                    elif newgirl["Mystique"].SpriteLoc == StageFarLeft:
                         add "arrow" xalign 0.1 #xzoom -1
                     else: #E_SpriteLoc == StageCenter, Left, etc.:
                         add "arrow" xalign 0.8        
@@ -837,7 +846,7 @@ screen R_Status_screen:
                 imagebutton idle "images/iconaddictrate.png" hover "images/iconaddictrate.png" action NullAction() hovered tt.Action("Addiction Rate: [E_Addictionrate]")
                 bar range 100 value VariableValue("E_Addictionrate", 10) xmaximum 100 left_bar "images/barfull.png" right_bar "images/barempty.png" left_gutter 3 right_gutter 5 thumb None thumb_offset 0        
         showif not Trigger:
-            imagebutton auto "images/Button_Rogue_%s.png" action ui.callsinnewcontext("Shift_Focus", "Rogue") xpos 690 ypos 5 focus_mask True
+            imagebutton auto "images/Button_Mystique_%s.png" action ui.callsinnewcontext("Shift_Focus", "Mystique") xpos 690 ypos 5 focus_mask True
         showif config.developer:
             imagebutton auto "images/Button_Emma_%s.png" action ui.callsinnewcontext("EmmaStats") xpos 730 ypos 5 focus
                             
@@ -879,8 +888,8 @@ screen R_Status_screen:
                 bar range 100 value VariableValue2("Addictionrate", Ch_Focus, 10) xmaximum 100 left_bar "images/barfull.png" right_bar "images/barempty.png" left_gutter 3 right_gutter 5 thumb None thumb_offset 0        
         showif not Trigger:
             imagebutton auto "images/Button_Rogue_%s.png" action ui.callsinnewcontext("Shift_Focus", "Rogue") xpos 690 ypos 5 focus_mask True
-        showif config.developer:
-            imagebutton auto "images/Button_Emma_%s.png" action ui.callsinnewcontext("EmmaStats") xpos 730 ypos 5 focus
+        showif config.developer: #nothing here
+            imagebutton auto "images/Button_Mystique_%s.png" action ui.callsinnewcontext("EmmaStats") xpos 730 ypos 5 focus
                             
     frame:
         #Focus meter (dick)
@@ -897,7 +906,8 @@ screen R_Status_screen:
     frame:
         # Money and level
         xminimum 75
-        xpos 500    
+        xpos 500 
+        ypos -5   
         background None
         has vbox
         hbox:            
@@ -919,6 +929,11 @@ screen R_Status_screen:
                 text "Actions Left: [R_Action]" size 12
             hbox:
                 text "Forced: [R_ForcedCount]" size 12
+        elif Ch_Focus == 'Mystique':
+            hbox:
+                text "Actions Left: [newgirl[Mystique].Action]" size 12
+            hbox:
+                text "Forced: [newgirl[Mystique].ForcedCount]" size 12
         # this block is the name tag
         window:         
             pos (90,-40)#(-15,-8)

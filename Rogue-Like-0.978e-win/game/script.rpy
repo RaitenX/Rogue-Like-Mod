@@ -190,6 +190,7 @@ init -1:
     default R_Lust = 10
     default R_LikeKitty = 600
     default R_LikeEmma = 500
+    default R_LikeNewGirl = {"Mystique", 300}
     default R_Addict = 0                #how addicted she is
     default R_Addictionrate = 0         #How faster her addiciton rises
     default R_AddictStore = 0           #stores her base addiction level
@@ -325,6 +326,7 @@ init -1:
     default K_Lust = 10
     default K_LikeRogue = 700
     default K_LikeEmma = 400
+    default K_LikeNewGirl = {"Mystique", 300}
     default K_Addict = 0 #how addicted she is
     default K_Addictionrate = 0 #How faster her addiciton rises
     default K_Resistance = 0 #how fast her rate falls
@@ -458,6 +460,7 @@ init -1:
     default E_Lust = 10
     default E_LikeRogue = 500
     default E_LikeKitty = 500
+    default E_LikeNewGirl = {"Mystique", 200}
     default E_Addict = 0 #how addicted she is
     default E_Addictionrate = 0 #How faster her addiciton rises
     default E_Resistance = 0 #how fast her rate falls
@@ -4438,7 +4441,7 @@ label Shift_Focus(Chr = "Rogue", Second = 0):       #When used like Shift_Focus(
                                 $ RogueLayer = 75
                         #and move Mystique to first position
                         $ newgirl["Mystique"].SpriteLoc = StageCenter
-                        $ MystiqueLayer = 100
+                        $ newgirl["Mystique"].GirlLayer = 100
                         
                 if Ch_Focus == "Mystique": 
                     #If Mystique was already the focal character, return

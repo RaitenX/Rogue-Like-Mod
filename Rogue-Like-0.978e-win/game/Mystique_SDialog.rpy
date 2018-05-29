@@ -6,18 +6,18 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
             $ Line = "Mystique continues stroke your cock. "
                
             if not Speed:
-                        if E_Hand > 2:
+                        if newgirl["Mystique"].Hand > 2:
                                 $ Line = Line + "She just seems to be enjoying the feel of it"
-                                $ TempLust += 2 if E_Lust < 60 else 0
+                                $ TempLust += 2 if newgirl["Mystique"].Lust < 60 else 0
                         else:
                                 $ Line = Line + "She just seems to be looking it over"
-                                $ TempLust += 2 if E_Lust < 40 else 0
+                                $ TempLust += 2 if newgirl["Mystique"].Lust < 40 else 0
                                 $ TempFocus += -3 if P_Focus > 50 else 2
                             
-                        $ E_Addict -= 1 if D20S > 10 else 2
+                        $ newgirl["Mystique"].Addict -= 1 if D20S > 10 else 2
                         return
             
-            if E_Hand > 4:                          # After the 5th time 
+            if newgirl["Mystique"].Hand > 4:                          # After the 5th time 
                         if Speed <= 1:                      #slow 
                             $ Line = Line + renpy.random.choice(["Her movements have become almost masterful, her slightest touch starts you twitching", 
                                     "She gently blows across the tip as her finger dance along the shaft. It's getting a bit hot in here", 
@@ -56,8 +56,8 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                             
                             $ TempFocus += 15 if P_Focus < 60 else 5    
                             
-            $ TempLust += 3 if E_Lust < 60 else 0
-            $ E_Addict -= 1 if D20S > 10 else 2
+            $ TempLust += 3 if newgirl["Mystique"].Lust < 60 else 0
+            $ newgirl["Mystique"].Addict -= 1 if D20S > 10 else 2
             
     #End Handy dialog ////////////////////////////////////////////////////////////////////////////////////////////////////////
           
@@ -66,16 +66,16 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
             #This can only ever be a primary action. 
             
             if not Speed:
-                        if E_Tit > 2:
+                        if newgirl["Mystique"].Tit > 2:
                             $ Line = "Mystique begins to bounce her breasts up and down"
                         else:
                             $ Line = "Mystique squeezes her breasts togather and slowly moves them along your shaft"
                         $ Speed = 1
                         $ TempFocus += 12 if P_Focus < 60 else 6                      
-                        $ TempLust += 6 if E_Lust > 60 else 3 
+                        $ TempLust += 6 if newgirl["Mystique"].Lust > 60 else 3 
                         return
             
-            if E_Tit > 4 and E_Blow:                                        #5th+ and blown
+            if newgirl["Mystique"].Tit > 4 and newgirl["Mystique"].Blow:                                        #5th+ and blown
                         if Speed <= 1:                                              #slow
                             $ Line = renpy.random.choice(["Mystique rocks her breasts up and down around your cock", 
                                     "Mystique lightly licks the head as it pops up between her tits", 
@@ -86,7 +86,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     "Mystique gently caresses the shaft between her tits"])            
                             
                             $ TempFocus += 17 if P_Focus < 70 else 7                      
-                            $ TempLust += 7 if E_Lust > 60 else 4       
+                            $ TempLust += 7 if newgirl["Mystique"].Lust > 60 else 4       
                         else:                                                       #fast
                             $ Line = renpy.random.choice(["Mystique rapidly rocks her breasts up and down around your cock", 
                                     "Mystique licks away at the head every time it pops up between her tits", 
@@ -97,7 +97,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     "Mystique rapidly caresses the shaft between her tits"])
                             
                             $ TempFocus += 22 if P_Focus > 40 else 7                      
-                            $ TempLust += 6 if E_Lust > 70 else 4    
+                            $ TempLust += 6 if newgirl["Mystique"].Lust > 70 else 4    
                      
                 
             else:                                                 #third through 5th time
@@ -109,7 +109,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 "Mystique gently caresses the shaft between her tits"]) 
                         
                         $ TempFocus += 17 if P_Focus < 60 else 7                      
-                        $ TempLust += 6 if E_Lust > 60 else 3                        
+                        $ TempLust += 6 if newgirl["Mystique"].Lust > 60 else 3                        
                     else:                                                       #fast
                         $ Line = renpy.random.choice(["Mystique rapidly juggles her breasts up and down around your cock", 
                             "Mystique lightly brushes the head with her chin as it pops up between her tits", 
@@ -118,31 +118,31 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                             "Mystique rapidly slides the shaft between her tits"])   
                         
                         $ TempFocus += 17 if P_Focus > 50 else 9                      
-                        $ TempLust += 6 if E_Lust > 60 else 4     
+                        $ TempLust += 6 if newgirl["Mystique"].Lust > 60 else 4     
               
-            $ E_Addict -= 2
+            $ newgirl["Mystique"].Addict -= 2
     #End Action Titfuck ///////////////////////////////////////////////////////////////////////////////
            
            
     elif Trigger == "blow":
         
             if not Speed: #if Mystique is not moving                
-                    if "hungry" in E_Traits:
+                    if "hungry" in newgirl["Mystique"].Traits:
                             call MystiqueFace("sly")
                             $ Line = "Mystique stares at your cock. She licks her lips in anticipation"
-                            $ TempLust += 3 if E_Lust < 40 else 1                    
-                    elif E_Blow > 2:
+                            $ TempLust += 3 if newgirl["Mystique"].Lust < 40 else 1                    
+                    elif newgirl["Mystique"].Blow > 2:
                             call MystiqueFace("sly")
                             $ Line = "Mystique stares at your cock. She seems pretty excited about it"
-                            $ TempLust += 2 if E_Lust < 60 else 0
+                            $ TempLust += 2 if newgirl["Mystique"].Lust < 60 else 0
                     else:
                             call MystiqueFace("perplexed")
                             $ Line = "Mystique stares at your cock with curiosity"
-                            $ TempLust += 2 if E_Lust < 40 else 0                    
+                            $ TempLust += 2 if newgirl["Mystique"].Lust < 40 else 0                    
                             $ TempFocus += -3 if P_Focus > 50 else 2
                         
-                    if E_Blow <= 1 or (E_Obed >= 500 and E_Obed > E_Inbt):
-                            $ TempLust += 2 if E_Lust > 60 else 0                 
+                    if newgirl["Mystique"].Blow <= 1 or (newgirl["Mystique"].Obed >= 500 and newgirl["Mystique"].Obed > newgirl["Mystique"].Inbt):
+                            $ TempLust += 2 if newgirl["Mystique"].Lust > 60 else 0                 
                             $ Line = Line + ", but she seems to be waiting for some instruction"
                     else:
                             $ Line = Line + ", and then she gets started licking your cock"
@@ -157,7 +157,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                         $ Line = "Mystique continues to suck your cock. "        #if Mystique is the primary and is heading or sucking
              
             if Speed == 1:                                                                  #Speed 1 (licking)
-                    if E_Blow > 4:                                                                  #After the 5th time
+                    if newgirl["Mystique"].Blow > 4:                                                                  #After the 5th time
                             $ Line = Line + renpy.random.choice(["Her deft licks are almost masterful, your cock twitches with each stroke", 
                                     "She gently blows across the head as she covers your cock in smooth licks", 
                                     "How many licks to the center of your cock? No way you're finding out",
@@ -177,10 +177,10 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     "She licks her way down the shaft, and gently teases the balls"]) 
                             $ TempFocus += 22 if P_Focus > 60 else 12                      
                             $ TempLust += 2             
-                    $ E_Addict -= 2
+                    $ newgirl["Mystique"].Addict -= 2
                 
             elif Speed == 2:                                                                    #Speed 2 (heading)
-                    if E_Blow > 4:                                                                  #After the 5th time
+                    if newgirl["Mystique"].Blow > 4:                                                                  #After the 5th time
                             $ Line = Line + renpy.random.choice(["She masterfully bobs on your cock, and it twitches with each stroke", 
                                     "She rapidly bobs up and down on your cock, a frenzy of motion", 
                                     "She's really something of an expert, displaying years of expertise",
@@ -198,10 +198,10 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     "Her mouth envelopes the head, then she quickly draws it in and draws back with a pop"]) 
                             $ TempFocus += 17 if P_Focus > 80 else 12                      
                             $ TempLust += 1  
-                    $ E_Addict -= 2           
+                    $ newgirl["Mystique"].Addict -= 2           
                 
             elif Speed == 3:                                                                    #Speed 3 (sucking)
-                    if E_Blow > 4:                                                                  #After the 5th time
+                    if newgirl["Mystique"].Blow > 4:                                                                  #After the 5th time
                             $ Line = Line + renpy.random.choice(["She masterfully bobs on your cock, and it twitches with each stroke", 
                                     "She smoothly bobs up and down on your cock, a frenzy of motion", 
                                     "She's really something of an expert, displaying years of expertise",
@@ -210,7 +210,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     "She moves very smoothly, bobbing in and out. She's clearly been doing this for years",
                                     "She puts the shaft into her mouth and her tounge swirls rapidly around it"]) 
                             $ TempFocus += 24 if P_Focus > 40 else 14                      
-                            $ TempLust += 4 if E_Lust > 60 else 2    
+                            $ TempLust += 4 if newgirl["Mystique"].Lust > 60 else 2    
                         
                     else:                                                                #After the 2nd time
                             $ Line = Line + renpy.random.choice(["She's begining to figure you out, she bobs carefully up and down the shaft",
@@ -220,12 +220,12 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     "She rapidly licks her way up and down the shaft as her mouth envelopes you",
                                     "Her mouth envelopes the shaft, then she quickly draws it in and draws back with a pop"])
                             $ TempFocus += 18 if P_Focus > 50 else 10                      
-                            $ TempLust += 3 if E_Lust > 60 else 2    
-                    $ E_Addict -= 2 if D20S > 10 else 3
+                            $ TempLust += 3 if newgirl["Mystique"].Lust > 60 else 2    
+                    $ newgirl["Mystique"].Addict -= 2 if D20S > 10 else 3
                         
                  
             else:#Speed = 4                                                                     #Speed 4+ (Deep Throat)
-                    if E_Blow > 4:                                                                  #After the 5th time
+                    if newgirl["Mystique"].Blow > 4:                                                                  #After the 5th time
                             $ Line = Line + renpy.random.choice(["She masterfully bobs on your cock, and it twitches with each stroke", 
                                     "She rapidly bobs to the base of your cock, a frenzy of motion", 
                                     "She's really something of an expert, displaying years of expertise",
@@ -234,7 +234,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     "She moves very smoothly, bobbing in and out. She's clearly been doing this for years",
                                     "She puts the entire shaft into her mouth and her tounge swirls rapidly around it"])  
                             $ TempFocus += 25 if P_Focus > 40 else 10                      
-                            $ TempLust += 3 if E_Lust > 60 else 2    
+                            $ TempLust += 3 if newgirl["Mystique"].Lust > 60 else 2    
                         
                     else:                                                                #After the 2nd time
                             $ Line = Line + renpy.random.choice(["She's begining to figure you out, she bobs carefully up and down the shaft", 
@@ -244,11 +244,11 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     "She completely envelops the shaft with her throat.",
                                     "Her mouth envelopes the head, then she quickly draws it all the way in and draws back with a pop"])  
                             $ TempFocus += 22 if P_Focus > 40 else 8                      
-                            $ TempLust += 2 if E_Lust < 60 else 0                        
-                    $ TempLust += 4 if E_Obed > 500 else 1 
-                    $ E_Addict -= 3
+                            $ TempLust += 2 if newgirl["Mystique"].Lust < 60 else 0                        
+                    $ TempLust += 4 if newgirl["Mystique"].Obed > 500 else 1 
+                    $ newgirl["Mystique"].Addict -= 3
            
-    # end E_Blowjob                                 //////////////////////////////////////////////////////////////////////////////
+    # end newgirl["Mystique"].Blowjob                                 //////////////////////////////////////////////////////////////////////////////
         
     elif Trigger == "sex": #Trigger4 not available
         
@@ -261,7 +261,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
             else: 
                     $ Line = "You continue to slowly drive into Mystique. "        #if Mystique is the primary and is heading or sucking
             
-            if E_Sex > 4:
+            if newgirl["Mystique"].Sex > 4:
                 if Speed > 1:                       # After the 5th time fast
                         $ Line = Line + renpy.random.choice(["She bounces rapidly against your cock", 
                             "You thrust into her and she squeaks a bit",
@@ -270,7 +270,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                             "You pound away at her",    
                             "She grinds furiously back and forth along your cock"])
                         $ TempFocus += 20 if P_Focus > 50 else 12                   
-                        $ TempLust += 16 if E_Lust > 70 else 10                    
+                        $ TempLust += 16 if newgirl["Mystique"].Lust > 70 else 10                    
                 else:                        # After the 5th time slow
                         $ Line = Line + renpy.random.choice(["She bumps slowly against your cock", 
                             "You thrust into her and she coos a bit",
@@ -279,7 +279,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                             "You slowly slide back and forth near the entrance",    
                             "She slides slowly back and forth along your cock, teasing you"])
                         $ TempFocus += 16 if P_Focus < 60 else 12                   
-                        $ TempLust += 12 if 40 > E_Lust > 90 else 10                        
+                        $ TempLust += 12 if 40 > newgirl["Mystique"].Lust > 90 else 10                        
                         
             else:
                 if Speed > 1:             #third through 5th time fast
@@ -290,7 +290,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                         "You pound away at her",    
                         "She grinds furiously back and forth along your cock"])
                     $ TempFocus += 12 if P_Focus > 50 else 9                   
-                    $ TempLust += 14 if E_Lust > 80 else 10
+                    $ TempLust += 14 if newgirl["Mystique"].Lust > 80 else 10
                 else:             #third through 5th time slow
                     $ Line = Line + renpy.random.choice(["she bumps slowly against your cock", 
                         "You thrust into her and she squeaks a bit",
@@ -299,20 +299,20 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                         "You slowly slide back and forth near the entrance",    
                         "She slides slowly back and forth along your cock"])
                     $ TempFocus += 14 if P_Focus < 70 else 7                   
-                    $ TempLust += 10 if 50 > E_Lust > 90 else 8
+                    $ TempLust += 10 if 50 > newgirl["Mystique"].Lust > 90 else 8
                     
-            $ E_Addict -= 2
+            $ newgirl["Mystique"].Addict -= 2
             
-    # end E_Sex                                 ////////////////////////////////////////////////////////////////////////////// 
+    # end newgirl["Mystique"].Sex                                 ////////////////////////////////////////////////////////////////////////////// 
             
     elif Trigger == "hotdog": #Trigger4 not available
             #TempLust2 in this action is how much lower body clothing she has on, it gets cleared at the end.
             $ TempLust2 = 2
-            if E_Panties and not E_PantiesDown: #if panties are in the way
+            if newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: #if panties are in the way
                 $ TempLust2 -= 1
             if HoseNum("Mystique") >= 6: #if complete hose
                 $ TempLust2 -= 1        
-            if E_Legs and not E_Upskirt: #If pants/skirt is up
+            if newgirl["Mystique"].Legs and not newgirl["Mystique"].Upskirt: #If pants/skirt is up
                 $ TempLust2 -= 2 if TempLust2 <= 2 else TempLust2
                 
             if not Speed:
@@ -323,7 +323,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
             else: 
                     $ Line = "You continue to grind against Mystique. " 
                     
-            if E_Hotdog >= 2:
+            if newgirl["Mystique"].Hotdog >= 2:
                 if Speed > 1:       # After the 2ndtime fast
                     $ Line = Line + renpy.random.choice(["She bounces rapidly against your cock", 
                         "You thrust against her and she squeaks a bit",
@@ -332,7 +332,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                         "You grind away at her",    
                         "She grinds furiously back and forth along your cock"])
                     $ TempFocus += (TempLust2 + 8) if P_Focus < 60 else (TempLust2 + 4)
-                    $ TempLust += (TempLust2 + 8) if 50 > E_Lust > 80 else (TempLust2 + 2)
+                    $ TempLust += (TempLust2 + 8) if 50 > newgirl["Mystique"].Lust > 80 else (TempLust2 + 2)
                     
                 elif Speed:        #2nd time slow
                     $ Line = Line + renpy.random.choice(["She grinds slowly against your cock", 
@@ -342,7 +342,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                         "You slowly slide back and forth near her rim",    
                         "She slides slowly back and forth along your cock, teasing you"])                    
                     $ TempFocus += (TempLust2 + 8) if P_Focus < 60 else (TempLust2 + 3)
-                    $ TempLust += (TempLust2 + 7) if 30 > E_Lust > 70 else (TempLust2 + 3)
+                    $ TempLust += (TempLust2 + 7) if 30 > newgirl["Mystique"].Lust > 70 else (TempLust2 + 3)
                     
             else: #If you haven't done hotdog before       
                 if Speed > 1:       #fast
@@ -353,7 +353,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                         "You pound away at her",    
                         "She moves rapidly back and forth along your cock, but seems a bit uncomfortable"])                    
                     $ TempFocus += (TempLust2 + 5) if P_Focus < 60 else (TempLust2 + 3)
-                    $ TempLust += (TempLust2 + 4) if 50 > E_Lust > 80 else (TempLust2 + 2)
+                    $ TempLust += (TempLust2 + 4) if 50 > newgirl["Mystique"].Lust > 80 else (TempLust2 + 2)
                     
                 elif Speed:         #slow
                     $ Line = Line + renpy.random.choice(["She grinds slowly against your cock", 
@@ -362,13 +362,13 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                         "You slowly slide back and forth near her rim",    
                         "She slides slowly back and forth along your cock"])
                     $ TempFocus += (TempLust2 + 5) if P_Focus < 60 else (TempLust2 + 3)
-                    $ TempLust += (TempLust2 + 5) if 50 > E_Lust > 70 else (TempLust2 + 2)
+                    $ TempLust += (TempLust2 + 5) if 50 > newgirl["Mystique"].Lust > 70 else (TempLust2 + 2)
             
             if TempLust2:
-                $ E_Addict -= 1  
+                $ newgirl["Mystique"].Addict -= 1  
                 $ TempLust2 = 0
         
-    # end E_Hotdog                                 //////////////////////////////////////////////////////////////////////////////
+    # end newgirl["Mystique"].Hotdog                                 //////////////////////////////////////////////////////////////////////////////
             
          
     elif Trigger == "anal": #Trigger4 not available
@@ -383,7 +383,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                     $ Line = "You continue to push into Mystique's ass. " 
                     
                  
-            if E_Anal >= 5:
+            if newgirl["Mystique"].Anal >= 5:
                     if Speed > 1:#Fast
                             $ Line = Line + renpy.random.choice(["She bounces rapidly against your cock", 
                                 "You thrust into her and she moans a bit",
@@ -392,7 +392,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 "You pound away at her",    
                                 "She grinds furiously back and forth along your cock"])
                             $ TempFocus += 18 if P_Focus > 60 else 12                   
-                            $ TempLust += 16 if E_Lust > 80 else 10
+                            $ TempLust += 16 if newgirl["Mystique"].Lust > 80 else 10
                         
                     else:#Slow
                             $ Line = Line + renpy.random.choice(["She bumps slowly against your cock", 
@@ -402,7 +402,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 "You slowly slide back and forth near the rim",    
                                 "She slides slowly back and forth along your cock, teasing you"])
                             $ TempFocus += 12 if P_Focus > 60 else 9                   
-                            $ TempLust += 14 if 50 < E_Lust < 90 else 9
+                            $ TempLust += 14 if 50 < newgirl["Mystique"].Lust < 90 else 9
                               
             else:     #You've done some anal stuff before       
                     if Speed > 1:             #third through 5th time fast
@@ -413,7 +413,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 "You pound away at her",    
                                 "She grinds furiously back and forth along your cock"])                            
                             $ TempFocus += 12 if P_Focus > 60 else 8                   
-                            $ TempLust += 14 if E_Lust > 80 else 8
+                            $ TempLust += 14 if newgirl["Mystique"].Lust > 80 else 8
                         
                     elif Speed:             #third through 5th time
                             $ Line = Line + renpy.random.choice(["She bumps slowly against your cock", 
@@ -423,65 +423,65 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 "You slowly slide back and forth near the rim",    
                                 "She slides slowly back and forth along your cock"])
                             $ TempFocus += 13 if P_Focus > 60 else 8                   
-                            $ TempLust += 9 if 70 > E_Lust > 90 else 6
+                            $ TempLust += 9 if 70 > newgirl["Mystique"].Lust > 90 else 6
             
-            if E_Loose > 1:                                                         #If she's extra loose
+            if newgirl["Mystique"].Loose > 1:                                                         #If she's extra loose
                 $ TempLust += 1
                 
-            $ TempLust = 0 if (E_Lust - TempLust) < 0 else TempLust
+            $ TempLust = 0 if (newgirl["Mystique"].Lust - TempLust) < 0 else TempLust
             
-    # end E_Anal                                 //////////////////////////////////////////////////////////////////////////////
+    # end newgirl["Mystique"].Anal                                 //////////////////////////////////////////////////////////////////////////////
     
     elif Trigger == "fondle breasts":   
                     $ Line = "You continue to fondle Mystique. "    
-                    if E_Over and E_Chest: #Full top
+                    if newgirl["Mystique"].Over and newgirl["Mystique"].Chest: #Full top
                                 $ Line = Line + renpy.random.choice(["You reach under her layers of clothing and massage her breasts", 
                                     "You pass your hands gently over her warm breasts", 
                                     "Her firm nipples catch on the fabric of her top as you grasp her warm flesh",
                                     "She gasps as you grasp her under her top"])
                                 $ TempFocus += 3 if P_Focus < 40 else 2  
-                                $ TempLust += 4 if E_Lust > 50 else 2
-                    elif E_Over:        #Just overtop
+                                $ TempLust += 4 if newgirl["Mystique"].Lust > 50 else 2
+                    elif newgirl["Mystique"].Over:        #Just overtop
                                 $ Line = Line + renpy.random.choice(["You reach under her top and massage her breasts", 
                                     "You pass your hands gently over her warm breasts", 
                                     "Her nipples catch on the fabric of her top as you grasp her warm flesh, you can see them stiffen",
                                     "She gasps as you grasp her under her top"])
                                 $ TempFocus += 3 if P_Focus < 50 else 2
-                                $ TempLust += 4 if E_Lust > 50 else 2   
-                    elif E_Chest:       #just bra
+                                $ TempLust += 4 if newgirl["Mystique"].Lust > 50 else 2   
+                    elif newgirl["Mystique"].Chest:       #just bra
                                 $ Line = Line + renpy.random.choice(["You reach under her tight top and massage her breasts", 
                                     "You pass your hands gently over her warm breasts", 
                                     "Her nipples catch on the fabric of her top as you grasp her warm flesh, you can see them stiffen",
                                     "She gasps as you grasp her under her top"])
                                 $ TempFocus += 3 if P_Focus < 80 else 2    
-                                $ TempLust += 5 if E_Lust > 50 else 2    
-                    elif E_Pierce: #pierced
+                                $ TempLust += 5 if newgirl["Mystique"].Lust > 50 else 2    
+                    elif newgirl["Mystique"].Pierce: #pierced
                                 $ Line = Line + renpy.random.choice(["You reach out and massage her glorious breasts", 
                                     "You pass your hands gently over her warm breasts, and blow across her pierced nipples", 
                                     "Her piercings catch lightly on your fingers as you grasp her warm flesh, you can see the nipples stiffen",
                                     "She gasps as you lightly thumb across her pierced nipples"])
                                 $ TempFocus += 4 if P_Focus < 80 else 3 
-                                $ TempLust += 6 if E_Lust > 40 else 4  
+                                $ TempLust += 6 if newgirl["Mystique"].Lust > 40 else 4  
                     else: #topless
                                 $ Line = Line + renpy.random.choice(["You reach out and massage her glorious breasts", 
                                     "You pass your hands gently over her warm breasts, and blow across her nipples", 
                                     "Her nipples catch lightly on your fingers as you grasp her warm flesh, you can see them stiffen",
                                     "She gasps as you lightly thumb her rigid nipples"])
                                 $ TempFocus += 4 if P_Focus < 70 else 3 
-                                $ TempLust += 6 if E_Lust > 50 else 3  
-                    $ E_Addict -= 2
+                                $ TempLust += 6 if newgirl["Mystique"].Lust > 50 else 3  
+                    $ newgirl["Mystique"].Addict -= 2
                   
     # end E Fondle breasts                                 //////////////////////////////////////////////////////////////////////////////
     elif Trigger == "suck breasts":  
                     $ Line = "You continue to suck on Mystique's breasts. "    
-                    if E_Over and E_Chest: #Full top
+                    if newgirl["Mystique"].Over and newgirl["Mystique"].Chest: #Full top
                                 $ Line = renpy.random.choice(["You bend down and motor-boat her breasts",
                                         "You gently nibble at her nipples as you suck on them through the layered tops",
                                         "You  place a nipple between your lips, and give it a quick tug through the layered tops",
                                         "She gasps as you gently nibble her rigid nipples poking through her tops"])      
                                 $ TempFocus += 3 if P_Focus < 50 else 2  
-                                $ TempLust += 2 if E_Lust < 30 else 1
-                    elif E_Over:        #Just overtop
+                                $ TempLust += 2 if newgirl["Mystique"].Lust < 30 else 1
+                    elif newgirl["Mystique"].Over:        #Just overtop
                                 $ Line = renpy.random.choice(["You bend down and motor-boat her breasts",
                                         "You gently nibble at her nipples as you suck on them through the light top",
                                         "You tease her nipples with your tongue through the fabric",
@@ -489,16 +489,16 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         "You gently place a nipple between your lips, and draw it out until it releases with a *pop*",
                                         "She gasps as you lightly lick her rigid nipples, poking through her top"])    
                                 $ TempFocus += 3 if P_Focus < 50 else 2
-                                $ TempLust += 5 if E_Lust > 50 else 3
-                    elif E_Chest:       #just bra
+                                $ TempLust += 5 if newgirl["Mystique"].Lust > 50 else 3
+                    elif newgirl["Mystique"].Chest:       #just bra
                                 $ Line = renpy.random.choice(["You bend down and motor-boat her breasts",
                                         "You tease her nipples with your tongue through her top",
                                         "You slowly lick her nipples through her moist top", 
                                         "You gently place a nipple between your lips, and draw it out until it releases with a *pop*",
                                         "She gasps as you lightly lick her rigid nipples, poking through her top"])   
                                 $ TempFocus += 5 if P_Focus < 80 else 3    
-                                $ TempLust += 5 if E_Lust > 50 else 2    
-                    elif E_Pierce: #pierced
+                                $ TempLust += 5 if newgirl["Mystique"].Lust > 50 else 2    
+                    elif newgirl["Mystique"].Pierce: #pierced
                                 $ Line = renpy.random.choice(["You bend down and motor-boat her breasts",
                                     "You gently nibble at her nipples as you suck on them",
                                     "You tease her piercings with your tongue",
@@ -506,8 +506,8 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     "You gently place a pierced nipple between your lips, and draw it out until it releases with a *pop*",
                                     "She gasps as you lightly lick her rigid nipples"])
                                 $ TempFocus += 6 if P_Focus < 80 else 4 
-                                $ TempLust += 10 if E_Lust > 40 else 7
-                                $ E_Addict -= 2
+                                $ TempLust += 10 if newgirl["Mystique"].Lust > 40 else 7
+                                $ newgirl["Mystique"].Addict -= 2
                     else: #topless
                                 $ Line = renpy.random.choice(["You bend down and motor-boat her breasts",
                                     "You gently nibble at her nipples as you suck on them",
@@ -516,41 +516,41 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     "You gently place a nipple between your lips, and draw it out until it releases with a *pop*",
                                     "She gasps as you lightly lick her rigid nipples"])
                                 $ TempFocus += 6 if P_Focus < 70 else 4 
-                                $ TempLust += 10 if E_Lust > 50 else 7  
-                                $ E_Addict -= 2
+                                $ TempLust += 10 if newgirl["Mystique"].Lust > 50 else 7  
+                                $ newgirl["Mystique"].Addict -= 2
            
     # end E Suck breasts                                 //////////////////////////////////////////////////////////////////////////////
         
     elif Trigger == "fondle thighs":  #Trigger4 not available
                     $ Line = "You continue to massage Mystique's thighs. "   
                     
-                    if E_Legs == "pants" and not E_Upskirt:
+                    if newgirl["Mystique"].Legs == "pants" and not newgirl["Mystique"].Upskirt:
                                 $ Line = renpy.random.choice(["Her legs twitch a bit in her jeans as you caress them", 
                                         "She gasps as you stroke her warm thighs through the jeans",
                                         "You draw your hand from her knee to mid-thigh, and she gasps a little",
                                         "You slide a hand up her inner thigh, to just below her . . ."])                              
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
-                                $ TempLust += 1 if E_Lust < 50 else 0
+                                $ TempLust += 1 if newgirl["Mystique"].Lust < 50 else 0
                             
-                    elif E_Legs == "skirt" and HoseNum("Mystique") >= 5: # skirt with full hose          
+                    elif newgirl["Mystique"].Legs == "skirt" and HoseNum("Mystique") >= 5: # skirt with full hose          
                                 $ Line = renpy.random.choice(["You reach under skirt and stroke her thighs", 
                                         "You lift her skirt a bit and feel her firm thighs", 
                                         "Her legs twitch a bit beneath her skirt",
                                         "She gasps as you stroke her lightly covered thighs",
                                         "You slide a hand up her inner thigh, to just below her . . ."])
                                 $ TempFocus += 2 if P_Focus < 40 else 0  
-                                $ TempLust += 2 if E_Lust < 40 else 0                                
-                                $ E_Addict -= 1 if D20S > 10 else 0                            
-                    elif E_Legs == "skirt" and E_Hose: #skirt with stockings         
+                                $ TempLust += 2 if newgirl["Mystique"].Lust < 40 else 0                                
+                                $ newgirl["Mystique"].Addict -= 1 if D20S > 10 else 0                            
+                    elif newgirl["Mystique"].Legs == "skirt" and newgirl["Mystique"].Hose: #skirt with stockings         
                                 $ Line = renpy.random.choice(["You reach under skirt and stroke her thighs", 
                                         "You lift her skirt a bit and feel her firm thighs", 
                                         "Her legs twitch a bit beneath her skirt",
                                         "She gasps as you stroke her warm thighs",
                                         "You slide a hand up her inner thigh, to just above the hose"])
                                 $ TempFocus += 2 if P_Focus < 50 else 0  
-                                $ TempLust += 2 if E_Lust < 50 else 0                               
-                                $ E_Addict -= 1 if D20S > 10 else 0                            
-                    elif E_Legs == "skirt":  #and no hose
+                                $ TempLust += 2 if newgirl["Mystique"].Lust < 50 else 0                               
+                                $ newgirl["Mystique"].Addict -= 1 if D20S > 10 else 0                            
+                    elif newgirl["Mystique"].Legs == "skirt":  #and no hose
                                 $ Line = renpy.random.choice(["You reach under skirt and stroke her thighs", 
                                         "You lift her skirt a bit and feel her firm thighs", 
                                         "Her legs twitch a bit beneath her skirt",
@@ -558,8 +558,8 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         "You draw your hand from her knee to mid-thigh, and she gasps a little",
                                         "You slide a hand up her inner thigh, to just her skirt"])
                                 $ TempFocus += 2 if P_Focus < 50 else 0  
-                                $ TempLust += 2 if E_Lust < 50 else 0                               
-                                $ E_Addict -= 2 if D20S > 10 else 1                                
+                                $ TempLust += 2 if newgirl["Mystique"].Lust < 50 else 0                               
+                                $ newgirl["Mystique"].Addict -= 2 if D20S > 10 else 1                                
                     elif HoseNum("Mystique") >= 5: # just hose
                                 $ Line = renpy.random.choice(["You reach out and stroke her lightly covered thighs", 
                                         "You lift her leg a bit and feel her firm thighs", 
@@ -568,9 +568,9 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         "You slide a hand up her inner thigh, the smooth faberic creasing",
                                         "You slide a hand up her inner thigh, to just below her. . ."])
                                 $ TempFocus += 2 if P_Focus < 40 else 0  
-                                $ TempLust += 2 if E_Lust < 40 else 0                               
-                                $ E_Addict -= 1 if D20S > 10 else 0
-                    elif E_Hose: #just stockings
+                                $ TempLust += 2 if newgirl["Mystique"].Lust < 40 else 0                               
+                                $ newgirl["Mystique"].Addict -= 1 if D20S > 10 else 0
+                    elif newgirl["Mystique"].Hose: #just stockings
                                 $ Line = renpy.random.choice(["You reach out and stroke her thighs", 
                                         "You lift her leg a bit and feel her firm thighs", 
                                         "Her legs twitch a bit beneath your hands",
@@ -578,8 +578,8 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         "You slide a hand up her inner thigh, to just above the hose",
                                         "You slide a hand up her inner thigh, to just below her. . ."])
                                 $ TempFocus += 2 if P_Focus < 50 else 0  
-                                $ TempLust += 2 if E_Lust < 50 else 0                               
-                                $ E_Addict -= 1 if D20S > 10 else 0
+                                $ TempLust += 2 if newgirl["Mystique"].Lust < 50 else 0                               
+                                $ newgirl["Mystique"].Addict -= 1 if D20S > 10 else 0
                     else: #nude legs
                                 $ Line = renpy.random.choice(["You reach out and stroke her thighs", 
                                         "You lift her leg a bit and feel her firm thighs", 
@@ -588,8 +588,8 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         "You draw your hand from her knee to mid-thigh, and she gasps a little",
                                         "You slide a hand up her inner thigh, to just below her. . ."])
                                 $ TempFocus += 2 if P_Focus < 50 else 0  
-                                $ TempLust += 2 if E_Lust < 50 else 0                               
-                                $ E_Addict -= 2 if D20S > 10 else 1
+                                $ TempLust += 2 if newgirl["Mystique"].Lust < 50 else 0                               
+                                $ newgirl["Mystique"].Addict -= 2 if D20S > 10 else 1
         
     # end E fondle thighs                               //////////////////////////////////////////////////////////////////////////////
      
@@ -600,19 +600,19 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "You continue to finger bang Mystique's pussy. ",
                                                     "You continue to finger blast Mystique's pussy. "])
                                             
-                            if E_Legs == "pants" and not E_Upskirt:
+                            if newgirl["Mystique"].Legs == "pants" and not newgirl["Mystique"].Upskirt:
                                             $ Line = renpy.random.choice(["You slide a hand down her pants, and slide your fingers into her pussy underneath", 
                                                     "You push her panties aside, and slide a finger between her lips", 
                                                     "You slide a finger into her pussy and stroke the top", 
                                                     "You pull her pants out a bit and she gasps as you slide two fingers between her lips", 
                                                     "You rub her clit with your palm as you dive into her pussy with your middle finger"]) 
-                            elif E_Legs == "skirt":
-                                    if E_Panties == "shorts" and not E_PantiesDown: #shorts on
+                            elif newgirl["Mystique"].Legs == "skirt":
+                                    if newgirl["Mystique"].Panties == "shorts" and not newgirl["Mystique"].PantiesDown: #shorts on
                                             $ Line = renpy.random.choice(["You push her skirt and shorts up, and slide a finger between her lips", 
                                                     "You slide a finger into her pussy and stroke the top", 
                                                     "You lift her skirt a bit and she gasps as you pull her shorts up and slide two fingers between her lips", 
                                                     "You rub her clit with your thumb as you dive into her pussy with your middle finger"])
-                                    elif E_Panties and not E_PantiesDown: #Just panties
+                                    elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: #Just panties
                                             $ Line = renpy.random.choice(["You push her skirt and panties aside, and slide a finger between her lips", 
                                                     "You slide a finger into her pussy and stroke the top", 
                                                     "You lift her skirt a bit and she gasps as you pull her panties aside and slide two fingers between her lips", 
@@ -625,13 +625,13 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                             $ TempFocus += 2 
                                             $ TempLust += 2                            
                             #no skirt or pants
-                            elif E_Panties == "shorts" and not E_PantiesDown: # just shorts on
+                            elif newgirl["Mystique"].Panties == "shorts" and not newgirl["Mystique"].PantiesDown: # just shorts on
                                         $ Line = renpy.random.choice(["You slide a hand down her shorts, and slide your fingers into her pussy underneath", 
                                                 "You push her shorts up, and slide a finger between her lips", 
                                                 "You slide a finger into her pussy and stroke the top", 
                                                 "You pull her shorts out a bit and she gasps as you slide two fingers between her lips",                                                 
                                                 "You rub her clit with your palm as you dive into her pussy with your middle finger"])  
-                            elif E_Panties and not E_PantiesDown: #Just panties
+                            elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: #Just panties
                                         $ Line = renpy.random.choice(["You push her panties aside, and slide a finger between her lips", 
                                                 "You slide a finger into her pussy and stroke the top", 
                                                 "You lift her panties a bit and she gasps as you slide two fingers between her lips"])
@@ -644,15 +644,15 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         $ TempLust += 2
                                 
                             $ TempFocus += 4 if P_Focus < 50 else 3  
-                            $ TempLust += 6 if E_Lust > 40 else 3
-                            $ E_Addict -= 2  
+                            $ TempLust += 6 if newgirl["Mystique"].Lust > 40 else 3
+                            $ newgirl["Mystique"].Addict -= 2  
                                 
                     else: #if not fingerblasting or not high rolls
                             $ Line = renpy.random.choice(["You continue to stroke Mystique's pussy. ", 
                                                     "You continue to rub Mystique's pussy. ",
                                                     "You continue to caress Mystique's pussy. "])
                                             
-                            if E_Legs == "pants" and not E_Upskirt:
+                            if newgirl["Mystique"].Legs == "pants" and not newgirl["Mystique"].Upskirt:
                                             $ Line = renpy.random.choice(["You reach out and brush your hands across her pussy through the jeans", 
                                                     "You slide a hand down her pants, and brush your hands across her pussy underneath", 
                                                     "You put your hand against her mound and grind against it", 
@@ -661,8 +661,8 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "She gasps as you reach under her and lightly stroke her ass through the jeans",
                                                     "You slide a hand up her inner thigh, she moans a little as you reach the point where they meet"])
                                                 
-                            elif E_Legs == "skirt":
-                                    if E_Panties == "shorts" and not E_PantiesDown: #shorts on
+                            elif newgirl["Mystique"].Legs == "skirt":
+                                    if newgirl["Mystique"].Panties == "shorts" and not newgirl["Mystique"].PantiesDown: #shorts on
                                             $ Line = renpy.random.choice(["You reach under skirt and ran your hands over the thin shorts covering her", 
                                                     "You slide a hand up the leg of her shorts, and brush your hands across her pussy underneath", 
                                                     "You put your hand against her mound and grind against it", 
@@ -670,7 +670,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "As you dig your thumb into her, she gasps and raises up a bit",
                                                     "She gasps as you reach under her and lightly stroke her ass through the thin shorts",
                                                     "You slide a hand up her inner thigh, she moans a little as you reach the point where they meet"]) 
-                                    elif E_Panties and not E_PantiesDown: #Just panties
+                                    elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: #Just panties
                                             $ Line = renpy.random.choice(["You reach under skirt and brush across her panties", 
                                                     "You lift her skirt a bit and grind against her panties", 
                                                     "You lift her skirt a bit and she gasps as you pull her panties aside and stroke her lips", 
@@ -694,14 +694,14 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "You slide a hand up her inner thigh, she moans a little as you reach the point where they meet"])
                                             if D20S <= 10:
                                                 $ TempFocus += 3 if P_Focus < 50 else 1  
-                                                $ TempLust += 4 if E_Lust > 40 else 2
-                                                $ E_Addict -= 2  
+                                                $ TempLust += 4 if newgirl["Mystique"].Lust > 40 else 2
+                                                $ newgirl["Mystique"].Addict -= 2  
                                             else: #If it touches skin
                                                 $ TempFocus += 1 
                                                 $ TempLust += 1
                             
                             #no skirt or pants
-                            elif E_Panties == "shorts" and not E_PantiesDown: # just shorts on
+                            elif newgirl["Mystique"].Panties == "shorts" and not newgirl["Mystique"].PantiesDown: # just shorts on
                                         $ Line = renpy.random.choice(["You reach out and brush your hands across her pussy through the thin shorts", 
                                                 "You slide a hand down her shorts, and brush your hands across her pussy underneath", 
                                                 "You put your hand against her mound and grind against it", 
@@ -709,7 +709,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 "As you dig your thumb into her, she gasps and raises up a bit",
                                                 "She gasps as you reach under her and lightly stroke her ass through the thin shorts",
                                                 "You slide a hand up her inner thigh, she moans a little as you reach the point where they meet"])
-                            elif E_Panties and not E_PantiesDown: #Just panties
+                            elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: #Just panties
                                         $ Line = renpy.random.choice(["You reach out and brush your hands across her panties", 
                                                 "You grab her panties and pull them taut, elliciting a small gasp",
                                                 "You put your hand against her mound and grind against it", 
@@ -734,19 +734,19 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 "You slide a hand up her inner thigh, she moans a little as you reach the point where they meet"])
                                         if D20S <= 10:
                                             $ TempFocus += 3 if P_Focus < 50 else 1  
-                                            $ TempLust += 4 if E_Lust > 40 else 2
-                                            $ E_Addict -= 2  
+                                            $ TempLust += 4 if newgirl["Mystique"].Lust > 40 else 2
+                                            $ newgirl["Mystique"].Addict -= 2  
                                         else: #If it touches skin
                                             $ TempFocus += 1 
                                             $ TempLust += 1
                                 
                             if D20S > 10:#If it touches skin
                                 $ TempFocus += 3 if P_Focus < 50 else 1  
-                                $ TempLust += 4 if E_Lust > 40 else 2
-                                $ E_Addict -= 2  
+                                $ TempLust += 4 if newgirl["Mystique"].Lust > 40 else 2
+                                $ newgirl["Mystique"].Addict -= 2  
                             else: 
                                 $ TempFocus += 2 if P_Focus < 50 else 1  
-                                $ TempLust += 2 if E_Lust > 40 else 1
+                                $ TempLust += 2 if newgirl["Mystique"].Lust > 40 else 1
                                 
         
     # end E fondle pussy                               /////////////////////////////////////////////////////////////////////////////
@@ -757,7 +757,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "You continue to suck Mystique's pussy. ",
                                                     "You continue to tongue Mystique's pussy. "])
                                             
-                            if E_Legs == "pants" and not E_Upskirt:
+                            if newgirl["Mystique"].Legs == "pants" and not newgirl["Mystique"].Upskirt:
                                             $ Line = renpy.random.choice(["You can feel her twitching as you grind your tongue against her, even through the thick material",
                                                     "She gasps as you press on her clit through the thick fabric",
                                                     "You rub her clit with your nose as you dive into her pussy with your tongue",
@@ -765,10 +765,10 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "With a little nibble, you tug at the denim", 
                                                     "She gasps as you reach under her warm lips and lightly stroke her ass"]) 
                                             $ TempFocus += 1 if P_Focus < 70 else 0  
-                                            $ TempLust += 3 if E_Lust > 60 else 2
+                                            $ TempLust += 3 if newgirl["Mystique"].Lust > 60 else 2
                             else:                    
-                                if E_Legs == "skirt":
-                                        if E_Panties == "shorts" and not E_PantiesDown: #shorts on
+                                if newgirl["Mystique"].Legs == "skirt":
+                                        if newgirl["Mystique"].Panties == "shorts" and not newgirl["Mystique"].PantiesDown: #shorts on
                                                 $ Line = renpy.random.choice(["You push her skirt up and lick at her pussy through her shorts",                 
                                                         "You bend down and lick the edges of her lips through the shorts",                 
                                                         "You spread the lips back beneath her shorts, and she gasps as you slide your tongue across them", 
@@ -779,7 +779,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                         "With a little nibble, you tug back the fabric",
                                                         "You slowly lick into her gap and she gasps as you press the walls aside", 
                                                         "She gasps as you reach under her warm lips and lightly stroke her ass"])
-                                        elif E_Panties and not E_PantiesDown: #Just panties
+                                        elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: #Just panties
                                                 $ Line = renpy.random.choice(["You push her skirt up and lick at her pussy through her panties",                 
                                                         "You bend down and stroke the edges of her panties with your tongue",                 
                                                         "You spread the lips back beneath her panties, and she gasps as you slide your tongue across them", 
@@ -814,14 +814,14 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                         "She gasps as you reach under her warm lips and lightly stroke her ass"])            
                                                 if D20S <= 10:
                                                     $ TempFocus += 3 if P_Focus < 70 else 1  
-                                                    $ TempLust += 4 if E_Lust > 60 else 2
-                                                    $ E_Addict -= 3  
+                                                    $ TempLust += 4 if newgirl["Mystique"].Lust > 60 else 2
+                                                    $ newgirl["Mystique"].Addict -= 3  
                                                 else: #If it touches skin
                                                     $ TempFocus += 1 
                                                     $ TempLust += 1
                                 
                                 #no skirt or pants
-                                elif E_Panties == "shorts" and not E_PantiesDown: # just shorts on
+                                elif newgirl["Mystique"].Panties == "shorts" and not newgirl["Mystique"].PantiesDown: # just shorts on
                                             $ Line = renpy.random.choice(["You bend down and lick the edges of her lips through her shorts",                 
                                                     "You spread the lips back beneath her shorts, and she gasps as you slide your tongue across them", 
                                                     "You can feel her twitching as you grind your tongue against her clit",
@@ -831,7 +831,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "With a little nibble, you tug back the fabric",
                                                     "You slowly lick into her gap and she gasps as you press the walls aside", 
                                                     "She gasps as you reach under her warm lips and lightly stroke her ass"])       
-                                elif E_Panties and not E_PantiesDown: #Just panties
+                                elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: #Just panties
                                             $ Line = renpy.random.choice(["You bend down and stroke the edges of her panties with your tongue",                 
                                                     "You spread the lips back beneath her panties, and she gasps as you slide your tongue across them", 
                                                     "You can feel her twitching as you grind your tongue against her clit",
@@ -864,19 +864,19 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "She gasps as you reach under her warm lips and lightly stroke her ass"])
                                             if D20S <= 10: 
                                                 $ TempFocus += 3 if P_Focus < 70 else 1  
-                                                $ TempLust += 4 if E_Lust > 60 else 2
-                                                $ E_Addict -= 3  
+                                                $ TempLust += 4 if newgirl["Mystique"].Lust > 60 else 2
+                                                $ newgirl["Mystique"].Addict -= 3  
                                             else: #If it touches skin
                                                 $ TempFocus += 1 
                                                 $ TempLust += 1
                                     
                                 if D20S > 10: #If it touches skin
                                     $ TempFocus += 4 if P_Focus < 70 else 1  
-                                    $ TempLust += 10 if E_Lust > 60 else 5
-                                    $ E_Addict -= 3  
+                                    $ TempLust += 10 if newgirl["Mystique"].Lust > 60 else 5
+                                    $ newgirl["Mystique"].Addict -= 3  
                                 else: 
                                     $ TempFocus += 2 if P_Focus < 50 else 1  
-                                    $ TempLust += 5 if E_Lust > 60 else 3
+                                    $ TempLust += 5 if newgirl["Mystique"].Lust > 60 else 3
                                 
     # end E lick pussy                               /////////////////////////////////////////////////////////////////////////////
     
@@ -885,7 +885,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 "You continue to feel up Mystique's ass. ",
                                                 "You continue to grope Mystique's ass. "])
                                         
-                        if E_Legs == "pants" and not E_Upskirt:
+                        if newgirl["Mystique"].Legs == "pants" and not newgirl["Mystique"].Upskirt:
                                         $ Line = renpy.random.choice(["You reach out and brush your hands across the back of her jeans", 
                                                 "You slide a hand down her pants, and firmly cup her ass", 
                                                 "You put your hand against her rear and grind against it", 
@@ -894,15 +894,15 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 "She gasps as you reach under her and lightly stroke her ass through the jeans",
                                                 "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])  
                                             
-                        elif E_Legs == "skirt":
-                                if E_Panties == "shorts" and not E_PantiesDown: #shorts on
+                        elif newgirl["Mystique"].Legs == "skirt":
+                                if newgirl["Mystique"].Panties == "shorts" and not newgirl["Mystique"].PantiesDown: #shorts on
                                         $ Line = renpy.random.choice(["You reach under skirt and brush across her shorts", 
                                                 "You lift her skirt a bit and grind against her shorts", 
                                                 "You lift her skirt a bit and she gasps as you pull her shorts aside and stroke across her butt", 
                                                 "Her legs twitch a bit beneath her skirt as you give her cheeks a firm squeeze",
                                                 "She gasps as you stroke her asshole through her shorts",
                                                 "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])   
-                                elif E_Panties and not E_PantiesDown: #Just panties
+                                elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: #Just panties
                                         $ Line = renpy.random.choice(["You reach under skirt and brush across her panties", 
                                                 "You lift her skirt a bit and grind against her panties", 
                                                 "You lift her skirt a bit and she gasps as you pull her panties aside and stroke across her butt", 
@@ -925,21 +925,21 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"]) 
                                         if D20S <= 10:
                                             $ TempFocus += 2 if P_Focus < 70 else 1  
-                                            $ TempLust += 3 if E_Lust > 40 else 2
-                                            $ E_Addict -= 1  
+                                            $ TempLust += 3 if newgirl["Mystique"].Lust > 40 else 2
+                                            $ newgirl["Mystique"].Addict -= 1  
                                         else: #If it touches skin
                                             $ TempFocus += 1 
                                             $ TempLust += 1
                         
                         #no skirt or pants
-                        elif E_Panties == "shorts" and not E_PantiesDown: # just shorts on
+                        elif newgirl["Mystique"].Panties == "shorts" and not newgirl["Mystique"].PantiesDown: # just shorts on
                                     $ Line = renpy.random.choice(["You reach out and brush your hands across her lightly covered cheeks", 
                                             "You grab her shorts and pull them taut, elliciting a small gasp",
                                             "You reach into her gap and she gasps as you slide your hand across and stroke her hole through the thin material", 
                                             "Her legs twitch a bit as you grind her puckered hole",
                                             "She gasps as you reach under her shorts and lightly stroke her warm flesh",
                                             "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])                                      
-                        elif E_Panties and not E_PantiesDown: # panties   
+                        elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: # panties   
                                     $ Line = renpy.random.choice(["You reach out and brush your hands across her barely covered cheeks", 
                                             "You grab her panties and pull them taut, elliciting a small gasp",
                                             "You reach into her gap and she gasps as you slide your hand across and stroke her hole through the thin material", 
@@ -962,19 +962,19 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                             "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])   
                                     if D20S <= 10:
                                         $ TempFocus += 2 if P_Focus < 70 else 1  
-                                        $ TempLust += 3 if E_Lust > 40 else 2
-                                        $ E_Addict -= 1  
+                                        $ TempLust += 3 if newgirl["Mystique"].Lust > 40 else 2
+                                        $ newgirl["Mystique"].Addict -= 1  
                                     else: #If it touches skin
                                         $ TempFocus += 1 
                                         $ TempLust += 1
                             
                         if D20S > 10:#If it touches skin
                             $ TempFocus += 2 if P_Focus < 50 else 1  
-                            $ TempLust += 3 if E_Lust > 40 else 2
-                            $ E_Addict -= 1  
+                            $ TempLust += 3 if newgirl["Mystique"].Lust > 40 else 2
+                            $ newgirl["Mystique"].Addict -= 1  
                         else: 
                             $ TempFocus += 2 if P_Focus < 50 else 1  
-                            $ TempLust += 2 if E_Lust > 40 else 1
+                            $ TempLust += 2 if newgirl["Mystique"].Lust > 40 else 1
                                 
     # end E fondle ass                               /////////////////////////////////////////////////////////////////////////////
     
@@ -983,19 +983,19 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "You continue to finger bang Mystique's asshole. ",
                                                     "You continue to finger Mystique's rim. "])
                                             
-                            if E_Legs == "pants" and not E_Upskirt:
+                            if newgirl["Mystique"].Legs == "pants" and not newgirl["Mystique"].Upskirt:
                                             $ Line = renpy.random.choice(["You slide a hand down her pants, and slide your fingers into her anus", 
                                                     "You push her panties aside, and slide a finger between her cheeks", 
                                                     "You slide a finger into her tight anus", 
                                                     "You pull her pants out a bit and she gasps as you slide a finger up her hole", 
                                                     "You gasps as you rub her asshole with your fingers"]) 
-                            elif E_Legs == "skirt":
-                                    if E_Panties == "shorts" and not E_PantiesDown: #shorts on
+                            elif newgirl["Mystique"].Legs == "skirt":
+                                    if newgirl["Mystique"].Panties == "shorts" and not newgirl["Mystique"].PantiesDown: #shorts on
                                             $ Line = renpy.random.choice(["You push her skirt and shorts up, and slide a finger into her anus", 
                                                     "You slide a finger into her tight anus", 
                                                     "You lift her skirt a bit and she gasps as you pull her shorts up and slide a finger into her anus", 
                                                     "You rub her pussy with your thumb as you dive into her anus with your middle finger"])
-                                    elif E_Panties and not E_PantiesDown: #Just panties
+                                    elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: #Just panties
                                            $ Line = renpy.random.choice(["You push her skirt and panties aside, and slide a finger into her anus", 
                                                     "You slide a finger into her tight anus", 
                                                     "You lift her skirt a bit and she gasps as you pull her panties aside and slide a finger into her anus", 
@@ -1006,13 +1006,13 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "You lift her skirt a bit and she gasps as you slide a finger into her anus", 
                                                     "You rub her pussy with your thumb as you dive into her anus with your middle finger"]) 
                             #no skirt or pants
-                            elif E_Panties == "shorts" and not E_PantiesDown: # just shorts on
+                            elif newgirl["Mystique"].Panties == "shorts" and not newgirl["Mystique"].PantiesDown: # just shorts on
                                     $ Line = renpy.random.choice(["You slide a hand down her shorts, and slide a finger into her anus", 
                                                 "You push her shorts up, and slide a finger between her lips", 
                                                 "You slide a finger into her tight anus", 
                                                 "You pull her shorts out a bit and she gasps as you slide a finger into her anus",                                                 
                                                 "You rub her pussy with your palm as you dive into her anus with your middle finger"])  
-                            elif E_Panties and not E_PantiesDown: #Just panties
+                            elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: #Just panties
                                         $ Line = renpy.random.choice(["You push her panties aside, and slide a finger into her anus", 
                                                 "You slide a finger into her tight anus", 
                                                 "You lift her panties a bit and she gasps as you and slide a finger into her anus"])
@@ -1023,13 +1023,13 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 "You rub her pussy with your thumb as you dive into her anus with your middle finger"]) 
                                                                 
                             $ TempFocus += 2 if P_Focus < 50 else 1  
-                            $ TempLust += 6 if E_Lust > 70 else 3
-                            if not E_Loose:
+                            $ TempLust += 6 if newgirl["Mystique"].Lust > 70 else 3
+                            if not newgirl["Mystique"].Loose:
                                     $ TempLust -= 3
-                            elif E_Loose < 2:
+                            elif newgirl["Mystique"].Loose < 2:
                                     $ TempLust += 1   
                                     
-                            $ E_Addict -= 2  
+                            $ newgirl["Mystique"].Addict -= 2  
                                         
     # end E insert ass                              /////////////////////////////////////////////////////////////////////////////
     
@@ -1038,16 +1038,16 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "You continue to suck Mystique's ass. ",
                                                     "You continue to tongue Mystique's ass. "])
                                             
-                            if E_Legs == "pants" and not E_Upskirt:
+                            if newgirl["Mystique"].Legs == "pants" and not newgirl["Mystique"].Upskirt:
                                                 $ Line = renpy.random.choice(["You can feel her twitching as you grind your tongue against her anus, even through the thick material",
                                                         "She gasps as you press on her asshole through the thick fabric",
                                                         "You put your hand against her mound and lick the surface of her jeans", 
                                                         "With a little nibble, you tug at the denim"])  
                                                 $ TempFocus += 1 if P_Focus < 70 else 0  
-                                                $ TempLust += 1 if E_Lust < 60 else 0
+                                                $ TempLust += 1 if newgirl["Mystique"].Lust < 60 else 0
                             else:                    
-                                if E_Legs == "skirt":
-                                        if E_Panties == "shorts" and not E_PantiesDown: #shorts on
+                                if newgirl["Mystique"].Legs == "skirt":
+                                        if newgirl["Mystique"].Panties == "shorts" and not newgirl["Mystique"].PantiesDown: #shorts on
                                                 $ Line = renpy.random.choice(["You push her skirt up and lick at her asshole through her shorts",                 
                                                         "You bend down and stroke the edges of her shorts with your tongue",                 
                                                         "You spread the cheeks back beneath her shorts, and she gasps as you slide your tongue into it", 
@@ -1056,7 +1056,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                         "You rub her pussy with your thumb as you dive into her asshole with your tongue",
                                                         "With a little nibble, you tug back the fabric",
                                                         "You slowly lick into her gap and she gasps as you press the rim aside"])  
-                                        elif E_Panties and not E_PantiesDown: #Just panties
+                                        elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: #Just panties
                                                 $ Line = renpy.random.choice(["You push her skirt up and lick at her asshole through her panties",                 
                                                         "You bend down and stroke the edges of her panties with your tongue",                 
                                                         "You spread the cheeks back beneath her panties, and she gasps as you slide your tongue into it", 
@@ -1084,14 +1084,14 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                         "You slowly lick into her gap and she gasps as you press the rim apart"])         
                                                 if D20S <= 10:
                                                     $ TempFocus += 2 if P_Focus < 70 else 0  
-                                                    $ TempLust += 3 if E_Lust > 60 else 1
-                                                    $ E_Addict -= 3  
+                                                    $ TempLust += 3 if newgirl["Mystique"].Lust > 60 else 1
+                                                    $ newgirl["Mystique"].Addict -= 3  
                                                 else: #If it touches skin
                                                     $ TempFocus += 1 
                                                     $ TempLust += 1
                                 
                                 #no skirt or pants
-                                elif E_Panties == "shorts" and not E_PantiesDown: # just shorts on
+                                elif newgirl["Mystique"].Panties == "shorts" and not newgirl["Mystique"].PantiesDown: # just shorts on
                                             $ Line = renpy.random.choice(["You bend down and stroke the edges of her shorts with your tongue",                 
                                                     "You spread the cheeks back beneath her shorts, and she gasps as you slide your tongue into it",
                                                     "You can feel her twitching as you grind your tongue against her anus",
@@ -1099,7 +1099,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "You rub her pussy with your thumb as you dive into her anus with your tongue",
                                                     "With a little nibble, you tug back the fabric",
                                                     "You slowly lick into her gap and she gasps as you press the rim apart"])   
-                                elif E_Panties and not E_PantiesDown: #Just panties
+                                elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown: #Just panties
                                             $ Line = renpy.random.choice(["You bend down and stroke the edges of her panties with your tongue",                 
                                                     "You spread the cheeks back beneath her panties, and she gasps as you slide your tongue into it",
                                                     "You can feel her twitching as you grind your tongue against her anus",
@@ -1128,57 +1128,57 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "She gasps as you reach under her warm lips and lightly stroke her ass"])  
                                             if D20S <= 10: 
                                                 $ TempFocus += 2 if P_Focus < 70 else 0  
-                                                $ TempLust += 3 if E_Lust > 60 else 1
-                                                $ E_Addict -= 3  
+                                                $ TempLust += 3 if newgirl["Mystique"].Lust > 60 else 1
+                                                $ newgirl["Mystique"].Addict -= 3  
                                             else: #If it touches skin
                                                 $ TempFocus += 1 
                                                 $ TempLust += 1
                                     
                                 if D20S > 10: #If it touches skin
                                     $ TempFocus += 3 if P_Focus < 70 else 0  
-                                    $ TempLust += 9 if E_Lust > 60 else 4
-                                    $ E_Addict -= 3  
+                                    $ TempLust += 9 if newgirl["Mystique"].Lust > 60 else 4
+                                    $ newgirl["Mystique"].Addict -= 3  
                                 else: 
                                     $ TempFocus += 1 if P_Focus < 50 else 0  
-                                    $ TempLust += 4 if E_Lust > 60 else 2
+                                    $ TempLust += 4 if newgirl["Mystique"].Lust > 60 else 2
                 
                             $ TempLust += 2
                                    
     # end E lick ass                               /////////////////////////////////////////////////////////////////////////////
     
     elif Trigger == "dildo pussy":                            
-                        if E_Legs == "pants" and not E_Upskirt:
+                        if newgirl["Mystique"].Legs == "pants" and not newgirl["Mystique"].Upskirt:
                                 $ Line = renpy.random.choice(["You rub the dildo against the outside of her pants", 
                                         "You slap the dildo lightly against her mound"])
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
-                                $ TempLust += 3 if E_Lust < 50 else 1
+                                $ TempLust += 3 if newgirl["Mystique"].Lust < 50 else 1
                         elif HoseNum("Mystique") >= 10:
                                 $ Line = renpy.random.choice(["You rub the dildo against the outside of her tights", 
                                         "You slap the dildo lightly at the outside of her tights"])
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
-                                $ TempLust += 3 if E_Lust < 50 else 1
+                                $ TempLust += 3 if newgirl["Mystique"].Lust < 50 else 1
                         elif HoseNum("Mystique") >= 5:
                                 $ Line = renpy.random.choice(["You rub the dildo against the outside of her hose", 
                                         "You slap the dildo lightly at the outside of her hose"])
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
-                                $ TempLust += 3 if E_Lust < 50 else 1
+                                $ TempLust += 3 if newgirl["Mystique"].Lust < 50 else 1
                         else:
-                                if E_Legs == "skirt" and E_Panties and not E_PantiesDown:            
+                                if newgirl["Mystique"].Legs == "skirt" and newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown:            
                                     $ Line = renpy.random.choice(["You push her skirt and panties aside, and slide the dildo into her pussy", 
                                             "You slide the toy deep into her pussy", 
                                             "She gasps as you rotate the dildo within her tight pussy",
                                             "You rub her clit with your thumb as you dive into her puss with the rubber phallus"])
                                     $ TempFocus += 2 if P_Focus < 50 else 1  
-                                    $ TempLust += 8 if E_Lust > 70 else 5
-                                elif E_Legs == "skirt":            
+                                    $ TempLust += 8 if newgirl["Mystique"].Lust > 70 else 5
+                                elif newgirl["Mystique"].Legs == "skirt":            
                                     $ Line = renpy.random.choice(["You push her skirt aside, and slide the dildo into her tight hole", 
                                             "You slide the toy deep into her pussy",
                                             "You lift her skirt a bit and she gasps as you slide the dildo firmly into her tight puss", 
                                             "She gasps as you rotate the dildo within her slit",
                                             "You rub her clit with your thumb as you dive into her pussy with the rubber phallus"])
                                     $ TempFocus += 2 if P_Focus < 50 else 1  
-                                    $ TempLust += 8 if E_Lust > 70 else 5
-                                elif E_Panties and not E_PantiesDown:            
+                                    $ TempLust += 8 if newgirl["Mystique"].Lust > 70 else 5
+                                elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown:            
                                     $ Line = renpy.random.choice(["You push her panties aside, and slide the dildo into her tight pussy", 
                                             "You slide the dildo into her moist slit and stroke it rapidly", 
                                             "You lift her panties a bit and she gasps as you slide the dildo between her lower lips", 
@@ -1186,7 +1186,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                             "You rub her clit with your thumb as you dive into her pussy with the dildo",
                                             "You reach into her gap and she gasps as you slide the dildo in and press against her tight slit through the thin material"])
                                     $ TempFocus += 2 if P_Focus < 50 else 1  
-                                    $ TempLust += 8 if E_Lust > 70 else 5
+                                    $ TempLust += 8 if newgirl["Mystique"].Lust > 70 else 5
                                 else:            
                                     $ Line = renpy.random.choice(["You reach out and slide the dildo along her mound", 
                                             "You slide the toy into her pussy and stroke it slowly", 
@@ -1196,42 +1196,42 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                             "You rub her clit with your thumb as you dive into her pussy with the dildo",
                                             "You reach into her gap and she gasps as you slide the toy across and press it into her wet pussy"])            
                                     $ TempFocus += 3 if P_Focus < 50 else 1  
-                                    $ TempLust += 10 if E_Lust > 70 else 8
+                                    $ TempLust += 10 if newgirl["Mystique"].Lust > 70 else 8
     # end E dildo pussy                              /////////////////////////////////////////////////////////////////////////////
     
     elif Trigger == "dildo anal":
-                        if E_Legs == "pants" and not E_Upskirt:
+                        if newgirl["Mystique"].Legs == "pants" and not newgirl["Mystique"].Upskirt:
                                 $ Line = renpy.random.choice(["You rub the dildo against the outside of her pants", 
                                         "You slap the dildo lightly against her ass"])
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
-                                $ TempLust += 3 if E_Lust < 50 else 1
+                                $ TempLust += 3 if newgirl["Mystique"].Lust < 50 else 1
                         elif HoseNum("Mystique") >= 10:
                                 $ Line = renpy.random.choice(["You rub the dildo against the outside of her tights", 
                                         "You slap the dildo lightly at the outside of her tights"])
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
-                                $ TempLust += 3 if E_Lust < 50 else 1
+                                $ TempLust += 3 if newgirl["Mystique"].Lust < 50 else 1
                         elif HoseNum("Mystique") >= 5:
                                 $ Line = renpy.random.choice(["You rub the dildo against the outside of her hose", 
                                         "You slap the dildo lightly at the outside of her hose"])
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
-                                $ TempLust += 3 if E_Lust < 50 else 1
+                                $ TempLust += 3 if newgirl["Mystique"].Lust < 50 else 1
                         else:
-                                if E_Legs == "skirt" and E_Panties and not E_PantiesDown:            
+                                if newgirl["Mystique"].Legs == "skirt" and newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown:            
                                     $ Line = renpy.random.choice(["You push her skirt and panties aside, and slide the dildo into her ass", 
                                             "You slide the toy deep into her ass", 
                                             "She gasps as you rotate the dildo within her tight asshole",
                                             "You rub her clit with your thumb as you dive into her ass with the rubber phallus"])
                                     $ TempFocus += 2 if P_Focus < 50 else 1  
-                                    $ TempLust += 8 if E_Lust > 70 else 5
-                                elif E_Legs == "skirt":            
+                                    $ TempLust += 8 if newgirl["Mystique"].Lust > 70 else 5
+                                elif newgirl["Mystique"].Legs == "skirt":            
                                     $ Line = renpy.random.choice(["You push her skirt aside, and slide the dildo into her tight hole", 
                                             "You slide the toy deep into her ass",
                                             "You lift her skirt a bit and she gasps as you slide the dildo firmly into her tight anus", 
                                             "She gasps as you rotate the dildo within her ass",
                                             "You rub her clit with your thumb as you dive into her ass with the rubber phallus"])
                                     $ TempFocus += 2 if P_Focus < 50 else 1  
-                                    $ TempLust += 8 if E_Lust > 70 else 5
-                                elif E_Panties and not E_PantiesDown:            
+                                    $ TempLust += 8 if newgirl["Mystique"].Lust > 70 else 5
+                                elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown:            
                                     $ Line = renpy.random.choice(["You push her panties aside, and slide the dildo into her tight ass", 
                                             "You slide the dildo into her ass and stroke it rapidly", 
                                             "You lift her panties a bit and she gasps as you slide the dildo between her cheeks", 
@@ -1239,7 +1239,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                             "You rub her clit with your thumb as you dive into her asshole with the dildo",
                                             "You reach into her gap and she gasps as you slide the dildo in and press against her tight anus through the thin material"])
                                     $ TempFocus += 2 if P_Focus < 50 else 1  
-                                    $ TempLust += 8 if E_Lust > 70 else 5
+                                    $ TempLust += 8 if newgirl["Mystique"].Lust > 70 else 5
                                 else:            
                                     $ Line = renpy.random.choice(["You reach out and slide the dildo between her cheeks", 
                                             "You slide the toy into her asshole and stroke it against the sides", 
@@ -1249,51 +1249,51 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                             "You rub her clit with your thumb as you dive into her asshole with the dildo",
                                             "You reach into her gap and she gasps as you slide the toy across and press it into her firm anus"])            
                                     $ TempFocus += 3 if P_Focus < 50 else 1  
-                                    $ TempLust += 10 if E_Lust > 70 else 6
-                                if not E_Loose:
+                                    $ TempLust += 10 if newgirl["Mystique"].Lust > 70 else 6
+                                if not newgirl["Mystique"].Loose:
                                         $ TempLust -= 3
-                                elif E_Loose < 2:
+                                elif newgirl["Mystique"].Loose < 2:
                                         $ TempLust += 1   
     # end E dildo ass                              /////////////////////////////////////////////////////////////////////////////
     
     elif Trigger == "plug":
-                        if (E_Legs == "pants" or E_Legs == "black pants") and not E_Upskirt:
+                        if (newgirl["Mystique"].Legs == "pants" or newgirl["Mystique"].Legs == "black pants") and not newgirl["Mystique"].Upskirt:
                                 $ Line = renpy.random.choice(["You rub the plug against the outside of her pants", 
                                         "You slap the plug lightly against her ass"])
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
-                                $ TempLust += 3 if E_Lust < 50 else 1
-                        if (E_Legs == "NewX" or E_Legs == "NewX black") and not E_Upskirt:
+                                $ TempLust += 3 if newgirl["Mystique"].Lust < 50 else 1
+                        if (newgirl["Mystique"].Legs == "NewX" or newgirl["Mystique"].Legs == "NewX black") and not newgirl["Mystique"].Upskirt:
                                 $ Line = renpy.random.choice(["You rub the plug against the outside of her shorts", 
                                         "You slap the plug lightly against her ass"])
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
-                                $ TempLust += 3 if E_Lust < 50 else 1
+                                $ TempLust += 3 if newgirl["Mystique"].Lust < 50 else 1
                         elif HoseNum("Mystique") >= 10:
                                 $ Line = renpy.random.choice(["You rub the plug against the outside of her tights", 
                                         "You slap the plug lightly at the outside of her tights"])
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
-                                $ TempLust += 3 if E_Lust < 50 else 1
+                                $ TempLust += 3 if newgirl["Mystique"].Lust < 50 else 1
                         elif HoseNum("Mystique") >= 5:
                                 $ Line = renpy.random.choice(["You rub the plug against the outside of her hose", 
                                         "You slap the plug lightly at the outside of her hose"])
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
-                                $ TempLust += 3 if E_Lust < 50 else 1
+                                $ TempLust += 3 if newgirl["Mystique"].Lust < 50 else 1
                         else:
-                                if (E_Legs == "skirt") and E_Panties:            
+                                if (newgirl["Mystique"].Legs == "skirt") and newgirl["Mystique"].Panties:            
                                     $ Line = renpy.random.choice(["You push her skirt and panties aside, and slide the plug into her ass", 
                                             "You slide the toy deep into her ass", 
                                             "She gasps as you rotate the plug within her tight asshole",
                                             "You rub her clit with your thumb as you dive into her ass with the rubber phallus"])
                                     $ TempFocus += 2 if P_Focus < 50 else 1  
-                                    $ TempLust += 8 if E_Lust > 70 else 5
-                                elif (E_Legs == "skirt"):           
+                                    $ TempLust += 8 if newgirl["Mystique"].Lust > 70 else 5
+                                elif (newgirl["Mystique"].Legs == "skirt"):           
                                     $ Line = renpy.random.choice(["You push her skirt aside, and slide the plug into her tight hole", 
                                             "You slide the toy deep into her ass",
                                             "You lift her skirt a bit and she gasps as you slide the plug firmly into her tight anus", 
                                             "She gasps as you rotate the plug within her ass",
                                             "You rub her clit with your thumb as you dive into her ass with the rubber phallus"])
                                     $ TempFocus += 2 if P_Focus < 50 else 1  
-                                    $ TempLust += 8 if E_Lust > 70 else 5
-                                elif E_Panties and not E_PantiesDown:            
+                                    $ TempLust += 8 if newgirl["Mystique"].Lust > 70 else 5
+                                elif newgirl["Mystique"].Panties and not newgirl["Mystique"].PantiesDown:            
                                     $ Line = renpy.random.choice(["You push her panties aside, and slide the plug into her tight ass", 
                                             "You slide the plug into her ass and stroke it rapidly", 
                                             "You lift her panties a bit and she gasps as you slide the plug between her cheeks", 
@@ -1301,7 +1301,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                             "You rub her clit with your thumb as you dive into her asshole with the plug",
                                             "You reach into her gap and she gasps as you slide the plug in and press against her tight anus through the thin material"])
                                     $ TempFocus += 2 if P_Focus < 50 else 1  
-                                    $ TempLust += 8 if E_Lust > 70 else 5
+                                    $ TempLust += 8 if newgirl["Mystique"].Lust > 70 else 5
                                 else:            
                                     $ Line = renpy.random.choice(["You reach out and slide the plug between her cheeks", 
                                             "You slide the toy into her asshole and stroke it against the sides", 
@@ -1311,16 +1311,16 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                             "You rub her clit with your thumb as you dive into her asshole with the plug",
                                             "You reach into her gap and she gasps as you slide the toy across and press it into her firm anus"])            
                                     $ TempFocus += 3 if P_Focus < 50 else 1  
-                                    $ TempLust += 10 if E_Lust > 70 else 6
-                                if not E_Loose:
+                                    $ TempLust += 10 if newgirl["Mystique"].Lust > 70 else 6
+                                if not newgirl["Mystique"].Loose:
                                         $ TempLust -= 3
-                                elif E_Loose < 2:
+                                elif newgirl["Mystique"].Loose < 2:
                                         $ TempLust += 1   
     # end R dildo ass   
 
     elif Trigger == "masturbation":
                 call Mystique_Self_Lines  
-                if "unseen" not in E_RecentActions:
+                if "unseen" not in newgirl["Mystique"].RecentActions:
                     if Trigger2 == "jackin" or "cockout" in P_RecentActions:
                             $ TempLust += 2
 #                $ TempLust = 0
@@ -1333,18 +1333,18 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                         $ Line = "Mystique continues stroke your cock with her foot. "
                            
                         if not Speed:
-                                    if E_Foot > 2:
+                                    if newgirl["Mystique"].Foot > 2:
                                             $ Line = Line + "She just seems to be enjoying the feel of it"
-                                            $ TempLust += 2 if E_Lust < 60 else 0
+                                            $ TempLust += 2 if newgirl["Mystique"].Lust < 60 else 0
                                     else:
                                             $ Line = Line + "She just seems to be looking it over"
-                                            $ TempLust += 2 if E_Lust < 40 else 0
+                                            $ TempLust += 2 if newgirl["Mystique"].Lust < 40 else 0
                                             $ TempFocus += -3 if P_Focus > 50 else 2
                                         
-                                    $ E_Addict -= 1 if D20S > 10 else 2
+                                    $ newgirl["Mystique"].Addict -= 1 if D20S > 10 else 2
                                     return
                         
-                        if E_Foot > 4:                          # After the 5th time 
+                        if newgirl["Mystique"].Foot > 4:                          # After the 5th time 
                                     if Speed <= 1:                      #slow 
                                         $ Line = Line + renpy.random.choice(["Her movements have become almost masterful, her slightest touch starts you twitching",
                                                 "She slowly caresses you in a way that makes your blood boil, then pulls back at the last second",
@@ -1363,7 +1363,7 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         
                                         $ TempFocus += 20 if P_Focus < 40 else 5        
                                 
-                        elif E_Foot >= 3:                       #third through 5th time
+                        elif newgirl["Mystique"].Foot >= 3:                       #third through 5th time
                                     if Speed <= 1:                      #slow
                                         $ Line = Line + renpy.random.choice(["She's begining to figure things out, her toes cause tingles as they caress the shaft", 
                                                 "She's still learning, but learning fast", 
@@ -1403,16 +1403,16 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                     
                                     $ TempFocus += 8 if P_Focus > 60 else 2         
                                 
-                        $ TempLust += 2 if E_Lust < 60 else 0
-                        $ TempLust += 3 if E_Foot > 2 else 0
-                        $ E_Addict -= 1
+                        $ TempLust += 2 if newgirl["Mystique"].Lust < 60 else 0
+                        $ TempLust += 3 if newgirl["Mystique"].Foot > 2 else 0
+                        $ newgirl["Mystique"].Addict -= 1
             
     #End Footy dialog ////////////////////////////////////////////////////////////////////////////////////////////////////////
     
 
     elif Trigger == "kissing":  
-                        $ E_Addict -= 3 
-                        if E_Kissed > 10 and E_Love >= 700:#Loving
+                        $ newgirl["Mystique"].Addict -= 3 
+                        if newgirl["Mystique"].Kissed > 10 and newgirl["Mystique"].Love >= 700:#Loving
                                 $ Line = renpy.random.choice(["She hungrily presses her lips against yours", 
                                         "Her lips part as you hold her close",    
                                         "You nibble her neck as she groans in pleasure",
@@ -1422,9 +1422,9 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         "Your hands slide down her body as your lips press hers"])
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
                                 $ TempFocus += 1 if P_Focus < 90 else 0  
-                                $ TempLust += 3 if E_Lust < 50 else 0
-                                $ TempLust += 1 if E_Lust < 90 else 0
-                        elif E_Kissed > 5:#reasonably experienced        
+                                $ TempLust += 3 if newgirl["Mystique"].Lust < 50 else 0
+                                $ TempLust += 1 if newgirl["Mystique"].Lust < 90 else 0
+                        elif newgirl["Mystique"].Kissed > 5:#reasonably experienced        
                                 $ Line = renpy.random.choice(["She confidently presses her lips against yours", 
                                         "You softly kiss her plump lips", 
                                         "Her lips part as you hold her close",    
@@ -1433,8 +1433,8 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         "Her tongue flickers out to meet yours",
                                         "Your hands slide down her body as your lips brush hers"])
                                 $ TempFocus += 1 if P_Focus < 70 else 0  
-                                $ TempLust += 3 if E_Lust < 50 else 0
-                                $ TempLust += 1 if E_Lust < 90 else 0
+                                $ TempLust += 3 if newgirl["Mystique"].Lust < 50 else 0
+                                $ TempLust += 1 if newgirl["Mystique"].Lust < 90 else 0
                         else:#basic kissing
                                 $ Line = renpy.random.choice(["She tentatively presses her lips against yours", 
                                         "You softly kiss her plump lips", 
@@ -1442,8 +1442,8 @@ label Mystique_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         "You squeeze her tightly as your lips connect",
                                         "Your hands slide down her body as your lips brush hers"]) 
                                 $ TempFocus += 1 if P_Focus < 70 else 0  
-                                $ TempLust += 2 if E_Lust < 30 else 0
-                                $ TempLust += 1 if E_Lust < 70 else 0
+                                $ TempLust += 2 if newgirl["Mystique"].Lust < 30 else 0
+                                $ TempLust += 1 if newgirl["Mystique"].Lust < 70 else 0
                                 
     # end E kissing                              /////////////////////////////////////////////////////////////////////////////
     else: #no Trigger was set, somehow
@@ -1480,7 +1480,7 @@ label Mystique_Self_Lines(Mode = "T3", Action = Trigger3, TempLustX = 0):
     # This sets a Action if there isn't one, or sets an intitial line
     $ Line = 0
     if not Action or D20S >= 15: 
-            if Trigger != "masturbation" and "passive" in E_Traits:
+            if Trigger != "masturbation" and "passive" in newgirl["Mystique"].Traits:
                     # This bypasses self-set if Mystique is told not to take initiative
                     $ Line = 0
                     return            
@@ -1513,13 +1513,13 @@ label Mystique_Self_Lines(Mode = "T3", Action = Trigger3, TempLustX = 0):
                     "She moves very smoothly, stroking casually and very gently, like she's been doing this for years",
                     "Her hand slides slowly down your shaft"]) 
             $ TempFocus += 10 if P_Focus > 60 else 4
-            $ TempFocus += 2 if E_Hand > 2 else 0
+            $ TempFocus += 2 if newgirl["Mystique"].Hand > 2 else 0
                     
-            $ TempLustX += 2 if E_Lust < 60 else 1
-            $ TempLustX += 2 if E_Hand > 2 else 0
-            $ E_Addict -= 1            
+            $ TempLustX += 2 if newgirl["Mystique"].Lust < 60 else 1
+            $ TempLustX += 2 if newgirl["Mystique"].Hand > 2 else 0
+            $ newgirl["Mystique"].Addict -= 1            
     else:
-        if E_Lust >= 80:   
+        if newgirl["Mystique"].Lust >= 80:   
             if Action == "fondle pussy":
                     $ Line = Line + renpy.random.choice(["Her hand rapidly moves across her mound, firmly stroking her clit", 
                             "She inserts two fingers into her dripping pussy and rapidly pistons them",
@@ -1569,10 +1569,10 @@ label Mystique_Self_Lines(Mode = "T3", Action = Trigger3, TempLustX = 0):
                             "Her hands move constantly across her chest, alternately pulling at her nipples or just grazing her skin",
                             "She firmly pinches her nipples and gives them steady tugs",
                             "She passionately rubs her breasts, desperately tugging at her nipples"])     
-            #End E_Lust >= 80
+            #End newgirl["Mystique"].Lust >= 80
             
                 
-        elif E_Lust >= 50:   
+        elif newgirl["Mystique"].Lust >= 50:   
                 if Action == "fondle pussy":
                         $ Line = Line + renpy.random.choice(["Her hand moves in circles across her mound, firmly rubbing into it", 
                                 "Her hands move along her sides, carefully caressing them",                
@@ -1617,9 +1617,9 @@ label Mystique_Self_Lines(Mode = "T3", Action = Trigger3, TempLustX = 0):
                                 "Her hands firmly caress her breasts, massaging them in circular motions",
                                 "Her hands move along her breasts, carefully caressing them",
                                 "She gasps as her finger brushes against an erect nipple"])
-                #End E_Lust >= 50
+                #End newgirl["Mystique"].Lust >= 50
                 
-        else: #if E_Lust < 50:      
+        else: #if newgirl["Mystique"].Lust < 50:      
                 if Action == "fondle pussy":
                         $ Line = Line + renpy.random.choice(["Her hand traces slowly down her body, barely grazing her mound", 
                                 "Her fingers move lightly across her pubic region, subtly avoiding her lips",
@@ -1655,13 +1655,13 @@ label Mystique_Self_Lines(Mode = "T3", Action = Trigger3, TempLustX = 0):
                                 "She moves her hands from her breasts to rub her neck",
                                 "She lightly pinches one of her nipples",
                                 "She gasps as her finger brushes against an erect nipple"])   
-                #End E_Lust 0-60
+                #End newgirl["Mystique"].Lust 0-60
         #End Mystique Action masturbation dialog        
                         
             
         # Mystique Self-stat boosts  
-        $ TempLustX += 4 if E_Lust > 80 else 0        
-        $ TempLustX += 5 if E_Lust < 40 else 3                   #Bonus if she is relatively low lust
+        $ TempLustX += 4 if newgirl["Mystique"].Lust > 80 else 0        
+        $ TempLustX += 5 if newgirl["Mystique"].Lust < 40 else 3                   #Bonus if she is relatively low lust
         $ TempLustX += 5 if Trigger == "masturbation" else 0     #Bonus if masturbation is her primary action
         
         if Primary == "Mystique": #If this is a primary, Trigger3 action
@@ -1686,54 +1686,54 @@ label Mystique_Self_Set(Mode = "T3", Action = Trigger3, Length=0, Count2=0, Opti
     #If T5/Trigger5 is sent, this is for Mystique's Second role, threesome behavior
     if Mode == "T3" and Trigger != "masturbation":
             # This cuts it out if she's submissive or not horny enough to get busy
-            if "sub" in E_Traits:
+            if "sub" in newgirl["Mystique"].Traits:
                 return
             #if she's inexperienced or shy, skip this
-            if Taboo and E_SEXP >= 50 and ApprovalCheck("Mystique", 500, "I"):
-                if E_Lust <= 50:
+            if Taboo and newgirl["Mystique"].SEXP >= 50 and ApprovalCheck("Mystique", 500, "I"):
+                if newgirl["Mystique"].Lust <= 50:
                     return
-            elif E_SEXP >= 25 and ApprovalCheck("Mystique", 300, "I"):
-                if E_Lust <= 30:
+            elif newgirl["Mystique"].SEXP >= 25 and ApprovalCheck("Mystique", 300, "I"):
+                if newgirl["Mystique"].Lust <= 30:
                     return
             else:
                     return
     
     if Trigger == "masturbation":
                 $ Options = ["fondle pussy", "fondle breasts", "fondle ass"]
-                if "dildo" in E_Inventory:
+                if "dildo" in newgirl["Mystique"].Inventory:
                         $ Options.append("dildo pussy")  
-                        if E_Loose:
+                        if newgirl["Mystique"].Loose:
                             $ Options.append("dildo anal")                  
-                if "vibrator" in E_Inventory:            
+                if "vibrator" in newgirl["Mystique"].Inventory:            
                         $ Options.append("vibrator pussy") 
             
     else:
-                if Mode != "T5" and Trigger in ("fondle pussy", "fondle breasts", "fondle thighs", "kissing", "fondle ass", "suck breasts") and E_Hand >= 5:
+                if Mode != "T5" and Trigger in ("fondle pussy", "fondle breasts", "fondle thighs", "kissing", "fondle ass", "suck breasts") and newgirl["Mystique"].Hand >= 5:
                         $ Options.append("hand")
                     
                 if Trigger not in ("sex", "fondle pussy", "lick pussy", "dildo pussy"):
-                        if "dildo" in E_Inventory:
+                        if "dildo" in newgirl["Mystique"].Inventory:
                             $ Options.append("dildo pussy")    
                         $ Options.append("fondle pussy") 
                 
-                if Trigger not in ("anal", "fondle ass", "insert ass", "lick ass", "dildo anal") and E_Loose:
-                        if "dildo" in E_Inventory:
+                if Trigger not in ("anal", "fondle ass", "insert ass", "lick ass", "dildo anal") and newgirl["Mystique"].Loose:
+                        if "dildo" in newgirl["Mystique"].Inventory:
                             $ Options.append("dildo anal")
                         $ Options.append("fondle ass") 
                 
-                if "vibrator" in E_Inventory:
+                if "vibrator" in newgirl["Mystique"].Inventory:
                         $ Options.append("vibrator pussy")
                 
                 if Trigger not in ("fondle breasts", "suck breasts"):
                         $ Options.append("fondle breasts") 
                     
-                if "fondle pussy" not in Options and (E_Obed < E_Inbt):
+                if "fondle pussy" not in Options and (newgirl["Mystique"].Obed < newgirl["Mystique"].Inbt):
                         $ Options.append("fondle pussy")
                     
-                if "fondle ass" not in Options and (E_Obed < E_Inbt):
+                if "fondle ass" not in Options and (newgirl["Mystique"].Obed < newgirl["Mystique"].Inbt):
                         $ Options.append("fondle ass")
                     
-                if "fondle breasts" not in Options and (E_Obed < E_Inbt):
+                if "fondle breasts" not in Options and (newgirl["Mystique"].Obed < newgirl["Mystique"].Inbt):
                         $ Options.append("fondle breasts")
     # End filling options
     
@@ -1829,17 +1829,17 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
                                 ", hand sliding slowly down your shaft"]) 
                     $ TempFocus += 3 if P_Focus > 70 else 2
                           
-                    $ TempLust += 2 if E_Lust < 60 else 0
-                    $ TempLust += 2 if E_Hand > 2 else 0
-                    $ E_Addict -= 1 if D20S > 10 else 2
+                    $ TempLust += 2 if newgirl["Mystique"].Lust < 60 else 0
+                    $ TempLust += 2 if newgirl["Mystique"].Hand > 2 else 0
+                    $ newgirl["Mystique"].Addict -= 1 if D20S > 10 else 2
                     
-    # end E_Hand Threeway                                //////////////////////////////////////////////////////////////////////////////
+    # end newgirl["Mystique"].Hand Threeway                                //////////////////////////////////////////////////////////////////////////////
                              
     elif Action == "blow":
                     if Speed > 2 and Trigger == "blow":
                         $ Line = "Since " + ActiveGirl + " is working so hard, Mystique settles for the occasional nibble or lick."
                         $ TempFocus += 5 if P_Focus > 60 else 3                      
-                        $ TempLust += 2 if E_Lust > 80 else 1    
+                        $ TempLust += 2 if newgirl["Mystique"].Lust > 80 else 1    
                     else:
                         if D20S <= 8 and (Trigger == "blow" or Trigger == "hand"): #This is a random bonus dialog
                             if Trigger == "blow": #If Mystique is blowing you
@@ -1853,9 +1853,9 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
                                         "Mystique takes a turn to stroke a few times before passing it back",
                                         "Mystique and " + ActiveGirl + " get into an alternating rhythm"])   
                             if ActiveGirl == "Rogue":
-                                    $ TempLust2 += 1 if R_LikeMystique >= 800 else 0     
+                                    $ TempLust2 += 1 if R_LikeNewGirl["Mystique"] >= 800 else 0     
                             elif ActiveGirl == "Kitty":
-                                    $ TempLust2 += 1 if K_LikeMystique >= 800 else 0                                                         
+                                    $ TempLust2 += 1 if K_LikeNewGirl["Mystique"] >= 800 else 0                                                         
                         else:
                             if Trigger == "blow": #if another girl is also blowing
                                     $ Line = "Mystique also continues to lick your cock"
@@ -1869,10 +1869,10 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
                                     ", licking her way down the shaft, and gently teasing the balls"]) 
                         
                         $ TempFocus += 20 if P_Focus > 60 else 10                      
-                        $ TempLust += 2 if E_Lust > 80 else 1    
+                        $ TempLust += 2 if newgirl["Mystique"].Lust > 80 else 1    
                               
-                        $ E_Addict -= 2
-    # end E_Blowjob Threeway                                //////////////////////////////////////////////////////////////////////////////
+                        $ newgirl["Mystique"].Addict -= 2
+    # end newgirl["Mystique"].Blowjob Threeway                                //////////////////////////////////////////////////////////////////////////////
             
     elif Action == "fondle breasts":    
                         if Trigger2 == "fondle breasts" and Trigger != "lesbian": #if you're also fondling them,
@@ -1888,10 +1888,10 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
                                         ", passing repeatedly against her rigid nipples"]) 
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if R_LikeMystique >= 800 else 2 
+                                $ TempLust2 += 5 if R_LikeNewGirl["Mystique"] >= 800 else 2 
                         elif ActiveGirl == "Kitty": #If Mystique is fondling Kitty's breasts
                                 $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if K_LikeMystique >= 800 else 2
+                                $ TempLust2 += 5 if K_LikeNewGirl["Mystique"] >= 800 else 2
                         $ TempFocus += 1 
     # end E Fondle breasts Threeway                                //////////////////////////////////////////////////////////////////////////////
     
@@ -1910,10 +1910,10 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
                                         ", nibbling repeatedly at her rigid nipples"])  
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 4 if R_LikeMystique >= 800 else 2 
+                                $ TempLust2 += 4 if R_LikeNewGirl["Mystique"] >= 800 else 2 
                         elif ActiveGirl == "Kitty": #If Mystique is sucking Kitty's breasts
                                 $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 4 if K_LikeMystique >= 800 else 2
+                                $ TempLust2 += 4 if K_LikeNewGirl["Mystique"] >= 800 else 2
                         $ TempFocus += 1                      
     # end E Suck breasts Threeway                                //////////////////////////////////////////////////////////////////////////////
         
@@ -1974,10 +1974,10 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
                             
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if R_LikeMystique >= 800 else 2 
+                                $ TempLust2 += 5 if R_LikeNewGirl["Mystique"] >= 800 else 2 
                         elif ActiveGirl == "Kitty": #If Mystique is stroking Kitty's pussy
                                 $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if K_LikeMystique >= 800 else 3
+                                $ TempLust2 += 5 if K_LikeNewGirl["Mystique"] >= 800 else 3
                         $ TempFocus += 1  
         
     # end E fondle pussy Threeway                              /////////////////////////////////////////////////////////////////////////////
@@ -2038,10 +2038,10 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
                         
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 3 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 7 if R_LikeMystique >= 800 else 4 
+                                $ TempLust2 += 7 if R_LikeNewGirl["Mystique"] >= 800 else 4 
                         elif ActiveGirl == "Kitty": #If Mystique is stroking Kitty's pussy
                                 $ TempLust += 3 if ApprovalCheck("Mystique", 600, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 7 if K_LikeMystique >= 800 else 4
+                                $ TempLust2 += 7 if K_LikeNewGirl["Mystique"] >= 800 else 4
                         $ TempFocus += 3  
         
     # end E lick pussy Threeway                              /////////////////////////////////////////////////////////////////////////////
@@ -2070,10 +2070,10 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
                         
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 1 if ApprovalCheck("Mystique", 500, "I") else 0  # Mystique's lust
-                                $ TempLust2 += 3 if R_LikeMystique >= 800 else 1 
+                                $ TempLust2 += 3 if R_LikeNewGirl["Mystique"] >= 800 else 1 
                         elif ActiveGirl == "Kitty": #If Mystique is stroking Kitty's pussy
                                 $ TempLust += 1 if ApprovalCheck("Mystique", 500, "I") else 0  # Mystique's lust
-                                $ TempLust2 += 3 if K_LikeMystique >= 800 else 1
+                                $ TempLust2 += 3 if K_LikeNewGirl["Mystique"] >= 800 else 1
                         $ TempFocus += 1  
     # end E fondle ass Threeway                              /////////////////////////////////////////////////////////////////////////////
     
@@ -2125,12 +2125,12 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
                         
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if R_LikeMystique >= 800 else 3 
+                                $ TempLust2 += 5 if R_LikeNewGirl["Mystique"] >= 800 else 3 
                                 if not R_Loose:
                                         $ TempLust2 -= 3
                         elif ActiveGirl == "Kitty": #If Mystique is stroking Kitty's ass
                                 $ TempLust += 2 if ApprovalCheck("Mystique", 700, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if K_LikeMystique >= 800 else 3
+                                $ TempLust2 += 5 if K_LikeNewGirl["Mystique"] >= 800 else 3
                                 if not K_Loose:
                                         $ TempLust2 -= 3
                         $ TempFocus += 1  
@@ -2191,11 +2191,11 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
                         
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 3 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if R_LikeMystique >= 800 else 2 
+                                $ TempLust2 += 5 if R_LikeNewGirl["Mystique"] >= 800 else 2 
                                 $ TempLust2 += 2 if R_Loose > 1 else 0
                         elif ActiveGirl == "Kitty": #If Mystique is licking Kitty's ass
                                 $ TempLust += 3 if ApprovalCheck("Mystique", 800, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if K_LikeMystique >= 800 else 2
+                                $ TempLust2 += 5 if K_LikeNewGirl["Mystique"] >= 800 else 2
                                 $ TempLust2 += 2 if K_Loose > 1 else 0
                         $ TempFocus += 3  
         
@@ -2210,7 +2210,7 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
     # end E Masturbation Threeway                              /////////////////////////////////////////////////////////////////////////////
     
     elif Action == "kissing":
-                        if Trigger == "blow" and E_Blow > 5 and Trigger5 != "kiss you":
+                        if Trigger == "blow" and newgirl["Mystique"].Blow > 5 and Trigger5 != "kiss you":
                                     $ Line = "Mystique also continues to kiss " + ActiveGirl
                                     $ Line = Line + renpy.random.choice([", occasionally taking a lick of your cock as well", 
                                             ", licking along her cheek",
@@ -2258,12 +2258,12 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
                         
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 1 if ApprovalCheck("Mystique", 500, "I") else 0  # Mystique's lust
-                                $ TempLust += 1 if E_LikeRogue >= 800 else 0
-                                $ TempLust2 += 2 if R_LikeMystique >= 800 else 1 
+                                $ TempLust += 1 if newgirl["Mystique"].LikeRogue >= 800 else 0
+                                $ TempLust2 += 2 if R_LikeNewGirl["Mystique"] >= 800 else 1 
                         elif ActiveGirl == "Kitty": #If Mystique is kissing Kitty
                                 $ TempLust += 1 if ApprovalCheck("Mystique", 500, "I") else 0  # Mystique's lust
-                                $ TempLust += 1 if E_LikeKitty >= 800 else 0
-                                $ TempLust2 += 2 if K_LikeMystique >= 800 else 1
+                                $ TempLust += 1 if newgirl["Mystique"].LikeKitty >= 800 else 0
+                                $ TempLust2 += 2 if K_LikeNewGirl["Mystique"] >= 800 else 1
                         $ TempFocus += 1  
     # end E Kissing Threeway                              /////////////////////////////////////////////////////////////////////////////
     
@@ -2276,13 +2276,13 @@ label Mystique_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, Te
                                         ", transfixed by the action"]) 
                             
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
-                                $ TempLust += 1 if E_LikeRogue >= 600 else 0  # Mystique's lust
-                                $ TempLust += 2 if E_LikeRogue >= 800 else 1  # Mystique's lust
+                                $ TempLust += 1 if newgirl["Mystique"].LikeRogue >= 600 else 0  # Mystique's lust
+                                $ TempLust += 2 if newgirl["Mystique"].LikeRogue >= 800 else 1  # Mystique's lust
                                 $ TempLust2 += 1 if ApprovalCheck("Rogue", 500, "I") else 0
                                 $ TempLust2 += 1 if ApprovalCheck("Rogue", 700, "I") else 0
                         elif ActiveGirl == "Kitty": #If Mystique is watching Kitty
-                                $ TempLust += 1 if E_LikeKitty >= 600 else 0  # Mystique's lust
-                                $ TempLust += 2 if E_LikeKitty >= 800 else 1  # Mystique's lust
+                                $ TempLust += 1 if newgirl["Mystique"].LikeKitty >= 600 else 0  # Mystique's lust
+                                $ TempLust += 2 if newgirl["Mystique"].LikeKitty >= 800 else 1  # Mystique's lust
                                 $ TempLust2 += 1 if ApprovalCheck("Kitty", 500, "I") else 0
                                 $ TempLust2 += 1 if ApprovalCheck("Kitty", 700, "I") else 0
                         $ TempFocus += 1  
@@ -2339,38 +2339,38 @@ label Mystique_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl 
             elif not ApprovalCheck("Mystique", 500, "I"): # If Mystique is too timid to do anything
                     pass
             elif Primary == "Rogue":
-                    if E_LikeRogue >= 500 and ApprovalCheck("Mystique", (1300-(10*E_Les)-(10*(E_LikeRogue-60)))): #If she likes both of you a lot, threeway
+                    if newgirl["Mystique"].LikeRogue >= 500 and ApprovalCheck("Mystique", (1300-(10*E_Les)-(10*(newgirl["Mystique"].LikeRogue-60)))): #If she likes both of you a lot, threeway
                             $ State = "threeway"
                     elif ApprovalCheck("Mystique", 1000): #If she likes you well enough, Hetero
                             $ State = "hetero"            
-                    elif E_LikeRogue >= 700: #if she doesn't like you but likes Rogue, lesbian
+                    elif newgirl["Mystique"].LikeRogue >= 700: #if she doesn't like you but likes Rogue, lesbian
                             $ State = "lesbian"
             elif Primary == "Kitty":
-                    if E_LikeKitty >= 500 and ApprovalCheck("Mystique", (1300-(10*E_Les)-(10*(E_LikeKitty-60)))): #If she likes both of you a lot, threeway
+                    if newgirl["Mystique"].LikeKitty >= 500 and ApprovalCheck("Mystique", (1300-(10*E_Les)-(10*(newgirl["Mystique"].LikeKitty-60)))): #If she likes both of you a lot, threeway
                             $ State = "threeway"
                     elif ApprovalCheck("Mystique", 1000): #If she likes you well enough, Hetero
                             $ State = "hetero"            
-                    elif E_LikeKitty >= 700: #if she doesn't like you but likes Kitty, lesbian
+                    elif newgirl["Mystique"].LikeKitty >= 700: #if she doesn't like you but likes Kitty, lesbian
                             $ State = "lesbian"
             
             
             if State == "lesbian" or State == "threeway":
                 $ Options.extend(("fondle breasts","suck breasts","fondle pussy","fondle ass","kiss girl")) 
                 if ActiveGirl == "Rogue":
-                            if ApprovalCheck("Mystique", 800, "I") or E_LikeRogue >= 700:
+                            if ApprovalCheck("Mystique", 800, "I") or newgirl["Mystique"].LikeRogue >= 700:
                                 $ Options.append("lick pussy")
-                            if ApprovalCheck("Mystique", 900, "I") and E_LikeRogue >= 800:
+                            if ApprovalCheck("Mystique", 900, "I") and newgirl["Mystique"].LikeRogue >= 800:
                                 $ Options.append("lick ass")  
                 elif ActiveGirl == "Kitty":
-                            if ApprovalCheck("Mystique", 800, "I") or E_LikeKitty >= 700:
+                            if ApprovalCheck("Mystique", 800, "I") or newgirl["Mystique"].LikeKitty >= 700:
                                 $ Options.append("lick pussy")
-                            if ApprovalCheck("Mystique", 900, "I") and E_LikeKitty >= 800:
+                            if ApprovalCheck("Mystique", 900, "I") and newgirl["Mystique"].LikeKitty >= 800:
                                 $ Options.append("lick ass") 
-#                            if "dildo" in E_Inventory: #add later once these systems are done
+#                            if "dildo" in newgirl["Mystique"].Inventory: #add later once these systems are done
 #                                $ Options.append("dildo pussy") 
-#                                if E_Loose:
+#                                if newgirl["Mystique"].Loose:
 #                                    $ Options.append("dildo ass") 
-#                            if "vibrator" in E_Inventory:
+#                            if "vibrator" in newgirl["Mystique"].Inventory:
 #                                $ Options.append("vibrator") 
                     
             if State == "hetero" or State == "threeway":
@@ -2380,9 +2380,9 @@ label Mystique_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl 
             if Preset in Options:
                     #if the suggested action is in the possible actions. . .
                     $ Options[0] = Preset 
-                    ch_e "Oh, very well. . ."
+                    ch_m "Oh, very well. . ."
             else:
-                    ch_e "That doesn't really seem appropriate. . ."
+                    ch_m "That doesn't really seem appropriate. . ."
                     
             #Sets opening lines. . .
             if Options[0] == Action:                          
@@ -2409,102 +2409,102 @@ label Mystique_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl 
                         $ Action = "hand"   
                         
                         $ TempFocus += 3 if P_Focus > 70 else 2                              
-                        $ TempLust += 2 if E_Lust < 60 else 0
-                        $ TempLust += 2 if E_Hand > 2 else 0
-                        $ E_Addict -= 1 if D20S > 10 else 2
+                        $ TempLust += 2 if newgirl["Mystique"].Lust < 60 else 0
+                        $ TempLust += 2 if newgirl["Mystique"].Hand > 2 else 0
+                        $ newgirl["Mystique"].Addict -= 1 if D20S > 10 else 2
             elif Options[0] == "blow":
                         $ Line = Line + " before she slides down and begins to slowly lick your cock"
                         $ Action = "blow"  
                         
                         $ TempFocus += 20 if P_Focus > 60 else 10                      
-                        $ TempLust += 2 if E_Lust > 80 else 1  
-                        $ E_Addict -= 2
+                        $ TempLust += 2 if newgirl["Mystique"].Lust > 80 else 1  
+                        $ newgirl["Mystique"].Addict -= 2
             #the above three do not apply to lesbian actions.
                         
             elif Options[0] == "fondle breasts":
 #                        call RThreewayBreasts_Launch #Launches position change
                         $ Line = Line + " and slides her hands along " + ActiveGirl + "'s breasts" 
                         $ Action = "fondle breasts"   
-                        if "lesbian" not in E_RecentActions:
-                                $ E_Les += 1
-                                $ E_RecentActions.append("lesbian") 
+                        if "lesbian" not in newgirl["Mystique"].RecentActions:
+                                $ newgirl["Mystique"].Les += 1
+                                $ newgirl["Mystique"].RecentActions.append("lesbian") 
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 4 if R_LikeMystique >= 800 else 2
+                                $ TempLust2 += 4 if R_LikeNewGirl["Mystique"] >= 800 else 2
                         elif ActiveGirl == "Kitty": #If Mystique is fondling Kitty's breasts
                                 $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 4 if K_LikeMystique >= 800 else 2
+                                $ TempLust2 += 4 if K_LikeNewGirl["Mystique"] >= 800 else 2
                         $ TempFocus += 1 
             elif Options[0] == "suck breasts":
 #                        call RThreewayBreasts_Launch #Launches position change
                         $ Line = Line + " and slurps " + ActiveGirl + "'s nipple into her mouth" 
                         $ Action = "suck breasts"    
-                        if "lesbian" not in E_RecentActions:
-                                $ E_Les += 1
-                                $ E_RecentActions.append("lesbian") 
+                        if "lesbian" not in newgirl["Mystique"].RecentActions:
+                                $ newgirl["Mystique"].Les += 1
+                                $ newgirl["Mystique"].RecentActions.append("lesbian") 
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 4 if R_LikeMystique >= 800 else 2
+                                $ TempLust2 += 4 if R_LikeNewGirl["Mystique"] >= 800 else 2
                         elif ActiveGirl == "Kitty": #If Mystique is sucking Kitty's breasts
                                 $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if K_LikeMystique >= 800 else 2
+                                $ TempLust2 += 5 if K_LikeNewGirl["Mystique"] >= 800 else 2
                         $ TempFocus += 1  
             elif Options[0] == "fondle pussy":
 #                        call RThreewayPussy_Launch #Launches position change
                         $ Line = Line + " and runs her finger along " + ActiveGirl + "'s pussy" 
                         $ Action = "fondle pussy"  
-                        if "lesbian" not in E_RecentActions:
-                                $ E_Les += 1
-                                $ E_RecentActions.append("lesbian")                         
+                        if "lesbian" not in newgirl["Mystique"].RecentActions:
+                                $ newgirl["Mystique"].Les += 1
+                                $ newgirl["Mystique"].RecentActions.append("lesbian")                         
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if R_LikeMystique >= 800 else 4
+                                $ TempLust2 += 5 if R_LikeNewGirl["Mystique"] >= 800 else 4
                         elif ActiveGirl == "Kitty": #If Mystique is stroking Kitty's pussy
                                 $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if K_LikeMystique >= 800 else 3
+                                $ TempLust2 += 5 if K_LikeNewGirl["Mystique"] >= 800 else 3
                         $ TempFocus += 2  
             elif Options[0] == "lick pussy":
 #                        call RThreewayPussy_Launch #Launches position change
                         $ Line = Line + " and runs her tongue along " + ActiveGirl + "'s pussy" 
                         $ Action = "lick pussy"  
-                        if "lesbian" not in E_RecentActions:
-                                $ E_Les += 1
-                                $ E_RecentActions.append("lesbian") 
+                        if "lesbian" not in newgirl["Mystique"].RecentActions:
+                                $ newgirl["Mystique"].Les += 1
+                                $ newgirl["Mystique"].RecentActions.append("lesbian") 
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 3 if ApprovalCheck("Mystique", 600, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 7 if R_LikeMystique >= 800 else 4
+                                $ TempLust2 += 7 if R_LikeNewGirl["Mystique"] >= 800 else 4
                         elif ActiveGirl == "Kitty": #If Mystique is licking Kitty's pussy
                                 $ TempLust += 3 if ApprovalCheck("Mystique", 600, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 7 if K_LikeMystique >= 800 else 4
+                                $ TempLust2 += 7 if K_LikeNewGirl["Mystique"] >= 800 else 4
                         $ TempFocus += 3  
             elif Options[0] == "fondle ass": 
 #                        call RThreewayPussy_Launch #Launches position change
                         $ Line = Line + " and gives " + ActiveGirl + "'s ass a firm squeeze" 
                         $ Action = "fondle ass" 
-                        if "lesbian" not in E_RecentActions:
-                                $ E_Les += 1
-                                $ E_RecentActions.append("lesbian")                         
+                        if "lesbian" not in newgirl["Mystique"].RecentActions:
+                                $ newgirl["Mystique"].Les += 1
+                                $ newgirl["Mystique"].RecentActions.append("lesbian")                         
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 1 if ApprovalCheck("Mystique", 400, "I") else 0  # Mystique's lust
-                                $ TempLust2 += 3 if R_LikeMystique >= 800 else 1
+                                $ TempLust2 += 3 if R_LikeNewGirl["Mystique"] >= 800 else 1
                         elif ActiveGirl == "Kitty": #If Mystique is fondling Kitty's ass
                                 $ TempLust += 1 if ApprovalCheck("Mystique", 400, "I") else 0  # Mystique's lust
-                                $ TempLust2 += 3 if K_LikeMystique >= 600 else 1
+                                $ TempLust2 += 3 if K_LikeNewGirl["Mystique"] >= 600 else 1
                         $ TempFocus += 1  
             elif Options[0] == "lick ass":
 #                        call RThreewayPussy_Launch #Launches position change
                         $ Line = Line + " and starts to lick around " + ActiveGirl + "'s ass" 
                         $ Action = "lick ass"  
-                        if "lesbian" not in E_RecentActions:
-                                $ E_Les += 1
-                                $ E_RecentActions.append("lesbian") 
+                        if "lesbian" not in newgirl["Mystique"].RecentActions:
+                                $ newgirl["Mystique"].Les += 1
+                                $ newgirl["Mystique"].RecentActions.append("lesbian") 
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 3 if ApprovalCheck("Mystique", 800, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if R_LikeMystique >= 800 else 2
+                                $ TempLust2 += 5 if R_LikeNewGirl["Mystique"] >= 800 else 2
                                 $ TempLust2 += 2 if R_Loose > 1 else 0
                         elif ActiveGirl == "Kitty": #If Mystique is licking Kitty's ass
                                 $ TempLust += 3 if ApprovalCheck("Mystique", 800, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if K_LikeMystique >= 800 else 2
+                                $ TempLust2 += 5 if K_LikeNewGirl["Mystique"] >= 800 else 2
                                 $ TempLust2 += 2 if K_Loose > 1 else 0
                         $ TempFocus += 2  
                         
@@ -2517,17 +2517,17 @@ label Mystique_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl 
                                 $ Trigger5 = "kiss both" 
                             else:
                                 $ Trigger5 = "kiss girl"  
-                        if "lesbian" not in E_RecentActions:
-                                $ E_Les += 1
-                                $ E_RecentActions.append("lesbian") 
+                        if "lesbian" not in newgirl["Mystique"].RecentActions:
+                                $ newgirl["Mystique"].Les += 1
+                                $ newgirl["Mystique"].RecentActions.append("lesbian") 
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                 $ TempLust += 1 if ApprovalCheck("Mystique", 500, "I") else 0  # Mystique's lust
-                                $ TempLust += 1 if E_LikeKitty >= 800 else 0
-                                $ TempLust2 += 2 if R_LikeMystique >= 800 else 1
+                                $ TempLust += 1 if newgirl["Mystique"].LikeKitty >= 800 else 0
+                                $ TempLust2 += 2 if R_LikeNewGirl["Mystique"] >= 800 else 1
                         elif ActiveGirl == "Kitty": #If Mystique is kissing Kitty
                                 $ TempLust += 1 if ApprovalCheck("Mystique", 500, "I") else 0  # Mystique's lust
-                                $ TempLust += 1 if E_LikeKitty >= 800 else 0
-                                $ TempLust2 += 2 if K_LikeMystique >= 800 else 1
+                                $ TempLust += 1 if newgirl["Mystique"].LikeKitty >= 800 else 0
+                                $ TempLust2 += 2 if K_LikeNewGirl["Mystique"] >= 800 else 1
                         $ TempFocus += 1  
             elif Options[0] == "kiss you":   
 #                        call RThreewayBreasts_Launch #Launches position change
@@ -2535,17 +2535,17 @@ label Mystique_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl 
                         $ Action = "kissing"   
                         if "kiss girl" in Options:
                             $ Trigger5 = "kiss both" 
-                            if "lesbian" not in E_RecentActions:
-                                    $ E_Les += 1
-                                    $ E_RecentActions.append("lesbian")                                     
+                            if "lesbian" not in newgirl["Mystique"].RecentActions:
+                                    $ newgirl["Mystique"].Les += 1
+                                    $ newgirl["Mystique"].RecentActions.append("lesbian")                                     
                             if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
                                     $ TempLust += 1 if ApprovalCheck("Mystique", 500, "I") else 0  # Mystique's lust
-                                    $ TempLust += 1 if E_LikeRogue >= 800 else 0
-                                    $ TempLust2 += 2 if R_LikeMystique >= 800 else 1
+                                    $ TempLust += 1 if newgirl["Mystique"].LikeRogue >= 800 else 0
+                                    $ TempLust2 += 2 if R_LikeNewGirl["Mystique"] >= 800 else 1
                             elif ActiveGirl == "Kitty": #If Mystique is kissing Kitty
                                     $ TempLust += 1 if ApprovalCheck("Mystique", 500, "I") else 0  # Mystique's lust
-                                    $ TempLust += 1 if E_LikeKitty >= 800 else 0
-                                    $ TempLust2 += 2 if K_LikeMystique >= 800 else 1
+                                    $ TempLust += 1 if newgirl["Mystique"].LikeKitty >= 800 else 0
+                                    $ TempLust2 += 2 if K_LikeNewGirl["Mystique"] >= 800 else 1
                             $ TempFocus += 1 
                         else:
                             $ Trigger5 = "kiss you" 
@@ -2560,13 +2560,13 @@ label Mystique_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl 
                         "Mystique is just watching the two of you intently."
                         $ Action = "watch"
                         if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
-                                $ TempLust += 1 if E_LikeRogue >= 600 else 0  # Mystique's lust
-                                $ TempLust += 2 if E_LikeRogue >= 800 else 1  # Mystique's lust
+                                $ TempLust += 1 if newgirl["Mystique"].LikeRogue >= 600 else 0  # Mystique's lust
+                                $ TempLust += 2 if newgirl["Mystique"].LikeRogue >= 800 else 1  # Mystique's lust
                                 $ TempLust2 += 1 if ApprovalCheck("Rogue", 500, "I") else 0
                                 $ TempLust2 += 1 if ApprovalCheck("Rogue", 700, "I") else 0
                         elif ActiveGirl == "Kitty": #If Mystique is watching Kitty
-                                $ TempLust += 1 if E_LikeKitty >= 600 else 0  # Mystique's lust
-                                $ TempLust += 2 if E_LikeKitty >= 800 else 1  # Mystique's lust
+                                $ TempLust += 1 if newgirl["Mystique"].LikeKitty >= 600 else 0  # Mystique's lust
+                                $ TempLust += 2 if newgirl["Mystique"].LikeKitty >= 800 else 1  # Mystique's lust
                                 $ TempLust2 += 1 if ApprovalCheck("Kitty", 500, "I") else 0
                                 $ TempLust2 += 1 if ApprovalCheck("Kitty", 700, "I") else 0
                         $ TempFocus += 1 
