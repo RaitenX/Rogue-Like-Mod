@@ -70,7 +70,7 @@ init -1:
     #default Mystique = NewGirl("Mystique", 51, "pants")
 
     #default newgirl = Girlnew("Mystique")
-
+    default MystiqueName = "Mystique"
     default newgirl = {"Mystique" : Girlnew("Mystique"),
                        #"Jean" : Girlnew("Jean")
                         }

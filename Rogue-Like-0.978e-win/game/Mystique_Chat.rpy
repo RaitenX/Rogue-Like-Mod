@@ -17,7 +17,8 @@ label Mystique_Chat:
                 return
 
     if newgirl["Mystique"].Loc == bg_current:
-            call ch__m("What was it you wanted to discuss, "+newgirl["Mystique"].Petname+"?")
+            #call ch__m("What was it you wanted to discuss, "+newgirl["Mystique"].Petname+"?")
+            ch_m "What was it you wanted to discuss, [newgirl[Mystique].Petname]?"
     #else:
     menu:
         "What would you like to do?"
@@ -1218,7 +1219,7 @@ label Mystique_Flirt:
         menu:        
                 
             "Touch her cheek.":                                                                                 #Touch her cheek 
-                    call E_TouchCheek
+                    call Mystique_TouchCheek
                             
             "Kiss her cheek":                                                                                   #Kiss her cheek
                     "You lean over, tilt her head back, and kiss her on the cheek."                
@@ -1426,7 +1427,7 @@ label Mystique_Flirt:
                         call ch__m("What was that about, "+newgirl["Mystique"].Petname+"?"   )
                         
             "Slap her ass" if newgirl["Mystique"].Loc == bg_current:                                                              #Slap her ass
-                    call E_Slap_Ass
+                    call Mystique_Slap_Ass
                 
             "Pinch her ass":                                                                                    #Pinch her ass
                     call MystiqueFace("surprised", 1)
@@ -2605,45 +2606,45 @@ label Mystique_Pet:
                 return
     return
     
-label Mystique_Namecheck(E_Pet = newgirl["Mystique"].Pet, Cnt = 0, Ugh = 0):#E_Pet is the internal pet name, Cnt and Ugh are internal count variable
-    if newgirl["Mystique"].Pet == "Mystique":
+label Mystique_Namecheck(Girl_Pet = newgirl["Mystique"].Pet, Cnt = 0, Ugh = 0):#Girl_Pet is the internal pet name, Cnt and Ugh are internal count variable
+    if Girl_Pet == "Mystique":
         return Ugh   
-    if newgirl["Mystique"].Pet == "Ms. Frost":
+    if Girl_Pet == "Ms. Frost":
         return Ugh   
     if Taboo:
         $ Cnt = int(Taboo/10)
-    if newgirl["Mystique"].Pet == "girl":                                         #easy options
+    if Girl_Pet == "girl":                                         #easy options
         if ApprovalCheck("Mystique", 500, "L", TabM=1):            
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 80, 1)
         else:
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 50, -1)
             $ Ugh = 1
-    elif newgirl["Mystique"].Pet == "boo" or newgirl["Mystique"].Pet == "bae":
+    elif Girl_Pet == "boo" or Girl_Pet == "bae":
         if ApprovalCheck("Mystique", 500, "L", TabM=1):
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 80, 1)
         else:
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 50, -2)
             $ Ugh = 1
-    elif newgirl["Mystique"].Pet == "baby":    
+    elif Girl_Pet == "baby":    
         if ApprovalCheck("Mystique", 500, "L", TabM=1):
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 1)
         else:
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 30, -1)
             $ Ugh = 1
-    elif newgirl["Mystique"].Pet == "kitten":
+    elif Girl_Pet == "kitten":
         if ApprovalCheck("Mystique", 600, "L", TabM=1):
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 80, 2)
         else:
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 50, -1)
             $ Ugh = 1
-    elif newgirl["Mystique"].Pet == "sweetie":
+    elif Girl_Pet == "sweetie":
         if not ApprovalCheck("Mystique", 500, "L", TabM=1):
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 80, 1)  
         else:
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 40, -1)
             $ Ugh = 1
             
-    elif newgirl["Mystique"].Pet == "sexy" or newgirl["Mystique"].Pet == "lover":
+    elif Girl_Pet == "sexy" or Girl_Pet == "lover":
         if ApprovalCheck("Mystique", 900, TabM=1):                                                        #over 150
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 80, 2)
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 1)
@@ -2654,7 +2655,7 @@ label Mystique_Namecheck(E_Pet = newgirl["Mystique"].Pet, Cnt = 0, Ugh = 0):#E_P
             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 20, -1)
             $ Ugh = 1
             
-    elif newgirl["Mystique"].Pet == "slave":                                        #tougher options
+    elif Girl_Pet == "slave":                                        #tougher options
         if ApprovalCheck("Mystique", 800, "O", TabM=3):                                            #over 80
             $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 90, (3+Cnt))
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 95, (2+Cnt))
@@ -2672,7 +2673,7 @@ label Mystique_Namecheck(E_Pet = newgirl["Mystique"].Pet, Cnt = 0, Ugh = 0):#E_P
             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, -1)
             $ Ugh = 1
     
-    elif newgirl["Mystique"].Pet == "pet":                                        #tougher options
+    elif Girl_Pet == "pet":                                        #tougher options
         if ApprovalCheck("Mystique", 1500, TabM=2):                                            #over 150
             $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 90, (3+Cnt))
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 95, (2+Cnt))
@@ -2689,7 +2690,7 @@ label Mystique_Namecheck(E_Pet = newgirl["Mystique"].Pet, Cnt = 0, Ugh = 0):#E_P
             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, -1)
             $ Ugh = 1
             
-    elif newgirl["Mystique"].Pet == "slut":
+    elif Girl_Pet == "slut":
         if ApprovalCheck("Mystique", 500, "O", TabM=2) or ApprovalCheck("Mystique", 500, "I", TabM=2):        #over 50
             $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 90, (4+Cnt))
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 95, (2+Cnt))
@@ -2707,7 +2708,7 @@ label Mystique_Namecheck(E_Pet = newgirl["Mystique"].Pet, Cnt = 0, Ugh = 0):#E_P
             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 20, -1)
             $ Ugh = 1
             
-    elif newgirl["Mystique"].Pet == "whore":
+    elif Girl_Pet == "whore":
         if ApprovalCheck("Mystique", 600, "O", TabM=2) or ApprovalCheck("Mystique", 600, "I", TabM=2):        #over 60
             $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 90, 4)
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 95, 2)
@@ -2726,7 +2727,7 @@ label Mystique_Namecheck(E_Pet = newgirl["Mystique"].Pet, Cnt = 0, Ugh = 0):#E_P
             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 20, -1)
             $ Ugh = 1
             
-    elif newgirl["Mystique"].Pet == "sugartits":
+    elif Girl_Pet == "sugartits":
         if ApprovalCheck("Mystique", 1500, TabM=1):                                                        #over 150
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 1)
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 50, 2)
@@ -2739,7 +2740,7 @@ label Mystique_Namecheck(E_Pet = newgirl["Mystique"].Pet, Cnt = 0, Ugh = 0):#E_P
             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 20, -1)
             $ Ugh = 1
             
-    elif newgirl["Mystique"].Pet == "sex friend":    
+    elif Girl_Pet == "sex friend":    
         if ApprovalCheck("Mystique", 750, "O", TabM=1) or ApprovalCheck("Mystique", 600, "I", TabM=1):        #over 75/60
             $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 90, 3)
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 95, 2)
@@ -2758,7 +2759,7 @@ label Mystique_Namecheck(E_Pet = newgirl["Mystique"].Pet, Cnt = 0, Ugh = 0):#E_P
             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 20, -1)
             $ Ugh = 1
             
-    elif newgirl["Mystique"].Pet == "fuckbuddy":
+    elif Girl_Pet == "fuckbuddy":
         if ApprovalCheck("Mystique", 700, "O", TabM=2) or ApprovalCheck("Mystique", 700, "I", TabM=1):        #over 70/70
             $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 90, 3)
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 95, 2)
@@ -2777,7 +2778,7 @@ label Mystique_Namecheck(E_Pet = newgirl["Mystique"].Pet, Cnt = 0, Ugh = 0):#E_P
             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 20, -1)
             $ Ugh = 1
             
-    elif newgirl["Mystique"].Pet == "baby girl":
+    elif Girl_Pet == "baby girl":
         if ApprovalCheck("Mystique", 1200, TabM=1):                                                        #over 150
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 1)
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 50, 2)
@@ -4908,7 +4909,7 @@ label Mystique_Show_Plug:
             $ D20A = renpy.random.randint(1, 20) #Sets random seed factor for the encounter
 
             show Slap_Ass2 zorder 200
-            call E_Slap_Ass 
+            call Mystique_Slap_Ass 
             hide Slap_Ass2
             if Taboo and (D20A + (int(Taboo/10)) - Stealth) >= 10:        #If there is a Taboo level, and your modified roll is over 10
                 call Mystique_Taboo

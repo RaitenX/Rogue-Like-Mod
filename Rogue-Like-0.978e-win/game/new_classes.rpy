@@ -269,9 +269,11 @@ init python:
        
         
 label ch__m(text=""):
-    #if text != "":
     $ renpy.say(ch_m,text)
-    #hide screen hermione_head #h_head2
+    return
+
+label ch__p(text=""):
+    $ renpy.say(ch_p,text)
     return
 
 

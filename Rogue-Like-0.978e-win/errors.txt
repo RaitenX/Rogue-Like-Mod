@@ -2,6 +2,72 @@
 errors listed below, and try again.
 
 
-File "game/Mystique_Chat.rpy", line 1677: indentation mismatch.
+File "game/Mystique_Doggy.rpy", line 442: end of line expected.
+    call newgirl["Mystique"].Blowjob       
+                ^
+
+File "game/Mystique_Doggy.rpy", line 537: end of line expected.
+    call newgirl["Mystique"].Slap_Ass 
+                ^
+
+File "game/Mystique_Doggy.rpy", line 551: end of line expected.
+    call newgirl["Mystique"].Undress           
+                ^
+
+File "game/Mystique_Doggy.rpy", line 567: end of line expected.
+    call newgirl["Mystique"].Doggy_H
+                ^
+
+File "game/Mystique_Doggy.rpy", line 622: end of line expected.
+    call newgirl["Mystique"].Cumming
+                ^
+
+File "game/Mystique_Doggy.rpy", line 1985: end of line expected.
+    call newgirl["Mystique"].Slap_Ass 
+                ^
+
+File "game/Mystique_Doggy.rpy", line 1991: end of line expected.
+    call newgirl["Mystique"].Undress             
+                ^
+
+File "game/Mystique_Doggy.rpy", line 2083: end of line expected.
+    call newgirl["Mystique"].Cumming
+                ^
+
+File "game/Mystique_Doggy.rpy", line 2243: end of line expected.
+    call newgirl["Mystique"].Blowjob      
+                ^
+
+File "game/Mystique_Doggy.rpy", line 2252: end of line expected.
+    call newgirl["Mystique"].Handjob     
+                ^
+
+File "game/Mystique_Doggy.rpy", line 2351: end of line expected.
+    call newgirl["Mystique"].Slap_Ass 
+                ^
+
+File "game/Mystique_Doggy.rpy", line 2366: end of line expected.
+    call newgirl["Mystique"].Undress             
+                ^
+
+File "game/Mystique_Doggy.rpy", line 2437: end of line expected.
+    call newgirl["Mystique"].Cumming
+                ^
+
+File "game/Mystique_Doggy.rpy", line 2918: end of line expected.
+    call newgirl["Mystique"].Blowjob       
+                ^
+
+File "game/Mystique_Doggy.rpy", line 3009: end of line expected.
+    call newgirl["Mystique"].Slap_Ass 
+                ^
+
+File "game/Mystique_Doggy.rpy", line 3023: end of line expected.
+    call newgirl["Mystique"].Undress    
+                ^
+
+File "game/Mystique_Doggy.rpy", line 3099: end of line expected.
+    call newgirl["Mystique"].Cumming
+                ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

@@ -566,7 +566,7 @@ label Mystique_Morning:
                     $ Cnt = 0 
                  
             if Cnt:   
-                    #call Mystique_SexAct("morningwood") 
+                    #call Mystique_SexAct("morningwood") #mystique wip
                     ch_m "Hmmm. . ."
                                     
             call MystiqueFace("smile")
@@ -999,7 +999,7 @@ label Mystique_Caught_Classroom:
                                 ch_e "to a point. . ."
                                 "Ms Frost walks to the door and locks it behind her."
                                 $ Tempmod = 50
-                                call E_Strip
+                                call Mystique_Strip
                         "Could you just keep going?":
                                 $ E_Love = Statupdate("Emma", "Love", E_Love, 70, 10)
                                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 15)
@@ -1056,7 +1056,7 @@ label Mystique_Caught_Classroom:
                                 ch_e "Perhaps instead I could just offer a little. . . token of my appreciation."
                                 "Ms Frost walks to the door and locks it behind her."
                                 $ Tempmod = 50
-                                call E_Strip
+                                call Mystique_Strip
                         "I should just get going then.":
                                 call EmmaFace("surprised")
                                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 5)
