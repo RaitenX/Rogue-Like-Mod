@@ -305,7 +305,7 @@ label Mystique_Doggy_P:
                     $ newgirl["Mystique"].DailyActions.append("angry")   
     
     #She refused all offers.
-    $ Mystique_Arms = 1  
+    $ newgirl["Mystique"].Girl_Arms = 1  
     if "no sex" in newgirl["Mystique"].DailyActions:
         ch_m "Learn to take \"no\" for an answer, [newgirl[Mystique].Petname]." 
         $ newgirl["Mystique"].RecentActions.append("angry")
@@ -867,7 +867,7 @@ label Mystique_Gagging(Gagtype = 0):
             ch_m "So you wanna try that again?"       
         else:       
             call MystiqueFace("sexy", 1)
-            $ Mystique_Arms = 2
+            $ newgirl["Mystique"].Girl_Arms = 2
             $ Line = renpy.random.choice(["You want some bondage?",                 
                 "So you wanna try that again?",                 
                 "I like that."]) 
@@ -968,7 +968,7 @@ label Mystique_Gagging(Gagtype = 0):
 
     
     #She refused all offers.
-    $ Mystique_Arms = 1  
+    $ newgirl["Mystique"].Girl_Arms = 1  
     if newgirl["Mystique"].Forced:
         call MystiqueFace("angry", 1)
         ch_m "That's a bit much, even for you."
@@ -1312,7 +1312,7 @@ label Mystique_Doggy_A:
             ch_m "So you'd like another go?"       
         else:       
             call MystiqueFace("sexy", 1)
-            $ Mystique_Arms = 2
+            $ newgirl["Mystique"].Girl_Arms = 2
             $ Line = renpy.random.choice(["You want some of this action?",                 
                 "So you'd like another go?",                 
                 "You can't stay away from this booty.", 
@@ -1422,7 +1422,7 @@ label Mystique_Doggy_A:
                     $ newgirl["Mystique"].DailyActions.append("angry")   
     
     #She refused all offers.
-    $ Mystique_Arms = 1  
+    $ newgirl["Mystique"].Girl_Arms = 1  
     if "no anal" in newgirl["Mystique"].DailyActions:
         ch_m "Learn to take \"no\" for an answer, [newgirl[Mystique].Petname]."   
         $ newgirl["Mystique"].RecentActions.append("angry")
@@ -1665,7 +1665,7 @@ label Mystique_Plug_Ass:
                 ch_m "You want to stick it in my ass again?"       
             else:       
                 call MystiqueFace("sexy", 1)
-                $ Mystique_Arms = 2
+                $ newgirl["Mystique"].Girl_Arms = 2
                 $ Line = renpy.random.choice(["You want some of this action?",                 
                     "So you'd like another go?",                 
                     "You want to stick it in my ass again?",
@@ -1768,7 +1768,7 @@ label Mystique_Plug_Ass:
                         $ newgirl["Mystique"].DailyActions.append("angry")   
     
     #She refused all offers.
-    $ Mystique_Arms = 1   
+    $ newgirl["Mystique"].Girl_Arms = 1   
     if "no plug" in newgirl["Mystique"].DailyActions:
             ch_m "Learn to take \"no\" for an answer, [newgirl[Mystique].Petname]."   
             $ newgirl["Mystique"].RecentActions.append("angry")
@@ -2724,7 +2724,7 @@ label Mystique_Doggy_H:
             ch_m "So you'd like another go?"       
         else:       
             call MystiqueFace("sexy", 1)
-            $ Mystique_Arms = 2
+            $ newgirl["Mystique"].Girl_Arms = 2
             $ Line = renpy.random.choice(["You want some of this action?",                 
                 "So you'd like another go?",                 
                 "You can't stay away from this booty.", 
@@ -2820,7 +2820,7 @@ label Mystique_Doggy_H:
                     $ newgirl["Mystique"].DailyActions.append("angry")   
     
     #She refused all offers.
-    $ Mystique_Arms = 1      
+    $ newgirl["Mystique"].Girl_Arms = 1      
     
     if "no hotdog" in newgirl["Mystique"].DailyActions:
         ch_m "I just don't want to, [newgirl[Mystique].Petname]."   

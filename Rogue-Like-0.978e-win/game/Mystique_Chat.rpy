@@ -35,60 +35,60 @@ label Mystique_Chat:
                     else:
                         call Mystique_Summon  
 
-        "Send a dick pic." if newgirl["Mystique"].Loc != bg_current:
+        # "Send a dick pic." if newgirl["Mystique"].Loc != bg_current:
 
-                    "You send Mystique a picture of your dick"
+        #             "You send Mystique a picture of your dick"
 
-                    if newgirl["Mystique"].Loc == "bg teacher" and bg_current == "bg classroom":
-                            $ newgirl["Mystique"].Eyes = "down"
-                            "Mystique looks down at her phone for a while"
-                    if ApprovalCheck("Mystique", 1200, TabM = 3):
-                            if newgirl["Mystique"].Loc == "bg teacher" and bg_current == "bg classroom":
-                                call MystiqueFaceSpecial("sly", 1)
-                                "She then, scans the class with her eyes, until she finds you"
-                                call MystiqueFaceSpecial("sexy", 1)
-                                "Mystique gives you a sexy smile and starts typing something on her phone"
-                                #call MystiqueFace("surprised", 1) 
-                                $ newgirl["Mystique"].Eyes = "down"
-                            ch_m "I miss your 8=====D"
-                            call MystiqueFace("sly", 1)
-                            if newgirl["Mystique"].Loc == "bg teacher" and bg_current == "bg classroom":
-                                if "exhibitionist" in newgirl["Mystique"].Traits:
-                                    ch_m "Thinking about it in front of everyone is making me so wet"
-                                    $ newgirl["Mystique"].Wet = 1
-                                else:
-                                    ch_m "And you should be paying attention to class, [newgirl[Mystique].Petname]"
-                            #call Mystique_Sent_Selfie(1)
-                            $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 70, 8)
-                    elif ApprovalCheck("Mystique", 500, "I", TabM=2):
-                            if newgirl["Mystique"].Loc == "bg teacher" and bg_current == "bg classroom":
-                                call MystiqueFaceSpecial("smile", 1) 
-                                $ newgirl["Mystique"].Eyes = "down"
-                                "Mystique glances at it, but just smiles in amusement."
-                                call MystiqueFaceSpecial("sly", 1)
-                                "She then, scans the class with her eyes, until she finds you"
-                                "She looks down at her phone and starts typing something"
-                            $ newgirl["Mystique"].Eyes = "down"
-                            ch_m "wow [newgirl[Mystique].Petname]"            
-                            call MystiqueFaceSpecial("sly", 1) 
-                            if newgirl["Mystique"].Loc == "bg teacher" and bg_current == "bg classroom":
-                                ch_m "Should you really be sending dick pics during class, [newgirl[Mystique].Petname]?"
-                            $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 70, 10)
-                    else:
-                            if newgirl["Mystique"].Loc == "bg teacher" and bg_current == "bg classroom":
-                                call MystiqueFaceSpecial("angry", 1) 
-                                $ newgirl["Mystique"].Eyes = "down"
-                                "Mystique glances down at your cock with a scowl."  
-                                call MystiqueFaceSpecial("angry", 1)
-                                "She then, scans the class with her eyes, until she finds you"      
-                                "She looks down at her phone and starts typing something"
-                            $ newgirl["Mystique"].Eyes = "down"
-                            ch_m "You shouldn't be sending these kind of texts to your teacher [newgirl[Mystique].Petname]"
-                            call MystiqueFaceSpecial("sly", 1) 
-                            if newgirl["Mystique"].Loc == "bg teacher" and bg_current == "bg classroom":
-                                ch_m "Specially not during classes"
-                            $ newgirl["Mystique"].RecentActions.append("angry")
-                            $ newgirl["Mystique"].DailyActions.append("angry") 
+        #             if newgirl["Mystique"].Loc == "bg teacher" and bg_current == "bg classroom":
+        #                     $ newgirl["Mystique"].Eyes = "down"
+        #                     "Mystique looks down at her phone for a while"
+        #             if ApprovalCheck("Mystique", 1200, TabM = 3):
+        #                     if newgirl["Mystique"].Loc == "bg teacher" and bg_current == "bg classroom":
+        #                         call MystiqueFaceSpecial("sly", 1)
+        #                         "She then, scans the class with her eyes, until she finds you"
+        #                         call MystiqueFaceSpecial("sexy", 1)
+        #                         "Mystique gives you a sexy smile and starts typing something on her phone"
+        #                         #call MystiqueFace("surprised", 1) 
+        #                         $ newgirl["Mystique"].Eyes = "down"
+        #                     ch_m "I miss your 8=====D"
+        #                     call MystiqueFace("sly", 1)
+        #                     if newgirl["Mystique"].Loc == "bg teacher" and bg_current == "bg classroom":
+        #                         if "exhibitionist" in newgirl["Mystique"].Traits:
+        #                             ch_m "Thinking about it in front of everyone is making me so wet"
+        #                             $ newgirl["Mystique"].Wet = 1
+        #                         else:
+        #                             ch_m "And you should be paying attention to class, [newgirl[Mystique].Petname]"
+        #                     #call Mystique_Sent_Selfie(1)
+        #                     $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 70, 8)
+        #             elif ApprovalCheck("Mystique", 500, "I", TabM=2):
+        #                     if newgirl["Mystique"].Loc == "bg teacher" and bg_current == "bg classroom":
+        #                         call MystiqueFaceSpecial("smile", 1) 
+        #                         $ newgirl["Mystique"].Eyes = "down"
+        #                         "Mystique glances at it, but just smiles in amusement."
+        #                         call MystiqueFaceSpecial("sly", 1)
+        #                         "She then, scans the class with her eyes, until she finds you"
+        #                         "She looks down at her phone and starts typing something"
+        #                     $ newgirl["Mystique"].Eyes = "down"
+        #                     ch_m "wow [newgirl[Mystique].Petname]"            
+        #                     call MystiqueFaceSpecial("sly", 1) 
+        #                     if newgirl["Mystique"].Loc == "bg teacher" and bg_current == "bg classroom":
+        #                         ch_m "Should you really be sending dick pics during class, [newgirl[Mystique].Petname]?"
+        #                     $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 70, 10)
+        #             else:
+        #                     if newgirl["Mystique"].Loc == "bg teacher" and bg_current == "bg classroom":
+        #                         call MystiqueFaceSpecial("angry", 1) 
+        #                         $ newgirl["Mystique"].Eyes = "down"
+        #                         "Mystique glances down at your cock with a scowl."  
+        #                         call MystiqueFaceSpecial("angry", 1)
+        #                         "She then, scans the class with her eyes, until she finds you"      
+        #                         "She looks down at her phone and starts typing something"
+        #                     $ newgirl["Mystique"].Eyes = "down"
+        #                     ch_m "You shouldn't be sending these kind of texts to your teacher [newgirl[Mystique].Petname]"
+        #                     call MystiqueFaceSpecial("sly", 1) 
+        #                     if newgirl["Mystique"].Loc == "bg teacher" and bg_current == "bg classroom":
+        #                         ch_m "Specially not during classes"
+        #                     $ newgirl["Mystique"].RecentActions.append("angry")
+        #                     $ newgirl["Mystique"].DailyActions.append("angry") 
 
         "Ask Mystique to leave" if newgirl["Mystique"].Loc == bg_current:
                     call Mystique_Dismissed    
@@ -112,8 +112,8 @@ label Mystique_Chat:
                             # if newgirl["Mystique"].Legs == "orange skirt" or newgirl["Mystique"].Legs == "black skirt" or newgirl["Mystique"].Legs == "white skirt":
                             #     "Lifts up her skirt."
                             # else:
-                            #     "She pulls down her [E_Legs]"
-                            "She pulls down her [E_Legs]"
+                            #     "She pulls down her [newgirl[Mystique].Legs]"
+                            "She pulls down her [newgirl[Mystique].Legs]"
                             pause .1
                             #if newgirl["Mystique"].Hose == "tights":
                             #    $ Temp_E_Hose = newgirl["Mystique"].Hose            
@@ -122,7 +122,7 @@ label Mystique_Chat:
                             #    pause .1
                             #if newgirl["Mystique"].Panties and newgirl["Mystique"].Panties != "lace panties" and newgirl["Mystique"].Panties != "black panties":
                             #    $ newgirl["Mystique"].PantiesDown = 1
-                            #    "And pulls down her [E_Panties]"
+                            #    "And pulls down her [newgirl[Mystique].Panties]"
                             #    pause .1
                             ch_m "There, you happy?"
                             call Mystique_Show_Plug
@@ -141,7 +141,7 @@ label Mystique_Chat:
                         #    pause .1
                         #    if newgirl["Mystique"].Panties and newgirl["Mystique"].Panties != "lace panties" and newgirl["Mystique"].Panties != "black panties":
                         #        $ newgirl["Mystique"].PantiesDown = 1
-                        #        "And pulls down her [E_Panties]"
+                        #        "And pulls down her [newgirl[Mystique].Panties]"
                         #        pause .1
                         #    ch_m "There, you happy?"
                         #    pause .1
@@ -153,7 +153,7 @@ label Mystique_Chat:
                         #    pause
                         #elif newgirl["Mystique"].Panties and newgirl["Mystique"].Panties != "lace panties" and newgirl["Mystique"].Panties != "black panties" and newgirl["Mystique"].Panties != "swimsuit1" and newgirl["Mystique"].Panties != "swimsuit2":
                         #    $ newgirl["Mystique"].PantiesDown = 1
-                        #    "And pulls down her [E_Panties]"
+                        #    "And pulls down her [newgirl[Mystique].Panties]"
                         #    ch_m "There, you happy?"
                         #    call Mystique_Show_Plug
                         #    $ newgirl["Mystique"].PantiesDown = 0
@@ -2436,14 +2436,14 @@ label Mystique_Pet:
                     extend ""
                     "I think I'll just call you Ms. Frost.":
                         $ newgirl["Mystique"].Pet = "Ms. Frost"            
-                        $ MystiqueName = "Ms. Frost"
+                        $ newgirl["Mystique"].GirlName = "Ms. Frost"
                         ch_m "I don't see why not, [newgirl[Mystique].Petname]."
                         
                     "I think I'll just call you Mystique.":
                         if ApprovalCheck("Mystique", 700) or "classcaught" in newgirl["Mystique"].History:
                             ch_m "I don't see why not, [newgirl[Mystique].Petname]."   
                             $ newgirl["Mystique"].Pet = "Mystique"            
-                            $ MystiqueName = "Mystique"
+                            $ newgirl["Mystique"].GirlName = "Mystique"
                         else:
                             ch_m "I'd rather you didn't, [newgirl[Mystique].Petname]."
                         
@@ -3796,16 +3796,16 @@ label Mystique_Clothes(Public=0,Bonus=0):
                                 ch_m "I suppose I could."
                                 $ newgirl["Mystique"].Chest  = "lace bra"    
                                 call Mystique_Tits_Up
-                                "She pulls out her lace bra and slips it on under her [E_Over]."
+                                "She pulls out her lace bra and slips it on under her [newgirl[Mystique].Over]."
                         elif ApprovalCheck("Mystique", 800, TabM=2):
                                 ch_m "I suppose I could."
                                 $ newgirl["Mystique"].Chest = "NewX"
-                                "She pulls out her X-men bra and slips it on under her [E_Over]."
+                                "She pulls out her X-men bra and slips it on under her [newgirl[Mystique].Over]."
                         elif ApprovalCheck("Mystique", 700, TabM=(3-Public)):
                                 ch_m "I suppose I could."
                                 $ newgirl["Mystique"].Chest = "corset"   
                                 call Mystique_Tits_Up
-                                "She pulls out her corset and slips it on under her [E_Over]."
+                                "She pulls out her corset and slips it on under her [newgirl[Mystique].Over]."
                         else:
                                 ch_m "Yes, but I'd rather not."
                                 return 0
@@ -3938,7 +3938,7 @@ label Mystique_Clothes(Public=0,Bonus=0):
     # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
 
     menu Mystique_Clothes_Under:                                                                                                 # Tops    
-        "How about you lose the [E_Chest]?" if newgirl["Mystique"].Chest:
+        "How about you lose the [newgirl[Mystique].Chest]?" if newgirl["Mystique"].Chest:
             call MystiqueFace("bemused", 1)
             if newgirl["Mystique"].SeenChest and ApprovalCheck("Mystique", 900, TabM=(4-Public)):
                 ch_m "Of course."    
@@ -3959,7 +3959,7 @@ label Mystique_Clothes(Public=0,Bonus=0):
             $ newgirl["Mystique"].Chest = 0
             call Mystique_Tits_Up #flag
             if newgirl["Mystique"].Over:
-                "She reaches under her [E_Over] grabs her [Line], and pulls it out, dropping it to the ground."
+                "She reaches under her [newgirl[Mystique].Over] grabs her [Line], and pulls it out, dropping it to the ground."
             else:
                 "She lets her [Line] fall to the ground."
             call Mystique_First_Topless
@@ -4042,7 +4042,7 @@ label Mystique_Clothes(Public=0,Bonus=0):
             $ newgirl["Mystique"].Panties = 0  
             if newgirl["Mystique"].Legs:
                 if Taboo or ApprovalCheck("Mystique", 1100) or newgirl["Mystique"].SeenPussy:
-                    "She pulls off her [E_Legs] then pulls her [Line] off, droping them to the ground, before putting them back on." 
+                    "She pulls off her [newgirl[Mystique].Legs] then pulls her [Line] off, droping them to the ground, before putting them back on." 
                     call Mystique_First_Bottomless
                 else:
                     "She asks you to turn around. After a few seconds, you turn back to her as she drops the [Line] to the ground."               
@@ -4587,7 +4587,7 @@ label Mystique_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agr
                         if PantsNum("Mystique") > 5:
                             ch_m "and these pants always did suit me."
                         elif HoseNum("Mystique") >= 10:
-                            ch_m "I guess these [E_Hose] will work fine."
+                            ch_m "I guess these [newgirl[Mystique].Hose] will work fine."
                         else:
                             ch_m "I'm unsure about wearing a towel out, [newgirl[Mystique].Petname]. . ."
                         if not newgirl["Mystique"].Panties:

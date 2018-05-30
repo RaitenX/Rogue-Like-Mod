@@ -2007,6 +2007,12 @@ label Rogue_Taboo(Cnt= 1):
                 call Kitty_Noticed("Rogue")
         if E_Loc == bg_current:
                 call Emma_Noticed("Rogue")
+        #for Girls_ in ModdedGirls:
+        $ i = 0
+        while i < len(ModdedGirls):
+                if newgirl[ModdedGirls[i]].Loc == bg_current:
+                    call NewGirl_Noticed(ModdedGirls[i], "Rogue")
+                $ i += 1
         return
     call RogueFace("surprised", 1) 
     $ Cnt = Action_Check("Rogue", "recent", "spotted") if "spotted" in R_RecentActions else 1
@@ -2019,6 +2025,12 @@ label Rogue_Taboo(Cnt= 1):
                 call Kitty_Noticed("Rogue")
         if E_Loc == bg_current:
                 call Emma_Noticed("Rogue")
+        #for Girls_ in ModdedGirls:
+        $ i = 0
+        while i < len(ModdedGirls):
+                if newgirl[ModdedGirls[i]].Loc == bg_current:
+                    call NewGirl_Noticed(ModdedGirls[i], "Rogue")
+                $ i += 1
         if bg_current == "bg classroom" and E_Loc == "bg teacher":
                 #If you're in class and emma's there as a teacher. . .
                 call Emma_Teacher_Caught("Rogue")
@@ -2040,6 +2052,12 @@ label Rogue_Taboo(Cnt= 1):
                 call Kitty_Noticed("Rogue")
         if E_Loc == bg_current:
                 call Emma_Noticed("Rogue")
+        #for Girls_ in ModdedGirls:
+        $ i = 0
+        while i < len(ModdedGirls):
+                if newgirl[ModdedGirls[i]].Loc == bg_current:
+                    call NewGirl_Noticed(ModdedGirls[i], "Rogue")
+                $ i += 1
         if bg_current == "bg classroom" and E_Loc == "bg teacher":
                 #If you're in class and emma's there as a teacher. . .
                 call Emma_Teacher_Caught("Rogue")
@@ -2194,6 +2212,18 @@ label Rogue_Noticed(Other = "Kitty", B = 0):
                 $ B = (R_LikeEmma - 500)                  
                 if "dating" in R_Traits:
                     $ B -= 200
+
+    elif Other in ModdedGirls:            
+            call RogueFace("surprised", 1)
+            "Rogue noticed what you and [Other] are up to."
+            $ R_RecentActions.append("noticed " + Other)
+            $ PolyVariable = "poly " + Other
+            if PolyVariable in R_Traits:
+                $ B = (1000-(20*Taboo))  
+            else:
+                $ B = (R_LikeNewGirl[Other] - 500)               
+                if "dating" in R_Traits:
+                    $ B -= 200
     
     $ Partner = "Rogue"            
     if ApprovalCheck("Rogue", 2000, TabM=2, Bonus = B) or ApprovalCheck("Rogue", 950, "L", TabM=2, Bonus = (B/3)): 
@@ -2206,7 +2236,10 @@ label Rogue_Noticed(Other = "Kitty", B = 0):
             if Other == "Kitty" and "poly kitty" not in R_Traits: 
                     $ R_Traits.append("poly kitty")     
             elif Other == "Emma" and "poly emma" not in R_Traits: 
-                    $ R_Traits.append("poly emma")     
+                    $ R_Traits.append("poly emma")  
+            elif Other in ModdedGirls and PolyVariable not in R_Traits: 
+                    $ R_Traits.append(PolyVariable)  
+            call Rogue_Threeway_Set    
     elif ApprovalCheck("Rogue", 650, "O", TabM=2) and ApprovalCheck("Rogue", 450, "L", TabM=1) or ApprovalCheck("Rogue", 800, "O", TabM=2, Bonus = (B/3)): 
             #if she likes you, but is very obedient
             call RogueFace("sexy")
@@ -2217,7 +2250,10 @@ label Rogue_Noticed(Other = "Kitty", B = 0):
             if Other == "Kitty" and "poly kitty" not in R_Traits: 
                     $ R_Traits.append("poly kitty")     
             elif Other == "Emma" and "poly emma" not in R_Traits: 
-                    $ R_Traits.append("poly emma")     
+                    $ R_Traits.append("poly emma") 
+            elif Other in ModdedGirls and PolyVariable not in R_Traits: 
+                    $ R_Traits.append(PolyVariable)  
+            call Rogue_Threeway_Set    
     elif ApprovalCheck("Rogue", 650, "I", TabM=2) and ApprovalCheck("Rogue", 450, "L", TabM=1) or ApprovalCheck("Rogue", 800, "I", TabM=2, Bonus = (B/3)):
             #if she likes you, but is very uninhibited
             call RogueFace("sexy")
@@ -2229,7 +2265,10 @@ label Rogue_Noticed(Other = "Kitty", B = 0):
             if Other == "Kitty" and "poly kitty" not in R_Traits: 
                     $ R_Traits.append("poly kitty")     
             elif Other == "Emma" and "poly emma" not in R_Traits: 
-                    $ R_Traits.append("poly emma")     
+                    $ R_Traits.append("poly emma")    
+            elif Other in ModdedGirls and PolyVariable not in R_Traits: 
+                    $ R_Traits.append(PolyVariable) 
+            call Rogue_Threeway_Set    
     elif ApprovalCheck("Rogue", 1500, TabM=2, Bonus = B):
             call RogueFace("perplexed", 1)
             "She looks a little confused at what's happening, but she stays put and watches."
@@ -2261,7 +2300,9 @@ label Rogue_Noticed(Other = "Kitty", B = 0):
             if Other == "Kitty" and "saw with kitty" not in R_Traits: 
                     $ R_Traits.append("saw with kitty")   
             elif Other == "Emma" and "saw with emma" not in R_Traits: 
-                    $ R_Traits.append("saw with emma")    
+                    $ R_Traits.append("saw with emma") 
+            elif Other in ModdedGirls and ("saw with " + Other) not in R_Traits: 
+                    $ R_Traits.append("saw with " + Other)    
             if bg_current == "bg rogue": #Kicks you out if in Rogue's room
                     $ R_RecentActions.append("angry")
                     call GirlsAngry

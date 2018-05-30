@@ -20,7 +20,7 @@
 #     call MystiqueFace("normal")
 #     show Mystique_Sprite at SpriteLoc(ESpriteLoc) with easeinright     
 #     $ newgirl["Mystique"].Loc = "bg classroom" 
-#     $ Mystique_Arms = 1
+#     $ newgirl["Mystique"].Girl_Arms = 1
 #     ch_u "Hello students. My name is Mystique Frost, and I have been invited to conduct this class."
 #     ch_m "I hope that over my tenure here you will demonstrate talents and hard work worthy of my respect." 
 #     "She scans her eyes over the room, passing over each student."    
@@ -283,7 +283,7 @@
 #     "You see Mystique Frost's in a different outfit."
 #     call MystiqueFace("normal")
 #     #$ newgirl["Mystique"].Loc = "bg classroom" 
-#     $ Mystique_Arms = 1
+#     $ newgirl["Mystique"].Girl_Arms = 1
 #     ch_m "Hello students. My name is Mystique Frost, and for now on, I'll be supervising some of the evening trainings."
 #     ch_m "I hope that over my tenure here you will demonstrate talents and hard work worthy of my respect." 
 #     "She scans her eyes over the room, passing over each student."    
@@ -812,7 +812,7 @@ label Mystique_Caught_Masturbating: #Mystique_Update
             call Set_The_Scene
             call MystiqueFace("sexy")
             $ newgirl["Mystique"].Eyes = "closed"
-            $ Mystique_Arms = 2
+            $ newgirl["Mystique"].Girl_Arms = 2
             $ Count = 0   
             hide blackscreen onlayer black
             $ Trigger = "masturbation"
@@ -838,7 +838,7 @@ label Mystique_Caught_Masturbating: #Mystique_Update
                     ch_m "Perhaps next time you could knock?" 
             else:
                     ch_m "I notice you make a habit of dropping in."           
-            $ Mystique_Arms = 1  
+            $ newgirl["Mystique"].Girl_Arms = 1  
             call MystiqueOutfit    
             return
     
@@ -863,7 +863,7 @@ label Mystique_Caught_Classroom:
             $ Taboo = 0
             call MystiqueFace("sexy")
             $ newgirl["Mystique"].Eyes = "closed"
-            $ Mystique_Arms = 1
+            $ newgirl["Mystique"].Girl_Arms = 1
             $ Count = 0   
             hide blackscreen onlayer black
             $ Trigger = "masturbation"
@@ -885,7 +885,7 @@ label Mystique_Caught_Classroom:
             $ newgirl["Mystique"].Eyes = "sexy"
             $ newgirl["Mystique"].Brows = "confused"
             $ newgirl["Mystique"].Mouth = "normal"             
-            $ Mystique_Arms = 1  
+            $ newgirl["Mystique"].Girl_Arms = 1  
             call MystiqueOutfit    
             $ bg_current = "bg classroom"  
             call Display_Mystique 
@@ -1074,7 +1074,7 @@ label Mystique_Caught_Classroom:
                     call MystiqueFace("sly")
                     ch_m "Oh, and [newgirl[Mystique].Petname]?"
                     ch_m "You can just call me \"Mystique.\""
-                    $ MystiqueName = "Mystique"
+                    $ newgirl["Mystique"].GirlName = "Mystique"
                     $ newgirl["Mystique"].Loc = "bg mystique"
                     hide Mystique_Sprite with easeoutleft
                     $ Round = 20 if Round > 20 else Round
@@ -1091,17 +1091,17 @@ label Mystique_Detention:
             call Shift_Focus("Mystique")
             call CleartheRoom("Mystique",0,1)
             if "traveling" in P_RecentActions:
-                "You enter the room and see [MystiqueName] waiting for you at the back of the room."
+                "You enter the room and see Mystique waiting for you at the back of the room."
             else:
                 "After class, the students file out, and you wait a few minutes until they're all gone."
-                "Once the last student leaves, [MystiqueName] approaches you."
+                "Once the last student leaves, Mystique approaches you."
             show blackscreen onlayer black
             $ bg_current = "bg classroom"
             $ newgirl["Mystique"].Loc = "bg classroom"
             call MystiqueOutfit    
             call Set_The_Scene     
             call MystiqueFace("sly")
-            $ Mystique_Arms = 2
+            $ newgirl["Mystique"].Girl_Arms = 2
             $ Count = 0  
             call CleartheRoom("Mystique",0,1)
             hide blackscreen onlayer black
@@ -1118,7 +1118,7 @@ label Mystique_Detention:
             call MystiqueFace("sly")  
             $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 80, 3)
             ch_m "You've been such a naughty pupil. . ."
-            $ Mystique_Arms = 1
+            $ newgirl["Mystique"].Girl_Arms = 1
             call MystiqueFace("sadside", Brows="normal")  
             $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 80, 5)
             ch_m "Chasing after those young girls. . ."            
@@ -1131,7 +1131,7 @@ label Mystique_Detention:
                 ch_m "What am I to do with you. . ."
                 $ newgirl["Mystique"].History.append("detention") 
             
-            "[MystiqueName] walks to the door and locks it behind her."
+            "Mystique walks to the door and locks it behind her."
             $ Taboo = 0
             menu:
                 extend ""
@@ -1396,13 +1396,13 @@ label Plan_Mu: #Mystique_Update
     call MystiqueFace("sly")         
     "As you say this, a sly grin crosses Mystique's face."
     #$ newgirl["Mystique"].Arms = 0
-    $ Mystique_Arms = 2
+    $ newgirl["Mystique"].Girl_Arms = 2
     "You quickly approach Xavier and place your hands on his head."
     call XavierFace("psychic")
     ch_x ". . ."
     call XavierFace("shocked")
     "Xavier realizes with a shock that with your powers, his telepathy is useless."    
-    $ Mystique_Arms = 2
+    $ newgirl["Mystique"].Girl_Arms = 2
     show Mystique_Sprite at SpriteLoc(650,150) with ease 
     $ ESpriteLoc = StageLeft
     "Mystique moves in sits on his lap, pinning his arms to the chair."
@@ -1477,7 +1477,7 @@ label Plan_Mu: #Mystique_Update
         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 10)
         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 200, 20)
         $ P_Traits.append("Psi")
-    $ Mystique_Arms = 1
+    $ newgirl["Mystique"].Girl_Arms = 1
     "You return to your room"
     jump Player_Room
                               

@@ -1995,12 +1995,18 @@ label Kitty_ShameIndex:
     
     return
             
-label Kitty_Taboo(Cnt= 1):    
+label Kitty_Taboo(Cnt= 1): 
     if Trigger == "kissing" and not Trigger2 and not Trigger3:        
             if R_Loc == bg_current:
                 call Rogue_Noticed("Kitty")
             if E_Loc == bg_current:
                 call Emma_Noticed("Kitty")
+            #for Girls_ in ModdedGirls:
+            $ i = 0
+            while i < len(ModdedGirls):
+                if newgirl[ModdedGirls[i]].Loc == bg_current:
+                    call NewGirl_Noticed(ModdedGirls[i], "Kitty")
+                $ i += 1
             return
     call KittyFace("surprised", 1) 
     $ Cnt = Action_Check("Kitty", "recent", "spotted") if "spotted" in K_RecentActions else 1
@@ -2013,6 +2019,12 @@ label Kitty_Taboo(Cnt= 1):
                 call Rogue_Noticed("Kitty")
         if E_Loc == bg_current:
                 call Emma_Noticed("Kitty")
+        #for Girls_ in ModdedGirls:
+        $ i = 0
+        while i < len(ModdedGirls):
+                if newgirl[ModdedGirls[i]].Loc == bg_current:
+                    call NewGirl_Noticed(ModdedGirls[i], "Kitty")
+                $ i += 1
         if bg_current == "bg classroom" and E_Loc == "bg teacher":
                 #If you're in class and emma's there as a teacher. . .
                 call Emma_Teacher_Caught("Kitty")
@@ -2034,6 +2046,12 @@ label Kitty_Taboo(Cnt= 1):
                 call Rogue_Noticed("Kitty")
         if E_Loc == bg_current:
                 call Emma_Noticed("Kitty")
+        #for Girls_ in ModdedGirls:
+        $ i = 0
+        while i < len(ModdedGirls):
+                if newgirl[ModdedGirls[i]].Loc == bg_current:
+                    call NewGirl_Noticed(ModdedGirls[i], "Kitty")
+                $ i += 1
         if bg_current == "bg classroom" and E_Loc == "bg teacher":
                 #If you're in class and emma's there as a teacher. . .
                 call Emma_Teacher_Caught("Kitty")
@@ -2188,6 +2206,18 @@ label Kitty_Noticed(Other = "Rogue", B = 0):
                 $ B = (K_LikeEmma - 500)               
                 if "dating" in K_Traits:
                     $ B -= 200
+
+    elif Other in ModdedGirls:            
+            call KittyFace("surprised", 1)
+            "Kitty noticed what you and [Other] are up to."
+            $ K_RecentActions.append("noticed " + Other)
+            $ PolyVariable = "poly " + Other
+            if PolyVariable in K_Traits:
+                $ B = (1000-(20*Taboo))  
+            else:
+                $ B = (K_LikeNewGirl[Other] - 500)               
+                if "dating" in K_Traits:
+                    $ B -= 200
                 
     $ Partner = "Kitty"
     if ApprovalCheck("Kitty", 2000, TabM=2, Bonus = B) or ApprovalCheck("Kitty", 950, "L", TabM=2, Bonus = (B/3)): 
@@ -2201,6 +2231,8 @@ label Kitty_Noticed(Other = "Rogue", B = 0):
                     $ K_Traits.append("poly rogue") 
             elif Other == "Emma" and "poly emma" not in K_Traits: 
                     $ K_Traits.append("poly emma") 
+            elif Other in ModdedGirls and PolyVariable not in K_Traits: 
+                    $ K_Traits.append(PolyVariable) 
             call Kitty_Threeway_Set
     elif ApprovalCheck("Kitty", 650, "O", TabM=2) and ApprovalCheck("Kitty", 450, "L", TabM=1) or ApprovalCheck("Kitty", 800, "O", TabM=2, Bonus = (B/3)): 
             #if she likes you, but is very obedient
@@ -2213,6 +2245,8 @@ label Kitty_Noticed(Other = "Rogue", B = 0):
                     $ K_Traits.append("poly rogue") 
             elif Other == "Emma" and "poly emma" not in K_Traits: 
                     $ K_Traits.append("poly emma") 
+            elif Other in ModdedGirls and PolyVariable not in K_Traits: 
+                    $ K_Traits.append(PolyVariable) 
             call Kitty_Threeway_Set("watch")
     elif ApprovalCheck("Kitty", 650, "I", TabM=2) and ApprovalCheck("Kitty", 450, "L", TabM=1) or ApprovalCheck("Kitty", 800, "I", TabM=2, Bonus = (B/3)):
             #if she likes you, but is very uninhibited
@@ -2226,6 +2260,8 @@ label Kitty_Noticed(Other = "Rogue", B = 0):
                     $ K_Traits.append("poly rogue") 
             elif Other == "Emma" and "poly emma" not in K_Traits: 
                     $ K_Traits.append("poly emma") 
+            elif Other in ModdedGirls and PolyVariable not in K_Traits: 
+                    $ K_Traits.append(PolyVariable) 
             call Kitty_Threeway_Set("watch")
     elif ApprovalCheck("Kitty", 1500, TabM=2, Bonus = B):
             call KittyFace("perplexed", 1)
@@ -2258,6 +2294,8 @@ label Kitty_Noticed(Other = "Rogue", B = 0):
                     $ K_Traits.append("saw with rogue") 
             elif Other == "Emma" and "saw with emma" not in K_Traits: 
                     $ K_Traits.append("saw with emma") 
+            elif Other in ModdedGirls and ("saw with " + Other) not in K_Traits: 
+                    $ K_Traits.append("saw with " + Other) 
             $ Partner = 0
             if bg_current == "bg kitty": #Kicks you out if in Kitty's room
                     $ K_RecentActions.append("angry")

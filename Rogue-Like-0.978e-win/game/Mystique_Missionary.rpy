@@ -325,7 +325,7 @@ label Mystique_Sex_P:
     #end Approval check
     
     #She refused all offers.
-    $ Mystique_Arms = 1  
+    $ newgirl["Mystique"].Girl_Arms = 1  
     if "no sex" in newgirl["Mystique"].DailyActions:
         ch_m "Maybe take \"no\" for an answer?" 
         $ newgirl["Mystique"].RecentActions.append("angry")
@@ -1061,7 +1061,7 @@ label Mystique_Sex_A:
                 ch_m "[Line]"    
             else:       
                 call MystiqueFace("sexy", 1)
-                $ Mystique_Arms = 2
+                $ newgirl["Mystique"].Girl_Arms = 2
                 $ Line = renpy.random.choice(["Oooh, you want some of this?",                 
                     "So you'd like another round?",                 
                     "I do have booty for days. . .", 
@@ -1166,7 +1166,7 @@ label Mystique_Sex_A:
                         $ newgirl["Mystique"].DailyActions.append("angry")   
     
     #She refused all offers.
-    $ Mystique_Arms = 1  
+    $ newgirl["Mystique"].Girl_Arms = 1  
     if "no anal" in newgirl["Mystique"].DailyActions:
         ch_m "Maybe take \"no\" for an answer?"   
         $ newgirl["Mystique"].RecentActions.append("angry")
@@ -1868,7 +1868,7 @@ label Mystique_Sex_H:
                 ch_m "[Line]"    
             else:       
                 call MystiqueFace("sexy", 1)
-                $ Mystique_Arms = 2
+                $ newgirl["Mystique"].Girl_Arms = 2
                 $ Line = renpy.random.choice(["Oooh, you want some of this?",                 
                     "So you'd like another round?",                       
                     "You're really digging this. . .", 
@@ -1966,7 +1966,7 @@ label Mystique_Sex_H:
                         $ newgirl["Mystique"].DailyActions.append("angry")   
     
     #She refused all offers.
-    $ Mystique_Arms = 1      
+    $ newgirl["Mystique"].Girl_Arms = 1      
     
     if "no hotdog" in newgirl["Mystique"].DailyActions:
         ch_m "I'm just not into that."   

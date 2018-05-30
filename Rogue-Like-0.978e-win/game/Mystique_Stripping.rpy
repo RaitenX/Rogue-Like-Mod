@@ -3,7 +3,7 @@ label Mystique_Strip(Tempmod = Tempmod):
     call Shift_Focus("Mystique")
     $ newgirl["Mystique"].SpriteLoc = StageCenter 
     call Set_The_Scene
-    $ Mystique_Arms = 2
+    $ newgirl["Mystique"].Girl_Arms = 2
     call MystiqueFace("sexy")
        
     if "stripping" in newgirl["Mystique"].DailyActions:
@@ -1392,7 +1392,7 @@ label Mystique_First_Bottomless(Silent = 0):
     $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 70, 10)   
     if not Silent:
         call MystiqueFace("sly")
-        "You find yourself staring at [MystiqueName]'s bare pussy."        
+        "You find yourself staring at Mystique's bare pussy."        
         menu:        
             extend ""
             "Niiice. . .":            

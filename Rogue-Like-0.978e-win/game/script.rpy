@@ -70,6 +70,8 @@ init -1:
     #default Mystique = NewGirl("Mystique", 51, "pants")
 
     #default newgirl = Girlnew("Mystique")
+    default ModdedGirls = ["Mystique"] #List with all modded girls
+    #default ModdedGirls = ["Mystique", "Jean"] #List with all modded girls
     default MystiqueName = "Mystique"
     default newgirl = {"Mystique" : Girlnew("Mystique"),
                        #"Jean" : Girlnew("Jean")
@@ -190,7 +192,8 @@ init -1:
     default R_Lust = 10
     default R_LikeKitty = 600
     default R_LikeEmma = 500
-    default R_LikeNewGirl = {"Mystique", 300}
+    default R_LikeNewGirl = {"Mystique" : 200,
+                            }
     default R_Addict = 0                #how addicted she is
     default R_Addictionrate = 0         #How faster her addiciton rises
     default R_AddictStore = 0           #stores her base addiction level
@@ -326,7 +329,8 @@ init -1:
     default K_Lust = 10
     default K_LikeRogue = 700
     default K_LikeEmma = 400
-    default K_LikeNewGirl = {"Mystique", 300}
+    default K_LikeNewGirl = {"Mystique" : 200,
+                            }
     default K_Addict = 0 #how addicted she is
     default K_Addictionrate = 0 #How faster her addiciton rises
     default K_Resistance = 0 #how fast her rate falls
@@ -460,7 +464,8 @@ init -1:
     default E_Lust = 10
     default E_LikeRogue = 500
     default E_LikeKitty = 500
-    default E_LikeNewGirl = {"Mystique", 200}
+    default E_LikeNewGirl = {"Mystique" : 200,
+                            }
     default E_Addict = 0 #how addicted she is
     default E_Addictionrate = 0 #How faster her addiciton rises
     default E_Resistance = 0 #how fast her rate falls

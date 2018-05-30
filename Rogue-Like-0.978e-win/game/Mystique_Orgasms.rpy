@@ -175,7 +175,7 @@ label Mystique_No_Cum:
         ch_m "Hmmm, I don't think so."
     else:
         ch_m "Oh, I know that look, [newgirl[Mystique].Petname]. You're about to make a mess, aren't you."         
-    $ Mystique_Arms = 2
+    $ newgirl["Mystique"].Girl_Arms = 2
     call MystiqueFace("sly",1) 
     ch_m "For now why don't you just come in my hand here. . ."
     $ newgirl["Mystique"].Spunk.append("hand") 
@@ -997,7 +997,7 @@ label Mystique_Creampied:
 # Clean-up / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label Mystique_Orgasm_After:
     $ Line = 0
-#    $ Mystique_Arms = 2
+#    $ newgirl["Mystique"].Girl_Arms = 2
     $ P_Semen -= 1
     $ P_Focus = 0
     $ P_Cock = "out"
@@ -1065,7 +1065,7 @@ label Mystique_Orgasm_After:
             "[[Say nothing.]":
                 call Mystique_Cleanup
     $ Situation = 0
-    $ Mystique_Arms = 1
+    $ newgirl["Mystique"].Girl_Arms = 1
     return
     
 # End You Cumming //////////////////////////////////////////////////////////////////////////////////

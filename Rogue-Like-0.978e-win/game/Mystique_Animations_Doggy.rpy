@@ -1036,7 +1036,7 @@ label Mystique_Doggy_Launch(Line = "massage"):
 label Mystique_Doggy_Reset:
     if not renpy.showing("Mystique_Doggy"):
         return
-    $ Mystique_Arms = 2      
+    $ newgirl["Mystique"].Girl_Arms = 2      
     hide Mystique_Doggy
     if newgirl["Mystique"].Gag == "ballgag":
         $ newgirl["Mystique"].Gag = 0

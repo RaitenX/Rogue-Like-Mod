@@ -2,8 +2,20 @@
 errors listed below, and try again.
 
 
-File "game/Mystique_Chat.rpy", line 4793: if statement expects a non-empty block.
-    if E_LikeRogue >= 60 and ApprovalCheck("Emma", (1500-(10*E_Les)-(10*(E_LikeRogue-60)))): 
-                                                                                             ^
+File "game/Mystique_Sex.rpy", line 2037: expected statement.
+    elif Taboo > 20:
+               ^
+
+File "game/Rogue_Sex.rpy", line 2010: expected statement.
+    for Girls_ in ModdedGirls:
+               ^
+
+File "game/Rogue_Sex.rpy", line 2025: expected statement.
+    for Girls_ in ModdedGirls:
+               ^
+
+File "game/Rogue_Sex.rpy", line 2049: expected statement.
+    for Girls_ in ModdedGirls:
+               ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

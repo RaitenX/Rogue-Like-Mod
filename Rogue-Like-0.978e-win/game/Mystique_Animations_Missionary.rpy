@@ -1189,7 +1189,7 @@ label Mystique_Sex_Launch(Line = "solo"):
 label Mystique_Sex_Reset:
     if not renpy.showing("Mystique_SexSprite"):
         return
-    #$ Mystique_Arms = 2     
+    #$ newgirl["Mystique"].Girl_Arms = 2     
     hide Mystique_SexSprite
     show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer:
         alpha 1

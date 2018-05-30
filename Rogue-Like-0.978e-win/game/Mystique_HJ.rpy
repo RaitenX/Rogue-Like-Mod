@@ -125,7 +125,7 @@ label Mystique_Handjob:
             ch_m "Hmm, magic fingers. . ."        
         else:       
             call MystiqueFace("sexy", 1)
-            $ Mystique_Arms = 2
+            $ newgirl["Mystique"].Girl_Arms = 2
             $ Line = renpy.random.choice(["You want some of this?",                 
                 "So you'd like another handy?",                 
                 "A little. . . [fist pumping hand gestures]?", 
@@ -229,7 +229,7 @@ label Mystique_Handjob:
                     $ newgirl["Mystique"].DailyActions.append("angry")   
     
     #She refused all offers.
-    $ Mystique_Arms = 1 
+    $ newgirl["Mystique"].Girl_Arms = 1 
     if "no hand" in newgirl["Mystique"].DailyActions:
         call MystiqueFace("angry", 1)
         ch_m "I'm not telling you again."   
@@ -635,7 +635,7 @@ label Mystique_Blowjob:
             ch_m "So you'd like another blowjob?"        
         else:       
             call MystiqueFace("sexy", 1)
-            $ Mystique_Arms = 2
+            $ newgirl["Mystique"].Girl_Arms = 2
             $ Line = renpy.random.choice(["You want me to [mimes blowing]?",                 
                 "So you wanna 'nother blowjob?",                 
                 "A little. . . lick?", 
@@ -1238,7 +1238,7 @@ label Mystique_BJAfter:
 #             ch_m "So you'd like another titjob?"        
 #         else:       
 #             call MystiqueFace("sexy", 1)
-#             $ Mystique_Arms = 2
+#             $ newgirl["Mystique"].Girl_Arms = 2
 #             $ Line = renpy.random.choice(["You want some of this action [jiggles her tits]?",                 
 #                 "So you'd like another titjob?",                 
 #                 "A little. . . bounce?", 
@@ -1934,7 +1934,7 @@ label Mystique_Dildo_Pussy:
                 ch_m "You want to stick it in my again?"       
             else:       
                 call MystiqueFace("sexy", 1)
-                $ Mystique_Arms = 2
+                $ newgirl["Mystique"].Girl_Arms = 2
                 $ Line = renpy.random.choice(["You want some of this action?",                 
                     "So you'd like another go?",                 
                     "You want to stick it in my again?",
@@ -2034,7 +2034,7 @@ label Mystique_Dildo_Pussy:
                         $ newgirl["Mystique"].DailyActions.append("angry")   
     
     #She refused all offers.
-    $ Mystique_Arms = 1  
+    $ newgirl["Mystique"].Girl_Arms = 1  
     if "no dildo" in newgirl["Mystique"].DailyActions:
             ch_m "Learn to take \"no\" for an answer, [newgirl[Mystique].Petname]."   
             $ newgirl["Mystique"].RecentActions.append("angry")
@@ -2525,7 +2525,7 @@ label Mystique_Dildo_Ass:
                 ch_m "You want to stick it in my ass again?"       
             else:       
                 call MystiqueFace("sexy", 1)
-                $ Mystique_Arms = 2
+                $ newgirl["Mystique"].Girl_Arms = 2
                 $ Line = renpy.random.choice(["You want some of this action?",                 
                     "So you'd like another go?",                 
                     "You want to stick it in my again?",
@@ -2628,7 +2628,7 @@ label Mystique_Dildo_Ass:
                         $ newgirl["Mystique"].DailyActions.append("angry")   
     
     #She refused all offers.
-    $ Mystique_Arms = 1   
+    $ newgirl["Mystique"].Girl_Arms = 1   
     if "no dildo" in newgirl["Mystique"].DailyActions:
             ch_m "Learn to take \"no\" for an answer, [newgirl[Mystique].Petname]."   
             $ newgirl["Mystique"].RecentActions.append("angry")
@@ -3055,7 +3055,7 @@ label Mystique_Footjob:
             ch_m "Hmm, magic toes. . ."        
         else:       
             call MystiqueFace("sexy", 1)
-            $ Mystique_Arms = 2
+            $ newgirl["Mystique"].Girl_Arms = 2
             $ Line = renpy.random.choice(["You want me to use my feet?",                 
                 "So you'd like another foot sesh?",                 
                 "A little. . . [she rubs her foot along your leg]?", 
@@ -3159,7 +3159,7 @@ label Mystique_Footjob:
                     $ newgirl["Mystique"].DailyActions.append("angry")   
     
     #She refused all offers.
-    $ Mystique_Arms = 1 
+    $ newgirl["Mystique"].Girl_Arms = 1 
     if "no foot" in newgirl["Mystique"].DailyActions:
         call MystiqueFace("angry", 1)
         ch_m "I'm not telling you again."   

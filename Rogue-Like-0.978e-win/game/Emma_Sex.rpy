@@ -1970,6 +1970,16 @@ label Emma_Taboo(Cnt= 1, Public=0):
                 call Rogue_Noticed("Emma")
             if K_Loc == bg_current:
                 call Kitty_Noticed("Emma")
+            # python:
+            $ i = 0
+            while i < len(ModdedGirls):
+                if newgirl[ModdedGirls[i]].Loc == bg_current:
+                        call NewGirl_Noticed(ModdedGirls[i], "Emma")
+                #print(colors[i])
+                $ i += 1
+
+                #for Girls_ in ModdedGirls:
+                    
             return
     call EmmaFace("surprised", 1) 
     
@@ -1989,6 +1999,14 @@ label Emma_Taboo(Cnt= 1, Public=0):
                 call Rogue_Noticed("Emma")
         if K_Loc == bg_current:
                 call Kitty_Noticed("Emma")
+        $ i = 0
+        while i < len(ModdedGirls):
+        #python:
+        #    for Girls_ in ModdedGirls:
+                    #if newgirl[Girls_].Loc == bg_current:
+                    if newgirl[ModdedGirls[i]].Loc == bg_current:
+                        call NewGirl_Noticed(ModdedGirls[i], "Emma")
+                    $ i += 1
         if Trigger != "kissing" and Taboo > 20:
                 call EmmaFace("confused", 1)
                 if Trigger == "blow" or Trigger == "hand" or Trigger == "titjob":
@@ -2007,7 +2025,15 @@ label Emma_Taboo(Cnt= 1, Public=0):
                 call Rogue_Noticed("Emma")
         if K_Loc == bg_current:
                 call Kitty_Noticed("Emma")
-        elif Taboo > 20:
+        #python:
+            #for Girls_ in ModdedGirls:
+        $ i = 0
+        while i < len(ModdedGirls):
+                if newgirl[ModdedGirls[i]].Loc == bg_current:
+                    call NewGirl_Noticed(ModdedGirls[i], "Emma")
+                $ i += 1
+            
+        if Taboo > 20:
             ch_x "Hmmm. . ."
             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 90, 2) 
             $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 3) 
@@ -2153,6 +2179,18 @@ label Emma_Noticed(Other = "Rogue", B = 0):
                     $ B = (E_LikeKitty - 500)
                     if "dating" in E_Traits:
                         $ B -= 200
+
+    elif Other in ModdedGirls:            
+            call EmmaFace("surprised", 1)
+            "Emma noticed what you and [Other] are up to."
+            $ E_RecentActions.append("noticed " + Other)
+            $ PolyVariable = "poly " + Other
+            if PolyVariable in E_Traits:
+                $ B = (1000-(20*Taboo))  
+            else:
+                $ B = (E_LikeNewGirl[Other] - 500)               
+                if "dating" in E_Traits:
+                    $ B -= 200
                         
 #    "She doesn't seem to be prepared to deal with this right now, and leaves the room." #remove when ready
 #    call Remove_Girl("Emma")
@@ -2170,6 +2208,8 @@ label Emma_Noticed(Other = "Rogue", B = 0):
                     $ E_Traits.append("poly rogue") 
             elif Other == "Kitty" and "poly kitty" not in E_Traits: 
                     $ E_Traits.append("poly kitty") 
+            elif Other in ModdedGirls and PolyVariable not in E_Traits: 
+                    $ E_Traits.append(PolyVariable) 
             call Emma_Threeway_Set
     elif ApprovalCheck("Emma", 650, "O", TabM=2) and ApprovalCheck("Emma", 450, "L", TabM=1) or ApprovalCheck("Emma", 800, "O", TabM=2, Bonus = (B/3)): 
             #if she likes you, but is very obedient
@@ -2182,6 +2222,8 @@ label Emma_Noticed(Other = "Rogue", B = 0):
                     $ E_Traits.append("poly rogue") 
             elif Other == "Kitty" and "poly kitty" not in E_Traits: 
                     $ E_Traits.append("poly kitty") 
+            elif Other in ModdedGirls and PolyVariable not in E_Traits: 
+                    $ E_Traits.append(PolyVariable) 
             call Emma_Threeway_Set("watch")
     elif ApprovalCheck("Emma", 650, "I", TabM=2) and ApprovalCheck("Emma", 450, "L", TabM=1) or ApprovalCheck("Emma", 800, "I", TabM=2, Bonus = (B/3)):
             #if she likes you, but is very uninhibited
@@ -2195,6 +2237,8 @@ label Emma_Noticed(Other = "Rogue", B = 0):
                     $ E_Traits.append("poly rogue") 
             elif Other == "Kitty" and "poly kitty" not in E_Traits: 
                     $ E_Traits.append("poly kitty") 
+            elif Other in ModdedGirls and PolyVariable not in E_Traits: 
+                    $ E_Traits.append(PolyVariable) 
             call Emma_Threeway_Set("watch")
     elif ApprovalCheck("Emma", 1500, TabM=2, Bonus = B):
             call EmmaFace("perplexed", 1)
@@ -2227,6 +2271,8 @@ label Emma_Noticed(Other = "Rogue", B = 0):
                     $ E_Traits.append("saw with rogue") 
             elif Other == "Kitty" and "saw with kitty" not in E_Traits: 
                     $ E_Traits.append("saw with kitty") 
+            elif Other in ModdedGirls and ("saw with " + Other) not in E_Traits: 
+                    $ E_Traits.append("saw with " + Other) 
             $ Partner = 0
             if bg_current == "bg emma": #Kicks you out if in Emma's room
                     $ E_RecentActions.append("angry")

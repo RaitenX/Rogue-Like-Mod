@@ -55,7 +55,7 @@ label Mystique_SexMenu:
     $ Trigger5 = 0
     $ Situation = 0
     call Mystique_Hide    
-    $ Mystique_Arms = 1
+    $ newgirl["Mystique"].Girl_Arms = 1
     if "detention" in newgirl["Mystique"].RecentActions:
         $ Tempmod = 20 if Tempmod <= 20 else Tempmod
     call Set_The_Scene(Dress = 0)
@@ -109,24 +109,24 @@ label Mystique_SexMenu:
                     ch_m "I'm sorry, [newgirl[Mystique].Petname], but I need a break."
                     
         "Could you take care of something for me? [[Your dick, you mean your dick]":        
-                if P_Semen and newgirl["Mystique"].Action:                
-                    menu:
-                        ch_m "What did you want me to do?"
-                        "Could you give me a handjob?":
-                            call Mystique_Handjob
-#                        "Could you give me a titjob?":
-#                            call Mystique_Titjob         
-                        "Could you suck my cock?":
-                            call Mystique_Blowjob 
-                        "Could you use your feet?":
-                            call Mystique_Footjob 
-                        "Never mind [[something else]":
-                            jump Mystique_SMenu
-                elif not newgirl["Mystique"].Action:
-                        "I'm sorry, [newgirl[Mystique].Petname], but I need a break."
-                else:
-                        "You really don't have it in you, maybe take a break." 
-#            ch_m "Not if you mean \"your dick\".[[Not available yet]"
+                # if P_Semen and newgirl["Mystique"].Action:                
+                #     menu:
+                #         ch_m "What did you want me to do?"
+                #         "Could you give me a handjob?":
+                #             call Mystique_Handjob
+                #         # "Could you give me a titjob?":
+                #         #     call Mystique_Titjob         
+                #         "Could you suck my cock?":
+                #             call Mystique_Blowjob 
+                #         "Could you use your feet?":
+                #             call Mystique_Footjob 
+                #         "Never mind [[something else]":
+                #             jump Mystique_SMenu
+                # elif not newgirl["Mystique"].Action:
+                #         "I'm sorry, [newgirl[Mystique].Petname], but I need a break."
+                # else:
+                #         "You really don't have it in you, maybe take a break." 
+                ch_m "Not if you mean \"your dick\".[[Not available yet]"
                 
         "Could you put on a show for me?":
                     menu:
@@ -159,12 +159,12 @@ label Mystique_SexMenu:
                 if P_Semen and newgirl["Mystique"].Action:
                     menu:
                         "What did you want to do?"
-                        "Lean back, I've got something in mind (Missionary). . .":
-                                call Mystique_Sex_H           
-                        "Fuck your pussy. (Missionary)":                        
-                                call Mystique_Sex_P           
-                        "Fuck your ass. (Missionary)":                        
-                                call Mystique_Sex_A    
+                        # "Lean back, I've got something in mind (Missionary). . .":
+                        #         call Mystique_Sex_H           
+                        # "Fuck your pussy. (Missionary)":                        
+                        #         call Mystique_Sex_P           
+                        # "Fuck your ass. (Missionary)":                        
+                        #         call Mystique_Sex_A    
                         "Turn around, I've got something in mind (DoggyStyle). . .":
                                 call Mystique_Doggy_H  
                         "Fuck your pussy. (DoggyStyle)":                        
@@ -1145,7 +1145,7 @@ label Mystique_Masturbate: #(Situation = Situation):
                                     ch_m "I did, but now the mood is ruined. . ."
                                     
                 #else: You've failed all checks so she kicks you out.
-                $ Mystique_Arms = 1  
+                $ newgirl["Mystique"].Girl_Arms = 1  
                 call MystiqueOutfit  
                 $ newgirl["Mystique"].Action -= 1
                 $ P_Focus = Statupdate("Mystique", "Focus", P_Focus, 50, 30)
@@ -1280,7 +1280,7 @@ label Mystique_Masturbate: #(Situation = Situation):
                 ch_m "You enjoyed the show?"       
             else:       
                 call MystiqueFace("sexy", 1)
-                $ Mystique_Arms = 2
+                $ newgirl["Mystique"].Girl_Arms = 2
                 $ Line = renpy.random.choice(["You really do like to watch.",                 
                     "Once more?",                 
                     "You enjoy watching me.",
@@ -1360,7 +1360,7 @@ label Mystique_Masturbate: #(Situation = Situation):
     # end of asking her to do it
     
     #She refused all offers.
-    $ Mystique_Arms = 1                
+    $ newgirl["Mystique"].Girl_Arms = 1                
     if newgirl["Mystique"].Forced:
             call MystiqueFace("angry", 1)
             ch_m "That's something I won't do."
@@ -1400,11 +1400,11 @@ label MystiqueM_Prep:
     if "unseen" in newgirl["Mystique"].RecentActions:
             call MystiqueFace("sexy")
             $ newgirl["Mystique"].Eyes = "closed"
-            $ Mystique_Arms = 2
+            $ newgirl["Mystique"].Girl_Arms = 2
             "You see Mystique leaning back, masturbating. You don't think she's noticed you yet."
     else:    
             call MystiqueFace("sexy")
-            $ Mystique_Arms = 2
+            $ newgirl["Mystique"].Girl_Arms = 2
             "Mystique lays back and starts to toy with herself."
             if not newgirl["Mystique"].Mast:#First time        
                     if newgirl["Mystique"].Forced:
@@ -1970,6 +1970,15 @@ label Mystique_Taboo(Cnt= 1, Public=0):
                 call Rogue_Noticed("Mystique")
             if K_Loc == bg_current:
                 call Kitty_Noticed("Mystique")
+            if E_Loc == bg_current:
+                call Emma_Noticed("Mystique")
+            #for Girls_ in ModdedGirls:
+            $ i = 0
+            while i < len(ModdedGirls):
+                if Girls_ != "Mystique":
+                    if newgirl[Girls_].Loc == bg_current:
+                        call NewGirl_Noticed("Mystique", Girls_)
+                $ i += 1
             return
     call MystiqueFace("surprised", 1) 
     
@@ -1989,6 +1998,15 @@ label Mystique_Taboo(Cnt= 1, Public=0):
                 call Rogue_Noticed("Mystique")
         if K_Loc == bg_current:
                 call Kitty_Noticed("Mystique")
+        if E_Loc == bg_current:
+                call Emma_Noticed("Mystique")
+        #for Girls_ in ModdedGirls:
+        $ i = 0
+        while i < len(ModdedGirls):
+                if Girls_ != "Mystique":
+                    if newgirl[Girls_].Loc == bg_current:
+                        call NewGirl_Noticed("Mystique", Girls_)
+                $ i += 1
         if Trigger != "kissing" and Taboo > 20:
                 call MystiqueFace("confused", 1)
                 if Trigger == "blow" or Trigger == "hand" or Trigger == "titjob":
@@ -2007,7 +2025,16 @@ label Mystique_Taboo(Cnt= 1, Public=0):
                 call Rogue_Noticed("Mystique")
         if K_Loc == bg_current:
                 call Kitty_Noticed("Mystique")
-        elif Taboo > 20:
+        if E_Loc == bg_current:
+                call Emma_Noticed("Mystique")
+        #for Girls_ in ModdedGirls:
+        $ i = 0
+        while i < len(ModdedGirls):
+                if Girls_ != "Mystique":
+                    if newgirl[Girls_].Loc == bg_current:
+                        call NewGirl_Noticed("Mystique", Girls_)
+                $ i += 1
+        if Taboo > 20:
             ch_x "Hmmm. . ."
             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 90, 2) 
             $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 200, 3) 
