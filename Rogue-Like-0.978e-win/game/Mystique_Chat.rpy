@@ -200,19 +200,19 @@ label Mystique_Chat:
         "I just wanted to talk. . .":
                     call Mystique_Chitchat   
                     
-        "Mystique's settings":
-                    ch_p "Let's talk about you."
-                    call Mystique_Settings   
+        # "Mystique's settings":
+        #             ch_p "Let's talk about you."
+        #             call Mystique_Settings   
         
-        "Relationship status":      
-                    ch_p "Could we talk about us?"       
-                    if "relationship" in newgirl["Mystique"].DailyActions:
-                        ch_m "Now you're starting to bore me."
-                    elif newgirl["Mystique"].Loc == bg_current:
-                        call Mystique_Relationship
-                    else:
-                        ch_m "This seems a bit serious to discuss over the phone."
-                        ch_m "Later, perhaps."
+        # "Relationship status":      
+        #             ch_p "Could we talk about us?"       
+        #             if "relationship" in newgirl["Mystique"].DailyActions:
+        #                 ch_m "Now you're starting to bore me."
+        #             elif newgirl["Mystique"].Loc == bg_current:
+        #                 call Mystique_Relationship
+        #             else:
+        #                 ch_m "This seems a bit serious to discuss over the phone."
+        #                 ch_m "Later, perhaps."
                         
         "Could I get your number?" if "Mystique" not in Digits:
                     if ApprovalCheck("Mystique", 800, "LI"):
@@ -224,9 +224,9 @@ label Mystique_Chat:
                     else:
                         ch_m "I don't think it's appropriate to give my number out to a student like that."  
                         
-        "Gifts" if newgirl["Mystique"].Loc == bg_current:
-                ch_p "I'd like to give you something."
-                call Mystique_Gifts
+        # "Gifts" if newgirl["Mystique"].Loc == bg_current:
+        #         ch_p "I'd like to give you something."
+        #         call Mystique_Gifts
                     
         "Add her to party" if "Mystique" not in Party and newgirl["Mystique"].Loc == bg_current:
                     ch_p "Could you follow me for a bit?"                                             
@@ -256,20 +256,20 @@ label Mystique_Chat:
                         call Set_The_Scene   
                     return
                 
-        "Lock the door" if bg_current == "bg classroom" and Current_Time == "Evening" and "locked" not in newgirl["Mystique"].RecentActions :
-                    ch_p "Could you lock the door?"
-                    ch_m "Ooh, certainly. . ."
-                    $ newgirl["Mystique"].RecentActions.append("locked")
-                    call Taboo_Level
-        "Unlock the door" if bg_current == "bg classroom" and Current_Time == "Evening" and "locked" in newgirl["Mystique"].RecentActions:
-                    ch_p "Could you unlock the door?"
-                    ch_m "I suppose. . ."
-                    $ newgirl["Mystique"].RecentActions.remove("locked")
-                    call Taboo_Level
+        # "Lock the door" if bg_current == "bg classroom" and Current_Time == "Evening" and "locked" not in newgirl["Mystique"].RecentActions :
+        #             ch_p "Could you lock the door?"
+        #             ch_m "Ooh, certainly. . ."
+        #             $ newgirl["Mystique"].RecentActions.append("locked")
+        #             call Taboo_Level
+        # "Unlock the door" if bg_current == "bg classroom" and Current_Time == "Evening" and "locked" in newgirl["Mystique"].RecentActions:
+        #             ch_p "Could you unlock the door?"
+        #             ch_m "I suppose. . ."
+        #             $ newgirl["Mystique"].RecentActions.remove("locked")
+        #             call Taboo_Level
             
         "Date" if Current_Time == "Evening":
                 ch_p "Do you want to go on a date tonight?"
-                ch_m "Well that certainly doesn't seem appropriate at th moment [[Not in yet]."
+                ch_m "Well that certainly doesn't seem appropriate at the moment [[Not in yet]."
 
         "Talk with Rogue" if R_Loc == bg_current:
                 jump Rogue_Chat

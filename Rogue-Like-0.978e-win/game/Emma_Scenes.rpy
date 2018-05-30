@@ -1512,14 +1512,14 @@ label Emma_BF: #Emma_Update
     if E_SEXP >= 10:
         ch_e "I mean, I've gone further with you than I've ever been with anybody before. . ."
     if E_SEXP >= 15:
-        ch_e "You know . . .in the {i}bedroom{/i}. . ."
+        ch_e "You know . . .with a {i}student{/i}. . ."
     if "dating" in R_Traits and "dating?" in E_Traits:    
         ch_e "I know you're kinda Rogue's boyfriend and all. . . but she and I were talking and . . ."
     elif "dating" in E_Traits:
         ch_e "I know you're kinda Rogue's boyfriend and all. . ."
     if not E_Event[5]:
         ch_e "So, uhm. . ."
-        ch_e "It’s not like I haven’t gone out with guys before."
+        ch_e "It’s not like I haven’t gone out with students before."
         ch_e "I just ..wow, this is so awkward.  I really like you a lot and. . ."
         ch_e "I mean. . . do you wanna be my boyfriend?"
         ch_e " maybe we could make it official?"
@@ -1566,7 +1566,7 @@ label Emma_BF: #Emma_Update
         "Not really.":
             jump Emma_BF_Jerk
     call EmmaFace("sexy")    
-    ch_e "Now. . . boyfriend. . . how about you and I celebrate, huh?"
+    ch_e "Now. . . boyfriend. . . how about you and I celebrate, darling?"
     $ Tempmod = 10
     call Emma_SexMenu
     $ Tempmod = 0
@@ -1640,7 +1640,7 @@ label Emma_Love: #Emma_Update
             call EmmaFace("perplexed", 2)
             $ E_Eyes = "surprised"
             ch_e "Never mind!"
-            "Emma dashes off and phases through the nearest wall."
+            "Emma dashes off and disappears behind the nearest door."
             hide Emma_Sprite with easeoutright
             call Remove_Girl("Emma")
             return
@@ -1659,7 +1659,7 @@ label Emma_Love: #Emma_Update
         ch_e "Um. . ."
     if "lover" not in E_Petnames: 
             menu:
-                "She turns and makes a break for the nearest wall."
+                "She turns and makes a break for the nearest door."
                 "Catch her":
                     call EmmaFace("perplexed", 2)
                     $ E_Eyes = "surprised"
@@ -1667,7 +1667,7 @@ label Emma_Love: #Emma_Update
                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 95, 15) 
                     "As she spins, you grab on to her wrist. She's slightly startled to have been caught."
                 "Let her go":
-                    "She dashes through the nearest wall and vanishes from view."
+                    "She dashes through the nearest door and vanishes from view."
                     jump Emma_Love_End    
             $ E_Blush = 1
             menu:
@@ -1686,7 +1686,7 @@ label Emma_Love: #Emma_Update
                     if 1 < E_Event[6] < 4:
                         "You immediately release her wrist."
                         $ E_Eyes = "down"
-                        "She dashes through the nearest wall and vanishes from view."
+                        "She dashes through the nearest door and vanishes from view."
                         jump Emma_Love_End
                     else:
                         $ E_Love = Statupdate("Emma", "Love", E_Love, 95, 10) 
@@ -1716,7 +1716,7 @@ label Emma_Love: #Emma_Update
                     $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -20) 
                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 10)
                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 10)  
-                    "She shoves you away and then stomps through the nearest wall."                        
+                    "She shoves you away and then stomps through the nearest door."                        
                     jump Emma_Love_End
                     
                 "So get going. [[Give her a shove]":
@@ -1724,7 +1724,7 @@ label Emma_Love: #Emma_Update
                     $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -50) 
                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 10)
                     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 10)  
-                    "You shove her through the nearest wall and then continue on you way."
+                    "You shove her through the nearest door and then continue on you way."
                     $ E_RecentActions.append("angry")
                     hide Emma_Sprite with easeoutbottom
                     jump Emma_Love_End
@@ -1997,7 +1997,7 @@ label Emma_Sub:     #Emma_Update
     $ E_Blush = 1       
     if not Line:
             # She's advancing to the next stage            
-            ch_e "Well, I've, uhm. . . never had a guy be like that with me before. . ."
+            ch_e "Well, I've, uhm. . . never had a student be like that with me before. . ."
             call EmmaFace("sly", 2)
             ch_e "I think I kinda like it."
             call EmmaFace("smile", 1)
@@ -2129,7 +2129,7 @@ label Emma_Sub:     #Emma_Update
             hide Emma_Sprite with easeoutbottom                     
             call Remove_Girl("Emma")
             $ renpy.pop_call()
-            "Emma phases through the floor in a huff, leaving you alone."
+            "Emma runs through the door in a huff, leaving you alone."
     elif Line == "embarrassed":
             call EmmaFace("sadside", 2)
             ch_e "Oh!  Uhm, yeah!  I mean. . .."
@@ -2140,7 +2140,7 @@ label Emma_Sub:     #Emma_Update
             hide Emma_Sprite with easeoutbottom                     
             call Remove_Girl("Emma")
             $ renpy.pop_call()
-            "Emma phases through the floor, leaving you alone. It didn't look like she could get away fast enough."
+            "Emma leaves through the door, leaving you alone. It didn't look like she could get away fast enough."
     return
 
 label Emma_Sub_Asked: #Emma_Update   
@@ -2224,7 +2224,7 @@ label Emma_Sub_Asked: #Emma_Update
             call Remove_Girl("Emma")
             $ E_RecentActions.append("angry")
             $ renpy.pop_call()
-            "Emma phases through the floor, leaving you alone.  She looked pretty upset."
+            "Emma hurries through the door, leaving you alone.  She looked pretty upset."
     elif "sir" in E_Petnames:
             #it didn't fail and "sir" was covered
             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 50)
@@ -2333,7 +2333,7 @@ label Emma_Master:  #Emma_Update
                             $ E_Love = Statupdate("Emma", "Love", E_Love, 200, 10)
                             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 10)
                             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5)
-                            ch_e "Oh, okay.  Just. . .try not to be so mean about it, 'kay?" 
+                            ch_e "Oh, okay.  Just. . .try not to be so mean about it, Okay?" 
 
         "Not me.  It's kind of creepy.":
                     call EmmaFace("sad", 2)
@@ -2349,12 +2349,12 @@ label Emma_Master:  #Emma_Update
             hide Emma_Sprite with easeoutbottom                     
             call Remove_Girl("Emma")
             $ renpy.pop_call()
-            "Emma phases through the floor in a huff.  She might have been crying."
+            "Emma hurries through the door in a huff.  She might have been crying."
     elif Line == "embarrassed":    
             hide Emma_Sprite with easeoutbottom                     
             call Remove_Girl("Emma")
             $ renpy.pop_call()
-            "Emma phases through the floor, leaving you alone.  She looked really embarrassed."
+            "Emma hurries through the door, leaving you alone.  She looked really embarrassed."
     elif Line != "fail":
             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 50)
             $ E_Petnames.append("master")
@@ -2417,7 +2417,7 @@ label Emma_Sexfriend:   #Emma_Update
                             
             elif ApprovalCheck("Emma", 1000, "LI"): 
                     call EmmaFace("sexy", 1)
-                    ch_e "I just wanted to tell you. . .I think you're kinda cute." 
+                    ch_e "I just wanted to tell you. . .I think you're kinda cute, for a student." 
                     menu:
                         extend ""
                         "That's really nice of you to say.":
@@ -2494,7 +2494,7 @@ label Emma_Sexfriend:   #Emma_Update
             menu:
                 extend ""
                 "You mean. . . like, being {i}friends with benefits{/i}?":
-                        ch_e "Kinda, yeah.  Whaddya think?" #Blushing expression
+                        ch_e "Kind of, yes.  What do you think?" #Blushing expression
                         menu:
                             extend ""
                             "Sounds amazing!  Count me in.":
@@ -2537,21 +2537,21 @@ label Emma_Sexfriend:   #Emma_Update
             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 5)
             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, -20)   
             hide Emma_Sprite with easeoutbottom
-            "Emma phases through the floor leaving you alone.  That was very strange."
+            "Emma runs through the door leaving you alone.  That was very strange."
     elif Line == "sad":    
             hide Emma_Sprite with easeoutbottom
-            "Emma phases through the floor leaving you alone.  You think you may have hurt her feelings."
+            "Emma leaves through the door leaving you alone.  You think you may have hurt her feelings."
     else: #if you kept Line unused throughout, then you passed all the checks, so. . .
             $ E_Petnames.append("sex friend")             
             call EmmaFace("sly",2)
             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 10)             
             $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 80, 10)   
             "Emma leans in and passes her hand across body."
-            "As she does so, she phases her hand through your jeans, so her fingers slide along your bare skin."
+            "As she does so, she sticks her hand in your jeans, so her fingers slide along your bare skin."
             $ E_Blush = 1
             ch_e "I'll definitely be seeing {i}you{/i} later, [E_Petname]."  
             hide Emma_Sprite with easeoutright
-            "She passes through a nearby wall. "            
+            "She leaves through a nearby door. "            
     call Remove_Girl("Emma")
     return
     
@@ -2862,7 +2862,7 @@ label Emma_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the other
             call EmmaFace("angry",2)
             ch_e "You are {b}SUCH{/b} an asshole, [E_Petname]!"
             ch_e "I never wanna see you again, as long as I live!"
-            "Emma phases through the floor leaving you standing alone."
+            "Emma disappears through the doorway leaving you standing alone."
             "Whatever you once had is over now, for sure."     
             $ E_RecentActions.append("angry")
             $ E_Break[0] = 7 + E_Break[1] + E_Cheated
@@ -2871,7 +2871,7 @@ label Emma_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the other
     elif Line == "sad":
             # Sad ending
             call EmmaFace("sad",2)
-            "Emma phases through the floor leaving you standing alone."
+            "Emma leaves through the door leaving you standing alone."
             "You're pretty sure she was crying as she left."
             "You're also pretty sure you seriously damaged your relationship with her."
             if Resolution <= 3:
