@@ -153,6 +153,7 @@ image Mystique_Sprite:
             "True", "images/RogueSprite/Rogue_wet2.png",       #R_Wet >1
             ),              
         (0,0), ConditionSwitch(                                                                         #brows
+            "renpy.showing('Mystique_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Mystique_TJ_Animation')", Null(),
             # "R_Brows == 'normal' and R_Blush == 2", "images/RogueSprite/Rogue_brows_normal_b.png",
             # "R_Brows == 'angry' and R_Blush == 2", "images/RogueSprite/Rogue_brows_angry_b.png",
             # "R_Brows == 'sad' and R_Blush == 2", "images/RogueSprite/Rogue_brows_sad_b.png",
@@ -170,6 +171,7 @@ image Mystique_Sprite:
 #            "True", Null(), 
 #            ),
         (0,0), ConditionSwitch(  
+            "renpy.showing('Mystique_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Mystique_TJ_Animation')", Null(),
             # "'mouth' in R_Spunk and R_Gag == 'ringgag'", "images/RogueSprite/Rogue_mouth_ringgag_w.png",                                                                       #Mouths        
             # "R_Gag == 'ringgag'", "images/RogueSprite/Rogue_mouth_ringgag.png",                                                                       #Mouths        
             # "R_Gag == 'ballgag'", "images/RogueSprite/Rogue_mouth_Ballgag.png",                                                                       #Mouths        
@@ -193,6 +195,7 @@ image Mystique_Sprite:
             ),            
         (0,0), "Mystique Blink",  
         (0,0), ConditionSwitch(                                                                                 #Collar
+            "renpy.showing('Mystique_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Mystique_TJ_Animation')", Null(),
             "newgirl['Mystique'].Glasses", "images/RogueSprite/Rogue_Sprite_Glasses.png",   
             "True", Null(),                #R_Arms == 'gloved' or not R_Arms
             ),                                                                           #Eyes
@@ -463,7 +466,7 @@ image EmmaSprite_Head:
 #            "True", Null(),        
 #            ),      
         (0,0), ConditionSwitch(                                                                         #Face no blush not wet
-            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Mystique_BJ_Animation')", Null(),
             "E_Blush or E_Hair == 'wet' or E_Water", Null(),        
             "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_Angry.png",
             "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_Sad.png",
@@ -472,7 +475,7 @@ image EmmaSprite_Head:
             "True", "images/EmmaSprite/EmmaSprite_Head_Wave_Normal.png", #E_Brows == 'normal'
             ),
         (0,0), ConditionSwitch(                                                                         #Face blush 1 not wet
-            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Mystique_BJ_Animation')", Null(),
             "E_Blush != 1 or E_Hair == 'wet' or E_Water", Null(),        
             "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_AngryB1.png",
             "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_SadB1.png",
@@ -481,7 +484,7 @@ image EmmaSprite_Head:
             "True", "images/EmmaSprite/EmmaSprite_Head_Wave_NormalB1.png", #E_Brows == 'normal'
             ),
         (0,0), ConditionSwitch(                                                                         #Face blush 2 not wet
-            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Mystique_BJ_Animation')", Null(),
             "E_Blush != 2 or E_Hair == 'wet' or E_Water", Null(),        
             "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_AngryB2.png",
             "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_SadB2.png",
@@ -491,7 +494,7 @@ image EmmaSprite_Head:
             ),
         
          (0,0), ConditionSwitch(                                                                         #Face no blush wet
-            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Mystique_BJ_Animation')", Null(),
             "E_Blush or (E_Hair != 'wet' and not E_Water)", Null(),        
             "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_Angry.png",
             "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_Sad.png",
@@ -500,7 +503,7 @@ image EmmaSprite_Head:
             "True", "images/EmmaSprite/EmmaSprite_Head_Wet_Normal.png", #E_Brows == 'normal'
             ),
         (0,0), ConditionSwitch(                                                                         #Face blush 1 wet
-            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Mystique_BJ_Animation')", Null(),
             "E_Blush != 1 or (E_Hair != 'wet' and not E_Water)", Null(),        
             "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_AngryB1.png",
             "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_SadB1.png",
@@ -509,7 +512,7 @@ image EmmaSprite_Head:
             "True", "images/EmmaSprite/EmmaSprite_Head_Wet_NormalB1.png", #E_Brows == 'normal'
             ),
         (0,0), ConditionSwitch(                                                                         #Face blush 2 wet
-            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Mystique_BJ_Animation')", Null(),
             "E_Blush != 2 or (E_Hair != 'wet' and not E_Water)", Null(),        
             "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_AngryB2.png",
             "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_SadB2.png",
@@ -519,7 +522,7 @@ image EmmaSprite_Head:
             ),
         
         (0,0), ConditionSwitch(                                                                         #Mouths        
-            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Mystique_BJ_Animation')", Null(),
             "E_Mouth == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
             "E_Mouth == 'lipbite'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Lipbite.png",
             "E_Mouth == 'sucking'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
@@ -534,7 +537,7 @@ image EmmaSprite_Head:
             ),   
         
         (0,0), ConditionSwitch(                                                                         #Mouth spunk               
-            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Mystique_BJ_Animation')", Null(),
             "'mouth' not in E_Spunk", Null(),
             "E_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthOpen.png",            
             "E_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthTongue.png",            
@@ -543,7 +546,7 @@ image EmmaSprite_Head:
         
         (0,0), "Emma Blink",                                                                           #Eyes        
         (0,0), ConditionSwitch(                                                                         #brows
-            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Mystique_BJ_Animation')", Null(),
             #"E_Brows == 'normal' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_White.png",
             #"E_Brows == 'normal' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_Red.png",
             "E_Brows == 'normal' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Normal.png",
@@ -570,12 +573,12 @@ image EmmaSprite_Head:
             "True", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal.png",
             ),         
         (0,0), ConditionSwitch(                                                                         #facial spunk               
-            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Mystique_BJ_Animation')", Null(),
             "'facial' in E_Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_Face.png",             
             "True", Null(),
             ),  
         (0,0), ConditionSwitch(                                                                         #Hair
-            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Mystique_BJ_Animation')", Null(),
             "not E_Hair", Null(),
             "(E_Hair == 'wet' or E_Water) and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_HairWet_White.png",
             "(E_Hair == 'wet' or E_Water) and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_HairWet_Red.png",
@@ -588,13 +591,13 @@ image EmmaSprite_Head:
             "True", Null(),
             ),        
         (0,0), ConditionSwitch(                                                                         #Hair Water
-            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Mystique_BJ_Animation')", Null(),
             "not E_Water", Null(),
             "E_Hair == 'wet'", "images/EmmaSprite/EmmaSprite_Head_Water.png",
             "True", "images/EmmaSprite/EmmaSprite_Head_Water.png",
             ),
         (0,0), ConditionSwitch(                                                                         #hair spunk               
-            "renpy.showing('Emma_BJ_Animation')", Null(),
+            "renpy.showing('Mystique_BJ_Animation')", Null(),
             "'hair' in E_Spunk and (E_Hair == 'wet' or E_Water)", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWet.png",                         
             "'hair' in E_Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWave.png",              
             "True", Null(),
@@ -698,32 +701,32 @@ image Emma_At_Podium:
 #Rogue BJ Over Sprite Compositing
 
 
-image Emma_BJ_Animation:#BJ_NewTest:                                                                #core BJ animation   
+image Mystique_BJ_Animation:#BJ_NewTest:                                                                #core BJ animation   
     LiveComposite(    
         (787,913),             
-        (0,0), ConditionSwitch(                                                                 # back of the hair, which needs to go behind the body
-            "Speed == 0", At("Emma_BJ_HairBack", BJ_Starting()),                         
-            "Speed == 1", At("Emma_BJ_HairBack", BJ_Licking()),                         
-            "Speed == 2", At("Emma_BJ_HairBack", BJ_Heading()),                        
-            "Speed == 3", At("Emma_BJ_HairBack", BJ_Sucking()),
-            "Speed == 4", At("Emma_BJ_HairBack", BJ_Deep()), 
-            "True", Null(),
-            ),    
+        # (0,0), ConditionSwitch(                                                                 # back of the hair, which needs to go behind the body
+        #     "Speed == 0", At("Emma_BJ_HairBack", BJ_Starting()),                         
+        #     "Speed == 1", At("Emma_BJ_HairBack", BJ_Licking()),                         
+        #     "Speed == 2", At("Emma_BJ_HairBack", BJ_Heading()),                        
+        #     "Speed == 3", At("Emma_BJ_HairBack", BJ_Sucking()),
+        #     "Speed == 4", At("Emma_BJ_HairBack", BJ_Deep()), 
+        #     "True", Null(),
+        #     ),    
         (0,0), ConditionSwitch(                                                                 # body, everything below the chin
-            "Speed == 0", At("Emma_BJ_Backdrop", BJ_StartingBody()),                       
-            "Speed == 1", At("Emma_BJ_Backdrop", BJ_LickingBody()),                        
-            "Speed == 2", At("Emma_BJ_Backdrop", BJ_HeadingBody()),                 
-            "Speed == 3", At("Emma_BJ_Backdrop", BJ_SuckingBody()),
-            "Speed == 4", At("Emma_BJ_Backdrop", BJ_DeepBody()), 
+            "Speed == 0", At("Mystique_BJ_Backdrop", BJ_StartingBody()),                       
+            "Speed == 1", At("Mystique_BJ_Backdrop", BJ_LickingBody()),                        
+            "Speed == 2", At("Mystique_BJ_Backdrop", BJ_HeadingBody()),                 
+            "Speed == 3", At("Mystique_BJ_Backdrop", BJ_SuckingBody()),
+            "Speed == 4", At("Mystique_BJ_Backdrop", BJ_DeepBody()), 
             "True", Null(),
             ),    
         (0,0), ConditionSwitch(                                                                 # her head
-            "Speed == 0", At("Emma_BJ_Head_2", BJ_Starting()),                       
+            "Speed == 0", At("Mystique_BJ_Head_2", BJ_Starting()),                       
             #"Speed == 1", At("BJ_Head", BJ_Licking()),                       
-            "Speed == 1", At("Emma_BJ_Head_2", BJ_Licking()),                       
-            "Speed == 2", At("Emma_BJ_Head_2", BJ_Heading()),                     
-            "Speed == 3", At("Emma_BJ_Head_2", BJ_Sucking()),
-            "Speed == 4", At("Emma_BJ_Head_2", BJ_Deep()), 
+            "Speed == 1", At("Mystique_BJ_Head_2", BJ_Licking()),                       
+            "Speed == 2", At("Mystique_BJ_Head_2", BJ_Heading()),                     
+            "Speed == 3", At("Mystique_BJ_Head_2", BJ_Sucking()),
+            "Speed == 4", At("Mystique_BJ_Head_2", BJ_Deep()), 
             "True", Null(),
             ),   
 #        (0,0), Transform("images/RogueBJFace/Rogue_bj_markercard.png", alpha=(.2)),
@@ -738,10 +741,10 @@ image Emma_BJ_Animation:#BJ_NewTest:                                            
          (0,0), ConditionSwitch(                                                                 # the masked overlay for when her head overlaps the cock
              "Speed < 3", Null(), 
              #"Speed == 2", At("Emma_BJ_Head_3", BJ_Heading()),
-             "Speed == 3", At("Emma_BJ_Head_3", BJ_Sucking()),
-             "Speed == 4", At("Emma_BJ_Head_3", BJ_Deep()), 
-             #"Speed == 3", At(AlphaMask("Emma_BJ_Head_2", "Emma_BJ_Mask"), BJ_Sucking()),
-             #"Speed == 4", At(AlphaMask("Emma_BJ_Head_2", "images/EmmaSprite/Emma_bj_facemask.png"), BJ_Deep()), 
+             "Speed == 3", At("Mystique_BJ_Head_3", BJ_Sucking()),
+             "Speed == 4", At("Mystique_BJ_Head_3", BJ_Deep()), 
+             #"Speed == 3", At(AlphaMask("Mystique_BJ_Head_2", "Emma_BJ_Mask"), BJ_Sucking()),
+             #"Speed == 4", At(AlphaMask("Mystique_BJ_Head_2", "images/EmmaSprite/Emma_bj_facemask.png"), BJ_Deep()), 
              "True", Null(),
              ),    
          (0,0), ConditionSwitch(                                                                 # same as above, but for the heading animation
@@ -817,41 +820,57 @@ transform E_BJ_Deep():                                    #The deep animation fo
         ease 2 yoffset 100  
         repeat
 
-image Emma_BJ_Backdrop:                                                                        #Her Body under the head
-    "Emma_Sprite"
-    zoom 5.4
-    pos (275,-110)
-    offset (-465, -200) #-325, -125
+image Mystique_BJ_Backdrop:                                                                        #Her Body under the head
+    "Mystique_Sprite"
+    zoom 4.5
+    pos (175,-110)
+    offset (-615, -125) #-325, -125
 
-image Emma_BJ_Head_3:
-    AlphaMask("Emma_BJ_Head_2", "Emma_BJ_Mask")    #zoom .75
-    #zoom 4.05
-    pos (275,-110)
-    offset (-240, -200) #-140 - 125
+image Mystique_BJ_Head_3:
+    #"images/MystiqueSprite/Mystique_bj_facemask.png"
+    AlphaMask("Mystique_BJ_Head", "Mystique_BJ_Mask")    #zoom .75
+    # #zoom 4.05
+    # pos (275,-110)
+    # offset (-240, -200) #-140 - 125
+    zoom 4.5
+    pos (175,-110)
+    offset (-615, -125)
 
-image Emma_BJ_Head_4:
-    AlphaMask("Emma_BJ_Head_2", "E_BJ_MaskHeadingComposite")    #zoom .75
-    #zoom 4.05
-    pos (275,-110)
-    offset (-240, -200) #-140 - 125
+image Mystique_BJ_Head_4:
+    AlphaMask("Mystique_BJ_Head_2", "E_BJ_MaskHeadingComposite")    #zoom .75
+    # #zoom 4.05
+    # pos (275,-110)
+    # offset (-240, -200) #-140 - 125
+    zoom 4.5
+    pos (175,-110)
+    offset (-615, -125)
 
-image Emma_BJ_Head_2:
-    "Emma_BJ_Head"
-    #zoom .75
-    zoom 4.05
-    pos (275,-110)
-    offset (-240, -200) #-140 - 125
+image Mystique_BJ_Head_2:
+    "Mystique_BJ_Head"
+    # #zoom .75
+    # zoom 4.05
+    # pos (275,-110)
+    # offset (-240, -200) #-140 - 125
+    zoom 4.5
+    pos (175,-110)
+    offset (-615, -125)
 
-image Emma_BJ_Mask:
-    "images/EmmaSprite/Emma_bj_facemask.png"
+image Mystique_BJ_Mask:
+    "images/MystiqueSprite/Mystique_bj_facemask2.png"
+    # anchor (0.6, 0.0)                
+    # zoom 2.025  
+    # #zoom 4.05
+    # pos (275,-110)
+    # offset (-240, -200) #-140 - 125
+
+    # zoom 4.5
+    # pos (175,-110)
+    # offset (-615, -125)
     anchor (0.6, 0.0)                
-    zoom 2.025  
-    #zoom 4.05
-    pos (275,-110)
-    offset (-240, -200) #-140 - 125
+    zoom .75 
 
 
-image Emma_BJ_Head:
+image Mystique_BJ_Head:
     LiveComposite(
         (555,673), 
         #(0,0), ConditionSwitch(       
@@ -864,220 +883,149 @@ image Emma_BJ_Head:
         #    "E_Hair and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackback.png",   
         #    "E_Hair", "images/EmmaSprite/EmmaSprite_Head_Hairback.png",   
         #    "True", Null(),        
-        #    ), 
-        (0,0), ConditionSwitch(                                                                         #Face no blush not wet
-            "E_Blush or E_Hair == 'wet' or E_Water", Null(),        
-            "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_Angry.png",
-            "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_Sad.png",
-            "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wave_Surprised.png",     
-            "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wave_Confused.png", 
-            "True", "images/EmmaSprite/EmmaSprite_Head_Wave_Normal.png", #E_Brows == 'normal'
+        #    ),
+        (0,0), ConditionSwitch(                                                                         #head 
+            #"renpy.showing('Mystique_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Mystique_TJ_Animation')", Null(),
+            # "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_head_evowet.png",
+            # "R_Hair == 'evo' and R_Blush == 2", "images/RogueSprite/Rogue_head_evo_blush2.png",
+            # "R_Hair == 'evo' and R_Blush", "images/RogueSprite/Rogue_head_evo_blush.png",
+            # "R_Hair == 'evo'", "images/RogueSprite/Rogue_head_evo.png",
+            "True", "images/MystiqueSprite/Mystique_head_base.png",
+            ),  
+        (0,0), ConditionSwitch(                                                                         #brows
+            # "R_Brows == 'normal' and R_Blush == 2", "images/RogueSprite/Rogue_brows_normal_b.png",
+            # "R_Brows == 'angry' and R_Blush == 2", "images/RogueSprite/Rogue_brows_angry_b.png",
+            # "R_Brows == 'sad' and R_Blush == 2", "images/RogueSprite/Rogue_brows_sad_b.png",
+            # "R_Brows == 'surprised' and R_Blush == 2", "images/RogueSprite/Rogue_brows_surprised_b.png",        
+            # "R_Brows == 'confused' and R_Blush == 2", "images/RogueSprite/Rogue_brows_confused_b.png",
+            "newgirl['Mystique'].Brows == 'normal'", "images/MystiqueSprite/Mystique_brows_normal.png",
+            "newgirl['Mystique'].Brows == 'angry'", "images/MystiqueSprite/Mystique_brows_angry.png",
+            "newgirl['Mystique'].Brows == 'sad'", "images/MystiqueSprite/Mystique_brows_sad.png",
+            "newgirl['Mystique'].Brows == 'surprised'", "images/MystiqueSprite/Mystique_brows_surprised.png",        
+            "newgirl['Mystique'].Brows == 'confused'", "images/MystiqueSprite/Mystique_brows_confused.png",
+            "True", "images/MystiqueSprite/Mystique_brows_normal.png",
             ),
-        (0,0), ConditionSwitch(                                                                         #Face blush 1 not wet
-            "E_Blush != 1 or E_Hair == 'wet' or E_Water", Null(),        
-            "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_AngryB1.png",
-            "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_SadB1.png",
-            "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wave_SurprisedB1.png",   
-            "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wave_ConfusedB1.png", 
-            "True", "images/EmmaSprite/EmmaSprite_Head_Wave_NormalB1.png", #E_Brows == 'normal'
+#        (0,0), ConditionSwitch(                                                                         #Blush
+#            "R_Blush", "images/RogueSprite/Rogue_blush.png",
+#            "True", Null(), 
+#            ),
+        (0,0), "Mystique Blink",  
+        (0,0), ConditionSwitch(                                                                                 #Collar
+            "newgirl['Mystique'].Glasses", "images/RogueSprite/Rogue_Sprite_Glasses.png",   
+            "True", Null(),                #R_Arms == 'gloved' or not R_Arms
+            ),  
+        (0,0), ConditionSwitch(                                                                         #Hair
+            # "R_Hair == 'evo' and R_Water and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_wet.png",
+            # "R_Hair == 'evo' and R_Water and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_wet.png",
+            # "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_hair_wet.png",
+            # "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_evo.png",
+            # "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_evo.png",
+            "newgirl['Mystique'].Hair", "images/MystiqueSprite/Mystique_hair_basic.png",
+            "True", Null(), 
+            ),   
+        (0,0), ConditionSwitch(                                                                                 #Mouth for under layer
+            #"Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
+            "Speed == 1 and Trigger == 'blow'", "images/MystiqueSprite/Mystique_mouth_tongue.png", #licking
+            "Speed == 2 and Trigger == 'blow'", Null(),                                #heading Rogue_BJ_HeadingMouth()
+            "Speed == 3 and Trigger == 'blow'", "images/MystiqueSprite/Mystique_bj_mouth2.png", #sucking
+            "Speed == 4 and Trigger == 'blow'", "images/MystiqueSprite/Mystique_bj_mouth2.png", #deepthroat   
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'sucking'", "images/MystiqueSprite/Mystique_mouth_sucking_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'surprised'", "images/MystiqueSprite/Mystique_mouth_sucking_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'sad'", "images/MystiqueSprite/Mystique_mouth_sad_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'kiss'", "images/MystiqueSprite/Mystique_mouth_sad_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'smile'", "images/MystiqueSprite/Mystique_mouth_smile_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'tongue'", "images/MystiqueSprite/Mystique_mouth_tongue_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk", "images/MystiqueSprite/Mystique_mouth_lipbite_w.png",      
+            "newgirl['Mystique'].Mouth == 'normal'", "images/MystiqueSprite/Mystique_mouth_normal.png",
+            "newgirl['Mystique'].Mouth == 'lipbite'", "images/MystiqueSprite/Mystique_mouth_lipbite.png",
+            "newgirl['Mystique'].Mouth == 'sucking'", "images/MystiqueSprite/Mystique_mouth_sucking.png",            
+            "newgirl['Mystique'].Mouth == 'kiss'", "images/MystiqueSprite/Mystique_mouth_kiss.png",
+            "newgirl['Mystique'].Mouth == 'sad'", "images/MystiqueSprite/Mystique_mouth_sad.png",
+            "newgirl['Mystique'].Mouth == 'smile'", "images/MystiqueSprite/Mystique_mouth_smile.png",
+            "newgirl['Mystique'].Mouth == 'surprised'", "images/MystiqueSprite/Mystique_mouth_surprised.png",            
+            "newgirl['Mystique'].Mouth == 'tongue'", "images/MystiqueSprite/Mystique_mouth_tongue.png",                
+            "newgirl['Mystique'].Mouth == 'grimace'", "images/MystiqueSprite/Mystique_mouth_grimace.png",          
+            "True", "images/MystiqueSprite/Mystique_mouth_normal.png",
             ),
-        (0,0), ConditionSwitch(                                                                         #Face blush 2 not wet
-            "E_Blush != 2 or E_Hair == 'wet' or E_Water", Null(),        
-            "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wave_AngryB2.png",
-            "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wave_SadB2.png",
-            "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wave_SurprisedB2.png",    
-            "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wave_ConfusedB2.png", 
-            "True", "images/EmmaSprite/EmmaSprite_Head_Wave_NormalB2.png", #E_Brows == 'normal'
-            ),
-        
-         (0,0), ConditionSwitch(                                                                         #Face no blush wet
-            "E_Blush or (E_Hair != 'wet' and not E_Water)", Null(),        
-            "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_Angry.png",
-            "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_Sad.png",
-            "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wet_Surprised.png",    
-            "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wet_Confused.png",  
-            "True", "images/EmmaSprite/EmmaSprite_Head_Wet_Normal.png", #E_Brows == 'normal'
-            ),
-        (0,0), ConditionSwitch(                                                                         #Face blush 1 wet
-            "E_Blush != 1 or (E_Hair != 'wet' and not E_Water)", Null(),        
-            "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_AngryB1.png",
-            "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_SadB1.png",
-            "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wet_SurprisedB1.png",    
-            "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wet_ConfusedB1.png",    
-            "True", "images/EmmaSprite/EmmaSprite_Head_Wet_NormalB1.png", #E_Brows == 'normal'
-            ),
-        (0,0), ConditionSwitch(                                                                         #Face blush 2 wet
-            "E_Blush != 2 or (E_Hair != 'wet' and not E_Water)", Null(),        
-            "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Wet_AngryB2.png",
-            "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Wet_SadB2.png",
-            "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Wet_SurprisedB2.png",    
-            "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Wet_ConfusedB2.png",    
-            "True", "images/EmmaSprite/EmmaSprite_Head_Wet_NormalB2.png", #E_Brows == 'normal'
-            ),
-        
-        # (0,0), ConditionSwitch(                                                                         #Mouths        
-        #     "E_Mouth == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
-        #     "E_Mouth == 'lipbite'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Lipbite.png",
-        #     "E_Mouth == 'sucking'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
-        #     "E_Mouth == 'kiss'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Kiss.png",
-        #     "E_Mouth == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Sad.png",
-        #     "E_Mouth == 'smile'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smile.png",
-        #     "E_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
-        #     "E_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Tongue.png",                
-        #     "E_Mouth == 'grimace'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smile.png",                 
-        #     "E_Mouth == 'smirk'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smirk.png",         
-        #     "True", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
-        #     ),   
-        
         # (0,0), ConditionSwitch(                                                                         #Mouth spunk               
         #     "'mouth' not in E_Spunk", Null(),
         #     "E_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthOpen.png",            
         #     "E_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthTongue.png",            
         #     "True", "images/EmmaSprite/EmmaSprite_Head_Spunk_Mouth.png",  
-        #     ),  
-
-        (0,0), ConditionSwitch(                                                                                 #Mouth for under layer
-            #"Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
-            "Speed == 1 and Trigger == 'blow'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Tongue.png", #licking
-            "Speed == 2 and Trigger == 'blow'", Null(),                                #heading Rogue_BJ_HeadingMouth()
-            "Speed == 3 and Trigger == 'blow'", "images/EmmaSprite/Emma_bj_mouth.png", #sucking
-            "Speed == 4 and Trigger == 'blow'", "images/EmmaSprite/Emma_bj_mouth.png", #deepthroat         
-            "E_Mouth == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
-            "E_Mouth == 'lipbite'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Lipbite.png",
-            "E_Mouth == 'sucking'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
-            "E_Mouth == 'kiss'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Kiss.png",
-            "E_Mouth == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Sad.png",
-            "E_Mouth == 'smile'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smile.png",
-            "E_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Surprised.png",            
-            "E_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Tongue.png",                
-            "E_Mouth == 'grimace'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smile.png",                 
-            "E_Mouth == 'smirk'", "images/EmmaSprite/EmmaSprite_Head_Mouth_Smirk.png",         
-            "True", "images/EmmaSprite/EmmaSprite_Head_Mouth_Normal.png",
-            ),
-        (0,0), ConditionSwitch(                                                                         #Mouth spunk               
-            "'mouth' not in E_Spunk", Null(),
-            "E_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthOpen.png",            
-            "E_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthTongue.png",            
-            "True", "images/EmmaSprite/EmmaSprite_Head_Spunk_Mouth.png",  
-            ), 
-        
-        (0,0), "Emma Blink",                                                                           #Eyes        
-        (0,0), ConditionSwitch(                                                                         #brows
-            #"E_Brows == 'normal' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_White.png",
-            #"E_Brows == 'normal' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_Red.png",
-            "E_Brows == 'normal' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Normal.png",
-            "E_Brows == 'normal'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal.png",
-            #"E_Brows == 'angry' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Angry_White.png",
-            #"E_Brows == 'angry' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Angry_Red.png",
-            "E_Brows == 'angry' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Angry.png",
-            "E_Brows == 'angry'", "images/EmmaSprite/EmmaSprite_Head_Brows_Angry.png",
-            #"E_Brows == 'sad' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Sad_White.png",
-            #"E_Brows == 'sad' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Sad_Red.png",
-            "E_Brows == 'sad' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Sad.png",
-            "E_Brows == 'sad'", "images/EmmaSprite/EmmaSprite_Head_Brows_Sad.png",
-            #"E_Brows == 'surprised' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Surprised_White.png",        
-            #"E_Brows == 'surprised' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Surprised_Red.png",        
-            "E_Brows == 'surprised' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Surprised.png",        
-            "E_Brows == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Brows_Surprised.png",        
-            #"E_Brows == 'confused' and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Confused_White.png",
-            #"E_Brows == 'confused' and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Confused_Red.png",
-            "E_Brows == 'confused' and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Confused.png",
-            "E_Brows == 'confused'", "images/EmmaSprite/EmmaSprite_Head_Brows_Confused.png",
-            #"True and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_White.png",
-            #"True and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal_Red.png",
-            "True and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_BrowsBlack_Normal.png",
-            "True", "images/EmmaSprite/EmmaSprite_Head_Brows_Normal.png",
-            ),         
+        #     ), 
         (0,0), ConditionSwitch(                                                                         #facial spunk               
-            "'facial' in E_Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_Face.png",             
+            "'facial' in newgirl['Mystique'].Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_Face.png",             
             "True", Null(),
             ),  
-        (0,0), ConditionSwitch(                                                                         #Hair
-            "not E_Hair", Null(),
-            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_HairWet_White.png",
-            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_HairWet_Red.png",
-            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackWet.png",
-            "E_Hair == 'wet' or E_Water", "images/EmmaSprite/EmmaSprite_Head_HairWet.png",
-            "E_Hair and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Hair_White.png",
-            "E_Hair and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Hair_Red.png",
-            "E_Hair and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlack.png",
-            "E_Hair", "images/EmmaSprite/EmmaSprite_Head_Hair.png",
-            "True", Null(),
-            ),        
-        (0,0), ConditionSwitch(                                                                         #Hair Water
-            "not E_Water", Null(),
-            "E_Hair == 'wet'", "images/EmmaSprite/EmmaSprite_Head_Water.png",
-            "True", "images/EmmaSprite/EmmaSprite_Head_Water.png",
-            ),
+        # (0,0), ConditionSwitch(                                                                         #Hair Water
+        #     "not E_Water", Null(),
+        #     "E_Hair == 'wet'", "images/EmmaSprite/EmmaSprite_Head_Water.png",
+        #     "True", "images/EmmaSprite/EmmaSprite_Head_Water.png",
+        #     ),
         (0,0), ConditionSwitch(                                                                         #hair spunk               
-            "'hair' in E_Spunk and (E_Hair == 'wet' or E_Water)", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWet.png",                         
-            "'hair' in E_Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWave.png",              
+            "'hair' in newgirl['Mystique'].Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWave.png",              
             "True", Null(),
             ),  
         )                
     anchor (0.6, 0.0)                
-    zoom .5 
+    zoom .75 
 
 
 label Mystique_BJ_Launch(Line = 0):    # The sequence to launch the Emma BJ animations  
     if Trigger2 == "jackin":
         $ Trigger2 = 0
-    if renpy.showing("Emma_BJ_Animation"):
+    if renpy.showing("Mystique_BJ_Animation"):
         return
 
-    call Emma_Hide
+    call Mystique_Hide
     if Line == "L" or Line == "cum":
-        show Emma_Sprite at SpriteLoc(StageCenter) zorder EmmaLayer:
+        show Mystique_Sprite at SpriteLoc(StageCenter) zorder newgirl["Mystique"].GirlLayer:
             alpha 1
 #            zoom 1 offset (0,0)
-            ease 1 zoom 3 offset (160,90) #(-90,140) offset (150,80) 
+            ease 1 zoom 2.5 offset (70,140) #(-90,140) offset (150,80) 
         with dissolve
     else:
-        show Emma_Sprite at SpriteLoc(StageCenter) zorder EmmaLayer:
+        show Mystique_Sprite at SpriteLoc(StageCenter) zorder newgirl["Mystique"].GirlLayer:
             alpha 1
-            zoom 3 offset (160,90) #(-90,140) 
+            zoom 2.5 offset (70,140) #(-90,140) 
         with dissolve
         
-#    show Emma:
+#    show Mystique:
 #        pos (715,50)
 #        alpha 1
 #        zoom 2.5 offset (-90,140) 
 #    with dissolve
         
-    if Taboo and Line == "L": # Emma gets started. . .
-        if not E_Blow:
-            "Emma looks around to see if anyone can see her."
-            "Emma hesitantly pulls down your pants and touches her mouth to your cock."
+    if Taboo and Line == "L": # Mystique gets started. . .
+        if not newgirl["Mystique"].Blow:
+            "Mystique looks around to see if anyone can see her."
+            "Mystique hesitantly pulls down your pants and touches her mouth to your cock."
         else:
-            "Emma hesitantly looks around to see if anyone notices what she's doing, but then bends down and puts her lips around you,"
+            "Mystique hesitantly looks around to see if anyone notices what she's doing, but then bends down and puts her lips around you,"
     elif Line == "L":    
-        if not E_Blow:
-            "Emma hesitantly pulls down your pants and touches her mouth to your cock."
+        if not newgirl["Mystique"].Blow:
+            "Mystique hesitantly pulls down your pants and touches her mouth to your cock."
         else:
-            "Emma bends down and begins to suck on your cock."    
+            "Mystique bends down and begins to suck on your cock."    
             
     $ Speed = 0
     
     #if Line != "cum":
     $ Trigger = "blow"
     
-    show Emma_Sprite zorder EmmaLayer:
+    show Mystique_Sprite zorder newgirl["Mystique"].GirlLayer:
         alpha 0
-    show Emma_BJ_Animation zorder 150: 
+    show Mystique_BJ_Animation zorder 150: 
         pos (645,510) 
     return
     
-label Mystique_BJ_Reset: # The sequence to the Emma animations from BJ to default
-    if not renpy.showing("Emma_BJ_Animation"):
+label Mystique_BJ_Reset: # The sequence to the Mystique animations from BJ to default
+    if not renpy.showing("Mystique_BJ_Animation"):
         return
-    hide Emma_BJ_Animation
+    hide Mystique_BJ_Animation
     $ Speed = 0
     
-#    show Emma at SpriteLoc(R_SpriteLoc) zorder EmmaLayer:
-#        alpha 1
-#        zoom 2 offset (70,140)
-#    with dissolve
-    show Emma_Sprite SpriteLoc(E_SpriteLoc) zorder EmmaLayer:        
+    show Mystique_Sprite SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer:        
         zoom 2 offset (70,140)
         alpha 1
         block:
@@ -1085,40 +1033,36 @@ label Mystique_BJ_Reset: # The sequence to the Emma animations from BJ to defaul
             ease 1 zoom 1.5 offset (-50,50)
             pause .5
             ease .5 zoom 1 offset (0,0)     
-    call EmmaFace("sexy")        
+    call MystiqueFace("sexy")        
     return  
     
 # ////////////////////////////////                                                                                      ///////////////////////////////
 # ////////////////////////////////                                                                                      ///////////////////////////////
 # ////////////////////////////////
 
-image Emma_Hand_Under:
+image Mystique_Hand_Under:
     ConditionSwitch(
-        "E_Arms == 'black gloves'", "images/EmmaSprite/handemma2_black.png",
-        "E_Arms == 'white gloves'", "images/EmmaSprite/handemma2_white.png",
-        "True", "images/EmmaSprite/handemma2.png",
+        "True", "images/MystiqueSprite/hand2.png",
         ),
     anchor (0.5,0.5)
     pos (0,0)
     
     
-image Emma_Hand_Over:
+image Mystique_Hand_Over:
     ConditionSwitch(
-        "E_Arms == 'black gloves'", "images/EmmaSprite/handemma1_black.png", 
-        "E_Arms == 'white gloves'", "images/EmmaSprite/handemma1_white.png",
-        "True", "images/EmmaSprite/handemma1.png",
+        "True", "images/MystiqueSprite/hand1.png",
         ),
     anchor (0.5,0.5)
     pos (0,0)
 
 
 
-image Emma_HJ_Animation:  
+image Mystique_HJ_Animation:  
     contains:
         ConditionSwitch(                                                # backside of the hand
-            "not Speed", Transform("Emma_Hand_Under"), 
-            "Speed == 1", At("Emma_Hand_Under", Kitty_Hand_1()),
-            "Speed >= 2", At("Emma_Hand_Under", Kitty_Hand_2()),
+            "not Speed", Transform("Mystique_Hand_Under"), 
+            "Speed == 1", At("Mystique_Hand_Under", Kitty_Hand_1()),
+            "Speed >= 2", At("Mystique_Hand_Under", Kitty_Hand_2()),
             "Speed", Null(),
             ),  
     contains:
@@ -1131,32 +1075,35 @@ image Emma_HJ_Animation:
         offset (0,0)
     contains:
         ConditionSwitch(                                                # fingers of the hand
-            "not Speed", Transform("Emma_Hand_Over"), 
-            "Speed == 1", At("Emma_Hand_Over", Kitty_Hand_1()),
-            "Speed >= 2", At("Emma_Hand_Over", Kitty_Hand_2()), 
+            "not Speed", Transform("Mystique_Hand_Over"), 
+            "Speed == 1", At("Mystique_Hand_Over", Kitty_Hand_1()),
+            "Speed >= 2", At("Mystique_Hand_Over", Kitty_Hand_2()), 
             "Speed", Null(),
             ),   
-    anchor (0.51, -1.3)
-    zoom 0.4#0.6
+    #anchor (0.51, -1.3)
+    #zoom 0.4#0.6
+    anchor (0.5,0.5)#anchor (0.51, -1.3)
+    offset (200,800)
+    zoom 0.6
         
 
 
 label Mystique_HJ_Launch(Line = 0): 
-    $ Emma_Arms = 1
+    $ newgirl["Mystique"].Girl_Arms = 1
     if Trigger2 == "jackin":
         $ Trigger2 = 0
-    if renpy.showing("Emma_HJ_Animation"):        
+    if renpy.showing("Mystique_HJ_Animation"):        
         $ Trigger = "hand"
         return
-    call Emma_Hide
+    call Mystique_Hide
     if Line == "L":      
-        show Emma_Sprite at SpriteLoc(StageRight) zorder EmmaLayer:
+        show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].Loc) zorder newgirl["Mystique"].GirlLayer:
             alpha 1
-            ease 1 zoom 1.7 offset (-50,200)
+            ease 1 zoom 1.7 xpos 700 yoffset 200
     else:     
-        show Emma_Sprite at SpriteLoc(StageRight) zorder EmmaLayer:
+        show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].Loc) zorder newgirl["Mystique"].GirlLayer:
             alpha 1
-            ease 1 zoom 1.7 offset (-50,200)
+            ease 1 zoom 1.7 xpos 700 yoffset 200
         with dissolve
    
     $ Speed = 0
@@ -1165,20 +1112,20 @@ label Mystique_HJ_Launch(Line = 0):
     else:
         $ Speed = 1
     pause .5
-    show Emma_HJ_Animation at SpriteLoc(StageCenter) zorder 150 with easeinbottom:
+    show Mystique_HJ_Animation at SpriteLoc(newgirl["Mystique"].Loc) zorder 150 with easeinbottom:
         #xoffset 150
-        offset (100,250)#(75,250)
+        #offset (100,250)#(75,250)
     return
     
 label Mystique_HJ_Reset: # The sequence to the Emma animations from handjob to default
-    if not renpy.showing("Emma_HJ_Animation"):
+    if not renpy.showing("Mystique_HJ_Animation"):
         return    
     $ Speed = 0
-    hide Emma_HJ_Animation with easeoutbottom
-    show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer:
+    hide Mystique_HJ_Animation with easeoutbottom
+    show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer:
         alpha 1
         zoom 1.7 offset (-50,200)
-    show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer:
+    show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer:
         alpha 1
         ease 1 zoom 1.5 offset (-150,50)
         pause .5
@@ -1229,15 +1176,15 @@ label Mystique_Pos_Reset(Pose = 0):
     return
     
 label Mystique_Hide:
-        if renpy.showing("Emma_SexSprite") or renpy.showing("Emma_Doggy"):
-            call Emma_Sex_Reset
-        hide Emma_SexSprite
-        if renpy.showing("Emma_Doggy"):
-            if E_Gag == "ballgag":
-                $ E_Gag = 0
-        hide Emma_Doggy
-        hide Emma_HJ_Animation
-        hide Emma_BJ_Animation
+        if renpy.showing("Mystique_SexSprite") or renpy.showing("Mystique_Doggy"):
+            call Mystique_Sex_Reset
+        hide Mystique_SexSprite
+        if renpy.showing("Mystique_Doggy"):
+            if newgirl["Mystique"].Gag == "ballgag":
+                $ newgirl["Mystique"].Gag = 0
+        hide Mystique_Doggy
+        hide Mystique_HJ_Animation
+        hide Mystique_BJ_Animation
     #    hide Emma_TJ_Animation 
         return
 

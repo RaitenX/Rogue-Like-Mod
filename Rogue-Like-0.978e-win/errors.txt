@@ -2,20 +2,16 @@
 errors listed below, and try again.
 
 
-File "game/Mystique_Sex.rpy", line 2037: expected statement.
-    elif Taboo > 20:
-               ^
+File "game/Emma_Chat.rpy", line 312: menu statement expects a non-empty block.
+    menu:
+        ^
 
-File "game/Rogue_Sex.rpy", line 2010: expected statement.
-    for Girls_ in ModdedGirls:
-               ^
+File "game/Emma_Chat.rpy", line 314: expected statement.
+    "Yes, teach me":
+                   ^
 
-File "game/Rogue_Sex.rpy", line 2025: expected statement.
-    for Girls_ in ModdedGirls:
-               ^
-
-File "game/Rogue_Sex.rpy", line 2049: expected statement.
-    for Girls_ in ModdedGirls:
-               ^
+File "game/Emma_Chat.rpy", line 318: expected statement.
+    "No, I'll find it by myself":
+                                ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

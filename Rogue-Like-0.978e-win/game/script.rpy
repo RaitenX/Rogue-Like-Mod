@@ -73,7 +73,7 @@ init -1:
     default ModdedGirls = ["Mystique"] #List with all modded girls
     #default ModdedGirls = ["Mystique", "Jean"] #List with all modded girls
     default MystiqueName = "Mystique"
-    default newgirl = {"Mystique" : Girlnew("Mystique"),
+    default newgirl = {"Mystique" : Girlnew("Mystique"),    #The LikeOtherGirl attribute should be set for each new girl
                        #"Jean" : Girlnew("Jean")
                         }
     

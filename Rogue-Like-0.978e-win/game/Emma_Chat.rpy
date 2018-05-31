@@ -308,8 +308,17 @@ label Emma_Chat_Minimal:
                         ch_p "Did you want to fool around?"  
                     else: 
                         ch_p "I want to get naughty."                        
-                    ch_e "With a student? You should know better than that, [E_Petname]."  
-                          
+                    ch_e "With a student? You should know better than that, [E_Petname]. [[YOU haven't unlocked this yet]"
+                    menu:
+                        "Wanna know how?"
+                        "Yes, teach me":
+                            "Come to the classroom at evening for a special event."
+                            "And don't just wait there, at least go outside of the classroom and come back"
+                            pass
+                        "No, I'll find it by myself":
+                            "It's not hard, have fun"
+                            pass
+
         "I just wanted to talk. . .":
                     ch_e "I really don't have anything to talk about at the moment.[[Not in yet]"   
                     
@@ -1752,7 +1761,7 @@ label Emma_AskPanties(Store = 0):
             $ Tempmod -= 20
         
         $ Line = 0
-        if E_Legs == "pants" or E_Legs == "black pants" or E_Legs == "NewX" or E_Legs == "NewX black" or HoseNum("Emma") >= 10: 
+        if E_Legs == "pants" or E_Legs == "black pants" or E_Legs == "NewX" or E_Legs == "NewX black" or E_Legs == "red sports shorts" or E_Legs == "white sports shorts" or HoseNum("Emma") >= 10: 
             if ApprovalCheck("Emma", 1000, "OI", TabM = 5) or "exhibitionist" in E_Traits:   
                 $ Line = "here"
             elif ApprovalCheck("Emma", 900, TabM = 5):
@@ -1845,7 +1854,7 @@ label Emma_AskPanties(Store = 0):
                                 
                     if Line:                                            #She agreed to stay  
                                 call EmmaFace("sly", 1) 
-                                if E_Legs == "pants" or E_Legs == "black pants" or E_Legs == "NewX" or E_Legs == "NewX black" or HoseNum("Emma") >= 10:   
+                                if E_Legs == "pants" or E_Legs == "black pants" or E_Legs == "NewX" or E_Legs == "NewX black" or E_Legs == "red sports shorts" or E_Legs == "white sports shorts" or HoseNum("Emma") >= 10:   
                                         $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 60, 5)         
                                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 60, 5)            
                                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 5)   
@@ -3673,10 +3682,10 @@ label Emma_Clothes(Public=0,Bonus=0):
                                 $ E_Chest = "corset"   
                                 call Emma_Tits_Up
                                 "She pulls out her corset and slips it on under her [E_Over]."
-#                        elif ApprovalCheck("Emma", 600, TabM=2):
-#                                ch_e "I suppose I could."
-#                                $ E_Chest = "sports bra"
-#                                "She pulls out her sports bra and slips it on under her [E_Over]."
+                        elif ApprovalCheck("Emma", 600, TabM=2):
+                                ch_e "I suppose I could."
+                                $ E_Chest = "white sports bra"
+                                "She pulls out her sports bra and slips it on under her [E_Over]."
                         else:
                                 ch_e "Yes, but I'd rather not."
                                 return 0
@@ -3747,6 +3756,14 @@ label Emma_Clothes(Public=0,Bonus=0):
         "You look great in those black shorts." if E_Legs != "NewX black":
             ch_e "I know."
             $ E_Legs = "NewX black"
+
+        "You look great in those white sports shorts." if E_Legs != "white sports shorts":
+            ch_e "I know."
+            $ E_Legs = "white sports shorts"
+
+        "You look great in those red sports shorts." if E_Legs != "red sports shorts":
+            ch_e "I know."
+            $ E_Legs = "red sports shorts"
                 
 #        "You look great in those black jeans." if E_Legs != "black jeans":
 #            ch_e "K, no problem."
@@ -3874,6 +3891,22 @@ label Emma_Clothes(Public=0,Bonus=0):
             if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
                 ch_e "So do I."   
                 $ E_Chest = "NewX black"  
+                $ E_TitsUp = 1
+            else:                
+                ch_e "I don't think that would be appropriate. . ." 
+
+        "I like that white sports bra you have." if E_Chest != "white sports bra":
+            if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
+                ch_e "So do I."   
+                $ E_Chest = "white sports bra"  
+                $ E_TitsUp = 1
+            else:                
+                ch_e "I don't think that would be appropriate. . ."  
+
+        "I like that red sports bra you have." if E_Chest != "red sports bra":
+            if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
+                ch_e "So do I."   
+                $ E_Chest = "red sports bra"  
                 $ E_TitsUp = 1
             else:                
                 ch_e "I don't think that would be appropriate. . ."  
@@ -4453,6 +4486,10 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
             if E_Chest == "black corset":  
                 $ Count = 15
             elif E_Chest == "corset":  
+                $ Count = 15
+            elif E_Chest == "white sports bra":  
+                $ Count = 15
+            elif E_Chest == "red sports bra":  
                 $ Count = 15
             elif E_Chest == "NewX":  
                 $ Count = 10

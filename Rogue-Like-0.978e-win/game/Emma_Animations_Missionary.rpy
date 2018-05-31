@@ -85,13 +85,14 @@ image Emma_Sex_Body = LiveComposite(
             "E_Water", "images/EmmaSex/Emma_Sex_Water_Body.png",   
             "True", Null(),              
             ), 
-        # (0,0), ConditionSwitch(                                                                                 #Overshirt
-        #     "not E_Over", Null(),
-        #     "E_Over == 'pink top'", "images/EmmaSex/Emma_Sex_Over_PinkShirt.png",           
-        #     "E_Over == 'red shirt'", "images/EmmaSex/Emma_Sex_Over_RedShirt.png",   
-        #     "E_Over == 'towel'", "images/EmmaSex/Emma_Sex_Over_Towel.png",       
-        #     "True", Null(), 
-        #     ),  
+        (0,0), ConditionSwitch(                                                                                 #Overshirt
+            "not E_Over", Null(),
+            "E_Over == 'jacket'", "images/EmmaSex/Emma_Sex_Jacket_White.png",           
+            "E_Over == 'black jacket'", "images/EmmaSex/Emma_Sex_Jacket_Black.png",           
+            # "E_Over == 'red shirt'", "images/EmmaSex/Emma_Sex_Over_RedShirt.png",   
+            # "E_Over == 'towel'", "images/EmmaSex/Emma_Sex_Over_Towel.png",       
+            "True", Null(), 
+            ),  
         (0,0),ConditionSwitch(                                                                                  #Outside Spunk
             "'belly' in E_Spunk", "images/EmmaSex/Emma_Sex_Spunk_Body.png",   
             "True", Null(),  

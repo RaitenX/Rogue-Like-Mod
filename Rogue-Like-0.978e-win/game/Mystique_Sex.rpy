@@ -109,24 +109,24 @@ label Mystique_SexMenu:
                     ch_m "I'm sorry, [newgirl[Mystique].Petname], but I need a break."
                     
         "Could you take care of something for me? [[Your dick, you mean your dick]":        
-                # if P_Semen and newgirl["Mystique"].Action:                
-                #     menu:
-                #         ch_m "What did you want me to do?"
-                #         "Could you give me a handjob?":
-                #             call Mystique_Handjob
-                #         # "Could you give me a titjob?":
-                #         #     call Mystique_Titjob         
-                #         "Could you suck my cock?":
-                #             call Mystique_Blowjob 
-                #         "Could you use your feet?":
-                #             call Mystique_Footjob 
-                #         "Never mind [[something else]":
-                #             jump Mystique_SMenu
-                # elif not newgirl["Mystique"].Action:
-                #         "I'm sorry, [newgirl[Mystique].Petname], but I need a break."
-                # else:
-                #         "You really don't have it in you, maybe take a break." 
-                ch_m "Not if you mean \"your dick\".[[Not available yet]"
+                if P_Semen and newgirl["Mystique"].Action:                
+                    menu:
+                        ch_m "What did you want me to do?"
+                        "Could you give me a handjob?":
+                            call Mystique_Handjob
+                        # "Could you give me a titjob?":
+                        #     call Mystique_Titjob         
+                        "Could you suck my cock?":
+                            call Mystique_Blowjob 
+                        # "Could you use your feet?":
+                        #     call Mystique_Footjob 
+                        "Never mind [[something else]":
+                            jump Mystique_SMenu
+                elif not newgirl["Mystique"].Action:
+                        "I'm sorry, [newgirl[Mystique].Petname], but I need a break."
+                else:
+                        "You really don't have it in you, maybe take a break." 
+                # ch_m "Not if you mean \"your dick\".[[Not available yet]"
                 
         "Could you put on a show for me?":
                     menu:
@@ -1972,12 +1972,11 @@ label Mystique_Taboo(Cnt= 1, Public=0):
                 call Kitty_Noticed("Mystique")
             if E_Loc == bg_current:
                 call Emma_Noticed("Mystique")
-            #for Girls_ in ModdedGirls:
             $ i = 0
             while i < len(ModdedGirls):
-                if Girls_ != "Mystique":
-                    if newgirl[Girls_].Loc == bg_current:
-                        call NewGirl_Noticed("Mystique", Girls_)
+                if ModdedGirls[i] != "Mystique":
+                    if newgirl[ModdedGirls[i]].Loc == bg_current:
+                        call NewGirl_Noticed("Mystique", ModdedGirls[i])
                 $ i += 1
             return
     call MystiqueFace("surprised", 1) 
@@ -2000,12 +1999,11 @@ label Mystique_Taboo(Cnt= 1, Public=0):
                 call Kitty_Noticed("Mystique")
         if E_Loc == bg_current:
                 call Emma_Noticed("Mystique")
-        #for Girls_ in ModdedGirls:
         $ i = 0
         while i < len(ModdedGirls):
-                if Girls_ != "Mystique":
-                    if newgirl[Girls_].Loc == bg_current:
-                        call NewGirl_Noticed("Mystique", Girls_)
+                if ModdedGirls[i] != "Mystique":
+                    if newgirl[ModdedGirls[i]].Loc == bg_current:
+                        call NewGirl_Noticed("Mystique", ModdedGirls[i])
                 $ i += 1
         if Trigger != "kissing" and Taboo > 20:
                 call MystiqueFace("confused", 1)
@@ -2027,12 +2025,11 @@ label Mystique_Taboo(Cnt= 1, Public=0):
                 call Kitty_Noticed("Mystique")
         if E_Loc == bg_current:
                 call Emma_Noticed("Mystique")
-        #for Girls_ in ModdedGirls:
         $ i = 0
         while i < len(ModdedGirls):
-                if Girls_ != "Mystique":
-                    if newgirl[Girls_].Loc == bg_current:
-                        call NewGirl_Noticed("Mystique", Girls_)
+                if ModdedGirls[i] != "Mystique":
+                    if newgirl[ModdedGirls[i]].Loc == bg_current:
+                        call NewGirl_Noticed("Mystique", ModdedGirls[i])
                 $ i += 1
         if Taboo > 20:
             ch_x "Hmmm. . ."

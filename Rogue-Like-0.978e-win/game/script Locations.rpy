@@ -1529,6 +1529,7 @@ label Pool_Room:
 
 label Skinny_Dipping(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaCount = 0, Showered = 0, Line = 0):
 
+    $ MystiqueCount = 0
     if R_Loc == "bg pool":
             $ Occupants += 1
             $ RogueCount = 1
@@ -3831,7 +3832,7 @@ label Kitty_Sent_Selfie(test=0):
         hide Kitty_Selfie 
         $ K_Over = K_OverTemp
         $ K_Chest = K_ChestTemp
-        return
+    return
 
 label Rogue_Sent_Selfie(test=0):
     if R_Loc != bg_current and R_Nudes == 1 and "Rogue" in Digits:
@@ -3870,7 +3871,7 @@ label Rogue_Sent_Selfie(test=0):
     
         hide Rogue_Selfie 
 
-        return
+    return
 
 # Kitty's Room Interface //////////////////////////////////////////////////////////////////////
 label Mystique_Room_Entry:

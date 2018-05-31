@@ -2007,7 +2007,6 @@ label Rogue_Taboo(Cnt= 1):
                 call Kitty_Noticed("Rogue")
         if E_Loc == bg_current:
                 call Emma_Noticed("Rogue")
-        #for Girls_ in ModdedGirls:
         $ i = 0
         while i < len(ModdedGirls):
                 if newgirl[ModdedGirls[i]].Loc == bg_current:
@@ -2025,7 +2024,6 @@ label Rogue_Taboo(Cnt= 1):
                 call Kitty_Noticed("Rogue")
         if E_Loc == bg_current:
                 call Emma_Noticed("Rogue")
-        #for Girls_ in ModdedGirls:
         $ i = 0
         while i < len(ModdedGirls):
                 if newgirl[ModdedGirls[i]].Loc == bg_current:
@@ -2052,7 +2050,6 @@ label Rogue_Taboo(Cnt= 1):
                 call Kitty_Noticed("Rogue")
         if E_Loc == bg_current:
                 call Emma_Noticed("Rogue")
-        #for Girls_ in ModdedGirls:
         $ i = 0
         while i < len(ModdedGirls):
                 if newgirl[ModdedGirls[i]].Loc == bg_current:

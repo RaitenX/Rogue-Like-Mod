@@ -147,7 +147,7 @@ image Mystique_Doggy_Body = LiveComposite(                                      
         #    "R_Over == 'white hoodie'", "images/RogueDoggy/Rogue_Doggy_Over_WHoodie.png",           
         #    "R_Over == 'nighty'", "images/RogueDoggy/Rogue_Doggy_Over_NightyTop.png",         
             "newgirl['Mystique'].Over == 'black hoodie'", "images/MystiqueDoggy/Mystique_Doggy_Over_DHoodie.png",
-            "newgirl['Mystique'].Over == 'towel'", "images/MystiqueDoggy/Mystique_Doggy_Over_TowelTop.png",
+            #"newgirl['Mystique'].Over == 'towel'", "images/MystiqueDoggy/Mystique_Doggy_Over_TowelTop.png",
             "True", Null(), 
             ),  
         (0,0), ConditionSwitch(                                                                                 #Hair
@@ -352,8 +352,8 @@ image Mystique_Doggy_Ass = LiveComposite(                                       
         (0,0), ConditionSwitch(                                                                                 #Over Layer
         #    "R_Over == 'nighty' and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_Over_NightyAss_Up.png",            
         #    "R_Over == 'nighty'", "images/RogueDoggy/Rogue_Doggy_Over_NightyAss.png",
-            "newgirl['Mystique'].Over == 'towel' and newgirl['Mystique'].Upskirt", "images/MystiqueDoggy/Mystique_Doggy_Over_TowelAss_Up.png",            
-            "newgirl['Mystique'].Over == 'towel'", "images/MystiqueDoggy/Mystique_Doggy_Over_TowelAss.png",
+            # "newgirl['Mystique'].Over == 'towel' and newgirl['Mystique'].Upskirt", "images/MystiqueDoggy/Mystique_Doggy_Over_TowelAss_Up.png",            
+            # "newgirl['Mystique'].Over == 'towel'", "images/MystiqueDoggy/Mystique_Doggy_Over_TowelAss.png",
             "True", Null(),                    
             ),   
         (0,0), ConditionSwitch(                                                                                 #spunkass Layer

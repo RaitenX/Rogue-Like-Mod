@@ -1262,7 +1262,7 @@ label Emma_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         "You slap the plug lightly against her ass"])
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
                                 $ TempLust += 3 if E_Lust < 50 else 1
-                        if (E_Legs == "NewX" or E_Legs == "NewX black") and not E_Upskirt:
+                        if (E_Legs == "NewX" or E_Legs == "NewX black" or E_Legs == "white sports shorts" or E_Legs == "red sports shorts") and not E_Upskirt:
                                 $ Line = renpy.random.choice(["You rub the plug against the outside of her shorts", 
                                         "You slap the plug lightly against her ass"])
                                 $ TempFocus += 1 if P_Focus < 50 else 0  

@@ -69,6 +69,9 @@ image Emma_Sprite:
             "True", Null(), 
             ), 
         (0,0), ConditionSwitch(                                                                         #pants    
+            "not E_Legs", Null(),
+            "E_Legs == 'red sports shorts' and not E_Upskirt", "images/EmmaSprite/Emma_Sprite_ShortsRed.png", 
+            "E_Legs == 'white sports shorts' and not E_Upskirt", "images/EmmaSprite/Emma_Sprite_ShortsWhite.png", 
             "E_Legs == 'black pants' and not E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_Black.png", 
             "E_Legs == 'pants' and not E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants.png", 
             "E_Legs == 'NewX' and not E_Upskirt", "images/EmmaSprite/EmmaSprite_Pants_NewX.png", 
@@ -134,7 +137,7 @@ image Emma_Sprite:
 #            "E_Pierce == 'barbell'", "images/EmmaSprite/Emma_chest_barbell.png",            
 #            "E_Pierce == 'ring'", "images/EmmaSprite/Emma_chest_rings.png",      
             "Emma_Arms == 1 or E_Chest == 'corset' or E_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_TitsUp.png",   # E_TitsUp = 1
-            "E_Chest == 'sports bra' or E_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_TitsUp.png",   # E_TitsUp = 1
+            "E_Chest == 'red sports bra' or E_Chest == 'white sports bra' or E_Chest == 'lace bra'", "images/EmmaSprite/EmmaSprite_TitsUp.png",   # E_TitsUp = 1
 #            "E_TitsUp", "images/EmmaSprite/EmmaSprite_TitsUp.png",   # E_TitsUp = 1
             "True", "images/EmmaSprite/EmmaSprite_TitsDown.png",   # E_TitsUp = 0
             ), 
@@ -144,6 +147,9 @@ image Emma_Sprite:
             "True", "images/EmmaSprite/EmmaSprite_Water_TitsDown.png", #if E_Arms == 1      
             ), 
         (0,0), ConditionSwitch(                                                                         #Chest layer
+            "not E_Chest", Null(),
+            "E_Chest == 'red sports bra'", "images/EmmaSprite/Emma_Sprite_Sportsbra_Red.png",   
+            "E_Chest == 'white sports bra'", "images/EmmaSprite/Emma_Sprite_Sportsbra_White.png",   
             "E_Chest == 'black corset' and E_Over", "images/EmmaSprite/EmmaSprite_CorsetTitsX_Black.png",   
             "E_Chest == 'black corset'", "images/EmmaSprite/EmmaSprite_CorsetTits_Black.png",   
             "E_Chest == 'corset' and E_Over", "images/EmmaSprite/EmmaSprite_CorsetTitsX.png",   

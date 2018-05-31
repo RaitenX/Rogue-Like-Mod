@@ -5,13 +5,13 @@ While running game code:
     call Girls_Location
   File "game/script Functions.rpy", line 2770, in script call
     call Rogue_Leave
+  File "game/script Locations.rpy", line 540, in script call
+    call Round10
   File "game/script Locations.rpy", line 1318, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2770, in script call
     call Rogue_Leave
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1318, in script call
+  File "game/script Locations.rpy", line 2001, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2770, in script call
     call Rogue_Leave
@@ -21,149 +21,31 @@ While running game code:
     call Girls_Location
   File "game/script Functions.rpy", line 2770, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 540, in script call
-    call Round10
-  File "game/script Functions.rpy", line 1186, in script call
-    call Rogue_Sleepover
-  File "game/Rogue_Scenes.rpy", line 546, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1318, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1886, in script call
+  File "game/script Locations.rpy", line 2001, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2770, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 540, in script call
     call Round10
-  File "game/script Functions.rpy", line 1186, in script call
-    call Rogue_Sleepover
-  File "game/Rogue_Scenes.rpy", line 546, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1418, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1323, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 160, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 81, in script call
-    call R_Makeout
-  File "game/Rogue_Sex.rpy", line 2047, in script call
-    call Rogue_Caught
-  File "game/script Locations.rpy", line 537, in script call
-    call Rogue_Study
-  File "game/script Locations.rpy", line 602, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 2000, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 537, in script call
-    call Rogue_Study
-  File "game/script Locations.rpy", line 602, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 2000, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1318, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2775, in script call
-    call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2000, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2775, in script call
-    call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1886, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 540, in script call
+  File "game/script Locations.rpy", line 151, in script call
     call Round10
-  File "game/script Functions.rpy", line 1186, in script call
-    call Rogue_Sleepover
-  File "game/Rogue_Scenes.rpy", line 546, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 2219, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1358, in script call
-    call Emma_Chat
-  File "game/script Locations.rpy", line 1318, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 2000, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 4010, in script call
-    call Pool_Clothes("auto", "Rogue")
-  File "game/script Functions.rpy", line 2775, in script call
-    call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 3275, in script call
-    call Round10
-  File "game/script Functions.rpy", line 1204, in script call
-    call Kitty_Sleepover
-  File "game/Kitty_Scenes.rpy", line 409, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2775, in script call
-    call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1318, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2775, in script call
-    call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2000, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2775, in script call
-    call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 911, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1323, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 160, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 81, in script call
-    call R_Makeout
-  File "game/Rogue_Sex.rpy", line 1005, in script call
-    call Sex_Dialog("Rogue",Partner)
-  File "game/script Locations.rpy", line 1318, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1950, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1323, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 160, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 112, in script call
-    call R_Titjob
-  File "game/Rogue_Sex.rpy", line 2047, in script call
-    call Rogue_Caught
-  File "game/script Locations.rpy", line 1950, in script call
+  File "game/script Locations.rpy", line 2220, in script call
     call Chat
   File "game/script Functions.rpy", line 1369, in script call
     call Mystique_Chat
-  File "game/Kitty_Chat.rpy", line 316, in script call
-    call Kitty_SexMenu
-  File "game/Kitty_Sex.rpy", line 189, in script call
-    call K_Doggy_H
-  File "game/Kitty_Doggy.rpy", line 3076, in script call
-    call Sex_Dialog("Kitty",Partner)
-  File "game/script Functions.rpy", line 3557, in script call
-    call Kitty_Taboo
-  File "game/Kitty_Sex.rpy", line 2026, in script
-    if newgirl[ModdedGirls[i]].Loc == bg_current:
-  File "game/Kitty_Sex.rpy", line 2026, in <module>
-    if newgirl[ModdedGirls[i]].Loc == bg_current:
-KeyError: u'Jean'
+  File "game/Mystique_Chat.rpy", line 191, in script call
+    call Mystique_SexMenu
+  File "game/Mystique_Sex.rpy", line 169, in script call
+    call Mystique_Doggy_H
+  File "game/Mystique_Doggy.rpy", line 2425, in script call
+    call Mystique_P_Cumming
+  File "game/Mystique_Orgasms.rpy", line 924, in script call
+    call Mystique_HJ_Launch("cum")
+  File "game/Mystique_Animations.rpy", line 1145, in script
+    $ girl["Mystique"].Girl_Arms = 1
+  File "game/Mystique_Animations.rpy", line 1145, in <module>
+    $ girl["Mystique"].Girl_Arms = 1
+NameError: name 'girl' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -172,13 +54,13 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2770, in script call
     call Rogue_Leave
+  File "game/script Locations.rpy", line 540, in script call
+    call Round10
   File "game/script Locations.rpy", line 1318, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2770, in script call
     call Rogue_Leave
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1318, in script call
+  File "game/script Locations.rpy", line 2001, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2770, in script call
     call Rogue_Leave
@@ -188,155 +70,35 @@ Full traceback:
     call Girls_Location
   File "game/script Functions.rpy", line 2770, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 540, in script call
-    call Round10
-  File "game/script Functions.rpy", line 1186, in script call
-    call Rogue_Sleepover
-  File "game/Rogue_Scenes.rpy", line 546, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1318, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1886, in script call
+  File "game/script Locations.rpy", line 2001, in script call
     call Girls_Location
   File "game/script Functions.rpy", line 2770, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 540, in script call
     call Round10
-  File "game/script Functions.rpy", line 1186, in script call
-    call Rogue_Sleepover
-  File "game/Rogue_Scenes.rpy", line 546, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1418, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1323, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 160, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 81, in script call
-    call R_Makeout
-  File "game/Rogue_Sex.rpy", line 2047, in script call
-    call Rogue_Caught
-  File "game/script Locations.rpy", line 537, in script call
-    call Rogue_Study
-  File "game/script Locations.rpy", line 602, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 2000, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 537, in script call
-    call Rogue_Study
-  File "game/script Locations.rpy", line 602, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 2000, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1318, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2775, in script call
-    call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2000, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2775, in script call
-    call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1886, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 540, in script call
+  File "game/script Locations.rpy", line 151, in script call
     call Round10
-  File "game/script Functions.rpy", line 1186, in script call
-    call Rogue_Sleepover
-  File "game/Rogue_Scenes.rpy", line 546, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 2219, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1358, in script call
-    call Emma_Chat
-  File "game/script Locations.rpy", line 1318, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 2000, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/Rogue_Chat.rpy", line 4010, in script call
-    call Pool_Clothes("auto", "Rogue")
-  File "game/script Functions.rpy", line 2775, in script call
-    call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 3275, in script call
-    call Round10
-  File "game/script Functions.rpy", line 1204, in script call
-    call Kitty_Sleepover
-  File "game/Kitty_Scenes.rpy", line 409, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2775, in script call
-    call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 1318, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2775, in script call
-    call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 2000, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2775, in script call
-    call Kitty_Leave(GirlsNum)
-  File "game/script Locations.rpy", line 911, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1323, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 160, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 81, in script call
-    call R_Makeout
-  File "game/Rogue_Sex.rpy", line 1005, in script call
-    call Sex_Dialog("Rogue",Partner)
-  File "game/script Locations.rpy", line 1318, in script call
-    call Girls_Location
-  File "game/script Functions.rpy", line 2770, in script call
-    call Rogue_Leave
-  File "game/script Locations.rpy", line 1950, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1323, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 160, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 112, in script call
-    call R_Titjob
-  File "game/Rogue_Sex.rpy", line 2047, in script call
-    call Rogue_Caught
-  File "game/script Locations.rpy", line 1950, in script call
+  File "game/script Locations.rpy", line 2220, in script call
     call Chat
   File "game/script Functions.rpy", line 1369, in script call
     call Mystique_Chat
-  File "game/Kitty_Chat.rpy", line 316, in script call
-    call Kitty_SexMenu
-  File "game/Kitty_Sex.rpy", line 189, in script call
-    call K_Doggy_H
-  File "game/Kitty_Doggy.rpy", line 3076, in script call
-    call Sex_Dialog("Kitty",Partner)
-  File "game/script Functions.rpy", line 3557, in script call
-    call Kitty_Taboo
-  File "game/Kitty_Sex.rpy", line 2026, in script
-    if newgirl[ModdedGirls[i]].Loc == bg_current:
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1681, in execute
-    if renpy.python.py_eval(condition):
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1794, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1788, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/Kitty_Sex.rpy", line 2026, in <module>
-    if newgirl[ModdedGirls[i]].Loc == bg_current:
-KeyError: u'Jean'
+  File "game/Mystique_Chat.rpy", line 191, in script call
+    call Mystique_SexMenu
+  File "game/Mystique_Sex.rpy", line 169, in script call
+    call Mystique_Doggy_H
+  File "game/Mystique_Doggy.rpy", line 2425, in script call
+    call Mystique_P_Cumming
+  File "game/Mystique_Orgasms.rpy", line 924, in script call
+    call Mystique_HJ_Launch("cum")
+  File "game/Mystique_Animations.rpy", line 1145, in script
+    $ girl["Mystique"].Girl_Arms = 1
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 827, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1764, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/Mystique_Animations.rpy", line 1145, in <module>
+    $ girl["Mystique"].Girl_Arms = 1
+NameError: name 'girl' is not defined
 
 Windows-8-6.2.9200
 Ren'Py 6.99.13.2919

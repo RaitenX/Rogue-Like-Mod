@@ -1970,16 +1970,12 @@ label Emma_Taboo(Cnt= 1, Public=0):
                 call Rogue_Noticed("Emma")
             if K_Loc == bg_current:
                 call Kitty_Noticed("Emma")
-            # python:
             $ i = 0
             while i < len(ModdedGirls):
                 if newgirl[ModdedGirls[i]].Loc == bg_current:
                         call NewGirl_Noticed(ModdedGirls[i], "Emma")
-                #print(colors[i])
                 $ i += 1
 
-                #for Girls_ in ModdedGirls:
-                    
             return
     call EmmaFace("surprised", 1) 
     
@@ -2001,9 +1997,6 @@ label Emma_Taboo(Cnt= 1, Public=0):
                 call Kitty_Noticed("Emma")
         $ i = 0
         while i < len(ModdedGirls):
-        #python:
-        #    for Girls_ in ModdedGirls:
-                    #if newgirl[Girls_].Loc == bg_current:
                     if newgirl[ModdedGirls[i]].Loc == bg_current:
                         call NewGirl_Noticed(ModdedGirls[i], "Emma")
                     $ i += 1
@@ -2025,8 +2018,6 @@ label Emma_Taboo(Cnt= 1, Public=0):
                 call Rogue_Noticed("Emma")
         if K_Loc == bg_current:
                 call Kitty_Noticed("Emma")
-        #python:
-            #for Girls_ in ModdedGirls:
         $ i = 0
         while i < len(ModdedGirls):
                 if newgirl[ModdedGirls[i]].Loc == bg_current:
