@@ -292,10 +292,10 @@ label R_Warn_Her:                                                               
                         jump R_Handy_Finish
                 elif renpy.showing("Rogue_TJ_Animation") and R_Tit:
                         jump R_Facial
-                elif renpy.showing("Rogue_Doggy") and R_Sex and Trigger == "sex":
+                elif renpy.showing("Rogue_SexSprite"): #and R_Sex and Trigger == "sex":
                         "She gently pushes you back off of her."
-                        jump R_SpunkBack
-                elif renpy.showing("Rogue_Doggy") and R_Anal and Trigger == "anal":
+                        jump R_SpunkBelly
+                elif renpy.showing("Rogue_Doggy"): #and R_Anal and Trigger == "anal":
                         "She gently pushes you back off of her."
                         jump R_SpunkBack
         

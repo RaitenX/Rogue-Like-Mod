@@ -1097,11 +1097,11 @@ label Mystique_HJ_Launch(Line = 0):
         return
     call Mystique_Hide
     if Line == "L":      
-        show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].Loc) zorder newgirl["Mystique"].GirlLayer:
+        show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer:
             alpha 1
             ease 1 zoom 1.7 xpos 700 yoffset 200
     else:     
-        show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].Loc) zorder newgirl["Mystique"].GirlLayer:
+        show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer:
             alpha 1
             ease 1 zoom 1.7 xpos 700 yoffset 200
         with dissolve
@@ -1112,7 +1112,7 @@ label Mystique_HJ_Launch(Line = 0):
     else:
         $ Speed = 1
     pause .5
-    show Mystique_HJ_Animation at SpriteLoc(newgirl["Mystique"].Loc) zorder 150 with easeinbottom:
+    show Mystique_HJ_Animation at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder 150 with easeinbottom:
         #xoffset 150
         #offset (100,250)#(75,250)
     return

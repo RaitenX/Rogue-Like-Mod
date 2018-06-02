@@ -645,6 +645,8 @@ label VersionNumber:
     # if SaveVersion < 978:
     # if "Jean" not in newgirl.keys():
     #     $ newgirl["Jean"] = Girlnew("Jean")
+    if newgirl["Mystique"].XP == (0,):
+        $ newgirl["Mystique"].XP = 0
 
 
     if SaveVersion == 975: #error correction, remove this eventually
@@ -4106,26 +4108,30 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
                 if Ch_Focus == "Kitty" and K_Loc == bg_current: 
                         $ K_SpriteLoc = StageCenter
                         $ KittyLayer = 100
-                        $ TheGirls.remove("Kitty")
+                        if "Kitty" in TheGirls:
+                            $ TheGirls.remove("Kitty")
 
                 elif Ch_Focus == "Emma" and E_Loc == bg_current:  
                         $ E_SpriteLoc = StageCenter
                         $ EmmaLayer = 100
-                        $ TheGirls.remove("Emma")
+                        if "Emma" in TheGirls:
+                            $ TheGirls.remove("Emma")
 
                 elif Ch_Focus == "Rogue" and R_Loc == bg_current:   
                         $ R_SpriteLoc = StageCenter
                         $ RogueLayer = 100
-                        $ TheGirls.remove("Rogue")
+                        if "Rogue" in TheGirls:
+                            $ TheGirls.remove("Rogue")
                 
                 elif Ch_Focus == "Mystique" and newgirl["Mystique"].Loc == bg_current: 
                         $ newgirl["Mystique"].SpriteLoc = StageCenter
                         $ newgirl["Mystique"].GirlLayer = 100 
-                        $ TheGirls.remove("Mystique")
+                        if "Mystique" in TheGirls:
+                            $ TheGirls.remove("Mystique")
 
                 # "[TheGirls] 2"
 
-                $ renpy.random.shuffle(TheGirls)
+                #$ renpy.random.shuffle(TheGirls)
 
                 # "[TheGirls] 3"
                 if TheGirls:

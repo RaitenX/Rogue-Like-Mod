@@ -3608,7 +3608,7 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
                     elif Primary == "Emma":
                         call Emma_Self_Lines("T3",Trigger3) 
                     elif Primary == "Mystique":
-                        call Mystique_Self_Lines("T3",Trigger3) 
+                        call NewGirl_Self_Lines("Mystique","T3",Trigger3) 
                     if Line:
                         $ Line3 = Line + "."
            

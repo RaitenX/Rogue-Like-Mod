@@ -66,7 +66,7 @@ label NewGirl_Noticed(Girl_ = "Mystique", Other = "Rogue", B = 0):
                     $ newgirl[Girl_].Traits.append("poly emma") 
             elif Other and ("poly " + Other) not in newgirl[Girl_].Traits: 
                     $ newgirl[Girl_].Traits.append("poly " + Other) 
-            call Mystique_Threeway_Set
+            call NewGirl_Threeway_Set(Girl_)
     elif ApprovalCheck(Girl_, 650, "O", TabM=2) and ApprovalCheck(Girl_, 450, "L", TabM=1) or ApprovalCheck(Girl_, 800, "O", TabM=2, Bonus = (B/3)): 
             #if she likes you, but is very obedient
             call NewGirl_Face(Girl_,"sexy")
@@ -82,7 +82,7 @@ label NewGirl_Noticed(Girl_ = "Mystique", Other = "Rogue", B = 0):
                     $ newgirl[Girl_].Traits.append("poly emma") 
             elif Other and ("poly " + Other) not in newgirl[Girl_].Traits: 
                     $ newgirl[Girl_].Traits.append("poly " + Other)
-            call Mystique_Threeway_Set("watch")
+            call NewGirl_Threeway_Set(Girl_, "watch")
     elif ApprovalCheck(Girl_, 650, "I", TabM=2) and ApprovalCheck(Girl_, 450, "L", TabM=1) or ApprovalCheck(Girl_, 800, "I", TabM=2, Bonus = (B/3)):
             #if she likes you, but is very uninhibited
             call NewGirl_Face(Girl_,"sexy")
@@ -99,7 +99,7 @@ label NewGirl_Noticed(Girl_ = "Mystique", Other = "Rogue", B = 0):
                     $ newgirl[Girl_].Traits.append("poly emma") 
             elif Other and ("poly " + Other) not in newgirl[Girl_].Traits: 
                     $ newgirl[Girl_].Traits.append("poly " + Other)
-            call Mystique_Threeway_Set("watch")
+            call NewGirl_Threeway_Set(Girl_, "watch")
     elif ApprovalCheck(Girl_, 1500, TabM=2, Bonus = B):
             call NewGirl_Face(Girl_,"perplexed", 1)
             "She looks a little annoyed, but she stays and watches."
@@ -114,7 +114,7 @@ label NewGirl_Noticed(Girl_ = "Mystique", Other = "Rogue", B = 0):
                 $ newgirl[Girl_].Obed = Statupdate(Girl_, "Obed", newgirl[Girl_].Obed, 90, 1)
                 $ newgirl[Girl_].Inbt = Statupdate(Girl_, "Inbt", newgirl[Girl_].Inbt, 90, 1) 
             $ newgirl[Girl_].Lust = Statupdate(Girl_, "Lust", newgirl[Girl_].Lust, 90, 5)
-            call Mystique_Threeway_Set("watch")
+            call NewGirl_Threeway_Set(Girl_, "watch")
     elif ApprovalCheck(Girl_, 650, "L", TabM=1) or ApprovalCheck(Girl_, 400, "O", TabM=2):
             #if she likes you or is obedient, but not enough
             call NewGirl_Face(Girl_,"angry", 2)                
@@ -365,8 +365,8 @@ label NewGirl_Threeway_Set(Girl_ = "Mystique", Preset = 0, Mode = 0, Action = Tr
     # Action defaults to Trigger4, the action of the seondary girl and ActiveGirl to the lead girl in the scene
     # In lesbian mode, Action becomes Trigger3, the secondary action of the primary girl, and ActiveGirl is the secondary girl
     # If Set gets passed a preset, it chooses that preset, otherwise it chooses one randomly
-    # for Lesbian: NewGirl_Threeway_Set("activity", "lesbian", Trigger3, "Mystique")
-    # for Threeway: NewGirl_Threeway_Set("activity", 0, Trigger4, "Mystique")
+    # for Lesbian: NewGirl_Threeway_Set("activity", "lesbian", Trigger3, Girl)
+    # for Threeway: NewGirl_Threeway_Set("activity", 0, Trigger4, Girl)
     
             if Mode == "lesbian" and Trigger3:
                     #If it's in lesbian mode, there is already a trigger set, and the roll is good, continue
@@ -383,45 +383,71 @@ label NewGirl_Threeway_Set(Girl_ = "Mystique", Preset = 0, Mode = 0, Action = Tr
                         
             if Trigger == "lesbian":
                     $ State = "lesbian"
-                    if Secondary != "Mystique":
+                    if Secondary != Girl_:
                             $ ActiveGirl = Secondary
                     $ Options = ["kiss girl","kiss girl","fondle ass"]                    
-            elif not ApprovalCheck("Mystique", 500, "I"): # If Mystique is too timid to do anything
+            elif not ApprovalCheck(Girl_, 500, "I"): # If Girl_ is too timid to do anything
                     pass
             elif Primary == "Rogue":
-                    if newgirl["Mystique"].LikeRogue >= 500 and ApprovalCheck("Mystique", (1300-(10*E_Les)-(10*(newgirl["Mystique"].LikeRogue-60)))): #If she likes both of you a lot, threeway
+                    if newgirl[Girl_].LikeRogue >= 500 and ApprovalCheck(Girl_, (1300-(10*newgirl[Girl_].Les)-(10*(newgirl[Girl_].LikeRogue-60)))): #If she likes both of you a lot, threeway
                             $ State = "threeway"
-                    elif ApprovalCheck("Mystique", 1000): #If she likes you well enough, Hetero
+                    elif ApprovalCheck(Girl_, 1000): #If she likes you well enough, Hetero
                             $ State = "hetero"            
-                    elif newgirl["Mystique"].LikeRogue >= 700: #if she doesn't like you but likes Rogue, lesbian
+                    elif newgirl[Girl_].LikeRogue >= 700: #if she doesn't like you but likes Rogue, lesbian
                             $ State = "lesbian"
             elif Primary == "Kitty":
-                    if newgirl["Mystique"].LikeKitty >= 500 and ApprovalCheck("Mystique", (1300-(10*E_Les)-(10*(newgirl["Mystique"].LikeKitty-60)))): #If she likes both of you a lot, threeway
+                    if newgirl[Girl_].LikeKitty >= 500 and ApprovalCheck(Girl_, (1300-(10*newgirl[Girl_].Les)-(10*(newgirl[Girl_].LikeKitty-60)))): #If she likes both of you a lot, threeway
                             $ State = "threeway"
-                    elif ApprovalCheck("Mystique", 1000): #If she likes you well enough, Hetero
+                    elif ApprovalCheck(Girl_, 1000): #If she likes you well enough, Hetero
                             $ State = "hetero"            
-                    elif newgirl["Mystique"].LikeKitty >= 700: #if she doesn't like you but likes Kitty, lesbian
+                    elif newgirl[Girl_].LikeKitty >= 700: #if she doesn't like you but likes Kitty, lesbian
                             $ State = "lesbian"
+            elif Primary == "Emma":
+                    if newgirl[Girl_].LikeKitty >= 500 and ApprovalCheck(Girl_, (1300-(10*newgirl[Girl_].Les)-(10*(newgirl[Girl_].LikeKitty-60)))): #If she likes both of you a lot, threeway
+                            $ State = "threeway"
+                    elif ApprovalCheck(Girl_, 1000): #If she likes you well enough, Hetero
+                            $ State = "hetero"            
+                    elif newgirl[Girl_].LikeKitty >= 700: #if she doesn't like you but likes Kitty, lesbian
+                            $ State = "lesbian"
+            else:
+                #$ k = 0
+                #while k < len(ModdedGirls):
+                if Primary in ModdedGirls and Primary != Girl_:
+                    if newgirl[Girl_].LikeOtherGirl[Primary] >= 500 and ApprovalCheck(Girl_, (1300-(10*newgirl[Girl_].Les)-(10*(newgirl[Girl_].LikeOtherGirl[Primary]-60)))): #If she likes both of you a lot, threeway
+                        $ State = "threeway"
+                    elif ApprovalCheck(Girl_, 1000): #If she likes you well enough, Hetero
+                        $ State = "hetero"            
+                    elif newgirl[Girl_].LikeOtherGirl[Primary] >= 700: #if she doesn't like you but likes Kitty, lesbian
+                        $ State = "lesbian"    
+                    #$ k += 1
             
             
             if State == "lesbian" or State == "threeway":
                 $ Options.extend(("fondle breasts","suck breasts","fondle pussy","fondle ass","kiss girl")) 
                 if ActiveGirl == "Rogue":
-                            if ApprovalCheck("Mystique", 800, "I") or newgirl["Mystique"].LikeRogue >= 700:
+                            if ApprovalCheck(Girl_, 800, "I") or newgirl[Girl_].LikeRogue >= 700:
                                 $ Options.append("lick pussy")
-                            if ApprovalCheck("Mystique", 900, "I") and newgirl["Mystique"].LikeRogue >= 800:
+                            if ApprovalCheck(Girl_, 900, "I") and newgirl[Girl_].LikeRogue >= 800:
                                 $ Options.append("lick ass")  
                 elif ActiveGirl == "Kitty":
-                            if ApprovalCheck("Mystique", 800, "I") or newgirl["Mystique"].LikeKitty >= 700:
+                            if ApprovalCheck(Girl_, 800, "I") or newgirl[Girl_].LikeKitty >= 700:
                                 $ Options.append("lick pussy")
-                            if ApprovalCheck("Mystique", 900, "I") and newgirl["Mystique"].LikeKitty >= 800:
+                            if ApprovalCheck(Girl_, 900, "I") and newgirl[Girl_].LikeKitty >= 800:
                                 $ Options.append("lick ass") 
-#                            if "dildo" in newgirl["Mystique"].Inventory: #add later once these systems are done
-#                                $ Options.append("dildo pussy") 
-#                                if newgirl["Mystique"].Loose:
-#                                    $ Options.append("dildo ass") 
-#                            if "vibrator" in newgirl["Mystique"].Inventory:
-#                                $ Options.append("vibrator") 
+                elif ActiveGirl == "Emma":
+                            if ApprovalCheck(Girl_, 800, "I") or newgirl[Girl_].LikeEmma >= 700:
+                                $ Options.append("lick pussy")
+                            if ApprovalCheck(Girl_, 900, "I") and newgirl[Girl_].LikeEmma >= 800:
+                                $ Options.append("lick ass") 
+                else:
+                    # $ k = 0
+                    # while k < len(ModdedGirls):
+                    if ActiveGirl in ModdedGirls and ActiveGirl != Girl_:
+                        if ApprovalCheck(Girl_, 800, "I") or newgirl[Girl_].LikeOtherGirl[ActiveGirl] >= 700:
+                            $ Options.append("lick pussy")
+                        if ApprovalCheck(Girl_, 900, "I") and newgirl[Girl_].LikeOtherGirl[ActiveGirl] >= 800:
+                            $ Options.append("lick ass")     
+                        # $ k += 1
                     
             if State == "hetero" or State == "threeway":
                     $ Options.extend(("hand","blow","kiss you"))                 
@@ -431,7 +457,7 @@ label NewGirl_Threeway_Set(Girl_ = "Mystique", Preset = 0, Mode = 0, Action = Tr
                     #if the suggested action is in the possible actions. . .
                     $ Options[0] = Preset 
                     ch_m "Oh, very well. . ."
-            else:
+            elif Preset:
                     ch_m "That doesn't really seem appropriate. . ."
                     
             #Sets opening lines. . .
@@ -439,13 +465,13 @@ label NewGirl_Threeway_Set(Girl_ = "Mystique", Preset = 0, Mode = 0, Action = Tr
                     #If it's the same result, just hop back
                     return
             elif Mode == "lesbian":
-                    $ Line = "Mystique shifts her position"
+                    $ Line = Girl_ + " shifts her position"
             elif not Trigger4 or Trigger4 == "masturbation":    
                     #If this is the first action,
-                    $ Line = "Mystique moves closer"            
+                    $ Line = Girl_ + " moves closer"            
             else:                                              
                     #If this is a new action
-                    $ Line = "Mystique shifts her position"
+                    $ Line = Girl_ + " shifts her position"
                     
                     
             if Options[0] == "masturbation":
@@ -453,113 +479,151 @@ label NewGirl_Threeway_Set(Girl_ = "Mystique", Preset = 0, Mode = 0, Action = Tr
                         if Trigger != "lesbian" and Trigger5 in ("kiss you", "kiss girl", "kiss both"):
                                 #Clear out Trigger 5 if it's for kissing.  
                                 $ Trigger5 = 0 
-                        call Mystique_Self_Lines("T5",Trigger5)
+                        call NewGirl_Self_Lines("Mystique","T5",Trigger5)
             elif Options[0] == "hand":
                         $ Line = Line + " before she slides her hand down and firmly grabs your dick"
                         $ Action = "hand"   
                         
                         $ TempFocus += 3 if P_Focus > 70 else 2                              
-                        $ TempLust += 2 if newgirl["Mystique"].Lust < 60 else 0
-                        $ TempLust += 2 if newgirl["Mystique"].Hand > 2 else 0
-                        $ newgirl["Mystique"].Addict -= 1 if D20S > 10 else 2
+                        $ TempLust += 2 if newgirl[Girl_].Lust < 60 else 0
+                        $ TempLust += 2 if newgirl[Girl_].Hand > 2 else 0
+                        $ newgirl[Girl_].Addict -= 1 if D20S > 10 else 2
             elif Options[0] == "blow":
                         $ Line = Line + " before she slides down and begins to slowly lick your cock"
                         $ Action = "blow"  
                         
                         $ TempFocus += 20 if P_Focus > 60 else 10                      
-                        $ TempLust += 2 if newgirl["Mystique"].Lust > 80 else 1  
-                        $ newgirl["Mystique"].Addict -= 2
+                        $ TempLust += 2 if newgirl[Girl_].Lust > 80 else 1  
+                        $ newgirl[Girl_].Addict -= 2
             #the above three do not apply to lesbian actions.
                         
             elif Options[0] == "fondle breasts":
-#                        call RThreewayBreasts_Launch #Launches position change
+                        # call RThreewayBreasts_Launch #Launches position change
                         $ Line = Line + " and slides her hands along " + ActiveGirl + "'s breasts" 
                         $ Action = "fondle breasts"   
-                        if "lesbian" not in newgirl["Mystique"].RecentActions:
-                                $ newgirl["Mystique"].Les += 1
-                                $ newgirl["Mystique"].RecentActions.append("lesbian") 
-                        if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
-                                $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 4 if R_LikeNewGirl["Mystique"] >= 800 else 2
-                        elif ActiveGirl == "Kitty": #If Mystique is fondling Kitty's breasts
-                                $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 4 if K_LikeNewGirl["Mystique"] >= 800 else 2
+                        if "lesbian" not in newgirl[Girl_].RecentActions:
+                                $ newgirl[Girl_].Les += 1
+                                $ newgirl[Girl_].RecentActions.append("lesbian") 
+                        if ActiveGirl == "Rogue": #If Girl_ is fondling Rogue's breasts
+                                $ TempLust += 2 if ApprovalCheck(Girl_, 500, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 4 if R_LikeNewGirl[Girl_] >= 800 else 2
+                        elif ActiveGirl == "Kitty": #If Girl_ is fondling Kitty's breasts
+                                $ TempLust += 2 if ApprovalCheck(Girl_, 500, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 4 if K_LikeNewGirl[Girl_] >= 800 else 2
+                        elif ActiveGirl == "Emma": #If Girl_ is fondling Emma's breasts
+                                $ TempLust += 2 if ApprovalCheck(Girl_, 500, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 4 if E_LikeNewGirl[Girl_] >= 800 else 2
+                        elif ActiveGirl in ModdedGirls and ActiveGirl != Girl_:
+                                $ TempLust += 2 if ApprovalCheck(Girl_, 500, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 4 if newgirl[ActiveGirl].LikeNewGirl[Girl_] >= 800 else 2
                         $ TempFocus += 1 
             elif Options[0] == "suck breasts":
-#                        call RThreewayBreasts_Launch #Launches position change
+                        # call RThreewayBreasts_Launch #Launches position change
                         $ Line = Line + " and slurps " + ActiveGirl + "'s nipple into her mouth" 
                         $ Action = "suck breasts"    
-                        if "lesbian" not in newgirl["Mystique"].RecentActions:
-                                $ newgirl["Mystique"].Les += 1
-                                $ newgirl["Mystique"].RecentActions.append("lesbian") 
-                        if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
-                                $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 4 if R_LikeNewGirl["Mystique"] >= 800 else 2
-                        elif ActiveGirl == "Kitty": #If Mystique is sucking Kitty's breasts
-                                $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if K_LikeNewGirl["Mystique"] >= 800 else 2
+                        if "lesbian" not in newgirl[Girl_].RecentActions:
+                                $ newgirl[Girl_].Les += 1
+                                $ newgirl[Girl_].RecentActions.append("lesbian") 
+                        if ActiveGirl == "Rogue": #If Girl_ is fondling Rogue's breasts
+                                $ TempLust += 2 if ApprovalCheck(Girl_, 500, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 4 if R_LikeNewGirl[Girl_] >= 800 else 2
+                        elif ActiveGirl == "Kitty": #If Girl_ is sucking Kitty's breasts
+                                $ TempLust += 2 if ApprovalCheck(Girl_, 500, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 5 if K_LikeNewGirl[Girl_] >= 800 else 2
+                        elif ActiveGirl == "Emma": #If Girl_ is fondling Emma's breasts
+                                $ TempLust += 2 if ApprovalCheck(Girl_, 500, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 5 if E_LikeNewGirl[Girl_] >= 800 else 2
+                        elif ActiveGirl in ModdedGirls and ActiveGirl != Girl_:
+                                $ TempLust += 2 if ApprovalCheck(Girl_, 500, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 5 if newgirl[ActiveGirl].LikeNewGirl[Girl_] >= 800 else 2
                         $ TempFocus += 1  
             elif Options[0] == "fondle pussy":
-#                        call RThreewayPussy_Launch #Launches position change
+                        # call RThreewayPussy_Launch #Launches position change
                         $ Line = Line + " and runs her finger along " + ActiveGirl + "'s pussy" 
                         $ Action = "fondle pussy"  
-                        if "lesbian" not in newgirl["Mystique"].RecentActions:
-                                $ newgirl["Mystique"].Les += 1
-                                $ newgirl["Mystique"].RecentActions.append("lesbian")                         
-                        if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
-                                $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if R_LikeNewGirl["Mystique"] >= 800 else 4
-                        elif ActiveGirl == "Kitty": #If Mystique is stroking Kitty's pussy
-                                $ TempLust += 2 if ApprovalCheck("Mystique", 500, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if K_LikeNewGirl["Mystique"] >= 800 else 3
+                        if "lesbian" not in newgirl[Girl_].RecentActions:
+                                $ newgirl[Girl_].Les += 1
+                                $ newgirl[Girl_].RecentActions.append("lesbian")                         
+                        if ActiveGirl == "Rogue": #If Girl_ is fondling Rogue's breasts
+                                $ TempLust += 2 if ApprovalCheck(Girl_, 500, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 5 if R_LikeNewGirl[Girl_] >= 800 else 4
+                        elif ActiveGirl == "Kitty": #If Girl_ is stroking Kitty's pussy
+                                $ TempLust += 2 if ApprovalCheck(Girl_, 500, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 5 if K_LikeNewGirl[Girl_] >= 800 else 3
+                        elif ActiveGirl == "Emma": #If Girl_ is fondling Emma's breasts
+                                $ TempLust += 2 if ApprovalCheck(Girl_, 500, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 5 if E_LikeNewGirl[Girl_] >= 800 else 3
+                        elif ActiveGirl in ModdedGirls and ActiveGirl != Girl_:
+                                $ TempLust += 2 if ApprovalCheck(Girl_, 500, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 5 if newgirl[ActiveGirl].LikeNewGirl[Girl_] >= 800 else 3
                         $ TempFocus += 2  
             elif Options[0] == "lick pussy":
-#                        call RThreewayPussy_Launch #Launches position change
+                        # call RThreewayPussy_Launch #Launches position change
                         $ Line = Line + " and runs her tongue along " + ActiveGirl + "'s pussy" 
                         $ Action = "lick pussy"  
-                        if "lesbian" not in newgirl["Mystique"].RecentActions:
-                                $ newgirl["Mystique"].Les += 1
-                                $ newgirl["Mystique"].RecentActions.append("lesbian") 
-                        if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
-                                $ TempLust += 3 if ApprovalCheck("Mystique", 600, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 7 if R_LikeNewGirl["Mystique"] >= 800 else 4
-                        elif ActiveGirl == "Kitty": #If Mystique is licking Kitty's pussy
-                                $ TempLust += 3 if ApprovalCheck("Mystique", 600, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 7 if K_LikeNewGirl["Mystique"] >= 800 else 4
+                        if "lesbian" not in newgirl[Girl_].RecentActions:
+                                $ newgirl[Girl_].Les += 1
+                                $ newgirl[Girl_].RecentActions.append("lesbian") 
+                        if ActiveGirl == "Rogue": #If Girl_ is fondling Rogue's breasts
+                                $ TempLust += 3 if ApprovalCheck(Girl_, 600, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 7 if R_LikeNewGirl[Girl_] >= 800 else 4
+                        elif ActiveGirl == "Kitty": #If Girl_ is licking Kitty's pussy
+                                $ TempLust += 3 if ApprovalCheck(Girl_, 600, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 7 if K_LikeNewGirl[Girl_] >= 800 else 4
+                        elif ActiveGirl == "Emma": #If Girl_ is fondling Emma's breasts
+                                $ TempLust += 3 if ApprovalCheck(Girl_, 600, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 7 if E_LikeNewGirl[Girl_] >= 800 else 4
+                        elif ActiveGirl in ModdedGirls and ActiveGirl != Girl_:
+                                $ TempLust += 3 if ApprovalCheck(Girl_, 600, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 7 if newgirl[ActiveGirl].LikeNewGirl[Girl_] >= 800 else 4
                         $ TempFocus += 3  
             elif Options[0] == "fondle ass": 
-#                        call RThreewayPussy_Launch #Launches position change
+                        # call RThreewayPussy_Launch #Launches position change
                         $ Line = Line + " and gives " + ActiveGirl + "'s ass a firm squeeze" 
                         $ Action = "fondle ass" 
-                        if "lesbian" not in newgirl["Mystique"].RecentActions:
-                                $ newgirl["Mystique"].Les += 1
-                                $ newgirl["Mystique"].RecentActions.append("lesbian")                         
-                        if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
-                                $ TempLust += 1 if ApprovalCheck("Mystique", 400, "I") else 0  # Mystique's lust
-                                $ TempLust2 += 3 if R_LikeNewGirl["Mystique"] >= 800 else 1
-                        elif ActiveGirl == "Kitty": #If Mystique is fondling Kitty's ass
-                                $ TempLust += 1 if ApprovalCheck("Mystique", 400, "I") else 0  # Mystique's lust
-                                $ TempLust2 += 3 if K_LikeNewGirl["Mystique"] >= 600 else 1
+                        if "lesbian" not in newgirl[Girl_].RecentActions:
+                                $ newgirl[Girl_].Les += 1
+                                $ newgirl[Girl_].RecentActions.append("lesbian")                         
+                        if ActiveGirl == "Rogue": #If Girl_ is fondling Rogue's breasts
+                                $ TempLust += 1 if ApprovalCheck(Girl_, 400, "I") else 0  # Girl_'s lust
+                                $ TempLust2 += 3 if R_LikeNewGirl[Girl_] >= 800 else 1
+                        elif ActiveGirl == "Kitty": #If Girl_ is fondling Kitty's ass
+                                $ TempLust += 1 if ApprovalCheck(Girl_, 400, "I") else 0  # Girl_'s lust
+                                $ TempLust2 += 3 if K_LikeNewGirl[Girl_] >= 600 else 1
+                        elif ActiveGirl == "Emma": #If Girl_ is fondling Emma's breasts
+                                $ TempLust += 1 if ApprovalCheck(Girl_, 400, "I") else 0  # Girl_'s lust
+                                $ TempLust2 += 3 if E_LikeNewGirl[Girl_] >= 600 else 1
+                        elif ActiveGirl in ModdedGirls and ActiveGirl != Girl_:
+                                $ TempLust += 1 if ApprovalCheck(Girl_, 400, "I") else 0  # Girl_'s lust
+                                $ TempLust2 += 3 if newgirl[ActiveGirl].LikeNewGirl[Girl_] >= 600 else 1
                         $ TempFocus += 1  
             elif Options[0] == "lick ass":
-#                        call RThreewayPussy_Launch #Launches position change
+                        # call RThreewayPussy_Launch #Launches position change
                         $ Line = Line + " and starts to lick around " + ActiveGirl + "'s ass" 
                         $ Action = "lick ass"  
-                        if "lesbian" not in newgirl["Mystique"].RecentActions:
-                                $ newgirl["Mystique"].Les += 1
-                                $ newgirl["Mystique"].RecentActions.append("lesbian") 
-                        if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
-                                $ TempLust += 3 if ApprovalCheck("Mystique", 800, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if R_LikeNewGirl["Mystique"] >= 800 else 2
+                        if "lesbian" not in newgirl[Girl_].RecentActions:
+                                $ newgirl[Girl_].Les += 1
+                                $ newgirl[Girl_].RecentActions.append("lesbian") 
+                        if ActiveGirl == "Rogue": #If Girl_ is fondling Rogue's breasts
+                                $ TempLust += 3 if ApprovalCheck(Girl_, 800, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 5 if R_LikeNewGirl[Girl_] >= 800 else 2
                                 $ TempLust2 += 2 if R_Loose > 1 else 0
-                        elif ActiveGirl == "Kitty": #If Mystique is licking Kitty's ass
-                                $ TempLust += 3 if ApprovalCheck("Mystique", 800, "I") else 1  # Mystique's lust
-                                $ TempLust2 += 5 if K_LikeNewGirl["Mystique"] >= 800 else 2
+                        elif ActiveGirl == "Kitty": #If Girl_ is licking Kitty's ass
+                                $ TempLust += 3 if ApprovalCheck(Girl_, 800, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 5 if K_LikeNewGirl[Girl_] >= 800 else 2
                                 $ TempLust2 += 2 if K_Loose > 1 else 0
+                        elif ActiveGirl == "Emma": #If Girl_ is fondling Emma's breasts
+                                $ TempLust += 3 if ApprovalCheck(Girl_, 800, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 5 if E_LikeNewGirl[Girl_] >= 800 else 2
+                                $ TempLust2 += 2 if E_Loose > 1 else 0
+                        elif ActiveGirl in ModdedGirls and ActiveGirl != Girl_:
+                                $ TempLust += 3 if ApprovalCheck(Girl_, 800, "I") else 1  # Girl_'s lust
+                                $ TempLust2 += 5 if newgirl[ActiveGirl].LikeNewGirl[Girl_] >= 800 else 2
+                                $ TempLust2 += 2 if newgirl[ActiveGirl].Loose > 1 else 0
                         $ TempFocus += 2  
                         
             elif Options[0] == "kiss girl" or Mode == "lesbian":   
-#                        call RThreewayBreasts_Launch #Launches position change                                
+                        # call RThreewayBreasts_Launch #Launches position change                                
                         $ Line = Line + " and gives " + ActiveGirl + " a passionate kiss" #use T5 on this to choose targets
                         $ Action = "kissing"  
                         if Mode != "lesbian":
@@ -567,58 +631,84 @@ label NewGirl_Threeway_Set(Girl_ = "Mystique", Preset = 0, Mode = 0, Action = Tr
                                 $ Trigger5 = "kiss both" 
                             else:
                                 $ Trigger5 = "kiss girl"  
-                        if "lesbian" not in newgirl["Mystique"].RecentActions:
-                                $ newgirl["Mystique"].Les += 1
-                                $ newgirl["Mystique"].RecentActions.append("lesbian") 
-                        if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
-                                $ TempLust += 1 if ApprovalCheck("Mystique", 500, "I") else 0  # Mystique's lust
-                                $ TempLust += 1 if newgirl["Mystique"].LikeKitty >= 800 else 0
-                                $ TempLust2 += 2 if R_LikeNewGirl["Mystique"] >= 800 else 1
-                        elif ActiveGirl == "Kitty": #If Mystique is kissing Kitty
-                                $ TempLust += 1 if ApprovalCheck("Mystique", 500, "I") else 0  # Mystique's lust
-                                $ TempLust += 1 if newgirl["Mystique"].LikeKitty >= 800 else 0
-                                $ TempLust2 += 2 if K_LikeNewGirl["Mystique"] >= 800 else 1
+                        if "lesbian" not in newgirl[Girl_].RecentActions:
+                                $ newgirl[Girl_].Les += 1
+                                $ newgirl[Girl_].RecentActions.append("lesbian") 
+                        if ActiveGirl == "Rogue": #If Girl_ is kissing Rogue
+                                $ TempLust += 1 if ApprovalCheck(Girl_, 500, "I") else 0  # Girl_'s lust
+                                $ TempLust += 1 if newgirl[Girl_].LikeRogue >= 800 else 0
+                                $ TempLust2 += 2 if R_LikeNewGirl[Girl_] >= 800 else 1
+                        elif ActiveGirl == "Kitty": #If Girl_ is kissing Kitty
+                                $ TempLust += 1 if ApprovalCheck(Girl_, 500, "I") else 0  # Girl_'s lust
+                                $ TempLust += 1 if newgirl[Girl_].LikeKitty >= 800 else 0
+                                $ TempLust2 += 2 if K_LikeNewGirl[Girl_] >= 800 else 1
+                        elif ActiveGirl == "Emma": #If Girl_ is Kissing Emma
+                                $ TempLust += 1 if ApprovalCheck(Girl_, 500, "I") else 0  # Girl_'s lust
+                                $ TempLust += 1 if newgirl[Girl_].LikeEmma >= 800 else 0
+                                $ TempLust2 += 2 if E_LikeNewGirl[Girl_] >= 800 else 1
+                        elif ActiveGirl in ModdedGirls and ActiveGirl != Girl_:
+                                $ TempLust += 1 if ApprovalCheck(Girl_, 500, "I") else 0  # Girl_'s lust
+                                $ TempLust += 1 if newgirl[Girl_].LikeNewGirl[ActiveGirl] >= 800 else 0
+                                $ TempLust2 += 2 if newgirl[ActiveGirl].LikeNewGirl[Girl_] >= 800 else 1
                         $ TempFocus += 1  
             elif Options[0] == "kiss you":   
-#                        call RThreewayBreasts_Launch #Launches position change
+                        # call RThreewayBreasts_Launch #Launches position change
                         $ Line = Line + " and gives you a passionate kiss" #use T5 on this to choose targets
                         $ Action = "kissing"   
                         if "kiss girl" in Options:
                             $ Trigger5 = "kiss both" 
-                            if "lesbian" not in newgirl["Mystique"].RecentActions:
-                                    $ newgirl["Mystique"].Les += 1
-                                    $ newgirl["Mystique"].RecentActions.append("lesbian")                                     
-                            if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
-                                    $ TempLust += 1 if ApprovalCheck("Mystique", 500, "I") else 0  # Mystique's lust
-                                    $ TempLust += 1 if newgirl["Mystique"].LikeRogue >= 800 else 0
-                                    $ TempLust2 += 2 if R_LikeNewGirl["Mystique"] >= 800 else 1
-                            elif ActiveGirl == "Kitty": #If Mystique is kissing Kitty
-                                    $ TempLust += 1 if ApprovalCheck("Mystique", 500, "I") else 0  # Mystique's lust
-                                    $ TempLust += 1 if newgirl["Mystique"].LikeKitty >= 800 else 0
-                                    $ TempLust2 += 2 if K_LikeNewGirl["Mystique"] >= 800 else 1
+                            if "lesbian" not in newgirl[Girl_].RecentActions:
+                                    $ newgirl[Girl_].Les += 1
+                                    $ newgirl[Girl_].RecentActions.append("lesbian")                                     
+                            if ActiveGirl == "Rogue": #If Girl_ is fondling Rogue's breasts
+                                    $ TempLust += 1 if ApprovalCheck(Girl_, 500, "I") else 0  # Girl_'s lust
+                                    $ TempLust += 1 if newgirl[Girl_].LikeRogue >= 800 else 0
+                                    $ TempLust2 += 2 if R_LikeNewGirl[Girl_] >= 800 else 1
+                            elif ActiveGirl == "Kitty": #If Girl_ is kissing Kitty
+                                    $ TempLust += 1 if ApprovalCheck(Girl_, 500, "I") else 0  # Girl_'s lust
+                                    $ TempLust += 1 if newgirl[Girl_].LikeKitty >= 800 else 0
+                                    $ TempLust2 += 2 if K_LikeNewGirl[Girl_] >= 800 else 1
+                            elif ActiveGirl == "Emma": #If Girl_ is Kissing Emma
+                                    $ TempLust += 1 if ApprovalCheck(Girl_, 500, "I") else 0  # Girl_'s lust
+                                    $ TempLust += 1 if newgirl[Girl_].LikeEmma >= 800 else 0
+                                    $ TempLust2 += 2 if E_LikeNewGirl[Girl_] >= 800 else 1
+                            elif ActiveGirl in ModdedGirls and ActiveGirl != Girl_:
+                                    $ TempLust += 1 if ApprovalCheck(Girl_, 500, "I") else 0  # Girl_'s lust
+                                    $ TempLust += 1 if newgirl[Girl_].LikeNewGirl[ActiveGirl] >= 800 else 0
+                                    $ TempLust2 += 2 if newgirl[ActiveGirl].LikeNewGirl[Girl_] >= 800 else 1
                             $ TempFocus += 1 
                         else:
                             $ Trigger5 = "kiss you" 
                         $ TempLust += 1 
                         $ TempFocus += 1 
                         
-#            elif Options[0] == "dildo pussy":  
-#            elif Options[0] == "dildo ass":        
-#            elif Options[0] == "vibrator":    
+            # elif Options[0] == "dildo pussy":  
+            # elif Options[0] == "dildo ass":        
+            # elif Options[0] == "vibrator":    
 
             else:
-                        "Mystique is just watching the two of you intently."
+                        "[Girl_] is just watching the two of you intently."
                         $ Action = "watch"
-                        if ActiveGirl == "Rogue": #If Mystique is fondling Rogue's breasts
-                                $ TempLust += 1 if newgirl["Mystique"].LikeRogue >= 600 else 0  # Mystique's lust
-                                $ TempLust += 2 if newgirl["Mystique"].LikeRogue >= 800 else 1  # Mystique's lust
+                        if ActiveGirl == "Rogue": #If Girl_ is fondling Rogue's breasts
+                                $ TempLust += 1 if newgirl[Girl_].LikeRogue >= 600 else 0  # Girl_'s lust
+                                $ TempLust += 2 if newgirl[Girl_].LikeRogue >= 800 else 1  # Girl_'s lust
                                 $ TempLust2 += 1 if ApprovalCheck("Rogue", 500, "I") else 0
                                 $ TempLust2 += 1 if ApprovalCheck("Rogue", 700, "I") else 0
-                        elif ActiveGirl == "Kitty": #If Mystique is watching Kitty
-                                $ TempLust += 1 if newgirl["Mystique"].LikeKitty >= 600 else 0  # Mystique's lust
-                                $ TempLust += 2 if newgirl["Mystique"].LikeKitty >= 800 else 1  # Mystique's lust
+                        elif ActiveGirl == "Kitty": #If Girl_ is watching Kitty
+                                $ TempLust += 1 if newgirl[Girl_].LikeKitty >= 600 else 0  # Girl_'s lust
+                                $ TempLust += 2 if newgirl[Girl_].LikeKitty >= 800 else 1  # Girl_'s lust
                                 $ TempLust2 += 1 if ApprovalCheck("Kitty", 500, "I") else 0
                                 $ TempLust2 += 1 if ApprovalCheck("Kitty", 700, "I") else 0
+                        elif ActiveGirl == "Emma": #If Girl_ is watching Emma
+                                $ TempLust += 1 if newgirl[Girl_].LikeEmma >= 600 else 0
+                                $ TempLust += 2 if newgirl[Girl_].LikeEmma >= 800 else 1
+                                $ TempLust += 1 if ApprovalCheck("Emma", 500, "I") else 0  # Girl_'s lust
+                                $ TempLust += 1 if ApprovalCheck("Emma", 700, "I") else 0  # Girl_'s lust
+                        elif ActiveGirl in ModdedGirls and ActiveGirl != Girl_:
+                                $ TempLust += 1 if newgirl[Girl_].LikeNewGirl[ActiveGirl] >= 600 else 0
+                                $ TempLust += 2 if newgirl[Girl_].LikeNewGirl[ActiveGirl] >= 800 else 1
+                                $ TempLust += 1 if ApprovalCheck(Girl_, 500, "I") else 0  # Girl_'s lust
+                                $ TempLust += 1 if ApprovalCheck(Girl_, 700, "I") else 0  # Girl_'s lust
                         $ TempFocus += 1 
                  
             # Wrap-up
@@ -636,3 +726,212 @@ label NewGirl_Threeway_Set(Girl_ = "Mystique", Preset = 0, Mode = 0, Action = Tr
             $ P_Focus += TempFocus
 
             return
+
+label NewGirl_Self_Lines(Girl_ = "Mystique", Mode = "T3", Action = Trigger3, TempLustX = 0): 
+    # The Mode can be T3 for Trigger 3 for a masturbation option, or T5/Trigger5 if it's setting a Threeway action. 
+    # call NewGirl_Self_Lines("T5",Trigger5) 
+    # This sets a Action if there isn't one, or sets an intitial line
+    $ Line = 0
+    if not Action or D20S >= 15: 
+            if Trigger != "masturbation" and "passive" in newgirl[Girl_].Traits:
+                    # This bypasses self-set if Girl_ is told not to take initiative
+                    $ Line = 0
+                    return            
+            call Mystique_Self_Set(Mode, Action)
+            
+            if Mode == "T3": #Sets Action based on the result
+                    $ Action = Trigger3
+            else: #if Mode == "T5"
+                    $ Action = Trigger5  
+            if not Action: 
+                    return
+            elif (newgirl[Girl_].Over == "bondage" or newgirl[Girl_].Over == "bondage cuffs" or newgirl[Girl_].Over == "armbinder") and not Line:
+                    $ Line = "Also, " + Girl_ + "continues stroke your cock. "
+            elif Action == "hand" and not Line: 
+                    $ Line = "Also, " + Girl_ + " continues stroke your cock. "
+            elif not Line:        
+                    $ Line = "Also, " + Girl_ + " continues to masturbate. "      
+    elif Action == "hand": 
+            $ Line = "" + Girl_ + " continues stroke your cock. "
+    elif newgirl[Girl_].Over == "bondage" or newgirl[Girl_].Over == "bondage cuffs" or newgirl[Girl_].Over == "armbinder": 
+            $ Line = renpy.random.choice(["" + Girl_ + " tries to move her arms around. ", 
+                    "" + Girl_ + " can't keep still. ",
+                    "" + Girl_ + " can't keep still. "])
+    else:       
+            $ Line = renpy.random.choice(["" + Girl_ + " continues to masturbate. ", 
+                    "" + Girl_ + "'s hands move across her body. ",
+                    "" + Girl_ + " continues to feel herself. ",
+                    "" + Girl_ + " can't keep still. "]) 
+            
+    if Action == "hand": 
+            $ Line = Line + renpy.random.choice(["She lightly strokes the shaft, fingers sliding along the vein", 
+                    "She grasps the shaft firmly, and slowly slides along its length", 
+                    "She's becoming something of a handjob expert, making up for years of lost time",
+                    "Her expert strokes will have you boiling over in seconds",
+                    "She strokes the shaft vigorously, lightly touching the tip",
+                    "She moves very smoothly, stroking casually and very gently, like she's been doing this for years",
+                    "Her hand slides slowly down your shaft"]) 
+            $ TempFocus += 10 if P_Focus > 60 else 4
+            $ TempFocus += 2 if newgirl[Girl_].Hand > 2 else 0
+                    
+            $ TempLustX += 2 if newgirl[Girl_].Lust < 60 else 1
+            $ TempLustX += 2 if newgirl[Girl_].Hand > 2 else 0
+            $ newgirl[Girl_].Addict -= 1            
+    else:
+        if newgirl[Girl_].Lust >= 80:   
+            if Action == "fondle pussy":
+                    $ Line = Line + renpy.random.choice(["Her hand rapidly moves across her mound, firmly stroking her clit", 
+                            "She inserts two fingers into her dripping pussy and rapidly pistons them",
+                            "She gasps as her fingers bury themselves deeply inside her",
+                            "She gives a little squeal as she pinches her clit between her fingers",           
+                            "She fingers move quickly across her mound, constantly sliding across her clit",
+                            "She fingers move rapidly up and down her inner thighs and belly, building towards their center",
+                            "She spreads her lower lips and furiously strokes the inner lining",
+                            "She alternately dives her fingers into herself, and licks the juices off of them",
+                            "She slides two fingers firmly in and out of her tight gap as she massages the clit with her palm",
+                            "She rapidly circles her fingers against her erect clit",
+                            "She quickly slides a finger up and down the crease of her pussy", 
+                            "She lets out a moan as her fingers brush against her erect clit"])
+            elif Action == "dildo pussy":
+                    $ Line = Line + renpy.random.choice(["She moves the dildo in circles across her mound, firmly rubbing into it", 
+                            "She hungrily slams the dildo into her tight pussy, and pistons it in and out",
+                            "She shoves the dildo firmly in and out of her grasping pussy",               
+                            "She quickly slides the phallus up and down her crease"])
+            elif Action == "fondle ass":
+                    $ Line = Line + renpy.random.choice(["Her hand rapidly moves across her ass, firmly stroking her tight hole", 
+                            "She inserts a finger deep into her grasping hole and rapidly pistons it",
+                            "She gasps as she buries a finger deeply into her tight anus",
+                            "She gives a little squeal as she pinches her clit between her fingers",           
+                            "Her fingers move quickly across her ass, constantly sliding across her rim",
+                            "Her fingers move rapidly up and down her inner thighs and ass, building towards their center",
+                            "She spreads her cheeks and furiously strokes the puckered rim",
+                            "She slides two fingers firmly in and out of her tight hole",
+                            "She rapidly circles her fingers against the sensitive rim",
+                            "She lets out a moan as her fingers brush against her quivering hole"])
+            elif Action == "dildo anal":
+                    $ Line = Line + renpy.random.choice(["She moves the dildo in circles across her ass, firmly rubbing into it", 
+                            "She hungrily slams the dildo into her tight hole, and pistons it in and out",
+                            "She shoves the dildo firmly in and out of her grasping asshole",               
+                            "She quickly slides the phallus up and down the crease of her ass"])
+            elif Action == "vibrator pussy":
+                    $ Line = Line + renpy.random.choice(["She traces the buzzing ball slowly down her body, barely grazing her mound",                 
+                            "Her vibrator slides lightly across her pubic region, subtly avoiding her lips",
+                            "She slides the buzzing egg into her dripping pussy and tugs it in and out",    
+                            "She presses the vibrator firmly against her clit and a shiver runs through her",                
+                            "Her whirring toy is dragged up and down her inner thighs, slowing building towards their center",
+                            "She  spreads her lower lips and runs the device along the inner lining",
+                            "She presses the toy deep into her and the vibrations send a shock through her body"])
+            else: # Action == "fondle breasts"
+                    $ Line = Line + renpy.random.choice(["She passionately rubs her breasts, desperately tugging at her nipples",
+                            "Her hands squeeze at her breasts, massaging them firmly with both hands",                 
+                            "She hungrily cups her breasts and moves them in rapid circles",
+                            "Her hands move constantly across her chest, alternately pulling at her nipples or just grazing her skin",
+                            "She firmly pinches her nipples and gives them steady tugs",
+                            "She passionately rubs her breasts, desperately tugging at her nipples"])     
+            #End newgirl[Girl_].Lust >= 80
+            
+                
+        elif newgirl[Girl_].Lust >= 50:   
+                if Action == "fondle pussy":
+                        $ Line = Line + renpy.random.choice(["Her hand moves in circles across her mound, firmly rubbing into it", 
+                                "Her hands move along her sides, carefully caressing them",                
+                                "Her fingers move smoothly across her delta, occasionally grazing her lips",
+                                "Her fingers move up and down her inner thighs, slowing building towards their center",
+                                "She slowly spreads her lower lips and caresses the inner lining",
+                                "She gently slides a finger up and down the crease of her pussy", 
+                                "She lets out a gasp as her fingers brush against her erect clit"])
+                elif Action == "dildo pussy":
+                        $ Line = Line + renpy.random.choice(["She moves the dildo in circles across her mound, firmly rubbing into it",  
+                                "She traces the rubber phallus slowly down her body, barely grazing her mound",  
+                                "Her dildo slides lightly across her pubic region, subtly avoiding her lips",
+                                "Her dildo is dragged up and down her inner thighs, slowing building towards their center",
+                                "She slowly spreads her lower lips and caresses the inner lining",                
+                                "She gently slides the phallus up and down the crease of her pussy", 
+                                "She drags the dildo slowly along her sides, carefully caressing them"])
+                elif Action == "fondle ass":
+                        $ Line = Line + renpy.random.choice(["Her hand moves in circles across her ass, firmly rubbing into it", 
+                                "Her hands move along her sides, carefully caressing them",                
+                                "Her fingers move smoothly along her crack, occasionally grazing her asshole",
+                                "Her fingers move up and down her inner thighs, slowing building towards their center",
+                                "She slowly spreads her cheeks and caresses the tight hole within",
+                                "She gently slides a finger up and down the crease of ass", 
+                                "She lets out a gasp as her fingers brush against her puckered hole"]) 
+                elif Action == "dildo anal":
+                        $ Line = Line + renpy.random.choice(["She traces the rubber phallus slowly down her body, barely grazing her ass",                 
+                                "Her dildo slides lightly across her crack, subtly avoiding the hole",
+                                "Her dildo is dragged up and down her inner thighs, slowing building towards their center",
+                                "She slowly spreads her cheeks and caresses the rim beneath",
+                                "She drags the dildo slowly along her sides, carefully caressing them"])
+                elif Action == "vibrator pussy":
+                        $ Line = Line + renpy.random.choice(["She traces the buzzing ball slowly down her body, barely grazing her mound",                 
+                                "Her vibrator slides lightly across her pubic region, subtly avoiding her lips",
+                                "Her whirring toy is dragged up and down her inner thighs, slowing building towards their center",
+                                "She slowly spreads her lower lips and caresses the inner lining",
+                                "She drags the vibrator slowly along her sides, carefully caressing them"])
+                else: # Action == "fondle breasts"
+                        $ Line = Line + renpy.random.choice(["She gently rubs her breasts, dragging a finger across her nipple",                  
+                                "She gently cups her breasts and moves them in slow circles",
+                                "She moves her hands from her breasts to rub her neck",
+                                "She lightly pinches one of her nipples",
+                                "Her hands firmly caress her breasts, massaging them in circular motions",
+                                "Her hands move along her breasts, carefully caressing them",
+                                "She gasps as her finger brushes against an erect nipple"])
+                #End newgirl[Girl_].Lust >= 50
+                
+        else: #if newgirl[Girl_].Lust < 50:      
+                if Action == "fondle pussy":
+                        $ Line = Line + renpy.random.choice(["Her hand traces slowly down her body, barely grazing her mound", 
+                                "Her fingers move lightly across her pubic region, subtly avoiding her lips",
+                                "Her fingers move up and down her inner thighs, slowing building towards their center",
+                                "She slowly spreads her lower lips and caresses the inner lining",
+                                "Her hands move along her sides, carefully caressing them"])  
+                elif Action == "dildo pussy":
+                        $ Line = Line + renpy.random.choice(["She traces the rubber phallus slowly down her body, barely grazing her mound",                 
+                                "Her dildo slides lightly across her pubic region, subtly avoiding her lips",
+                                "Her dildo is dragged up and down her inner thighs, slowing building towards their center",
+                                "She slowly spreads her lower lips and caresses the inner lining",
+                                "She drags the dildo slowly along her sides, carefully caressing them"])
+                elif Action == "fondle ass":
+                        $ Line = Line + renpy.random.choice(["Her hand traces slowly down her body, barely passing smoothly across her hips", 
+                                "Her fingers move lightly across her crack, subtly avoiding her rosebud",
+                                "Her fingers move up and down her inner thighs, slowing building towards their center",
+                                "Her hands move along her sides, carefully caressing them"])              
+                elif Action == "dildo anal":
+                        $ Line = Line + renpy.random.choice(["She traces the rubber phallus slowly down her body, barely grazing her ass",                 
+                                "Her dildo slides lightly across her crack, subtly avoiding the hole",
+                                "Her dildo is dragged up and down her inner thighs, slowing building towards their center",
+                                "She slowly spreads her cheeks and caresses the rim beneath",
+                                "She drags the dildo slowly along her sides, carefully caressing them"])
+                elif Action == "vibrator pussy":
+                        $ Line = Line + renpy.random.choice(["She traces the buzzing ball slowly down her body, barely grazing her mound",                 
+                                "Her vibrator slides lightly across her pubic region, subtly avoiding her lips",
+                                "Her whirring toy is dragged up and down her inner thighs, slowing building towards their center",
+                                "She slowly spreads her lower lips and caresses the inner lining",
+                                "She drags the vibrator slowly along her sides, carefully caressing them"])
+                else: # Action == "fondle breasts"
+                        $ Line = Line + renpy.random.choice(["She gently rubs her breasts, dragging a finger across her nipple", 
+                                "She gently cups her breasts and moves them in slow circles",
+                                "She moves her hands from her breasts to rub her neck",
+                                "She lightly pinches one of her nipples",
+                                "She gasps as her finger brushes against an erect nipple"])   
+                #End newgirl[Girl_].Lust 0-60
+        #End Girl_ Action masturbation dialog        
+                        
+            
+        # Girl_ Self-stat boosts  
+        $ TempLustX += 4 if newgirl[Girl_].Lust > 80 else 0        
+        $ TempLustX += 5 if newgirl[Girl_].Lust < 40 else 3                   #Bonus if she is relatively low lust
+        $ TempLustX += 5 if Trigger == "masturbation" else 0     #Bonus if masturbation is her primary action
+        
+        if Primary == Girl_: #If this is a primary, Trigger3 action
+            $ TempLust = TempLustX
+        else: #If this is a Secondary, Trigger5 action
+            $ TempLust2 = TempLustX
+        
+        $ TempFocus += 3         
+        $ TempFocus += 1 if P_Focus < 50 else 0 
+        
+    #End Girl_ Action all dialog     
+    
+    return
+

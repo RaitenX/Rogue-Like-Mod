@@ -1,5 +1,4 @@
-﻿#This is the core game code
-init python:
+﻿init python:
 
     class Girlnew(object):
         
@@ -7,7 +6,7 @@ init python:
             #self.name = name
             #self.money = money
             #self.girl = {   
-            self.name = name,
+            self.name = name
             self.Petname = "myyyy man"       #What Emma calls the player
             self.Petnames = ["myyyy man"]
             self.Pet = "Mystique"           #What you call Emma
@@ -29,7 +28,7 @@ init python:
             self.Inventory = []    
             self.OCount = 0                #Orgasm counter
             self.Loose = 2
-            self.XP = 0,
+            self.XP = 0
             self.Cheated = 0               #number of times you've cheated on her    
             self.Break = [0,0]                 #minimum time between break-ups/number of total break-ups
             self.StatPoints = 0    
@@ -54,10 +53,10 @@ init python:
             self.Legs = "skirt"
             self.Over = 0
             self.Chest = "top"    
-            self.Pierce = 0,
+            self.Pierce = 0
             self.Panties = "black panties"
             self.Neck = 0
-            self.Hose = 0,
+            self.Hose = 0
             self.Mouth = "normal"
             self.Brows = "normal"
             self.Eyes = "normal"
@@ -266,19 +265,3 @@ init python:
         # """
 
         return FieldValue2(store, variable, girl, range, max_is_zero=max_is_zero, style=style, offset=offset, step=step)    
-       
-        
-label ch__m(text=""):
-    $ renpy.say(ch_m,text)
-    return
-
-label ch__p(text=""):
-    $ renpy.say(ch_p,text)
-    return
-
-
-# girlnew = Girlnew()
-# girlnew.add_othergirls()
-# girlnew.girls[0].add_flight(5)
-# girlnew.girls[0].flights
-        

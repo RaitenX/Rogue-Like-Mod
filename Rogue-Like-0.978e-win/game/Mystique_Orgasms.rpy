@@ -306,7 +306,7 @@ label Mystique_Warn_Her:                                                        
                 #warned but likes you and experienced
                 if newgirl["Mystique"].SEXP > 20 and renpy.showing("Mystique_SexSprite"):
                         "She gently pushes you back off of her."
-                        jump Mystique_SpunkBack
+                        jump Mystique_SpunkBelly
                 elif newgirl["Mystique"].SEXP > 20:
                         jump Mystique_Facial            
         
@@ -316,10 +316,10 @@ label Mystique_Warn_Her:                                                        
                         jump Mystique_Handy_Finish
                 elif renpy.showing("Mystique_TJ_Animation") and newgirl["Mystique"].Tit:
                         jump Mystique_Facial
-                elif renpy.showing("Mystique_SexSprite") and newgirl["Mystique"].Sex and Trigger == "sex":
+                elif renpy.showing("Mystique_SexSprite"):
                         "She gently pushes you back off of her."
-                        jump Mystique_SpunkBack
-                elif renpy.showing("Mystique_SexSprite") and newgirl["Mystique"].Anal and Trigger == "anal":
+                        jump Mystique_SpunkBelly
+                elif renpy.showing("Mystique_Doggy"):
                         "She gently pushes you back off of her."
                         jump Mystique_SpunkBack
         

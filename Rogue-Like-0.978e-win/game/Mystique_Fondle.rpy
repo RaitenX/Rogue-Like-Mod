@@ -127,7 +127,7 @@ label Mystique_Fondle_Breasts:
     call Shift_Focus("Mystique")
     
     # Will she let you fondle? Modifiers
-    if Mystique_FondleB: #You've done it before
+    if newgirl["Mystique"].FondleB: #You've done it before
         $ Tempmod += 15
     if newgirl["Mystique"].Lust > 75: #She's really horny
         $ Tempmod += 20
@@ -214,7 +214,7 @@ label Mystique_Fondle_Breasts:
             ch_m "I believe you know my answer on this matter."
         elif Taboo and "tabno" in newgirl["Mystique"].DailyActions:  
             ch_m "As I said, not here, [newgirl[Mystique].Petname]."  
-        elif not Mystique_FondleB:
+        elif not newgirl["Mystique"].FondleB:
             call MystiqueFace("bemused")
             ch_m "I highly doubt you could handle them, [newgirl[Mystique].Petname]. . ."
         else:
@@ -290,7 +290,7 @@ label Mystique_Fondle_Breasts:
         $ newgirl["Mystique"].RecentActions.append("tabno")                   
         $ newgirl["Mystique"].DailyActions.append("tabno") 
         ch_m "I can't been seen doing that with you."                   
-    elif Mystique_FondleB:
+    elif newgirl["Mystique"].FondleB:
         call MystiqueFace("sad")
         ch_m "I'm afraid you haven't earned back my good graces."        
     else:
@@ -319,7 +319,7 @@ label Mystique_FB_Prep: #Animation set-up
         
     $ Tempmod = 0  
     call Mystique_Breasts_Launch("fondle breasts")
-    if not Mystique_FondleB:        
+    if not newgirl["Mystique"].FondleB:        
         if newgirl["Mystique"].Forced:
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -20)
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 70, 25)
@@ -354,12 +354,12 @@ label Mystique_FB_Cycle: #Repeating strokes
             
         if newgirl["Mystique"].SEXP >= 100 or ApprovalCheck("Mystique", 1200, "LO"):
             pass
-        elif Cnt == (5 + Mystique_FondleB):
+        elif Cnt == (5 + newgirl["Mystique"].FondleB):
                     $ newgirl["Mystique"].Brows = "confused"
                     ch_m "They really are magnificent, aren't they?" 
         elif newgirl["Mystique"].Lust >= 85:
                     pass  
-        elif Cnt == (15 + Mystique_FondleB) and newgirl["Mystique"].SEXP >= 15 and not ApprovalCheck("Mystique", 1500):
+        elif Cnt == (15 + newgirl["Mystique"].FondleB) and newgirl["Mystique"].SEXP >= 15 and not ApprovalCheck("Mystique", 1500):
                     $ newgirl["Mystique"].Brows = "confused" 
                     menu:
                         ch_m "Perhaps we could try something else, [newgirl[Mystique].Petname]?"
@@ -528,7 +528,7 @@ label Mystique_FB_After:
         
     call MystiqueFace("sexy") 
     
-    $ Mystique_FondleB += 1  
+    $ newgirl["Mystique"].FondleB += 1  
     $ newgirl["Mystique"].Action -=1
     $ newgirl["Mystique"].Addictionrate += 1
     if "addictive" in P_Traits:
@@ -539,7 +539,7 @@ label Mystique_FB_After:
     if K_Loc == bg_current and "noticed Mystique" in K_RecentActions: #If Kitty was participating
         $ K_LikeNewGirl["Mystique"] += 2 if K_LikeNewGirl["Mystique"] >= 800 else 1
      
-    if Mystique_FondleB == 1:            
+    if newgirl["Mystique"].FondleB == 1:            
             $ newgirl["Mystique"].SEXP += 4         
             if not Situation: 
                 if newgirl["Mystique"].Love >= 500 and "unsatisfied" not in newgirl["Mystique"].RecentActions:
@@ -969,7 +969,7 @@ label Mystique_SB_After:
 label Mystique_Fondle_Thighs:
     call Shift_Focus("Mystique")
                                                                                         # Will she let you fondle her thighs? Modifiers
-    if Mystique_FondleT: #You've done it before
+    if newgirl["Mystique"].FondleT: #You've done it before
         $ Tempmod += 10
     if newgirl["Mystique"].Legs == "pants" or HoseNum("Mystique") >= 5: # she's got pants on.
         $ Tempmod -= 5    
@@ -1049,7 +1049,7 @@ label Mystique_Fondle_Thighs:
             ch_m "I believe you know my answer on this matter."
         elif Taboo and "tabno" in newgirl["Mystique"].DailyActions:  
             ch_m "As I said, not here, [newgirl[Mystique].Petname]."  
-        elif not Mystique_FondleT:
+        elif not newgirl["Mystique"].FondleT:
             call MystiqueFace("bemused")
             ch_m "Seems a bit forward, [newgirl[Mystique].Petname]."
         else:
@@ -1120,7 +1120,7 @@ label Mystique_Fondle_Thighs:
         $ newgirl["Mystique"].RecentActions.append("tabno")          
         $ newgirl["Mystique"].DailyActions.append("tabno") 
         ch_m "I have a reputation to maintain."                   
-    elif Mystique_FondleT:
+    elif newgirl["Mystique"].FondleT:
         call MystiqueFace("sad")
         ch_m "Hands."            
     else:
@@ -1148,7 +1148,7 @@ label Mystique_FT_Prep:                                                         
             
     $ Tempmod = 0    
     call Mystique_Pussy_Launch("fondle thighs")
-    if not Mystique_FondleT:        
+    if not newgirl["Mystique"].FondleT:        
         if newgirl["Mystique"].Forced:
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -10)
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 70, 15)
@@ -1183,10 +1183,10 @@ label Mystique_FT_Cycle:                                                        
             
         if newgirl["Mystique"].SEXP >= 100 or ApprovalCheck("Mystique", 1200, "LO"):
             pass
-        elif Cnt == (5 + Mystique_FondleT):
+        elif Cnt == (5 + newgirl["Mystique"].FondleT):
                     $ newgirl["Mystique"].Brows = "confused"
                     ch_m "Luxurious, yes?"   
-        elif Cnt == (15 + Mystique_FondleT) and newgirl["Mystique"].SEXP >= 15 and not ApprovalCheck("Mystique", 1500):
+        elif Cnt == (15 + newgirl["Mystique"].FondleT) and newgirl["Mystique"].SEXP >= 15 and not ApprovalCheck("Mystique", 1500):
                     $ newgirl["Mystique"].Brows = "confused"        
                     menu:
                         ch_m "You certainly seem to be enjoying yourself, but perhaps we could add some variety?"                         
@@ -1347,7 +1347,7 @@ label Mystique_FT_After:
         
     call MystiqueFace("sexy") 
     
-    $ Mystique_FondleT += 1  
+    $ newgirl["Mystique"].FondleT += 1  
     $ newgirl["Mystique"].Action -=1
     if newgirl["Mystique"].Legs != "pants" or newgirl["Mystique"].Upskirt:        
         $ newgirl["Mystique"].Addictionrate += 1
@@ -1359,7 +1359,7 @@ label Mystique_FT_After:
     if K_Loc == bg_current and "noticed Mystique" in K_RecentActions: #If Kitty was participating
         $ K_LikeNewGirl["Mystique"] += 2 if K_LikeNewGirl["Mystique"] >= 800 else 1
      
-    if Mystique_FondleT == 1:            
+    if newgirl["Mystique"].FondleT == 1:            
             $ newgirl["Mystique"].SEXP += 3         
             if not Situation: 
                 if newgirl["Mystique"].Love >= 500 and "unsatisfied" not in newgirl["Mystique"].RecentActions:
@@ -1378,7 +1378,7 @@ label Mystique_FT_After:
 label Mystique_Fondle_Pussy:
     call Shift_Focus("Mystique")
                                                                                         # Will she let you fondle? Modifiers
-    if Mystique_FondleP: #You've done it before
+    if newgirl["Mystique"].FondleP: #You've done it before
         $ Tempmod += 20
     if newgirl["Mystique"].Legs == "pants" or HoseNum("Mystique") >= 5: # she's got pants on.
         $ Tempmod -= 10    
@@ -1467,7 +1467,7 @@ label Mystique_Fondle_Pussy:
             ch_m "I believe you know my answer on this matter."
         elif Taboo and "tabno" in newgirl["Mystique"].DailyActions:  
             ch_m "As I said, not here, [newgirl[Mystique].Petname]."  
-        elif not Mystique_FondleP:
+        elif not newgirl["Mystique"].FondleP:
             call MystiqueFace("bemused")
             ch_m "I don't think we're there yet, [newgirl[Mystique].Petname]. . ."
         else:
@@ -1539,7 +1539,7 @@ label Mystique_Fondle_Pussy:
         $ newgirl["Mystique"].RecentActions.append("tabno")                   
         $ newgirl["Mystique"].DailyActions.append("tabno")
         ch_m "I have a reputation to maintain."                   
-    elif Mystique_FondleP:
+    elif newgirl["Mystique"].FondleP:
         call MystiqueFace("sad")
         ch_m "Sorry, keep your hands out of there."           
     else:
@@ -1563,7 +1563,7 @@ label Mystique_FP_Prep: #Animation set-up
     $ Tempmod = 0
     
     call Mystique_Pussy_Launch("fondle pussy")
-    if not Mystique_FondleP:        
+    if not newgirl["Mystique"].FondleP:        
         if newgirl["Mystique"].Forced:
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -50)
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 70, 35)
@@ -1599,12 +1599,12 @@ label Mystique_FP_Cycle: #Repeating strokes
             
         if newgirl["Mystique"].SEXP >= 100 or ApprovalCheck("Mystique", 1200, "LO"):
             pass
-        elif Cnt == (5 + Mystique_FondleP):
+        elif Cnt == (5 + newgirl["Mystique"].FondleP):
                     $ newgirl["Mystique"].Brows = "confused"
                     ch_m "You like how that feels, huh?"  
         elif newgirl["Mystique"].Lust >= 80:
                     pass
-        elif Cnt == (15 + Mystique_FondleP) and newgirl["Mystique"].SEXP >= 15 and not ApprovalCheck("Mystique", 1500):
+        elif Cnt == (15 + newgirl["Mystique"].FondleP) and newgirl["Mystique"].SEXP >= 15 and not ApprovalCheck("Mystique", 1500):
                     $ newgirl["Mystique"].Brows = "confused"        
                     menu:
                         ch_m "You certainly seem to be enjoying yourself, but perhaps we could add some variety?"                         
@@ -1791,7 +1791,7 @@ label Mystique_FP_After:
         
     call MystiqueFace("sexy") 
     
-    $ Mystique_FondleP += 1  
+    $ newgirl["Mystique"].FondleP += 1  
     $ newgirl["Mystique"].Action -=1
     if newgirl["Mystique"].Legs != "pants" or newgirl["Mystique"].Upskirt:        
         $ newgirl["Mystique"].Addictionrate += 1
@@ -1803,7 +1803,7 @@ label Mystique_FP_After:
     if K_Loc == bg_current and "noticed Mystique" in K_RecentActions: #If Kitty was participating
         $ K_LikeNewGirl["Mystique"] += 2 if K_LikeNewGirl["Mystique"] >= 800 else 1
      
-    if Mystique_FondleP == 1:            
+    if newgirl["Mystique"].FondleP == 1:            
             $ newgirl["Mystique"].SEXP += 7         
             if not Situation: 
                 if newgirl["Mystique"].Love >= 500 and "unsatisfied" not in newgirl["Mystique"].RecentActions:
@@ -2349,7 +2349,7 @@ label Mystique_LP_After:
 label Mystique_Fondle_Ass: 
     call Shift_Focus("Mystique")
                                                                                      # Will she let you fondle? Modifiers
-    if Mystique_FondleA: #You've done it before
+    if newgirl["Mystique"].FondleA: #You've done it before
         $ Tempmod += 10
     if newgirl["Mystique"].Legs == "pants" or HoseNum("Mystique") >= 5: # she's got pants on.
         $ Tempmod -= 5     
@@ -2437,7 +2437,7 @@ label Mystique_Fondle_Ass:
             ch_m "I believe you know my answer on this matter."
         elif Taboo and "tabno" in newgirl["Mystique"].DailyActions:  
             ch_m "As I said, not here, [newgirl[Mystique].Petname]."  
-        elif not Mystique_FondleA:
+        elif not newgirl["Mystique"].FondleA:
             call MystiqueFace("bemused")
             ch_m "Not yet, [newgirl[Mystique].Petname]. . ."
         else:
@@ -2508,7 +2508,7 @@ label Mystique_Fondle_Ass:
         $ newgirl["Mystique"].RecentActions.append("tabno")   
         $ newgirl["Mystique"].DailyActions.append("tabno") 
         ch_m "I have a reputation to maintain."                   
-    elif Mystique_FondleA:
+    elif newgirl["Mystique"].FondleA:
         call MystiqueFace("sad")
         ch_m "I'm sorry, keep your hands to yourself."        
     else:
@@ -2533,7 +2533,7 @@ label Mystique_FA_Prep: #Animation set-up
             return    
     $ Tempmod = 0      
     call Mystique_Pussy_Launch("fondle ass")
-    if not Mystique_FondleA:        
+    if not newgirl["Mystique"].FondleA:        
         if newgirl["Mystique"].Forced:
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -20)
             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 70, 20)
@@ -2567,12 +2567,12 @@ label Mystique_FA_Cycle: #Repeating strokes
             
         if newgirl["Mystique"].SEXP >= 100 or ApprovalCheck("Mystique", 1200, "LO"):
             pass
-        elif Cnt == (5 + Mystique_FondleA):
+        elif Cnt == (5 + newgirl["Mystique"].FondleA):
                     $ newgirl["Mystique"].Brows = "confused"
                     ch_m "Mmmm I do enjoy that. . ."  
         elif newgirl["Mystique"].Lust >= 80:
                     pass
-        elif Cnt == (15 + Mystique_FondleA) and newgirl["Mystique"].SEXP >= 15 and not ApprovalCheck("Mystique", 1500):
+        elif Cnt == (15 + newgirl["Mystique"].FondleA) and newgirl["Mystique"].SEXP >= 15 and not ApprovalCheck("Mystique", 1500):
                     $ newgirl["Mystique"].Brows = "confused"        
                     menu:
                         ch_m "[newgirl[Mystique].Petname], this is nice, but could we do something else?"                         
@@ -2750,7 +2750,7 @@ label Mystique_FA_After:
         
     call MystiqueFace("sexy") 
     
-    $ Mystique_FondleA += 1  
+    $ newgirl["Mystique"].FondleA += 1  
     $ newgirl["Mystique"].Action -=1            
     if newgirl["Mystique"].Legs != "pants" or newgirl["Mystique"].Upskirt:        
         $ newgirl["Mystique"].Addictionrate += 1
@@ -2762,7 +2762,7 @@ label Mystique_FA_After:
     if K_Loc == bg_current and "noticed Mystique" in K_RecentActions: #If Kitty was participating
         $ K_LikeNewGirl["Mystique"] += 2 if K_LikeNewGirl["Mystique"] >= 800 else 1
      
-    if Mystique_FondleA == 1:            
+    if newgirl["Mystique"].FondleA == 1:            
             $ newgirl["Mystique"].SEXP += 4         
             if not Situation: 
                 if newgirl["Mystique"].Love >= 500 and "unsatisfied" not in newgirl["Mystique"].RecentActions:

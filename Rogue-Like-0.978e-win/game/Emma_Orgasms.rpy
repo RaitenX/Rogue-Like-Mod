@@ -316,10 +316,10 @@ label E_Warn_Her:                                                               
                         jump E_Handy_Finish
                 elif renpy.showing("Emma_TJ_Animation") and E_Tit:
                         jump E_Facial
-                elif renpy.showing("Emma_SexSprite") and E_Sex and Trigger == "sex":
+                elif renpy.showing("Emma_SexSprite"): #and E_Sex and Trigger == "sex":
                         "She gently pushes you back off of her."
                         jump E_SpunkBack
-                elif renpy.showing("Emma_SexSprite") and E_Anal and Trigger == "anal":
+                elif renpy.showing("Emma_Doggy"): #and E_Anal and Trigger == "anal":
                         "She gently pushes you back off of her."
                         jump E_SpunkBack
         

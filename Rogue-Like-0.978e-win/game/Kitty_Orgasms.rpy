@@ -260,6 +260,10 @@ label K_Warn_Her:
                     if Trigger != "hotdog":
                         "She gently pushes you back off of her."
                     jump K_SpunkBelly
+            elif renpy.showing("Kitty_Doggy"):
+                    if Trigger != "hotdog":
+                        "She gently pushes you back off of her."
+                    jump K_SpunkBack
     
     # Else. . . not experienced or she's not a huge fan, 
     if renpy.showing("Kitty_BJ_Animation"):

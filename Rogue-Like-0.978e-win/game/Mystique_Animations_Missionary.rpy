@@ -52,37 +52,38 @@ image Mystique_Sex_Legs_Static:
 image Mystique_Sex_Body = LiveComposite(                                                                                
         #the torso/head used in the sex pose, referenced by Mystique_SexSprite
         (1120,840),
-        (350,-275), "Mystique_HairBack_Sex",    #(260,-350)   (402 -200 with 0 rotation)                                                                                #Hair underlayer
+        #(350,-275), "Mystique_HairBack_Sex",    #(260,-350)   (402 -200 with 0 rotation)                                                                                #Hair underlayer
+        (350,-275), "Mystique_HairBack_Sex",
         (0,0), ConditionSwitch(                                                                                 #Body Base
         #     "E_Pierce == 'barbell'", "images/MystiqueSex/Mystique_Sex_Body_Barbell.png",   
         #     "E_Pierce == 'ring'", "images/MystiqueSex/Mystique_Sex_Body_Ring.png",   
             "True", "images/MystiqueSex/Mystique_Sex_Body.png",             
             ), 
-        (0,0), ConditionSwitch(                                                                                 #necklace
-            "E_Neck == 'black choker'", "images/MystiqueSex/Mystique_Sex_Choker_Black.png",
-            "E_Neck == 'choker'", "images/MystiqueSex/Mystique_Sex_Choker_White.png",
-            "E_Neck == 'NewX'", "images/MystiqueSex/Mystique_Sex_New_NeckX_White.png",
-            "E_Neck == 'black NewX'", "images/MystiqueSex/Mystique_Sex_New_NeckX_Black.png",
-            "True", Null(),
-            ),             
-        (350,-275), "Mystique_Head_Sex",  #check positioning (400,-300)
-        (0,0), ConditionSwitch(                                                                                 #gloves
-            "E_Arms == 'black gloves'", "images/MystiqueSex/Mystique_Sex_Gloves_Black.png",
-            "E_Arms == 'white gloves'", "images/MystiqueSex/Mystique_Sex_Gloves_White.png",
-            "True", Null(),
-            ), 
+        # (0,0), ConditionSwitch(                                                                                 #necklace
+        #     "newgirl['Mystique'].Neck == 'black choker'", "images/MystiqueSex/Mystique_Sex_Choker_Black.png",
+        #     "newgirl['Mystique'].Neck == 'choker'", "images/MystiqueSex/Mystique_Sex_Choker_White.png",
+        #     "newgirl['Mystique'].Neck == 'NewX'", "images/MystiqueSex/Mystique_Sex_New_NeckX_White.png",
+        #     "newgirl['Mystique'].Neck == 'black NewX'", "images/MystiqueSex/Mystique_Sex_New_NeckX_Black.png",
+        #     "True", Null(),
+        #     ),  
+        (350,-275), "Mystique_Head_Sex_2",  #check positioning (400,-300)
+        # (0,0), ConditionSwitch(                                                                                 #gloves
+        #     "E_Arms == 'black gloves'", "images/MystiqueSex/Mystique_Sex_Gloves_Black.png",
+        #     "E_Arms == 'white gloves'", "images/MystiqueSex/Mystique_Sex_Gloves_White.png",
+        #     "True", Null(),
+        #     ), 
         (0,0), ConditionSwitch(                                                                                 #tanktop
-            "not newgirl['Mystique'].Chest", "images/MystiqueSex/Mystique_Sex_Tits_Bare.png",        
+            "not newgirl['Mystique'].Chest", Null(),        
         #     "E_Chest == 'cami'", "images/MystiqueSex/Mystique_Sex_Under_Cami.png",
         #     "E_Chest == 'sports bra'", "images/MystiqueSex/Mystique_Sex_Under_SportsBra.png",
         #     "E_Chest == 'bra'", "images/MystiqueSex/Mystique_Sex_Under_Bra.png",
-            "E_Chest == 'bikini'", "images/MystiqueSex/Mystique_Sex_BikiniTop_White.png",
-            "E_Chest == 'black corset'", "images/MystiqueSex/Mystique_Sex_Corset_Black.png",
-            "E_Chest == 'corset'", "images/MystiqueSex/Mystique_Sex_Corset_White.png",
-            "True", "images/MystiqueSex/Mystique_Sex_Tits_Bare.png",
+            "newgirl['Mystique'].Chest == 'bra'", "images/MystiqueSex/Mystique_Sex_Under_Bra.png",
+            # "E_Chest == 'black corset'", "images/MystiqueSex/Mystique_Sex_Corset_Black.png",
+            # "E_Chest == 'corset'", "images/MystiqueSex/Mystique_Sex_Corset_White.png",
+            # "True", "images/MystiqueSex/Mystique_Sex_Tits_Bare.png",
             ), 
         (0,0), ConditionSwitch(                                                                                 #Wet look
-            "E_Water", "images/MystiqueSex/Mystique_Sex_Water_Body.png",   
+            "newgirl['Mystique'].Water", "images/MystiqueSex/Mystique_Sex_Water_Body.png",   
             "True", Null(),              
             ), 
         # (0,0), ConditionSwitch(                                                                                 #Overshirt
@@ -101,154 +102,139 @@ image Mystique_Sex_Body = LiveComposite(
 image Mystique_Sex_HairBack:
     LiveComposite(
         (555,673), 
-        (0,0), ConditionSwitch(       
-            "(E_Hair == 'wet' or newgirl['Mystique'].Water) and newgirl['Mystique'].HairColor == 'red'", "images/MystiqueSprite/MystiqueSprite_Head_HairbackWet_Red.png",
-            "(E_Hair == 'wet' or newgirl['Mystique'].Water) and newgirl['Mystique'].HairColor == 'white'", "images/MystiqueSprite/MystiqueSprite_Head_HairbackWet_White.png",
-            "(E_Hair == 'wet' or newgirl['Mystique'].Water) and newgirl['Mystique'].HairColor == 'black'", "images/MystiqueSprite/MystiqueSprite_Head_HairBlackbackWet.png",
-            "E_Hair == 'wet' or newgirl['Mystique'].Water", "images/MystiqueSprite/MystiqueSprite_Head_HairbackWet.png",
-            "E_Hair and newgirl['Mystique'].HairColor == 'red'", "images/MystiqueSprite/MystiqueSprite_Head_Hairback_Red.png",   
-            "E_Hair and newgirl['Mystique'].HairColor == 'white'", "images/MystiqueSprite/MystiqueSprite_Head_Hairback_White.png",   
-            "E_Hair and newgirl['Mystique'].HairColor == 'black'", "images/MystiqueSprite/MystiqueSprite_Head_HairBlackback.png",   
-            "E_Hair", "images/MystiqueSprite/MystiqueSprite_Head_Hairback.png",   
-            "True", Null(),        
-            ),
-        )
+        (0,0), ConditionSwitch(                                                                         #Hair
+            # "R_Hair == 'evo' and R_Water and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_wet.png",
+            # "R_Hair == 'evo' and R_Water and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_wet.png",
+            # "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_hair_wet.png",
+            # "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_evo.png",
+            # "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_evo.png",
+            "newgirl['Mystique'].Hair", "images/MystiqueSprite/Mystique_hair_basic.png",
+            "True", Null(), 
+            ),   
+
+        )                
     anchor (0.6, 0.0)                
-    zoom .48 
+    zoom .75 
 
 image Mystique_Sex_Head:
     LiveComposite(
         (555,673), 
-        (0,0), ConditionSwitch(                                                                         #Face no blush not wet
-            "E_Blush or newgirl['Mystique'].Hair == 'wet' or newgirl['Mystique'].Water", Null(),        
-            "E_Brows == 'angry'", "images/MystiqueSprite/MystiqueSprite_Head_Wave_Angry.png",
-            "E_Brows == 'sad'", "images/MystiqueSprite/MystiqueSprite_Head_Wave_Sad.png",
-            "E_Brows == 'surprised'", "images/MystiqueSprite/MystiqueSprite_Head_Wave_Surprised.png",     
-            "E_Brows == 'confused'", "images/MystiqueSprite/MystiqueSprite_Head_Wave_Confused.png", 
-            "True", "images/MystiqueSprite/MystiqueSprite_Head_Wave_Normal.png", #E_Brows == 'normal'
-            ),
-        (0,0), ConditionSwitch(                                                                         #Face blush 1 not wet
-            "E_Blush != 1 or newgirl['Mystique'].Hair == 'wet' or newgirl['Mystique'].Water", Null(),        
-            "E_Brows == 'angry'", "images/MystiqueSprite/MystiqueSprite_Head_Wave_AngryB1.png",
-            "E_Brows == 'sad'", "images/MystiqueSprite/MystiqueSprite_Head_Wave_SadB1.png",
-            "E_Brows == 'surprised'", "images/MystiqueSprite/MystiqueSprite_Head_Wave_SurprisedB1.png",   
-            "E_Brows == 'confused'", "images/MystiqueSprite/MystiqueSprite_Head_Wave_ConfusedB1.png", 
-            "True", "images/MystiqueSprite/MystiqueSprite_Head_Wave_NormalB1.png", #E_Brows == 'normal'
-            ),
-        (0,0), ConditionSwitch(                                                                         #Face blush 2 not wet
-            "E_Blush != 2 or newgirl['Mystique'].Hair == 'wet' or newgirl['Mystique'].Water", Null(),        
-            "E_Brows == 'angry'", "images/MystiqueSprite/MystiqueSprite_Head_Wave_AngryB2.png",
-            "E_Brows == 'sad'", "images/MystiqueSprite/MystiqueSprite_Head_Wave_SadB2.png",
-            "E_Brows == 'surprised'", "images/MystiqueSprite/MystiqueSprite_Head_Wave_SurprisedB2.png",    
-            "E_Brows == 'confused'", "images/MystiqueSprite/MystiqueSprite_Head_Wave_ConfusedB2.png", 
-            "True", "images/MystiqueSprite/MystiqueSprite_Head_Wave_NormalB2.png", #E_Brows == 'normal'
-            ),
-        
-         (0,0), ConditionSwitch(                                                                         #Face no blush wet
-            "E_Blush or (E_Hair != 'wet' and not newgirl['Mystique'].Water)", Null(),        
-            "E_Brows == 'angry'", "images/MystiqueSprite/MystiqueSprite_Head_Wet_Angry.png",
-            "E_Brows == 'sad'", "images/MystiqueSprite/MystiqueSprite_Head_Wet_Sad.png",
-            "E_Brows == 'surprised'", "images/MystiqueSprite/MystiqueSprite_Head_Wet_Surprised.png",    
-            "E_Brows == 'confused'", "images/MystiqueSprite/MystiqueSprite_Head_Wet_Confused.png",  
-            "True", "images/MystiqueSprite/MystiqueSprite_Head_Wet_Normal.png", #E_Brows == 'normal'
-            ),
-        (0,0), ConditionSwitch(                                                                         #Face blush 1 wet
-            "E_Blush != 1 or (E_Hair != 'wet' and not newgirl['Mystique'].Water)", Null(),        
-            "E_Brows == 'angry'", "images/MystiqueSprite/MystiqueSprite_Head_Wet_AngryB1.png",
-            "E_Brows == 'sad'", "images/MystiqueSprite/MystiqueSprite_Head_Wet_SadB1.png",
-            "E_Brows == 'surprised'", "images/MystiqueSprite/MystiqueSprite_Head_Wet_SurprisedB1.png",    
-            "E_Brows == 'confused'", "images/MystiqueSprite/MystiqueSprite_Head_Wet_ConfusedB1.png",    
-            "True", "images/MystiqueSprite/MystiqueSprite_Head_Wet_NormalB1.png", #E_Brows == 'normal'
-            ),
-        (0,0), ConditionSwitch(                                                                         #Face blush 2 wet
-            "E_Blush != 2 or (E_Hair != 'wet' and not newgirl['Mystique'].Water)", Null(),        
-            "E_Brows == 'angry'", "images/MystiqueSprite/MystiqueSprite_Head_Wet_AngryB2.png",
-            "E_Brows == 'sad'", "images/MystiqueSprite/MystiqueSprite_Head_Wet_SadB2.png",
-            "E_Brows == 'surprised'", "images/MystiqueSprite/MystiqueSprite_Head_Wet_SurprisedB2.png",    
-            "E_Brows == 'confused'", "images/MystiqueSprite/MystiqueSprite_Head_Wet_ConfusedB2.png",    
-            "True", "images/MystiqueSprite/MystiqueSprite_Head_Wet_NormalB2.png", #E_Brows == 'normal'
-            ),
-        (0,0), ConditionSwitch(                                                                                 #Mouth for under layer
-            #"Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
-            "Speed == 1 and Trigger == 'blow'", "images/MystiqueSprite/MystiqueSprite_Head_Mouth_Tongue.png", #licking
-            "Speed == 2 and Trigger == 'blow'", Null(),                                #heading Rogue_BJ_HeadingMouth()
-            "Speed == 3 and Trigger == 'blow'", "images/MystiqueSprite/Mystique_bj_mouth.png", #sucking
-            "Speed == 4 and Trigger == 'blow'", "images/MystiqueSprite/Mystique_bj_mouth.png", #deepthroat         
-            "E_Mouth == 'normal'", "images/MystiqueSprite/MystiqueSprite_Head_Mouth_Normal.png",
-            "E_Mouth == 'lipbite'", "images/MystiqueSprite/MystiqueSprite_Head_Mouth_Lipbite.png",
-            "E_Mouth == 'sucking'", "images/MystiqueSprite/MystiqueSprite_Head_Mouth_Surprised.png",            
-            "E_Mouth == 'kiss'", "images/MystiqueSprite/MystiqueSprite_Head_Mouth_Kiss.png",
-            "E_Mouth == 'sad'", "images/MystiqueSprite/MystiqueSprite_Head_Mouth_Sad.png",
-            "E_Mouth == 'smile'", "images/MystiqueSprite/MystiqueSprite_Head_Mouth_Smile.png",
-            "E_Mouth == 'surprised'", "images/MystiqueSprite/MystiqueSprite_Head_Mouth_Surprised.png",            
-            "E_Mouth == 'tongue'", "images/MystiqueSprite/MystiqueSprite_Head_Mouth_Tongue.png",                
-            "E_Mouth == 'grimace'", "images/MystiqueSprite/MystiqueSprite_Head_Mouth_Smile.png",                 
-            "E_Mouth == 'smirk'", "images/MystiqueSprite/MystiqueSprite_Head_Mouth_Smirk.png",         
-            "True", "images/MystiqueSprite/MystiqueSprite_Head_Mouth_Normal.png",
-            ),
-        (0,0), ConditionSwitch(                                                                         #Mouth spunk               
-            "'mouth' not in newgirl['Mystique'].Spunk", Null(),
-            "E_Mouth == 'surprised'", "images/MystiqueSprite/MystiqueSprite_Head_Spunk_MouthOpen.png",            
-            "E_Mouth == 'tongue'", "images/MystiqueSprite/MystiqueSprite_Head_Spunk_MouthTongue.png",            
-            "True", "images/MystiqueSprite/MystiqueSprite_Head_Spunk_Mouth.png",  
-            ), 
-        
-        (0,0), "Mystique Blink",                                                                           #Eyes        
+        #(0,0), ConditionSwitch(       
+        #    "(E_Hair == 'wet' or E_Water) and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_HairbackWet_Red.png",
+        #    "(E_Hair == 'wet' or E_Water) and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_HairbackWet_White.png",
+        #    "(E_Hair == 'wet' or E_Water) and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackbackWet.png",
+        #    "E_Hair == 'wet' or E_Water", "images/EmmaSprite/EmmaSprite_Head_HairbackWet.png",
+        #    "E_Hair and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Hairback_Red.png",   
+        #    "E_Hair and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Hairback_White.png",   
+        #    "E_Hair and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackback.png",   
+        #    "E_Hair", "images/EmmaSprite/EmmaSprite_Head_Hairback.png",   
+        #    "True", Null(),        
+        #    ),
+        (0,0), ConditionSwitch(                                                                         #head 
+            #"renpy.showing('Mystique_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Mystique_TJ_Animation')", Null(),
+            # "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_head_evowet.png",
+            # "R_Hair == 'evo' and R_Blush == 2", "images/RogueSprite/Rogue_head_evo_blush2.png",
+            # "R_Hair == 'evo' and R_Blush", "images/RogueSprite/Rogue_head_evo_blush.png",
+            # "R_Hair == 'evo'", "images/RogueSprite/Rogue_head_evo.png",
+            "True", "images/MystiqueSprite/Mystique_head_base.png",
+            ),  
         (0,0), ConditionSwitch(                                                                         #brows
-            #"E_Brows == 'normal' and newgirl['Mystique'].HairColor == 'white'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Normal_White.png",
-            #"E_Brows == 'normal' and newgirl['Mystique'].HairColor == 'red'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Normal_Red.png",
-            "E_Brows == 'normal' and newgirl['Mystique'].HairColor == 'black'", "images/MystiqueSprite/MystiqueSprite_Head_BrowsBlack_Normal.png",
-            "E_Brows == 'normal'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Normal.png",
-            #"E_Brows == 'angry' and newgirl['Mystique'].HairColor == 'white'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Angry_White.png",
-            #"E_Brows == 'angry' and newgirl['Mystique'].HairColor == 'red'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Angry_Red.png",
-            "E_Brows == 'angry' and newgirl['Mystique'].HairColor == 'black'", "images/MystiqueSprite/MystiqueSprite_Head_BrowsBlack_Angry.png",
-            "E_Brows == 'angry'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Angry.png",
-            #"E_Brows == 'sad' and newgirl['Mystique'].HairColor == 'white'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Sad_White.png",
-            #"E_Brows == 'sad' and newgirl['Mystique'].HairColor == 'red'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Sad_Red.png",
-            "E_Brows == 'sad' and newgirl['Mystique'].HairColor == 'black'", "images/MystiqueSprite/MystiqueSprite_Head_BrowsBlack_Sad.png",
-            "E_Brows == 'sad'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Sad.png",
-            #"E_Brows == 'surprised' and newgirl['Mystique'].HairColor == 'white'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Surprised_White.png",        
-            #"E_Brows == 'surprised' and newgirl['Mystique'].HairColor == 'red'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Surprised_Red.png",        
-            "E_Brows == 'surprised' and newgirl['Mystique'].HairColor == 'black'", "images/MystiqueSprite/MystiqueSprite_Head_BrowsBlack_Surprised.png",        
-            "E_Brows == 'surprised'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Surprised.png",        
-            #"E_Brows == 'confused' and newgirl['Mystique'].HairColor == 'white'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Confused_White.png",
-            #"E_Brows == 'confused' and newgirl['Mystique'].HairColor == 'red'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Confused_Red.png",
-            "E_Brows == 'confused' and newgirl['Mystique'].HairColor == 'black'", "images/MystiqueSprite/MystiqueSprite_Head_BrowsBlack_Confused.png",
-            "E_Brows == 'confused'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Confused.png",
-            #"True and newgirl['Mystique'].HairColor == 'white'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Normal_White.png",
-            #"True and newgirl['Mystique'].HairColor == 'red'", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Normal_Red.png",
-            "True and newgirl['Mystique'].HairColor == 'black'", "images/MystiqueSprite/MystiqueSprite_Head_BrowsBlack_Normal.png",
-            "True", "images/MystiqueSprite/MystiqueSprite_Head_Brows_Normal.png",
-            ),         
-        (0,0), ConditionSwitch(                                                                         #facial spunk               
-            "'facial' in newgirl['Mystique'].Spunk", "images/MystiqueSprite/MystiqueSprite_Head_Spunk_Face.png",             
-            "True", Null(),
+            # "R_Brows == 'normal' and R_Blush == 2", "images/RogueSprite/Rogue_brows_normal_b.png",
+            # "R_Brows == 'angry' and R_Blush == 2", "images/RogueSprite/Rogue_brows_angry_b.png",
+            # "R_Brows == 'sad' and R_Blush == 2", "images/RogueSprite/Rogue_brows_sad_b.png",
+            # "R_Brows == 'surprised' and R_Blush == 2", "images/RogueSprite/Rogue_brows_surprised_b.png",        
+            # "R_Brows == 'confused' and R_Blush == 2", "images/RogueSprite/Rogue_brows_confused_b.png",
+            "newgirl['Mystique'].Brows == 'normal'", "images/MystiqueSprite/Mystique_brows_normal.png",
+            "newgirl['Mystique'].Brows == 'angry'", "images/MystiqueSprite/Mystique_brows_angry.png",
+            "newgirl['Mystique'].Brows == 'sad'", "images/MystiqueSprite/Mystique_brows_sad.png",
+            "newgirl['Mystique'].Brows == 'surprised'", "images/MystiqueSprite/Mystique_brows_surprised.png",        
+            "newgirl['Mystique'].Brows == 'confused'", "images/MystiqueSprite/Mystique_brows_confused.png",
+            "True", "images/MystiqueSprite/Mystique_brows_normal.png",
+            ),
+#        (0,0), ConditionSwitch(                                                                         #Blush
+#            "R_Blush", "images/RogueSprite/Rogue_blush.png",
+#            "True", Null(), 
+#            ),
+        (0,0), "Mystique Blink",  
+        (0,0), ConditionSwitch(                                                                                 #Collar
+            "newgirl['Mystique'].Glasses", "images/RogueSprite/Rogue_Sprite_Glasses.png",   
+            "True", Null(),                #R_Arms == 'gloved' or not R_Arms
             ),  
         (0,0), ConditionSwitch(                                                                         #Hair
-            "not newgirl['Mystique'].Hair", Null(),
-            "(E_Hair == 'wet' or newgirl['Mystique'].Water) and newgirl['Mystique'].HairColor == 'white'", "images/MystiqueSprite/MystiqueSprite_Head_HairWet_White.png",
-            "(E_Hair == 'wet' or newgirl['Mystique'].Water) and newgirl['Mystique'].HairColor == 'red'", "images/MystiqueSprite/MystiqueSprite_Head_HairWet_Red.png",
-            "(E_Hair == 'wet' or newgirl['Mystique'].Water) and newgirl['Mystique'].HairColor == 'black'", "images/MystiqueSprite/MystiqueSprite_Head_HairBlackWet.png",
-            "E_Hair == 'wet' or newgirl['Mystique'].Water", "images/MystiqueSprite/MystiqueSprite_Head_HairWet.png",
-            "E_Hair and newgirl['Mystique'].HairColor == 'white'", "images/MystiqueSprite/MystiqueSprite_Head_Hair_White.png",
-            "E_Hair and newgirl['Mystique'].HairColor == 'red'", "images/MystiqueSprite/MystiqueSprite_Head_Hair_Red.png",
-            "E_Hair and newgirl['Mystique'].HairColor == 'black'", "images/MystiqueSprite/MystiqueSprite_Head_HairBlack.png",
-            "E_Hair", "images/MystiqueSprite/MystiqueSprite_Head_Hair.png",
-            "True", Null(),
-            ),        
-        (0,0), ConditionSwitch(                                                                         #Hair Water
-            "not newgirl['Mystique'].Water", Null(),
-            "E_Hair == 'wet'", "images/MystiqueSprite/MystiqueSprite_Head_Water.png",
-            "True", "images/MystiqueSprite/MystiqueSprite_Head_Water.png",
+            # "R_Hair == 'evo' and R_Water and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_wet.png",
+            # "R_Hair == 'evo' and R_Water and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_wet.png",
+            # "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_hair_wet.png",
+            # "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_evo.png",
+            # "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_evo.png",
+            "newgirl['Mystique'].Hair", "images/MystiqueSex/Mystique_sex_hair_front.png",
+            "True", Null(), 
+            ),   
+        (0,0), ConditionSwitch(                                                                                 #Mouth for under layer
+            #"Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
+            "Speed == 1 and Trigger == 'blow'", "images/MystiqueSprite/Mystique_mouth_tongue.png", #licking
+            "Speed == 2 and Trigger == 'blow'", Null(),                                #heading Rogue_BJ_HeadingMouth()
+            "Speed == 3 and Trigger == 'blow'", "images/MystiqueSprite/Mystique_bj_mouth2.png", #sucking
+            "Speed == 4 and Trigger == 'blow'", "images/MystiqueSprite/Mystique_bj_mouth2.png", #deepthroat   
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'sucking'", "images/MystiqueSprite/Mystique_mouth_sucking_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'surprised'", "images/MystiqueSprite/Mystique_mouth_sucking_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'sad'", "images/MystiqueSprite/Mystique_mouth_sad_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'kiss'", "images/MystiqueSprite/Mystique_mouth_sad_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'smile'", "images/MystiqueSprite/Mystique_mouth_smile_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'tongue'", "images/MystiqueSprite/Mystique_mouth_tongue_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk", "images/MystiqueSprite/Mystique_mouth_lipbite_w.png",      
+            "newgirl['Mystique'].Mouth == 'normal'", "images/MystiqueSprite/Mystique_mouth_normal.png",
+            "newgirl['Mystique'].Mouth == 'lipbite'", "images/MystiqueSprite/Mystique_mouth_lipbite.png",
+            "newgirl['Mystique'].Mouth == 'sucking'", "images/MystiqueSprite/Mystique_mouth_sucking.png",            
+            "newgirl['Mystique'].Mouth == 'kiss'", "images/MystiqueSprite/Mystique_mouth_kiss.png",
+            "newgirl['Mystique'].Mouth == 'sad'", "images/MystiqueSprite/Mystique_mouth_sad.png",
+            "newgirl['Mystique'].Mouth == 'smile'", "images/MystiqueSprite/Mystique_mouth_smile.png",
+            "newgirl['Mystique'].Mouth == 'surprised'", "images/MystiqueSprite/Mystique_mouth_surprised.png",            
+            "newgirl['Mystique'].Mouth == 'tongue'", "images/MystiqueSprite/Mystique_mouth_tongue.png",                
+            "newgirl['Mystique'].Mouth == 'grimace'", "images/MystiqueSprite/Mystique_mouth_grimace.png",          
+            "True", "images/MystiqueSprite/Mystique_mouth_normal.png",
             ),
+        # (0,0), ConditionSwitch(                                                                         #Mouth spunk               
+        #     "'mouth' not in E_Spunk", Null(),
+        #     "E_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthOpen.png",            
+        #     "E_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthTongue.png",            
+        #     "True", "images/EmmaSprite/EmmaSprite_Head_Spunk_Mouth.png",  
+        #     ), 
+        (0,0), ConditionSwitch(                                                                         #facial spunk               
+            "'facial' in newgirl['Mystique'].Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_Face.png",             
+            "True", Null(),
+            ),  
+        # (0,0), ConditionSwitch(                                                                         #Hair Water
+        #     "not E_Water", Null(),
+        #     "E_Hair == 'wet'", "images/EmmaSprite/EmmaSprite_Head_Water.png",
+        #     "True", "images/EmmaSprite/EmmaSprite_Head_Water.png",
+        #     ),
         (0,0), ConditionSwitch(                                                                         #hair spunk               
-            "'hair' in newgirl['Mystique'].Spunk and (E_Hair == 'wet' or newgirl['Mystique'].Water)", "images/MystiqueSprite/MystiqueSprite_Head_Spunk_HairWet.png",                         
-            "'hair' in newgirl['Mystique'].Spunk", "images/MystiqueSprite/MystiqueSprite_Head_Spunk_HairWave.png",              
+            "'hair' in newgirl['Mystique'].Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWave.png",              
             "True", Null(),
             ),  
         )                
     anchor (0.6, 0.0)                
-    zoom .48 
+    zoom .75 
+
+image Mystique_Head_Sex_2:
+    "Mystique_Sex_Head"
+    # #zoom .75
+    # zoom 4.05
+    # pos (275,-110)
+    # offset (-240, -200) #-140 - 125
+    zoom 1.9
+    pos (175,-110)
+    offset (-230, 30)
+
+# image Mystique_Hair_Back_Sex_2:
+#     "Mystique_BJ_Head"
+#     # #zoom .75
+#     # zoom 4.05
+#     # pos (275,-110)
+#     # offset (-240, -200) #-140 - 125
+#     zoom 1.9
+#     pos (175,-110)
+#     offset (-230, 30)
 
 image Mystique_Head_Sex:
     # The head used for the sex pose, referenced by Mystique_Sex_Body
@@ -261,10 +247,11 @@ image Mystique_Head_Sex:
 image Mystique_HairBack_Sex:
     # The hair behind the head for the sex pose, referenced by Mystique_Sex_Body            
     "Mystique_Sex_HairBack"
-    zoom 1.5
-    anchor (0.5,0.5)   
-    rotate 5         
-    xzoom -1
+    zoom 1.9
+    pos (175,-110)
+    offset (-230, 30)
+
+
 
 #image Mystique_Sex_Legs = LiveComposite(  
 image Mystique_Sex_Legs:
@@ -272,12 +259,12 @@ image Mystique_Sex_Legs:
         #the legs used in the sex pose, referenced by Mystique_SexSprite
         (1120,840), 
         (0,0), ConditionSwitch(
-            "E_LegsUp", "images/MystiqueSex/Mystique_Sex_Legs_LegsUp.png",
+            "newgirl['Mystique'].LegsUp", "images/MystiqueSex/Mystique_Sex_Legs_LegsUp.png",
             "True", "images/MystiqueSex/Mystique_Sex_Legs.png",
             ),                                                     #Legs Base
         (0,0), ConditionSwitch(                                                                                 #Wet look
-            "E_LegsUp", Null(),
-            "E_Water", "images/MystiqueSex/Mystique_Sex_Water_Legs.png",   
+            "newgirl['Mystique'].LegsUp", Null(),
+            "newgirl['Mystique'].Water", "images/MystiqueSex/Mystique_Sex_Water_Legs.png",   
             "True", Null(),              
             ),  
         (0,0), "Mystique_Sex_Anus",                                                                          #Anus Composite 
@@ -285,10 +272,10 @@ image Mystique_Sex_Legs:
         (0,0), "Mystique_Sex_Pussy",                                                                         #Pussy Composite
 
         (0,0), ConditionSwitch(                                                                                 #Panties if up
-            "E_PantiesDown", Null(),     
-            "E_Panties == 'bikini'", "images/MystiqueSex/Mystique_Sex_Panty_BikiniBottom_White.png",          
-            "E_Panties == 'white panties'", "images/MystiqueSex/Mystique_Sex_Panty_White.png",          
-            "E_Panties == 'black panties'", "images/MystiqueSex/Mystique_Sex_Panty_Black.png",    
+            "newgirl['Mystique'].PantiesDown", Null(),     
+            # "newgirl['Mystique'].Panties == 'bikini'", "images/MystiqueSex/Mystique_Sex_Panty_BikiniBottom_White.png",          
+            # "newgirl['Mystique'].Panties == 'white panties'", "images/MystiqueSex/Mystique_Sex_Panty_White.png",          
+            # "newgirl['Mystique'].Panties == 'black panties'", "images/MystiqueSex/Mystique_Sex_Panty_Black.png",    
             "True", Null(),                     
             ),  
         # (0,0), ConditionSwitch(                                                                                 #Legs Layer
@@ -325,7 +312,7 @@ image Mystique_Sex_Legs:
             ),
         (0,0), ConditionSwitch(                                                         #Shows different lower body motion depending on events
             "not Speed", "Mystique_Sex_Feet",  
-            "E_LegsUp and (P_Cock == 'anal' or P_Cock == 'in' or P_Cock == 'out')", "Mystique_Sex_Feet", 
+            "newgirl['Mystique'].LegsUp and (P_Cock == 'anal' or P_Cock == 'in' or P_Cock == 'out')", "Mystique_Sex_Feet", 
             "P_Cock == 'anal' or P_Cock == 'in' or P_Cock == 'out'", AlphaMask("Mystique_Sex_Feet", "images/MystiqueSex/Mystique_Sex_FeetMask.png"), 
             "True", "Mystique_Sex_Feet",            
             ),
@@ -335,11 +322,11 @@ image Mystique_Sex_Feet = LiveComposite(
         #the lower legs used in the sex pose, referenced by Mystique_Sex_Legs
         (1120,840), 
         (0,0), ConditionSwitch(
-            "E_LegsUp", "images/MystiqueSex/Mystique_Sex_Feet_LegsUp.png",
+            "newgirl['Mystique'].LegsUp", "images/MystiqueSex/Mystique_Sex_Feet_LegsUp.png",
             "True", "images/MystiqueSex/Mystique_Sex_Feet.png",
             ),
         (0,0), ConditionSwitch(                                                                                 #Wet look
-            "E_Water", "images/MystiqueSex/Mystique_Sex_Water_Feet.png",   
+            "newgirl['Mystique'].Water", "images/MystiqueSex/Mystique_Sex_Water_Feet.png",   
             "True", Null(),              
             ),  
         # (0,0), ConditionSwitch(                                                                                 #Legs Layer

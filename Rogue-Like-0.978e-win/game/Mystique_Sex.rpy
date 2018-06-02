@@ -118,8 +118,8 @@ label Mystique_SexMenu:
                         #     call Mystique_Titjob         
                         "Could you suck my cock?":
                             call Mystique_Blowjob 
-                        # "Could you use your feet?":
-                        #     call Mystique_Footjob 
+                        "Could you use your feet?":
+                            call Mystique_Footjob 
                         "Never mind [[something else]":
                             jump Mystique_SMenu
                 elif not newgirl["Mystique"].Action:
@@ -159,12 +159,12 @@ label Mystique_SexMenu:
                 if P_Semen and newgirl["Mystique"].Action:
                     menu:
                         "What did you want to do?"
-                        # "Lean back, I've got something in mind (Missionary). . .":
-                        #         call Mystique_Sex_H           
-                        # "Fuck your pussy. (Missionary)":                        
-                        #         call Mystique_Sex_P           
-                        # "Fuck your ass. (Missionary)":                        
-                        #         call Mystique_Sex_A    
+                        "Lean back, I've got something in mind (Missionary). . .":
+                                call Mystique_Sex_H           
+                        "Fuck your pussy. (Missionary)":                        
+                                call Mystique_Sex_P           
+                        "Fuck your ass. (Missionary)":                        
+                                call Mystique_Sex_A    
                         "Turn around, I've got something in mind (DoggyStyle). . .":
                                 call Mystique_Doggy_H  
                         "Fuck your pussy. (DoggyStyle)":                        
@@ -2150,134 +2150,4 @@ label Mystique_Taboo(Cnt= 1, Public=0):
     $ newgirl["Mystique"].RecentActions.append("spotted") if Cnt < 4 else newgirl["Mystique"].RecentActions
     $ newgirl["Mystique"].DailyActions.append("spotted")  if "spotted" not in newgirl["Mystique"].DailyActions else newgirl["Mystique"].DailyActions
     return
-    
-    
-label Mystique_Noticed(Other = "Rogue", B = 0):
-    if "noticed rogue" in newgirl["Mystique"].RecentActions and Other == "Rogue":
-            return
-    if "noticed kitty" in newgirl["Mystique"].RecentActions and Other == "Kitty":
-            return
-        
-    call MystiqueFace("surprised", 1)
-    if Other == "Rogue":            
-            "Mystique noticed what you and Rogue are up to."
-            $ newgirl["Mystique"].RecentActions.append("noticed rogue")
-            if "poly rogue" in newgirl["Mystique"].Traits:
-                    $ B = (1000-(20*Taboo))  
-            else:
-                    $ B = (newgirl["Mystique"].LikeRogue - 500)
-                    if "dating" in newgirl["Mystique"].Traits:
-                        $ B -= 200
-    elif Other == "Kitty":            
-            "Mystique noticed what you and Kitty are up to."
-            $ newgirl["Mystique"].RecentActions.append("noticed kitty")
-            if "poly kitty" in newgirl["Mystique"].Traits:
-                    $ B = (1000-(20*Taboo))  
-            else:
-                    $ B = (newgirl["Mystique"].LikeKitty - 500)
-                    if "dating" in newgirl["Mystique"].Traits:
-                        $ B -= 200
-                        
-#    "She doesn't seem to be prepared to deal with this right now, and leaves the room." #remove when ready
-#    call Remove_Girl("Mystique")
-#    return
-            
-    $ Partner = "Mystique"
-    if ApprovalCheck("Mystique", 2000, TabM=2, Bonus = B) or ApprovalCheck("Mystique", 950, "L", TabM=2, Bonus = (B/3)):
-            #if she's very loose or really likes you
-            call MystiqueFace("sexy", 1)
-            "She decides to join you."                                      
-            $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 90, 5)
-            $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 90, 5) 
-            $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 90, 3) 
-            if Other == "Rogue" and "poly rogue" not in newgirl["Mystique"].Traits: 
-                    $ newgirl["Mystique"].Traits.append("poly rogue") 
-            elif Other == "Kitty" and "poly kitty" not in newgirl["Mystique"].Traits: 
-                    $ newgirl["Mystique"].Traits.append("poly kitty") 
-            call Mystique_Threeway_Set
-    elif ApprovalCheck("Mystique", 650, "O", TabM=2) and ApprovalCheck("Mystique", 450, "L", TabM=1) or ApprovalCheck("Mystique", 800, "O", TabM=2, Bonus = (B/3)): 
-            #if she likes you, but is very obedient
-            call MystiqueFace("sexy")
-            "She takes a seat off to the side and watches."          
-            $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 5) 
-            $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 90, 5)  
-            $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 90, 2)  
-            if Other == "Rogue" and "poly rogue" not in newgirl["Mystique"].Traits: 
-                    $ newgirl["Mystique"].Traits.append("poly rogue") 
-            elif Other == "Kitty" and "poly kitty" not in newgirl["Mystique"].Traits: 
-                    $ newgirl["Mystique"].Traits.append("poly kitty") 
-            call Mystique_Threeway_Set("watch")
-    elif ApprovalCheck("Mystique", 650, "I", TabM=2) and ApprovalCheck("Mystique", 450, "L", TabM=1) or ApprovalCheck("Mystique", 800, "I", TabM=2, Bonus = (B/3)):
-            #if she likes you, but is very uninhibited
-            call MystiqueFace("sexy")
-            "She sits down and watches you intently."             
-            $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 5) 
-            $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 90, 2)
-            $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 90, 2)     
-            $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 90, 5) 
-            if Other == "Rogue" and "poly rogue" not in newgirl["Mystique"].Traits: 
-                    $ newgirl["Mystique"].Traits.append("poly rogue") 
-            elif Other == "Kitty" and "poly kitty" not in newgirl["Mystique"].Traits: 
-                    $ newgirl["Mystique"].Traits.append("poly kitty") 
-            call Mystique_Threeway_Set("watch")
-    elif ApprovalCheck("Mystique", 1500, TabM=2, Bonus = B):
-            call MystiqueFace("perplexed", 1)
-            "She looks a little annoyed, but she stays and watches."
-            if newgirl["Mystique"].Love >= newgirl["Mystique"].Obed and newgirl["Mystique"].Love >= newgirl["Mystique"].Inbt:
-                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 90, 2)
-                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 90, 2)                     
-            elif newgirl["Mystique"].Obed >= newgirl["Mystique"].Inbt:
-                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 2) 
-                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 90, 2)   
-            else:
-                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 2) 
-                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 90, 1)
-                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 90, 1) 
-            $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 90, 5)
-            call Mystique_Threeway_Set("watch")
-    elif ApprovalCheck("Mystique", 650, "L", TabM=1) or ApprovalCheck("Mystique", 400, "O", TabM=2):
-            #if she likes you or is obedient, but not enough
-            call MystiqueFace("angry", 2)                
-            if bg_current == "bg mystique": 
-                    "She looks betrayed, and kicks you both out of the room."
-            else:
-                    "She looks betrayed, and storms out of the room."                   
-            $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 200, -5) 
-            $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 80, -5) 
-            $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -5) 
-            $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 90, -5)
-            $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 89, 10) 
-            if Other == "Rogue" and "saw with rogue" not in newgirl["Mystique"].Traits: 
-                    $ newgirl["Mystique"].Traits.append("saw with rogue") 
-            elif Other == "Kitty" and "saw with kitty" not in newgirl["Mystique"].Traits: 
-                    $ newgirl["Mystique"].Traits.append("saw with kitty") 
-            $ Partner = 0
-            if bg_current == "bg mystique": #Kicks you out if in Mystique's room
-                    $ newgirl["Mystique"].RecentActions.append("angry")
-                    call GirlsAngry
-            call Remove_Girl("Mystique")
-    else:
-            #if she doesn't like you much
-            call MystiqueFace("surprised", 2)
-            $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 90, 2) 
-            $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 40, 20)
-            if Trigger != "kissing":
-                    $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -10) 
-                    $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 90, -5)
-                    $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 80, 10)
-            if bg_current == "bg mystique":
-                    $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -5) 
-                    $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 90, -5)
-                    "She looks annoyed, and shoves you both out of the room."                 
-            elif Trigger != "kissing":
-                "She looks annoyed, and storms out of the room." 
-            else:
-                "She looks a bit disgusted and walks away."                                  
-            $ Partner = 0      
-            if bg_current == "bg mystique": #Kicks you out if in Mystique's room
-                    $ newgirl["Mystique"].RecentActions.append("angry")
-                    call GirlsAngry
-            call Remove_Girl("Mystique")
-    return
-    
 

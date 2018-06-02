@@ -2,16 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/Emma_Chat.rpy", line 312: menu statement expects a non-empty block.
-    menu:
-        ^
-
-File "game/Emma_Chat.rpy", line 314: expected statement.
-    "Yes, teach me":
-                   ^
-
-File "game/Emma_Chat.rpy", line 318: expected statement.
-    "No, I'll find it by myself":
-                                ^
+File "game/script.rpy", line 649: expected statement.
+    newgirl["Mystique"].XP = 0
+                           ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

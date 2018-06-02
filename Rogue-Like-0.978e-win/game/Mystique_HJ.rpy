@@ -915,8 +915,8 @@ label MystiqueBJ_Cycle: #Repeating strokes
                             
                         "Take it deeper." if Speed != 4:
                                 if "pushed" not in newgirl["Mystique"].RecentActions and newgirl["Mystique"].Blow < 5:
-                                    $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 80, -(20-(2*E_Blow))) 
-                                    $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, (30-(3*E_Blow)))
+                                    $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 80, -(20-(2*newgirl["Mystique"].Blow))) 
+                                    $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, (30-(3*newgirl["Mystique"].Blow)))
                                     $ newgirl["Mystique"].RecentActions.append("pushed")
                                 if Trigger2 == "jackin" and Speed != 3:
                                     "She takes it to the root, and you move your hand out of the way."
