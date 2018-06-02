@@ -389,6 +389,9 @@ label Kitty_Chat:
 
         "Talk with Emma" if E_Loc == bg_current:
                 jump Emma_Chat
+
+        "Talk with Mystique" if newgirl["Mystique"].Loc == bg_current:
+                jump Mystique_Chat
                 
         "Never mind.":
                     return

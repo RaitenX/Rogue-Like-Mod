@@ -479,7 +479,7 @@ label NewGirl_Threeway_Set(Girl_ = "Mystique", Preset = 0, Mode = 0, Action = Tr
                         if Trigger != "lesbian" and Trigger5 in ("kiss you", "kiss girl", "kiss both"):
                                 #Clear out Trigger 5 if it's for kissing.  
                                 $ Trigger5 = 0 
-                        call NewGirl_Self_Lines("Mystique","T5",Trigger5)
+                        call NewGirl_Self_Lines(Girl_,"T5",Trigger5)
             elif Options[0] == "hand":
                         $ Line = Line + " before she slides her hand down and firmly grabs your dick"
                         $ Action = "hand"   

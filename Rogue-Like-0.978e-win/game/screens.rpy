@@ -46,7 +46,7 @@ screen say(who, what, side_image=None, two_window=False, CountWords = 0): #Count
             $ CountWords = 1
         elif who == "Emma" and E_Gag: 
             $ CountWords = 1
-        elif who == "Mystique" and newgirl["Mystique"].Gag: 
+        elif who in ModdedGirls and newgirl[who].Gag: 
             $ CountWords = 1
         if CountWords == 1:
             $ CountWords = what.count(" ") if what.count(" ") <= 10 else 10
@@ -112,10 +112,10 @@ screen say(who, what, side_image=None, two_window=False, CountWords = 0): #Count
                         add "arrow" xalign 0.1 #xzoom -1
                     else: #E_SpriteLoc == StageCenter, Left, etc.:
                         add "arrow" xalign 0.8   
-            elif who == "Mystique": 
-                    if newgirl["Mystique"].SpriteLoc == StageRight or newgirl["Mystique"].SpriteLoc == StageFarRight:
+            elif who in ModdedGirls: 
+                    if newgirl[who].SpriteLoc == StageRight or newgirl[who].SpriteLoc == StageFarRight:
                         add "arrow" rotate -90 xzoom -1 xpos 1.03 ypos -0.85                        
-                    elif newgirl["Mystique"].SpriteLoc == StageFarLeft:
+                    elif newgirl[who].SpriteLoc == StageFarLeft:
                         add "arrow" xalign 0.1 #xzoom -1
                     else: #E_SpriteLoc == StageCenter, Left, etc.:
                         add "arrow" xalign 0.8        
