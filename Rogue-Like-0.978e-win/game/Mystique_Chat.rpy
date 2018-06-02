@@ -333,7 +333,7 @@ label Mystique_Chat_Minimal:
                         ch_m "Hmm. . . fine, hand me your phone."             
                         $ Digits.append("Mystique")
                     else:
-                        ch_m "I don't think i want to give my number out to a kid like that."  
+                        ch_m "I don't think I want to give my number out to a kid like that."  
                         
         "Gifts" if newgirl["Mystique"].Loc == bg_current:
                     ch_p "I'd like to give you something."

@@ -65,7 +65,7 @@ label Mystique_Doggy_P:
                 "Praise her.":       
                     call MystiqueFace("sexy, 1")                    
                     $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 80, 3) 
-                    ch_p "Oh yeah, [newgirl[Mystique].Pet], let's do this."
+                    ch_p "Come on, [newgirl[Mystique].Pet], let's do this."
                     call Mystique_Namecheck
                     "Mystique slides it in."
                     $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 85, 1)
@@ -113,19 +113,19 @@ label Mystique_Doggy_P:
         else:                                                                                                            #she's questioning it
             $ newgirl["Mystique"].Brows = "angry"                
             menu:
-                ch_m "Hey, what do you think you're doing back there?!" 
+                ch_m "Hey, what do you think you're doing with my ass?!" 
                 "Sorry, sorry! Never mind.":
                     if Approval:     
                         call MystiqueFace("sexy", 1)
                         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 70, 3)
                         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, 3) 
                         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 70, 1) 
-                        ch_m "Well, since you're be'in so nice about it, I guess we can give it a go. . ."
+                        ch_m "Well, since you're be'in so nice about it, I guess we can try it. . ."
                         jump Mystique_Doggy_SexPrep
                     "You pull back before you really get it in."                    
                     call MystiqueFace("bemused", 1)
                     if newgirl["Mystique"].Sex:
-                        ch_m "Well ok, [newgirl[Mystique].Petname], no harm done. Just give me a little warning next time." 
+                        ch_m "Well ok, [newgirl[Mystique].Petname], no problem. Just give me a little warning next time." 
                     else:
                         ch_m "Well ok, [newgirl[Mystique].Petname], I'm not really ready for that, but maybe if you ask nicely next time . . ."                                               
                 "Just fucking.":                    
@@ -137,7 +137,7 @@ label Mystique_Doggy_P:
                     if not ApprovalCheck("Mystique", 700, "O", TabM=1):   #Checks if Obed is 700+                          
                         call MystiqueFace("angry")
                         "Mystique shoves you away and slaps you in the face."
-                        ch_m "Jackass!"
+                        ch_m "Dork!"
                         ch_m "If that's how you want to treat me, we're done here!"                                                  
                         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 50, -10, 1)                        
                         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 50, 3)
@@ -172,7 +172,7 @@ label Mystique_Doggy_P:
             call MystiqueFace("sexy")
             $ newgirl["Mystique"].Brows = "sad"
             $ newgirl["Mystique"].Mouth = "smile" 
-            ch_m "Well, I've never been able to do this before now, so this might be fun."            
+            ch_m "Well, I could do it, this might be fun."            
         elif newgirl["Mystique"].Obed >= newgirl["Mystique"].Inbt:
             call MystiqueFace("normal")
             ch_m "If that's what you want, [newgirl[Mystique].Petname]. . ."            
@@ -223,7 +223,7 @@ label Mystique_Doggy_P:
             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 60, 1)
             ch_m "Ok, fine."  
         elif "no sex" in newgirl["Mystique"].DailyActions:               
-            ch_m "Ok, you've won me over on this one. . ."
+            ch_m "Ok, you've complimented me in this time. . ."
         else:
             call MystiqueFace("sexy", 1)
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 1)
@@ -327,7 +327,7 @@ label Mystique_Doggy_P:
         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 50, -3)
     elif newgirl["Mystique"].Sex:
         call MystiqueFace("sad") 
-        ch_m "Maybe you could go fuck yourself instead."       
+        ch_m "Maybe you could go and fuck yourself this time."       
     else:
         call MystiqueFace("normal", 1)
         ch_m "No way."     
