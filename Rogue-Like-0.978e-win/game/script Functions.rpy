@@ -127,36 +127,36 @@ init python:
                         E_Inbt = 1000 if E_Inbt > 1000 else E_Inbt
                 #End Emma content
 
-                elif Name == "Mystique" and newgirl["Mystique"].Chat[4]:
+                elif Name in ModdedGirls and newgirl[Name].Chat[4]:
                         #global newgirl["Mystique"].Love
                         #global newgirl["Mystique"].Obed                    
                         #global newgirl["Mystique"].Inbt
                         
                         Value = Type - 1000
                         if Flavor == "Love":                    
-                                if newgirl["Mystique"].Chat[4] == 1:
-                                    newgirl["Mystique"].Obed += Value    #[Love to Obedience]
+                                if newgirl[Name].Chat[4] == 1:
+                                    newgirl[Name].Obed += Value    #[Love to Obedience]
                                     Flavor = "Obed"
-                                elif newgirl["Mystique"].Chat[4] == 2:
-                                    newgirl["Mystique"].Inbt += Value   #[Love to Inhibition] 
+                                elif newgirl[Name].Chat[4] == 2:
+                                    newgirl[Name].Inbt += Value   #[Love to Inhibition] 
                                     Flavor = "Inbt"
                         elif Flavor == "Obed":             
-                                if newgirl["Mystique"].Chat[4] == 3:
-                                    newgirl["Mystique"].Inbt += Value    #[Obedience to Inhibition]
+                                if newgirl[Name].Chat[4] == 3:
+                                    newgirl[Name].Inbt += Value    #[Obedience to Inhibition]
                                     Flavor = "Inbt"
-                                elif newgirl["Mystique"].Chat[4] == 4:
-                                    newgirl["Mystique"].Love += Value    #[Obedience to Love] 
+                                elif newgirl[Name].Chat[4] == 4:
+                                    newgirl[Name].Love += Value    #[Obedience to Love] 
                                     Flavor = "Love"  
                         elif Flavor == "Inbt":            
-                                if newgirl["Mystique"].Chat[4] == 5:
-                                    newgirl["Mystique"].Obed += Value    #[Inhibition to Obedience]
+                                if newgirl[Name].Chat[4] == 5:
+                                    newgirl[Name].Obed += Value    #[Inhibition to Obedience]
                                     Flavor = "Obed"
-                                elif newgirl["Mystique"].Chat[4] == 6:
-                                    newgirl["Mystique"].Love += Value    #[Inhibition to Love]
+                                elif newgirl[Name].Chat[4] == 6:
+                                    newgirl[Name].Love += Value    #[Inhibition to Love]
                                     Flavor = "Love"
-                        newgirl["Mystique"].Love = 1000 if newgirl["Mystique"].Love > 1000 else newgirl["Mystique"].Love  #fix, check this works, not sure.
-                        newgirl["Mystique"].Obed = 1000 if newgirl["Mystique"].Obed > 1000 else newgirl["Mystique"].Obed
-                        newgirl["Mystique"].Inbt = 1000 if newgirl["Mystique"].Inbt > 1000 else newgirl["Mystique"].Inbt
+                        newgirl[Name].Love = 1000 if newgirl[Name].Love > 1000 else newgirl[Name].Love  #fix, check this works, not sure.
+                        newgirl[Name].Obed = 1000 if newgirl[Name].Obed > 1000 else newgirl[Name].Obed
+                        newgirl[Name].Inbt = 1000 if newgirl[Name].Inbt > 1000 else newgirl[Name].Inbt
                 #End Mystique content
                 
                 Type = 1000
@@ -189,8 +189,8 @@ init python:
                     XPOS = K_SpriteLoc
             elif Name == "Emma":
                     XPOS = E_SpriteLoc
-            elif Name == "Mystique":
-                    XPOS = newgirl["Mystique"].SpriteLoc
+            elif Name in ModdedGirls:
+                    XPOS = newgirl[Name].SpriteLoc
             else:
                     XPOS = 0.75
                 
@@ -343,12 +343,12 @@ init python:
             elif Chr == "Emma":
                 if Act in E_DailyActions:
                     Count = E_DailyActions.count(Act) 
-            elif Chr == "Mystique" and Time == "recent":
-                if Act in newgirl["Mystique"].RecentActions:
-                    Count = newgirl["Mystique"].RecentActions.count(Act) 
-            elif Chr == "Mystique":
-                if Act in newgirl["Mystique"].DailyActions:
-                    Count = newgirl["Mystique"].DailyActions.count(Act) 
+            elif Chr in ModdedGirls and Time == "recent":
+                if Act in newgirl[Chr].RecentActions:
+                    Count = newgirl[Chr].RecentActions.count(Act) 
+            elif Chr in ModdedGirls:
+                if Act in newgirl[Chr].DailyActions:
+                    Count = newgirl[Chr].DailyActions.count(Act) 
                     
             return Count
 
@@ -438,12 +438,12 @@ init python:
                 O = R_Obed
                 I = R_Inbt
                 Loc = R_Loc if not Loc else Loc
-        elif Chr == "Mystique":                                 
+        elif Chr in ModdedGirls:                                 
                 #sets the data based on Rogue's data
-                L = newgirl["Mystique"].Love
-                O = newgirl["Mystique"].Obed
-                I = newgirl["Mystique"].Inbt
-                Loc = newgirl["Mystique"].Loc if not Loc else Loc
+                L = newgirl[Chr].Love
+                O = newgirl[Chr].Obed
+                I = newgirl[Chr].Inbt
+                Loc = newgirl[Chr].Loc if not Loc else Loc
         
         if Loc == bg_current:
                 #Bumps stats based on colognes
@@ -541,9 +541,10 @@ init python:
         if E_Loc == bg_current:
             if "Emma" not in Party: 
                 Present.append("Emma")
-        if newgirl["Mystique"].Loc == bg_current:
-            if "Mystique" not in Party: 
-                Present.append("Mystique") 
+        for eachnewgirl in ModdedGirls:
+            if newgirl[eachnewgirl].Loc == bg_current:
+                if eachnewgirl not in Party: 
+                    Present.append(eachnewgirl) 
         
         if len(Party) + len(Present) >= 3:                
             return 1      
@@ -581,8 +582,8 @@ init python:
                                 return 1
                             else:
                                 return 0
-                elif Chr == "Mystique":
-                            if newgirl["Mystique"].Hose == "stockings":
+                elif Chr in ModdedGirls:
+                            if newgirl[Chr].Hose == "stockings":
                                 return 1
                             else:
                                 return 0
@@ -617,8 +618,8 @@ init python:
                             return 10    
                         else:
                             return 0
-                elif Chr == "Mystique":
-                        if newgirl["Mystique"].Legs == "pants":
+                elif Chr in ModdedGirls:
+                        if newgirl[Chr].Legs == "pants":
                             return 1
                         else:
                             return 0
@@ -661,16 +662,16 @@ init python:
                             C += 1
                         if E_Panties:
                             C += 1
-                elif Chr == "Mystique":
-                        if newgirl["Mystique"].Over:
+                elif Chr in ModdedGirls:
+                        if newgirl[Chr].Over:
                             C += 1
-                        if newgirl["Mystique"].Chest:
+                        if newgirl[Chr].Chest:
                             C += 1
-                        if newgirl["Mystique"].Legs:
+                        if newgirl[Chr].Legs:
                             C += 1
-                        if HoseNum("Mystique") >= 5:
+                        if HoseNum(Chr) >= 5:
                             C += 1
-                        if newgirl["Mystique"].Panties:
+                        if newgirl[Chr].Panties:
                             C += 1
                 return C 
             
@@ -941,22 +942,42 @@ label Faces(Character="All"):
                     $ E_Emote = "normal"
             call EmmaFace   
 
-    if Character == "Mystique" or Character == "All":
-            if newgirl["Mystique"].Lust >= 50 and ApprovalCheck("Mystique", 1000):
-                    $ newgirl["Mystique"].Emote = "sexy"           
-            elif newgirl["Mystique"].Addict > 75:
-                    $ newgirl["Mystique"].Emote = "manic"
-            elif newgirl["Mystique"].Love >= newgirl["Mystique"].Obed and newgirl["Mystique"].Love >= 500:
-                    $ newgirl["Mystique"].Emote = "smile"      
-            elif newgirl["Mystique"].Inbt >= newgirl["Mystique"].Obed and newgirl["Mystique"].Inbt >= 500:
-                    $ newgirl["Mystique"].Emote = "smile"      
-            elif newgirl["Mystique"].Addict > 50:
-                    $ newgirl["Mystique"].Emote = "manic"
-            elif (newgirl["Mystique"].Love + newgirl["Mystique"].Obed) < 300:
-                    $ newgirl["Mystique"].Emote = "angry"
+    if Character in ModdedGirls:
+            if newgirl[Character].Lust >= 50 and ApprovalCheck(Character, 1000):
+                    $ newgirl[Character].Emote = "sexy"           
+            elif newgirl[Character].Addict > 75:
+                    $ newgirl[Character].Emote = "manic"
+            elif newgirl[Character].Love >= newgirl[Character].Obed and newgirl[Character].Love >= 500:
+                    $ newgirl[Character].Emote = "smile"      
+            elif newgirl[Character].Inbt >= newgirl[Character].Obed and newgirl[Character].Inbt >= 500:
+                    $ newgirl[Character].Emote = "smile"      
+            elif newgirl[Character].Addict > 50:
+                    $ newgirl[Character].Emote = "manic"
+            elif (newgirl[Character].Love + newgirl[Character].Obed) < 300:
+                    $ newgirl[Character].Emote = "angry"
             else:
-                    $ newgirl["Mystique"].Emote = "normal"
-            call MystiqueFace   
+                    $ newgirl[Character].Emote = "normal"
+            call NewGirl_Face("Mystique")   
+
+    if Character == "All":
+        $ allgirls = 0
+        while allgirls < len(ModdedGirls):
+            if newgirl[ModdedGirls[allgirls]].Lust >= 50 and ApprovalCheck(ModdedGirls[allgirls], 1000):
+                    $ newgirl[ModdedGirls[allgirls]].Emote = "sexy"           
+            elif newgirl[ModdedGirls[allgirls]].Addict > 75:
+                    $ newgirl[ModdedGirls[allgirls]].Emote = "manic"
+            elif newgirl[ModdedGirls[allgirls]].Love >= newgirl[ModdedGirls[allgirls]].Obed and newgirl[ModdedGirls[allgirls]].Love >= 500:
+                    $ newgirl[ModdedGirls[allgirls]].Emote = "smile"      
+            elif newgirl[ModdedGirls[allgirls]].Inbt >= newgirl[ModdedGirls[allgirls]].Obed and newgirl[ModdedGirls[allgirls]].Inbt >= 500:
+                    $ newgirl[ModdedGirls[allgirls]].Emote = "smile"      
+            elif newgirl[ModdedGirls[allgirls]].Addict > 50:
+                    $ newgirl[ModdedGirls[allgirls]].Emote = "manic"
+            elif (newgirl[ModdedGirls[allgirls]].Love + newgirl[ModdedGirls[allgirls]].Obed) < 300:
+                    $ newgirl[ModdedGirls[allgirls]].Emote = "angry"
+            else:
+                    $ newgirl[ModdedGirls[allgirls]].Emote = "normal"
+            call NewGirl_Face(ModdedGirls[allgirls])   
+            $ allgirls += 1
     return
                    
 # to remove words from the daily/recent lists , ie call DrainWord("Rogue","sex",1,0)
@@ -995,13 +1016,13 @@ label DrainWord(Character = "Rogue", Word = "word", Recent = 1, Daily = 1):
                             if Word in R_DailyActions and Daily:
                                 while Word in R_DailyActions:
                                         $ R_DailyActions.remove(Word)  
-            elif Character == "Mystique" or Character == "All":
-                            if Word in newgirl["Mystique"].RecentActions and Recent:
-                                while Word in newgirl["Mystique"].RecentActions:
-                                        $ newgirl["Mystique"].RecentActions.remove(Word) 
-                            if Word in newgirl["Mystique"].DailyActions and Daily:
-                                while Word in newgirl["Mystique"].DailyActions:
-                                        $ newgirl["Mystique"].DailyActions.remove(Word)    
+            elif Character in ModdedGirls or Character == "All":
+                            if Word in newgirl[Character].RecentActions and Recent:
+                                while Word in newgirl[Character].RecentActions:
+                                        $ newgirl[Character].RecentActions.remove(Word) 
+                            if Word in newgirl[Character].DailyActions and Daily:
+                                while Word in newgirl[Character].DailyActions:
+                                        $ newgirl[Character].DailyActions.remove(Word)    
             return
 
 
@@ -1127,11 +1148,11 @@ label CleartheRoom(Character = "Rogue", Passive = 0, Silent = 0, Check = 0):
                             call DrainWord("Mystique","leaving")  
                     if "arriving" in newgirl["Mystique"].RecentActions:
                             call DrainWord("Mystique","arriving")                   
-                    if bg_current == "bg mystique":
+                    if bg_current == "bg Mystique":
                             #if the girl is not Mystique but you're in Mystique's room, the girl takes you to her room
                             call TaketoRoom(Character)
                     else:
-                            $ newgirl["Mystique"].Loc = "bg mystique"                    
+                            $ newgirl["Mystique"].Loc = "bg Mystique"                    
                     hide Mystique_Sprite with easeoutright
                 else:
                     $ Check += 1                 
@@ -1150,11 +1171,11 @@ label TaketoRoom(Girl = "Rogue"):
 #                $ E_Loc = "bg emma"           
                 $ bg_current = "bg playerroom"
                 $ E_Loc = "bg playerroom"
-        elif Girl == "Mystique":                    
-#                $ bg_current = "bg mystique"
-#                $ E_Loc = "bg mystique"           
+        elif Girl in ModdedGirls:                    
+#                $ bg_current = "bg Mystique"
+#                $ E_Loc = "bg Mystique"           
                 $ bg_current = "bg playerroom"
-                $ newgirl["Mystique"].Loc = "bg playerroom"
+                $ newgirl[Girl].Loc = "bg playerroom"
         call Set_The_Scene
         call CleartheRoom(Girl)
         call Taboo_Level
@@ -1219,7 +1240,7 @@ label Round10(Options = ["none"]):
                                         jump Player_Room
                         call CleartheRoom("Emma",1)
                         call Emma_Sleepover 
-                elif bg_current == "bg mystique":         
+                elif bg_current == "bg Mystique":         
                         #If it's Mystique's room, she gets dibs                         
                         if newgirl["Mystique"].Loc != bg_current: 
                                 # if Mystique isn't around. . .
@@ -1545,10 +1566,10 @@ label Remove_Girl(Girl = 0, HideGirl = 1):
             if "arriving" in newgirl["Mystique"].RecentActions:
                     call DrainWord("Mystique","arriving")   
             if bg_current == newgirl["Mystique"].Loc: 
-                if bg_current == "bg mystique":
+                if bg_current == "bg Mystique":
                     $ newgirl["Mystique"].Loc = "bg campus"
                 else:
-                    $ newgirl["Mystique"].Loc = "bg mystique"
+                    $ newgirl["Mystique"].Loc = "bg Mystique"
                 if HideGirl:
                     hide Mystique_Sprite
                     call Mystique_Hide
@@ -2841,13 +2862,13 @@ label GirlsAngry(Girls = 0):
             $ Girls += 1
             hide Emma_Sprite with easeoutleft
     if newgirl["Mystique"].Loc == bg_current and "angry" in newgirl["Mystique"].RecentActions:
-            if bg_current == "bg mystique":
+            if bg_current == "bg Mystique":
                 ch_m "You should leave, or do you want to test me?"
                 "You head back to your room."
                 $ renpy.pop_call()
                 jump Player_Room_Entry
             else:        
-                $ newgirl["Mystique"].Loc = "bg mystique"
+                $ newgirl["Mystique"].Loc = "bg Mystique"
                 if Girls:
                     ". . . and so does Mystique."
                 else:
@@ -2923,11 +2944,11 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                             $ E_Loc = "bg emma"
                         $ Options.remove("Emma") 
             if "Mystique" in Options:
-                        if bg_current == "bg mystique":
+                        if bg_current == "bg Mystique":
                             $ Secondary = Primary
                             $ Primary = "Mystique"
                         else:
-                            $ newgirl["Mystique"].Loc = "bg mystique"
+                            $ newgirl["Mystique"].Loc = "bg Mystique"
                         $ Options.remove("Mystique")            
             #end list clearing
             
@@ -3288,7 +3309,7 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
     elif bg_current == "bg emma": 
             #add room content here
             pass
-    elif bg_current == "bg mystique": 
+    elif bg_current == "bg Mystique": 
             #add room content here
             pass
     elif bg_current == "bg classroom":   

@@ -654,7 +654,7 @@ label Display_Background(Entry = 0):
                                 scene bg_pool_d onlayer backdrop 
         elif bg_current == "bg field":        
                                 scene bg_field onlayer backdrop  
-        elif bg_current == "bg mystique":        
+        elif bg_current == "bg Mystique":        
                                 scene bg_mystique onlayer backdrop            
         elif bg_current == "bg showerroom":        
                                 scene bg_shower onlayer backdrop  
@@ -709,6 +709,7 @@ image bg_class:
             "images/Classroom.jpg"
         contains:
             ConditionSwitch(        
+                "newgirl['Mystique'].Loc == 'bg teacher'", "Mystique_At_Podium",
                 "E_Loc == 'bg teacher'", "Emma_At_Podium",
                 "E_Loc == 'bg desk'", "Emma_At_Desk",
                 "True", Null(),

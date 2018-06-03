@@ -648,7 +648,7 @@ image Test_Object:                 #this is the yellow rectangle
     anchor (0,0)
     alpha .8
     
-image Emma_At_DeskB:
+image Mystique_At_DeskB:
     contains:
         subpixel True
         "Emma_Sprite"
@@ -663,10 +663,10 @@ image Emma_At_DeskB:
                 "True", "images/ClassroomPupils.png",                
                 )      
 
-image Emma_At_PodiumB:
+image Mystique_At_PodiumB:
     contains:
         subpixel True
-        "Emma_Sprite"
+        "Mystique_Sprite"
         zoom 0.29
         pos (670,180) #(500,200)
     contains:        
@@ -678,17 +678,17 @@ image Emma_At_PodiumB:
                 "True", "images/ClassroomPupils.png",                
                 )                     
         
-image Emma_At_Desk:
+image Mystique_At_Desk:
     contains:
         subpixel True
-        "Emma_Sprite"
+        "Mystique_Sprite"
         zoom 0.29
         pos (450,190) #(500,200)
 
-image Emma_At_Podium:
+image Mystique_At_Podium:
     contains:
         subpixel True
-        "Emma_Sprite"
+        "Mystique_Sprite"
         zoom 0.29
         pos (670,180) #(500,200)
 
@@ -1033,7 +1033,7 @@ label Mystique_BJ_Reset: # The sequence to the Mystique animations from BJ to de
             ease 1 zoom 1.5 offset (-50,50)
             pause .5
             ease .5 zoom 1 offset (0,0)     
-    call MystiqueFace("sexy")        
+    call NewGirl_Face("Mystique","sexy")        
     return  
     
 # ////////////////////////////////                                                                                      ///////////////////////////////

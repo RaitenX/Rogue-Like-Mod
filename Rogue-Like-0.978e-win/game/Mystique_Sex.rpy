@@ -1155,7 +1155,7 @@ label Mystique_Masturbate: #(Situation = Situation):
                 $ renpy.pop_call()          #removes the call to this label 
                 if Approval:     
                         call MystiqueFace("bemused", 1)
-                        if bg_current == "bg mystique":
+                        if bg_current == "bg Mystique":
                             ch_m "Why are you even in my room?"   
                         else:
                             ch_m "I wasn't expecting visitors. . ." 
@@ -1165,7 +1165,7 @@ label Mystique_Masturbate: #(Situation = Situation):
                         call MystiqueFace("angry")
                         $ newgirl["Mystique"].RecentActions.append("angry")
                         $ newgirl["Mystique"].DailyActions.append("angry")  
-                        if bg_current == "bg mystique":
+                        if bg_current == "bg Mystique":
                             ch_m "You may have noticed, I had soem work to take care of, so if you'll leave me to it. . ."
                             "Mystique kicks you out of her room."
                             $ renpy.pop_call()

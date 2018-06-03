@@ -13,7 +13,7 @@
             self.Pets = ["Mystique"]
             self.Rules = 1
             self.GirlName = "Raven"
-            self.Loc = "bg mystique"
+            self.Loc = "bg Mystique"
             self.Love = 300
             self.Obed = 0
             self.Inbt = 200
@@ -147,6 +147,7 @@
             self.Accessory2 = 0 
             self.Accessory3 = 0 
             self.Extra = {} 
+            self.LooksLike = "Mystique" 
             #}
 
          

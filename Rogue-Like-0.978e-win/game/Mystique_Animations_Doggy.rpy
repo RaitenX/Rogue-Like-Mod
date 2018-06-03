@@ -4,7 +4,7 @@
 #\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 #image Rogue_Doggy_Base = LiveComposite(
-image Mystique_Doggy:
+image Mystique_Blue_Doggy:
     LiveComposite(                                                                                 #Base body
         (420,750),  
         (0,0), ConditionSwitch(                                                         #Shows different upper body motion depending on events  

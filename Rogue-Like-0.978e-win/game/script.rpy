@@ -35,7 +35,7 @@ image blackscreen:
         linear 0.5 alpha 0.0
 
 define ch_r = Character('Rogue', color="#85bb65", image = "arrow", show_two_window=True)
-define ch_m = Character('Mystique', color="#646dbb", image = "arrow", show_two_window=True)
+define ch_m = Character('[newgirl[Mystique].GirlName]', color="#646dbb", image = "arrow", show_two_window=True)
 define ch_p = Character('[Playername]', color="#87CEEB", show_two_window=True)
 define ch_x = Character('Professor X', color="#a09400", image = "arrow", show_two_window=True)
 define ch_k = Character('Kitty', color="#F5A9D0", image = "arrow", show_two_window=True)
@@ -647,6 +647,10 @@ label VersionNumber:
     #     $ newgirl["Jean"] = Girlnew("Jean")
     if newgirl["Mystique"].XP == (0,):
         $ newgirl["Mystique"].XP = 0
+    if getattr(newgirl["Mystique"], "LooksLike", None) == None:
+        $ newgirl["Mystique"].LooksLike = "Mystique"
+        
+    #if not hasattr(newgirl["Mystique"], "LooksLike"):
 
 
     if SaveVersion == 975: #error correction, remove this eventually
@@ -1006,6 +1010,10 @@ label EventCalls:
             if "met" not in E_History:     
                     jump EmmaMeet
                     return   
+            elif Current_Time == "Morning":
+                if "met" not in newgirl["Mystique"].History:
+                    jump MystiqueMeet
+                    return
             elif Current_Time == "Evening" and not Party:
                 if "classcaught" not in E_History:     
                     jump Emma_Caught_Classroom
@@ -2616,6 +2624,19 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     $ E_Neck = "choker"
                     $ E_Hair = "wavy"
                     $ E_Hose = 0 
+        elif E_OutfitTemp == "sexy costume":
+                    if E_Chest == 0:
+                            $ Undressed = 1
+                    elif E_Panties == 0 and "pantyless" not in E_DailyActions:                        
+                            $ Undressed = 1   
+                    $ E_Arms = "white gloves"
+                    $ E_Legs = 0
+                    $ E_Over = 0
+                    $ E_Chest = "corset"
+                    $ E_Panties = "white panties"        
+                    $ E_Neck = "choker"
+                    $ E_Hair = "wavy"
+                    $ E_Hose = 0 
         elif E_OutfitTemp == "bikini":
                     if E_Chest == 0:
                             $ Undressed = 1
@@ -2832,7 +2853,7 @@ label Emma_Schedule(Clothes = 1, Location = 1, LocTemp = E_Loc):
         elif Weekday == 0 or Weekday == 2 or Weekday == 4:
         #MoWeFr   
                 if Current_Time == "Morning":
-                        $ E_Loc = "bg teacher"
+                        $ E_Loc = "bg emma"
                 elif Current_Time == "Midday": 
                         $ E_Loc = "bg teacher"
                 else:
@@ -2840,7 +2861,7 @@ label Emma_Schedule(Clothes = 1, Location = 1, LocTemp = E_Loc):
         elif Weekday == 1 or Weekday == 3:
         #TuThu      
                 if Current_Time == "Morning":
-                        $ E_Loc = "bg teacher"
+                        $ E_Loc = "bg emma"
                 elif Current_Time == "Midday":
                         $ E_Loc = "bg teacher"
                 elif Current_Time == "Evening":
@@ -2849,23 +2870,23 @@ label Emma_Schedule(Clothes = 1, Location = 1, LocTemp = E_Loc):
                         $ E_Loc = "bg emma"
         else:
         #Weekend                               
-                if Current_Time == "Morning":
-                        $ Options = ["bg pool", "bg emma"]
-                        $ renpy.random.shuffle(Options)
-                        $ E_Loc = Options[0]
-                        $ del Options[:]
-                elif Current_Time == "Midday":
-                        $ Options = ["bg pool", "bg emma"]
-                        $ renpy.random.shuffle(Options)
-                        $ E_Loc = Options[0]
-                        $ del Options[:]
-                else:
-                        $ E_Loc = "bg emma"
+                # if Current_Time == "Morning":
+                #         $ Options = ["bg pool", "bg dangerroom"]
+                #         $ renpy.random.shuffle(Options)
+                #         $ E_Loc = Options[0]
+                #         $ del Options[:]
+                # elif Current_Time == "Midday":
+                #         $ Options = ["bg pool", "bg dangerroom"]
+                #         $ renpy.random.shuffle(Options)
+                #         $ E_Loc = Options[0]
+                #         $ del Options[:]
+                # else:
+                #         $ E_Loc = "bg emma"
 
                 if Current_Time == "Night":
                         $ E_Loc = "bg emma"
                 else:
-                        $ Options = ["bg pool", "bg emma"]
+                        $ Options = ["bg pool", "bg dangerroom"]
                         $ renpy.random.shuffle(Options)
                         $ E_Loc = Options[0]
                         $ del Options[:]
@@ -3165,9 +3186,9 @@ label Mystique_Schedule(Clothes = 1, Location = 1, LocTemp = newgirl["Mystique"]
         # Clothes 2 is ordered to change regardless of time of day
         # If not Location, don't bother with the location portion of the schedule
         
-        # if "met" not in newgirl["Mystique"].History or ("Mystique" in Party and Clothes != 2): 
-        #         #if she's in a party, never mind
-        #         return  
+        if "met" not in newgirl["Mystique"].History or ("Mystique" in Party and Clothes != 2): 
+                #if she's in a party, never mind
+                return  
         if LocTemp == bg_current and Current_Time == "morning":
                 #she slept over, so just forget this for now  
                 if "sleepover" not in newgirl["Mystique"].RecentActions:
@@ -3196,40 +3217,40 @@ label Mystique_Schedule(Clothes = 1, Location = 1, LocTemp = newgirl["Mystique"]
         elif Weekday == 0 or Weekday == 2 or Weekday == 4:
         #MoWeFr   
                 if Current_Time == "Morning":
-                        $ newgirl["Mystique"].Loc = "bg mystique"
+                        $ newgirl["Mystique"].Loc = "bg teacher"
                 elif Current_Time == "Midday": 
-                        $ newgirl["Mystique"].Loc = "bg mystique"
+                        $ newgirl["Mystique"].Loc = "bg Mystique"
                 else:
-                        $ newgirl["Mystique"].Loc = "bg mystique"
+                        $ newgirl["Mystique"].Loc = "bg Mystique"
         elif Weekday == 1 or Weekday == 3:
         #TuThu      
                 if Current_Time == "Morning":
-                        $ newgirl["Mystique"].Loc = "bg mystique"
+                        $ newgirl["Mystique"].Loc = "bg teacher"
                 elif Current_Time == "Midday":
-                        $ newgirl["Mystique"].Loc = "bg mystique"
+                        $ newgirl["Mystique"].Loc = "bg Mystique"
                 elif Current_Time == "Evening":
-                        $ newgirl["Mystique"].Loc = "bg mystique"
+                        $ newgirl["Mystique"].Loc = "bg Mystique"
                 else:
-                        $ newgirl["Mystique"].Loc = "bg mystique"
+                        $ newgirl["Mystique"].Loc = "bg Mystique"
         else:
         #Weekend                               
                 if Current_Time == "Morning":
-                        $ Options = ["bg mystique", "bg mystique"]
+                        $ Options = ["bg Mystique", "bg Mystique"]
                         $ renpy.random.shuffle(Options)
                         $ newgirl["Mystique"].Loc = Options[0]
                         $ del Options[:]
                 elif Current_Time == "Midday":
-                        $ Options = ["bg mystique", "bg mystique"]
+                        $ Options = ["bg Mystique", "bg Mystique"]
                         $ renpy.random.shuffle(Options)
                         $ newgirl["Mystique"].Loc = Options[0]
                         $ del Options[:]
                 else:
-                        $ newgirl["Mystique"].Loc = "bg mystique"
+                        $ newgirl["Mystique"].Loc = "bg Mystique"
 
                 if Current_Time == "Night":
-                        $ newgirl["Mystique"].Loc = "bg mystique"
+                        $ newgirl["Mystique"].Loc = "bg Mystique"
                 else:
-                        $ Options = ["bg mystique", "bg mystique"]
+                        $ Options = ["bg Mystique", "bg Mystique"]
                         $ renpy.random.shuffle(Options)
                         $ newgirl["Mystique"].Loc = Options[0]
                         $ del Options[:]
@@ -3321,7 +3342,6 @@ label Wait (Outfit = 1, Lights = 1):
     $ E_XP = 3330 if E_XP > 3330 else E_XP
     
         
-                    
     if Time_Count < 3:  #not sleep time                                          
                 $ Time_Count += 1
                 $ R_Action += 1  
@@ -3486,7 +3506,7 @@ label Wait (Outfit = 1, Lights = 1):
 
         # Things about Mystique when you sleep:
                 if newgirl["Mystique"].Loc == "hold":
-                        $ newgirl["Mystique"].Loc = "bg mystique"  
+                        $ newgirl["Mystique"].Loc = "bg Mystique"  
                 if newgirl["Mystique"].Todo:
                         call Mystique_Todo
                 

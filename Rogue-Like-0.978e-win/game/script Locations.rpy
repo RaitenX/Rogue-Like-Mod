@@ -3876,7 +3876,7 @@ label Rogue_Sent_Selfie(test=0):
 # Kitty's Room Interface //////////////////////////////////////////////////////////////////////
 label Mystique_Room_Entry:
     call Shift_Focus("Mystique")
-    $ bg_current = "bg mystique"           
+    $ bg_current = "bg Mystique"           
     call Gym_Clothes
     call Set_The_Scene(Entry = 1)    
     call Taboo_Level
@@ -4065,18 +4065,18 @@ label Mystique_Room_Entry:
     #                 jump Campus_Map
     
     # If you get this far, she's allowed you in
-    $ bg_current = "bg mystique"         
+    $ bg_current = "bg Mystique"         
     call EventCalls
     # if K_Loc == "bg kitty" and "angry" in K_RecentActions:
     #     "Kitty pushes you back into the hall and slams the door. You head back to your room."
     #     $ Line = 0
     #     $ Trigger = 0
     #     jump Player_Room
-    if bg_current != "bg mystique":
+    if bg_current != "bg Mystique":
         jump Misplaced
             
 label Mystique_Room:
-    $ bg_current = "bg mystique"
+    $ bg_current = "bg Mystique"
     call Set_The_Scene
     if "traveling" in P_RecentActions:
         $ P_RecentActions.remove("traveling")

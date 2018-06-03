@@ -1,265 +1,266 @@
 ﻿# start MystiqueMeet //////////////////////////////////////////////////////////
 # Check  #Mystique_Update   to see what needs fixing still
-# label MystiqueMeet:    
-#     $ bg_current = "bg classroom"   
-#     call CleartheRoom("Mystique",0,1)
-#     $ newgirl["Mystique"].Loc = "bg mystique"  
-#     $ newgirl["Mystique"].Love = 300        
-#     $ newgirl["Mystique"].Obed = 0            
-#     $ newgirl["Mystique"].Inbt = 200 
-#     call Shift_Focus("Mystique")    
-#     call Set_The_Scene
-#     $ ESpriteLoc = StageRight
-#     call LastNamer                         
-#     $ newgirl["Mystique"].Petnames.append(_return)
-#     $ newgirl["Mystique"].Petname = _return
+label MystiqueMeet:    
+    $ bg_current = "bg classroom"   
+    call CleartheRoom("Mystique",0,1)
+    $ newgirl["Mystique"].Loc = "bg Mystique"  
+    $ newgirl["Mystique"].Love = 300        
+    $ newgirl["Mystique"].Obed = 0            
+    $ newgirl["Mystique"].Inbt = 200 
+    call Shift_Focus("Mystique")    
+    call Set_The_Scene
+    $ Mystique_SpriteLoc = StageRight
+    #call LastNamer   
+    $ newgirl["Mystique"].GirlName = "Ms. Darkholme"
+    #$ newgirl["Mystique"].Petnames.append(_return)
+    #$ newgirl["Mystique"].Petname = _return
         
-#     "You enter the classroom and have a seat." 
-#     "The bell to class rings, but Professor McCoy seems to be late."
-#     "A strange woman enters the room and heads to the podium with a regal stride."
-#     call MystiqueFace("normal")
-#     show Mystique_Sprite at SpriteLoc(ESpriteLoc) with easeinright     
-#     $ newgirl["Mystique"].Loc = "bg classroom" 
-#     $ newgirl["Mystique"].Girl_Arms = 1
-#     ch_u "Hello students. My name is Mystique Frost, and I have been invited to conduct this class."
-#     ch_m "I hope that over my tenure here you will demonstrate talents and hard work worthy of my respect." 
-#     "She scans her eyes over the room, passing over each student."    
-#     call MystiqueFace("surprised")
-#     pause 1
-#     call MystiqueFace("sly",Mouth="sad")
-#     $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -10)     
-#     $ newgirl["Mystique"].Lust += 5
-#     "As her eyes pass over you, they briefly widen and then narrow."
-#     call MystiqueFace("sly")
-#     ch_m "Very well, let us begin, class."
-#     call MystiqueFace("normal") 
-#     "The class is pretty basic today, mostly a lecture on her areas of expertise, psychology and literature."
-#     $ newgirl["Mystique"].Lust += 5
-#     "She asks a lot of questions of the students, and singles you out more than once. You notice her glancing in your direction as other students answer."
-#     $ newgirl["Mystique"].Lust += 5
-#     call Wait 
-#     call CleartheRoom("Mystique",0,1)
-#     $ newgirl["Mystique"].Loc = "bg classroom" 
-#     call Set_The_Scene
-#     ch_m "All right students, class dismissed."
-#     ch_m "[newgirl[Mystique].Petname], could you wait a moment, I have something to discuss with you."    
-#     menu:
-#         extend ""
-#         "Yes?":
-#                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 10) 
-#                 call MystiqueFace("normal")  
-#         "I've got places to be.":
-#                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -15) 
-#                 $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 10)
-#                 call MystiqueFace("angry") 
-#                 ch_m "MR. [Playername], do not take that attitude with me."
-#                 "She places herself in the doorway, preventing you from leaving."
-#         "For such a sexy teacher? I've got some time.":
-#                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -5) 
-#                 $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
-#                 call MystiqueFace("angry",1, Mouth="smirk") 
-#                 ch_m "That's rather. . . inappropriate."
-#                 call MystiqueFace("bemused", Mouth="smile") 
-#                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 20) 
-#                 $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
-#                 $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 25, 15)  
-#                 ch_m "But also obvious, so I can't criticize you too harshly."
+    "You enter the classroom and have a seat." 
+    "The bell to class rings, but Professor McCoy seems to be late."
+    "A strange woman enters the room and heads to the podium with a regal stride."
+    call NewGirl_Face("Mystique","normal")
+    show Mystique_Sprite at SpriteLoc(Mystique_SpriteLoc) with easeinright     
+    $ newgirl["Mystique"].Loc = "bg classroom" 
+    $ newgirl["Mystique"].Girl_Arms = 1
+    ch_u "Hello students. My name is Raven Darkholme, and I have been invited to conduct this class."
+    ch_m "I hope that over my tenure here you will demonstrate talents and hard work worthy of my respect." 
+    "She scans her eyes over the room, passing over each student."    
+    call NewGirl_Face("Mystique","surprised")
+    pause 1
+    call NewGirl_Face("Mystique","sly",Mouth="sad")
+    $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -10)     
+    $ newgirl["Mystique"].Lust += 5
+    "As her eyes pass over you, they briefly widen and then narrow."
+    call NewGirl_Face("Mystique","sly")
+    ch_m "Very well, let us begin, class."
+    call NewGirl_Face("Mystique","normal") 
+    "The class is pretty basic today, mostly a lecture on her areas of expertise, psychology and literature."
+    $ newgirl["Mystique"].Lust += 5
+    "She asks a lot of questions of the students, and singles you out more than once. You notice her glancing in your direction as other students answer."
+    $ newgirl["Mystique"].Lust += 5
+    call Wait 
+    call CleartheRoom("Mystique",0,1)
+    $ newgirl["Mystique"].Loc = "bg classroom" 
+    call Set_The_Scene
+    ch_m "All right students, class dismissed."
+    ch_m "[newgirl[Mystique].Petname], could you wait a moment, I have something to discuss with you."    
+    menu:
+        extend ""
+        "Yes?":
+                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 10) 
+                call NewGirl_Face("Mystique","normal")  
+        "I've got places to be.":
+                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -15) 
+                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 10)
+                call NewGirl_Face("Mystique","angry") 
+                ch_m "MR. [Playername], do not take that attitude with me."
+                "She places herself in the doorway, preventing you from leaving."
+        "For such a sexy teacher? I've got some time.":
+                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -5) 
+                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
+                call NewGirl_Face("Mystique","angry",1, Mouth="smirk") 
+                ch_m "That's rather. . . inappropriate."
+                call NewGirl_Face("Mystique","bemused", Mouth="smile") 
+                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 20) 
+                $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
+                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 25, 15)  
+                ch_m "But also obvious, so I can't criticize you too harshly."
     
-#     ch_m "I've heard about you from Professor Xavier and. . . others." 
+    ch_m "I've heard about you from Professor Xavier and. . . others." 
     
-#     if P_Rep <= 200:
-#         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 10)
-#         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 90, 15) 
-#         $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
-#         call MystiqueFace("angry", Brows="confused") 
-#         ch_m "You seem to be a bit of a scoundrel. . ."        
-#     elif P_Rep < 600:
-#         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
-#         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 90, 5) 
-#         $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
-#         call MystiqueFace("sly") 
-#         ch_m "You have quite a reputation around campus. . ."
-#     else:
-#         call MystiqueFace("smile") 
-#         ch_m "You have managed a reasonble reputation. . ."
+    if P_Rep <= 200:
+        $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 10)
+        $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 90, 15) 
+        $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
+        call MystiqueFace("angry", Brows="confused") 
+        ch_m "You seem to be a bit of a scoundrel. . ."        
+    elif P_Rep < 600:
+        $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
+        $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 90, 5) 
+        $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
+        call MystiqueFace("sly") 
+        ch_m "You have quite a reputation around campus. . ."
+    else:
+        call MystiqueFace("smile") 
+        ch_m "You have managed a reasonble reputation. . ."
         
-#     if R_SEXP >= 60 and K_SEXP >= 60:
-#         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
-#         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 10)
-#         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 10) 
-#         $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
-#         call MystiqueFace("sly") 
-#         ch_m "and a number of conquests to your name. . ."
-#     elif R_SEXP >= 60 or K_SEXP >= 60:
-#         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
-#         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
-#         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
-#         $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 2) 
-#         call MystiqueFace("smile") 
-#         ch_m "and are not without some romantic entanglements. . ."
-#     else:
-#         call MystiqueFace("smile", Brows="confused") 
-#         ch_m "though I haven't heard of much of a romantic life. . ."
+    if R_SEXP >= 60 and K_SEXP >= 60:
+        $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
+        $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 10)
+        $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 10) 
+        $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
+        call MystiqueFace("sly") 
+        ch_m "and a number of conquests to your name. . ."
+    elif R_SEXP >= 60 or K_SEXP >= 60:
+        $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
+        $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
+        $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
+        $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 2) 
+        call MystiqueFace("smile") 
+        ch_m "and are not without some romantic entanglements. . ."
+    else:
+        call MystiqueFace("smile", Brows="confused") 
+        ch_m "though I haven't heard of much of a romantic life. . ."
         
-#     if P_Lvl >= 7:
-#         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
-#         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
-#         call MystiqueFace("smile") 
-#         ch_m "but your grades have been excellent."
-#     elif P_Lvl >= 3:
-#         call MystiqueFace("normal", Brows="confused") 
-#         ch_m "but your grades been marginal at best."
-#     else:
-#         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -5) 
-#         $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 10, -5, 1)  
-#         call MystiqueFace("normal", Brows="sad") 
-#         ch_m "but you haven't been living up to your potential in class."
+    if P_Lvl >= 7:
+        $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
+        $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
+        call MystiqueFace("smile") 
+        ch_m "but your grades have been excellent."
+    elif P_Lvl >= 3:
+        call MystiqueFace("normal", Brows="confused") 
+        ch_m "but your grades been marginal at best."
+    else:
+        $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -5) 
+        $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 10, -5, 1)  
+        call MystiqueFace("normal", Brows="sad") 
+        ch_m "but you haven't been living up to your potential in class."
     
-#     call MystiqueFace("normal", Eyes="side") 
-#     ch_m "My particular interest in this case, however. . ."
-#     call MystiqueFace("sly") 
-#     ch_m "is that I cannot get a \"read\" on you."
-#     call MystiqueFace("sly", Mouth="normal") 
-#     ch_m "My mutant power is telepathy, the same as Professor Xavier's."
-#     ch_m "I've grown accustomed to knowing what those around me are thinking."
-#     call MystiqueFace("bemused", Eyes="side") 
-#     ch_m "With you. . . I cannot do that, which presents an interesting. . ."
-#     call MystiqueFace("sly") 
-#     ch_m "challenge. . ."
-#     menu:
-#         extend ""
-#         "I imagine it would.":
-#                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
-#                 $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
-#                 call MystiqueFace("normal") 
-#                 ch_m "Hmm, yes."
-#         "Huh.":
-#                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -1) 
-#                 $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, -1)
-#                 call MystiqueFace("confused", Mouth="normal") 
-#                 ch_m ". . . yes."
-#                 call MystiqueFace("normal") 
-#         "So you can't see what I'm picturing right now?":
-#                 $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
-#                 call MystiqueFace("bemused") 
-#                 pause 0.5
-#                 call MystiqueFace("bemused", Eyes="down") 
-#                 "She glances downward."
-#                 call MystiqueFace("sly") 
-#                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 10) 
-#                 $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 10) 
-#                 $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 15) 
-#                 ch_m "I can't read your mind, but I'm not blind, [newgirl[Mystique].Petname]."
-#     ch_m "In any case, I think we should set aside some time to talk."
-#     ch_m "I'd like to make you a personal project, so I can see how you tick."
-#     menu:
-#         extend ""
-#         "I'd be ok with that.": 
-#                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
-#                 $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
-#                 call MystiqueFace("smile") 
-#                 ch_m "Excellent, I look forward to it."
-#         "I don't know if you should experiment on your students.":
-#                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -5) 
-#                 call MystiqueFace("normal", Mouth="sad") 
-#                 ch_m "There's nothing for you to worry about."
-#                 call MystiqueFace("sly") 
-#                 ch_m "I'll be. . . gentle."
-#         "If it means spending more time with you. . .":
-#                 if ApprovalCheck("Mystique", 295, "L"):
-#                     $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
-#                     $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
-#                     call MystiqueFace("sly") 
-#                     ch_m "Oh, I believe we'll be spending a good deal of time together. . ."
-#                 else:
-#                     call MystiqueFace("angry") 
-#                     ch_m "Much as it may pain me, it would. . ."
-#                     call MystiqueFace("normal") 
-#         "What do I get out of it?":
-#                 if not ApprovalCheck("Mystique", 290, "L"):
-#                     $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -5) 
-#                     $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
-#                     $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
-#                     call MystiqueFace("angry") 
-#                     ch_m "You'll stand some chance of passing this class, [newgirl[Mystique].Petname]."
-#                     call MystiqueFace("normal") 
-#                 else:
-#                     if newgirl["Mystique"].Obed > 0:
-#                         call MystiqueFace("confused", Mouth="smirk") 
-#                         ch_m "What would you {i}like{/i} to \"get out of it?\""
-#                         menu:
-#                             extend ""
-#                             "I guess if it helps your \"research.\" . .":
-#                                     $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 10) 
-#                                     $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, -5)
-#                                     call MystiqueFace("smile") 
-#                                     ch_m "I'm glad to see that you can be reasonable."
-#                             "Spending more time with you would be plenty. . .":
-#                                     $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
-#                                     $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
-#                                     $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 20, 5) 
-#                                     call MystiqueFace("sly") 
-#                                     ch_m "It certainly should be."
-#                             "A kiss?":
-#                                     $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -5) 
-#                                     $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 10)
-#                                     call MystiqueFace("surprised",1, Mouth="surprised") 
-#                                     ch_m "[newgirl[Mystique].Petname], that is incredibly inappropriate!"
-#                                     call MystiqueFace("sadside",0,Brows="angry") 
-#                                     ch_m "I would {i}never{/i} consider such a thing with a student."
-#                                     if ApprovalCheck("Mystique", 220, "I"):
-#                                         call MystiqueFace("sly",1) 
-#                                         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
-#                                         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
-#                                         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
-#                                         $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
-#                                         ch_m ". . .never. . ."
-#                             "I think you know what I'd want. . .":
-#                                     $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
-#                                     $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
-#                                     call MystiqueFace("sly",Brows="angry") 
-#                                     ch_m "Yes, I imagine that I do. . ."
-#                                     if ApprovalCheck("Mystique", 220, "I"):
-#                                         call MystiqueFace("sly",1) 
-#                                         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
-#                                         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
-#                                         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 10) 
-#                                         $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
-#                                         ch_m "And we may be able to come to some sort of \"mutually beneficial\" arrangement."
-#                                     else:
-#                                         call MystiqueFace("bemused",0) 
-#                                         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -5) 
-#                                         ch_m "But figuring out whether I'm correct is the entire point here."
-#                     else: #if 0 Obedience
-#                         call MystiqueFace("normal") 
-#                         ch_m "The satisfaction of helping my. . . studies."
-#                         if ApprovalCheck("Mystique", 300, "L"):
-#                             call MystiqueFace("sly") 
-#                             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
-#                             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
-#                             $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
-#                             ch_m "-and maybe if you're good. . ."
-#                         else:
-#                             ch_m "-and nothing more."
+    call MystiqueFace("normal", Eyes="side") 
+    ch_m "My particular interest in this case, however. . ."
+    call MystiqueFace("sly") 
+    ch_m "is that I cannot get a \"read\" on you."
+    call MystiqueFace("sly", Mouth="normal") 
+    ch_m "My mutant power is telepathy, the same as Professor Xavier's."
+    ch_m "I've grown accustomed to knowing what those around me are thinking."
+    call MystiqueFace("bemused", Eyes="side") 
+    ch_m "With you. . . I cannot do that, which presents an interesting. . ."
+    call MystiqueFace("sly") 
+    ch_m "challenge. . ."
+    menu:
+        extend ""
+        "I imagine it would.":
+                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
+                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
+                call MystiqueFace("normal") 
+                ch_m "Hmm, yes."
+        "Huh.":
+                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -1) 
+                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, -1)
+                call MystiqueFace("confused", Mouth="normal") 
+                ch_m ". . . yes."
+                call MystiqueFace("normal") 
+        "So you can't see what I'm picturing right now?":
+                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
+                call MystiqueFace("bemused") 
+                pause 0.5
+                call MystiqueFace("bemused", Eyes="down") 
+                "She glances downward."
+                call MystiqueFace("sly") 
+                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 10) 
+                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 10) 
+                $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 15) 
+                ch_m "I can't read your mind, but I'm not blind, [newgirl[Mystique].Petname]."
+    ch_m "In any case, I think we should set aside some time to talk."
+    ch_m "I'd like to make you a personal project, so I can see how you tick."
+    menu:
+        extend ""
+        "I'd be ok with that.": 
+                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
+                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
+                call MystiqueFace("smile") 
+                ch_m "Excellent, I look forward to it."
+        "I don't know if you should experiment on your students.":
+                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -5) 
+                call MystiqueFace("normal", Mouth="sad") 
+                ch_m "There's nothing for you to worry about."
+                call MystiqueFace("sly") 
+                ch_m "I'll be. . . gentle."
+        "If it means spending more time with you. . .":
+                if ApprovalCheck("Mystique", 295, "L"):
+                    $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
+                    $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
+                    call MystiqueFace("sly") 
+                    ch_m "Oh, I believe we'll be spending a good deal of time together. . ."
+                else:
+                    call MystiqueFace("angry") 
+                    ch_m "Much as it may pain me, it would. . ."
+                    call MystiqueFace("normal") 
+        "What do I get out of it?":
+                if not ApprovalCheck("Mystique", 290, "L"):
+                    $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -5) 
+                    $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
+                    $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
+                    call MystiqueFace("angry") 
+                    ch_m "You'll stand some chance of passing this class, [newgirl[Mystique].Petname]."
+                    call MystiqueFace("normal") 
+                else:
+                    if newgirl["Mystique"].Obed > 0:
+                        call MystiqueFace("confused", Mouth="smirk") 
+                        ch_m "What would you {i}like{/i} to \"get out of it?\""
+                        menu:
+                            extend ""
+                            "I guess if it helps your \"research.\" . .":
+                                    $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 10) 
+                                    $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, -5)
+                                    call MystiqueFace("smile") 
+                                    ch_m "I'm glad to see that you can be reasonable."
+                            "Spending more time with you would be plenty. . .":
+                                    $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
+                                    $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
+                                    $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 20, 5) 
+                                    call MystiqueFace("sly") 
+                                    ch_m "It certainly should be."
+                            "A kiss?":
+                                    $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -5) 
+                                    $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 10)
+                                    call MystiqueFace("surprised",1, Mouth="surprised") 
+                                    ch_m "[newgirl[Mystique].Petname], that is incredibly inappropriate!"
+                                    call MystiqueFace("sadside",0,Brows="angry") 
+                                    ch_m "I would {i}never{/i} consider such a thing with a student."
+                                    if ApprovalCheck("Mystique", 220, "I"):
+                                        call MystiqueFace("sly",1) 
+                                        $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
+                                        $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
+                                        $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
+                                        $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
+                                        ch_m ". . .never. . ."
+                            "I think you know what I'd want. . .":
+                                    $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
+                                    $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
+                                    call MystiqueFace("sly",Brows="angry") 
+                                    ch_m "Yes, I imagine that I do. . ."
+                                    if ApprovalCheck("Mystique", 220, "I"):
+                                        call MystiqueFace("sly",1) 
+                                        $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
+                                        $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
+                                        $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 10) 
+                                        $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
+                                        ch_m "And we may be able to come to some sort of \"mutually beneficial\" arrangement."
+                                    else:
+                                        call MystiqueFace("bemused",0) 
+                                        $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -5) 
+                                        ch_m "But figuring out whether I'm correct is the entire point here."
+                    else: #if 0 Obedience
+                        call MystiqueFace("normal") 
+                        ch_m "The satisfaction of helping my. . . studies."
+                        if ApprovalCheck("Mystique", 300, "L"):
+                            call MystiqueFace("sly") 
+                            $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
+                            $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
+                            $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 5) 
+                            ch_m "-and maybe if you're good. . ."
+                        else:
+                            ch_m "-and nothing more."
      
-#     call MystiqueFace("normal",0) 
-#     ch_m "That said, class is finished for the day and I have some paperwork to attend to, so I'll see you. . ."   
-#     ch_m ". . . later. . ."
-#     hide Mystique_Sprite with easeoutright 
-#     "She strides out of the room and down the hall."
-#     $ newgirl["Mystique"].Loc = "bg mystique"         
-#     $ newgirl["Mystique"].History.append("met")          
-#     $ Round -= 10      
-#     return
+    call MystiqueFace("normal",0) 
+    ch_m "That said, class is finished for the day and I have some paperwork to attend to, so I'll see you. . ."   
+    ch_m ". . . later. . ."
+    hide Mystique_Sprite with easeoutright 
+    "She strides out of the room and down the hall."
+    $ newgirl["Mystique"].Loc = "bg Mystique"         
+    $ newgirl["Mystique"].History.append("met")          
+    $ Round -= 10      
+    return
             
-# end MystiqueMeet //////////////////////////////////////////////////////////  
+#end MystiqueMeet //////////////////////////////////////////////////////////  
 
 # start MystiqueMeet //////////////////////////////////////////////////////////
 # Check  #Mystique_Update   to see what needs fixing still
 # label MystiqueMeetGym:    
 #     $ bg_current = "bg dangerroom"   
 #     call CleartheRoom("Mystique",0,1)
-#     $ newgirl["Mystique"].Loc = "bg mystique"  
+#     $ newgirl["Mystique"].Loc = "bg Mystique"  
 #     $ newgirl["Mystique"].Gym = [2,0,0,"cape","NewX","corset","white panties",0,0,0,0]  
 #     $ newgirl["Mystique"].Over = "cape"
 #     $ newgirl["Mystique"].Legs = 0
@@ -351,7 +352,7 @@
 #     ch_m ". . . later. . ."
 #     hide Mystique_Sprite with easeoutright 
 #     "She strides out of the room and down the hall."
-#     $ newgirl["Mystique"].Loc = "bg mystique"         
+#     $ newgirl["Mystique"].Loc = "bg Mystique"         
 #     $ newgirl["Mystique"].History.append("metgym")          
 #     $ Round -= 10      
 #     $ newgirl["Mystique"].OutfitDay = "teacher"
@@ -419,7 +420,7 @@ label Mystique_Sleepover(sleepover = 0):  #Mystique_Update
             if K_Loc == bg_current and newgirl["Mystique"].LikeKitty < 800:              
                     call CleartheRoom("Mystique",1)
                     
-            if bg_current == "bg mystique":
+            if bg_current == "bg Mystique":
                     if Weekday < 4 or Weekday > 5:
                             #ch_m "I'm afraid I have class tommorrow. . ."
                             ch_m "I need to get some sleep. . ."
@@ -434,19 +435,19 @@ label Mystique_Sleepover(sleepover = 0):  #Mystique_Update
             call MystiqueFace("sexy", 1)
             if (newgirl["Mystique"].Sleep >= 3 and ApprovalCheck("Mystique", 800)) or ApprovalCheck("Mystique", 1100, "LI"):                                 
                     #You've slept over several times and she still likes you
-                    if bg_current == "bg mystique":
+                    if bg_current == "bg Mystique":
                             ch_m "Are you spending the night?"
                     else:
                             ch_m "Would you like me to stay?"
                     $ sleepover = 1                    
             elif newgirl["Mystique"].Sleep < 3 or not ApprovalCheck("Mystique", 600):                            
                     #She doesn't especially want you there.  
-                    if bg_current == "bg mystique":
+                    if bg_current == "bg Mystique":
                         ch_m "I think you should probably get going." 
                     else:
                         ch_m "I should head back to my room."                    
             else: #If she's uninterested
-                    if bg_current == "bg mystique":
+                    if bg_current == "bg Mystique":
                         ch_m "You should leave, [newgirl[Mystique].Petname]." 
                     else:
                         ch_m "I hope to see you in class [newgirl[Mystique].Petname]."
@@ -475,18 +476,18 @@ label Mystique_Sleepover(sleepover = 0):  #Mystique_Update
                         ch_m "Alright. . . see you tomorrow. . ."
                         $ sleepover = 0
                         
-                "Ok, I'll head out. Good night." if not sleepover and bg_current == "bg mystique":                        
+                "Ok, I'll head out. Good night." if not sleepover and bg_current == "bg Mystique":                        
                         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 3)
                         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 25, 2)            
                         call MystiqueFace("smile")
                         ch_m "Ok, good night. . ."
-                "Ok, see you later then. Good night." if not sleepover and bg_current != "bg mystique":                        
+                "Ok, see you later then. Good night." if not sleepover and bg_current != "bg Mystique":                        
                         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 3)
                         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 25, 2)            
                         call MystiqueFace("smile")
                         ch_m "Yeah, night, [newgirl[Mystique].Petname] . ."
                     
-                "Are you sure I can't stay the night? . ." if not sleepover and not newgirl["Mystique"].Sleep and bg_current == "bg mystique": 
+                "Are you sure I can't stay the night? . ." if not sleepover and not newgirl["Mystique"].Sleep and bg_current == "bg Mystique": 
                         if ApprovalCheck("Mystique", 1000) or ApprovalCheck("Mystique", 700, "L") or ApprovalCheck("Mystique", 500, "O"):
                             call MystiqueFace("bemused", 1)                   
                             ch_m "Well, Maaaybeee. . ."
@@ -495,7 +496,7 @@ label Mystique_Sleepover(sleepover = 0):  #Mystique_Update
                             call MystiqueFace("smile")
                             $ newgirl["Mystique"].Brows = "confused"
                             ch_m "Ehhhh. . . no, not tonight, [newgirl[Mystique].Petname] Sorry."
-                "Are you sure you can't stay? . ." if not sleepover and not newgirl["Mystique"].Sleep and bg_current != "bg mystique": 
+                "Are you sure you can't stay? . ." if not sleepover and not newgirl["Mystique"].Sleep and bg_current != "bg Mystique": 
                         if ApprovalCheck("Mystique", 1000) or ApprovalCheck("Mystique", 700, "L") or ApprovalCheck("Mystique", 500, "O"):
                             call MystiqueFace("bemused", 1)                   
                             ch_m "Well, Maaaybeee. . ."
@@ -513,7 +514,7 @@ label Mystique_Sleepover(sleepover = 0):  #Mystique_Update
                         else:                    
                             call MystiqueFace("smile")
                             $ newgirl["Mystique"].Brows = "confused"
-                            if bg_current == "bg mystique":
+                            if bg_current == "bg Mystique":
                                 ch_m "Um, no, 'fraid not. Scoot." 
                             else:                        
                                 ch_m "Um, no, 'fraid not. I'll see ya." 
@@ -1075,7 +1076,7 @@ label Mystique_Caught_Classroom:
                     ch_m "Oh, and [newgirl[Mystique].Petname]?"
                     ch_m "You can just call me \"Mystique.\""
                     $ newgirl["Mystique"].GirlName = "Mystique"
-                    $ newgirl["Mystique"].Loc = "bg mystique"
+                    $ newgirl["Mystique"].Loc = "bg Mystique"
                     hide Mystique_Sprite with easeoutleft
                     $ Round = 20 if Round > 20 else Round
                     $ MultiAction = 1
@@ -1594,7 +1595,7 @@ label Mystique_BF_Jerk:
     $ Count = (50* newgirl["Mystique"].Event[5])                                  #fix test to see if negatives can work here.
     $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 200, -Count)
     ch_m "Get out, you big jerk!"
-    $ newgirl["Mystique"].Loc = "bg mystique"
+    $ newgirl["Mystique"].Loc = "bg Mystique"
     $ bg_current = "bg player"   
     call Set_The_Scene
     $ renpy.pop_call()
@@ -1608,12 +1609,12 @@ label Mystique_Love: #Mystique_Update
     if newgirl["Mystique"].Event[6]:
             #on repeat attempts
             "Mystique seems kind of shy and shuffles up to you, as if working up her nerve."
-    elif bg_current != "bg mystique":
+    elif bg_current != "bg Mystique":
         if newgirl["Mystique"].Loc == bg_current or "Mystique" in Party:
             "Suddenly, Mystique says she wants to talk to you in her room and drags you over there."
         else:
             "Mystique shows up, hurridly says she wants to talk to you in her room and drags you over there."
-        $ bg_current = "bg mystique"
+        $ bg_current = "bg Mystique"
     else:
             "Mystique suddenly stares at you very intently."
         
@@ -1859,9 +1860,9 @@ label Mystique_Love_End:
             return
     if not newgirl["Mystique"].Sex:
         ch_m "So I was thinking. . . did you want to . . ."
-        if bg_current != "bg player" and bg_current != "bg mystique":
+        if bg_current != "bg player" and bg_current != "bg Mystique":
                 ch_m "Wait, let's take this someplace more private. . ."
-                $ bg_current = "bg mystique"
+                $ bg_current = "bg Mystique"
                 $ newgirl["Mystique"].Loc = bg_current
                 call Set_The_Scene
                 call CleartheRoom("Mystique")
