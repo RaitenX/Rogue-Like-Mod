@@ -935,3 +935,203 @@ label NewGirl_Self_Lines(Girl_ = "Mystique", Mode = "T3", Action = Trigger3, Tem
     
     return
 
+label NewGirl_Dirty_Talk(D20=0, TempCheck=0, Line=0):    
+    $ D20 = renpy.random.randint(1, 20)   
+    if D20 >= 15 and Secondary:
+            #if it's a high roll and there is a second girl, do a threesome line
+#            $ Line = "threesome" #fix this when there are threesome lines to add.
+            $ Line = "partner"
+    elif D20 >= 10 and Secondary:
+            #if it's a medium roll and there is a second girl, do a partner line
+            $ Line = "partner"
+    else:
+            #if it's a lower roll, do a single girl line. Primary
+            $ Line = "primary"
+        
+    #Rogue    
+    $ D20 = renpy.random.randint(1, 20)   
+    if Primary == "Rogue" or (Line == "partner" and Secondary == "Rogue" and D20 >= 15):
+            #If the primary is Rogue or Rogue is the Partner
+            if D20 <= 5 or (R_SEXP <= 30 and ApprovalCheck("Rogue", 400, "I")):
+                    #If she's relatively inexperienced or there is a low roll
+                    $ Line = renpy.random.choice([
+                            "Touching ya is so amazing, " + R_Petname + ".",
+                            "Every time you touch me. . .it's like, I can't even put it into words.",
+                            "Mmmm. . .right there.",
+                            "Ya like that, " + R_Petname + "?"
+                            ])
+            elif D20 <= 15: 
+                    #If she's relatively experienced and there's a moderate roll
+                    $ Line = renpy.random.choice([
+                                "I want ya so bad, " + R_Petname + ".",
+                                "I'm all yours, " + R_Petname + ". Take me however ya want.",
+                                "I love it when ya do that, " + R_Petname + ".",
+                                "I love the look you get on your face when we do that, " + R_Petname + "."
+                                ])
+            else: #a 15+ roll and experienced
+                    if Primary == "Rogue":
+                        #if Rogue is primary, Tempcheck is the Trigger variable
+                        $ TempCheck = Trigger
+                    else:
+                        #if Rogue is secondary, Tempcheck is the Trigger4 variable
+                        $ TempCheck = Trigger4
+                    
+                    if TempCheck == "hand":
+                        $ Line = "Seems like you like this, huh, " + R_Petname + "?" #hand
+                    elif TempCheck == "blow":
+                        $ Line = "You taste so nice, " + R_Petname + "." #blow
+                    elif TempCheck == "sex":
+                        $ Line = "Ohhh. . .that's sooo good." #sex
+                    elif TempCheck == "anal":
+                        $ Line = "It. . .hurts. But it kinda feels good, too." #anal
+                    else:
+                        #if it's none of those, this will work
+                        $ Line = renpy.random.choice([
+                                "I want ya so bad, " + R_Petname + ".",
+                                "I'm all yours, " + R_Petname + ". Take me however ya want.",
+                                "I love it when ya do that, " + R_Petname + ".",
+                                "I love the look you get on your face when we do that, " + R_Petname + "."
+                                ])
+            if Line and Line != "partner":
+                    ch_r "[Line]"
+    #end Primary Rogue        
+            
+    elif Primary == "Kitty" or (Line == "partner" and Secondary == "Kitty" and D20 >= 15):
+            if D20 <= 5 or (K_SEXP <= 30 and ApprovalCheck("Kitty", 400, "I")):
+                    #If she's relatively inexperienced or there is a low roll
+                    $ Line = renpy.random.choice([
+                            "You're so amazing, " + K_Petname + ".",
+                            "You know how to push, like, every one of my buttons. . .",
+                            "Heh. . .{i}somebody{/i} seems to like that.",
+                            "That's, like, {i}so{/i} good."
+                            ])
+            elif D20 <= 15: 
+                    #If she's relatively experienced and there's a moderate roll
+                    $ Line = renpy.random.choice([
+                                "This is {i}so{/i} hot, " + K_Petname + ".",
+                                "I think I just, like, discovered one of your other mutant powers, " + K_Petname + ".",
+                                "I like it.  Like, a {i}lot{/i}.",
+                                "I've never wanted a guy like I want you, " + K_Petname + "."
+                                ])
+            else: #a 15+ roll and experienced
+                    if Primary == "Kitty":
+                        #if Kitty is primary, Tempcheck is the Trigger variable
+                        $ TempCheck = Trigger
+                    else:
+                        #if Kitty is secondary, Tempcheck is the Trigger4 variable
+                        $ TempCheck = Trigger4
+                    
+                    if TempCheck == "hand":
+                        $ Line = "I love the way it, like, feels in my hands." #hand
+                    elif TempCheck == "blow":
+                        $ Line = "I hope you don't think I'm, like, a slut for saying this. . .but I love how you taste, " + K_Petname + "." #blow
+                    elif TempCheck == "sex":
+                        $ Line = "Oooohh. . .just like {i}that{/i}." #sex
+                    elif TempCheck == "anal":
+                        $ Line = "Please. . .go slow, 'kay?  You feel so {i}big{/i}." #anal
+                    else:
+                        #if it's none of those, this will work
+                        $ Line = renpy.random.choice([
+                                "This is {i}so{/i} hot, " + K_Petname + ".",
+                                "I think I just, like, discovered one of your other mutant powers, " + K_Petname + ".",
+                                "I like it.  Like, a {i}lot{/i}.",
+                                "I've never wanted a guy like I want you, " + K_Petname + "."
+                                ])
+            if Line and Line != "partner":
+                    ch_k "[Line]"
+                        
+    #end Primary Kitty  
+
+    elif Primary == "Emma" or (Line == "partner" and Secondary == "Emma" and D20 >= 15):
+            if D20 <= 5 or (E_SEXP <= 30 and ApprovalCheck("Emma", 400, "I")):
+                    #If she's relatively inexperienced or there is a low roll
+                    $ Line = renpy.random.choice([
+                            "You're so amazing, " + E_Petname + ".",
+                            "You know how to push, like, every one of my buttons. . .",
+                            "Heh. . .{i}somebody{/i} seems to like that.",
+                            "That's, like, {i}so{/i} good."
+                            ])
+            elif D20 <= 15: 
+                    #If she's relatively experienced and there's a moderate roll
+                    $ Line = renpy.random.choice([
+                                "This is {i}so{/i} hot, " + E_Petname + ".",
+                                "I think I just, like, discovered one of your other mutant powers, " + E_Petname + ".",
+                                "I like it.  Like, a {i}lot{/i}.",
+                                "I've never wanted a guy like I want you, " + E_Petname + "."
+                                ])
+            else: #a 15+ roll and experienced
+                    if Primary == "Emma":
+                        #if Emma is primary, Tempcheck is the Trigger variable
+                        $ TempCheck = Trigger
+                    else:
+                        #if Emma is secondary, Tempcheck is the Trigger4 variable
+                        $ TempCheck = Trigger4
+                    
+                    if TempCheck == "hand":
+                        $ Line = "I love the way it, like, feels in my hands." #hand
+                    elif TempCheck == "blow":
+                        $ Line = "I hope you don't think I'm, like, a slut for saying this. . .but I love how you taste, " + E_Petname + "." #blow
+                    elif TempCheck == "sex":
+                        $ Line = "Oooohh. . .just like {i}that{/i}." #sex
+                    elif TempCheck == "anal":
+                        $ Line = "Please. . .go slow, 'kay?  You feel so {i}big{/i}." #anal
+                    else:
+                        #if it's none of those, this will work
+                        $ Line = renpy.random.choice([
+                                "This is {i}so{/i} hot, " + E_Petname + ".",
+                                "I think I just, like, discovered one of your other mutant powers, " + E_Petname + ".",
+                                "I like it.  Like, a {i}lot{/i}.",
+                                "I've never wanted a guy like I want you, " + E_Petname + "."
+                                ])
+            if Line and Line != "partner":
+                    ch_e "[Line]"
+                        
+    #end Primary Emma  
+
+    elif Primary == "Mystique" or (Line == "partner" and Secondary == "Mystique" and D20 >= 15):
+            if D20 <= 5 or (newgirl["Mystique"].SEXP <= 30 and ApprovalCheck("Mystique", 400, "I")):
+                    #If she's relatively inexperienced or there is a low roll
+                    $ Line = renpy.random.choice([
+                            "You're so amazing, " + newgirl["Mystique"].Petname + ".",
+                            "You know how to push, like, every one of my buttons. . .",
+                            "Heh. . .{i}somebody{/i} seems to like that.",
+                            "That's, like, {i}so{/i} good."
+                            ])
+            elif D20 <= 15: 
+                    #If she's relatively experienced and there's a moderate roll
+                    $ Line = renpy.random.choice([
+                                "This is {i}so{/i} hot, " + newgirl["Mystique"].Petname + ".",
+                                "I think I just, like, discovered one of your other mutant powers, " + newgirl["Mystique"].Petname + ".",
+                                "I like it.  Like, a {i}lot{/i}.",
+                                "I've never wanted a guy like I want you, " + newgirl["Mystique"].Petname + "."
+                                ])
+            else: #a 15+ roll and experienced
+                    if Primary == "Mystique":
+                        #if Mystique is primary, Tempcheck is the Trigger variable
+                        $ TempCheck = Trigger
+                    else:
+                        #if Mystique is secondary, Tempcheck is the Trigger4 variable
+                        $ TempCheck = Trigger4
+                    
+                    if TempCheck == "hand":
+                        $ Line = "I love the way it, like, feels in my hands." #hand
+                    elif TempCheck == "blow":
+                        $ Line = "I hope you don't think I'm, like, a slut for saying this. . .but I love how you taste, " + newgirl["Mystique"].Petname + "." #blow
+                    elif TempCheck == "sex":
+                        $ Line = "Oooohh. . .just like {i}that{/i}." #sex
+                    elif TempCheck == "anal":
+                        $ Line = "Please. . .go slow, 'kay?  You feel so {i}big{/i}." #anal
+                    else:
+                        #if it's none of those, this will work
+                        $ Line = renpy.random.choice([
+                                "This is {i}so{/i} hot, " + newgirl["Mystique"].Petname + ".",
+                                "I think I just, like, discovered one of your other mutant powers, " + newgirl["Mystique"].Petname + ".",
+                                "I like it.  Like, a {i}lot{/i}.",
+                                "I've never wanted a guy like I want you, " + newgirl["Mystique"].Petname + "."
+                                ])
+            if Line and Line != "partner":
+                    ch_m "[Line]"
+                        
+    #end Primary Mystique  
+
+    return

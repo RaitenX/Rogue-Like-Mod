@@ -477,6 +477,49 @@ label Mystique_Doggy_Sex_Cycle: #Repeating strokes
                     $ Round -= 1
                     menu:
                         "[Line]"
+                        "Appearance" if P_Lvl >= 4:
+                                menu:
+                                    "I preffer the real Raven" if newgirl["Mystique"].LooksLike != "Mystique":
+                                        ch_m "Sure"
+                                        $ newgirl["Mystique"].LooksLike = "Mystique"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns back into her original form with your cock still inside her."
+                                        else:
+                                            "She turns back into her original form."
+                                        ch_p "Perfection"
+                                    "Why don't you turn into Emma" if newgirl["Mystique"].LooksLike != "Emma":
+                                        ch_m "So you like blondes huh?"
+                                        $ newgirl["Mystique"].LooksLike = "Emma"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns into Emma with your cock still inside her."
+                                        else:
+                                            "She turns into Emma."
+                                        ch_p "Nice"
+                                    "Why don't you turn into Rogue" if newgirl["Mystique"].LooksLike != "Rogue":
+                                        call NewGirl_FaceSpecial("Mystique", "surprised")
+                                        ch_m "You want me to turn into my own daughter?"
+                                        ch_m "That's dirty."
+                                        call NewGirl_FaceSpecial("Mystique", "smile")
+                                        ch_m "I like it."
+                                        $ newgirl["Mystique"].LooksLike = "Rogue"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns into Rogue with your cock still inside her."
+                                        else:
+                                            "She turns into Rogue."
+                                        ch_p "Nice"
+                                    "Why don't you turn into Kitty" if newgirl["Mystique"].LooksLike != "Kitty":
+                                        call NewGirl_FaceSpecial("Mystique", "surprised")
+                                        ch_m "So you want me to turn into that brat, huh?"
+                                        call NewGirl_FaceSpecial("Mystique", "smile")
+                                        ch_m "Ok."
+                                        $ newgirl["Mystique"].LooksLike = "Kitty"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns into Kitty with your cock still inside her."
+                                        else:
+                                            "She turns into Kitty."
+                                        ch_p "Nice"
+                                    "Nevermind":
+                                        pass
                         "Keep going. . ." if Speed:
                                     pass
                         "Start moving? . ." if not Speed:
@@ -1950,6 +1993,49 @@ label Mystique_Anal_Plug_Cycle: #Repeating strokes
                     $ Round -= 1
                     menu:
                         "[Line]"
+                        "Appearance" if P_Lvl >= 4:
+                                menu:
+                                    "I preffer the real Raven" if newgirl["Mystique"].LooksLike != "Mystique":
+                                        ch_m "Sure"
+                                        $ newgirl["Mystique"].LooksLike = "Mystique"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns back into her original form with your cock still inside her."
+                                        else:
+                                            "She turns back into her original form."
+                                        ch_p "Perfection"
+                                    "Why don't you turn into Emma" if newgirl["Mystique"].LooksLike != "Emma":
+                                        ch_m "So you like blondes huh?"
+                                        $ newgirl["Mystique"].LooksLike = "Emma"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns into Emma with your cock still inside her."
+                                        else:
+                                            "She turns into Emma."
+                                        ch_p "Nice"
+                                    "Why don't you turn into Rogue" if newgirl["Mystique"].LooksLike != "Rogue":
+                                        call NewGirl_FaceSpecial("Mystique", "surprised")
+                                        ch_m "You want me to turn into my own daughter?"
+                                        ch_m "That's dirty."
+                                        call NewGirl_FaceSpecial("Mystique", "smile")
+                                        ch_m "I like it."
+                                        $ newgirl["Mystique"].LooksLike = "Rogue"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns into Rogue with your cock still inside her."
+                                        else:
+                                            "She turns into Rogue."
+                                        ch_p "Nice"
+                                    "Why don't you turn into Kitty" if newgirl["Mystique"].LooksLike != "Kitty":
+                                        call NewGirl_FaceSpecial("Mystique", "surprised")
+                                        ch_m "So you want me to turn into that brat, huh?"
+                                        call NewGirl_FaceSpecial("Mystique", "smile")
+                                        ch_m "Ok."
+                                        $ newgirl["Mystique"].LooksLike = "Kitty"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns into Kitty with your cock still inside her."
+                                        else:
+                                            "She turns into Kitty."
+                                        ch_p "Nice"
+                                    "Nevermind":
+                                        pass
                         "Keep going. . ." if Speed:
                                     pass
                         "Start moving? . ." if not Speed:
@@ -2291,6 +2377,49 @@ label Mystique_Doggy_Anal_Cycle: #Repeating strokes
                     $ Round -= 1
                     menu:
                         "[Line]"
+                        "Appearance" if P_Lvl >= 4:
+                                menu:
+                                    "I preffer the real Raven" if newgirl["Mystique"].LooksLike != "Mystique":
+                                        ch_m "Sure"
+                                        $ newgirl["Mystique"].LooksLike = "Mystique"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns back into her original form with your cock still inside her."
+                                        else:
+                                            "She turns back into her original form."
+                                        ch_p "Perfection"
+                                    "Why don't you turn into Emma" if newgirl["Mystique"].LooksLike != "Emma":
+                                        ch_m "So you like blondes huh?"
+                                        $ newgirl["Mystique"].LooksLike = "Emma"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns into Emma with your cock still inside her."
+                                        else:
+                                            "She turns into Emma."
+                                        ch_p "Nice"
+                                    "Why don't you turn into Rogue" if newgirl["Mystique"].LooksLike != "Rogue":
+                                        call NewGirl_FaceSpecial("Mystique", "surprised")
+                                        ch_m "You want me to turn into my own daughter?"
+                                        ch_m "That's dirty."
+                                        call NewGirl_FaceSpecial("Mystique", "smile")
+                                        ch_m "I like it."
+                                        $ newgirl["Mystique"].LooksLike = "Rogue"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns into Rogue with your cock still inside her."
+                                        else:
+                                            "She turns into Rogue."
+                                        ch_p "Nice"
+                                    "Why don't you turn into Kitty" if newgirl["Mystique"].LooksLike != "Kitty":
+                                        call NewGirl_FaceSpecial("Mystique", "surprised")
+                                        ch_m "So you want me to turn into that brat, huh?"
+                                        call NewGirl_FaceSpecial("Mystique", "smile")
+                                        ch_m "Ok."
+                                        $ newgirl["Mystique"].LooksLike = "Kitty"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns into Kitty with your cock still inside her."
+                                        else:
+                                            "She turns into Kitty."
+                                        ch_p "Nice"
+                                    "Nevermind":
+                                        pass
                         "Keep going. . ." if Speed:
                                     pass
                         "Start moving? . ." if not Speed:
@@ -2961,6 +3090,49 @@ label Mystique_Doggy_Hotdog_Cycle: #Repeating strokes
                     $ Round -= 1
                     menu:
                         "[Line]"
+                        "Appearance" if P_Lvl >= 4:
+                                menu:
+                                    "I preffer the real Raven" if newgirl["Mystique"].LooksLike != "Mystique":
+                                        ch_m "Sure"
+                                        $ newgirl["Mystique"].LooksLike = "Mystique"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns back into her original form with your cock still inside her."
+                                        else:
+                                            "She turns back into her original form."
+                                        ch_p "Perfection"
+                                    "Why don't you turn into Emma" if newgirl["Mystique"].LooksLike != "Emma":
+                                        ch_m "So you like blondes huh?"
+                                        $ newgirl["Mystique"].LooksLike = "Emma"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns into Emma with your cock still inside her."
+                                        else:
+                                            "She turns into Emma."
+                                        ch_p "Nice"
+                                    "Why don't you turn into Rogue" if newgirl["Mystique"].LooksLike != "Rogue":
+                                        call NewGirl_FaceSpecial("Mystique", "surprised")
+                                        ch_m "You want me to turn into my own daughter?"
+                                        ch_m "That's dirty."
+                                        call NewGirl_FaceSpecial("Mystique", "smile")
+                                        ch_m "I like it."
+                                        $ newgirl["Mystique"].LooksLike = "Rogue"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns into Rogue with your cock still inside her."
+                                        else:
+                                            "She turns into Rogue."
+                                        ch_p "Nice"
+                                    "Why don't you turn into Kitty" if newgirl["Mystique"].LooksLike != "Kitty":
+                                        call NewGirl_FaceSpecial("Mystique", "surprised")
+                                        ch_m "So you want me to turn into that brat, huh?"
+                                        call NewGirl_FaceSpecial("Mystique", "smile")
+                                        ch_m "Ok."
+                                        $ newgirl["Mystique"].LooksLike = "Kitty"
+                                        if P_Cock == "anal" or P_Cock == "in":
+                                            "She turns into Kitty with your cock still inside her."
+                                        else:
+                                            "She turns into Kitty."
+                                        ch_p "Nice"
+                                    "Nevermind":
+                                        pass
                         "Keep going. . ." if Speed:
                                     pass
                         "Start moving? . ." if not Speed:

@@ -1,5 +1,5 @@
 ﻿# Basic character Sprites
-image Mystique_Sprite:
+image Mystique_Blue_Sprite:
     LiveComposite(
         (480,960),
          (0,0), ConditionSwitch(                                                                         #Overhsirt backing
@@ -701,7 +701,7 @@ image Mystique_At_Podium:
 #Rogue BJ Over Sprite Compositing
 
 
-image Mystique_BJ_Animation:#BJ_NewTest:                                                                #core BJ animation   
+image Mystique_Blue_BJ_Animation:#BJ_NewTest:                                                                #core BJ animation   
     LiveComposite(    
         (787,913),             
         # (0,0), ConditionSwitch(                                                                 # back of the hair, which needs to go behind the body
@@ -1057,7 +1057,7 @@ image Mystique_Hand_Over:
 
 
 
-image Mystique_HJ_Animation:  
+image Mystique_Blue_HJ_Animation:  
     contains:
         ConditionSwitch(                                                # backside of the hand
             "not Speed", Transform("Mystique_Hand_Under"), 
@@ -1112,9 +1112,17 @@ label Mystique_HJ_Launch(Line = 0):
     else:
         $ Speed = 1
     pause .5
-    show Mystique_HJ_Animation at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder 150 with easeinbottom:
-        #xoffset 150
-        #offset (100,250)#(75,250)
+    if newgirl["Mystique"].LooksLike == "Mystique":
+        show Mystique_HJ_Animation at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder 150 with easeinbottom:
+            #xoffset 150
+            #offset (100,250)#(75,250)
+    elif newgirl["Mystique"].LooksLike == "Emma" or newgirl["Mystique"].LooksLike == "Kitty":
+        show Mystique_HJ_Animation at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder 150 with easeinbottom:
+            offset (100,250)#(75,250)
+    else:
+        show Mystique_HJ_Animation at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder 150 with easeinbottom:
+            #xoffset 150
+            #offset (100,250)#(75,250)
     return
     
 label Mystique_HJ_Reset: # The sequence to the Emma animations from handjob to default

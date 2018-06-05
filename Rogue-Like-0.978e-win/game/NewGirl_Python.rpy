@@ -148,6 +148,8 @@
             self.Accessory3 = 0 
             self.Extra = {} 
             self.LooksLike = "Mystique" 
+            self.Blindfold = 0 
+            self.Headband = 0 
             #}
 
          

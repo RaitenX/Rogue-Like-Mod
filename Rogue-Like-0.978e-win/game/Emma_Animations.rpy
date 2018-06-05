@@ -611,7 +611,6 @@ image Emma_BJ_Animation:#BJ_NewTest:                                            
             "Speed == 4", At("Emma_BJ_Head_2", BJ_Deep()), 
             "True", Null(),
             ),   
-#        (0,0), Transform("images/RogueBJFace/Rogue_bj_markercard.png", alpha=(.2)),
         (0,0), ConditionSwitch(                                                                 # cock
             "Speed == 0", At("Blowcock", Cock_BJ_Starting()),   
             "Speed == 1", At("Blowcock", Cock_BJ_Licking()),                                  

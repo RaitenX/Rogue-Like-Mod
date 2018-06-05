@@ -3,7 +3,7 @@
 #\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
-image Mystique_SexSprite:            
+image Mystique_Blue_SexSprite:            
     LiveComposite(                                                                                 #Base body
         (1120,840),  
         (0,0), ConditionSwitch(                                                         #Shows different upper body motion depending on events  
@@ -1174,10 +1174,19 @@ label Mystique_Sex_Launch(Line = "solo"):
     return
     
 label Mystique_Sex_Reset:
-    if not renpy.showing("Mystique_SexSprite"):
+    if not renpy.showing("Mystique_SexSprite") and not renpy.showing("Mystique_Doggy"):
         return
-    #$ newgirl["Mystique"].Girl_Arms = 2     
-    hide Mystique_SexSprite
+    #$ newgirl["Mystique"].Girl_Arms = 2  
+    #$ newgirl["Mystique"].LooksLike = "Mystique"
+    if P_Focus >= 100:
+        "You lose control of your powers and Mystique turns back into her original form"
+    else:
+        "Mystique turns back into her original form"
+    if renpy.showing("Mystique_SexSprite"):
+        hide Mystique_SexSprite
+    elif renpy.showing("Mystique_Doggy"):
+        hide Mystique_Doggy
+    
     show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer:
         alpha 1
         zoom 1 offset (0,0) 

@@ -647,8 +647,13 @@ label VersionNumber:
     #     $ newgirl["Jean"] = Girlnew("Jean")
     if newgirl["Mystique"].XP == (0,):
         $ newgirl["Mystique"].XP = 0
+
+    #Shit I forgot to add into the Girlnew class:
     if getattr(newgirl["Mystique"], "LooksLike", None) == None:
         $ newgirl["Mystique"].LooksLike = "Mystique"
+    #if getattr(newgirl["Mystique"], "Blindfold", None) == None:
+        $ newgirl["Mystique"].Blindfold = 0
+        $ newgirl["Mystique"].Headband = 0
         
     #if not hasattr(newgirl["Mystique"], "LooksLike"):
 
@@ -4850,6 +4855,8 @@ label Stat_Checks:
         $ P_Income += Count
         "You've leveled up!"
         "Xavier has noticed your achievements and raised your stipend by $[Count] per day. It is now $[P_Income]."
+        if P_Lvl >= 4:
+            "You've level [P_Lvl], you're now experienced enough to have better control of your powers!"
         if P_Lvl == 10:
             "You've reached max level!"
     

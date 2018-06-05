@@ -3701,7 +3701,7 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
                 #If there's a third person line, play it
                 "[Line4]"
                 $ Line = Line4
-        call Dirty_Talk
+        call NewGirl_Dirty_Talk
                         
         return
         
