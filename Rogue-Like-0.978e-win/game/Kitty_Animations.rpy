@@ -1960,9 +1960,9 @@ image Kitty_BJ_Head:                                                            
         (858,928), 
         (0,0), ConditionSwitch(                                                                 
             #Hair back
-            "K_Water or K_Hair == 'wet' and K_HairColor == 'blonde'", "images/KittyBJFace/Kitty_BJ_HairBlondeBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
-            "K_Water or K_Hair == 'wet' and K_HairColor == 'red'", "images/KittyBJFace/Kitty_BJ_HairRedBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
-            "K_Water or K_Hair == 'wet' and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlackBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
+            "(K_Water or K_Hair == 'wet') and K_HairColor == 'blonde'", "images/KittyBJFace/Kitty_BJ_HairBlondeBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
+            "(K_Water or K_Hair == 'wet') and K_HairColor == 'red'", "images/KittyBJFace/Kitty_BJ_HairRedBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
+            "(K_Water or K_Hair == 'wet') and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlackBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
             "K_Water or K_Hair == 'wet'", "images/KittyBJFace/Kitty_BJ_HairBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
             "True", Null(),
             ),   
@@ -2096,6 +2096,17 @@ image Kitty_BJ_Head:                                                            
         (0,0), ConditionSwitch(                                                                 
             #cum on the hair
             "'hair' in K_Spunk", "images/KittyBJFace/Kitty_BJ_Spunk_Hair.png",
+            "True", Null(),
+            ),
+        (0,0), ConditionSwitch(                                                                 
+            #Hands overlay
+            "not P_Hands", Null(),
+            "(K_Water or K_Hair == 'wet') and P_Color == 'pink'", "images/KittyBJFace/Kitty_BJ_Wet_HeadHands_P.png",
+            "(K_Water or K_Hair == 'wet') and P_Color == 'green'", "images/KittyBJFace/Kitty_BJ_Wet_HeadHands_G.png",
+            "(K_Water or K_Hair == 'wet') and P_Color == 'brown'", "images/KittyBJFace/Kitty_BJ_Wet_HeadHands_B.png",
+            "P_Color == 'pink'", "images/KittyBJFace/Kitty_BJ_HeadHands_P.png",
+            "P_Color == 'green'", "images/KittyBJFace/Kitty_BJ_HeadHands_G.png",
+            "P_Color == 'brown'", "images/KittyBJFace/Kitty_BJ_HeadHands_B.png",
             "True", Null(),
             ),
         )

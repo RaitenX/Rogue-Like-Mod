@@ -173,6 +173,7 @@ init -1:
 # Player Inventory Variables 
     default P_Income = 12               #how much you make each day
     default P_Cash = 20
+    default P_Hands = 0
     default P_Inventory = []
     default Inventory_Count = 0
     default Digits = []

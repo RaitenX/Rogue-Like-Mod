@@ -1635,6 +1635,13 @@ label KBJ_Cycle: #Repeating strokes
                                 else:
                                     $ Speed = 1
                                 $ K_RecentActions.append("setpace")
+                        "Hold her head" if not P_Hands:
+                                $ P_Hands = 1
+                                "You hold her head"
+
+                        "No hands" if P_Hands:
+                                $ P_Hands = 0
+                                "You let go of her head"
 
                         "How about you put that bondage outfit" if K_Bondage and K_Outfit != "zipper bondage" and K_Outfit != "zipper bondage open":
                             call KittyFace("sexy", 1) 

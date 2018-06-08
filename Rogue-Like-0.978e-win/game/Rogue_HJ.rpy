@@ -1647,6 +1647,14 @@ label RBJ_Cycle:
                                     $ Speed = 1
                                 $ R_RecentActions.append("setpace")
 
+                        "Hold her head" if not P_Hands:
+                                $ P_Hands = 1
+                                "You hold her head"
+
+                        "No hands" if P_Hands:
+                                $ P_Hands = 0
+                                "You let go of her head"
+
                         "Gag":
                             if not R_Gag:
                                 #"You put a gag on Rogue"

@@ -945,6 +945,14 @@ label EBJ_Cycle: #Repeating strokes
                                 else:
                                     $ Speed = 1
                                 $ E_RecentActions.append("setpace")
+
+                        "Hold her head" if not P_Hands:
+                                $ P_Hands = 1
+                                "You hold her head"
+
+                        "No hands" if P_Hands:
+                                $ P_Hands = 0
+                                "You let go of her head"
                                 
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass

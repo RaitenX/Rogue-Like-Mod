@@ -903,7 +903,18 @@ image Emma_BJ_Head:
             "'hair' in E_Spunk and (E_Hair == 'wet' or E_Water)", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWet.png",                         
             "'hair' in E_Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWave.png",              
             "True", Null(),
-            ),  
+            ), 
+        (0,0), ConditionSwitch(                                                                 
+            #Hands overlay
+            "not P_Hands", Null(),
+            "(E_Water or E_Hair == 'wet') and P_Color == 'pink'", "images/EmmaSprite/Emma_Sprite_Wet_HeadHands_P.png",
+            "(E_Water or E_Hair == 'wet') and P_Color == 'green'", "images/EmmaSprite/Emma_Sprite_Wet_HeadHands_G.png",
+            "(E_Water or E_Hair == 'wet') and P_Color == 'brown'", "images/EmmaSprite/Emma_Sprite_Wet_HeadHands_B.png",
+            "P_Color == 'pink'", "images/EmmaSprite/Emma_Sprite_HeadHands_P.png",
+            "P_Color == 'green'", "images/EmmaSprite/Emma_Sprite_HeadHands_G.png",
+            "P_Color == 'brown'", "images/EmmaSprite/Emma_Sprite_HeadHands_B.png",
+            "True", Null(),
+            ), 
         )                
     anchor (0.6, 0.0)                
     zoom .5 
