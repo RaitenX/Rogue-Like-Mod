@@ -939,7 +939,7 @@ label NewGirl_Dirty_Talk(D20=0, TempCheck=0, Line=0):
     $ D20 = renpy.random.randint(1, 20)   
     if D20 >= 15 and Secondary:
             #if it's a high roll and there is a second girl, do a threesome line
-#            $ Line = "threesome" #fix this when there are threesome lines to add.
+            #$ Line = "threesome" #fix this when there are threesome lines to add.
             $ Line = "partner"
     elif D20 >= 10 and Secondary:
             #if it's a medium roll and there is a second girl, do a partner line
@@ -1135,3 +1135,16 @@ label NewGirl_Dirty_Talk(D20=0, TempCheck=0, Line=0):
     #end Primary Mystique  
 
     return
+
+label NewGirl_RemoveClothes(Girl_ = "Mystique"):
+    
+    $ newgirl[Girl_].Over = 0
+    $ newgirl[Girl_].Legs = 0
+    $ newgirl[Girl_].Chest = 0
+    $ newgirl[Girl_].Panties = 0
+    $ newgirl[Girl_].Neck = 0
+    $ newgirl[Girl_].Hose = 0
+
+    return
+
+# ///////////////////////////////////////////////////////////////////////////////////////////////////////////

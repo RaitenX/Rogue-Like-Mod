@@ -1426,87 +1426,92 @@ label Pool_Room:
                 call Pool_Clothes
                 #jump Pool_Area
 
-        "Go for a swim." if Current_Time != "Night":
-                if R_Loc == bg_current or K_Loc == bg_current or E_Loc == bg_current:
-                    "Let's go for a swim"
-                    if R_Loc == bg_current:
-                        ch_r "yay"
+        "Go for a swim" if Round > 30 and Current_Time != "Night":
+                call Swimming
+        "Go for a swim (locked)" if Round <= 30 or Current_Time == "Night":            
+                pass
 
-                        if R_Outfit != "swimsuit2" and R_Outfit != "swimsuit1":
-                            #ch_r "I'l be right there, let me just put on my swimsuit"
-                            call Pool_Clothes("goswim", "Rogue")
-                            ch_r "Let's go"
+        # "Go for a swim." if Current_Time != "Night":
+        #         if R_Loc == bg_current or K_Loc == bg_current or E_Loc == bg_current:
+        #             "Let's go for a swim"
+        #             if R_Loc == bg_current:
+        #                 ch_r "yay"
+
+        #                 if R_Outfit != "swimsuit2" and R_Outfit != "swimsuit1":
+        #                     #ch_r "I'l be right there, let me just put on my swimsuit"
+        #                     call Pool_Clothes("goswim", "Rogue")
+        #                     ch_r "Let's go"
                         
-                        call RogueFace("happy")                            
-                        $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 4)          
-                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 40, 2)            
-                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 4)
-                        $ R_Water = 2
+        #                 call RogueFace("happy")                            
+        #                 $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 4)          
+        #                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 40, 2)            
+        #                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 4)
+        #                 $ R_Water = 2
 
 
-                    if K_Loc == bg_current:
-                        ch_k "yay"
+        #             if K_Loc == bg_current:
+        #                 ch_k "yay"
 
-                        if K_Outfit != "purple bikini" and K_Outfit != "swimsuit3":
-                            #ch_k "I'l be right there, let me just put on my bikini"
-                            call Pool_Clothes("goswim", "Kitty")
-                            ch_k "Let's go"
+        #                 if K_Outfit != "purple bikini" and K_Outfit != "swimsuit3":
+        #                     #ch_k "I'l be right there, let me just put on my bikini"
+        #                     call Pool_Clothes("goswim", "Kitty")
+        #                     ch_k "Let's go"
 
-                        call KittyFace("happy")                            
-                        $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 4)          
-                        $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 40, 2)            
-                        $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 4)
-                        $ K_Water = 2
+        #                 call KittyFace("happy")                            
+        #                 $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 4)          
+        #                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 40, 2)            
+        #                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 4)
+        #                 $ K_Water = 2
 
 
-                    if E_Loc == bg_current:
-                        ch_e "yay"
+        #             if E_Loc == bg_current:
+        #                 ch_e "yay"
 
-                        if E_Outfit != "bikini" and E_Outfit != "naked pool":
-                            #ch_e "I'l be right there, let me just put on my bikini"
-                            call Pool_Clothes("goswim", "Emma")
-                            ch_e "Let's go"
+        #                 if E_Outfit != "bikini" and E_Outfit != "naked pool":
+        #                     #ch_e "I'l be right there, let me just put on my bikini"
+        #                     call Pool_Clothes("goswim", "Emma")
+        #                     ch_e "Let's go"
 
-                        call EmmaFace("happy")                            
-                        $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 4)          
-                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 40, 2)            
-                        $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, 4)
-                        $ E_Water = 2
+        #                 call EmmaFace("happy")                            
+        #                 $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 4)          
+        #                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 40, 2)            
+        #                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, 4)
+        #                 $ E_Water = 2
 
-                    if newgirl["Mystique"].Loc == bg_current:
-                        ch_e "yay"
+        #             if newgirl["Mystique"].Loc == bg_current:
+        #                 ch_e "yay"
 
-                        if newgirl["Mystique"].Outfit != "bikini" and newgirl["Mystique"].Outfit != "naked pool":
-                            #ch_e "I'l be right there, let me just put on my bikini"
-                            call Pool_Clothes("goswim", "Mystique")
-                            ch_m "Let's go"
+        #                 if newgirl["Mystique"].Outfit != "bikini" and newgirl["Mystique"].Outfit != "naked pool":
+        #                     #ch_e "I'l be right there, let me just put on my bikini"
+        #                     call Pool_Clothes("goswim", "Mystique")
+        #                     ch_m "Let's go"
 
-                        call MystiqueFace("happy")                            
-                        $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 4)          
-                        $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 40, 2)            
-                        $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 30, 4)
-                        $ newgirl["Mystique"].Water = 2
-                        #$ K_RecentActions.append("showered")                      
-                    #"You take a swim"
+        #                 call MystiqueFace("happy")                            
+        #                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 4)          
+        #                 $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 40, 2)            
+        #                 $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 30, 4)
+        #                 $ newgirl["Mystique"].Water = 2
+        #                 #$ K_RecentActions.append("showered")                      
+        #             #"You take a swim"
 
-                        #$ K_DailyActions.append("showered")
-                        #call Set_The_Scene
-                    "That felt great"
-                    call Wait   
-                    call EventCalls
-                    call Pool_Clothes
-                    call Girls_Location 
-                    call Pool_Clothes
+        #                 #$ K_DailyActions.append("showered")
+        #                 #call Set_The_Scene
+        #             "That felt great"
+        #             call Wait   
+        #             call EventCalls
+        #             call Pool_Clothes
+        #             call Girls_Location 
+        #             call Pool_Clothes
 
-                    #if R_Loc == bg_current:
+        #             #if R_Loc == bg_current:
 
-                else:
-                    "You take a swim by yourself"
-                    call Wait   
-                    call EventCalls
-                    call Pool_Clothes
-                    call Girls_Location 
-                    call Pool_Clothes
+        #         else:
+        #             "You take a swim by yourself"
+        #             call Wait   
+        #             call EventCalls
+        #             call Pool_Clothes
+        #             call Girls_Location 
+        #             call Pool_Clothes
 
         "Skinny dipping?" if Current_Time == "Night":# and (R_Loc == bg_current or K_Loc == bg_current or E_Loc == bg_current):
                 call Skinny_Dipping
@@ -1524,6 +1529,93 @@ label Pool_Room:
                 call Pool_Clothes("change")
                 jump Shower_Room_Entry         
     jump Pool_Room
+
+
+label Swimming(Occupants = 0, Agreed = 0, RogueCount = 0, KittyCount = 0, EmmaCount = 0, Showered = 0, Line = 0):
+    
+    if R_Loc == bg_current or K_Loc == bg_current or E_Loc == bg_current or newgirl["Mystique"].Loc == bg_current:
+        "Let's go for a swim"
+        if R_Loc == bg_current:
+            ch_r "yay"
+            if R_Outfit != "swimsuit2" and R_Outfit != "swimsuit1":
+                #ch_r "I'l be right there, let me just put on my swimsuit"
+                call Pool_Clothes("goswim", "Rogue")
+                ch_r "Let's go"
+            
+            call RogueFace("happy")                            
+            $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 4)          
+            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 40, 2)            
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 4)
+            $ R_Water = 2
+            $ R_Spunk = []
+        if K_Loc == bg_current:
+            ch_k "yay"
+            if K_Outfit != "purple bikini" and K_Outfit != "swimsuit3":
+                #ch_k "I'l be right there, let me just put on my bikini"
+                call Pool_Clothes("goswim", "Kitty")
+                ch_k "Let's go"
+            call KittyFace("happy")                            
+            $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, 4)          
+            $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 40, 2)            
+            $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 4)
+            $ K_Water = 2
+            $ K_Spunk = []
+        if E_Loc == bg_current:
+            ch_e "yay"
+            if E_Outfit != "bikini" and E_Outfit != "naked pool":
+                #ch_e "I'l be right there, let me just put on my bikini"
+                call Pool_Clothes("goswim", "Emma")
+                ch_e "Let's go"
+            call EmmaFace("happy")                            
+            $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 4)          
+            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 40, 2)            
+            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, 4)
+            $ E_Water = 2
+            $ E_Spunk = []
+        if newgirl["Mystique"].Loc == bg_current:
+            ch_e "yay"
+            if newgirl["Mystique"].Outfit != "bikini" and newgirl["Mystique"].Outfit != "naked pool":
+                #ch_e "I'l be right there, let me just put on my bikini"
+                call Pool_Clothes("goswim", "Mystique")
+                ch_m "Let's go"
+            call MystiqueFace("happy")                            
+            $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 4)          
+            $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 40, 2)            
+            $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 30, 4)
+            $ newgirl["Mystique"].Water = 2
+            $ newgirl["Mystique"].Spunk = []
+            #$ K_RecentActions.append("showered")                      
+        #"You take a swim"
+            #$ K_DailyActions.append("showered")
+            #call Set_The_Scene
+        "That felt great"
+        $ Round -= 30
+        # call Wait   
+        # call EventCalls
+        # call Pool_Clothes
+        # call Girls_Location 
+        # call Pool_Clothes
+        #if R_Loc == bg_current:
+    else:
+        "You take a swim by yourself"
+        $ Round -= 30
+        # call Wait   
+        # call EventCalls
+        # call Pool_Clothes
+        # call Girls_Location 
+        # call Pool_Clothes
+
+            
+    if Round < 1:
+        call Wait   
+        call EventCalls
+        call Pool_Clothes
+        call Girls_Location 
+        call Pool_Clothes
+    return
+# End Swimming / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+
 
 # Pool Room Skinny Dipping Start <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
 

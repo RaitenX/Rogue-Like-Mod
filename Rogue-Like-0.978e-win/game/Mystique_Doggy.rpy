@@ -490,6 +490,7 @@ label Mystique_Doggy_Sex_Cycle: #Repeating strokes
                                     "Why don't you turn into Emma" if newgirl["Mystique"].LooksLike != "Emma":
                                         ch_m "So you like blondes huh?"
                                         $ newgirl["Mystique"].LooksLike = "Emma"
+                                        call NewGirl_RemoveClothes("Mystique")
                                         if P_Cock == "anal" or P_Cock == "in":
                                             "She turns into Emma with your cock still inside her."
                                         else:
@@ -502,6 +503,7 @@ label Mystique_Doggy_Sex_Cycle: #Repeating strokes
                                         call NewGirl_FaceSpecial("Mystique", "smile")
                                         ch_m "I like it."
                                         $ newgirl["Mystique"].LooksLike = "Rogue"
+                                        call NewGirl_RemoveClothes("Mystique")
                                         if P_Cock == "anal" or P_Cock == "in":
                                             "She turns into Rogue with your cock still inside her."
                                         else:
@@ -513,6 +515,7 @@ label Mystique_Doggy_Sex_Cycle: #Repeating strokes
                                         call NewGirl_FaceSpecial("Mystique", "smile")
                                         ch_m "Ok."
                                         $ newgirl["Mystique"].LooksLike = "Kitty"
+                                        call NewGirl_RemoveClothes("Mystique")
                                         if P_Cock == "anal" or P_Cock == "in":
                                             "She turns into Kitty with your cock still inside her."
                                         else:
@@ -2006,6 +2009,7 @@ label Mystique_Anal_Plug_Cycle: #Repeating strokes
                                     "Why don't you turn into Emma" if newgirl["Mystique"].LooksLike != "Emma":
                                         ch_m "So you like blondes huh?"
                                         $ newgirl["Mystique"].LooksLike = "Emma"
+                                        call NewGirl_RemoveClothes("Mystique")
                                         if P_Cock == "anal" or P_Cock == "in":
                                             "She turns into Emma with your cock still inside her."
                                         else:
@@ -2018,6 +2022,7 @@ label Mystique_Anal_Plug_Cycle: #Repeating strokes
                                         call NewGirl_FaceSpecial("Mystique", "smile")
                                         ch_m "I like it."
                                         $ newgirl["Mystique"].LooksLike = "Rogue"
+                                        call NewGirl_RemoveClothes("Mystique")
                                         if P_Cock == "anal" or P_Cock == "in":
                                             "She turns into Rogue with your cock still inside her."
                                         else:
@@ -2029,6 +2034,7 @@ label Mystique_Anal_Plug_Cycle: #Repeating strokes
                                         call NewGirl_FaceSpecial("Mystique", "smile")
                                         ch_m "Ok."
                                         $ newgirl["Mystique"].LooksLike = "Kitty"
+                                        call NewGirl_RemoveClothes("Mystique")
                                         if P_Cock == "anal" or P_Cock == "in":
                                             "She turns into Kitty with your cock still inside her."
                                         else:
@@ -2390,6 +2396,7 @@ label Mystique_Doggy_Anal_Cycle: #Repeating strokes
                                     "Why don't you turn into Emma" if newgirl["Mystique"].LooksLike != "Emma":
                                         ch_m "So you like blondes huh?"
                                         $ newgirl["Mystique"].LooksLike = "Emma"
+                                        call NewGirl_RemoveClothes("Mystique")
                                         if P_Cock == "anal" or P_Cock == "in":
                                             "She turns into Emma with your cock still inside her."
                                         else:
@@ -2402,6 +2409,7 @@ label Mystique_Doggy_Anal_Cycle: #Repeating strokes
                                         call NewGirl_FaceSpecial("Mystique", "smile")
                                         ch_m "I like it."
                                         $ newgirl["Mystique"].LooksLike = "Rogue"
+                                        call NewGirl_RemoveClothes("Mystique")
                                         if P_Cock == "anal" or P_Cock == "in":
                                             "She turns into Rogue with your cock still inside her."
                                         else:
@@ -2413,6 +2421,7 @@ label Mystique_Doggy_Anal_Cycle: #Repeating strokes
                                         call NewGirl_FaceSpecial("Mystique", "smile")
                                         ch_m "Ok."
                                         $ newgirl["Mystique"].LooksLike = "Kitty"
+                                        call NewGirl_RemoveClothes("Mystique")
                                         if P_Cock == "anal" or P_Cock == "in":
                                             "She turns into Kitty with your cock still inside her."
                                         else:
@@ -3103,6 +3112,7 @@ label Mystique_Doggy_Hotdog_Cycle: #Repeating strokes
                                     "Why don't you turn into Emma" if newgirl["Mystique"].LooksLike != "Emma":
                                         ch_m "So you like blondes huh?"
                                         $ newgirl["Mystique"].LooksLike = "Emma"
+                                        call NewGirl_RemoveClothes("Mystique")
                                         if P_Cock == "anal" or P_Cock == "in":
                                             "She turns into Emma with your cock still inside her."
                                         else:
@@ -3115,6 +3125,7 @@ label Mystique_Doggy_Hotdog_Cycle: #Repeating strokes
                                         call NewGirl_FaceSpecial("Mystique", "smile")
                                         ch_m "I like it."
                                         $ newgirl["Mystique"].LooksLike = "Rogue"
+                                        call NewGirl_RemoveClothes("Mystique")
                                         if P_Cock == "anal" or P_Cock == "in":
                                             "She turns into Rogue with your cock still inside her."
                                         else:
@@ -3126,6 +3137,7 @@ label Mystique_Doggy_Hotdog_Cycle: #Repeating strokes
                                         call NewGirl_FaceSpecial("Mystique", "smile")
                                         ch_m "Ok."
                                         $ newgirl["Mystique"].LooksLike = "Kitty"
+                                        call NewGirl_RemoveClothes("Mystique")
                                         if P_Cock == "anal" or P_Cock == "in":
                                             "She turns into Kitty with your cock still inside her."
                                         else:

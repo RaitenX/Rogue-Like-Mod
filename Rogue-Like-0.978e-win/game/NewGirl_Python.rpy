@@ -7,8 +7,8 @@
             #self.money = money
             #self.girl = {   
             self.name = name
-            self.Petname = "myyyy man"       #What Emma calls the player
-            self.Petnames = ["myyyy man"]
+            self.Petname = "boy"       #What Emma calls the player
+            self.Petnames = ["boy"]
             self.Pet = "Mystique"           #What you call Emma
             self.Pets = ["Mystique"]
             self.Rules = 1

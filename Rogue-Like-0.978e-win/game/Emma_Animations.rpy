@@ -42,6 +42,12 @@ image Emma_Sprite:
             "E_Water", "images/EmmaSprite/EmmaSprite_Water_Legs.png",   
             "True", Null(),        
             ),  
+        (0,0), ConditionSwitch(                                                                         #pants    
+            "not E_Hose", Null(),
+            "E_Hose == 'white thigh high'", "images/EmmaSprite/Emma_Sprite_ThighHighsWhite.png", 
+            "E_Hose == 'black thigh high'", "images/EmmaSprite/Emma_Sprite_ThighHighsBlack.png", 
+            "True", Null(), 
+            ), 
         (0,0), ConditionSwitch(                                                                         #panties down if not wearing pants
             "not E_PantiesDown or (E_Legs and not E_Upskirt)", Null(),   
             "E_Panties == 'black panties'", "images/EmmaSprite/EmmaSprite_Panties_Down_Black.png",  

@@ -2,6 +2,6 @@
 errors listed below, and try again.
 
 
-File "game/NewGirl_Functions.rpy", line 1137: indentation mismatch.
+File "game/script Locations.rpy", line 1547: indentation mismatch.
 
 Ren'Py Version: Ren'Py 6.99.13.2919

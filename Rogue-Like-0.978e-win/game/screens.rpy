@@ -939,7 +939,10 @@ screen R_Status_screen:
             pos (90,-40)#(-15,-8)
             anchor (0,0)
             style "say_who_window"
-            text "[Ch_Focus]" size 12 font "CRIMFBRG.ttf" color "#000000" #id "Ch_Focus"            
+            if Ch_Focus == "Mystique":
+                text "Raven" size 12 font "CRIMFBRG.ttf" color "#000000" #id "Ch_Focus"            
+            else:
+                text "[Ch_Focus]" size 12 font "CRIMFBRG.ttf" color "#000000" #id "Ch_Focus"            
             
 #    frame:
 #        xpos 900  

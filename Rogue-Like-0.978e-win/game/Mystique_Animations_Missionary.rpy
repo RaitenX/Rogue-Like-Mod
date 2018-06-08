@@ -14,7 +14,6 @@ image Mystique_Blue_SexSprite:
             "P_Sprite and P_Cock == 'in' and Speed >= 2", "Mystique_Sex_Body_Anim2",
             "P_Sprite and P_Cock == 'in' and Speed", "Mystique_Sex_Body_Anim1",
             "P_Sprite and P_Cock == 'out' and Speed >= 2","Mystique_Hotdog_Body_Anim2",
-            
             "P_Sprite and P_Cock == 'foot' and Speed >= 2", "Mystique_Sex_Body_FootAnim2",
             "P_Sprite and P_Cock == 'foot' and Speed", "Mystique_Sex_Body_FootAnim1",
             "P_Sprite and P_Cock == 'foot'", "Mystique_Sex_Body_FootAnimStatic",
@@ -28,7 +27,6 @@ image Mystique_Blue_SexSprite:
             "P_Sprite and P_Cock == 'in' and Speed >= 2", "Mystique_Sex_Legs_Anim2",
             "P_Sprite and P_Cock == 'in' and Speed", "Mystique_Sex_Legs_Anim1",
             "P_Sprite and P_Cock == 'out' and Speed >= 2","Mystique_Hotdog_Legs_Anim2",
-            
             "P_Sprite and P_Cock == 'foot' and Speed >= 2", "Mystique_Sex_Legs_FootAnim2",
             "P_Sprite and P_Cock == 'foot' and Speed", "Mystique_Sex_Legs_FootAnim1",
             "P_Sprite and P_Cock == 'foot'", "Mystique_Sex_Legs_FootAnimStatic",
@@ -80,7 +78,7 @@ image Mystique_Sex_Body = LiveComposite(
             "newgirl['Mystique'].Chest == 'bra'", "images/MystiqueSex/Mystique_Sex_Under_Bra.png",
             # "E_Chest == 'black corset'", "images/MystiqueSex/Mystique_Sex_Corset_Black.png",
             # "E_Chest == 'corset'", "images/MystiqueSex/Mystique_Sex_Corset_White.png",
-            # "True", "images/MystiqueSex/Mystique_Sex_Tits_Bare.png",
+            "True", Null(),
             ), 
         (0,0), ConditionSwitch(                                                                                 #Wet look
             "newgirl['Mystique'].Water", "images/MystiqueSex/Mystique_Sex_Water_Body.png",   

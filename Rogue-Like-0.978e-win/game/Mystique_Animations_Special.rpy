@@ -1146,8 +1146,8 @@ image Mystique_Kitty_Sprite:
             "True", "images/KittySprite/Kitty_Sprite_Body_Bare1.png",    
             ),
         (0,0), ConditionSwitch(                                                                         #body
-            "K_Pubes and K_HairColor == 'black'", "images/KittySprite/Kitty_Sprite_Body_Hair_PubesBlack.png",               
-            "K_Pubes", "images/KittySprite/Kitty_Sprite_Body_Hair_Pubes.png",               
+            "newgirl['Mystique'].Pubes and K_HairColor == 'black'", "images/KittySprite/Kitty_Sprite_Body_Hair_PubesBlack.png",               
+            "newgirl['Mystique'].Pubes", "images/KittySprite/Kitty_Sprite_Body_Hair_Pubes.png",               
             "newgirl['Mystique'].Girl_Arms == 2 and K_Tan == 'tan'", "images/KittySprite/Kitty_Sprite_TBody_Bare2.png",               
             "newgirl['Mystique'].Girl_Arms == 2 and K_Tan == 'tan2'", "images/KittySprite/Kitty_Sprite_T2Body_Bare2.png",               
             "newgirl['Mystique'].Girl_Arms == 2 and K_Tan == 'tan3'", "images/KittySprite/Kitty_Sprite_T3Body_Bare2.png",               

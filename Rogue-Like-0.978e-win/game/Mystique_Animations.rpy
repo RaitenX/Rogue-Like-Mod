@@ -54,14 +54,6 @@ image Mystique_Blue_Sprite:
         #    "R_Pubes", "images/RogueSprite/Rogue_bodyhaired_bare.png",   
         #    "True", "images/RogueSprite/Rogue_body_bare.png",         
         #    ),              
-        (0,0), ConditionSwitch(                                                                         #head 
-            "renpy.showing('Mystique_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Mystique_TJ_Animation')", Null(),
-            # "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_head_evowet.png",
-            # "R_Hair == 'evo' and R_Blush == 2", "images/RogueSprite/Rogue_head_evo_blush2.png",
-            # "R_Hair == 'evo' and R_Blush", "images/RogueSprite/Rogue_head_evo_blush.png",
-            # "R_Hair == 'evo'", "images/RogueSprite/Rogue_head_evo.png",
-            "True", "images/MystiqueSprite/Mystique_head_base.png",
-            ),  
         # (0,0), ConditionSwitch(                                                                         #pants backing/hose    
         #     "R_Hose == 'stockings'", "images/RogueSprite/Rogue_hose.png",     
         #     "R_Legs == 'pants' and R_Upskirt", "images/RogueSprite/Rogue_pantsback.png", 
@@ -69,6 +61,7 @@ image Mystique_Blue_Sprite:
         #     ),
         (0,0), ConditionSwitch(                                                                         #Panties            
             "not newgirl['Mystique'].Panties", Null(),
+            "newgirl['Mystique'].PantiesDown", Null(),      
             # "R_Panties == 'swimsuit1' or R_Panties == 'swimsuit2'", Null(),
             # "R_Legs == 'pants' and not R_Upskirt", "images/RogueSprite/Rogue_panties.png",             
             # "R_Panties == 'shorts' and R_PantiesDown and R_Wet > 1", "images/RogueSprite/Rogue_shorts_down_wet.png",
@@ -94,14 +87,33 @@ image Mystique_Blue_Sprite:
             # "R_Panties == 'lace panties' and R_PantiesDown", "images/RogueSprite/Rogue_panties_down.png",      
             # "R_Panties == 'black panties' and R_PantiesDown", "images/RogueSprite/Rogue_panties_down.png",      
             # "R_Panties == 'lace panties'", "images/RogueSprite/Rogue_lacepanties.png",         
-            "newgirl['Mystique'].Panties and newgirl['Mystique'].PantiesDown", "images/MystiqueSprite/Mystique_panties_down.png",      
-            "True", "images/MystiqueSprite/Mystique_panties.png",            
+            "newgirl['Mystique'].Panties == 'yellow bikini'", "images/MystiqueSprite/Mystique_Panty_BikiniYellow.png",      
+            "newgirl['Mystique'].Panties == 'black panties'", "images/MystiqueSprite/Mystique_Panty_LacedPantiesBlack.png",      
+            "newgirl['Mystique'].Panties == 'black lingerie'", "images/MystiqueSprite/Mystique_Panty_LacedPantiesBlack.png",      
+            "True", "images/MystiqueSprite/Mystique_Panty_LacedPantiesBlack.png",            
+            ),
+        (0,0), ConditionSwitch(                                                                         #full hose/tights              
+            #"R_PantiesDown", Null(), 
+            "newgirl['Mystique'].Hose == 'stockings'", "images/MystiqueSprite/Mystique_Legs_LacedStockingsBlack.png",                  
+            # "R_Hose == 'pantyhose'", "images/RogueSprite/Rogue_hosefull.png",       
+            # "R_Hose == 'fishnet'", "images/RogueSprite/Rogue_hose_fishnet.png",       
+            # "R_Hose == 'tights' and R_Wet", "images/RogueSprite/Rogue_tights_wet.png",
+            # "R_Hose == 'tights'", "images/RogueSprite/Rogue_tights.png",
+            # "R_Hose == 'ripped pantyhose'", "images/RogueSprite/Rogue_hose_holed.png", 
+            # "R_Hose == 'ripped tights'", "images/RogueSprite/Rogue_tights_holed.png",   
+            "True", Null(), 
+            ),
+        (0,0), ConditionSwitch(                                                                         #Panties            
+            "not newgirl['Mystique'].Panties", Null(),
+            "newgirl['Mystique'].Panties == 'black lingerie'", "images/MystiqueSprite/Mystique_Waist_LacedBeltBlack.png",      
+            "True", Null(),            
             ),
         (0,0), ConditionSwitch(                                                                         #Arms and gloves
             #"newgirl['Mystique'].Girl_Arms == 1 and R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms1b_gloved.png",                                     #Gloves, no collar
             "newgirl['Mystique'].Girl_Arms == 1", "images/MystiqueSprite/Mystique_arms1b_bare.png",                                                              #No gloves, no collar
             #"R_Arms == 'gloved'", "images/MystiqueSprite/Mystique_arms2b_gloved.png",                                                         #Gloved, no collar
-            "True", "images/MystiqueSprite/Mystique_arms2b_bare.png",                                                                         #No gloves, no collar
+            "True", "images/MystiqueSprite/Mystique_arms1b_bare.png",                                                                         #No gloves, no collar
+            #"True", "images/MystiqueSprite/Mystique_arms2b_bare.png",                                                                         #No gloves, no collar
             ), 
         (0,0), ConditionSwitch(                                                                         #chest layer
             #"newgirl['Mystique'].Pierce == 'barbell'", "images/RogueSprite/Rogue_chest_barbell.png",            
@@ -124,26 +136,27 @@ image Mystique_Blue_Sprite:
             # "R_Chest == 'red sports bra'", "images/RogueSprite/Rogue_chest_rysportsbra.png",
             # "R_Chest == 'lace bra'", "images/RogueSprite/Rogue_chest_lacebra.png",  
             # "R_Chest == 'cheerleader'", "images/RogueSprite/Rogue_Cheerleader_Outfit.png",
-            "newgirl['Mystique'].Chest == 'slut short top'", "images/MystiqueSprite/Mystique_chest_tankshort_slut.png",
-            "newgirl['Mystique'].Chest == 'short top'", "images/MystiqueSprite/Mystique_chest_tankshort.png",
-            "newgirl['Mystique'].Chest == 'top'", "images/MystiqueSprite/Mystique_chest_top.png",
+            #"newgirl['Mystique'].Chest == 'slut short top'", "images/MystiqueSprite/Mystique_chest_tankshort_slut.png",
+            #"newgirl['Mystique'].Chest == 'short top'", "images/MystiqueSprite/Mystique_chest_tankshort.png",
+            "newgirl['Mystique'].Chest == 'workout top'", "images/MystiqueSprite/Mystique_Legs_WorkoutTopTeal.png",
+            "newgirl['Mystique'].Chest == 'bra'", "images/MystiqueSprite/Mystique_Chest_LacedBraBlack.png",
+            "newgirl['Mystique'].Chest == 'black bra'", "images/MystiqueSprite/Mystique_Chest_LacedBraBlack.png",
+            "newgirl['Mystique'].Chest == 'yellow bikini'", "images/MystiqueSprite/Mystique_Chest_BikiniYellow.png",
+            "newgirl['Mystique'].Chest == 'top'", "images/MystiqueSprite/Mystique_Chest_TopBlack.png",
             "True", Null(),               
+            ), 
+        (0,0), ConditionSwitch(                                                                         #head 
+            "renpy.showing('Mystique_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Mystique_TJ_Animation')", Null(),
+            # "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_head_evowet.png",
+            # "R_Hair == 'evo' and R_Blush == 2", "images/RogueSprite/Rogue_head_evo_blush2.png",
+            # "R_Hair == 'evo' and R_Blush", "images/RogueSprite/Rogue_head_evo_blush.png",
+            # "R_Hair == 'evo'", "images/RogueSprite/Rogue_head_evo.png",
+            "True", "images/MystiqueSprite/Mystique_head_base.png",
             ), 
         # (0,0), ConditionSwitch(  
         #     "R_Chest == 'swimsuit1' or R_Panties == 'swimsuit1'", "images/RogueSprite/Rogue_Swimsuit1.png",
         #     "R_Chest == 'swimsuit2' or R_Panties == 'swimsuit2'", "images/RogueSprite/Rogue_Swimsuit2.png",
         #     "True", Null(),
-        #     ),
-        # (0,0), ConditionSwitch(                                                                         #full hose/tights              
-        #     "R_PantiesDown", Null(), 
-        #     "R_Hose == 'stockings and garterbelt'", "images/RogueSprite/Rogue_hose_garter.png",                  
-        #     "R_Hose == 'pantyhose'", "images/RogueSprite/Rogue_hosefull.png",       
-        #     "R_Hose == 'fishnet'", "images/RogueSprite/Rogue_hose_fishnet.png",       
-        #     "R_Hose == 'tights' and R_Wet", "images/RogueSprite/Rogue_tights_wet.png",
-        #     "R_Hose == 'tights'", "images/RogueSprite/Rogue_tights.png",
-        #     "R_Hose == 'ripped pantyhose'", "images/RogueSprite/Rogue_hose_holed.png", 
-        #     "R_Hose == 'ripped tights'", "images/RogueSprite/Rogue_tights_holed.png",   
-        #     "True", Null(), 
         #     ),
         (0,0), ConditionSwitch(                                                                         #Personal Wetness            
             "not newgirl['Mystique'].Wet", Null(),
@@ -196,11 +209,12 @@ image Mystique_Blue_Sprite:
         (0,0), "Mystique Blink",  
         (0,0), ConditionSwitch(                                                                                 #Collar
             "renpy.showing('Mystique_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Mystique_TJ_Animation')", Null(),
-            "newgirl['Mystique'].Glasses", "images/RogueSprite/Rogue_Sprite_Glasses.png",   
+            "newgirl['Mystique'].Glasses", "images/MystiqueSprite/Mystique_head_glasses.png",   
             "True", Null(),                #R_Arms == 'gloved' or not R_Arms
             ),                                                                           #Eyes
             
         (0,0), ConditionSwitch(                                                                         #Pants and Skirts
+            "newgirl['Mystique'].Upskirt", Null(),
             # "R_Legs == 'pants' and R_Upskirt", "images/RogueSprite/Rogue_legs_pants_down.png", 
             # "R_Legs == 'pants'", "images/RogueSprite/Rogue_legs_pants.png",          
             # "R_Legs == 'skirt' and R_Upskirt", "images/RogueSprite/Rogue_legs_skirt_up.png",
@@ -211,22 +225,20 @@ image Mystique_Blue_Sprite:
             # "R_Legs == 'cheerleader skirt'", "images/RogueSprite/Rogue_Cheerleader_Skirt.png",
             # "R_Legs == 'cheerleader skirtshort' and R_Upskirt", "images/RogueSprite/Rogue_Cheerleader_Skirt_Short.png",
             # "R_Legs == 'cheerleader skirtshort'", "images/RogueSprite/Rogue_Cheerleader_Skirt_Short_Up.png",            
-            "newgirl['Mystique'].Legs == 'tights' and not newgirl['Mystique'].Upskirt and newgirl['Mystique'].Wet", "images/MystiqueSprite/Mystique_tights_wet.png",
-            "newgirl['Mystique'].Legs == 'tights' and not newgirl['Mystique'].Upskirt", "images/MystiqueSprite/Mystique_tights.png",
-            "newgirl['Mystique'].Legs == 'skirt short' and newgirl['Mystique'].Upskirt", "images/MystiqueSprite/Mystique_legs_skirtshort_up.png",
-            "newgirl['Mystique'].Legs == 'skirt short'", "images/MystiqueSprite/Mystique_legs_skirtshort.png",
-            "newgirl['Mystique'].Legs == 'skirt' and newgirl['Mystique'].Upskirt", "images/MystiqueSprite/Mystique_legs_skirt_up.png",
-            "newgirl['Mystique'].Legs == 'skirt'", "images/MystiqueSprite/Mystique_legs_skirt.png",
+            "newgirl['Mystique'].Legs == 'workout pants'", "images/MystiqueSprite/Mystique_Legs_WorkoutPantsTeal.png",
+            "newgirl['Mystique'].Legs == 'black skirt'", "images/MystiqueSprite/Mystique_Legs_TeacherSkirtBlack.png",
+            "newgirl['Mystique'].Legs == 'black skirt'", "images/MystiqueSprite/Mystique_Legs_TeacherSkirtGrey.png",
+            "newgirl['Mystique'].Legs == 'split skirt'", "images/MystiqueSprite/Mystique_Legs_SplitSkirtBlack.png",
             "True", Null(),   
             ),
 
-        (0,0), ConditionSwitch(                                                                         #Arms and gloves
-            "newgirl['Mystique'].Girl_Arms == 1", Null(),                                                              #No gloves, no collar
-            #"R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_gloved_.png",                           #Gloves and collar 
-            #"R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms2b_gloved_.png",                                                         #Gloved, no collar
-            #"R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_bare_.png",                                                    #No gloves, collar
-            "True", "images/MystiqueSprite/Mystique_arms2b_bare_.png",  
-            ), 
+        # (0,0), ConditionSwitch(                                                                         #Arms and gloves
+        #     "newgirl['Mystique'].Girl_Arms == 1", Null(),                                                              #No gloves, no collar
+        #     #"R_Arms == 'gloved' and R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_gloved_.png",                           #Gloves and collar 
+        #     #"R_Arms == 'gloved'", "images/RogueSprite/Rogue_arms2b_gloved_.png",                                                         #Gloved, no collar
+        #     #"R_Neck == 'spiked collar'", "images/RogueSprite/Rogue_arms2a_bare_.png",                                                    #No gloves, collar
+        #     "True", "images/MystiqueSprite/Mystique_arms2b_bare_.png",  
+        #     ), 
                           
         # (0,0), ConditionSwitch(                                                                         #water
         #     "R_Water and Rogue_Arms == 1", "images/RogueSprite/Rogue_body_wet1.png",
@@ -238,35 +250,14 @@ image Mystique_Blue_Sprite:
         #     "True", Null(),                 
         #     ),
         (0,0), ConditionSwitch(                                                                         #Overshirt layer
-        #     "Rogue_Arms == 1 and R_Over == 'mesh top'", "images/RogueSprite/Rogue_over_mesh1.png",
-        #     "Rogue_Arms == 1 and R_Over == 'white mesh top'", "images/RogueSprite/Rogue_over_whitemesh1.png",
-        #     "Rogue_Arms == 1 and R_Over == 'blue mesh top'", "images/RogueSprite/Rogue_over_bluemesh1.png",
-        #     "Rogue_Arms == 1 and R_Over == 'red mesh top'", "images/RogueSprite/Rogue_over_redmesh1.png",
-        #     "Rogue_Arms == 1 and R_Over == 'yellow mesh top'", "images/RogueSprite/Rogue_over_yellowmesh1.png",
-        #     "Rogue_Arms == 1 and R_Over == 'black mesh top'", "images/RogueSprite/Rogue_over_blackmesh1.png",           
-        #     "Rogue_Arms == 1 and R_Over == 'pink top'", "images/RogueSprite/Rogue_over_pink1.png",
-        #     "Rogue_Arms == 1 and R_Over == 'red top'", "images/RogueSprite/Rogue_over_red1.png",
-        #     "Rogue_Arms == 1 and R_Over == 'towel'", "images/RogueSprite/Rogue_over_towel1.png",
-        #     "Rogue_Arms == 1 and R_Over == 'nighty'", "images/RogueSprite/Rogue_over_nighty1.png",
-        #     "Rogue_Arms == 1 and R_Over == 'hoodie'", "images/RogueSprite/Rogue_over_hoodie1.png",
-        #     "Rogue_Arms == 1 and R_Over == 'blue hoodie'", "images/RogueSprite/Rogue_over_bhoodie1.png",
         #     "Rogue_Arms == 1 and R_Over == 'red hoodie'", "images/RogueSprite/Rogue_over_rhoodie1.png",
         #     "Rogue_Arms == 1 and R_Over == 'yellow hoodie'", "images/RogueSprite/Rogue_over_yhoodie1.png",
-            "newgirl['Mystique'].Girl_Arms == 1 and newgirl['Mystique'].Over == 'black hoodie'", "images/MystiqueSprite/Mystique_over_dhoodie1.png",
         #     "Rogue_Arms == 1 and R_Over == 'white hoodie'", "images/RogueSprite/Rogue_over_whoodie1.png",
-        #     "R_Over == 'mesh top'", "images/RogueSprite/Rogue_over_mesh2.png",
-        #     "R_Over == 'white mesh top'", "images/RogueSprite/Rogue_over_whitemesh2.png",
-        #     "R_Over == 'blue mesh top'", "images/RogueSprite/Rogue_over_bluemesh2.png",
-        #     "R_Over == 'red mesh top'", "images/RogueSprite/Rogue_over_redmesh2.png",
-        #     "R_Over == 'yellow mesh top'", "images/RogueSprite/Rogue_over_yellowmesh2.png",
-        #     "R_Over == 'black mesh top'", "images/RogueSprite/Rogue_over_blackmesh2.png", 
-        #     "R_Over == 'pink top'", "images/RogueSprite/Rogue_over_pink2.png",
-        #     "R_Over == 'red top'", "images/RogueSprite/Rogue_over_red2.png",
-        #     "R_Over == 'hoodie'", "images/RogueSprite/Rogue_over_hoodie2.png",
-        #     "R_Over == 'blue hoodie'", "images/RogueSprite/Rogue_over_bhoodie2.png",
         #     "R_Over == 'red hoodie'", "images/RogueSprite/Rogue_over_rhoodie2.png",
         #     "R_Over == 'yellow hoodie'", "images/RogueSprite/Rogue_over_yhoodie2.png",
-            "newgirl['Mystique'].Over == 'black hoodie'", "images/MystiqueSprite/Mystique_over_dhoodie2.png",
+            "newgirl['Mystique'].Over == 'workout jacket'", "images/MystiqueSprite/Mystique_Over_WorkoutJacket.png",
+            "newgirl['Mystique'].Over == 'lavender shirt'", "images/MystiqueSprite/Mystique_Chest_ShirtLavender.png",
+            "newgirl['Mystique'].Over == 'red shirt'", "images/MystiqueSprite/Mystique_Chest_ShirtRed.png",
         #     "R_Over == 'white hoodie'", "images/RogueSprite/Rogue_over_whoodie2.png",
         #     "R_Over == 'nighty'", "images/RogueSprite/Rogue_over_nighty2.png",
         #     "R_Over == 'towel'", "images/RogueSprite/Rogue_over_towel2.png",              
@@ -280,6 +271,16 @@ image Mystique_Blue_Sprite:
             # "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_evo.png",
             # "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_evo.png",
             "newgirl['Mystique'].Hair", "images/MystiqueSprite/Mystique_hair_basic.png",
+            "True", Null(), 
+            ), 
+        (0,0), ConditionSwitch(                                                                         #Hair
+            "renpy.showing('Mystique_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Mystique_TJ_Animation')", Null(),
+            # "R_Hair == 'evo' and R_Water and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_wet.png",
+            # "R_Hair == 'evo' and R_Water and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_wet.png",
+            # "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_hair_wet.png",
+            # "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_evo.png",
+            # "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_evo.png",
+            "newgirl['Mystique'].Hair", "images/MystiqueSprite/Mystique_Head_HairGem.png",
             "True", Null(), 
             ),                           
         (0,0), ConditionSwitch(                                                                         #hand spunk
@@ -1141,41 +1142,41 @@ label Mystique_HJ_Reset: # The sequence to the Emma animations from handjob to d
     return
         
 label Mystique_Kissing_Launch(T = Trigger):    
-    call Emma_Hide
+    call Mystique_Hide
     $ Trigger = T
-    show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer
-    show Emma_Sprite at SpriteLoc(StageCenter) zorder EmmaLayer:
+    show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer
+    show Mystique_Sprite at SpriteLoc(StageCenter) zorder newgirl["Mystique"].GirlLayer:
         ease 0.5 zoom 2
     return
     
 label Mystique_Kissing_Smooch:   
-    call EmmaFace("kiss")  
-    show Emma_Sprite at SpriteLoc(StageCenter) zorder EmmaLayer:
+    call MystiqueFace("kiss")  
+    show Mystique_Sprite at SpriteLoc(StageCenter) zorder newgirl["Mystique"].GirlLayer:
         ease 0.5 xpos StageCenter zoom 2
         pause 1
-        ease 0.5 xpos E_SpriteLoc zoom 1        
-    call EmmaFace("sexy")  
+        ease 0.5 xpos newgirl["Mystique"].SpriteLoc zoom 1        
+    call MystiqueFace("sexy")  
     return
             
 label Mystique_Breasts_Launch(T = Trigger):    
-    call Emma_Hide
+    call Mystique_Hide
     $ Trigger = T
-    show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer:
+    show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer:
 #        ease 0.5 offset (-100,-200) zoom 2
         ease 0.5 pos (700,-50) zoom 2
     return
         
 label Mystique_Pussy_Launch(T = Trigger):
-    call Emma_Hide    
+    call Mystique_Hide    
     $ Trigger = T
-    show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer:
+    show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer:
         ease 0.5 pos (700,-400) zoom 2
     return
         
 label Mystique_Pos_Reset(Pose = 0):
-    show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer:
+    show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer:
         ease .5 offset (0,0) anchor (0.5, 0.0) zoom 1   
-    show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer:
+    show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer:
         offset (0,0) 
         anchor (0.5, 0.0)
         zoom 1  
@@ -1775,12 +1776,6 @@ label MystiqueWardrobe:
                     "Back":
                         jump EmmaWardrobe 
         # Outfits
-#        "Teacher outfit":
-#            $ E_Outfit = "teacher"
-#            call EmmaOutfit
-#        "Super outfit":
-#            $ E_Outfit = "costume"
-#            call EmmaOutfit
         "Nude":
             $ E_Over = 0
             $ E_Chest = 0
@@ -1788,8 +1783,6 @@ label MystiqueWardrobe:
             $ E_Panties = 0
             $ E_Gloves = 0
             $ E_Neck = 0
-#            $ E_Outfit = "nude"
-#            call EmmaOutfit
         "Over":              
             while True:
                 menu:
@@ -1812,21 +1805,6 @@ label MystiqueWardrobe:
                         $ E_Chest = 0
                     "Add corset":
                         $ E_Chest = "corset"
-#                    "Add sports bra":
-#                        $ E_Chest = "sports bra"
-#                    "Add buttoned tank top" if E_Over != "mesh top":
-#                        $ E_Chest = "buttoned tank"
-#                    "Add lace bra":
-#                        $ E_Chest = "lace bra"
-#                    "Add bra":
-#                        $ E_Chest = "bra"                            
-#                    "Toggle Piercings":
-#                        if E_Pierce == "ring":
-#                            $ E_Pierce = "barbell"
-#                        elif E_Pierce == "barbell":
-#                            $ E_Pierce = 0
-#                        else:
-#                            $ E_Pierce = "ring"
                     "Back":
                         jump EmmaWardrobe             
         
@@ -1851,36 +1829,10 @@ label MystiqueWardrobe:
             while True:
                 menu:
                     # Underwear
-#                    "Hose":
-#                        menu:
-#                            "Add hose":     
-#                                $ E_Hose = "stockings"  
-#                            "Add garter":     
-#                                $ E_Hose = "garterbelt"  
-#                            "Add stockings and garter":     
-#                                $ E_Hose = "stockings and garterbelt"  
-#                            "Add pantyhose":     
-#                                $ E_Hose = "pantyhose"   
-#                            "Add tights":     
-#                                $ E_Hose = "tights"   
-#                            "Add ripped hose":     
-#                                $ E_Hose = "ripped pantyhose"   
-#                            "Add ripped tights":     
-#                                $ E_Hose = "ripped tights"   
-#                            "Add tights":     
-#                                $ E_Hose = "tights"    
-#                            "Remove hose" if E_Hose:     
-#                                $ E_Hose = 0  
                     "Remove panties" if E_Panties:     
                         $ E_Panties = 0     
                     "Add black panties":
                         $ E_Panties = "white panties"
-#                    "Add shorts":
-#                        $ E_Panties = "shorts"
-#                    "Add green panties":
-#                        $ E_Panties = "green panties"  
-#                    "Add lace panties":
-#                        $ E_Panties = "lace panties"    
                     "pull down-up panties":
                         if E_PantiesDown:
                             $ E_PantiesDown = 0
@@ -1923,17 +1875,6 @@ label MystiqueWardrobe:
                         else:
                             $ E_Spunk.append("pussy")
 
-#                    "Toggle held":
-#                        if not E_Held:
-#                            $ E_Held  = "phone"
-#                        elif E_Held == "phone":
-#                            $ E_Held  = "dildo"
-#                        elif E_Held == "dildo":
-#                            $ E_Held  = "vibrator"
-#                        elif E_Held == "vibrator":
-#                            $ E_Held  = "panties"
-#                        else:
-#                            $ E_Held  = 0  
                     "Add choker" if not E_Neck:
                         $ E_Neck = "choker"
                     "Remove choker" if E_Neck:
@@ -1945,22 +1886,6 @@ label MystiqueWardrobe:
                         $ E_Arms = 0
                     "Back":
                         jump EmmaWardrobe               
-#        "Set Custom Outfit #1.":
-#            $ E_Custom[0] = 1
-#            $ E_Custom[1] = E_Arms
-#            $ E_Custom[2] = E_Legs
-#            $ E_Custom[3] = E_Over
-#            $ E_Custom[4] = E_Under #fix, this can be changed to something else, no longer necessary
-#            $ E_Custom[5] = E_Chest
-#            $ E_Custom[6] = E_Panties 
-#            $ E_Custom[7] = E_Pubes 
-#            $ E_Custom[8] = E_Hair
-#            $ E_Custom[9] = E_Hose
-#        "Wear Custom Outfit #[E_Custom[0]]." if E_Custom[0]:
-#            $ Line = E_Outfit
-#            $ E_Outfit = "custom1"
-#            call RogueOutfit
-#            $ E_Outfit = Line
         "Nothing":
             return
     jump EmmaWardrobe

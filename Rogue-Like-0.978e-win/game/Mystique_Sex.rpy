@@ -250,6 +250,9 @@ label Mystique_SexMenu:
                     
                 $ newgirl["Mystique"].OCount = 0    
                 call Mystique_Cleanup
+                if newgirl["Mystique"].LooksLike != "Mystique":
+                    $ newgirl["Mystique"].LooksLike = "Mystique"
+                    "Mystique turns back into her original form"
                 call MystiqueOutfit
                 return
     if newgirl["Mystique"].Loc != bg_current:

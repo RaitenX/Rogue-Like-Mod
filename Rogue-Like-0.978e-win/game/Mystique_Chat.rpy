@@ -2393,6 +2393,8 @@ label Mystique_Names(TempName=0):
         ch_m "Oh? What would you like me to call you?"
         "[TempName]'s fine.":
             # ie "Mr. Zero"
+            if TempName not in newgirl["Mystique"].Petnames:
+                $ newgirl["Mystique"].Petnames.append(TempName)
             $ newgirl["Mystique"].Petname = TempName
             ch_m "I assumed it was, [newgirl[Mystique].Petname]."
         "Call me by my name.":
@@ -4491,7 +4493,9 @@ label Mystique_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agr
 
                         
             #If she's wearing a bra of some kind
-            if newgirl["Mystique"].Chest == "black corset":  
+            if newgirl["Mystique"].Chest == "top":  
+                $ Count = 20
+            elif newgirl["Mystique"].Chest == "black corset":  
                 $ Count = 15
             elif newgirl["Mystique"].Chest == "corset":  
                 $ Count = 15
@@ -4552,14 +4556,21 @@ label Mystique_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agr
             $ Tempshame -= Count                  #Set Outfit shame for the upper half   
             $ Count = 0         
             
-            if newgirl["Mystique"].Legs or newgirl["Mystique"].Panties:          
+            if newgirl["Mystique"].Legs or newgirl["Mystique"].Panties:     
                 if PantsNum("Mystique") > 5:              
                     #If wearing pants
                     if newgirl["Mystique"].Panties:
                             $ Count = 30
                     else:
                             # if commando
-                            $ Count = 25                
+                            $ Count = 25 
+                elif PantsNum("Mystique") > 2: #skirt              
+                    #If wearing skirt
+                    if newgirl["Mystique"].Panties:
+                            $ Count = 25
+                    else:
+                            # if commando
+                            $ Count = 15                
                 elif newgirl["Mystique"].Panties == "white panties":      #If wearing only white panties
                     $ Count = 10
                 elif newgirl["Mystique"].Panties == "black panties":      #If wearing only black panties
@@ -4606,9 +4617,8 @@ label Mystique_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agr
                         ch_m "This really tests my limits."        
             else:
                         ch_m "I'll need to put something else on to leave the room though."
-                
+               
             $ Tempshame -= Count                  #Set Outfit shame for the lower half
-            
             if Check:
                     #if this is a custom outfit check
                     if Custom == 7:

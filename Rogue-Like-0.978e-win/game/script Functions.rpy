@@ -620,7 +620,9 @@ init python:
                             return 0
                 elif Chr in ModdedGirls:
                         if newgirl[Chr].Legs == "pants":
-                            return 1
+                            return 10
+                        elif newgirl[Chr].Legs == "skirt":
+                            return 3
                         else:
                             return 0
                             
@@ -2798,9 +2800,15 @@ label Girls_Location(GirlsNum = 0,Clear=0):
                         $ Adjacent = 0
                 $ GirlsNum += 1  
         if "leaving" in E_RecentActions:
-                pass
-#                call Emma_Leave(GirlsNum)
-#                $ GirlsNum += 1
+                call Emma_Leave
+                if Adjacent == "Emma" and E_Loc != "bg classroom":
+                        $ Adjacent = 0
+                $ GirlsNum += 1   
+        if "leaving" in newgirl["Mystique"].RecentActions:
+                call Mystique_Leave
+                if Adjacent == "Mystique" and newgirl["Mystique"].Loc != "bg classroom":
+                        $ Adjacent = 0
+                $ GirlsNum += 1   
                         
         if "arriving" in R_RecentActions:
                 call Girls_Arrive
@@ -2863,16 +2871,30 @@ label GirlsAngry(Girls = 0):
             hide Emma_Sprite with easeoutleft
     if newgirl["Mystique"].Loc == bg_current and "angry" in newgirl["Mystique"].RecentActions:
             if bg_current == "bg Mystique":
+                if newgirl["Mystique"].LooksLike != "Mystique":
+                    $ newgirl["Mystique"].LooksLike = "Mystique"
+                    "Mystique turns back into her original form"
                 ch_m "You should leave, or do you want to test me?"
                 "You head back to your room."
                 $ renpy.pop_call()
                 jump Player_Room_Entry
             else:        
                 $ newgirl["Mystique"].Loc = "bg Mystique"
+                if newgirl["Mystique"].LooksLike != "Mystique":
+                    $ newgirl["Mystique"].LooksLike = "Mystique"
+                    "Mystique turns back into her original form"
                 if Girls:
-                    ". . . and so does Mystique."
+                    if newgirl["Mystique"].LooksLike != "Mystique":
+                        $ newgirl["Mystique"].LooksLike = "Mystique"
+                        ". . . and so does Mystique while turning back into her original form"
+                    else:
+                        ". . . and so does Mystique."
                 else:
-                    "Mystique storms off."            
+                    if newgirl["Mystique"].LooksLike != "Mystique":
+                        $ newgirl["Mystique"].LooksLike = "Mystique"
+                        "Mystique turns back into her original form and storms off."            
+                    else:
+                        "Mystique storms off."            
             if "Mystique" in Party:
                 $ Party.remove("Mystique")  
             $ Girls += 1

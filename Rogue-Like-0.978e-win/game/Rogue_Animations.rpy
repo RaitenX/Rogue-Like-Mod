@@ -240,8 +240,8 @@ image Rogue:
             #"R_Legs == 'skirtshort'", AlphaMask("images/RogueSprite/Rogue_legs_skirtshort.png", "images/RogueSprite/Rogue_legs_skirtshort_alphamask.png"),
             "R_Legs == 'cheerleader skirt' and R_Upskirt", "images/RogueSprite/Rogue_Cheerleader_Skirt_Up.png",
             "R_Legs == 'cheerleader skirt'", "images/RogueSprite/Rogue_Cheerleader_Skirt.png",
-            "R_Legs == 'cheerleader skirtshort' and R_Upskirt", "images/RogueSprite/Rogue_Cheerleader_Skirt_Short.png",
-            "R_Legs == 'cheerleader skirtshort'", "images/RogueSprite/Rogue_Cheerleader_Skirt_Short_Up.png",            
+            "R_Legs == 'cheerleader skirtshort' and R_Upskirt", "images/RogueSprite/Rogue_Cheerleader_Skirt_Short_Up.png",            
+            "R_Legs == 'cheerleader skirtshort'", "images/RogueSprite/Rogue_Cheerleader_Skirt_Short.png",
             "True", Null(),   
             ),
 

@@ -654,6 +654,11 @@ label VersionNumber:
     #if getattr(newgirl["Mystique"], "Blindfold", None) == None:
         $ newgirl["Mystique"].Blindfold = 0
         $ newgirl["Mystique"].Headband = 0
+
+    if "myyyy man" in newgirl["Mystique"].Petnames:
+        $ newgirl["Mystique"].Petnames.append("boy")
+        $ newgirl["Mystique"].Petnames.remove("myyyy man")
+        $ newgirl["Mystique"].Petname = "boy"
         
     #if not hasattr(newgirl["Mystique"], "LooksLike"):
 
@@ -1934,6 +1939,7 @@ label RogueOutfit(R_OutfitTemp = R_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                 elif Undressed:
                         "Rogue throws her clothes back on."        
         
+        $ R_Outfit = R_OutfitTemp
         return
 #End Rogue Outfits
 
@@ -2439,6 +2445,7 @@ label KittyOutfit(K_OutfitTemp = K_Outfit, Spunk = 0, Undressed = 0, Changed = 0
                 elif Undressed:
                         "She throws her clothes back on."          
 
+        $ K_Outfit = K_OutfitTemp
         return
 #End Kitty's Outfits
       
@@ -2816,6 +2823,8 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                         "She throws on a towel."
                 elif Undressed:
                         "She throws her clothes back on."  
+        
+        $ E_Outfit = E_OutfitTemp
         call Emma_Tits_Up
         
         return
@@ -2968,31 +2977,33 @@ label MystiqueOutfit(M_OutfitTemp = newgirl["Mystique"].Outfit, Spunk = 0, Undre
         $ newgirl["Mystique"].Uptop = 0
         $ newgirl["Mystique"].PantiesDown = 0
         if M_OutfitTemp == "teacher":
-                    if 0 in (newgirl["Mystique"].Legs,newgirl["Mystique"].Over,newgirl["Mystique"].Chest):
+                    if 0 in (newgirl["Mystique"].Legs,newgirl["Mystique"].Over,newgirl["Mystique"].Chest,newgirl["Mystique"].Hose):
                             $ Undressed = 1
                     elif newgirl["Mystique"].Panties == 0 and "pantyless" not in newgirl["Mystique"].DailyActions:                        
                             $ Undressed = 1   
                     $ newgirl["Mystique"].Arms = 0
-                    $ newgirl["Mystique"].Legs = "pants"
-                    $ newgirl["Mystique"].Over = "jacket"
-                    $ newgirl["Mystique"].Chest = "corset"
-                    $ newgirl["Mystique"].Panties = "white panties"        
-                    $ newgirl["Mystique"].Neck = "choker"
-                    $ newgirl["Mystique"].Hair = "wavy"
-                    $ newgirl["Mystique"].Hose = 0  
+                    $ newgirl["Mystique"].Legs = "black skirt"
+                    $ newgirl["Mystique"].Over = "red shirt"
+                    $ newgirl["Mystique"].Chest = "black bra"
+                    $ newgirl["Mystique"].Panties = "black panties"        
+                    $ newgirl["Mystique"].Neck = 0
+                    $ newgirl["Mystique"].Hair = "basic"
+                    $ newgirl["Mystique"].Hose = "stockings"  
+                    $ newgirl["Mystique"].Glasses = "glasses"  
         if M_OutfitTemp == "regular":
-                    if 0 in (newgirl["Mystique"].Legs,newgirl["Mystique"].Over,newgirl["Mystique"].Chest):
+                    if 0 in (newgirl["Mystique"].Legs,newgirl["Mystique"].Chest,newgirl["Mystique"].Hose):
                             $ Undressed = 1
                     elif newgirl["Mystique"].Panties == 0 and "pantyless" not in newgirl["Mystique"].DailyActions:                        
                             $ Undressed = 1   
                     $ newgirl["Mystique"].Arms = 0
-                    $ newgirl["Mystique"].Legs = "skirt"
+                    $ newgirl["Mystique"].Legs = "black skirt"
                     $ newgirl["Mystique"].Over = 0
                     $ newgirl["Mystique"].Chest = "top"
                     $ newgirl["Mystique"].Panties = "black panties"        
                     $ newgirl["Mystique"].Neck = 0
                     $ newgirl["Mystique"].Hair = "basic"
-                    $ newgirl["Mystique"].Hose = 0  
+                    $ newgirl["Mystique"].Hose = 'stockings'  
+                    $ newgirl["Mystique"].Glasses = 0  
         elif M_OutfitTemp == "costume":
                     if 0 in (newgirl["Mystique"].Legs,newgirl["Mystique"].Chest):
                             $ Undressed = 1
@@ -3004,8 +3015,9 @@ label MystiqueOutfit(M_OutfitTemp = newgirl["Mystique"].Outfit, Spunk = 0, Undre
                     $ newgirl["Mystique"].Chest = "corset"
                     $ newgirl["Mystique"].Panties = "white panties"        
                     $ newgirl["Mystique"].Neck = "choker"
-                    $ newgirl["Mystique"].Hair = "wavy"
+                    $ newgirl["Mystique"].Hair = "basic"
                     $ newgirl["Mystique"].Hose = 0 
+                    $ newgirl["Mystique"].Glasses = 0  
         elif M_OutfitTemp == "bikini":
                     if newgirl["Mystique"].Chest == 0:
                             $ Undressed = 1
@@ -3014,11 +3026,12 @@ label MystiqueOutfit(M_OutfitTemp = newgirl["Mystique"].Outfit, Spunk = 0, Undre
                     $ newgirl["Mystique"].Arms = 0
                     $ newgirl["Mystique"].Legs = 0
                     $ newgirl["Mystique"].Over = 0
-                    $ newgirl["Mystique"].Chest = "bikini"
-                    $ newgirl["Mystique"].Panties = "bikini"        
+                    $ newgirl["Mystique"].Chest = "yellow bikini"
+                    $ newgirl["Mystique"].Panties = "yellow bikini"        
                     $ newgirl["Mystique"].Neck = 0
-                    $ newgirl["Mystique"].Hair = "wavy"
+                    $ newgirl["Mystique"].Hair = "basic"
                     $ newgirl["Mystique"].Hose = 0     
+                    $ newgirl["Mystique"].Glasses = 0  
         elif M_OutfitTemp == "towel":
                     if newgirl["Mystique"].Over == 0:
                             $ Undressed = 2
@@ -3182,6 +3195,8 @@ label MystiqueOutfit(M_OutfitTemp = newgirl["Mystique"].Outfit, Spunk = 0, Undre
                         "She throws her clothes back on."  
         call Mystique_Tits_Up
         
+        $ newgirl["Mystique"].Outfit = M_OutfitTemp
+
         return
 #End Mystique's Outfits
       
@@ -3204,7 +3219,7 @@ label Mystique_Schedule(Clothes = 1, Location = 1, LocTemp = newgirl["Mystique"]
         $ D20 = renpy.random.randint(1, 20) 
         
         if (Current_Time == "Morning" and Clothes and Round >= 90) or Clothes == 2:                                                       #Pick clothes for the day
-                $ Options = ["regular"]
+                $ Options = ["regular", "teacher"]
                 #$ Options.append("costume") if ApprovalCheck("Mystique", 1000) else Options
                 $ Options.append("custom1") if newgirl["Mystique"].Custom[0] == 2 else Options
                 $ Options.append("custom2") if newgirl["Mystique"].Custom2[0] == 2 else Options
@@ -3223,20 +3238,27 @@ label Mystique_Schedule(Clothes = 1, Location = 1, LocTemp = newgirl["Mystique"]
         #MoWeFr   
                 if Current_Time == "Morning":
                         $ newgirl["Mystique"].Loc = "bg teacher"
+                        $ newgirl["Mystique"].Outfit = "teacher" 
                 elif Current_Time == "Midday": 
                         $ newgirl["Mystique"].Loc = "bg Mystique"
+                        $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitDay
                 else:
                         $ newgirl["Mystique"].Loc = "bg Mystique"
+                        $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitDay
         elif Weekday == 1 or Weekday == 3:
         #TuThu      
                 if Current_Time == "Morning":
                         $ newgirl["Mystique"].Loc = "bg teacher"
+                        $ newgirl["Mystique"].Outfit = "teacher" 
                 elif Current_Time == "Midday":
                         $ newgirl["Mystique"].Loc = "bg Mystique"
+                        $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitDay
                 elif Current_Time == "Evening":
                         $ newgirl["Mystique"].Loc = "bg Mystique"
+                        $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitDay
                 else:
                         $ newgirl["Mystique"].Loc = "bg Mystique"
+                        $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitDay
         else:
         #Weekend                               
                 if Current_Time == "Morning":
@@ -3717,7 +3739,7 @@ label Wait (Outfit = 1, Lights = 1):
         $ del E_DailyActions[:]
         
     call Emma_Schedule
-    call Stat_Checks    
+    call Stat_Checks
     if Outfit:
             call EmmaOutfit(E_OutfitDay)
     #end Emma hourly actions
@@ -4674,7 +4696,7 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
 label Display_Rogue(Dress = 1, DLoc = R_SpriteLoc):
     # If Dress, then check whether the character is underdressed when displaying her
     
-    if Taboo and Dress and R_Loc != "bg pool":        
+    if Taboo and Dress and R_Loc != "bg showerroom" and R_Loc != "bg pool":        
             call RogueOutfit
             $ R_Water = 0
                
@@ -4715,7 +4737,7 @@ label Display_Kitty(Dress = 1, DLoc = K_SpriteLoc):
     
     if Taboo and Dress and K_Loc != "bg pool": #If not in the showers, get dressed and dry off        
             call KittyOutfit
-            $ K_Wet = 0
+            #$ K_Wet = 0
               
     if K_Loc != "bg showerroom" and K_Loc != "bg pool":
             $ K_Water = 0
@@ -4754,7 +4776,7 @@ label Display_Emma(Dress = 1, DLoc = E_SpriteLoc, Location = E_Loc):
     
     if Taboo and Dress and E_Loc != "bg pool": #If not in the showers, get dressed and dry off        
             call EmmaOutfit #add when available
-            $ E_Wet = 0
+            #$ E_Wet = 0
               
     if E_Loc != "bg showerroom" and E_Loc != "bg pool":
             $ E_Water = 0
@@ -4797,7 +4819,7 @@ label Display_Mystique(Dress = 1, DLoc = newgirl["Mystique"].SpriteLoc, Location
     # If Dress, then check whether the character is underdressed when displaying her
     if Taboo and Dress and newgirl["Mystique"].Loc != "bg pool": #If not in the showers, get dressed and dry off        
             call MystiqueOutfit #add when available
-            $ newgirl["Mystique"].Wet = 0
+            #$ newgirl["Mystique"].Wet = 0
               
     if newgirl["Mystique"].Loc != "bg showerroom" and newgirl["Mystique"].Loc != "bg pool":
             $ newgirl["Mystique"].Water = 0

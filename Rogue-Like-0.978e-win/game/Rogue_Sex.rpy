@@ -112,6 +112,8 @@ label Rogue_SexMenu:
                             call R_Titjob         
                         "Could you suck my cock?":
                             call R_Blowjob 
+                        "Could you use your feet?":
+                            call R_Footjob 
                         "Never mind [[something else]":
                             jump Rogue_SMenu
                 elif not R_Action:
