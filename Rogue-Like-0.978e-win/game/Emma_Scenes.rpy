@@ -260,11 +260,12 @@ label EmmaMeetGym:
     $ bg_current = "bg dangerroom"   
     call CleartheRoom("Emma",0,1)
     $ E_Loc = "bg emma"  
-    $ E_Gym = [2,0,0,"cape","NewX","corset","white panties",0,0,0,0]  
+    $ E_Gym = [2,0,0,"cape","NewX","corset","white panties",0,0,"white thigh high",0]  
     $ E_Over = "cape"
     $ E_Legs = 0
     $ E_Panties = "white panties"
     $ E_Neck = "NewX"      
+    $ E_Hose = "white thigh high"
     $ E_Outfit = "gym"
     #$ E_Love = 300        
     #$ E_Obed = 0            

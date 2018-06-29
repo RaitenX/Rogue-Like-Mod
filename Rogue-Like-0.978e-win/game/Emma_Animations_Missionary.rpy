@@ -276,6 +276,12 @@ image Emma_Sex_Legs:
             "E_LegsUp", "images/EmmaSex/Emma_Sex_Legs_LegsUp.png",
             "True", "images/EmmaSex/Emma_Sex_Legs.png",
             ),                                                     #Legs Base
+        (0,0), ConditionSwitch(                                                                                 #Panties back
+            "E_LegsUp", Null(),  
+            "E_Hose == 'white thigh high'", "images/EmmaSex/Emma_Sex_Legs_ThighHighWhite.png",
+            "E_Hose == 'black thigh high'", "images/EmmaSex/Emma_Sex_Legs_ThighHighBlack.png",
+            "True", Null(),                     
+            ),
         (0,0), ConditionSwitch(                                                                                 #Wet look
             "E_LegsUp", Null(),
             "E_Water", "images/EmmaSex/Emma_Sex_Water_Legs.png",   
@@ -339,6 +345,19 @@ image Emma_Sex_Feet = LiveComposite(
             "E_LegsUp", "images/EmmaSex/Emma_Sex_Feet_LegsUp.png",
             "True", "images/EmmaSex/Emma_Sex_Feet.png",
             ),
+        (0,0), ConditionSwitch(                                                                                 #Panties back
+            "E_LegsUp and E_Hose == 'white thigh high'", "images/EmmaSex/Emma_Sex_LegsUp_Feet_ThighHighWhite.png",
+            "E_LegsUp and E_Hose == 'black thigh high'", "images/EmmaSex/Emma_Sex_LegsUp_Feet_ThighHighBlack.png",
+            "E_Hose == 'white thigh high'", "images/EmmaSex/Emma_Sex_Feet_ThighHighWhite.png",
+            "E_Hose == 'black thigh high'", "images/EmmaSex/Emma_Sex_Feet_ThighHighBlack.png",
+            "True", Null(),                     
+            ),
+        # (0,0), ConditionSwitch(                                                                                 #Panties back
+        #     "not E_LegsUp", Null(),
+        #     "E_Hose == 'white thigh high'", "images/EmmaSex/Emma_Sex_LegsUp_Feet_ThighHighWhite.png",
+        #     "E_Hose == 'black thigh high'", "images/EmmaSex/Emma_Sex_LegsUp_Feet_ThighHighBlack.png",
+        #     "True", Null(),                     
+        #     ),
         (0,0), ConditionSwitch(                                                                                 #Wet look
             "E_Water", "images/EmmaSex/Emma_Sex_Water_Feet.png",   
             "True", Null(),              

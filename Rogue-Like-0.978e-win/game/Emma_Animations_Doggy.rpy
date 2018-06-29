@@ -194,6 +194,12 @@ image Emma_Doggy_Ass = LiveComposite(                                           
             # "E_Tan == 'tan3'", "images/EmmaDoggy/Emma_Doggy_T3Ass.png",   
             "True", "images/EmmaDoggy/Emma_Doggy_Ass.png",              
             ), 
+        (0,0), ConditionSwitch(                                                                                 #Panties back
+            "not E_Hose", Null(),  
+            "E_Hose == 'white thigh high'", "images/EmmaDoggy/Emma_Doggy_Legs_ThighHighWhite.png",
+            "E_Hose == 'black thigh high'", "images/EmmaDoggy/Emma_Doggy_Legs_ThighHighBlack.png",
+            "True", Null(),                     
+            ), 
         (0,0), ConditionSwitch(                                                                                 #Wet look
             "E_Water", "images/RogueDoggy/Rogue_Doggy_WetAss.png",   
             "True", Null(),              

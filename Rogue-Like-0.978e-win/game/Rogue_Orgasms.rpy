@@ -986,6 +986,7 @@ label R_Orgasm_After:
     $ Speed = 0    
     if Trigger == "anal" and not ApprovalCheck("Rogue", 1600, TabM=1) and not R_Addict >= 80:
             "She wipes your cock clean."
+            call Rogue_BJ_Reset 
     elif R_Blow > 3 or R_Swallow and R_Gag != "ballgag": 
             if ApprovalCheck("Rogue", 1200, TabM=1) or R_Addict >= 60:
                     call Rogue_BJ_Launch("cum")

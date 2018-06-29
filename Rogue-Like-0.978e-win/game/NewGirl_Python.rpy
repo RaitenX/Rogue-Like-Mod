@@ -147,7 +147,7 @@
             self.Accessory2 = 0 
             self.Accessory3 = 0 
             self.Extra = {} 
-            self.LooksLike = "Mystique" 
+            self.LooksLike = "Raven" 
             self.Blindfold = 0 
             self.Headband = 0 
             #}
@@ -268,3 +268,31 @@
         # """
 
         return FieldValue2(store, variable, girl, range, max_is_zero=max_is_zero, style=style, offset=offset, step=step)    
+
+
+    def Girls_Around():
+        GirlsAround = []
+        if R_Loc == bg_current:
+            GirlsAround.append("Rogue")
+        if K_Loc == bg_current:
+            GirlsAround.append("Kitty")
+        if E_Loc == bg_current:
+            GirlsAround.append("Emma")
+        for xkk in ModdedGirls:
+            if newgirl[xkk].Loc == bg_current:
+                GirlsAround.append(xkk)
+        return GirlsAround
+
+    def OtherGirls_Around(Girl_ = "Rogue"):
+        OtherGirlsAround = []
+        if R_Loc == bg_current and Girl_ != "Rogue":
+            OtherGirlsAround.append("Rogue")
+        if K_Loc == bg_current and Girl_ != "Kitty":
+            OtherGirlsAround.append("Kitty")
+        if E_Loc == bg_current and Girl_ != "Emma":
+            OtherGirlsAround.append("Emma")
+        for xkk in ModdedGirls:
+            if newgirl[xkk].Loc == bg_current and Girl_ != xkk:
+                OtherGirlsAround.append(xkk)
+        return OtherGirlsAround
+    

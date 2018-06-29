@@ -2,6 +2,7 @@
 # Check  #Mystique_Update   to see what needs fixing still
 label MystiqueMeet:    
     $ bg_current = "bg classroom"   
+    $ newgirl["Mystique"].Outfit = "teacher"
     call CleartheRoom("Mystique",0,1)
     $ newgirl["Mystique"].Loc = "bg Mystique"  
     $ newgirl["Mystique"].Love = 300        
@@ -43,7 +44,7 @@ label MystiqueMeet:
     $ newgirl["Mystique"].Loc = "bg classroom" 
     call Set_The_Scene
     ch_m "All right students, class dismissed."
-    ch_m "[newgirl[Mystique].Petname], could you wait a moment, I have something to discuss with you."    
+    ch_m "[newgirl[Mystique].Petname], could you wait a moment, I have something to discuss with you before your next class starts."    
     menu:
         extend ""
         "Yes?":
@@ -253,111 +254,94 @@ label MystiqueMeet:
             
 #end MystiqueMeet //////////////////////////////////////////////////////////  
 
-# start MystiqueMeet //////////////////////////////////////////////////////////
+# start MystiqueMeetGym //////////////////////////////////////////////////////////
 # Check  #Mystique_Update   to see what needs fixing still
-# label MystiqueMeetGym:    
-#     $ bg_current = "bg dangerroom"   
-#     call CleartheRoom("Mystique",0,1)
-#     $ newgirl["Mystique"].Loc = "bg Mystique"  
-#     $ newgirl["Mystique"].Gym = [2,0,0,"cape","NewX","corset","white panties",0,0,0,0]  
-#     $ newgirl["Mystique"].Over = "cape"
-#     $ newgirl["Mystique"].Legs = 0
-#     $ newgirl["Mystique"].Panties = "white panties"
-#     $ newgirl["Mystique"].Neck = "NewX"      
-#     $ newgirl["Mystique"].Outfit = "gym"
-#     #$ newgirl["Mystique"].Love = 300        
-#     #$ newgirl["Mystique"].Obed = 0            
-#     #$ newgirl["Mystique"].Inbt = 200 
-#     call Shift_Focus("Mystique")    
-#     call Set_The_Scene
-#     $ ESpriteLoc = StageCenter
-#     #call LastNamer                         
-#     #$ newgirl["Mystique"].Petnames.append(_return)
-#     #$ newgirl["Mystique"].Petname = _return
+label MystiqueMeetGym:    
+    $ bg_current = "bg dangerroom"   
+    call CleartheRoom("Mystique",0,1)
+    $ newgirl["Mystique"].Loc = "bg Mystique"  
+    $ newgirl["Mystique"].Gym = [2,0,"workout pants","workout jacket",0,"workout top","black panties",0,0,0,0]
+    #$ newgirl["Mystique"].Gym = [2,0,0,"workout jacket",0,"workout top","black panties","workout pants",0,0,0]  
+    $ newgirl["Mystique"].Over = "workout jacket"
+    $ newgirl["Mystique"].Chest = "workout top"
+    $ newgirl["Mystique"].Legs = "workout pants"
+    $ newgirl["Mystique"].Panties = "black panties"
+    $ newgirl["Mystique"].Neck = 0      
+    $ newgirl["Mystique"].Glasses = 0      
+    $ newgirl["Mystique"].Outfit = "gym"
+    #$ newgirl["Mystique"].Love = 300        
+    #$ newgirl["Mystique"].Obed = 0            
+    #$ newgirl["Mystique"].Inbt = 200 
+    call Shift_Focus("Mystique")    
+    call Set_The_Scene
+    $ MSpriteLoc = StageCenter
+    #call LastNamer                         
+    #$ newgirl["Mystique"].Petnames.append(_return)
+    #$ newgirl["Mystique"].Petname = _return
 
-#     "You enter the danger room." 
-#     show Mystique_Sprite at SpriteLoc(ESpriteLoc)
-#     #"The bell to class rings, but Professor McCoy seems to be late."
-# label MystiqueMeetGym_Waited:
-#     "You see Mystique Frost's in a different outfit."
-#     call MystiqueFace("normal")
-#     #$ newgirl["Mystique"].Loc = "bg classroom" 
-#     $ newgirl["Mystique"].Girl_Arms = 1
-#     ch_m "Hello students. My name is Mystique Frost, and for now on, I'll be supervising some of the evening trainings."
-#     ch_m "I hope that over my tenure here you will demonstrate talents and hard work worthy of my respect." 
-#     "She scans her eyes over the room, passing over each student."    
-#     #call MystiqueFace("surprised")
-#     #pause 1
-#     call MystiqueFace("sly",Mouth="sad")
-#     $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -10)     
-#     $ newgirl["Mystique"].Lust += 5
-#     "As her eyes pass over you, they stop for a moment and then keep going."
-#     call MystiqueFace("sly")
-#     ch_m "Very well, we will begin in a few moments."
-#     call MystiqueFace("normal") 
-#     "You can't take your eyes off her bottom, she is wearing a very small underwear, barely covering her pussy lips"
-#     "She notices your looks and aproach you."
-#     $ newgirl["Mystique"].Lust += 5
-#     ch_m "Is something wrong [newgirl[Mystique].Petname]?"
-#     #"She asks a lot of questions of the students, and singles you out more than once. You notice her glancing in your direction as other students answer."
-#     $ newgirl["Mystique"].Lust += 5
+    "You enter the danger room." 
+    show Mystique_Sprite at SpriteLoc(MSpriteLoc)
+    #"The bell to class rings, but Professor McCoy seems to be late."
+label MystiqueMeetGym_Waited:
+    "You see Raven working out."
+    call MystiqueFace("normal")
+    #$ newgirl["Mystique"].Loc = "bg classroom" 
+    $ newgirl["Mystique"].Girl_Arms = 1
+    "At some point she notices you're kind of close to her"
+    call MystiqueFace("surprised")
+    "She ends up losing focus on the training and gets knocked down on the floor."
+    "You run towards her. As soon as you touch her to help her stand, something happens to her body"
+    #turns back into mystique
+    $ newgirl["Mystique"].LooksLike = "Mystique"
+    call NewGirl_RemoveClothes("Mystique")
+    call Mystique_First_Topless(1)
+    call Mystique_First_Bottomless(1)
+    ch_p "Wha... what's going on?"
+    ch_m "You've never seen a naked woman, [newgirl[Mystique].Petname]?"
+    ch_p "You're Mystique!!!"
+    call MystiqueFace("angry")
+    ch_m "Shut up! Do you want everyone in this mansion to hear it?"
+    ch_p "I have to tell the teachers and proffesor Xavier"
+    "You try to make a run for it but she quickly jumps between you and the door."
+    ch_m "I'd rather you didn't. How about we make a deal, there must be something you want."
+    "You look down at her body with a smile"
+    ch_p "Yeah, I guess we can make a deal."
+    ch_m "Or I could just kill you..."
+    $ newgirl["Mystique"].Over = "workout jacket"
+    $ newgirl["Mystique"].Chest = "workout top"
+    $ newgirl["Mystique"].Legs = "workout pants"
+    $ newgirl["Mystique"].Panties = "black panties"
+    ch_p "Wait wait, if you do that everyone'll be with their guards up, that wouldn't be good for you, right?"
+    call NewGirl_Face("Mystique", "confused") 
+    ch_m "You may be right..."
+    $ newgirl["Mystique"].Eyes = "closed"
+    ch_m "Fine"
+    call NewGirl_Face("Mystique", "sly") 
+    ch_m "Meet me at my room."
+    $ newgirl["Mystique"].LooksLike = "Raven"
+    #call Wait 
+    
+    #call CleartheRoom("Mystique",0,1)
+    #$ newgirl["Mystique"].Loc = "bg dangerroom" 
+    #call Set_The_Scene
 
-#     menu:
-#         extend ""
-#         "You're. . . not wearing much.":
-#                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 5) 
-#                 $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 5) 
-#                 call MystiqueFace("confused", Mouth="normal") 
-#                 ch_m "Hmm, yes, it makes easier to move around, very useful in combat."
-#                 call MystiqueFace("normal") 
-#         "Huh, nothing, nothing wrong.":
-#                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, -1) 
-#                 $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, -1)
-#                 call MystiqueFace("confused", Mouth="normal") 
-#                 ch_m ". . . ok."
-#                 call MystiqueFace("normal") 
-#         "I'm lucky you can't see what I'm picturing right now.":
-#                 $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 80, 5)
-#                 call MystiqueFace("bemused") 
-#                 pause 0.5
-#                 call MystiqueFace("bemused", Eyes="down") 
-#                 "She glances downward."
-#                 call MystiqueFace("sly") 
-#                 $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 10) 
-#                 $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 200, 10) 
-#                 $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 50, 15) 
-#                 ch_m "I can't read your mind, but I'm not blind, [newgirl[Mystique].Petname]."
-
-#     ch_m "In any case, let's stop talking and start the training session."
-
-#     "The training session starts but you can't focus on the training, you can't take your eyes of Mystique's body"
-#     "At some moments you swear you were able to see her pussy escape the tight underwear"
-#     $ newgirl["Mystique"].OutfitDay = "gym"
-#     call Wait 
-#     #call CleartheRoom("Mystique",0,1)
-#     #$ newgirl["Mystique"].Loc = "bg dangerroom" 
-#     #call Set_The_Scene
-#     ch_m "All right students, class dismissed."
-
-#     #ch_m "In any case, I think we should set aside some time to talk."
-#     #ch_m "I'd like to make you a personal project, so I can see how you tick."
+    #ch_m "In any case, I think we should set aside some time to talk."
+    #ch_m "I'd like to make you a personal project, so I can see how you tick."
 
      
-#     #call MystiqueFace("normal",0) 
-#     "She looks at you and move her mouth without making a sound:"
-#     call MystiqueFace("sly")
-#     #ch_m "That said, class is finished for the day and I have some paperwork to attend to, so I'll see you. . ."   
-#     ch_m ". . . later. . ."
-#     hide Mystique_Sprite with easeoutright 
-#     "She strides out of the room and down the hall."
-#     $ newgirl["Mystique"].Loc = "bg Mystique"         
-#     $ newgirl["Mystique"].History.append("metgym")          
-#     $ Round -= 10      
-#     $ newgirl["Mystique"].OutfitDay = "teacher"
+    #call MystiqueFace("normal",0) 
+    #ch_m "That said, class is finished for the day and I have some paperwork to attend to, so I'll see you. . ."   
+    ch_m ". . . later. . ."
+    hide Mystique_Sprite with easeoutright 
+    "She strides out of the room and down the hall."
+    $ newgirl["Mystique"].Loc = "bg Mystique"         
+    $ newgirl["Mystique"].History.append("metgym")          
+    #$ Round -= 10      
+    #$ newgirl["Mystique"].OutfitDay = "teacher"
 
-#     return
+    return
             
-# end MystiqueMeetGym //////////////////////////////////////////////////////////            
+#end MystiqueMeetGym //////////////////////////////////////////////////////////            
            
 
 # Event Mystique_Teacher_Caught /////////////////////////////////////////////////////         
@@ -1403,7 +1387,7 @@ label Plan_Mu: #Mystique_Update
     "Xavier realizes with a shock that with your powers, his telepathy is useless."    
     $ newgirl["Mystique"].Girl_Arms = 2
     show Mystique_Sprite at SpriteLoc(650,150) with ease 
-    $ ESpriteLoc = StageLeft
+    $ MSpriteLoc = StageLeft
     "Mystique moves in sits on his lap, pinning his arms to the chair."
     if R_Loc == bg_current and "Omega" not in P_Traits:        
         call RogueFace("surprised")      

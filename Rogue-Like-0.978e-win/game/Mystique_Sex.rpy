@@ -250,9 +250,9 @@ label Mystique_SexMenu:
                     
                 $ newgirl["Mystique"].OCount = 0    
                 call Mystique_Cleanup
-                if newgirl["Mystique"].LooksLike != "Mystique":
-                    $ newgirl["Mystique"].LooksLike = "Mystique"
-                    "Mystique turns back into her original form"
+                if newgirl["Mystique"].LooksLike != "Raven":
+                    $ newgirl["Mystique"].LooksLike = "Raven"
+                    "Mystique turns back into her human form"
                 call MystiqueOutfit
                 return
     if newgirl["Mystique"].Loc != bg_current:
@@ -590,12 +590,23 @@ label Mystique_TouchCheek:
     call MystiqueFace("surprised", 1) 
     if "no cheek" in newgirl["Mystique"].DailyActions:
             "You reach out to brush Mystique's face with your hand, but she slaps it away."
+            if P_Lvl < 5:
+                $ newgirl["Mystique"].LooksLike = "Mystique"
+                call NewGirl_RemoveClothes("Mystique")
+                "As soon as your hands touch she turns back into her original form and her clothes vanish"
             call MystiqueFace("angry")
             ch_m "What are you doing, [newgirl[Mystique].Petname]?"
             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 50, -2)
+            if P_Lvl < 5:
+                $ newgirl["Mystique"].LooksLike = "Raven"
+                call MystiqueOutfit
             return
     else:
             "You reach out and brush Mystique's face with your hand."
+            if P_Lvl < 5:
+                $ newgirl["Mystique"].LooksLike = "Mystique"
+                call NewGirl_RemoveClothes("Mystique")
+                "As soon as your hand touchs her, she turns back into her original form and her clothes vanish"
     $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 50, 1)    
     if "addict Mystique" in P_Traits:
         $ newgirl["Mystique"].Addict -= 2            
@@ -627,6 +638,10 @@ label Mystique_TouchCheek:
         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 50, -3)
         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 50, 1)
         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 30, 1)
+
+    if P_Lvl < 5:
+        $ newgirl["Mystique"].LooksLike = "Raven"
+        call MystiqueOutfit
     
     if "no cheek" in newgirl["Mystique"].DailyActions: 
         menu:
@@ -805,6 +820,10 @@ label Mystique_Slap_Ass:
         
     #if not Trigger:
     "[Line]."
+    if P_Lvl < 5:
+            $ newgirl["Mystique"].LooksLike = "Mystique"
+            call NewGirl_RemoveClothes("Mystique")
+            "As soon as your hand touchs her butt she turns back into her original form and her clothes vanish"
     $ Line = 0
     if renpy.showing("Mystique_Doggy") and Line2:
         ch_m "[Line2]"

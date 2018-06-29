@@ -3,102 +3,93 @@
 While running game code:
   File "game/script Locations.rpy", line 1318, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2793, in script call
+  File "game/script Functions.rpy", line 2795, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 540, in script call
     call Round10
   File "game/script Locations.rpy", line 1318, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2793, in script call
+  File "game/script Functions.rpy", line 2795, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 2001, in script call
+  File "game/script Locations.rpy", line 2093, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2793, in script call
+  File "game/script Functions.rpy", line 2795, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 540, in script call
     call Round10
   File "game/script Locations.rpy", line 1318, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2793, in script call
+  File "game/script Functions.rpy", line 2795, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 2001, in script call
+  File "game/script Locations.rpy", line 2093, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2793, in script call
+  File "game/script Functions.rpy", line 2795, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 540, in script call
     call Round10
   File "game/script Locations.rpy", line 151, in script call
     call Round10
-  File "game/script Locations.rpy", line 2220, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1350, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 30, in script call
-    call Rogue_Summon
-  File "game/Rogue_Chat.rpy", line 3853, in script call
-    call Set_The_Scene
-  File "game/script.rpy", line 4218, in script call
-    call Display_Mystique(Dress)
-  File "game/script.rpy", line 4821, in script call
-    call MystiqueOutfit #add when available
-  File "game/script.rpy", line 3198, in script
-    $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitTemp
-  File "game/script.rpy", line 3198, in <module>
-    $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitTemp
-AttributeError: 'Girlnew' object has no attribute 'OutfitTemp'
+  File "game/script Locations.rpy", line 4203, in script call
+    call Round10
+  File "game/script Locations.rpy", line 159, in script call
+    call EventCalls
+  File "game/Rogue_Scenes.rpy", line 1310, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 112, in script call
+    call R_Titjob
+  File "game/Rogue_HJ.rpy", line 987, in script call
+    menu:
+  File "renpy/common/00console.rpy", line 765, in script call
+    python in _console:
+Exception: Sayer R_Pierce is not a function or string.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
   File "game/script Locations.rpy", line 1318, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2793, in script call
+  File "game/script Functions.rpy", line 2795, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 540, in script call
     call Round10
   File "game/script Locations.rpy", line 1318, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2793, in script call
+  File "game/script Functions.rpy", line 2795, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 2001, in script call
+  File "game/script Locations.rpy", line 2093, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2793, in script call
+  File "game/script Functions.rpy", line 2795, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 540, in script call
     call Round10
   File "game/script Locations.rpy", line 1318, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2793, in script call
+  File "game/script Functions.rpy", line 2795, in script call
     call Rogue_Leave
-  File "game/script Locations.rpy", line 2001, in script call
+  File "game/script Locations.rpy", line 2093, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2793, in script call
+  File "game/script Functions.rpy", line 2795, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 540, in script call
     call Round10
   File "game/script Locations.rpy", line 151, in script call
     call Round10
-  File "game/script Locations.rpy", line 2220, in script call
-    call Chat
-  File "game/script Functions.rpy", line 1350, in script call
-    call Rogue_Chat
-  File "game/Rogue_Chat.rpy", line 30, in script call
-    call Rogue_Summon
-  File "game/Rogue_Chat.rpy", line 3853, in script call
-    call Set_The_Scene
-  File "game/script.rpy", line 4218, in script call
-    call Display_Mystique(Dress)
-  File "game/script.rpy", line 4821, in script call
-    call MystiqueOutfit #add when available
-  File "game/script.rpy", line 3198, in script
-    $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitTemp
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 827, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1764, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "game/script.rpy", line 3198, in <module>
-    $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitTemp
-AttributeError: 'Girlnew' object has no attribute 'OutfitTemp'
+  File "game/script Locations.rpy", line 4203, in script call
+    call Round10
+  File "game/script Locations.rpy", line 159, in script call
+    call EventCalls
+  File "game/Rogue_Scenes.rpy", line 1310, in script call
+    call Rogue_SexMenu
+  File "game/Rogue_Sex.rpy", line 112, in script call
+    call R_Titjob
+  File "game/Rogue_HJ.rpy", line 987, in script call
+    menu:
+  File "renpy/common/00console.rpy", line 765, in script call
+    python in _console:
+  File "<string>", line 1, in script
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 603, in execute
+    raise Exception("Sayer %s is not a function or string." % self.who.encode("utf-8"))
+Exception: Sayer R_Pierce is not a function or string.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.13.2919

@@ -623,6 +623,8 @@ init python:
                             return 10
                         elif newgirl[Chr].Legs == "skirt":
                             return 3
+                        elif newgirl[Chr].Legs == "black skirt":
+                            return 3
                         else:
                             return 0
                             
@@ -1387,11 +1389,11 @@ label Chat:
                         call Mystique_Chat    
 
                 "Text Mystique" if newgirl["Mystique"].Loc != bg_current and "met" in E_History: 
-                        #if "Mystique" in Digits:
+                        if "Mystique" in Digits:
                             "You send Mystique a text."                 
                             call Mystique_Chat  
-                        #else:
-                        #    "You don't know her number, you'll have to go to her." 
+                        else:
+                            "You don't know her number, you'll have to go to her." 
                             return                 
                 "Never Mind":
                     pass
@@ -2871,8 +2873,8 @@ label GirlsAngry(Girls = 0):
             hide Emma_Sprite with easeoutleft
     if newgirl["Mystique"].Loc == bg_current and "angry" in newgirl["Mystique"].RecentActions:
             if bg_current == "bg Mystique":
-                if newgirl["Mystique"].LooksLike != "Mystique":
-                    $ newgirl["Mystique"].LooksLike = "Mystique"
+                if newgirl["Mystique"].LooksLike != "Raven":
+                    $ newgirl["Mystique"].LooksLike = "Raven"
                     "Mystique turns back into her original form"
                 ch_m "You should leave, or do you want to test me?"
                 "You head back to your room."
@@ -2880,18 +2882,18 @@ label GirlsAngry(Girls = 0):
                 jump Player_Room_Entry
             else:        
                 $ newgirl["Mystique"].Loc = "bg Mystique"
-                if newgirl["Mystique"].LooksLike != "Mystique":
-                    $ newgirl["Mystique"].LooksLike = "Mystique"
+                if newgirl["Mystique"].LooksLike != "Raven":
+                    $ newgirl["Mystique"].LooksLike = "Raven"
                     "Mystique turns back into her original form"
                 if Girls:
-                    if newgirl["Mystique"].LooksLike != "Mystique":
-                        $ newgirl["Mystique"].LooksLike = "Mystique"
+                    if newgirl["Mystique"].LooksLike != "Raven":
+                        $ newgirl["Mystique"].LooksLike = "Raven"
                         ". . . and so does Mystique while turning back into her original form"
                     else:
                         ". . . and so does Mystique."
                 else:
-                    if newgirl["Mystique"].LooksLike != "Mystique":
-                        $ newgirl["Mystique"].LooksLike = "Mystique"
+                    if newgirl["Mystique"].LooksLike != "Raven":
+                        $ newgirl["Mystique"].LooksLike = "Raven"
                         "Mystique turns back into her original form and storms off."            
                     else:
                         "Mystique storms off."            
@@ -3415,16 +3417,28 @@ label Girls_Arrive(Primary = 0, Secondary = 0, GirlsNum = 0, NumPresent = 0):
                                 ch_k "Oh, hey."
             elif Primary == "Emma" or Secondary == "Emma":
                                 if "metgym" not in E_History:     
-                                    $ E_Gym = [2,0,0,"cape","NewX","corset","white panties",0,0,0,0]  
+                                    $ E_Gym = [2,0,0,"cape","NewX","corset","white panties",0,0,"white thigh high",0]  
                                     $ E_Over = "cape"
                                     $ E_Legs = 0
                                     $ E_Panties = "white panties"
                                     $ E_Neck = "NewX"      
+                                    $ E_Hose = "white thigh high"  
                                     $ E_Outfit = "gym"
                                     call Present_Check #updates who is present                    
                                     jump EmmaMeetGym_Waited
                                 ch_e "Oh, hello, [E_Petname]."
             if Primary == "Mystique" or Secondary == "Mystique":
+                                if "metgym" not in newgirl["Mystique"].History:     
+                                    $ newgirl["Mystique"].Gym = [2,0,"workout pants","workout jacket",0,"workout top","black panties",0,0,0,0]
+                                    $ newgirl["Mystique"].Over = "workout jacket"
+                                    $ newgirl["Mystique"].Chest = "workout top"
+                                    $ newgirl["Mystique"].Legs = "workout pants"
+                                    $ newgirl["Mystique"].Panties = "black panties"
+                                    $ newgirl["Mystique"].Neck = 0      
+                                    $ newgirl["Mystique"].Glasses = 0      
+                                    $ newgirl["Mystique"].Outfit = "gym"
+                                    call Present_Check #updates who is present                    
+                                    jump MystiqueMeetGym_Waited
                                 ch_m "Oh, hello."
             #end girls showed up to the Danger Room
     elif bg_current == "bg pool":   

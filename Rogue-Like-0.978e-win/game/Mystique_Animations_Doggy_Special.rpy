@@ -3,6 +3,7 @@
 image Mystique_Doggy:
     ConditionSwitch(          
     "newgirl['Mystique'].LooksLike == 'Mystique'", "Mystique_Blue_Doggy",
+    "newgirl['Mystique'].LooksLike == 'Raven'", "Mystique_Blue_Doggy",
     "newgirl['Mystique'].LooksLike == 'Emma'", "Mystique_Emma_Doggy",
     "newgirl['Mystique'].LooksLike == 'Rogue'", "Mystique_Rogue_Doggy",
     "newgirl['Mystique'].LooksLike == 'Kitty'", "Mystique_Kitty_Doggy",

@@ -137,6 +137,7 @@ image Emma_Sprite:
             "Emma_Arms == 2 and E_Arms == 'black gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms2_Black.png",   
             "E_Arms == 'black gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms1_Black.png", #if E_Arms == 1         
             "Emma_Arms == 2 and E_Arms == 'white gloves'", "images/EmmaSprite/EmmaSprite_Gloves_Arms2.png",   
+            "E_Arms", "images/EmmaSprite/EmmaSprite_Gloves_Arms2.png",   
             "True", "images/EmmaSprite/EmmaSprite_Gloves_Arms1.png", #if E_Arms == 1         
             ),   
         (0,0), ConditionSwitch(                                                                         #tits

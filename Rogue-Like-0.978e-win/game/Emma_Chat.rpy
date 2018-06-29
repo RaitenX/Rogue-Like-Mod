@@ -4015,6 +4015,27 @@ label Emma_Clothes(Public=0,Bonus=0):
                 "How about the lace ones?" if "lace panties" in E_Inventory:
                     ch_e "Fine."                
                     $ E_Panties  = "lace panties"
+        "Socks and Stockings": 
+            
+            menu Emma_Clothes_Under_Hoses:  
+
+                "You could lose those stockings. . ." if E_Hose:
+                    ch_k "Fine."
+                    $ E_Hose = 0
+                    jump Emma_Clothes_Under_Hoses  
+
+                "Why don't you wear those white thigh highs?" if E_Hose != "white thigh high":
+                    ch_k "Fine."
+                    $ E_Hose = "white thigh high"  
+                    jump Emma_Clothes_Under_Hoses
+
+                "Why don't you wear those black thigh highs?" if E_Hose != "black thigh high":
+                    ch_k "Fine."
+                    $ E_Hose = "black thigh high"  
+                    jump Emma_Clothes_Under_Hoses
+
+                "Go back":  
+                    jump Emma_Clothes_Under
         "Never mind":
             pass
     jump Emma_Clothes
@@ -4752,6 +4773,13 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
                     pass
             elif Custom == 9 and not Taboo:
                     pass
+            elif E_Loc == "bg dangerroom":
+                    ch_e "I'm afraid I'll have to change, one moment."
+                    $ E_Outfit = "teacher"
+#                    $ E_Outfit = renpy.random.choice(["teacher", "costume"])
+                    #$ E_Water = 0
+                    call EmmaOutfit(Changed = 1) 
+                    ch_e "Sorry for the wait."
             else:
                     ch_e "I'm afraid I'll have to change, one moment."
                     $ E_Outfit = "teacher"

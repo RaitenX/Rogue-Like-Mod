@@ -23,7 +23,7 @@ label Worldmap:
         "Kitty's Room" if "met" in K_History:   
                     $ renpy.pop_call() 
                     jump Kitty_Room_Entry   
-        "Mystique's Room": #if "met" in K_History:   
+        "Mystique's Room" if "metgym" in newgirl["Mystique"].History:
                     $ renpy.pop_call() 
                     jump Mystique_Room_Entry            
         "University Square":
@@ -174,7 +174,7 @@ label Player_Room:
                     jump Rogue_Room_Entry
         "Go to Kitty's Room" if TravelMode and "met" in K_History:           
                     jump Kitty_Room_Entry 
-        "Go to Mystique's Room" if TravelMode:# and "met" in K_History:  
+        "Go to Mystique's Room" if TravelMode and "metgym" in newgirl["Mystique"].History:  
                     jump Mystique_Room_Entry
         "Go to the Showers" if TravelMode:         
                     jump Shower_Room_Entry
@@ -550,7 +550,7 @@ label Rogue_Room:
                     jump Player_Room_Entry         
         "Go to Kitty's Room" if TravelMode and "met" in K_History:             
                 jump Kitty_Room_Entry 
-        "Go to Mystique's Room" if TravelMode:# and "met" in K_History:  
+        "Go to Mystique's Room" if TravelMode and "metgym" in newgirl["Mystique"].History:  
                 jump Mystique_Room_Entry
         "Go to the Showers" if TravelMode:            
                     jump Shower_Room_Entry
@@ -816,7 +816,7 @@ label Campus:
                     jump Rogue_Room_Entry 
         "Go to Kitty's Room" if TravelMode and "met" in K_History:
                     jump Kitty_Room_Entry 
-        "Go to Mystique's Room" if TravelMode:# and "met" in K_History:  
+        "Go to Mystique's Room" if TravelMode and "metgym" in newgirl["Mystique"].History:
                     jump Mystique_Room_Entry
         "Go to the classroom" if TravelMode: 
                     if Current_Time != "Night":
@@ -2334,7 +2334,7 @@ label Shower_Room:
                 jump Rogue_Room_Entry   
         "Go to Kitty's Room" if TravelMode and "met" in K_History:  
                 jump Kitty_Room_Entry 
-        "Go to Mystique's Room" if TravelMode:# and "met" in K_History:  
+        "Go to Mystique's Room" if TravelMode and "metgym" in newgirl["Mystique"].History:
                 jump Mystique_Room_Entry        
         "Leave [[Go to Campus Square]":
                 if TravelMode:

@@ -1176,10 +1176,10 @@ label Mystique_Sex_Reset:
         return
     #$ newgirl["Mystique"].Girl_Arms = 2  
     #$ newgirl["Mystique"].LooksLike = "Mystique"
-    if P_Focus >= 100:
-        "You lose control of your powers and Mystique turns back into her original form"
-    else:
-        "Mystique turns back into her original form"
+    #if P_Focus >= 100:
+    #    "You lose control of your powers and Mystique turns back into her original form"
+    #else:
+    #    "Mystique turns back into her original form"
     if renpy.showing("Mystique_SexSprite"):
         hide Mystique_SexSprite
     elif renpy.showing("Mystique_Doggy"):

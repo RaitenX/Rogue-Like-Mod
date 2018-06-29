@@ -3,6 +3,7 @@
 image Mystique_Sprite:
     ConditionSwitch(          
     "newgirl['Mystique'].LooksLike == 'Mystique'", "Mystique_Blue_Sprite",
+    "newgirl['Mystique'].LooksLike == 'Raven'", "Mystique_Raven_Sprite",
     "newgirl['Mystique'].LooksLike == 'Emma'", "Mystique_Emma_Sprite",
     "newgirl['Mystique'].LooksLike == 'Rogue'", "Mystique_Rogue_Sprite",
     "newgirl['Mystique'].LooksLike == 'Kitty'", "Mystique_Kitty_Sprite",
@@ -14,6 +15,7 @@ image Mystique_Sprite:
 image Mystique_HJ_Animation:
     ConditionSwitch(          
     "newgirl['Mystique'].LooksLike == 'Mystique'", "Mystique_Blue_HJ_Animation",
+    "newgirl['Mystique'].LooksLike == 'Raven'", "Mystique_Raven_HJ_Animation",
     "newgirl['Mystique'].LooksLike == 'Emma'", "Mystique_Emma_HJ_Animation",
     "newgirl['Mystique'].LooksLike == 'Rogue'", "Mystique_Rogue_HJ_Animation",
     "newgirl['Mystique'].LooksLike == 'Kitty'", "Mystique_Kitty_HJ_Animation",
@@ -25,6 +27,7 @@ image Mystique_HJ_Animation:
 image Mystique_BJ_Animation:
     ConditionSwitch(          
     "newgirl['Mystique'].LooksLike == 'Mystique'", "Mystique_Blue_BJ_Animation",
+    "newgirl['Mystique'].LooksLike == 'Raven'", "Mystique_Raven_BJ_Animation",
     "newgirl['Mystique'].LooksLike == 'Emma'", "Mystique_Emma_BJ_Animation",
     "newgirl['Mystique'].LooksLike == 'Rogue'", "Mystique_Rogue_BJ_Animation",
     "newgirl['Mystique'].LooksLike == 'Kitty'", "Mystique_Kitty_BJ_Animation",
@@ -625,7 +628,18 @@ image Mystique_Emma_BJ_Head:
             "'hair' in newgirl['Mystique'].Spunk and (E_Hair == 'wet' or newgirl['Mystique'].Water)", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWet.png",                         
             "'hair' in newgirl['Mystique'].Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWave.png",              
             "True", Null(),
-            ),  
+            ),
+        (0,0), ConditionSwitch(                                                                 
+            #Hands overlay
+            "not P_Hands", Null(),
+            "(newgirl['Mystique'].Water or E_Hair == 'wet') and P_Color == 'pink'", "images/EmmaSprite/Emma_Sprite_Wet_HeadHands_P.png",
+            "(newgirl['Mystique'].Water or E_Hair == 'wet') and P_Color == 'green'", "images/EmmaSprite/Emma_Sprite_Wet_HeadHands_G.png",
+            "(newgirl['Mystique'].Water or E_Hair == 'wet') and P_Color == 'brown'", "images/EmmaSprite/Emma_Sprite_Wet_HeadHands_B.png",
+            "P_Color == 'pink'", "images/EmmaSprite/Emma_Sprite_HeadHands_P.png",
+            "P_Color == 'green'", "images/EmmaSprite/Emma_Sprite_HeadHands_G.png",
+            "P_Color == 'brown'", "images/EmmaSprite/Emma_Sprite_HeadHands_B.png",
+            "True", Null(),
+            ),   
         )                
     anchor (0.6, 0.0)                
     zoom .5 
@@ -1092,6 +1106,17 @@ image Mystique_Rogue_BJ_Head:
             "R_Hair == 'evo'", "images/RogueBJFace/Rogue_bj_hair.png",
             "True", Null(),
             ),
+        (0,0), ConditionSwitch(                                                                 
+            #Hands overlay
+            "not P_Hands", Null(),
+            "(newgirl['Mystique'].Water or R_Hair == 'wet') and P_Color == 'pink'", "images/RogueBJFace/Rogue_bj_Wet_HeadHands_P.png",
+            "(newgirl['Mystique'].Water or R_Hair == 'wet') and P_Color == 'green'", "images/RogueBJFace/Rogue_bj_Wet_HeadHands_G.png",
+            "(newgirl['Mystique'].Water or R_Hair == 'wet') and P_Color == 'brown'", "images/RogueBJFace/Rogue_bj_Wet_HeadHands_B.png",
+            "P_Color == 'pink'", "images/RogueBJFace/Rogue_bj_HeadHands_P.png",
+            "P_Color == 'green'", "images/RogueBJFace/Rogue_bj_HeadHands_G.png",
+            "P_Color == 'brown'", "images/RogueBJFace/Rogue_bj_HeadHands_B.png",
+            "True", Null(),
+            ), 
         )
 
 image Mystique_Rogue_BJ Blink:
@@ -1578,10 +1603,10 @@ image Mystique_Kitty_BJ_Head:
         (858,928), 
         (0,0), ConditionSwitch(                                                                 
             #Hair back
-            "newgirl['Mystique'].Water or K_Hair == 'wet' and K_HairColor == 'blonde'", "images/KittyBJFace/Kitty_BJ_HairBlondeBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
-            "newgirl['Mystique'].Water or K_Hair == 'wet' and K_HairColor == 'red'", "images/KittyBJFace/Kitty_BJ_HairRedBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
-            "newgirl['Mystique'].Water or K_Hair == 'wet' and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlackBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
-            "newgirl['Mystique'].Water or K_Hair == 'wet'", "images/KittyBJFace/Kitty_BJ_HairBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
+            "(newgirl['Mystique'].Water or K_Hair == 'wet') and K_HairColor == 'blonde'", "images/KittyBJFace/Kitty_BJ_HairBlondeBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
+            "(newgirl['Mystique'].Water or K_Hair == 'wet') and K_HairColor == 'red'", "images/KittyBJFace/Kitty_BJ_HairRedBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
+            "(newgirl['Mystique'].Water or K_Hair == 'wet') and K_HairColor == 'black'", "images/KittyBJFace/Kitty_BJ_HairBlackBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
+            "(newgirl['Mystique'].Water or K_Hair == 'wet')", "images/KittyBJFace/Kitty_BJ_HairBackWet.png", #AlphaMask("images/KittyBJFace/Kitty_BJ_HairBackWet.png", "Kitty_BJ_Backdrop"),
             "True", Null(),
             ),   
         (0,0), ConditionSwitch(                                                                 
@@ -1712,6 +1737,17 @@ image Mystique_Kitty_BJ_Head:
         (0,0), ConditionSwitch(                                                                 
             #cum on the hair
             "'hair' in newgirl['Mystique'].Spunk", "images/KittyBJFace/Kitty_BJ_Spunk_Hair.png",
+            "True", Null(),
+            ),
+        (0,0), ConditionSwitch(                                                                 
+            #Hands overlay
+            "not P_Hands", Null(),
+            "(newgirl['Mystique'].Water or K_Hair == 'wet') and P_Color == 'pink'", "images/KittyBJFace/Kitty_BJ_Wet_HeadHands_P.png",
+            "(newgirl['Mystique'].Water or K_Hair == 'wet') and P_Color == 'green'", "images/KittyBJFace/Kitty_BJ_Wet_HeadHands_G.png",
+            "(newgirl['Mystique'].Water or K_Hair == 'wet') and P_Color == 'brown'", "images/KittyBJFace/Kitty_BJ_Wet_HeadHands_B.png",
+            "P_Color == 'pink'", "images/KittyBJFace/Kitty_BJ_HeadHands_P.png",
+            "P_Color == 'green'", "images/KittyBJFace/Kitty_BJ_HeadHands_G.png",
+            "P_Color == 'brown'", "images/KittyBJFace/Kitty_BJ_HeadHands_B.png",
             "True", Null(),
             ),
         )

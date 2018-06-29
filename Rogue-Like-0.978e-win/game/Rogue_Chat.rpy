@@ -115,6 +115,11 @@ label Rogue_Chat:
                             #$ R_Legs = 0
                             "Rogue pulls down her pants."  
                             pause .1
+                            if R_Hose == "tights":
+                                $ Temp_R_Hose = R_Hose            
+                                $ R_Hose = 0
+                                "And pulls down her tights"
+                                pause .1
                             if R_Panties and R_Panties != "lace panties" and R_Panties != "black panties":
                                 $ R_PantiesDown = 1
                                 "And pulls down her [R_Panties]"
@@ -124,8 +129,27 @@ label Rogue_Chat:
                             call Rogue_Show_Plug
                             $ R_PantiesDown = 0
                             pause .1
+                            if Temp_R_Hose:
+                                $ R_Hose = Temp_R_Hose
+                                pause .1
                             #$ R_Legs = Temp_R_Legs
                             $ R_Upskirt = 0
+                            pause
+                        elif R_Hose == "tights":
+                            $ Temp_R_Hose = R_Hose            
+                            $ R_Hose = 0
+                            "Rogue pulls down her tights"
+                            pause .1
+                            if R_Panties and R_Panties != "lace panties" and R_Panties != "black panties":
+                                $ R_PantiesDown = 1
+                                "And pulls down her [R_Panties]"
+                                pause .1
+                            ch_r "There, you happy?"
+                            pause .1
+                            call Rogue_Show_Plug
+                            $ R_PantiesDown = 0
+                            pause .1
+                            $ R_Hose = Temp_R_Hose
                             pause
                         elif R_Panties and R_Panties != "lace panties" and R_Panties != "black panties" and R_Panties != "swimsuit1" and R_Panties != "swimsuit2":
                             $ R_PantiesDown = 1
@@ -5181,16 +5205,24 @@ label Rogue_Clothes:
                         ch_r "Like this?"
                         $ R_HairColor = "black"
 
+                    "Black with white streak" if R_HairColor != "blackwhite":
+                        ch_r "Like this?"
+                        $ R_HairColor = "blackwhite"
+
                     "Blonde" if R_HairColor != "blonde":
                         ch_r "Like this?"
                         $ R_HairColor = "blonde"
+
+                    "Blonde with white streak" if R_HairColor != "blondewhite":
+                        ch_r "Like this?"
+                        $ R_HairColor = "blondewhite"
 
                 #ch_r "You think so?"
                 #"She rummages in her bag and grabs some gel, running it through her hair."
             else:
                 ch_r "It's too high maintenance."
 
-        "Change the color of you hair back." if R_HairColor == "black" or R_HairColor == "blonde":
+        "Change the color of you hair back." if R_HairColor and R_HairColor != "nope":
             if ApprovalCheck("Rogue", 800):
                 ch_r "You think so?"
                 #"She rummages in her bag and grabs some gel, running it through her hair."
@@ -6000,8 +6032,13 @@ label Rogue_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree 
                     pass
             elif Custom == 9 and not Taboo:
                     pass
+            elif R_Loc == "bg showerroom":
+                    ch_r "I'll be right back, I've got to change out of this."
+                    $ R_Outfit = renpy.random.choice(["evo_green", "evo_pink"])
+                    #$ R_Water = 0
+                    call RogueOutfit(Changed = 1) 
+                    ch_r "That wasn't really \"outdoor ready\"."
             else:
-                    "[R_Chest], [R_Over], [R_Legs], [R_Panties]"
                     ch_r "I'll be right back, I've got to change out of this."
                     $ R_Outfit = renpy.random.choice(["evo_green", "evo_pink"])
                     $ R_Water = 0

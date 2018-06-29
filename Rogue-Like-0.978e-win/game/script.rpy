@@ -651,10 +651,14 @@ label VersionNumber:
 
     #Shit I forgot to add into the Girlnew class:
     if getattr(newgirl["Mystique"], "LooksLike", None) == None:
-        $ newgirl["Mystique"].LooksLike = "Mystique"
+        $ newgirl["Mystique"].LooksLike = "Raven"
     #if getattr(newgirl["Mystique"], "Blindfold", None) == None:
         $ newgirl["Mystique"].Blindfold = 0
         $ newgirl["Mystique"].Headband = 0
+
+    if "metgym" not in newgirl["Mystique"].History: 
+        $ newgirl["Mystique"].LooksLike = "Raven"
+        $ newgirl["Mystique"].Gym = [2,0,"workout pants","workout jacket",0,"workout top","black panties",0,0,0,0]  
 
     if "myyyy man" in newgirl["Mystique"].Petnames:
         $ newgirl["Mystique"].Petnames.append("boy")
@@ -1054,6 +1058,10 @@ label EventCalls:
             #                return   
             #        else:
             #            $ E_Loc = "bg classroom"
+        if "traveling" in P_RecentActions and bg_current == "bg dangerroom" and Weekday < 5 and Current_Time == "Night" and newgirl["Mystique"].Loc == "bg dangerroom":
+            if "metgym" not in newgirl["Mystique"].History:     
+                    jump MystiqueMeetGym
+                    return   
             
         if "detention" in P_Traits and bg_current == "bg classroom" and Weekday < 5 and Current_Time == "Evening" and not Party:    
                     jump Emma_Detention
@@ -2963,6 +2971,9 @@ label MystiqueOutfit(M_OutfitTemp = newgirl["Mystique"].Outfit, Spunk = 0, Undre
         if "Mystique" in Party and M_OutfitTemp == newgirl["Mystique"].OutfitDay:
                 #this ignores her daily outfit if she's in a party
                 $ M_OutfitTemp = newgirl["Mystique"].Outfit
+        if newgirl["Mystique"].Loc == "bg teacher" or newgirl["Mystique"].Loc == "bg classroom":
+                #this ignores her daily outfit if she's in the classroom
+                $ M_OutfitTemp = "teacher"
         if newgirl["Mystique"].Loc == "bg showerroom" and "Mystique" not in Party and M_OutfitTemp != "nude":
                 #Automatically puts her in the towel while in the shower
                 $ M_OutfitTemp = "towel"                                  
@@ -3221,6 +3232,7 @@ label Mystique_Schedule(Clothes = 1, Location = 1, LocTemp = newgirl["Mystique"]
         
         if (Current_Time == "Morning" and Clothes and Round >= 90) or Clothes == 2:                                                       #Pick clothes for the day
                 $ Options = ["regular", "teacher"]
+                #$ Options = ["regular"]
                 #$ Options.append("costume") if ApprovalCheck("Mystique", 1000) else Options
                 $ Options.append("custom1") if newgirl["Mystique"].Custom[0] == 2 else Options
                 $ Options.append("custom2") if newgirl["Mystique"].Custom2[0] == 2 else Options
@@ -3230,7 +3242,9 @@ label Mystique_Schedule(Clothes = 1, Location = 1, LocTemp = newgirl["Mystique"]
                 $ del Options[:]  
                 $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitDay 
         #End clothing portion
-        
+        if newgirl["Mystique"].Loc == "bg teacher" or newgirl["Mystique"].Loc == "bg classroom":
+                $ newgirl["Mystique"].Outfit = "teacher" 
+            
         #Location portion   
         if "Mystique" in Party or newgirl["Mystique"].Loc == "hold":
                 pass          
@@ -3239,27 +3253,20 @@ label Mystique_Schedule(Clothes = 1, Location = 1, LocTemp = newgirl["Mystique"]
         #MoWeFr   
                 if Current_Time == "Morning":
                         $ newgirl["Mystique"].Loc = "bg teacher"
-                        $ newgirl["Mystique"].Outfit = "teacher" 
                 elif Current_Time == "Midday": 
                         $ newgirl["Mystique"].Loc = "bg Mystique"
-                        $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitDay
                 else:
                         $ newgirl["Mystique"].Loc = "bg Mystique"
-                        $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitDay
         elif Weekday == 1 or Weekday == 3:
         #TuThu      
                 if Current_Time == "Morning":
                         $ newgirl["Mystique"].Loc = "bg teacher"
-                        $ newgirl["Mystique"].Outfit = "teacher" 
                 elif Current_Time == "Midday":
                         $ newgirl["Mystique"].Loc = "bg Mystique"
-                        $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitDay
                 elif Current_Time == "Evening":
                         $ newgirl["Mystique"].Loc = "bg Mystique"
-                        $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitDay
                 else:
-                        $ newgirl["Mystique"].Loc = "bg Mystique"
-                        $ newgirl["Mystique"].Outfit = newgirl["Mystique"].OutfitDay
+                        $ newgirl["Mystique"].Loc = "bg dangerroom"
         else:
         #Weekend                               
                 if Current_Time == "Morning":
@@ -4697,9 +4704,9 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
 label Display_Rogue(Dress = 1, DLoc = R_SpriteLoc):
     # If Dress, then check whether the character is underdressed when displaying her
     
-    if Taboo and Dress and R_Loc != "bg showerroom" and R_Loc != "bg pool":        
+    if Taboo and Dress and R_Loc != "bg pool":        
             call RogueOutfit
-            $ R_Water = 0
+            #$ R_Water = 0
                
     if R_Loc != "bg showerroom" and R_Loc != "bg pool":
             $ R_Water = 0

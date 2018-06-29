@@ -1144,6 +1144,7 @@ label NewGirl_RemoveClothes(Girl_ = "Mystique"):
     $ newgirl[Girl_].Panties = 0
     $ newgirl[Girl_].Neck = 0
     $ newgirl[Girl_].Hose = 0
+    $ newgirl[Girl_].Glasses = 0
 
     return
 
