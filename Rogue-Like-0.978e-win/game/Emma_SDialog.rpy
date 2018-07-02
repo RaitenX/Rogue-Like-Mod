@@ -1,11 +1,16 @@
 ﻿# This is the section for Emma's sex-related dialog options to be chosen. 
 
 label Emma_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
-    
+    if Situation == "skip" and Line:
+            # if the action was set by a previous trigger, skip this element
+            $ Situation = 0
+            return
+            
     if Trigger == "hand":
             $ Line = "Emma continues stroke your cock. "
                
             if not Speed:
+                        $ Line = "Emma holds your cock in her hand. "
                         if E_Hand > 2:
                                 $ Line = Line + "She just seems to be enjoying the feel of it"
                                 $ TempLust += 2 if E_Lust < 60 else 0
@@ -143,7 +148,7 @@ label Emma_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                         
                     if E_Blow <= 1 or (E_Obed >= 500 and E_Obed > E_Inbt):
                             $ TempLust += 2 if E_Lust > 60 else 0                 
-                            $ Line = Line + ", but she seems to be waiting for some instruction"
+                            $ Line = Line + ", but she seems to be waiting for some direction"
                     else:
                             $ Line = Line + ", and then she gets started licking your cock"
                             $ Speed = 1
@@ -1410,7 +1415,7 @@ label Emma_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
     #End Footy dialog ////////////////////////////////////////////////////////////////////////////////////////////////////////
     
 
-    elif Trigger == "kissing":  
+    elif Trigger == "kiss you":  
                         $ E_Addict -= 3 
                         if E_Kissed > 10 and E_Love >= 700:#Loving
                                 $ Line = renpy.random.choice(["She hungrily presses her lips against yours", 

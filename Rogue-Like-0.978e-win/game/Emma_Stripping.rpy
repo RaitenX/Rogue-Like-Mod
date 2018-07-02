@@ -83,7 +83,14 @@ label E_Stripping:
                         $ E_SeenPanties = 1                
                 else:
                     jump E_Strip_Ultimatum          
-                    
+            
+            elif E_Boots: 
+                # Will she lose the boots?
+                $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 50, 2)
+                $ P_Focus = Statupdate("Emma", "Focus", P_Focus, 60, 2)
+                $ E_Boots = 0
+                "She unzips her boots and tosses them aside."  
+                                
             elif E_Hose: 
                 # Will she lose the hose?
                 if HoseNum("Emma") >= 10:
@@ -1214,11 +1221,14 @@ label Emma_Bottoms_Off_Legs:
                     if Approval < 2 and not E_Panties and HoseNum("Emma") >= 10:
                         call Emma_NoPanties   
                         
+                    if E_Boots:
+                        $ E_Boots = 0
+                        "She pulls her boots off."   
+                        
                     if E_Hose:
                         $ Line = E_Hose #HoseName 
                         $ E_Hose = 0
-                        "She rolls her hose off."
-                    
+                        "She rolls her hose off."                    
                                             
                     if Approval < 2:
                         call Emma_NoPanties   
@@ -1273,6 +1283,12 @@ label Emma_Bottoms_Off_Legs:
                         "She reaches down and pulls her [Line] off."
                     if not E_Legs:
                         call Emma_First_Bottomless  
+            
+            "Lose the [E_Boots]." if E_Boots:
+                    ch_e "Of course."   
+                    $ E_Boots = 0                      
+                    "She reaches down and pulls her boots off."
+                        
             
 #            "Lose the [E_Hose]." if E_Hose:                                    #make sure to update this mess if I add hose to her
 #                    call EmmaFace("bemused", 1) 
@@ -1511,7 +1527,7 @@ label Emma_First_Peen(Silent = 0, Undress = 0, GirlsNum = 0): #checked each time
                             $ E_Love = Statupdate("Emma", "Love", E_Love, 90, -5)                
                             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 12)
                             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 60, 10)                            
-        elif (Taboo and not ApprovalCheck("Emma", 1500) or E_SEXP < 10) and bg_current != "bg showerroom":
+        elif Taboo and (not ApprovalCheck("Emma", 1500) or E_SEXP < 10) and bg_current != "bg showerroom":
                 call EmmaFace("surprised", 2)  
                 ch_e "You really should be careful where you display that thing."
                 if E_SeenPeen == 1: 

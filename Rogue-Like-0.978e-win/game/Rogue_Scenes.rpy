@@ -4,28 +4,31 @@ label Prologue:
     $ Day = 1
     $ Time_Count = 2
     $ bg_current = "bg study"    
-    scene setting onlayer backdrop 
+    call Display_Background
+    if "Historia" in P_Traits: #Simulation haze
+                show BlueScreen onlayer black       
     "You recently discovered that you were a mutant when a Sentinel attacked your home.\nYou were rescued by a squad of X-Men and given this address."
     "You've arrived in the early evening at the Xavier Institute, where you've been promised a new home."
     "Things have been tough for mutants in the years since Apocalypse's fall, but this sounds like it might be a good deal."
-    python:
-        Playername = renpy.input("What is your name?", default="Zero", length = 10)
-        Playername = Playername.strip()        
-        if not Playername:
-            Playername = "Zero"
-        if Playername in ("master", "sir", "lover", "boyfriend", "sex friend", "fuck buddy"):
-            Line = "Nice try, smartass."
-            Playername = "Zero"    
-    if Line:
-        "[Line]"        
-    menu:
-        "What is your skin color?"        
-        "Green":
-            $ P_Color = "green"
-        "White":
-            $ P_Color = "pink"
-        "Black":
-            $ P_Color = "brown"
+    if "Historia" not in P_Traits:
+            python:
+                Playername = renpy.input("What is your name?", default="Zero", length = 10)
+                Playername = Playername.strip()        
+                if not Playername:
+                    Playername = "Zero"
+                if Playername in ("master", "sir", "lover", "boyfriend", "sex friend", "fuck buddy"):
+                    Line = "Nice try, smartass."
+                    Playername = "Zero"    
+            if Line:
+                "[Line]"        
+            menu:
+                "What is your skin color?"        
+                "Green":
+                    $ P_Color = "green"
+                "White":
+                    $ P_Color = "pink"
+                "Black":
+                    $ P_Color = "brown"
     show Professor at SpriteLoc(StageLeft)
     with dissolve
     ch_x "Welcome to the Xavier Institute for Higher Learning. This is a home for all mutants to learn and grow."
@@ -133,10 +136,12 @@ label tour_start:
         ch_r "You can stop by sometime, but not after curfew."
     
 # Classrooms
-    $ bg_current = "bg classroom"    
+    $ bg_current = "bg classroom"   
+    call CleartheRoom("All",0,1)
     call Set_The_Scene(0)
     show Rogue at SpriteLoc(R_SpriteLoc)  
-    ch_r "And this is one of our state-of-the-art classrooms. They're multi-purpose so they can teach almost anything in them."
+    ch_r "And this is one of our state-of-the-art classrooms." 
+    ch_r "They're multi-purpose so they can teach almost anything in them."
     ch_r "This used to just be an after school training facility, but over the past few years it's grown into a full service university."
 
 
@@ -152,10 +157,7 @@ label tour_start:
             "Why would you need battlefield simulations?" if Count != 1:
                 ch_r "The world is a dangerous place, [R_Petname], especially for us mutants."
                 ch_r "This place helps us train to use our powers. Coming here can help you to get a grasp on yours as well."
-                if Count == 2:
-                    $ Count = 3
-                else:
-                    $ Count = 1
+                $ Count = 3 if Count == 2 else 1
             "So can this place make some more. . . erotic simulations?" if Count != 2:
                 $ R_Eyes = "side"
                 $ R_Mouth = "lipbite"
@@ -164,10 +166,7 @@ label tour_start:
                 $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5)
                 ch_r "Well. . . I suppose it could. . . if one were into such things."
                 call RogueFace (B = 0)
-                if Count == 1:
-                    $ Count = 3
-                else:
-                    $ Count = 2
+                $ Count = 3 if Count == 1 else 2
             "Ok, let's move on.":
                 $ Count = 3        
     $ Count = 0
@@ -254,8 +253,9 @@ label tour_end:
     ch_r "What a rush. I guess that's it then, I'm heading back to my room, you can head to yours."
     $ R_Blush = 0
     if R_Love >= 500:
-        ch_r "Maybe I'll see you around though. Here's my number, you can give me a call."
-        $ Digits.append("Rogue")
+        ch_r "Maybe I'll see you around though. Here's my number, you can give me a call."        
+        if "Historia" not in P_Traits:
+            $ Digits.append("Rogue")
     $ R_Arms = "gloved"
     $ Rogue_Arms = 1
     $ R_Addictionrate = 5
@@ -264,15 +264,21 @@ label tour_parting:
     $ R_Emote = "normal"
     $ R_Blush = 0
     $ R_Loc = "bg rogue"
+    if not R_Kissed:
+            $ Line = "Want to make out a little?"
+    else:
+            $ Line = "Want to make out a little more?"
     menu:
         extend ""
         "Ok, See you later.":
             "You head back to your room."
-        "Want to make out a little?":
+        "[Line]":
             if R_Love >= 560:
                 call RogueFace("bemused", 1)
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 10, 20)
-                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 10)
+                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 10)                
+                if "Historia" in P_Traits:
+                        return 1
                 call R_Makeout
                 if "angry" in R_RecentActions:                    
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -10)
@@ -304,6 +310,9 @@ label tour_parting:
                     "You head back to your room."
                     hide Rogue
                     $ R_Emote = "normal"
+    
+    if "Historia" in P_Traits:
+            return 0        
     call Wait            
     $ bg_current = "bg player"  
     call Set_The_Scene(0)
@@ -750,7 +759,8 @@ label Rogue_Key:
 
 
 # Event Rogue_Caught /////////////////////////////////////////////////////  
-label Rogue_Caught:
+label Rogue_Caught(TotalCaught=0):
+    $ TotalCaught = R_Caught + K_Caught + E_Caught
     call Shift_Focus("Rogue")
     call Checkout
     ch_r "!!!"        
@@ -763,17 +773,17 @@ label Rogue_Caught:
     call RogueOutfit
     if K_Loc == bg_current:         
         $ K_Loc = "bg study"
-    if E_Loc == bg_current:                
+    elif E_Loc == bg_current:                
         $ E_Loc = "bg study"                
     $ bg_current = "bg study"  
     $ R_Loc = "bg study"
     call Set_The_Scene(0)
     show Professor at SpriteLoc(StageLeft)
     show Rogue at SpriteLoc(StageRight) with ease
-    if E_Loc == bg_current:         
-        show Emma_Sprite at SpriteLoc(StageFarRight) with ease
     if K_Loc == bg_current:         
         show Kitty_Sprite at SpriteLoc(StageFarRight) with ease
+    elif E_Loc == bg_current:         
+        show Emma_Sprite at SpriteLoc(StageFarRight) with ease
     call XavierFace("shocked")
     call RogueFace("sad")
     ch_x "I'm very disappointed in your behavior, the both of you."
@@ -804,8 +814,22 @@ label Rogue_Caught:
     if K_Loc == bg_current:
         call KittyFace("surprised",2)
         ch_x "And Kitty, you were just watching this occur!"        
-        call KittyFace("bemused",1)
-        $ K_Eyes = "side"
+        call KittyFace("bemused",1,Eyes="side")
+    elif E_Loc == bg_current:             #fix, might not currently work?
+        call EmmaFace("surprised",2)
+        ch_x "And Emma, you were just watching this occur!"        
+        call EmmaFace("bemused",1,Eyes="side")
+        ch_x "Unacceptable. . ." 
+    
+    if "rules" in Rules: #if the rules had been removed in a previous game
+            call XavierFace("hypno")
+            ch_x ". . ."
+            ch_x "Hmm, I seem to be having a bit of deja vu here. . ."
+            ch_x "I could swear that we've had a conversation like this before, but I cannot recall when. . ."
+            call XavierFace("angry")
+            ch_x "Regardless, this is a serious issue."
+            $ Rules.remove("rules")
+                                                                 
         
     $ Count = R_Caught
     menu:
@@ -819,9 +843,9 @@ label Rogue_Caught:
             call XavierFace("happy")  
             if R_Caught:
                 ch_x "But you know you've done this before. . . at least [R_Caught] times. . ."  
-            elif K_Caught:
+            elif TotalCaught:
                 ch_x "Not with this young lady, perhaps, but you know you've done this before. . ."
-                ch_x "at least [K_Caught] times. . ." 
+                ch_x "at least [TotalCaught] times. . ." 
             else:
                 ch_x "Very well, just don't let it happen again. "
             $ Count += 5
@@ -894,19 +918,21 @@ label Plan_Omega:
     show Rogue at SpriteLoc(StageLeft+100,85) zorder 24 with ease
     "Rogue moves in and also grabs his head, duplicating his powers as he watches helplessly."
     "Now that she posesses his full power, while his are negated, he has no defenses."
-    if K_Loc == bg_current:        
+    if K_Loc == bg_current and "Kappa" not in P_Traits:        
         call KittyFace("surprised")      
         "Kitty looks a bit caught off guard, but goes along with the idea."        
         call KittyFace("sly")
+    elif E_Loc == bg_current and "Psi" not in P_Traits:        
+        call EmmaFace("surprised")      
+        "Emma looks a bit caught off guard, but goes along with the idea."        
+        call EmmaFace("sly")
     call XavierFace("hypno")
     
-    $ Count = 3
-    $ PunishmentX = 0    
     if "Omega" in P_Traits:
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 40)
-            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 20)
-    else:
-            $ P_Traits.append("Omega")
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 20)            
+    $ Count = 3
+    $ PunishmentX = 0    
     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, 20)
     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 10)
     ch_r "I think we'll only get three tries at this. . ."
@@ -914,10 +940,10 @@ label Plan_Omega:
         $ Count -= 1
         menu:
             ch_r "Well, [R_Petname], what would you like to do with this opportunity?"
-            "Don't bother us anymore when we're having fun." if R_Rules:
-                    $ R_Rules = 0
-            "You know, it's kinda fun dodging you, catch us if you can." if not R_Rules:
-                    $ R_Rules = 1
+            "Don't bother us anymore when we're having fun." if "Rogue" not in Rules:
+                    $ Rules.append("Rogue")
+            "You know, it's kinda fun dodging you, catch us if you can." if "Rogue" in Rules:
+                    $ Rules.remove("Rogue")
             "Raise my stipend." if P_Income < 30 and "Omega" not in P_Traits:             
                     $ P_Income += 2
             "Raise my stipend. [[Used](locked)" if P_Income >= 30 or "Omega" in P_Traits:             
@@ -925,19 +951,16 @@ label Plan_Omega:
             "I was interested in a key. . . ":
                 menu:
                     "Give me the key to your study." if "Xavier" not in Keys:  
-                            ch_x "Fine, although you don't seem to need it. . ."  
                             $ Keys.append("Xavier")
                     "Give me the key to your study. [[Owned](locked)" if "Xavier" in Keys:  
                             pass
                             
-                    "Give me the key to Rogue's room." if "Rogue" not in Keys:  
-                            ch_x "Couldn't she provide it? Oh, never mind, here. . ."                              
+                    "Give me the key to Rogue's room." if "Rogue" not in Keys:                              
                             $ Keys.append("Rogue")
                     "Give me the key to Rogue's room. [[Owned](locked)" if "Rogue" in Keys:  
                             pass
                     
                     "Give me the key to Kitty's room." if "Kitty" not in Keys:  
-                            ch_x "I. . . suppose I could do that. . ."  
                             $ Keys.append("Kitty")
                     "Give me the key to Kitty's room. [[Owned](locked)" if "Kitty" in Keys:  
                             pass
@@ -946,10 +969,13 @@ label Plan_Omega:
                             $ Count += 1
             "That should do it.":
                 $ Count = 0
-    ch_p "Ok, that's enough. Make Xavier forget that any of this happened, and then let's get out of here."    
-    $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 10)
-    $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, 30)
-    $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, 20)
+    
+    if "Omega" not in P_Traits:
+            $ P_Traits.append("Omega")   
+            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 10)
+            $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, 30)
+            $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, 20)
+    ch_p "Ok, that's enough. Make Xavier forget that any of this happened, and then let's get out of here." 
     $ R_Arms = "gloved"
     $ Rogue_Arms = 1
     "You return to your room"
@@ -1008,16 +1034,16 @@ label Rogue_BF:
         extend ""
         "I'd love to!":
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, 30)
-            $ R_Petnames.append("boyfriend")
-            $ R_Traits.append("dating")
             "Rogue leaps in and kisses you deeply."
             call RogueFace("kiss") 
             $ R_Kissed += 1
-        "Um, ok.":
             $ R_Petnames.append("boyfriend")
             $ R_Traits.append("dating")
+        "Um, ok.":
             $R_Brows = "confused"
-            "Rogue is a bit put off by your casual acceptence of reality, but takes it as a positive sign and hugs you."    
+            "Rogue is a bit put off by your casual acceptence of reality, but takes it as a positive sign and hugs you."               
+            $ R_Petnames.append("boyfriend")
+            $ R_Traits.append("dating")
         "I'm with Kitty now." if "dating" in K_Traits:             
             call RogueFace("sad",1)    
             ch_r "I know, I know, i just thought maybe you could go out with me too?"
@@ -1025,11 +1051,11 @@ label Rogue_BF:
                 extend ""
                 "Sure":
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, 30)
-                    $ R_Petnames.append("boyfriend")
-                    $ R_Traits.append("dating")
                     "Rogue leaps in and kisses you deeply."
                     call RogueFace("kiss") 
-                    $ R_Kissed += 1
+                    $ R_Kissed += 1                        
+                    $ R_Petnames.append("boyfriend")
+                    $ R_Traits.append("dating")
                 "No, sorry.":
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -10)
                     ch_r "I get it. that's fine." 
@@ -1039,6 +1065,8 @@ label Rogue_BF:
             jump Rogue_BF_Jerk
     call RogueFace("sexy")    
     ch_r "Now, . . . boyfriend. . . how would you like to celebrate?"
+    if "Historia" in P_Traits:
+        return 1
     $ Tempmod = 10
     call Rogue_SexMenu
     $ Tempmod = 0
@@ -1051,42 +1079,29 @@ label Rogue_BF_Jerk:
     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 40)
     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, Count)
     if R_Event[5] >= 3:
-        call RogueFace("sad")
-        ch_r "Hrmph. I don't care what you want, we're dating. Deal with it."   
-        menu:
-            "Whatever":
-                $ R_Petnames.append("boyfriend")
-                $ R_Traits.append("dating")
-                $ Achievements.append("I am not your Boyfriend!")
-                ch_r "Now I need some alone time though."
-            "No, and fuck off with that":
-                call RogueFace("surprised", 1)
-                ch_r "You serious?"
-                call RogueFace("angry", 1)
-                ch_r "You're such a jerk."
-                $ Achievements.append("I am not your Boyfriend!")
-            "No, and stop fucking asking me that":
-                call RogueFace("surprised", 1)
-                ch_r "You serious?"
-                call RogueFace("angry", 1)
-                $ R_Traits.append("stop asking")
-                ch_r "You're such a jerk."
-                call RogueFace("sad", 1)
-                ch_r "I'll stop asking."
-                $ Achievements.append("I am not your Boyfriend!")
-        $ bg_current = "bg player"          
-        call Remove_Girl("Rogue")
-        call Set_The_Scene
-        return        
+            call RogueFace("sad")
+            ch_r "Hrmph. I don't care what you want, we're dating. Deal with it."   
+            ch_r "Now I need some alone time though."          
+            if "Historia" in P_Traits:
+                return 1
+            $ R_Petnames.append("boyfriend")
+            $ R_Traits.append("dating")
+            $ Achievements.append("I am not your Boyfriend!")
+            $ bg_current = "bg player"          
+            call Remove_Girl("Rogue")
+            call Set_The_Scene
+            return        
     if R_Event[5] > 1:
-        ch_r "I don't know why I keep asking, I should know you haven't changed."          
-    $ Count = (50* R_Event[5])                                  #fix test to see if negatives can work here.
+            ch_r "I don't know why I keep asking, I should know you haven't changed."          
+    $ Count = (50* R_Event[5])
     $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -Count)
-    ch_r "Jerk! Out!"
+    ch_r "Jerk! Out!"   
+    if "Historia" in P_Traits:
+        return 1
     $ R_Loc = "bg rogue"
     $ bg_current = "bg player"         
-    call Remove_Girl("Rogue")
-    call Set_The_Scene
+    call Remove_Girl("Rogue") 
+    call Set_The_Scene    
     $ renpy.pop_call()
     jump Player_Room     
 
@@ -1176,6 +1191,8 @@ label Rogue_Love:
             "Yeah. . . [[have sex]":      
                 $ R_Inbt = Statupdate("Rogue", "R_Inbt", R_Inbt, 30, 30) 
                 ch_r "Hmm. . ."  
+                if "Historia" in P_Traits:
+                    return 1
                 call Rogue_SexAct("sex")
                 return
             "I have something else in mind. . .[[choose another activity]":
@@ -1192,6 +1209,8 @@ label Rogue_Love:
                 return
     else:
         ch_r "Now, lover. . . was there anything else you felt like doing to celebrate?"  
+    if "Historia" in P_Traits:
+        return 1
     if "stockings and garterbelt" not in R_Inventory:
             $ R_Inventory.append("stockings and garterbelt")
     $ Tempmod = 20
@@ -1200,7 +1219,8 @@ label Rogue_Love:
     return
     
 label Rogue_Love_Jerk:    
-    $ renpy.pop_call()
+    if "Historia" not in P_Traits:
+        $ renpy.pop_call()
     call RogueFace("angry", 1)
     ch_r "Well fine!" 
     $ Count = (20* R_Event[6])
@@ -1209,9 +1229,11 @@ label Rogue_Love_Jerk:
     if R_Event[6] == 3:
         call RogueFace("sad")
         ch_r "I. . . I don't care, I love you too much anyways."   
+        ch_r "I need some time to myself though."
+        if "Historia" in P_Traits:
+            return 1            
         $ R_Petnames.append("lover")
         $ Achievements.append("One Sided Love")
-        ch_r "I need some time to myself though."
         $ R_Loc = "bg rogue"
         $ bg_current = "bg player"
         call Remove_Girl("Rogue")
@@ -1220,7 +1242,9 @@ label Rogue_Love_Jerk:
         ch_r "Fool me once, shame on you. . . I thought you'd grown." 
     ch_r "If that's how you want to be, you can get the hell out of here!"
     $ Count = (100* R_Event[6])
-    $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -Count)
+    $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -Count)    
+    if "Historia" in P_Traits:
+        return 0
     $ R_Loc = "bg rogue"
     $ bg_current = "bg player"
     call Remove_Girl("Rogue")
@@ -1304,6 +1328,8 @@ label Rogue_Sub:
     "She gives you a piece of paper with the password for her cellphone calender."
     "Apparently, whatever you enter into it, she intends to do. . . within reason."
     ch_r "Now, sir. . . was there anything else you wished me to do to celebrate?"
+    if "Historia" in P_Traits:
+        return 1
     if "stockings and garterbelt" not in R_Inventory:
             $ R_Inventory.append("stockings and garterbelt")
     $ Tempmod = 10
@@ -1317,15 +1343,18 @@ label Rogue_Sub_Jerk:
     $ Count = (20* R_Event[7])
     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 30)
     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, Count)    
-    $ renpy.pop_call()
+    if "Historia" not in P_Traits:
+        $ renpy.pop_call()
     if R_Event[7] == 2:
         call RogueFace("sad")
         ch_r "Well, maybe you'll change your mind. I'll just leave this here, sir."
         "She gives you a piece of paper with the password for her cellphone calender."
         "Apparently, whatever you enter into it, she intends to do. . . within reason."
+        ch_r "I need some time to myself though."      
+        if "Historia" in P_Traits:
+            return  
         $ R_Petnames.append("sir")
         $ Achievements.append("Nosiree")
-        ch_r "I need some time to myself though."        
         $ bg_current = "bg player"        
         $ R_Loc = "bg rogue"
         call Remove_Girl("Rogue")
@@ -1334,7 +1363,9 @@ label Rogue_Sub_Jerk:
         ch_r "I thought you may have learned to respect my needs by now." 
     ch_r "If that's how it is, I would appreciate some time alone."           
     $ Count = (20* R_Event[7])
-    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, -Count)
+    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, -Count)    
+    if "Historia" in P_Traits:
+        return 
     $ R_Loc = "bg rogue"
     $ bg_current = "bg player"
     call Remove_Girl("Rogue")
@@ -1422,6 +1453,8 @@ label Rogue_Slave:
             jump Rogue_Obed_Jerk
     call RogueFace("sexy")       
     ch_r "Now, master. . . was there anything else you wished me to do to celebrate?"
+    if "Historia" in P_Traits:
+        return 1
     $ Tempmod = 20
     call Rogue_SexMenu
     $ Tempmod = 0
@@ -1433,13 +1466,16 @@ label Rogue_Obed_Jerk:
     $ Count = (20* R_Event[8])
     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 30)
     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, Count) 
-    $ renpy.pop_call()   
+    if "Historia" not in P_Traits:
+        $ renpy.pop_call()   
     if R_Event[8] == 2:
         call RogueFace("sad")
-        ch_r "I don't care what you say, this is something I need. MASTER."   
+        ch_r "I don't care what you say, this is something I need. MASTER."  
+        ch_r "I need some time to myself though."   
+        if "Historia" in P_Traits:
+            return  
         $ R_Petnames.append("master")
         $ Achievements.append("Heavy is the Head")
-        ch_r "I need some time to myself though."        
         $ bg_current = "bg player"        
         $ R_Loc = "bg rogue"       
         call Remove_Girl("Rogue")
@@ -1449,6 +1485,8 @@ label Rogue_Obed_Jerk:
     ch_r "If that's how it is, I would appreciate some time alone."          
     $ Count = (50* R_Event[8])
     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, -Count)
+    if "Historia" in P_Traits:
+        return 
     $ R_Loc = "bg rogue"
     $ bg_current = "bg player"       
     call Remove_Girl("Rogue")
@@ -1461,7 +1499,7 @@ label Rogue_Obed_Jerk:
 label Rogue_Sexfriend:  
     call Shift_Focus("Rogue")
     $ R_DailyActions.append("relationship")
-    if "dating" in R_Traits:       
+    if "dating" in R_Traits and bg_current != "bg rogue" and bg_current != "bg player":       
         if R_Loc != bg_current and "Rogue" not in Party:
             return
         $ R_Petnames.append("sex friend") 
@@ -1526,6 +1564,8 @@ label Rogue_Sexfriend:
             jump Rogue_Sexfriend_Jerk
     call RogueFace("sexy")  
     ch_r "Now, sex friend. . . how would you like to celebrate?"
+    if "Historia" in P_Traits:
+        return 1
     if "stockings and garterbelt" not in R_Inventory:
             $ R_Inventory.append("stockings and garterbelt")
     $ Tempmod = 25
@@ -1538,13 +1578,16 @@ label Rogue_Sexfriend_Jerk:
     $ R_DailyActions.append("relationship")
     ch_r "Your loss." 
     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 30) 
-    $ renpy.pop_call()   
+    if "Historia" not in P_Traits:
+        $ renpy.pop_call()   
     if R_Event[9] == 3:
         ch_r "Well, it's not really up to you anyways."
         ch_r "Just let me know if you want a roll in the hay."
+        ch_r "I need some alone time though."   
+        if "Historia" in P_Traits:
+            return     
         $ R_Petnames.append("sex friend")
         $ Achievements.append("Man of Virtue")
-        ch_r "I need some alone time though."        
         $ bg_current = "bg player"        
         $ R_Loc = "bg rogue"
         call Remove_Girl("Rogue")
@@ -1557,6 +1600,8 @@ label Rogue_Sexfriend_Jerk:
     else:
         ch_r "Ok, I'm out."   
         $ R_Loc = "bg rogue"
+    if "Historia" in P_Traits:
+        return 
     call Remove_Girl("Rogue")
     jump Player_Room  
 
@@ -1566,7 +1611,7 @@ label Rogue_Sexfriend_Jerk:
 # start Rogue_Fuckbuddy//////////////////////////////////////////////////////////
 label Rogue_Fuckbuddy:    
     call Shift_Focus("Rogue")
-    if "dating" in R_Traits:        
+    if "dating" in R_Traits and bg_current != "bg rogue" and bg_current != "bg player":
         if R_Loc != bg_current and "Rogue" not in Party:
             return
         $ R_Petnames.append("fuck buddy") 
@@ -1613,7 +1658,9 @@ label Rogue_Fuckbuddy:
             $ Rogue_Arms = 2
             ch_r "Whoo hoo!"
             $ R_Over = 0
-            $ R_Chest = 0              
+            $ R_Chest = 0  
+            if "Historia" in P_Traits:
+                return 1
             call Rogue_First_Topless(1)
             call R_Breasts_Launch
             "Rogue, throws her top off, grabs you and shoves your head into her cleavage."
@@ -1633,6 +1680,8 @@ label Rogue_Fuckbuddy:
             jump Rogue_Fuckbuddy_Jerk
     call RogueFace("sexy")      
     ch_r "Now, -heh-, fuck buddy. . . let's make this official!"
+    if "Historia" in P_Traits:
+        return 1
     $ Tempmod = 30
     call Rogue_SexMenu
     $ Tempmod = 0
@@ -1645,15 +1694,19 @@ label Rogue_Fuckbuddy_Jerk:
         $ Rogue_Arms = 2
         $ R_Over = 0
         $ R_Chest = 0
-        call Rogue_First_Topless(1)
         ch_r "I offer these things on a silver platter, and nothing!" 
         call RogueOutfit 
         ch_r "Look, I don't care what you call it. Just let me know if you want a tumble."   
+        if "Historia" in P_Traits:
+            return 1
+        call Rogue_First_Topless(1)
         $ R_Petnames.append("fuck buddy")
         $ Achievements.append("Stalwart as the mount")
         return      
     else:
         ch_r "Too bad."
+    if "Historia" in P_Traits:
+        return
     $ renpy.pop_call()
     $ Count = (10*R_Event[10])
     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, -Count)
@@ -2285,9 +2338,6 @@ label Rogue_Frisky_Class:
         jump Rogue_Frisky_Class_End
         
     "Rogue opens her notebook and begins scratching out a note. She detaches the slip of paper from the binder, carefully folding it before sliding it in front of you."
-#    show image "images/Onirating.jpg"
-        #show text "This title is for ages 18 and up." with dissolve
-        #with Pause(2)
     "She watches you as you unfold the note. In looping penstrokes, it reads: {i}You like biology?{/i}"
     "You look back and see that she's blushing slightly. She slides her pen over to you so you can reply."
     menu:
@@ -2431,7 +2481,7 @@ label Rogue_Frisky_Class:
                                     
                             if Line == "fondle pussy":
                                     call RogueFace("sly")    
-                                    if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
+                                    if R_Legs == "skirt":
                                         "Rogue's sly smile turns sultry as she feels your fingers sneak under the hem of her skirt, slowly tracing the soft contours of her mound." 
                                     elif R_Legs == "pants":
                                         "Rogue's sly smile turns sultry as she feels your fingers sneak down her pants, slowly tracing the soft contours of her mound." 
@@ -2513,7 +2563,7 @@ label Rogue_Frisky_Class:
                         "Dr. McCoy stops his lecture in mid-sentence when he notices that the whole class is looking at you and Rogue." 
                         ch_b "Oh, my stars and garters!"                
                         ch_b "[Playername]!?! {b}WHAT ARE YOU DOING? BOTH OF YOU, TO THE PROFESSOR'S OFFICE, IMMEDIATELY!{/b}"
-                if R_Rules:
+                if "Rogue" not in Rules:
                         jump Rogue_Caught
                 else:
                         "Since Xavier isn't concerned with your activities, you both head back to your room instead."
@@ -2541,3 +2591,6 @@ label Rogue_Frisky_Class_End:
     
     "Eventually, Rogue seems to settle down and pay attention to the course material. You manage to do the same without falling asleep."
     return
+    
+
+    

@@ -274,8 +274,8 @@ init -1600 python:
         Skip(fast=True, confirm=not config.developer)()
 
     def _reload_game():
-        #if not config.developer:
-        #    return
+        if not config.developer:
+            return
 
         if not config.autoreload:
             renpy.exports.reload_script()

@@ -119,7 +119,7 @@ screen say(who, what, side_image=None, two_window=False, CountWords = 0): #Count
                         add "arrow" xalign 0.1 #xzoom -1
                     else: #E_SpriteLoc == StageCenter, Left, etc.:
                         add "arrow" xalign 0.8        
-            elif who == Playername:
+            elif who == Playername or who == "Danger Room":
                     pass
             elif who == "Professor X":                     
                     add "arrow" xalign 0.8 

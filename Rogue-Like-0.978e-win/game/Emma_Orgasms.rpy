@@ -69,7 +69,7 @@ label PE_Cumming:
                 jump E_Creampie_A
             
         "Cum on her face":
-                #jump E_No_Cum
+#                jump E_No_Cum
                 jump E_Facial            
 
         "Cum on her ass" if Trigger in ("sex","anal","hotdog") and renpy.showing("Emma_Doggy"):
@@ -79,79 +79,79 @@ label PE_Cumming:
                 jump E_SpunkBelly
             
         "Pull back":
-#            if renpy.showing("Emma_BJ_Animation"):
-#                    if E_Addict >= 60 and ApprovalCheck("Emma", 1000, "I", Bonus = ((E_Addict*10)- E_Obed)) and E_Swallow:
-#                            $ E_Eyes = "manic"
-#                            $ Speed = 0
-#                            "You pull out of her mouth with a pop, and her eyes widen in surprise."
-#                            $ E_Mouth = "sucking"
-#                            $ E_Spunk.append("mouth")
-#                            $ Speed = 4
-#                            "She leaps at your cock and sucks it deep, draining your fluids hungrily." 
-#                            $ Speed = 0
-#                            $ E_Mouth = "lipbite"
-#                            "When she finishes, she draws her hand across her lips."
-#                            call EmmaFace("bemused")
-#                            ch_e "I'm sorry, [E_Petname], but that would have been a waste."
-#                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, -5)
-#                            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 200, 10)
-#                            jump E_Swallowed                            
-#                    call Emma_BJ_Reset                
-#            elif renpy.showing("Emma_HJ_Animation"):
-#                    call Emma_HJ_Reset                
-#            elif renpy.showing("Emma_SexSprite"):
-#                    call Emma_Sex_Reset                    
-#            if ApprovalCheck("Emma", 500, "I", Bonus = ((E_Addict*10)- E_Obed)) and E_Addict > 50 and E_Swallow: #If addict + Inbt is > obedience + 50. . .
-#                    $ E_Eyes = "manic"
-#                    $ E_Mouth = "kiss"
-#                    $ Speed = 0
-#                    "Her eyes widen in panic."
-#                    ch_e "Won't you reconsider, [E_Petname]?" 
-#                    $ E_Blush = 2
-#                    menu:
-#                        extend ""
-#                        "Ok, if you'll swallow it.":
-#                                if Trigger != "blow": 
-#                                    call Emma_BJ_Launch("cum")
-#                                call EmmaFace("sucking") 
-#                                $ Speed = 2
-#                                "She nods and puts the tip into her mouth. as you release she gulps it down hungrily."
-#                                call EmmaFace("sexy")                      
-#                                $ E_Mouth = "sucking"
-#                                $ E_Spunk.append("mouth")
-#                                ". . ."
-#                                $ Speed = 0
-#                                call EmmaFace("sad")                       
-#                                $ E_Mouth = "lipbite"
-#                                ch_e "Waste not, want not."  
-#                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
-#                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 1)
-#                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, 2)
-#                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 3)
-#                                jump E_Swallowed                                
-#                        "No, we're done for now.": #If addict is > obedience + 50. . .
-#                                if ApprovalCheck("Emma", 250, "I", Bonus = ((E_Addict*10)- E_Obed)) or E_Addict > 75:                            
-#                                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, -1)
-#                                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, -2)
-#                                        $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, 2)
-#                                        $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 3)
-#                                        if Trigger != "blow":
-#                                            call Emma_BJ_Launch("cum")
-#                                            $ Speed = 4
-#                                        "She dives down on you and you can't resist filling her throat."
-#                                        $ Speed = 0
-#                                        ch_e "Well, I'm afraid I wasn't."
-#                                        jump E_Swallowed                                
-#                                else:                         
-#                                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 30, 3)
-#                                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 5)
-#                                        call EmmaFace("sad")
-#                                        $ E_Brows = "confused"
-#                                        ch_e "If you insist."
-#                                        $ Line = 0
-#                                        $ P_Focus -= 5
-#                                        return  
-#                    #manic, wanted to swallow
+            if renpy.showing("Emma_BJ_Animation"):
+                    if E_Addict >= 60 and ApprovalCheck("Emma", 1000, "I", Bonus = ((E_Addict*10)- E_Obed)) and E_Swallow:
+                            $ E_Eyes = "manic"
+                            $ Speed = 0
+                            "You pull out of her mouth with a pop, and her eyes widen in surprise."
+                            $ E_Mouth = "sucking"
+                            $ E_Spunk.append("mouth")
+                            $ Speed = 4
+                            "She leaps at your cock and sucks it deep, draining your fluids hungrily." 
+                            $ Speed = 0
+                            $ E_Mouth = "lipbite"
+                            "When she finishes, she draws her hand across her lips."
+                            call EmmaFace("bemused")
+                            ch_e "I'm sorry, [E_Petname], but that would have been a waste."
+                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, -5)
+                            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 200, 10)
+                            jump E_Swallowed                            
+                    call Emma_BJ_Reset                
+            elif renpy.showing("Emma_HJ_Animation"):
+                    call Emma_HJ_Reset                
+            elif renpy.showing("Emma_SexSprite") or renpy.showing("Emma_Doggy"):
+                    call Emma_Sex_Reset                    
+            if ApprovalCheck("Emma", 500, "I", Bonus = ((E_Addict*10)- E_Obed)) and E_Addict > 50 and E_Swallow: #If addict + Inbt is > obedience + 50. . .
+                    $ E_Eyes = "manic"
+                    $ E_Mouth = "kiss"
+                    $ Speed = 0
+                    "Her eyes widen in panic."
+                    ch_e "Won't you reconsider, [E_Petname]?" 
+                    $ E_Blush = 2
+                    menu:
+                        extend ""
+                        "Ok, if you'll swallow it.":
+                                if Trigger != "blow": 
+                                    call Emma_BJ_Launch("cum")
+                                call EmmaFace("sucking") 
+                                $ Speed = 2
+                                "She nods and puts the tip into her mouth. as you release she gulps it down hungrily."
+                                call EmmaFace("sexy")                      
+                                $ E_Mouth = "sucking"
+                                $ E_Spunk.append("mouth")
+                                ". . ."
+                                $ Speed = 0
+                                call EmmaFace("sad")                       
+                                $ E_Mouth = "lipbite"
+                                ch_e "Waste not, want not."  
+                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
+                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 1)
+                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, 2)
+                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 3)
+                                jump E_Swallowed                                
+                        "No, we're done for now.": #If addict is > obedience + 50. . .
+                                if ApprovalCheck("Emma", 250, "I", Bonus = ((E_Addict*10)- E_Obed)) or E_Addict > 75:                            
+                                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, -1)
+                                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, -2)
+                                        $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, 2)
+                                        $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 3)
+                                        if Trigger != "blow":
+                                            call Emma_BJ_Launch("cum")
+                                            $ Speed = 4
+                                        "She dives down on you and you can't resist filling her throat."
+                                        $ Speed = 0
+                                        ch_e "Well, I'm afraid I wasn't."
+                                        jump E_Swallowed                                
+                                else:                         
+                                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 30, 3)
+                                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 5)
+                                        call EmmaFace("sad")
+                                        $ E_Brows = "confused"
+                                        ch_e "If you insist."
+                                        $ Line = 0
+                                        $ P_Focus -= 5
+                                        return  
+                    #manic, wanted to swallow
                     
             call EmmaFace("sexy", 1)
             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
@@ -336,7 +336,7 @@ label E_Warn_Her:                                                               
                 "She smiles and starts rubbing against you a bit faster."
                 jump E_SpunkBack
         else:
-                jump E_Facial
+                jump E_Handy_Finish
     #End "Warn her" / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
     
                       
@@ -812,57 +812,6 @@ label E_Facial:
                 
     jump E_Orgasm_After
 
-# Start Spunk Belly / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-label E_SpunkBelly:
-    call Emma_Sex_Launch("hotdog")
-    $ Speed = 0
-    if E_Addict >= 60 and ApprovalCheck("Emma", 1000, "I", Bonus = ((E_Addict*10)- E_Obed)) and E_Swallow:
-            $ E_Eyes = "manic"
-            $ E_Blush = 1
-            call Emma_BJ_Launch("cum")
-            if Trigger == "sex":
-                "You pull out of her pussy with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
-            elif Trigger == "anal":                
-                "You pull out of her ass with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
-            $ E_Mouth = "lipbite"
-            $ E_Spunk.append("mouth")
-            "When she finishes, she draws her hand across her lips."
-            call EmmaFace("bemused")
-            $ E_Spunk.remove("mouth")
-            ch_e "I'm sorry, [E_Petname], but that would have been a waste."
-            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, -5)
-            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 200, 10)
-            jump E_Swallowed
-    $ P_Cock = "out"
-    $ P_Spunk = "out"
-    $ E_Spunk.append("belly")
-    if Trigger == "sex":
-            "You pull out of her pussy with a pop and spray all over her belly."
-    elif Trigger == "anal":
-            "You pull out of her ass with a pop and spray all over her belly."
-    else:
-            "You pick up the pace and with a grunt you spray all over her belly."
-        
-                  
-    if E_Addict >= 60 and ApprovalCheck("Emma", 800, "I", Bonus = ((E_Addict*10)- E_Obed)) and E_Swallow: 
-            #if she's manic and has swallowed
-            $ E_Eyes = "manic"
-            $ E_Blush = 1        
-            "Emma's eyes widen with desire, and she quickly wipes a bit off with her hand, then licks her fingers clean."
-            call EmmaFace("manic", 1)
-            $ E_Spunk.append("mouth")
-            $ E_Mouth = "smile"
-            ch_e "Well, [E_Petname], I just couldn't let that go to waste."
-            $ E_Spunk.remove("mouth")  
-            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 3)
-            jump E_Swallowed
-          
-        
-    #else . . .
-    call EmmaFace("sexy", 1)    
-    ch_e "Mmmm, all over the place. . ."
-    call Emma_Sex_Reset
-    jump E_Orgasm_After
 
 # Start Spunk back  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label E_SpunkBack: 
@@ -996,83 +945,69 @@ label E_Creampied:
 
 # Clean-up / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label E_Orgasm_After:
-    $ Line = 0
-#    $ Emma_Arms = 2
-    $ P_Semen -= 1
-    $ P_Focus = 0
-    $ P_Cock = "out"
-    $ P_Spunk = 0
-    $ Speed = 0    
-    if Trigger == "anal" and not ApprovalCheck("Emma", 1600, TabM=1) and not E_Addict >= 80:
-            "She wipes your cock clean."
-    elif E_Blow > 3 or E_Swallow: 
-            if ApprovalCheck("Emma", 1200, TabM=1) or E_Addict >= 60:
-                    call Emma_BJ_Launch("cum")
-                    $ Speed = 1
-                    call EmmaFace("sucking", 1) 
-                    if ApprovalCheck("Emma", 1500, TabM=1):
-                        if E_Love > E_Inbt and E_Love > E_Obed:
-                            "She looks up at you lovingly as she licks your cock clean."            
-                        elif E_Obed > E_Inbt:
-                            $ E_Eyes = "side"
-                            "She dutifully licks your cock clean with lowered eyes."
-                            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 3)                
-                        else:
-                            "She happily licks your cock clean." 
-                    elif E_Addict >= 60:
-                            "She hungrily and thoroughly licks your cock clean."   
-                    else:
-                        "She licks you cock clean." 
-                    call EmmaFace("sexy") 
-                    call Emma_BJ_Reset            
-            else:
-                    if not renpy.showing("Emma_HJ_Animation"):
-                        call Emma_HJ_Launch("cum") 
-                    "She wipes your cock clean."  
-    else:
-                    if not renpy.showing("Emma_HJ_Animation"):
-                        call Emma_HJ_Launch("cum") 
-                    "She wipes your cock clean." 
-    #call EmmaFace("sexy", 1)
-    #if ApprovalCheck("Emma", 1200, TabM=1):
-    #    if "hand" in E_Spunk:
-    #        $ E_Spunk.remove("hand")
-    #    $ E_Spunk.append("mouth")
-    #    "Emma wipes your cock clean, and then licks her hands clean."
-    #    $ E_Spunk.remove("mouth")
-    #    $ E_Swallow += 1
-    #    if E_Swallow == 1:
-    #            $ E_SEXP += 12
-    #            call EmmaFace("sexy", 2, Mouth="kiss", Eyes="down")
-    #            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 5)
-    #            "She gets a very excited look on her face as she does so."
-    #            call EmmaFace("sexy", 1)
-    #    else:
-    #            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 2)
-    #else:
-    #    if "hand" in E_Spunk:
-    #        $ E_Spunk.remove("hand")
-    #    "Emma wipes your cock clean, and then wipes off her hands."
-    call EmmaFace("sexy") 
-    call Emma_HJ_Reset 
-    if E_Spunk and not ApprovalCheck("Emma", 400, "I"):
-                call Emma_Cleanup
-    elif E_Spunk:    
+        $ Line = "What next?"
+        if not renpy.showing("Emma_HJ_Animation"):
+            $ Emma_Arms = 1
+        $ P_Semen -= 1
+        $ P_Focus = 0
+        $ Speed = 0  
         menu:
-            extend""
-            "And maybe clean yourself up too?":            
+                "Want her to clean you off?"
+                "Yes":
+                    call E_CleanCock
+                "No":
+                    pass
+        if E_Spunk:
                 call Emma_Cleanup
-            "[[Say nothing.]":
-                call Emma_Cleanup
-    $ Situation = 0
-    $ Emma_Arms = 1
-    return
+        $ Situation = 0
+        return
+        
+        
+label E_CleanCock:
+        $ Line = "What next?"
+        if not renpy.showing("Emma_HJ_Animation"):
+            $ Emma_Arms = 1
+        $ P_Cock = "out"
+        $ Speed = 0    
+        if Trigger == "anal" and not ApprovalCheck("Emma", 1600, TabM=1) and not E_Addict >= 80:
+                "She wipes your cock clean."
+        elif E_Blow > 3 or E_Swallow: 
+                if ApprovalCheck("Emma", 1200, TabM=1) or E_Addict >= 60:
+                        call Emma_BJ_Launch("cum")
+                        $ Speed = 1
+                        call EmmaFace("sucking", 1) 
+                        if ApprovalCheck("Emma", 1500, TabM=1):
+                            if E_Love > E_Inbt and E_Love > E_Obed:
+                                $ E_Eyes = "sly"
+                                "She looks up at you lovingly as she licks your cock clean."            
+                            elif E_Obed > E_Inbt:
+                                $ E_Eyes = "side"
+                                "She dutifully licks your cock clean with lowered eyes."
+                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 3)                
+                            else:
+                                "She happily licks your cock clean." 
+                        elif E_Addict >= 60:
+                                "She hungrily and thoroughly licks your cock clean."   
+                        else:
+                            "She licks you cock clean." 
+                        call EmmaFace("sexy")  
+                else:
+                        if not renpy.showing("Emma_HJ_Animation"):
+                            call Emma_HJ_Launch("cum") 
+                        "She wipes your cock clean."  
+        else:
+                        if not renpy.showing("Emma_HJ_Animation"):
+                            call Emma_HJ_Launch("cum") 
+                        "She wipes your cock clean."         
+        $ P_Spunk = 0
+        call EmmaFace("sexy") 
+        return
     
 # End You Cumming //////////////////////////////////////////////////////////////////////////////////
 
 
 # Emma Lusty face check ////////////////////////////////////////////////////////////////////////////////
-label EmmaLust(Extreme = 0):
+label EmmaLust(Extreme = 0, Kissing = 0):
                 
     if E_Lust >= 90:        
             $ E_Blush = 2
@@ -1087,18 +1022,22 @@ label EmmaLust(Extreme = 0):
     if E_Loc == "bg teacher":
             #this prevents her face from changing if she's just being a teacher.
             return
-    elif Partner != "Emma" and (Trigger == "kissing" or Trigger2 == "kissing" or Trigger5 == "kiss both" or Trigger5 == "kiss girl"):  
+       
+    if Trigger3 == "kiss both" or Trigger3 == "kiss girl":
+            #if the girls are kissing or all three are
+            $ Kissing = 1
+    if Trigger4 == "kiss both" or Trigger3 == "kiss girl":
+            #if the girls are kissing or all three are
+            $ Kissing = 1   
+    if Partner != "Emma":
             #If Emma is kissing and is primary
-            $ E_Eyes = "closed"
-            if E_Kissed >= 10 and E_Inbt >= 300:
-                $ E_Mouth = "sucking"
-            elif E_Kissed > 1 and E_Addict >= 50:            
-                $ E_Mouth = "sucking"
-            else:
-                $ E_Mouth = "kiss"            
-                
-    elif Partner == "Emma" and Trigger4 == "kissing":   
-            #If Emma is kissing in a threesome action
+            if Trigger == "kiss you" or Trigger2 == "kiss you":  
+                $ Kissing = 1
+    elif Trigger4 == "kiss you":   
+            #If Emma is kissing you in a threesome action
+            $ Kissing = 1
+            
+    if Kissing:
             $ E_Eyes = "closed"
             if E_Kissed >= 10 and E_Inbt >= 300:
                 $ E_Mouth = "sucking"
@@ -1106,7 +1045,7 @@ label EmmaLust(Extreme = 0):
                 $ E_Mouth = "sucking"
             else:
                 $ E_Mouth = "kiss"
-            
+                
     else:    
             #If Emma is not kissing someone
             if E_Lust >= 90:
@@ -1118,17 +1057,17 @@ label EmmaLust(Extreme = 0):
                     $ E_Brows = "sad"
                     $ E_Mouth = "lipbite"
             elif E_Lust >= 50 and not Extreme:
-                    $ E_Eyes = "sexy"
+                    $ E_Eyes = "squint"
                     $ E_Brows = "sad"
                     $ E_Mouth = "lipbite"
             elif E_Lust >= 30 and not Extreme:
                     $ E_Eyes = "sexy"
                     $ E_Brows = "normal"
-                    $ E_Mouth = "lipbite"
+                    $ E_Mouth = "smirk"
             elif not Extreme:
                     $ E_Eyes = "sexy"
                     $ E_Brows = "normal"
-                    $ E_Mouth = "normal"    
+                    $ E_Mouth = "smirk"    
     
     if Partner == "Emma" and Trigger4 in ("lick pussy", "lick ass", "blow", "suck breasts"):         
                     $ E_Mouth = "tongue"  
@@ -1205,9 +1144,23 @@ label E_Cumming:
             $ E_Love = Statupdate("Emma", "Love", E_Love, 70, 1)
             $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 1)
             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 2)
-            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 2)            
-    #Orgasm count
-            if Trigger != "blow" and Trigger != "hand":
+            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 2)  
+            
+            #checks to check reaction of other girls
+            if K_Loc == bg_current and "noticed emma" in K_RecentActions: 
+                    $ K_Lust += 15 if K_LikeEmma >= 500 else 10
+                    $ K_Lust += 5 if K_Les >= 5 else 0
+            elif R_Loc == bg_current and "noticed emma" in R_RecentActions: 
+                    $ R_Lust += 15 if R_LikeEmma >= 500 else 10
+                    $ R_Lust += 5 if R_Les >= 5 else 0 
+            if Partner == "Emma":
+                    #If the active girl is someone else
+                    if K_Lust >= 100 and K_Loc == bg_current: 
+                            call K_Cumming  
+                    elif R_Lust >= 100 and R_Loc == bg_current: 
+                            call R_Cumming   
+            #Orgasm count
+            if Trigger != "blow" and Trigger != "hand" and Partner != "Emma":
                 $ E_OCount += 1        
                 if E_OCount == 2:
                         $ E_Brows = "confused"
@@ -1223,7 +1176,7 @@ label E_Cumming:
                         $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 2)
                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 30, 1)
                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 1)                    
-                elif E_OCount == 5: #10
+                elif E_OCount == 5 and Partner != "Emma": #10
                     $ E_Mouth = "tongue"    
                     ch_e "You're . . .practically. . . exhausting. . ."
                     menu:
@@ -1264,32 +1217,32 @@ label E_Cumming:
 
 
 # Start Emma Clean-Up /////////////////////////////////////////////////////////////////////////////////////
-label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
+label Emma_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
     if not E_Spunk:
         $ E_Wet = 0
         return     
         
     if E_Addict > 80 and E_Swallow:
         #if she likes cum, she prefers to eat it. 
-        $ Line = "eat"            
+        $ Choice = "eat"            
         $ E_Eyes = "manic"
         $ E_Mouth = "smile" 
     elif "painted" in E_RecentActions and ApprovalCheck("Emma", 1000, "OI"):
         return
     elif ApprovalCheck("Emma", 1200, "LO"):  
-        $ Line = "ask"            
+        $ Choice = "ask"            
     elif not ApprovalCheck("Emma", 400, "I"):
         call EmmaFace("bemused") 
-        $ Line = "clean"   
+        $ Choice = "clean"   
     else:
-        $ Line = "ask"      
+        $ Choice = "ask"      
    
     $ Cleaned = 1 if "cleaned" in E_DailyActions else 0
     $ E_RecentActions.append("cleaned") 
     $ E_DailyActions.append("cleaned") 
     
-    if Line == "ask":
-            $ Line = "random"
+    if Choice == "ask":
+            $ Choice = "random"
             "She looks down at the spunk covering her."
             menu:
                 "What do you suggest Emma do about cleaning up?"
@@ -1298,14 +1251,14 @@ label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 70, 2)
                                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 1)
                                 $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 90, 5) 
-                                $ Line = "leave"  
+                                $ Choice = "leave"  
                                 call EmmaFace("sly") 
                                 ch_e "Hmm. . . I suppose I could use some accessories. . "
                         elif ApprovalCheck("Emma", 600, "I") and ApprovalCheck("Emma", 1200, "LO"):
                                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 1)
                                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 1) 
                                 $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 90, 5) 
-                                $ Line = "leave"  
+                                $ Choice = "leave"  
                                 call EmmaFace("surprised",2) 
                                 ch_e "Hmm. . . if you insist. . ."
                                 call EmmaFace("sly",1) 
@@ -1322,7 +1275,7 @@ label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 40, 3) 
                                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 1) 
                                         ch_e "Well. Ok."
-                                        $ Line = "leave"  
+                                        $ Choice = "leave"  
                                     elif Cleaned:
                                         call EmmaFace("angry") 
                                         ch_e "I believe I've made myself clear."
@@ -1341,14 +1294,14 @@ label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 40, 3)
                                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 2)
                                         ch_e "Well then."
-                                        $ Line = "leave"  
+                                        $ Choice = "leave"  
                                     elif ApprovalCheck("Emma", 800, "O"):
                                         $ E_Love = Statupdate("Emma", "Love", E_Love, 50, -10)
                                         $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -5)
                                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 10)
                                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 5)
                                         ch_e "If I must."
-                                        $ Line = "leave"  
+                                        $ Choice = "leave"  
                                     elif Cleaned:
                                         $ E_Love = Statupdate("Emma", "Love", E_Love, 50, -5)
                                         $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -1)
@@ -1377,7 +1330,7 @@ label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 3) 
                                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 1) 
                                 $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 90, 5) 
-                                $ Line = "eat"   
+                                $ Choice = "eat"   
                                 ch_e "Well, I suppose I could. . ."
                         elif E_Swallow and ApprovalCheck("Emma", 800): 
                                 #few swallows
@@ -1386,7 +1339,7 @@ label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 2) 
                                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 1) 
                                 $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 90, 5) 
-                                $ Line = "eat"   
+                                $ Choice = "eat"   
                                 ch_e "You do have a unique flavor. . ."
                         elif ApprovalCheck("Emma", 1200): 
                                 #no swallows, but likes you
@@ -1394,7 +1347,7 @@ label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                 $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 1)
                                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 3) 
                                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 1) 
-                                $ Line = "eat"   
+                                $ Choice = "eat"   
                                 ch_e "I have been a bit curious. . ."
                         elif ApprovalCheck("Emma", 400): 
                                 #Likes you well enough, but won't
@@ -1416,7 +1369,7 @@ label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 200, 5) 
                                 $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 60, 5) 
                                 ch_e "Hmmm. . . don't I look good like this? . ."
-                                $ Line = "leave"   
+                                $ Choice = "leave"   
                                 menu:
                                     extend ""
                                     "Ok, fine.":
@@ -1428,13 +1381,13 @@ label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                             call EmmaFace("sad") 
                                             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 10)
                                             ch_e "Oh, if I must. . ."
-                                            $ Line = "clean"  
+                                            $ Choice = "clean"  
                                         elif ApprovalCheck("Emma", 1200, "LO"):
                                             call EmmaFace("sad") 
                                             $ E_Love = Statupdate("Emma", "Love", E_Love, 70, -3)
                                             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 3)
                                             ch_e "Spoilsport. . ."
-                                            $ Line = "clean"   
+                                            $ Choice = "clean"   
                                         else:
                                             $ E_Love = Statupdate("Emma", "Love", E_Love, 70, -5)
                                             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, -5)
@@ -1442,16 +1395,16 @@ label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                                                                                     
                         else: #agrees
                                 call EmmaFace("bemused") 
-                                $ Line = "clean"   
+                                $ Choice = "clean"   
                                 ch_e "If I must. . ."
                         #end clean it up
                         
                 "Say nothing. [[leave it to her]":
-                    $ Line = "random"
+                    $ Choice = "random"
             #end "asked"
                 
                 
-    if Line == "random":
+    if Choice == "random":
             $ Options = ["clean"]
             if E_Swallow and ApprovalCheck("Emma", 800):
                 $ Options.append("eat") 
@@ -1468,11 +1421,11 @@ label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
                     
             $ renpy.random.shuffle(Options)
             
-            $ Line = Options[0]
+            $ Choice = Options[0]
             #end "random"
             
             
-    if Line == "leave":
+    if Choice == "leave":
             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 2) 
             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 200, 1) 
             "She leaves the jiz right where it is and gives you a wink."
@@ -1491,7 +1444,7 @@ label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
 
     $ Cnt = 0
     $ E_Spunk.append("hand")
-    if "mouth" in E_Spunk and Line != "eat":
+    if "mouth" in E_Spunk and Choice != "eat":
             $ E_Spunk.remove("mouth")
             "She spits out the spunk in her mouth and dribbling down her chin,"
             $ Cnt += 1
@@ -1530,7 +1483,7 @@ label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
             else:
                 "She wipes the spunk inside her pussy,"     
             $ Cnt += 1 
-    if "anal" in E_Spunk and (ApprovalCheck("Emma", 800, "I") or Line != "eat"):
+    if "anal" in E_Spunk and (ApprovalCheck("Emma", 800, "I") or Choice != "eat"):
             while "anal" in E_Spunk:
                 $ E_Spunk.remove("anal")
             if Cnt:
@@ -1540,7 +1493,7 @@ label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
             $ Cnt += 1            
     if "hand" in E_Spunk:
             $ E_Spunk.remove("hand")
-            if Line == "eat":                    
+            if Choice == "eat":                    
                 $ E_Spunk.append("mouth")
                 if Cnt and "anal" in E_Spunk:
                     "then licks her hands off with a satisfied grin," 
@@ -1578,7 +1531,7 @@ label Emma_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
             $ E_Eyes = "sexy"
     elif Cnt >=3:
             ch_e "Well that was a lot of work."
-    elif Line == "eat" and E_Swallow >= 5:
+    elif Choice == "eat" and E_Swallow >= 5:
             ch_e "Mmmm, now I'm hungry for more."
     return    
     

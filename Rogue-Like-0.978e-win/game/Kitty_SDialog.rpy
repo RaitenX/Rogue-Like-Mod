@@ -1,11 +1,16 @@
 ﻿# This is the section for Kitty's sex-related dialog options to be chosen. 
 
 label Kitty_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
-    
+    if Situation == "skip" and Line:
+            # if the action was set by a previous trigger, skip this element
+            $ Situation = 0
+            return
+            
     if Trigger == "hand":
             $ Line = "Kitty continues stroke your cock. "
                
             if not Speed:
+                        $ Line = "Kitty holds your cock in her hand. "
                         if K_Hand > 2:
                                 $ Line = Line + "She just seems to be enjoying the feel of it"
                                 $ TempLust += 2 if K_Lust < 60 else 0
@@ -170,13 +175,8 @@ label Kitty_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
            
     elif Trigger == "blow":
         
-            if not Speed: #if Kitty is not moving  
-                    if K_Blindfold:
-                            call KittyFace("sly")
-                            $ Line = "Kitty can't see a thing. She licks her lips in anticipation"
-                            $ TempLust += 3 if K_Lust < 40 else 1  
-
-                    elif "hungry" in K_Traits:
+            if not Speed: #if Kitty is not moving                
+                    if "hungry" in K_Traits:
                             call KittyFace("sly")
                             $ Line = "Kitty stares at your cock. She licks her lips in anticipation"
                             $ TempLust += 3 if K_Lust < 40 else 1                    
@@ -1392,63 +1392,6 @@ label Kitty_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         $ TempLust += 1   
     # end K dildo ass                              /////////////////////////////////////////////////////////////////////////////
     
-    elif Trigger == "plug":
-                        if (K_Legs == "capris" or K_Legs == "leather pants" or K_Legs == "black jeans" or K_Legs == "yoga pants") and not K_Upskirt:
-                                $ Line = renpy.random.choice(["You rub the plug against the outside of her pants", 
-                                        "You slap the plug lightly against her ass"])
-                                $ TempFocus += 1 if P_Focus < 50 else 0  
-                                $ TempLust += 3 if K_Lust < 50 else 1
-                        elif HoseNum("Kitty") >= 10:
-                                $ Line = renpy.random.choice(["You rub the plug against the outside of her tights", 
-                                        "You slap the plug lightly at the outside of her tights"])
-                                $ TempFocus += 1 if P_Focus < 50 else 0  
-                                $ TempLust += 3 if K_Lust < 50 else 1
-                        elif HoseNum("Kitty") >= 5:
-                                $ Line = renpy.random.choice(["You rub the plug against the outside of her hose", 
-                                        "You slap the plug lightly at the outside of her hose"])
-                                $ TempFocus += 1 if P_Focus < 50 else 0  
-                                $ TempLust += 3 if K_Lust < 50 else 1
-                        else:
-                                if (K_Legs == "orange skirt" or K_Legs == "black skirt" or K_Legs == "white skirt") and K_Panties:            
-                                    $ Line = renpy.random.choice(["You push her skirt and panties aside, and slide the plug into her ass", 
-                                            "You slide the toy deep into her ass", 
-                                            "She gasps as you rotate the plug within her tight asshole",
-                                            "You rub her clit with your thumb as you dive into her ass with the rubber phallus"])
-                                    $ TempFocus += 2 if P_Focus < 50 else 1  
-                                    $ TempLust += 8 if K_Lust > 70 else 5
-                                elif (K_Legs == "orange skirt" or K_Legs == "black skirt" or K_Legs == "white skirt"):           
-                                    $ Line = renpy.random.choice(["You push her skirt aside, and slide the plug into her tight hole", 
-                                            "You slide the toy deep into her ass",
-                                            "You lift her skirt a bit and she gasps as you slide the plug firmly into her tight anus", 
-                                            "She gasps as you rotate the plug within her ass",
-                                            "You rub her clit with your thumb as you dive into her ass with the rubber phallus"])
-                                    $ TempFocus += 2 if P_Focus < 50 else 1  
-                                    $ TempLust += 8 if K_Lust > 70 else 5
-                                elif K_Panties and not K_PantiesDown:            
-                                    $ Line = renpy.random.choice(["You push her panties aside, and slide the plug into her tight ass", 
-                                            "You slide the plug into her ass and stroke it rapidly", 
-                                            "You lift her panties a bit and she gasps as you slide the plug between her cheeks", 
-                                            "She gasps as you rub her tight asshole with the toy",
-                                            "You rub her clit with your thumb as you dive into her asshole with the plug",
-                                            "You reach into her gap and she gasps as you slide the plug in and press against her tight anus through the thin material"])
-                                    $ TempFocus += 2 if P_Focus < 50 else 1  
-                                    $ TempLust += 8 if K_Lust > 70 else 5
-                                else:            
-                                    $ Line = renpy.random.choice(["You reach out and slide the plug between her cheeks", 
-                                            "You slide the toy into her asshole and stroke it against the sides", 
-                                            "You pull her cheeks apart and she gasps as you slide the plug between them", 
-                                            "You can feel her twitching as you press your thumb against her anus",
-                                            "She gasps as you rub her anus with the hard rubber",
-                                            "You rub her clit with your thumb as you dive into her asshole with the plug",
-                                            "You reach into her gap and she gasps as you slide the toy across and press it into her firm anus"])            
-                                    $ TempFocus += 3 if P_Focus < 50 else 1  
-                                    $ TempLust += 10 if K_Lust > 70 else 6
-                                if not K_Loose:
-                                        $ TempLust -= 3
-                                elif K_Loose < 2:
-                                        $ TempLust += 1   
-    # end R plug ass   
-
     elif Trigger == "masturbation":
                         call Kitty_Self_Lines  
                         if "unseen" not in K_RecentActions:
@@ -1540,7 +1483,7 @@ label Kitty_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
             
     #End Footy dialog ////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    elif Trigger == "kissing":  
+    elif Trigger == "kiss you":  
                         $ K_Addict -= 3
                         if K_Kissed > 10 and K_Love >= 700:#Loving
                                 $ Line = renpy.random.choice(["She hungrily presses her lips against yours", 
@@ -1838,7 +1781,7 @@ label Kitty_Self_Set(Mode = "T3", Action = Trigger3, Length=0, Count2=0, Options
                             $ Options.append("vibrator pussy") 
                 
         else:
-                    if Mode != "T5" and Trigger in ("fondle pussy", "fondle breasts", "fondle thighs", "kissing", "fondle ass", "suck breasts") and K_Hand >= 5:
+                    if Mode != "T5" and Trigger in ("fondle pussy", "fondle breasts", "fondle thighs", "kiss you", "fondle ass", "suck breasts") and K_Hand >= 5:
                             $ Options.append("hand")
                         
                     if Trigger not in ("sex", "fondle pussy", "lick pussy", "dildo pussy"):
@@ -1914,12 +1857,14 @@ label Kitty_Self_Set(Mode = "T3", Action = Trigger3, Length=0, Count2=0, Options
 
 
 # Start Kitty Threeway Dialog / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
 label Kitty_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, TempLine = 0, TempLust = 0, TempLust2 = 0, TempFocus = 0):
-    #This is the dialog checked for Trigger 4, activated when Kitty is the second girl in a scene, or for Lesbian activities.
+    # This is the dialog checked for Trigger 4, activated when Rogue is the second girl in a scene, or for Lesbian activities.
     # if Mode is "lesbian" then it means she's doing a girl/girl sequence, and activating secondary dialogs.
     # By default, ActiveGirl will be the primary and this sequence will build text for what the secondary girl does.
     # In "lesbian" mode, ActiveGirl will be the secondary girl, and this sequence will build text for what the primary will do to her.
-        
+    # Lesbian Trigger1 dialog calls "call Rogue_SexDialog_Threeway("lesbian")"
+    
     call Kitty_Threeway_Set(Mode = Mode)   #Picks a new activty on a 7-9 roll or when not set, otherwise returns
     
     if Mode == "lesbian":
@@ -1928,13 +1873,13 @@ label Kitty_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, TempL
     else:
             $ Action = Trigger4
             
-    if Line or not Action:        
+    if Line or not Action: 
             #if it picked something, it should have set a line and returned
             return    
             
     if Action == "hand":
                     if D20S <= 8 and (Trigger == "blow" or Trigger == "hand"): #This is a random bonus dialog
-                        if Trigger == "blow": #If Kitty is blowing you
+                        if Trigger == "blow": #If Rogue is blowing you
                             $ Line = renpy.random.choice(["Kitty's fingers brush against " + ActiveGirl + "'s lips as they work",
                                     "Kitty and " + ActiveGirl + " pause for a second to briefly kiss", 
                                     "Kitty takes a turn to suck on the head before passing it back",
@@ -2164,8 +2109,7 @@ label Kitty_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, TempL
                                         $ Templine = ", moving inside it with slow undulating motions"
                            
                         $ Line = Line + Templine
-                            
-                        
+                                                    
                         if ActiveGirl == "Rogue": #If Kitty is stroking Rogue's pussy
                                 $ TempLust += 3 if ApprovalCheck("Kitty", 600, "I") else 1  # Kitty's lust
                                 $ TempLust2 += 7 if R_LikeKitty >= 800 else 4
@@ -2329,37 +2273,38 @@ label Kitty_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, TempL
     # end R lick ass    Threeway                           /////////////////////////////////////////////////////////////////////////////
     
     elif Action == "masturbation":
-                        if Trigger5 in ("kiss you", "kiss girl", "kiss both"):
-                                $ Trigger5 = 0 #Clear out Trigger 5 if it's for kissing.
                         call Kitty_Self_Lines("T5",Trigger5)  
                         $ TempLust = 0
                 
     # end R Masturbation   Threeway                            /////////////////////////////////////////////////////////////////////////////
     
-    elif Action == "kissing":
-                        if Trigger == "blow" and K_Blow > 5 and Trigger5 != "kiss you":
+    elif Action in ("kiss you", "kiss girl", "kiss both"):
+                        if Trigger == "blow" and K_Blow > 5 and Trigger4 == "kiss girl":  
                                     $ Line = "Kitty also continues to kiss " + ActiveGirl
                                     $ Line = Line + renpy.random.choice([", occasionally taking a lick of your cock as well", 
                                             ", licking along her cheek",
                                             ", nudging you out of her mouth to get a deep kiss in",
                                             ", taking the occasional lick down your shaft",
                                             ", nudging her aside to kiss the head of your cock"])
-                        elif Trigger == "blow" and Trigger5 != "kiss you":
+                        elif Trigger == "blow" and Trigger4 == "kiss girl":
                                     $ Line = "Kitty also continues to kiss " + ActiveGirl
                                     $ Line = Line + renpy.random.choice([", occasionally bumping into your cock as well", 
                                             ", licking along her cheek",
                                             ", nudging you out of her mouth to get a deep kiss in",
                                             ", trailing kisses down her neck"])
                         else: #they're just kissing
-                                    if Trigger5 == "kiss girl" or Mode == "lesbian":
-                                        $ Line = "Kitty also continues to make out with " + ActiveGirl
+                                    if Action == "kiss girl" or Mode == "lesbian":
+                                        if Trigger == "lesbian" and Primary == "Kitty":
+                                                $ Line = "Kitty continues to make out with " + ActiveGirl
+                                        else:                                            
+                                                $ Line = "Kitty also continues to make out with " + ActiveGirl
                                         $ Line = Line + renpy.random.choice([", occasionally coming up for air", 
                                                 ", licking along her cheek",
                                                 ", grabbing her face in both hands",
                                                 ", their tongues swirl around each other",
                                                 ", occasionally nibbling at her ears",
                                                 ", trailing kisses down her neck"])
-                                    elif Trigger5 == "kiss you":
+                                    elif Action == "kiss you":
                                         $ Line = "Kitty also continues to make out with you" 
                                         $ Line = Line + renpy.random.choice([", occasionally coming up for air", 
                                                 ", licking along your cheek",
@@ -2439,21 +2384,29 @@ label Kitty_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, TempL
 # Start Kitty Threeway-set ////////////////////////////////////////////////////////////////////////
 
 label Kitty_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = Primary, State = "watcher", TempLust = 0, TempLust2 = 0, TempFocus = 0):    
-    # Action defaults to Trigger4, the action of the seondary girl and ActiveGirl to the lead girl in the scene
-    # In lesbian mode, Action becomes Trigger3, the secondary action of the primary girl, and ActiveGirl is the secondary girl
-    # If Set gets passed a preset, it chooses that preset, otherwise it chooses one randomly
-    
-            if Mode == "lesbian" and Trigger3 and not Preset:
-                    #If it's in lesbian mode, there is already a trigger set, and the roll is good, continue
-                    if 5 <= D20S <= 10:
+            # Action defaults to Trigger4, the action of the seondary girl and ActiveGirl to the lead girl in the scene
+            # In lesbian mode, Action becomes Trigger3, the secondary action of the primary girl, and ActiveGirl is the secondary girl
+            # If Set gets passed a preset, it chooses that preset, otherwise it chooses one randomly
+            # for Lesbian: Rogue_Threeway_Set("activity", "lesbian", Trigger3, "Rogue")
+            # for Threeway: Rogue_Threeway_Set("activity", 0, Trigger4, "Other girl")
+            
+            if not Preset:                     
+                    #if no preset is offered
+                    if Mode == "lesbian":
+                            #If it's in lesbian mode, there is already a trigger set, and the roll is good, continue
+                            
+                            if Trigger3 == "kiss girl" and K_Lust <= 20 and K_Org < 1:
+                                    # If kissing at low lust, keep doing it
+                                    return
+                            elif Trigger3 and ThreeCount <= Round:
+                                    # If a Trigger3 is already set and it's under the count, return
+                                    return
+                    elif Trigger4 and D20S < 15 and Trigger4 != "watch": 
+                            #If there is a trigger, it's not set to "watch," and the roll is good, continue
                             return
-                    if Trigger3 == "kissing" and K_Lust <= 30:
-                            # If kissing at low lust, keep doing it
-                            return
-            elif Trigger4 and D20S < 10 and Trigger4 != "watch" and not Preset: 
-                    #If there is a trigger, it's not set to "watch," and the roll is good, continue
-                    return
-                                
+                    elif Trigger4 and ThreeCount <= Round:
+                            # if there's not a Preset, and it's only been X turns since the last change, return.
+                            return  
             $ Options = ["watch", "masturbation", "masturbation", "masturbation"]
                                     
             if Trigger == "lesbian":
@@ -2463,27 +2416,44 @@ label Kitty_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = P
                     $ Options = ["kiss girl","kiss girl"]  
                     if Preset in ("hand","blow","kiss you","kiss both"):
                             #if you send it presets that you want the other girl to touch you. . .
-                            $ State = "threeway"             
+                            $ State = "threeway"     
+                    elif Preset:
+                            pass
+                    elif ActiveGirl == "Rogue" and K_LikeRogue >= 600 and ApprovalCheck("Kitty", 500, "I"):
+                            pass
+                    elif ActiveGirl == "Emma" and K_LikeEmma >= 600 and ApprovalCheck("Kitty", 500, "I"):
+                            pass
+                    else:
+                            #this returns if she doesn't like the other girl enough to do anything more.
+                            if Action != "kiss girl":                                
+                                    $ Line = "Kitty gives " + ActiveGirl + " a passionate kiss" #use T5 on this to choose targets
+                                    $ Action = "kiss girl"   
+                                    $ Trigger3 = "kiss girl"
+                                    if "lesbian" not in K_RecentActions:
+                                            $ K_Les += 1
+                                            $ K_RecentActions.append("lesbian")                                
+                            return
+                            
             elif not ApprovalCheck("Kitty", 500, "I"): # If Kitty is too timid to do anything
                     pass
-            elif Primary == "Rogue":
+            elif ActiveGirl == "Rogue":
                     if K_LikeRogue >= 600 and ApprovalCheck("Kitty", (1500-(10*K_Les)-(10*(K_LikeRogue-60)))): #If she likes both of you a lot, threeway
                             $ State = "threeway"
                     elif ApprovalCheck("Kitty", 1000): #If she likes you well enough, Hetero
                             $ State = "hetero"            
                     elif K_LikeRogue >= 700: #if she doesn't like you but likes Rogue, lesbian
                             $ State = "lesbian"
-            elif Primary == "Emma":
+            elif ActiveGirl == "Emma":
                     if K_LikeEmma >= 600 and ApprovalCheck("Kitty", (1500-(10*K_Les)-(10*(K_LikeEmma-60)))): #If she likes both of you a lot, threeway
                             $ State = "threeway"
                     elif ApprovalCheck("Kitty", 1000): #If she likes you well enough, Hetero
                             $ State = "hetero"            
-                    elif K_LikeRogue >= 700: #if she doesn't like you but likes Emma, lesbian
+                    elif K_LikeEmma >= 700: #if she doesn't like you but likes Emma, lesbian
                             $ State = "lesbian"
-            
-            
+                        
             if State == "lesbian" or State == "threeway":
                 $ Options.extend(("fondle breasts","suck breasts","fondle pussy","fondle ass","kiss girl")) 
+                
                 if ActiveGirl == "Rogue":
                             if ApprovalCheck("Kitty", 800, "I") or K_LikeRogue >= 800:
                                 $ Options.append("lick pussy")
@@ -2500,6 +2470,7 @@ label Kitty_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = P
         #                            $ Options.append("dildo ass") 
         #                    if "vibrator" in K_Inventory:
         #                        $ Options.append("vibrator") 
+        
             if State == "hetero" or State == "threeway":
                     $ Options.extend(("hand","blow","kiss you")) 
             $ renpy.random.shuffle(Options)
@@ -2507,7 +2478,7 @@ label Kitty_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = P
             if Preset in Options:
                     #if the suggested action is in the possible actions. . .
                     $ Options[0] = Preset 
-                    ch_k "Oh, ok. . ."            
+                    ch_k "Oh, ok. . ."                       
             elif Preset:
                     ch_k "That doesn't seem as fun. . ."
                     
@@ -2523,12 +2494,10 @@ label Kitty_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = P
             else:                                              
                     #If this is a new action
                     $ Line = "Kitty shifts around"
-                                        
+                                  
+                                  
             if Options[0] == "masturbation":
-                        $ Action = "masturbation"  
-                        if Trigger != "lesbian" and Trigger5 in ("kiss you", "kiss girl", "kiss both"):
-                                #Clear out Trigger 5 if it's for kissing.  
-                                $ Trigger5 = 0                      
+                        $ Action = "masturbation"                 
                         call Kitty_Self_Lines("T5",Trigger5)
             elif Options[0] == "hand":
                         $ Line = Line + " before she slides her hand down and wraps it around your shaft"
@@ -2632,48 +2601,28 @@ label Kitty_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = P
                                 $ TempLust += 3 if ApprovalCheck("Kitty", 800, "I") else 1  # Kitty's lust
                                 $ TempLust2 += 7 if E_LikeKitty >= 800 else 4
                         $ TempFocus += 2 
-                        
-            elif Options[0] == "kiss girl" or Mode == "lesbian":   
-#                        call RThreewayBreasts_Launch #Launches position change
-                        $ Line = Line + " and gives " + ActiveGirl + " a passionate kiss" #use T5 on this to choose targets
-                        $ Action = "kissing"  
-                        if Mode != "lesbian":
-                                if "kiss you" in Options:
-                                    $ Trigger5 = "kiss both" 
-                                else:
-                                    $ Trigger5 = "kiss girl"  
-                        if "lesbian" not in K_RecentActions:
-                                $ K_Les += 1
-                                $ K_RecentActions.append("lesbian") 
-                        if ActiveGirl == "Rogue": #If Kitty is kissing Rogue
-                                $ TempLust += 1 if ApprovalCheck("Kitty", 500, "I") else 0  # Kitty's lust
-                                $ TempLust += 1 if K_LikeRogue >= 800 else 0
-                                $ TempLust2 += 2 if R_LikeKitty >= 800 else 1
-                        elif ActiveGirl == "Emma": #If Kitty is fondling Emma's breasts
-                                $ TempLust += 1 if ApprovalCheck("Kitty", 500, "I") else 0  # Kitty's lust
-                                $ TempLust += 1 if K_LikeEmma >= 800 else 0
-                                $ TempLust2 += 2 if E_LikeKitty >= 800 else 1
+             
+            elif Options[0] == "kiss girl" or Mode == "lesbian":                               
+                        $ Line = Line + " and gives " + ActiveGirl + " a passionate kiss"
+                        $ Action = "kiss girl"
+                        if Mode != "lesbian" and "kiss you" in Options:
+                                if Trigger == "kiss you":
+                                        $ Action = "kiss both"                        
+                                elif Trigger3 == "kiss you":
+                                        $ Action = "kiss both"           
+                                elif Trigger4 == "kiss you":
+                                        $ Action = "kiss both" 
                         $ TempFocus += 1  
             elif Options[0] == "kiss you":   
-#                        call RThreewayBreasts_Launch #Launches position change
-                        $ Line = Line + " and gives you a passionate kiss" #use T5 on this to choose targets
-                        $ Action = "kissing"   
-                        if "kiss girl" in Options:
-                            $ Trigger5 = "kiss both" 
-                            if "lesbian" not in K_RecentActions:
-                                    $ K_Les += 1
-                                    $ K_RecentActions.append("lesbian")
-                            if ActiveGirl == "Rogue": #If Kitty is kissing Rogue
-                                    $ TempLust += 1 if ApprovalCheck("Kitty", 500, "I") else 0  # Kitty's lust
-                                    $ TempLust += 1 if K_LikeRogue >= 800 else 0
-                                    $ TempLust2 += 2 if R_LikeKitty >= 800 else 1
-                            elif ActiveGirl == "Emma": #If Kitty is fondling Emma's breasts
-                                    $ TempLust += 1 if ApprovalCheck("Kitty", 500, "I") else 0  # Kitty's lust
-                                    $ TempLust += 1 if K_LikeEmma >= 800 else 0
-                                    $ TempLust2 += 2 if E_LikeKitty >= 800 else 1
-                            $ TempFocus += 1   
-                        else:
-                            $ Trigger5 = "kiss you" 
+                        $ Line = Line + " and gives you a passionate kiss"
+                        $ Action = "kiss you"  
+                        if "kiss girl" in Options: 
+                                if Trigger == "kiss you":
+                                        $ Action = "kiss both"                         
+                                elif Trigger3 == "kiss you":
+                                        $ Action = "kiss both"           
+                                elif Trigger4 == "kiss you":
+                                        $ Action = "kiss both" 
                         $ TempLust += 1 
                         $ TempFocus += 1 
                         
@@ -2695,8 +2644,28 @@ label Kitty_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = P
                                 $ TempLust2 += 1 if ApprovalCheck("Emma", 500, "I") else 0
                                 $ TempLust2 += 1 if ApprovalCheck("Emma", 700, "I") else 0
                         $ TempFocus += 1 
-
+                                     
+            if Action == "kiss girl" or Action == "kiss both":
+                    #If there's a semi-lesbian make-out. . .                
+                    if "lesbian" not in K_RecentActions:
+                            $ K_Les += 1
+                            $ K_RecentActions.append("lesbian") 
+                    if ActiveGirl == "Rogue": #If Kitty is kissing Rogue
+                            $ TempLust += 1 if ApprovalCheck("Kitty", 500, "I") else 0  # Kitty's lust
+                            $ TempLust += 1 if K_LikeRogue >= 800 else 0
+                            $ TempLust2 += 2 if R_LikeKitty >= 800 else 1
+                    elif ActiveGirl == "Emma": #If Kitty is kissing Emma
+                            $ TempLust += 1 if ApprovalCheck("Kitty", 500, "I") else 0  # Kitty's lust
+                            $ TempLust += 1 if K_LikeEmma >= 800 else 0
+                            $ TempLust2 += 2 if E_LikeKitty >= 800 else 1
+                    $ TempFocus += 1 
+                                
             # Wrap-up
+            if Preset:
+                    $ ThreeCount = Round - 2
+            else: 
+                    #this sets a delay before the values change again on their own
+                    $ ThreeCount = Round - 1
             $ TempLust2 += 2       
             if Mode == "lesbian":
                 #Sets Primary Girl's secondary action

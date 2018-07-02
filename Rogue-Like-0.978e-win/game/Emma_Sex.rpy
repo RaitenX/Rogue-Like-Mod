@@ -1,10 +1,18 @@
 ﻿# Emma_SexMenu //////////////////////////////////////////////////////////////////////
 label Emma_SexAct(Act = 0):    
-    call Shift_Focus("Emma")
-    if Act == "masturbate":         
+    call Shift_Focus("Emma")    
+    if Act == "SkipTo":
+        $ renpy.pop_call() #causes it to skip past the cycle you were in before
+        $ renpy.pop_call() #causes it to skip past the sex menu you were in before that
+        call SkipTo("Emma")
+    elif Act == "masturbate":         
         call EM_Prep
         if not Situation:
             return        
+    elif Act == "lesbian":         
+        call E_Les_Prep
+        if not Situation:
+            return   
     elif Act == "morningwood":
         # This action is called for by the label Emma_Morning and returns to there
         $ E_RecentActions.append("blow")           
@@ -30,7 +38,7 @@ label Emma_SexAct(Act = 0):
         if not Situation:
             return  
     elif Act == "hand":        
-        call EHJ_Prep
+        call E_HJ_Prep
         if not Situation:
             return   
     elif Act == "sex":        
@@ -59,11 +67,7 @@ label Emma_SexMenu:
     if "detention" in E_RecentActions:
         $ Tempmod = 20 if Tempmod <= 20 else Tempmod
     call Set_The_Scene(Dress = 0)
-#    show Emma_Sprite at SpriteLoc(E_SpriteLoc):
-#        alpha 1
-#        zoom 1
-#        offset (0,0)
-#        anchor (0.5, 0.0)
+
     if not P_Semen:
         "You're a little out of juice at the moment, you might want to wait a bit." 
     if P_Focus >= 95:
@@ -151,6 +155,12 @@ label Emma_SexMenu:
                                 else:
                                     "I'm sorry, [E_Petname], but I need a break."
                         
+                        
+#                        "Maybe make out with Rogue?" if R_Loc == bg_current:
+#                                call E_LesScene
+#                        "Maybe make out with Kitty?" if K_Loc == bg_current:
+#                                call E_LesScene
+
                         "Never mind [[something else]":
                                 jump Emma_SMenu
                           
@@ -248,9 +258,10 @@ label Emma_SexMenu:
                 else:
                     ch_e "Fine."
                     
-                $ E_OCount = 0    
-                call Emma_Cleanup
-                call EmmaOutfit
+                call Sex_Over  
+#                $ E_OCount = 0    
+#                call Emma_Cleanup
+#                call EmmaOutfit
                 return
     if E_Loc != bg_current:
         call Set_The_Scene
@@ -354,73 +365,8 @@ label Emma_Cheat_Menu:
     jump Emma_Cheat_Menu
     return
     
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+    
+    
 label E_Jackin(Cnt = 0, TempVar = 0):
     if "unseen" in E_RecentActions:        
             $ P_RecentActions.append("cockout") 
@@ -570,11 +516,11 @@ label E_Jackin(Cnt = 0, TempVar = 0):
                 show blackscreen onlayer black
                 hide blackscreen onlayer black
                 if TempVar == "hand":                
-                        jump EHJ_Prep
+                        jump E_HJ_Prep
                 elif TempVar == "blow":
-                        jump EBJ_Prep
+                        jump E_BJ_Prep
                 elif TempVar == "tit":
-                        jump ETJ_Prep
+                        jump E_TJ_Prep
                 elif TempVar == "sex":
                         jump E_SexPrep
                 elif TempVar == "anal":
@@ -868,7 +814,7 @@ label E_Makeout:
 label E_KissPrep:    
     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 10, 1)
     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 20, 1)
-    call E_Kissing_Launch("kissing")
+    call E_Kissing_Launch("kiss you")
     if E_Kissed >= 10 and E_Inbt >= 300:
         call EmmaFace("sucking")
     elif E_Kissed > 1 and E_Addict >= 50:
@@ -896,7 +842,7 @@ label E_KissPrep:
         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 30, 20)
         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, 20)
         jump E_Kiss_After
-    $ Trigger = "kissing"
+    $ Trigger = "kiss you"
     $ Line = 0
     $ Cnt = 0
     if Situation:     
@@ -906,18 +852,23 @@ label E_KissPrep:
 label E_KissCycle:
     while Round >=0:
         call Shift_Focus("Emma")
-        call E_Kissing_Launch("kissing")       
+        call E_Kissing_Launch("kiss you")       
         call EmmaLust   
             
         $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
                   
-        if Line:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
+        if Line and P_Focus < 100:                                                    
+                    #Player Command menu
                     menu:
-                        "[Line]"
                         "Keep going. . .":
-                                pass                
+                                pass    
+
+                        "Slap her ass":                     
+                                    call E_Slap_Ass  
+                                    $ Cnt += 1
+                                    $ Round -= 1                                      
+                                    jump E_KissCycle  
+
                         "Move a hand to her breasts. . ." if E_Kissed >= 5 and MultiAction:
                                 if E_Action and MultiAction:
                                     $ Situation = "auto"
@@ -945,13 +896,6 @@ label E_KissCycle:
                                     "As your hands creep downwards, she grabs your wrists."
                                     ch_e "I'm actually getting a little tired, so maybe we could wrap this up?" 
                         
-                        "Start jack'in it." if MultiAction and Trigger2 != "jackin":
-                                call E_Jackin
-                        
-                        "Stop jack'in it." if MultiAction and Trigger2 == "jackin":
-                                "You stop jack'in it."
-                                $ Trigger2 = 0
-                          
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
                         "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
@@ -960,42 +904,135 @@ label E_KissCycle:
                         "Release your focus." if P_FocusX:
                                     "You release your concentration. . ."                
                                     $ P_FocusX = 0
+                                        
+                        "Start jack'in it." if MultiAction and Trigger2 != "jackin":
+                                call E_Jackin                        
+                        "Stop jack'in it." if MultiAction and Trigger2 == "jackin":
+                                "You stop jack'in it."
+                                $ Trigger2 = 0
                                 
-                        "Maybe lose some clothes. . .":
-                                    call E_Undress  
-                                    
-                        "Let's try something else." if MultiAction and E_Kissed >= 5:   
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if E_Action and MultiAction:
+                                                call Emma_Offhand_Set
+                                                if Trigger2:
+                                                     $ E_Action -= 1
+                                            else:
+                                                ch_e "I'm actually getting a little tired, perhaps we could wrap this up?"  
+                                                
+                                    "Shift primary action":
+                                            if E_Action and MultiAction:
+                                                    menu:  
+                                                        "Move a hand to her breasts. . ." if E_Kissed >= 5 and MultiAction:
+                                                                if E_Action and MultiAction:
+                                                                    $ Situation = "auto"
+                                                                    call E_Kiss_After
+                                                                    call E_Fondle_Breasts                          
+                                                                    if Trigger == "fondle breasts": 
+                                                                        $ Trigger2 = "kiss you"                                   
+                                                                        call E_FB_Prep   
+                                                                    else: 
+                                                                        $ Trigger = "kiss you"     
+                                                                else:
+                                                                    "As your hands creep upwards, she grabs your wrists."
+                                                                    ch_e "I'm actually getting a little tired, perhaps we could wrap this up?"  
+                                                        "Move a hand to her thighs. . ." if E_Kissed >= 5 and MultiAction:
+                                                                if E_Action and MultiAction:
+                                                                    $ Situation = "auto"
+                                                                    call E_Kiss_After
+                                                                    call E_Fondle_Thighs   
+                                                                    if Trigger == "fondle thighs": 
+                                                                        $ Trigger2 = "kiss you"      
+                                                                        call E_FT_Prep 
+                                                                    else: 
+                                                                        $ Trigger = "kiss you"     
+                                                                else:
+                                                                    "As your hands creep downwards, she grabs your wrists."
+                                                                    ch_e "I'm actually getting a little tired, perhaps we could wrap this up?" 
+                                                        "Never Mind":
+                                                                jump E_KissCycle
+                                            else:
+                                                ch_e "I'm actually getting a little tired, perhaps we could wrap this up?" 
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Emma to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Emma_Les_Change
+                                            "Ask Emma to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Rogue":
+                                                            call Rogue_Three_Change
+                                                        elif Partner == "Kitty":
+                                                            call Kitty_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Emma")
+                                            "Undress [Partner]":
+                                                        if Partner == "Rogue":
+                                                                call R_Undress   
+                                                        elif Partner == "Kitty":
+                                                                call K_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Rogue" and R_Spunk:
+                                                                call Rogue_Cleanup("ask")    
+                                                        elif Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump E_KissCycle 
+                                            "Never mind":
+                                                        jump E_KissCycle 
+                                    "Undress Emma":
+                                            call E_Undress   
+                                    "Clean up Emma (locked)" if not E_Spunk:
+                                            pass  
+                                    "Clean up Emma" if E_Spunk:
+                                            call Emma_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump E_KissCycle 
+                        
+                        "Back to Sex Menu" if MultiAction and E_Kissed >= 5:  
+                                ch_p "Let's try something else." 
                                 $ Situation = "shift"
+                                $ Line = 0
                                 jump E_Kiss_After
-                        "Let's stop for now.": 
+                        "End Scene": 
+                                ch_p "Let's stop for now."
+                                $ Line = 0
                                 jump E_Kiss_After
         #End menu (if Line)
         
         call Sex_Dialog("Emma",Partner)
         
-        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        $ Cnt += 1
+        $ Round -= 1  
         
-        #If either of you could cum 
-        if P_Focus >= 100 or E_Lust >= 100:                                           
-                    "[Line]"    
-                    
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up     
+        if P_Focus >= 100 or E_Lust >= 100:      
+                    #If either of you could cum   
+                    if P_Focus >= 100: 
+                            #If you can cum:
                             call PE_Cumming
                             if "angry" in E_RecentActions:  
                                 call E_Pos_Reset
                                 return    
                             $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
                             if 100 > E_Lust >= 70 and E_OCount < 2:             
-                                $ E_RecentActions.append("unsatisfied")                      
-                                $ E_DailyActions.append("unsatisfied") 
+                                    $ E_RecentActions.append("unsatisfied")                      
+                                    $ E_DailyActions.append("unsatisfied") 
                             
                             if P_Focus > 80:
                                 jump E_Kiss_After 
                             $ Line = "came"
      
-                    #If Emma can cum
-                    if E_Lust >= 100:                                                                
+                    if E_Lust >= 100:       
+                            #If you're still going at it and Emma can cum
                             call E_Cumming
                             if Situation == "shift" or "angry" in E_RecentActions:
                                 jump E_Kiss_After            
@@ -1007,18 +1044,23 @@ label E_KissCycle:
                             $ Line = 0
                             jump E_Kiss_After   
                 
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Rogue" and R_Lust >= 100:                                          
+                    call R_Cumming
+                elif Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
         #End orgasm
         
-   
         if Round == 10:
-            ch_e "You might want to wrap this up, it's getting late."  
+            ch_e "We might want to wrap this up, it's getting late."  
         elif Round == 5:
-            ch_e "Seriously, it'll be time to stop soon."        
+            ch_e "It will be time to stop soon."        
     
     #Round = 0 loop breaks
     call EmmaFace("bemused", 0)
     $ Line = 0
-    ch_e "Ok, [E_Petname], that's enough of that for now."
+    ch_e "Alright, [E_Petname], that's plenty of that for now."
     
 label E_Kiss_After:
     call EmmaFace("sexy") 
@@ -1429,6 +1471,7 @@ label EM_Prep:
     $ E_DailyActions.append("masturbation") 
             
 label EM_Cycle:  
+    $ Trigger = "masturbation"
     if Situation == "join":
         $ renpy.pop_call() 
         $ Situation = 0 
@@ -1441,46 +1484,36 @@ label EM_Cycle:
         
         $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
             
-        if Line:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                                        
+        if Line and P_Focus < 100:                                                    
+                    #Player Command menu                                        
                     menu:
-                        "[Line]"
-                        
                         "Keep Watching.":
                                 pass
                                 
-                        "Emma. . .[[jump in]" if "unseen" not in E_RecentActions and MultiAction:                 
+                        "Emma. . .[[jump in]" if "unseen" not in E_RecentActions:                 
                                 "Emma slows what she's doing with a sly grin."
-                                ch_e "Enjoy the show?"
+                                ch_e "Enjoying the show?"
                                 $ Situation = "join"
                                 call E_Masturbate               
                         "\"Ahem. . .\"" if "unseen" in E_RecentActions:  
-                                jump EM_Interupted      
+                                jump EM_Interupted    
+                                                   
+                        "Start jack'in it." if Trigger2 != "jackin":
+                                call E_Jackin                   
+                        "Stop jack'in it." if Trigger2 == "jackin":
+                                $ Trigger2 = 0    
+                                            
                         "Slap her ass":    
                                 if "unseen" in E_RecentActions:
                                         "You smack Emma firmly on the ass!"
                                         $ renpy.play('sounds/slap.mp3')
                                         jump EM_Interupted                                          
                                 else:
-                                        call E_Slap_Ass
+                                        call E_Slap_Ass                                        
+                                        $ Cnt += 1
+                                        $ Round -= 1    
                                         jump EM_Cycle  
-                                
-                        "Change what I'm doing":
-                                menu:
-                                    "Start jack'in it." if Trigger2 != "jackin":
-                                            call E_Jackin                   
-                                    "Stop jack'in it." if Trigger2 == "jackin":
-                                            $ Trigger2 = 0
-                                
-#                                    "Fondle her breasts" if "unseen" not in E_RecentActions and Trigger2 != "fondle breasts":
-#                                            $ Trigger2 = "fondle breasts"
-#                                    "Suck on her breasts" if "unseen" not in E_RecentActions and Trigger2 != "suck breasts":
-#                                            $ Trigger2 = "suck breasts" 
-                                    "Nevermind":
-                                            pass
-                             
+                           
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
                         "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
@@ -1489,16 +1522,68 @@ label EM_Cycle:
                         "Release your focus." if P_FocusX:
                                     "You release your concentration. . ."                
                                     $ P_FocusX = 0
-                        
-                        "Maybe lose some clothes. . ." if "unseen" not in E_RecentActions:
-                                    call E_Undress  
                                     
-                        "Let's try something else." if MultiAction and "unseen" not in E_RecentActions: 
+                        "Change what I'm doing":
+                                menu:
+                                    "Offhand action":
+                                            if E_Action and MultiAction:
+                                                call Emma_Offhand_Set
+                                                if Trigger2:
+                                                     $ E_Action -= 1
+                                            else:
+                                                ch_e "I'm actually getting a little tired, perhaps we could wrap this up?"  
+                                                           
+                                    "Threesome actions (locked)" if not Partner or "unseen" in E_RecentActions: 
+                                        pass
+                                    "Threesome actions" if Partner and "unseen" not in E_RecentActions:   
+                                        menu:
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Rogue":
+                                                            call Rogue_Three_Change
+                                                        elif Partner == "Kitty":
+                                                            call Kitty_Three_Change     
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Emma")
+                                            "Undress [Partner]":
+                                                        if Partner == "Rogue":
+                                                                call R_Undress   
+                                                        elif Partner == "Kitty":
+                                                                call K_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Rogue" and R_Spunk:
+                                                                call Rogue_Cleanup("ask")    
+                                                        elif Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump EM_Cycle 
+                                            "Never mind":
+                                                        jump EM_Cycle 
+                                    "Undress Emma":
+                                            if "unseen" in E_RecentActions:
+                                                    ch_p "Oh, yeah, take it off. . ."
+                                                    jump EM_Interupted
+                                            else:                                        
+                                                    call E_Undress   
+                                    "Clean up Emma (locked)" if not E_Spunk:
+                                            pass  
+                                    "Clean up Emma" if E_Spunk:
+                                            if "unseen" in E_RecentActions:
+                                                    ch_p "You've got a little something on you. . ."
+                                                    jump EM_Interupted
+                                            else:                      
+                                                    call Emma_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump EM_Cycle                               
+                         
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
                                     call E_Pos_Reset
                                     $ Situation = "shift"
                                     $ Line = 0
                                     jump EM_Interupted
-                        "Let's stop for now." if not MultiAction and "unseen" not in E_RecentActions: 
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
                                     call E_Pos_Reset
                                     $ Line = 0
                                     jump EM_Interupted
@@ -1508,13 +1593,16 @@ label EM_Cycle:
                 
         #If either of you could cum 
         
+        $ Cnt += 1
+        $ Round -= 1
     
         $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
         
         if P_Focus >= 100 or E_Lust >= 100:   
                     #If you can cum:
                     if P_Focus >= 100:
-                        if "unseen" not in E_RecentActions: #if she knows you're there
+                        if "unseen" not in E_RecentActions: 
+                            #if she knows you're there
                             call PE_Cumming
                             if "angry" in E_RecentActions:  
                                 call E_Pos_Reset
@@ -1525,6 +1613,7 @@ label EM_Cycle:
                                 $ E_DailyActions.append("unsatisfied") 
                             $ Line = "came"
                         else: #If she wasn't aware you were there
+                            "You grunt and try to hold it in."
                             $ P_Focus = 95
                             jump EM_Interupted
      
@@ -1545,10 +1634,16 @@ label EM_Cycle:
                                 "Finish her?"
                                 "Yes, keep going for a bit." if P_Semen:
                                     $ Line = "You get back into it" 
-                                    jump EM_Cycle 
+                                    jump EM_Cycle  
                                 "No, I'm done.":
                                     "You pull back."
                                     return
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Rogue" and R_Lust >= 100:                                          
+                    call R_Cumming
+                elif Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming                    
         #End orgasm
         
         if "unseen" in E_RecentActions:
@@ -1568,7 +1663,7 @@ label EM_Cycle:
     call EmmaFace("bemused", 0)
     $ Line = 0
     if "unseen" not in E_RecentActions:
-        ch_e "Ok, I'm kinda done for now, I need a break."
+        ch_e "That's probably enough of that."
     
 label EM_Interupted:
     
@@ -1619,7 +1714,9 @@ label EM_Interupted:
                                     else:
                                             $ Tempmod -= 10
                                             $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, -5)
-                        call Emma_First_Peen
+                        
+                        if "Historia" not in P_Traits:
+                                call Emma_First_Peen
                                     
                 #you haven't been jacking it                    
                 else:         
@@ -1642,7 +1739,7 @@ label EM_Interupted:
                                 
                 call DrainWord("Emma","unseen",1,0) #She sees you, so remove unseens
                 $ E_Mast += 1
-                if "classcaught" not in E_History:
+                if "classcaught" not in E_History or "Historia" in P_Traits:
                     # this activates if it's the first time in class
                     return
                 if Round <= 10:
@@ -1712,7 +1809,7 @@ label Emma_Offhand(TempLine=0):
     if not Trigger2: #If there are no offhand options set, return
         return    
     
-    if Trigger2 == "kissing":
+    if Trigger2 == "kiss you":
                 $ Line = renpy.random.choice([". Your lips gently slide across hers.", 
                         ". Her lips part as you hold her close.",    
                         ". You nibble her neck as she groans in pleasure.",
@@ -1861,7 +1958,7 @@ label Emma_Offhand_Set(Situation = Situation, TempTrigger = Trigger2):
                 elif TempTrigger == "insert ass":
                         "You shift your attention to her ass."
                         jump E_IA_Prep
-                else: #If Trigger2 is "kissing"
+                else: #If Trigger2 is "kiss you"
                         "You go back to kissing her deeply."
                         jump E_KissPrep                
             else: #if there's no Trigger2
@@ -1874,7 +1971,7 @@ label Emma_Offhand_Set(Situation = Situation, TempTrigger = Trigger2):
         menu:  
             "Also kiss her." if Trigger in ("fondle breasts", "fondle pussy", "fondle thighs", "fondle ass", "insert ass", "sex", "anal", "hotdog", "dildo pussy", "dildo anal", "foot"):
                     "You lean in and start kissing her."
-                    $ Trigger2 = "kissing"
+                    $ Trigger2 = "kiss you"
                     
             "Also fondle her breasts." if Trigger in ("fondle pussy", "fondle thighs", "fondle ass", "insert ass", "suck breasts", "lick pussy", "lick ass", "sex", "anal", "hotdog", "dildo pussy", "dildo anal", "foot"):
                     $ Trigger2 = "fondle breasts"
@@ -1914,7 +2011,7 @@ label Emma_Offhand_Set(Situation = Situation, TempTrigger = Trigger2):
 label Emma_ShameIndex:   
     $ E_ShameLevel = 0
     
-    if Trigger == "kissing":
+    if Trigger == "kiss you":
         $ E_ShameLevel += 2
         
     elif Trigger in ("fondle breasts", "fondle thighs", "fondle ass"):
@@ -1932,7 +2029,7 @@ label Emma_ShameIndex:
     
     if not Trigger2:
         pass
-    if Trigger2 == "kissing":
+    if Trigger2 == "kiss you":
         $ E_ShameLevel += 2
         
     elif Trigger2 in ("fondle breasts", "fondle thighs", "fondle ass"):
@@ -1947,8 +2044,12 @@ label Emma_ShameIndex:
         
     if not Trigger3:
         pass
-    elif Trigger3 == "kissing":
+    elif Trigger3 == "kiss you":
         $ E_ShameLevel += 2
+    elif Trigger3 == "kiss girl":
+        $ E_ShameLevel += 3
+    elif Trigger3 == "kiss both":
+        $ E_ShameLevel += 4
         
     elif Trigger3 in ("fondle breasts", "fondle thighs", "fondle ass"):
         $ E_ShameLevel += 6
@@ -1965,7 +2066,7 @@ label Emma_ShameIndex:
     return
             
 label Emma_Taboo(Cnt= 1, Public=0):    
-    if Trigger == "kissing" and not Trigger2 and not Trigger3:        
+    if Trigger == "kiss you" and not Trigger2 and not Trigger3:        
             if R_Loc == bg_current:
                 call Rogue_Noticed("Emma")
             if K_Loc == bg_current:
@@ -1989,7 +2090,7 @@ label Emma_Taboo(Cnt= 1, Public=0):
     $ Cnt = 4 if Cnt > 4 else Cnt   
     
     $ D20 = renpy.random.randint(1, 20)  
-    if E_Rules and D20 < 10:                                              
+    if "Emma" not in Rules and D20 < 10:                                              
         # If Xavier notices you can calls you in   
         if R_Loc == bg_current:
                 call Rogue_Noticed("Emma")
@@ -2000,7 +2101,7 @@ label Emma_Taboo(Cnt= 1, Public=0):
                     if newgirl[ModdedGirls[i]].Loc == bg_current:
                         call NewGirl_Noticed(ModdedGirls[i], "Emma")
                     $ i += 1
-        if Trigger != "kissing" and Taboo > 20:
+        if Trigger != "kiss you" and Taboo > 20:
                 call EmmaFace("confused", 1)
                 if Trigger == "blow" or Trigger == "hand" or Trigger == "titjob":
                     "Emma stops what she's doing with an annoyed look."                
@@ -2076,7 +2177,7 @@ label Emma_Taboo(Cnt= 1, Public=0):
                         "Emma bolts up with an embarassed look. She grabs her clothes and stalks off."  
                         $ E_Rep -= 3 if E_Rep >= 30 else E_Rep            
                     else:
-                        "With a sudden embarrassed start, Emma panics. She grabs her clothes and stalks off."  
+                        "With a sudden embarrassed start, Emma stop what she's doing. She grabs her clothes and stalks off."  
                         $ E_Love = Statupdate("Emma", "Love", E_Love, 90, -15) 
                     "You head back to your room."                    
                     $ Line = "stop"
@@ -2155,6 +2256,7 @@ label Emma_Noticed(Other = "Rogue", B = 0):
     if Other == "Rogue":            
             "Emma noticed what you and Rogue are up to."
             $ E_RecentActions.append("noticed rogue")
+            $ R_RecentActions.append("noticed emma")
             if "poly rogue" in E_Traits:
                     $ B = (1000-(20*Taboo))  
             else:
@@ -2164,6 +2266,7 @@ label Emma_Noticed(Other = "Rogue", B = 0):
     elif Other == "Kitty":            
             "Emma noticed what you and Kitty are up to."
             $ E_RecentActions.append("noticed kitty")
+            $ K_RecentActions.append("noticed emma")
             if "poly kitty" in E_Traits:
                     $ B = (1000-(20*Taboo))  
             else:
@@ -2187,6 +2290,8 @@ label Emma_Noticed(Other = "Rogue", B = 0):
 #    call Remove_Girl("Emma")
 #    return
             
+    $ E_SpriteLoc = StageFarRight  
+    call Display_Emma(0,TrigReset=0) 
     $ Partner = "Emma"
     if ApprovalCheck("Emma", 2000, TabM=2, Bonus = B) or ApprovalCheck("Emma", 950, "L", TabM=2, Bonus = (B/3)):
             #if she's very loose or really likes you
@@ -2274,7 +2379,7 @@ label Emma_Noticed(Other = "Rogue", B = 0):
             call EmmaFace("surprised", 2)
             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 90, 2) 
             $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 40, 20)
-            if Trigger != "kissing":
+            if Trigger != "kiss you":
                     $ E_Love = Statupdate("Emma", "Love", E_Love, 90, -10) 
                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, -5)
                     $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 80, 10)
@@ -2282,7 +2387,7 @@ label Emma_Noticed(Other = "Rogue", B = 0):
                     $ E_Love = Statupdate("Emma", "Love", E_Love, 90, -5) 
                     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, -5)
                     "She looks annoyed, and shoves you both out of the room."                 
-            elif Trigger != "kissing":
+            elif Trigger != "kiss you":
                 "She looks annoyed, and storms out of the room." 
             else:
                 "She looks a bit disgusted and walks away."                                  

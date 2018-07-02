@@ -1099,7 +1099,7 @@ label CleartheRoom(Character = "Rogue", Passive = 0, Silent = 0, Check = 0):
                 else:
                     $ Check += 1                 
                     
-            if Character != "Emma" and (E_Loc == bg_current or "Emma" in Party):        
+            if Character != "Emma" and (E_Loc == bg_current or "Emma" in Party or (E_Loc == "bg teacher" and bg_current == "bg classroom")):        
                 if not Check:                        
                     #if the character asking is not Emma, this removes Emma from the room
                     if Silent:
@@ -1342,7 +1342,41 @@ label Round10(Options = ["none"]):
         return
 #Chat Function >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
 
-label Chat:
+label Chat(Girl=0):
+    if Girl:
+            #if a character was pre-selected
+            if Girl == "Rogue":
+                    if R_Loc == bg_current:
+                            call Rogue_Chat_Set("chat")    
+                    elif "Rogue" in Digits:
+                            "You send Rogue a text."
+                            call Rogue_Chat_Set("chat") 
+                    else:
+                            "You don't know her number, you'll have to go to her." 
+                        
+            elif Girl == "Kitty":
+                    if K_Loc == bg_current:
+                            call Kitty_Chat_Set("chat") 
+                    elif "Kitty" in Digits:
+                            "You send Kitty a text."
+                            call Kitty_Chat_Set("chat") 
+                    else:
+                            "You don't know her number, you'll have to go to her." 
+                        
+            elif Girl == "Emma":                
+                    if "classcaught" not in E_History:
+                            "She seems busy." 
+                    else:
+                            if E_Loc == bg_current:
+                                    call Emma_Chat_Set("chat") 
+                            elif "Emma" in Digits:
+                                    "You send Emma a text."
+                                    call Emma_Chat_Set("chat") 
+                            else:
+                                    "You don't know her number, you'll have to go to her." 
+            return
+    else:
+            #if no-one was pre-selected
             menu:
                 "Chat with Rogue" if R_Loc == bg_current: 
                         call Rogue_Chat        
@@ -1397,7 +1431,9 @@ label Chat:
                             return                 
                 "Never Mind":
                     pass
-            return
+            
+            
+    return
             
 # End Chat  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
 
@@ -3580,49 +3616,620 @@ label LikeUpdater(Primary = "Rogue", Value = 1, Noticed = 1):
     return
     
 # End LikeUpdater / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
-      
+
+# Start Danger Room Historia / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
+  
+label Danger_Room_Historia(Character="Rogue",Scenario="Meeting"):
+    # Character is the lead character, Scenario is the scene being played out
+    default DangerStore = [0,0,0,0,0,0,0,0,0,0,0,0]
+    ch_danger "Now booting up the Danger Room historical simulation protocols. . ."
+    menu:
+        ch_danger "Which girl did you want to simulate?"
+        "Rogue":
+            $ Character="Rogue"
+        "Kitty" if "met" in K_History:
+            $ Character="Kitty"  
+        "Kitty (locked)" if "met" not in K_History:
+            $ Character="Kitty"            
+        "Emma" if "met" in E_History:
+            $ Character="Emma"          
+        "Emma (locked)" if "met" not in E_History:
+            $ Character="Emma"
+        "Never mind.":
+            return
+    menu:
+        ch_danger "And Which type of scenario?"
+        "First meeting":
+            $ Scenario="Meeting"
+        "A Relationship milestone" if Character != "Emma":
+            $ Scenario="Relationship"   
+        "A Relationship milestone (locked)" if Character == "Emma":
+            pass
+        "Caught after Class" if Character == "Emma" and "classcaught" in E_History:
+            $ Scenario="ClassCaught"   
+        "Never mind.":
+            return
+    ch_danger "Launching simulation settings. . ."
+    ch_danger "Take care not to save the game until the simulation ends, as these saves may become corrupted at a later date."
+    $ P_Traits.append("Historia")
+    call Shift_Focus(Character)    
+    call CleartheRoom("All",0,1)
+    if Character == "Rogue":
+            #store data for later
+            # cover petnames, achievements, rules in scenes themselves
+            $ DangerStore = [0,0,0,0,0,0,0,0,0,0,0,0]
+            $ DangerStore[1] = Time_Count
+            $ DangerStore[2] = R_Love
+            $ DangerStore[3] = R_Obed
+            $ DangerStore[4] = R_Inbt
+            $ DangerStore[5] = R_Lust
+            
+            $ DangerStore[6] = list(R_History)
+            $ DangerStore[7] = list(R_Traits)
+            $ DangerStore[8] = list(R_RecentActions)
+            $ DangerStore[9] = list(R_DailyActions)
+            
+            $ DangerStore[10] = R_Addict
+            $ DangerStore[11] = R_Addictionrate
+            #run scenario
+            
+            if Scenario == "Meeting":
+                    #add Rogue's default stats
+                    $ R_Love = 500
+                    $ R_Obed = 0
+                    $ R_Inbt = 0 
+                    $ R_Lust = 0
+                    $ Current_Time = "Evening"
+                    # Rogue's lists are irrelevant to this one, but add them to other scenarios
+                    $ DangerStore.append(R_Kissed)
+                    
+                    call Prologue
+                    
+                    $ R_Kissed = DangerStore[12]
+            elif Scenario == "Relationship":  
+                    $ DangerStore.append(R_Kissed)
+                    $ DangerStore.append(R_SEXP)
+                    $ DangerStore.append(list(R_Petnames))                                  
+                    $ bg_current = "bg player"   
+                    menu:
+                        "Which scene?"
+                        "Girlfriend"    if "boyfriend" in R_Petnames:
+                                $ DangerStore.append(R_Event[5]) 
+                                call Historia_Counter
+                                $ R_Event[5] = _return       
+                                call Rogue_BF                                
+                                $ R_Event[5] = DangerStore[15]  
+                        "Girlfriend (locked)" if "boyfriend" not in R_Petnames:
+                                pass
+                                
+                        "Lover"         if "lover" in R_Petnames:
+                                $ DangerStore.append(R_Event[6])  
+                                call Historia_Counter                             
+                                $ R_Event[6] = _return                                                               
+                                call Rogue_Love                                
+                                $ R_Event[6] = DangerStore[15]                                  
+                        "Lover (locked)" if "lover" not in R_Petnames:
+                                pass
+                                
+                        "Submissive"    if "sir" in R_Petnames:
+                                $ DangerStore.append(R_Event[7])   
+                                call Historia_Counter                            
+                                $ R_Event[7] = _return                                                                
+                                call Rogue_Sub                                
+                                $ R_Event[7] = DangerStore[15]  
+                        "Submissive (locked)" if "sir" not in R_Petnames:
+                                pass
+                                
+                        "Slave"         if "master" in R_Petnames:
+                                $ DangerStore.append(R_Event[8])  
+                                call Historia_Counter                             
+                                $ R_Event[8] = _return                                                               
+                                call Rogue_Slave                                
+                                $ R_Event[8] = DangerStore[15]  
+                        "Slave (locked)" if "master" not in R_Petnames:
+                                pass
+                                
+                        "Sex Friend"    if "sex friend" in R_Petnames:
+                                $ DangerStore.append(R_Event[9]) 
+                                call Historia_Counter                              
+                                $ R_Event[9] = _return                                                               
+                                call Rogue_Sexfriend                                
+                                $ R_Event[9] = DangerStore[15]  
+                        "Sex Friend (locked)" if "sex friend" not in R_Petnames:
+                                pass
+                                
+                        "Fuckbuddy"     if "fuck buddy" in R_Petnames:
+                                $ DangerStore.append(R_Event[10])  
+                                call Historia_Counter                             
+                                $ R_Event[10] = _return                                                               
+                                call Rogue_Fuckbuddy                                
+                                $ R_Event[10] = DangerStore[15]  
+                        "Fuckbuddy (locked)" if "fuck buddy" not in R_Petnames:
+                                pass
+                                
+                        "Daddy"         if "daddy" in R_Petnames:                                                    
+                                call Rogue_Daddy                 
+                        "Daddy (locked)" if "daddy" not in R_Petnames:
+                                pass
+                        "Never mind":
+                                $ DangerStore = []              
+                                $ bg_current = "bg dangerroom"   
+                                return
+                
+                    $ R_Kissed = DangerStore[12]
+                    $ R_SEXP = DangerStore[13]    
+                    $ R_Petnames = DangerStore[14]
+            # end Relationship scenarios
+                    
+            #clean up after the scenario
+            
+            if _return:
+                ch_danger "-Bzzt- Oversimulation detected."
+            ch_danger "Simulation Ending. . ."
+
+            $ Time_Count        = DangerStore[1]
+
+            $ R_Love            = DangerStore[2]
+            $ R_Obed            = DangerStore[3]
+            $ R_Inbt            = DangerStore[4] 
+            $ R_Lust            = DangerStore[5]
+            
+            $ R_History         = DangerStore[6]
+            $ R_Traits          = DangerStore[7] 
+            $ R_RecentActions   = DangerStore[8] 
+            $ R_DailyActions    = DangerStore[9]            
+            $ R_Addict          = DangerStore[10]
+            $ R_Addictionrate   = DangerStore[11]
+            $ DangerStore = []
+            
+            $ Current_Time = Time_Options[(Time_Count)]     
+    
+            $ bg_current = "bg dangerroom"
+            call Rogue_Schedule
+            call Remove_Girl("Rogue")
+            call Set_The_Scene
+            hide BlueScreen onlayer black
+            call RogueOutfit 
+            $ Taboo = 40
+    #end Rogue stuff
+    
+    elif Character == "Kitty":
+            #store data for later
+            # cover petnames, achievements, rules in scenes themselves
+            $ DangerStore = [0,0,0,0,0,0,0,0,0,0,0,0]
+            $ DangerStore[1] = Time_Count
+            $ DangerStore[2] = K_Love
+            $ DangerStore[3] = K_Obed
+            $ DangerStore[4] = K_Inbt
+            $ DangerStore[5] = K_Lust
+            
+            $ DangerStore[6] = list(K_History)
+            $ DangerStore[7] = list(K_Traits)
+            $ DangerStore[8] = list(K_RecentActions)
+            $ DangerStore[9] = list(K_DailyActions)
+            
+            $ DangerStore[10] = K_Addict
+            $ DangerStore[11] = K_Addictionrate
+            #run scenario
+            
+            if Scenario == "Meeting":
+                    #add Kitty's default stats
+                    $ K_Love = 400
+                    $ K_Obed = 100
+                    $ K_Inbt = 0 
+                    $ K_Lust = 0
+                    # Kitty's lists are irrelevant to this one, but add them to other scenarios
+                    $ DangerStore.append(K_Petname)#12
+                    
+                    call KittyMeet
+                    
+                    $ K_Petname = DangerStore[12]
+            elif Scenario == "Relationship":  
+                    $ DangerStore.append(K_Kissed)#12
+                    $ DangerStore.append(K_SEXP)#13
+                    $ DangerStore.append(list(K_Petnames))#14
+                    $ DangerStore.append(K_Petname)#15                       
+                    $ bg_current = "bg player"   
+                    menu:
+                        "Which scene?"
+                        "Girlfriend"    if "boyfriend" in K_Petnames:
+                                $ DangerStore.append(K_Event[5])#16 
+                                call Historia_Counter
+                                $ K_Event[5] = _return       
+                                call Kitty_BF                                
+                                $ K_Event[5] = DangerStore[16]  
+                        "Girlfriend (locked)" if "boyfriend" not in K_Petnames:
+                                pass
+                                
+                        "Lover"         if "lover" in K_Petnames:
+                                $ DangerStore.append(K_Event[6])#16  
+                                menu:
+                                        "How many times has she asked you already?"
+                                        "None":
+                                            $ K_Event[6] = 0
+                                        "Once":
+                                            $ K_Event[6] = 1
+                                        "Many times (enough)":
+                                            $ K_Event[6] = 6                                  
+                                call Kitty_Love                                
+                                $ K_Event[6] = DangerStore[16]                                  
+                        "Lover (locked)" if "lover" not in K_Petnames:
+                                pass
+                                
+                        "Submissive"    if "sir" in K_Petnames:       
+                                $ K_Petnames.remove("sir")
+                                menu:
+                                    "First time":                                                       
+                                        call Kitty_Sub         
+                                    "Second chance":                           
+                                        ch_p "You said you wanted me to be more in control?"
+                                        call Kitty_Sub_Asked
+                                $ K_Petnames.append("sir")
+                        "Submissive (locked)" if "sir" not in K_Petnames:
+                                pass
+                                
+                        "Slave"         if "master" in K_Petnames: 
+                                $ K_Petnames.remove("master")
+                                menu:
+                                    "First time": 
+                                        call Kitty_Master  
+                                    "Second chance":                                          
+                                        if "sir" not in K_Petnames:
+                                                $ K_Petnames.append("sir") 
+                                        ch_p "You said you wanted me to be your Master?" 
+                                        call Kitty_Sub_Asked
+                                $ K_Petnames.append("master")
+                        "Slave (locked)" if "master" not in K_Petnames:
+                                pass
+                                
+                        "Sex Friend"    if "sex friend" in K_Petnames:                                          
+                                call Kitty_Sexfriend            
+                        "Sex Friend (locked)" if "sex friend" not in K_Petnames:
+                                pass
+                                
+                        "Fuckbuddy"     if "fuck buddy" in K_Petnames:                                       
+                                call Kitty_Fuckbuddy                                
+                                $ K_Event[10] = 1
+                        "Fuckbuddy (locked)" if "fuck buddy" not in K_Petnames:
+                                pass
+                                
+                        "Daddy"         if "daddy" in K_Petnames:                                                    
+                                call Kitty_Daddy                 
+                        "Daddy (locked)" if "daddy" not in K_Petnames:
+                                pass
+                        "Never mind":
+                                $ DangerStore = []              
+                                $ bg_current = "bg dangerroom"   
+                                return
+                
+                    $ K_Kissed = DangerStore[12]
+                    $ K_SEXP = DangerStore[13]    
+                    $ K_Petnames = DangerStore[14]
+                    $ K_Petname = DangerStore[15]
+            # end Relationship scenarios
+                    
+            #clean up after the scenario
+            
+            if _return:
+                ch_danger "-Bzzt- Oversimulation detected."
+            ch_danger "Simulation Ending. . ."
+
+            $ Time_Count        = DangerStore[1]
+
+            $ K_Love            = DangerStore[2]
+            $ K_Obed            = DangerStore[3]
+            $ K_Inbt            = DangerStore[4] 
+            $ K_Lust            = DangerStore[5]
+            
+            $ K_History         = DangerStore[6]
+            $ K_Traits          = DangerStore[7] 
+            $ K_RecentActions   = DangerStore[8] 
+            $ K_DailyActions    = DangerStore[9]            
+            $ K_Addict          = DangerStore[10]
+            $ K_Addictionrate   = DangerStore[11]
+            $ DangerStore = []
+            
+            $ Current_Time = Time_Options[(Time_Count)]     
+    
+            $ bg_current = "bg dangerroom"
+            call Kitty_Schedule
+            call Remove_Girl("Kitty")
+            call Set_The_Scene
+            hide BlueScreen onlayer black
+            call KittyOutfit 
+            $ Taboo = 40
+    #end Kitty stuff
+    
+    elif Character == "Emma":
+            #store data for later
+            # cover petnames, achievements, rules in scenes themselves
+            $ DangerStore = [0,0,0,0,0,0,0,0,0,0,0,0]
+            $ DangerStore[1] = Time_Count
+            $ DangerStore[2] = E_Love
+            $ DangerStore[3] = E_Obed
+            $ DangerStore[4] = E_Inbt
+            $ DangerStore[5] = E_Lust
+            
+            $ DangerStore[6] = list(E_History)
+            $ DangerStore[7] = list(E_Traits)
+            $ DangerStore[8] = list(E_RecentActions)
+            $ DangerStore[9] = list(E_DailyActions)
+            
+            $ DangerStore[10] = E_Addict
+            $ DangerStore[11] = E_Addictionrate
+            #run scenario
+            
+            if Scenario == "Meeting":
+                    #add Emma's default stats
+                    $ E_Love = 300
+                    $ E_Obed = 0
+                    $ E_Inbt = 200 
+                    $ E_Lust = 0
+                    # Emma's lists are irrelevant to this one, but add them to other scenarios
+                    $ DangerStore.append(E_Petname)#12
+                    $ DangerStore.append(P_Rep)#13
+                    $ DangerStore.append(R_SEXP)#14
+                    $ DangerStore.append(K_SEXP)#15
+                    $ DangerStore.append(P_Lvl)#16
+                    menu:
+                        "How often do you get caught in public?"
+                        "Never":
+                            $ P_Rep = 800
+                        "Rarely":
+                            $ P_Rep = 500
+                        "Very Often":
+                            $ P_Rep = 0
+                    menu:
+                        "How far have you gotten with other girls?"
+                        "No progress":
+                            $ R_SEXP = 0
+                            $ K_SEXP = 0
+                        "Sex with one" if R_SEXP >= 60 or K_SEXP >= 60:
+                            $ R_SEXP = 70
+                            $ K_SEXP = 0
+                        "Sex with one (locked)" if R_SEXP < 60 and K_SEXP < 60:
+                            pass
+                        "Sex with more than one" if R_SEXP >= 60 and K_SEXP >= 60:
+                            $ R_SEXP = 70
+                            $ K_SEXP = 70
+                        "Sex with more than one (locked)" if not (R_SEXP >= 60 and K_SEXP >= 60):
+                            pass
+                    menu:
+                        "And how has your schooling gone so far?"
+                        "Barely started":
+                            $ P_Lvl = 0
+                        "Decent progress" if P_Lvl >= 3:
+                            $ P_Lvl = 3
+                        "Decent progress (locked)" if P_Lvl < 3:
+                            pass
+                        "Very advanced" if P_Lvl >= 7:
+                            $ P_Lvl = 7
+                        "Very advanced (locked)" if P_Lvl < 7:
+                            pass
+                            
+                    call EmmaMeet
+                    
+                    $ E_Petname = DangerStore[12]
+                    $ P_Rep = DangerStore[13]
+                    $ R_SEXP = DangerStore[14]
+                    $ K_SEXP = DangerStore[15]
+                    $ P_Lvl = DangerStore[16]
+                    
+            elif Scenario == "ClassCaught":
+                    # Emma's lists are irrelevant to this one, but add them to other scenarios
+                    
+                    $ E_History.remove("classcaught")
+                                            
+                    call Emma_Caught_Classroom
+                    $ E_Mast -= 1
+                    
+#            elif Scenario == "Relationship":  
+#                    $ DangerStore.append(E_Kissed)#12
+#                    $ DangerStore.append(E_SEXP)#13
+#                    $ DangerStore.append(list(E_Petnames))#14
+#                    $ DangerStore.append(E_Petname)#15                       
+#                    $ bg_current = "bg player"   
+#                    menu:
+#                        "Which scene?"
+#                        "Girlfriend"    if "boyfriend" in E_Petnames:
+#                                $ DangerStore.append(E_Event[5])#16 
+#                                call Historia_Counter
+#                                $ E_Event[5] = _return       
+#                                call Emma_BF                                
+#                                $ E_Event[5] = DangerStore[16]  
+#                        "Girlfriend (locked)" if "boyfriend" not in E_Petnames:
+#                                pass
+                                
+#                        "Lover"         if "lover" in E_Petnames:
+#                                $ DangerStore.append(E_Event[6])#16  
+#                                menu:
+#                                        "How many times has she asked you already?"
+#                                        "None":
+#                                            $ E_Event[6] = 0
+#                                        "Once":
+#                                            $ E_Event[6] = 1
+#                                        "Many times (enough)":
+#                                            $ E_Event[6] = 6                                  
+#                                call Emma_Lover                                
+#                                $ E_Event[6] = DangerStore[16]                                  
+#                        "Lover (locked)" if "lover" not in E_Petnames:
+#                                pass
+                                
+#                        "Submissive"    if "sir" in E_Petnames:       
+#                                $ E_Petnames.remove("sir")
+#                                menu:
+#                                    "First time":                                                       
+#                                        call Emma_Sub         
+#                                    "Second chance":                           
+#                                        ch_p "You said you wanted me to be more in control?"
+#                                        call Emma_Sub_Asked
+#                                $ E_Petnames.append("sir")
+#                        "Submissive (locked)" if "sir" not in E_Petnames:
+#                                pass
+                                
+#                        "Slave"         if "master" in E_Petnames: 
+#                                $ E_Petnames.remove("master")
+#                                menu:
+#                                    "First time": 
+#                                        call Emma_Master  
+#                                    "Second chance":                                          
+#                                        if "sir" not in E_Petnames:
+#                                                $ E_Petnames.append("sir") 
+#                                        ch_p "You said you wanted me to be your Master?" 
+#                                        call Emma_Sub_Asked
+#                                $ E_Petnames.append("master")
+#                        "Slave (locked)" if "master" not in E_Petnames:
+#                                pass
+                                
+#                        "Sex Friend"    if "sex friend" in E_Petnames:                                          
+#                                call Emma_Sexfriend            
+#                        "Sex Friend (locked)" if "sex friend" not in E_Petnames:
+#                                pass
+                                
+#                        "Fuckbuddy"     if "fuck buddy" in E_Petnames:                                       
+#                                call Emma_Fuckbuddy                                
+#                                $ E_Event[10] = 1
+#                        "Fuckbuddy (locked)" if "fuck buddy" not in E_Petnames:
+#                                pass
+                                
+#                        "Daddy"         if "daddy" in E_Petnames:                                                    
+#                                call Emma_Daddy                 
+#                        "Daddy (locked)" if "daddy" not in E_Petnames:
+#                                pass
+#                        "Never mind":
+#                                $ DangerStore = []              
+#                                $ bg_current = "bg dangerroom"   
+#                                return
+                
+#                    $ E_Kissed = DangerStore[12]
+#                    $ E_SEXP = DangerStore[13]    
+#                    $ E_Petnames = DangerStore[14]
+#                    $ E_Petname = DangerStore[15]
+#            # end Relationship scenarios
+                    
+            #clean up after the scenario
+            
+            if _return:
+                ch_danger "-Bzzt- Oversimulation detected."
+            ch_danger "Simulation Ending. . ."
+
+            $ Time_Count        = DangerStore[1]
+
+            $ E_Love            = DangerStore[2]
+            $ E_Obed            = DangerStore[3]
+            $ E_Inbt            = DangerStore[4] 
+            $ E_Lust            = DangerStore[5]
+            
+            $ E_History         = DangerStore[6]
+            $ E_Traits          = DangerStore[7] 
+            $ E_RecentActions   = DangerStore[8] 
+            $ E_DailyActions    = DangerStore[9]            
+            $ E_Addict          = DangerStore[10]
+            $ E_Addictionrate   = DangerStore[11]
+            $ DangerStore = []
+            
+            $ Current_Time = Time_Options[(Time_Count)]     
+    
+            $ bg_current = "bg dangerroom"
+            call Emma_Schedule
+            call Remove_Girl("Emma")
+            call Set_The_Scene
+            hide BlueScreen onlayer black
+            call EmmaOutfit 
+            $ Taboo = 40
+    #end Emma stuff
+    $ Tempmod = 0
+    $ Line = 0
+    $ MultiAction = 1 
+    $ P_Traits.remove("Historia")
+    ch_danger "Simulation Over, it is again safe to save your progress."
+    return
+ 
+
+label Historia_Counter:
+        # Called if the scenario has a repeat function
+        menu:
+            "How many times has she asked you already?"
+            "None":
+                return 0
+            "Once":
+                return 1
+            "Twice":
+                return 2
+        return
+        
+image BlueScreen:
+    alpha .1
+    contains:
+        Solid("#00B3D6", xysize=(1024, 768))  
+
+# End Danger Room Historia / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /  
+        
     
 # Start Primary Sex Dialog / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /  
 label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust = 0, SecondaryLust = 0, Line1 = 0, Line2 = 0, Line3 = 0, Line4 = 0, D20S = 0): #call Sex_Dialog("Rogue","Kitty") 
         # Primary is main female, secondary is supporting female, action is what they are doing.
-        $ Line = 0
-        
+                
         $ D20S = renpy.random.randint(1, 20) if not D20S else D20S #Sets random seed factor for the encounter
         # If the seed is 0-5, only offhands will play. If it's 15-20, only trigger3's will play. If it's 5-10, offhand and Secondaries will play.
         # If it's 10-15 all things will play. 
            
         # Checks for Taboo, and if it passes through, calls the first sex dialog
+        
+        $ Line = 0
         if Primary == "Rogue":
-                    if K_Loc == bg_current and not Taboo:                           #If Kitty is around and it's otherwise private
-                        call Kitty_Noticed("Rogue")
-                        $ Secondary = "Kitty" if K_Loc == bg_current else Secondary
-#                    elif E_Loc == bg_current and not Taboo:                           #If Emma is around and it's otherwise private
-#                        call Emma_Noticed("Rogue")
-#                        $ Secondary = "Emma" if E_Loc == bg_current else Secondary
-                    elif Taboo and (D20S + (int(Taboo/10)) - Stealth) >= 10:        #If there is a Taboo level, and your modified roll is over 10
-                        call Rogue_Taboo                    
-                    call Rogue_SexDialog    
+                    if Taboo:
+                        if (D20S + (int(Taboo/10)) - Stealth) >= 10:        
+                                #If there is a Taboo level, and your modified roll is over 10
+                                call Rogue_Taboo  
+                    else:
+                        #if not Taboo
+                        if K_Loc == bg_current:                           
+                            #If Kitty is around and it's otherwise private
+                            call Kitty_Noticed("Rogue")
+                            $ Secondary = "Kitty" if K_Loc == bg_current else Secondary
+                        elif E_Loc == bg_current:                           
+                            #If Emma is around and it's otherwise private
+                            call Emma_Noticed("Rogue")
+                            $ Secondary = "Emma" if E_Loc == bg_current else Secondary
+                                   
+                    call Rogue_SexDialog  
                                     
         elif Primary == "Kitty":
-                    if R_Loc == bg_current and not Taboo:                           #If Rogue is around and it's otherwise private
-                        call Rogue_Noticed("Kitty")
-                        $ Secondary = "Rogue" if R_Loc == bg_current else Secondary
-#                    elif E_Loc == bg_current and not Taboo:                           #If Emma is around and it's otherwise private
-#                        call Emma_Noticed("Kitty")
-#                        $ Secondary = "Emma" if E_Loc == bg_current else Secondary
-                    elif Taboo and (D20S + (int(Taboo/10)) - Stealth) >= 10:        #If there is a Taboo level, and your modified roll is over 10
-                        call Kitty_Taboo                    
+                    if Taboo:
+                        if (D20S + (int(Taboo/10)) - Stealth) >= 10:        
+                                #If there is a Taboo level, and your modified roll is over 10
+                                call Kitty_Taboo  
+                    else:
+                        #if not Taboo
+                        if R_Loc == bg_current:                           
+                            #If Rogue is around and it's otherwise private
+                            call Rogue_Noticed("Kitty")
+                            $ Secondary = "Rogue" if R_Loc == bg_current else Secondary
+                        elif E_Loc == bg_current:                           
+                            #If Emma is around and it's otherwise private
+                            call Emma_Noticed("Rogue")
+                            $ Secondary = "Emma" if E_Loc == bg_current else Secondary
+                                                    
                     call Kitty_SexDialog
                     
         elif Primary == "Emma":
-                    if R_Loc == bg_current and not Taboo:                           #If Rogue is around and it's otherwise private
-                        call Rogue_Noticed("Emma")
-                        $ Secondary = "Rogue" if R_Loc == bg_current else Secondary
-                    elif K_Loc == bg_current and not Taboo:                           #If Kitty is around and it's otherwise private
-                        call Kitty_Noticed("Emma")
-                        $ Secondary = "Kitty" if K_Loc == bg_current else Secondary
-                    elif Taboo and (D20S + (int(Taboo/10)) - Stealth) >= 10:        #If there is a Taboo level, and your modified roll is over 10
-                        call Emma_Taboo                    
+            
+                    if Taboo:
+                        if (D20S + (int(Taboo/10)) - Stealth) >= 10:        
+                                #If there is a Taboo level, and your modified roll is over 10
+                                call Emma_Taboo  
+                    else:
+                        #if not Taboo
+                        if R_Loc == bg_current:                           
+                            #If Rogue is around and it's otherwise private
+                            call Rogue_Noticed("Emma")
+                            $ Secondary = "Rogue" if R_Loc == bg_current else Secondary 
+                        elif K_Loc == bg_current and not Taboo:                          
+                            #If Kitty is around and it's otherwise private
+                            call Kitty_Noticed("Emma")
+                            $ Secondary = "Kitty" if K_Loc == bg_current else Secondary
+                           
                     call Emma_SexDialog
 
         elif Primary == "Mystique":
@@ -3638,50 +4245,57 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
         
         
         $ Line1 = Line #Set Line1 to the current state of the Line variable
-                
-        # If there is a player offhand Trigger set and the random value is 1-15, add an Offhand dialog
+        #End Primary Dialog
+        
+        #Trigger 2
         if Trigger2 and D20S <= 15:
+                    # If there is a player offhand Trigger set and the random value is 1-15, add an Offhand dialog
                     $ Line = ""
                     if Primary == "Rogue":                        
-                        call Rogue_Offhand
+                            call Rogue_Offhand
                     elif Primary == "Kitty":
-                        call Kitty_Offhand
+                            call Kitty_Offhand
                     elif Primary == "Emma":
-                        call Emma_Offhand
+                            call Emma_Offhand
                     elif Primary == "Mystique":
-                        call Mystique_Offhand
+                            call Mystique_Offhand
                     
                     $ Line1 = Line1 + Line
-        else:                
-                    $ Line1 = Line1 +"."
+        else:               
+                    $ Line1 = Line1 + "."
+        #End Offhand
         
-        # If there is a Primary offhand Trigger set and the random value is 1-10, add a self-directed dialog
+        #Trigger 3
         if D20S >= 7 and Trigger not in ("masturbation", "lesbian"):
+                    # If there is a Primary offhand Trigger set and the random value is 1-10, add a self-directed dialog
                     $ Line = 0
                     if Primary == "Rogue":
-                        call Rogue_Self_Lines("T3",Trigger3)      
+                            call Rogue_Self_Lines("T3",Trigger3)      
                     elif Primary == "Kitty":
-                        call Kitty_Self_Lines("T3",Trigger3)      
+                            call Kitty_Self_Lines("T3",Trigger3)      
                     elif Primary == "Emma":
-                        call Emma_Self_Lines("T3",Trigger3) 
+                            call Emma_Self_Lines("T3",Trigger3) 
                     elif Primary == "Mystique":
-                        call NewGirl_Self_Lines("Mystique","T3",Trigger3) 
+                            call NewGirl_Self_Lines("Mystique","T3",Trigger3) 
                     if Line:
-                        $ Line3 = Line + "."
-           
-        # If there is a Secondary character and the random value is 5-15, add a threeway dialog
-        if Secondary and (7 <= D20S <= 17 or Trigger4 == "watch"):
+                            $ Line3 = Line + "."
+        #End Primary girl offhand
+        
+        #Trigger 4
+        if Secondary and (not Trigger4 or 7 <= D20S <= 17 or Trigger4 == "watch"):
+                    # If there is a Secondary character and the random value is 5-15, add a threeway dialog
                     $ Line = 0
                     if Secondary == "Rogue":
-                        call Rogue_SexDialog_Threeway
+                            call Rogue_SexDialog_Threeway
                     elif Secondary == "Kitty":
-                        call Kitty_SexDialog_Threeway
+                            call Kitty_SexDialog_Threeway
                     elif Secondary == "Emma":
-                        call Emma_SexDialog_Threeway
+                            call Emma_SexDialog_Threeway
                     elif Secondary == "Mystique":
-                        call Mystique_SexDialog_Threeway
+                            call Mystique_SexDialog_Threeway
                     if Line:
-                        $ Line4 = Line + "."
+                            $ Line4 = Line + "."
+        #End Secondary Dialog
         
         #Applying player's satisfaction
         $ P_Focus = Statupdate("Player", "Focus", P_Focus, 200, TempFocus) 
@@ -3724,10 +4338,10 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
                 call MystiqueLust 
         
         
-        # Dialog begins to play out. . .  
-        
-        "[Line1]"
+        # Dialog begins to play out. . . 
         $ Line = Line1
+#        "Middialog=[Line]"
+        "[Line1]"
         if Line3:
                 #If there's a secondary line, play it
                 "[Line3]"
@@ -3737,12 +4351,127 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
                 #If there's a third person line, play it
                 "[Line4]"
                 $ Line = Line4
-        call NewGirl_Dirty_Talk
+        call Dirty_Talk 
+#        "prereturn=[Line]"
                         
         return
         
     
 # End Primary Sex Dialog / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /  
+
+
+# Start Trigger swap  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /  
+label Trigger_Swap(Current = 0, TriggerX1 = Trigger, TriggerX3 = Trigger3, Primary = Partner):
+    #this would switch primary character triggers over to secondary characters.
+    # call Trigger_Swap("Rogue") 
+    # TriggerX1 and TriggerX3 store the primary girl's actions
+    # Current is the old lead girl
+    # Primary is the new lead girl
+    
+    $ Trigger2 = 0 if Trigger2 != "jackin" else Trigger2
+    
+    if Trigger4:
+        #if the second girl is already doing something
+        if Trigger4 == "masturbation":
+                $ Trigger = "masturbation"
+                $ Trigger3 = Trigger5
+                $ Trigger4 = 0
+                #"hand","fondle breasts","suck breasts","fondle pussy","dildo pussy",
+                #"vibrator pussy","fondle ass","dildo anal" 
+        elif TriggerX1 == "lesbian":  
+                $ Trigger = "lesbian"
+                $ Trigger3 = Trigger4  
+                $ Trigger4 = 0
+        elif Trigger4 in ("hand","blow","kiss you"):  
+                $ Trigger = Trigger4
+                $ Trigger3 = 0
+                $ Trigger4 = 0
+        else:   
+                $ Trigger = 0
+                $ Trigger3 = 0
+                $ Trigger4 = 0
+                #"fondle breasts","suck breasts","fondle pussy","lick pussy",
+                #"fondle ass","lick ass",
+    else:
+        #if the second girl is not already doing anything
+        $ Trigger = 0
+        $ Trigger3 = 0
+        
+    call Shift_Focus(Primary)  
+    if not Current:
+            if R_Loc == bg_current and Primary != "Rogue":
+                    $ Partner = "Rogue"
+            elif K_Loc == bg_current and Primary != "Kitty":
+                    $ Partner = "Kitty"
+            elif E_Loc == bg_current and Primary != "Emma":
+                    $ Partner = "Emma"
+    else:
+            $ Partner = Current
+        
+    #if the primary girl was doing something
+    if TriggerX1 == "masturbation":
+            $ Trigger4 = "masturbation"
+            $ Trigger5 = TriggerX3
+            #"hand","fondle breasts","suck breasts","fondle pussy","dildo pussy",
+            #"vibrator pussy","fondle ass","dildo anal" 
+    elif TriggerX1 == "lesbian":
+            $ Trigger4 = TriggerX3            
+    else:   
+            if TriggerX1 in ("hand","blow","kiss you"):  
+                $ Trigger4 = TriggerX1     
+                $ Trigger5 = 0 
+            else:
+                $ Trigger4 = "masturbation"
+                if TriggerX1 in ("fondle thighs","fondle ass","insert ass","lick ass"):                    
+                        $ Trigger5 = "fondle ass"
+                        "You pull back from [Partner]."
+                elif TriggerX1 in ("dildo pussy","dildo anal"):
+                        $ Trigger5 = TriggerX1
+                        "You pull back from [Partner]."
+                elif TriggerX1 in ("titjob","hotdog","fondle breasts","suck breasts"):
+                        $ Trigger5 = "fondle breasts"
+                        "You pull back from [Partner]."
+                elif TriggerX1 in ("fondle pussy","lick pussy"):
+                        $ Trigger5 = "fondle pussy"
+                        "You pull back from [Partner]."
+                elif TriggerX1 == "sex":
+                        $ Trigger5 = "fondle pussy"
+                        "You pull out of [Partner] and shift your attention to [Primary]."
+                elif TriggerX1 == "anal":
+                        $ Trigger5 = "fondle ass"
+                        "You pull out of [Partner] and shift your attention to [Primary]."                
+                else:                          
+                        $ Trigger5 = 0 
+            
+#    $ renpy.pop_call() #causes it to skip past the cycle you were in before
+#    $ renpy.pop_call() #causes it to skip past the sex menu you were in before that
+    #popcall doesn't work here because it deletes the called variables.
+    if not Trigger:                 
+            call Set_The_Scene(Dress = 0, TrigReset = 0)
+            "What would you like her to do?"
+            if Primary == "Rogue":
+                    $ renpy.pop_call() #causes it to skip past the cycle you were in before
+                    $ renpy.pop_call() #causes it to skip past the sex menu you were in before that
+                    jump Rogue_SMenu
+            if Primary == "Kitty":
+                    $ renpy.pop_call() #causes it to skip past the cycle you were in before
+                    $ renpy.pop_call() #causes it to skip past the sex menu you were in before that
+                    jump Kitty_SMenu
+            if Primary == "Emma":
+                    $ renpy.pop_call() #causes it to skip past the cycle you were in before
+                    $ renpy.pop_call() #causes it to skip past the sex menu you were in before that
+                    jump Emma_SMenu
+    else:
+            call Set_The_Scene(Dress = 0, TrigReset = 0)
+            if Primary == "Rogue":
+                    call Rogue_SexAct("SkipTo")
+            if Primary == "Kitty":
+                    call Kitty_SexAct("SkipTo")
+            if Primary == "Emma":
+                    call Emma_SexAct("SkipTo")
+    return
+# End Trigger swap  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /  
+
 
 # Start CloseOut  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /  
 label CloseOut(Chr = "Rogue"):
@@ -3818,6 +4547,8 @@ label CloseOut(Chr = "Rogue"):
                 call K_HotdogAfter
             elif Trigger == "anal":
                 call K_AnalAfter
+            elif Trigger == "foot":
+                call K_FJAfter
             elif Trigger == "dildo pussy":
                 call KDP_After
             elif Trigger == "dildo anal":
@@ -3828,12 +4559,12 @@ label CloseOut(Chr = "Rogue"):
                 "That's odd, tell Oni how you got here."
     elif Chr == "Emma":
             if Trigger == "blow":
-                call E_BJAfter
+                call E_BJ_After
             elif Trigger == "hand":  
-                call E_HJAfter  
+                call E_HJ_After  
             elif Trigger == "titjob":
-                call E_TJAfter
-            elif Trigger == "kissing":
+                call E_TJ_After
+            elif Trigger == "kiss you":
                 call E_Kiss_After
             elif Trigger == "fondle breasts":
                 call E_FB_After
@@ -3908,7 +4639,128 @@ label CloseOut(Chr = "Rogue"):
     return
 # End CloseOut  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /  
 
-
+# Start Sex_Over  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /  
+label Sex_Over(Girls=0):
+        #this routine plays out at the end of any sex menu session
+        #it cleans them up and puts their clothes on, only returning a line of dialog if they were undressed
+        $ Line = 0
+        if R_Loc == bg_current:
+                # if Rogue is present
+                $ R_OCount = 0    
+                call Rogue_Cleanup("after")
+        if K_Loc == bg_current:
+                # if Kitty is present
+                $ K_OCount = 0    
+                call Kitty_Cleanup("after")
+        if E_Loc == bg_current:
+                # if Emma is present
+                $ E_OCount = 0    
+                call Emma_Cleanup("after") 
+                
+                
+        if R_Loc == bg_current:
+                # if Rogue is present
+                call RogueOutfit(Changed=1)
+                if _return:
+                        $ Line = "Rogue"
+                        $ Girls += 1
+        if K_Loc == bg_current:
+                # if Kitty is present
+                call KittyOutfit(Changed=1)
+                if _return:
+                        if Line:
+                            $ Line = Line + " and Kitty"
+                        else:
+                            $ Line = "Kitty"
+                        $ Girls += 1
+        if E_Loc == bg_current:
+                # if Emma is present
+                call EmmaOutfit(Changed=1) 
+                if _return:
+                        if Line:
+                            $ Line = Line + " and Emma"
+                        else:
+                            $ Line = "Emma"  
+                        $ Girls += 1   
+        if Girls > 1:
+            "[Line] throw their clothes back on."
+        elif Girls:
+            "[Line] throws her clothes back on."
+        return
+# End Sex_Over  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /         
+       
+# Start SkipTo  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /  
+label SkipTo(Primary = 0):
+        # This jumps to the chosen sex act, called from the sex menu
+        if Primary == "Rogue":
+                if Trigger == "blow":
+                    jump RBJ_Cycle
+                elif Trigger == "hand":  
+                    jump RHJ_Cycle  
+                elif Trigger == "kiss you":
+                    jump R_KissCycle
+                elif Trigger == "fondle breasts":
+                    jump RFB_Cycle
+                elif Trigger == "suck breasts":
+                    jump RSB_Cycle
+                elif Trigger == "fondle pussy":
+                    jump RFP_Cycle
+                elif Trigger == "lick pussy":
+                    jump RLP_Cycle
+                elif Trigger == "fondle ass":
+                    jump RFA_Cycle
+                elif Trigger == "lick ass":
+                    jump RLA_Cycle
+                else:
+                    "That's odd, tell Oni how you got here."
+        #End Rogue
+        elif Primary == "Kitty":
+                if Trigger == "blow":
+                    jump KBJ_Cycle
+                elif Trigger == "hand":  
+                    jump KHJ_Cycle  
+                elif Trigger == "kiss you":
+                    jump K_KissCycle
+                elif Trigger == "fondle breasts":
+                    jump KFB_Cycle
+                elif Trigger == "suck breasts":
+                    jump KSB_Cycle
+                elif Trigger == "fondle pussy":
+                    jump KFP_Cycle
+                elif Trigger == "lick pussy":
+                    jump KLP_Cycle
+                elif Trigger == "fondle ass":
+                    jump KFA_Cycle
+                elif Trigger == "lick ass":
+                    jump KLA_Cycle
+                else:
+                    "That's odd, tell Oni how you got here."
+        elif Primary == "Emma":
+                if Trigger == "blow":
+                    jump E_BJ_Cycle
+                elif Trigger == "hand":  
+                    jump E_HJ_Cycle  
+                elif Trigger == "kiss you":
+                    jump E_KissCycle
+                elif Trigger == "fondle breasts":
+                    jump E_FB_Cycle
+                elif Trigger == "suck breasts":
+                    jump E_SB_Cycle
+                elif Trigger == "fondle thighs":
+                    jump E_FT_Cycle
+                elif Trigger == "fondle pussy":
+                    jump E_FP_Cycle
+                elif Trigger == "lick pussy":
+                    jump E_LP_Cycle
+                elif Trigger == "fondle ass":
+                    jump E_FA_Cycle
+                elif Trigger == "lick ass":
+                    jump E_LA_Cycle
+                else:
+                    "That's odd, tell Oni how you got here."
+        #End Emma
+        return
+# End SkipTo/ / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 
 #Character Specific stuff / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -4662,7 +5514,8 @@ label Failsafe:
     $ bg_current = "bg study" if "bg_current" not in globals().keys() else bg_current
     $ Party = [] if "Party" not in globals().keys() else Party
     $ Taboo = 0 if "Taboo" not in globals().keys() else Taboo
-    $ Rules = 1 if "Rules" not in globals().keys() else Rules
+    $ Rules = ["rules"] if "Rules" not in globals().keys() else Rules
+    #$ Rules = 1 if "Rules" not in globals().keys() else Rules
     $ R_Rules = 1 if "R_Rules" not in globals().keys() else R_Rules
     $ K_Rules = 1 if "K_Rules" not in globals().keys() else K_Rules
     $ E_Rules = 1 if "E_Rules" not in globals().keys() else E_Rules

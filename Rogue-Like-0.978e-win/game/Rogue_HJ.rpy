@@ -301,76 +301,24 @@ label RHJ_Prep:
     $ R_RecentActions.append("hand")                      
     $ R_DailyActions.append("hand") 
   
-label RHJ_Cycle:
-    while Round >=0:
-        call Shift_Focus("Rogue")
+label RHJ_Cycle: #Repeating strokes    
+    while Round >=0:  
+        call Shift_Focus("Rogue") 
         call Rogue_HJ_Launch    
         call RogueLust   
-            
-        $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
-            
-        if Cnt == 10:
-                    $ R_Brows = "confused"
-                    ch_r "Are you getting close here? My hand's cramping up."    
-        elif Cnt == 20:
-                    $ R_Brows = "angry"        
-                    menu:
-                        ch_r "I'm getting carpal tunnel here, [R_Petname]. Can we do something else?"
-                        "How about a BJ?" if R_Action and MultiAction:
-                                $ Situation = "shift"
-                                call R_HJAfter
-                                call R_Blowjob       
-                        "Finish up." if P_FocusX:
-                                "You release your concentration. . ."             
-                                $ P_FocusX = 0
-                                $ P_Focus += 15
-                                $ Cnt += 1
-                                "[Line]"
-                                jump RHJ_Cycle
-                        "Let's try something else." if MultiAction: 
-                                $ Line = 0
-                                call Rogue_HJ_Reset
-                                $ Situation = "shift"
-                                jump R_HJAfter
-                        "No, get back down there.":
-                                if ApprovalCheck("Rogue", 1200) or ApprovalCheck("Rogue", 500, "O"):
-                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -5)
-                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 3)                    
-                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 2)
-                                    "She grumbles but gets back to work."
-                                else:
-                                    call RogueFace("angry", 1)   
-                                    "She scowls at you, drops you cock and pulls back."
-                                    ch_r "Well if that's your attitude you can handle your own business."                                               
-                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -3, 1)
-                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -4, 1)
-                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 30, -1, 1)                    
-                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -1, 1)                     
-                                    $ R_RecentActions.append("angry")
-                                    $ R_DailyActions.append("angry")   
-                                    jump R_HJAfter
-        #End Count check
         
-        if not Speed:
-            $ Speed = 1 
-
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
+        if Line and P_Focus < 100:                                                   
+                    #Player Command menu
                     menu:
-                        "[Line]"
-                        "Keep going. . ." if Speed:
+                        "Keep going. . .":
                                     pass
+                          
                         "Start moving? . ." if not Speed:
                                     $ Speed = 1
                             
                         "Speed up. . ." if Speed < 2:                    
                                     $ Speed = 2
-                                    if Trigger2 == "jackin":
-                                        "You ask her to up the pace a bit, and move your own hand out of the way."
-                                    else:
-                                        "You ask her to up the pace a bit."
-                                    
+                                    "You ask her to up the pace a bit."
                         "Speed up. . . (locked)" if Speed >= 2:
                                     pass
                             
@@ -379,31 +327,6 @@ label RHJ_Cycle:
                                     "You ask her to slow it down a bit."
                         "Slow Down. . . (locked)" if not Speed:                
                                     pass
-
-                        "Gag":
-                            if not R_Gag:
-                                #"You put a gag on Rogue"
-                            #            $ R_Gag = 2
-                            #        
-                                menu:
-                                    "How about using a ballgag?":
-                                        $ Situation = "shift"
-                                        call R_Gagging("ballgag")
-                                    "Just put the ballgag in her mouth [[without asking].":
-                                        $ Situation = "auto"
-                                        call R_Gagging("ballgag")
-                                    "How about using a ringgag?":
-                                        $ Situation = "shift"
-                                        call R_Gagging("ringgag")
-                                    "Just put the ringgag in her mouth [[without asking].":
-                                        $ Situation = "auto"
-                                        call R_Gagging("ringgag")
-                                    "Nevermind.":
-                                        pass
-                            else:
-                                "You remove Rogue's gag"
-                                $ R_Gag = 0
-                            
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
                         "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
@@ -413,51 +336,107 @@ label RHJ_Cycle:
                                     "You release your concentration. . ."                
                                     $ P_FocusX = 0
                                     
-                        "Maybe lose some clothes. . .":
-                                    call R_Undress    
-                                    
-                        "Shift actions":
-                            menu:
-                                "How about a blowjob?":
+                        "Other options":
+                                menu:   
+                                    "I also want to fondle her breasts." if Trigger2 != "fondle breasts":
                                             if R_Action and MultiAction:
-                                                $ Situation = "shift"
-                                                call R_HJAfter                
-                                                call R_Blowjob
+                                                $ Trigger2 = "fondle breasts"
+                                                "You start to fondle her breasts."
+                                                $ R_Action -= 1
                                             else:
-                                                ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."
-                                                
-                                "How about a titjob?":
-                                            if R_Action and MultiAction:
-                                                $ Situation = "shift"
-                                                call R_HJAfter
-                                                call R_Titjob
-                                            else:
-                                                ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."
-                                        
-                        "I also want to fondle her breasts." if R_Action and MultiAction:
-                                    $ Trigger2 = "fondle breasts"
-                                    $ Situation = "auto"
-                                    call R_Fondle_Breasts
-                                    if Trigger2:
-                                         $ R_Action -= 1
+                                                ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"  
                                          
-                        "Let's try something else." if MultiAction: 
+                                    "Shift primary action":
+                                            if R_Action and MultiAction:
+                                                    menu:
+                                                        "How about a blowjob?":
+                                                                    if R_Action and MultiAction:
+                                                                        $ Situation = "shift"
+                                                                        call RHJ_After                
+                                                                        call R_Blowjob
+                                                                    else:
+                                                                        ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."
+                                                                        
+                                                        "How about a titjob?":
+                                                                    if R_Action and MultiAction:
+                                                                        $ Situation = "shift"
+                                                                        call RHJ_After
+                                                                        call R_Titjob
+                                                                    else:
+                                                                        ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."
+                                                        "Never Mind":
+                                                                jump RHJ_Cycle
+                                            else: 
+                                                ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"           
+                    
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Rogue to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Rogue_Les_Change
+                                            "Ask Rogue to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Kitty":
+                                                            call Kitty_Three_Change
+                                                        elif Partner == "Emma":
+                                                            call Emma_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Rogue")
+                                            "Undress [Partner]":
+                                                        if Partner == "Kitty":
+                                                                call K_Undress   
+                                                        elif Partner == "Emma":
+                                                                call E_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")    
+                                                        elif Partner == "Emma" and E_Spunk:
+                                                                call Emma_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump RHJ_Cycle 
+                                            "Never mind":
+                                                        jump RHJ_Cycle 
+                                    "Undress Rogue":
+                                            call R_Undress   
+                                    "Clean up Rogue (locked)" if not R_Spunk:
+                                            pass  
+                                    "Clean up Rogue" if R_Spunk:
+                                            call Rogue_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump RHJ_Cycle 
+                                                   
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
                                     call Rogue_HJ_Reset
                                     $ Situation = "shift"
                                     $ Line = 0
-                                    jump R_HJAfter
-                        "Let's stop for now." if not MultiAction: 
+                                    jump RHJ_After
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
                                     call Rogue_HJ_Reset
                                     $ Line = 0
-                                    jump R_HJAfter
+                                    jump RHJ_After
         #End menu (if Line)
         
         call Sex_Dialog("Rogue",Partner)
                 
         #If either of you could cum 
-        if P_Focus >= 100 or R_Lust >= 100:  
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
+        
+        $ Cnt += 1
+        $ Round -= 1   
+    
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or R_Lust >= 100: 
+                    #If either of you could cum   
+                    if P_Focus >= 100:    
+                            #If you can cum:                                                 
                             call PR_Cumming
                             if "angry" in R_RecentActions:  
                                 call Rogue_HJ_Reset
@@ -468,25 +447,83 @@ label RHJ_Cycle:
                                 $ R_DailyActions.append("unsatisfied") 
                             
                             if P_Focus > 80:
-                                jump R_HJAfter 
+                                jump RHJ_After 
                             $ Line = "came"
      
-                    #If Rogue can cum
-                    if R_Lust >= 100:                                                                
+                    if R_Lust >= 100:  
+                            #If Rogue can cum                                             
                             call R_Cumming
                             if Situation == "shift" or "angry" in R_RecentActions:
-                                jump R_HJAfter            
-                    
-                    #If you came
-                    if Line == "came":
-                            if not P_Semen:
-                                "You're pretty wiped, better stop for now."
+                                jump RHJ_After
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
                             $ Line = 0
-                            jump R_HJAfter   
-                
+                            if not P_Semen:
+                                "You're emptied out, you should probably take a break."
+                            
+                            
+                            if "unsatisfied" in R_RecentActions:#And Rogue is unsatisfied,  
+                                "Rogue still seems a bit unsatisfied with the experience."
+                                menu:
+                                    "Finish her?"
+                                    "Yes, keep going for a bit.":
+                                        $ Line = "You get back into it" 
+                                    "No, I'm done.":
+                                        "You pull back."
+                                        jump RHJ_After    
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
+                elif Partner == "Emma" and E_Lust >= 100:                                          
+                    call E_Cumming
         #End orgasm
         
-   
+        $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
+        
+        if R_SEXP >= 100 or ApprovalCheck("Rogue", 1200, "LO"):
+            pass
+        elif Cnt == (5 + R_Hand):
+                    $ R_Brows = "confused"
+                    ch_r "Are you getting close here? I'm getting as little sore."   
+        elif Cnt == (10 + R_Hand):
+                    $ R_Brows = "angry"        
+                    menu:
+                        ch_r "I'm getting rug-burn here [R_Petname]. Can we do something else?"
+                        "How about a BJ?" if R_Action and MultiAction:
+                                $ Situation = "shift"
+                                call RHJ_After
+                                call R_Blowjob       
+                        "Finish up." if P_FocusX:
+                                "You release your concentration. . ."             
+                                $ P_FocusX = 0
+                                $ P_Focus += 15
+                                jump RHJ_Cycle
+                        "Let's try something else." if MultiAction: 
+                                $ Line = 0
+                                call Rogue_HJ_Reset
+                                $ Situation = "shift"
+                                jump RHJ_After
+                        "No, get back down there.":                                
+                                if ApprovalCheck("Rogue", 1200) or ApprovalCheck("Rogue", 500, "O"):                        
+                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -5)
+                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 3)                    
+                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 2)
+                                    "She grumbles but gets back to work."
+                                else:
+                                    call RogueFace("angry", 1)   
+                                    "She scowls at you, drops you cock and pulls back."
+                                    ch_r "Well if that's your attitude you can handle your own business."                         
+                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -3, 1)
+                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -4, 1)
+                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 30, -1, 1)                    
+                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -1, 1)  
+                                    $ R_RecentActions.append("angry")
+                                    $ R_DailyActions.append("angry")   
+                                    jump RHJ_After
+        #End Count check
+           
         if Round == 10:
             ch_r "You might want to wrap this up, it's getting late."  
         elif Round == 5:
@@ -497,7 +534,7 @@ label RHJ_Cycle:
     $ Line = 0
     ch_r "Ok, [R_Petname], that's enough of that for now."
     
-label R_HJAfter:
+label RHJ_After:
     call RogueFace("sexy") 
     
     $ R_Hand += 1  
@@ -506,9 +543,11 @@ label R_HJAfter:
     if "addictive" in P_Traits:
         $ R_Addictionrate += 1        
     $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 5)
-    
+        
     if K_Loc == bg_current and "noticed rogue" in K_RecentActions: #If Kitty was participating
-        $ K_LikeRogue += 1
+            $ K_LikeRogue += 2 if K_LikeRogue >= 800 else 1
+    if E_Loc == bg_current and "noticed rogue" in E_RecentActions: #If Emma was participating
+            $ E_LikeRogue += 2 if E_LikeRogue >= 800 else 1
     
     if "Rogue Handi-Queen" in Achievements:
             pass  
@@ -886,15 +925,190 @@ label RTJ_Prep:
     $ R_DailyActions.append("titjob") 
 
 
-label RTJ_Cycle:
-    while Round >=0:
-        call Shift_Focus("Rogue")
+label RTJ_Cycle: #Repeating strokes    
+    while Round >=0:  
+        call Shift_Focus("Rogue") 
         call Rogue_TJ_Launch    
         call RogueLust   
-            
+        
+        if Line and P_Focus < 100:                                                   
+                    #Player Command menu
+                    menu:
+                        "Keep going. . .":
+                                    pass
+                          
+                        "Start moving? . ." if not Speed:
+                                    $ Speed = 1
+                            
+                        "Speed up. . ." if Speed < 2:                    
+                                    $ Speed = 2
+                                    "You ask her to up the pace a bit."
+                        "Speed up. . . (locked)" if Speed >= 2:
+                                    pass
+                            
+                        "Slow Down. . ." if Speed:                    
+                                    $ Speed -= 1
+                                    "You ask her to slow it down a bit."
+                        "Slow Down. . . (locked)" if not Speed:                
+                                    pass
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                    
+                        "Other options":
+                                menu:   
+                                    "I also want to fondle her breasts." if Trigger2 != "fondle breasts":
+                                            if R_Action and MultiAction:
+                                                $ Trigger2 = "fondle breasts"
+                                                "You start to fondle her breasts."
+                                                $ R_Action -= 1
+                                            else:
+                                                ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"  
+                                         
+                                    "Shift primary action":
+                                            if R_Action and MultiAction:
+                                                    menu:
+                                                        "How about a blowjob?":
+                                                                if R_Action and MultiAction:
+                                                                    $ Situation = "shift"
+                                                                    call RTJ_After                
+                                                                    call R_Blowjob
+                                                                else:
+                                                                    ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."
+                                                                    
+                                                        "How about a handy?":
+                                                                if R_Action and MultiAction:
+                                                                    $ Situation = "shift"
+                                                                    call RBJ_After
+                                                                    call R_Handjob
+                                                                else:
+                                                                    ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."                                                            
+                                                        "Never Mind":
+                                                                jump RTJ_Cycle
+                                            else: 
+                                                ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"           
+                    
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Rogue to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Rogue_Les_Change
+                                            "Ask Rogue to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Kitty":
+                                                            call Kitty_Three_Change
+                                                        elif Partner == "Emma":
+                                                            call Emma_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Rogue")
+                                            "Undress [Partner]":
+                                                        if Partner == "Kitty":
+                                                                call K_Undress   
+                                                        elif Partner == "Emma":
+                                                                call E_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")    
+                                                        elif Partner == "Emma" and E_Spunk:
+                                                                call Emma_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump RTJ_Cycle 
+                                            "Never mind":
+                                                        jump RTJ_Cycle 
+                                    "Undress Rogue":
+                                            call R_Undress   
+                                    "Clean up Rogue (locked)" if not R_Spunk:
+                                            pass  
+                                    "Clean up Rogue" if R_Spunk:
+                                            call Rogue_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump RTJ_Cycle 
+                                                   
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call Rogue_TJ_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump RTJ_After
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call Rogue_TJ_Reset
+                                    $ Line = 0
+                                    jump RTJ_After
+        #End menu (if Line)
+        
+        call Sex_Dialog("Rogue",Partner)
+                
+        #If either of you could cum 
+        
+        $ Cnt += 1
+        $ Round -= 1   
+    
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or R_Lust >= 100: 
+                    #If either of you could cum   
+                    if P_Focus >= 100:    
+                            #If you can cum:                                                 
+                            call PR_Cumming
+                            if "angry" in R_RecentActions:  
+                                call Rogue_TJ_Reset
+                                return    
+                            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5) 
+                            if 100 > R_Lust >= 70 and R_OCount < 2:             
+                                $ R_RecentActions.append("unsatisfied")                      
+                                $ R_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump RTJ_After 
+                            $ Line = "came"
+     
+                    if R_Lust >= 100:  
+                            #If Rogue can cum                                             
+                            call R_Cumming
+                            if Situation == "shift" or "angry" in R_RecentActions:
+                                jump RTJ_After
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
+                            $ Line = 0
+                            if not P_Semen:
+                                "You're emptied out, you should probably take a break."
+                            
+                            
+                            if "unsatisfied" in R_RecentActions:#And Rogue is unsatisfied,  
+                                "Rogue still seems a bit unsatisfied with the experience."
+                                menu:
+                                    "Finish her?"
+                                    "Yes, keep going for a bit.":
+                                        $ Line = "You get back into it" 
+                                    "No, I'm done.":
+                                        "You pull back."
+                                        jump RTJ_After    
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
+                elif Partner == "Emma" and E_Lust >= 100:                                          
+                    call E_Cumming
+        #End orgasm
+        
         $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
-            
-        if Cnt == (5 + R_Tit):
+        
+        if R_SEXP >= 100 or ApprovalCheck("Rogue", 1200, "LO"):
+            pass
+        elif Cnt == (5 + R_Tit):
                     $ R_Brows = "confused"
                     ch_r "Are you getting close here? I'm getting as little sore."   
         elif Cnt == (10 + R_Tit):
@@ -903,20 +1117,18 @@ label RTJ_Cycle:
                         ch_r "I'm getting rug-burn here [R_Petname]. Can we do something else?"
                         "How about a BJ?" if R_Action and MultiAction:
                                 $ Situation = "shift"
-                                call R_TJAfter
+                                call RTJ_After
                                 call R_Blowjob       
                         "Finish up." if P_FocusX:
                                 "You release your concentration. . ."             
                                 $ P_FocusX = 0
                                 $ P_Focus += 15
-                                $ Cnt += 1
-                                "[Line]"
                                 jump RTJ_Cycle
                         "Let's try something else." if MultiAction: 
                                 $ Line = 0
                                 call Rogue_TJ_Reset
                                 $ Situation = "shift"
-                                jump R_TJAfter
+                                jump RTJ_After
                         "No, get back down there.":                                
                                 if ApprovalCheck("Rogue", 1200) or ApprovalCheck("Rogue", 500, "O"):                        
                                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -5)
@@ -933,238 +1145,9 @@ label RTJ_Cycle:
                                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -1, 1)  
                                     $ R_RecentActions.append("angry")
                                     $ R_DailyActions.append("angry")   
-                                    jump R_TJAfter
+                                    jump RTJ_After
         #End Count check
-        
-        if not Speed:
-            $ Speed = 1 
-
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    if ("master" in R_Petnames or "sir" in R_Petnames or R_Pet == "slave") and ApprovalCheck("Rogue", 750, "O") and not R_Bondage: # bondage event
-                        $ R_Bondage = 1
-                        ch_r "Hey, [R_Petname], I've got some new things here, do you think we could try them?"
-                        "She grabs what it looks like some bondage gear"
-                        menu:
-                            "Yep":
-                                call RogueFace("sexy", 1) 
-                                #if R_Over or R_Chest or R_Panties or R_Legs:
-                                #    "She glances up at you as her clothes drop to the ground."
-                                #$ R_Over = 0
-                                #$ R_Legs = 0
-                                #$ R_Chest = 0
-                                #$ R_Panties = 0
-                                "She starts dressing the new outfit"
-                                "You help her with the armbinder, making sure she can't move her arms"
-                                #"And add a blindfold so she can't see a thing"
-                                #$ R_Blindfold = 1
-                                $ R_Over = "bondage"
-                                #$ R_Chest = "bustier bra"
-                                #$ R_Panties = "zipper panties"
-                                #$ R_Outfit = "zipper bondage"
-                                #$ R_Shame = R_OutfitShame[1]
-                                #if R_Over == "armbinder":
-                                #call RogueFace("sly")
-                                $ Line = "Rogue can't move her arms. She licks her lips in anticipation"
-                                $ TempLust += 3 if R_Lust < 40 else 1  
-
-                                #if R_Blow <= 1 or (R_Obed >= 500 and R_Obed > R_Inbt):
-                                #        $ TempLust += 2 if R_Lust > 60 else 0                 
-                                #        $ Line = Line + ", but she seems to be waiting for some instruction"
-                                #else:
-                                #        $ Line = Line + ", and then she gets started licking your cock"
-                                #        $ Speed = 1
-                                #jump R_HotdogPrep
-                                #pass
-                                #call Rogue_Bottoms_Off_Legs
-                                #call Rogue_Top_Off
-                                #call Rogue_Bottoms_Off
-                                #shes gonna wear it
-                            "Not now, but let's save it for another time":
-                                pass
-                                #nope
-                    menu:
-                        "[Line]"
-                        "Keep going. . ." if Speed:
-                                    pass
-                        "Start moving? . ." if not Speed:
-                                    $ Speed = 1
-                            
-                        "Speed up. . ." if Speed < 2:                    
-                                    $ Speed = 2
-                                    "You ask her to up the pace a bit."
-                        "Speed up. . . (locked)" if Speed >= 2:
-                                    pass
-                            
-                        "Slow Down. . ." if Speed:                    
-                                    $ Speed -= 1
-                                    "You ask her to slow it down a bit."
-                        "Slow Down. . . (locked)" if not Speed:                
-                                    pass
-
-                        "Gag":
-                            if not R_Gag:
-                                #"You put a gag on Rogue"
-                            #            $ R_Gag = 2
-                            #        
-                                menu:
-                                    "How about using a ballgag?":
-                                        $ Situation = "shift"
-                                        call R_Gagging("ballgag")
-                                    "Just put the ballgag in her mouth [[without asking].":
-                                        $ Situation = "auto"
-                                        call R_Gagging("ballgag")
-                                    "How about using a ringgag?":
-                                        $ Situation = "shift"
-                                        call R_Gagging("ringgag")
-                                    "Just put the ringgag in her mouth [[without asking].":
-                                        $ Situation = "auto"
-                                        call R_Gagging("ringgag")
-                                    "Nevermind.":
-                                        pass
-                            else:
-                                "You remove Rogue's gag"
-                                $ R_Gag = 0
-
-                        "How about you put that bondage outfit" if R_Bondage and R_Over != "bondage":
-                            call RogueFace("sexy", 1) 
-                            #if R_Over or R_Chest or R_Panties or R_Legs:
-                            #    "She glances up at you as her clothes drop to the ground."
-                            #$ R_Over = 0
-                            #$ R_Legs = 0
-                            #$ R_Chest = 0
-                            #$ R_Panties = 0
-                            "She starts dressing the new outfit"
-                            "You help her with the suit, making sure she can't move her arms"
-                            #"And add a blindfold so she can't see a thing"
-                            #$ R_Blindfold = 1
-                            $ R_Over = "bondage"
-                            #$ R_Chest = "bustier bra"
-                            #$ R_Panties = "zipper panties"
-                            #$ R_Outfit = "zipper bondage"
-                            #$ R_Shame = R_OutfitShame[1]
-
-                        "How about you put that bondage cuffs" if R_Bondage and R_Over != "bondage cuffs":
-                            call RogueFace("sexy", 1) 
-                            #if R_Over or R_Chest or R_Panties or R_Legs:
-                            #    "She glances up at you as her clothes drop to the ground."
-                            #$ R_Over = 0
-                            #$ R_Legs = 0
-                            #$ R_Chest = 0
-                            #$ R_Panties = 0
-                            "She starts dressing the new outfit"
-                            "You help her with the binder, making sure she can't move her arms"
-                            #"And add a blindfold so she can't see a thing"
-                            #$ R_Blindfold = 1
-                            $ R_Over = "bondage cuffs"
-                            #$ R_Chest = "bustier bra"
-                            #$ R_Panties = "zipper panties"
-                            #$ R_Outfit = "zipper bondage"
-                            #$ R_Shame = R_OutfitShame[1]
-
-                        "Remove the bondage outfit" if R_Over == "bondage cuffs" or R_Over == "bondage":
-                            call RogueFace("sexy", 1) 
-                            #if R_Over or R_Chest or R_Panties or R_Legs:
-                            #    "She glances up at you as her clothes drop to the ground."
-                            #$ R_Over = 0
-                            #$ R_Legs = 0
-                            #$ R_Chest = 0
-                            #$ R_Panties = 0
-                            #"She starts dressing the new outfit"
-                            "You help her remove the binder"
-                            #"And add a blindfold so she can't see a thing"
-                            #$ R_Blindfold = 1
-                            $ R_Over = 0
-                            #$ R_Chest = "bustier bra"
-                            #$ R_Panties = "zipper panties"
-                            #$ R_Outfit = "zipper bondage"
-                            #$ R_Shame = R_OutfitShame[1]
-                            
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0
-                                    
-                        "Maybe lose some clothes. . .":
-                                    call R_Undress    
-                                    
-                        "Shift actions":
-                            menu:
-                                    "How about a blowjob?":
-                                            if R_Action and MultiAction:
-                                                $ Situation = "shift"
-                                                call R_TJAfter                
-                                                call R_Blowjob
-                                            else:
-                                                ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."
-                                                
-                                    "How about a handy?":
-                                            if R_Action and MultiAction:
-                                                $ Situation = "shift"
-                                                call R_BJAfter
-                                                call R_Handjob
-                                            else:
-                                                ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."
-                                        
-                        "I also want to fondle her breasts.":
-                                if R_Action and MultiAction:
-                                    $ Trigger2 = "fondle breasts"
-                                    "You start to fondle her breasts."
-                                    $ R_Action -= 1
-                                else:
-                                    ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"  
-                                         
-                        "Let's try something else." if MultiAction: 
-                                    call Rogue_TJ_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump R_TJAfter
-                        "Let's stop for now." if not MultiAction: 
-                                    call Rogue_TJ_Reset
-                                    $ Line = 0
-                                    jump R_TJAfter
-        #End menu (if Line)
-        
-        call Sex_Dialog("Rogue",Partner)
-                
-        #If either of you could cum 
-        if P_Focus >= 100 or R_Lust >= 100:  
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PR_Cumming
-                            if "angry" in R_RecentActions:  
-                                call Rogue_TJ_Reset
-                                return    
-                            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5) 
-                            if 100 > R_Lust >= 70 and R_OCount < 2:             
-                                $ R_RecentActions.append("unsatisfied")                      
-                                $ R_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump R_TJAfter 
-                            $ Line = "came"
-     
-                    #If Rogue can cum
-                    if R_Lust >= 100:                                                                
-                            call R_Cumming
-                            if Situation == "shift" or "angry" in R_RecentActions:
-                                jump R_TJAfter            
-                    
-                    #If you came
-                    if Line == "came":
-                            if not P_Semen:
-                                "You're pretty wiped, better stop for now."
-                            $ Line = 0
-                            jump R_TJAfter   
-                
-        #End orgasm
-        
-   
+           
         if Round == 10:
             ch_r "You might want to wrap this up, it's getting late."  
         elif Round == 5:
@@ -1174,10 +1157,8 @@ label RTJ_Cycle:
     call RogueFace("bemused", 0)
     $ Line = 0
     ch_r "Ok, [R_Petname], that's enough of that for now."
-    
-    
         
-label R_TJAfter:
+label RTJ_After:
     call RogueFace("sexy") 
     
     $ R_Tit += 1
@@ -1186,9 +1167,10 @@ label R_TJAfter:
     if "addictive" in P_Traits:
         $ R_Addictionrate += 1
         
-        
-    if K_Loc == bg_current and "noticed rogue" in K_RecentActions:
+    if K_Loc == bg_current and "noticed rogue" in K_RecentActions: #If Kitty was participating
             $ K_LikeRogue += 3 if K_LikeRogue >= 800 else 1
+    if E_Loc == bg_current and "noticed rogue" in E_RecentActions: #If Emma was participating
+            $ E_LikeRogue += 3 if E_LikeRogue >= 800 else 1
         
     if R_Tit > 5:
             pass
@@ -1217,9 +1199,6 @@ label R_TJAfter:
 # R_Blowjob //////////////////////////////////////////////////////////////////////
 
 label R_Blowjob:
-    if R_Gag == "ballgag":
-        "She removes the gag"
-        $ R_Gag = 0
     call Shift_Focus("Rogue")
     if R_Blow >= 7: # She loves it
         $ Tempmod += 15  
@@ -1537,65 +1516,18 @@ label RBJ_Prep:
     $ R_RecentActions.append("blow")                      
     $ R_DailyActions.append("blow")     
 
-label RBJ_Cycle:
-    while Round >=0:
-        call Shift_Focus("Rogue")
+label RBJ_Cycle: #Repeating strokes    
+    while Round >=0:  
+        call Shift_Focus("Rogue") 
         call Rogue_BJ_Launch    
         call RogueLust   
-            
-        $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
-            
-        if Cnt == (5 + R_Tit):
-                    $ R_Brows = "confused"
-                    ch_r "Are you getting close here? My jaw's getting pretty sore." 
-        elif Cnt == (10 + R_Tit):
-                    $ R_Brows = "angry"        
-                    menu:
-                        ch_r "I'm getting a little tired, [R_Petname]. Can we do something else?"
-                        "How about a Handy?" if R_Action and MultiAction:
-                                $ Situation = "shift"
-                                call R_BJAfter
-                                call R_Handjob 
-                                return
-                        "Finish up." if P_FocusX:
-                                "You release your concentration. . ."             
-                                $ P_FocusX = 0
-                                $ P_Focus += 15
-                                $ Cnt += 1
-                                "[Line]."
-                                jump RBJ_Cycle
-                        "Let's try something else." if MultiAction: 
-                                $ Line = 0
-                                call Rogue_BJ_Reset
-                                $ Situation = "shift"
-                                jump R_BJAfter
-                        "No, get back down there.":
-                                if ApprovalCheck("Rogue", 1200) or ApprovalCheck("Rogue", 500, "O"):
-                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -5)
-                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 3)
-                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 2)
-                                    "She grumbles but gets back to work."
-                                else:
-                                    call RogueFace("angry", 1)  
-                                    "She scowls at you, drops you cock and pulls back."
-                                    ch_r "Well if that's your attitude you can handle your own business."
-                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -3, 1)
-                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -4, 1)
-                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 30, -1, 1)
-                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -1, 1)  
-                                    $ R_RecentActions.append("angry")
-                                    $ R_DailyActions.append("angry")   
-                                    jump R_BJAfter
-        #End Count check
         
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
+        if Line and P_Focus < 100:                                                   
+                    #Player Command menu
                     menu:
-                        "[Line]"
-                        "Keep going. . ." if Speed:
-                                pass
-                            
+                        "Keep going. . .":
+                                    pass
+                          
                         "Lick it. . ." if Speed != 1:
                                 $ Speed = 1   
                         "Lick it. . . (locked)" if Speed == 1:
@@ -1646,38 +1578,6 @@ label RBJ_Cycle:
                                 else:
                                     $ Speed = 1
                                 $ R_RecentActions.append("setpace")
-
-                        "Hold her head" if not P_Hands:
-                                $ P_Hands = 1
-                                "You hold her head"
-
-                        "No hands" if P_Hands:
-                                $ P_Hands = 0
-                                "You let go of her head"
-
-                        "Gag":
-                            if not R_Gag:
-                                #"You put a gag on Rogue"
-                            #            $ R_Gag = 2
-                            #        
-                                menu:
-                                    "How about using a ballgag?":
-                                        $ Situation = "shift"
-                                        call R_Gagging("ballgag")
-                                    "Just put the ballgag in her mouth [[without asking].":
-                                        $ Situation = "auto"
-                                        call R_Gagging("ballgag")
-                                    "How about using a ringgag?":
-                                        $ Situation = "shift"
-                                        call R_Gagging("ringgag")
-                                    "Just put the ringgag in her mouth [[without asking].":
-                                        $ Situation = "auto"
-                                        call R_Gagging("ringgag")
-                                    "Nevermind.":
-                                        pass
-                            else:
-                                "You remove Rogue's gag"
-                                $ R_Gag = 0
                                 
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
@@ -1688,52 +1588,109 @@ label RBJ_Cycle:
                                     "You release your concentration. . ."                
                                     $ P_FocusX = 0
                                     
-                        "Maybe lose some clothes. . .":
-                                    call R_Undress    
-                                    
-                        "Shift actions":
-                            menu:
-                                "How about a handy?":
-                                        if R_Action and MultiAction:
-                                            $ Situation = "shift"
-                                            call R_BJAfter
-                                            call R_Handjob
-                                        else:
-                                            ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."
-                                "How about a titjob?":
-                                        if R_Action and MultiAction:
-                                            $ Situation = "shift"
-                                            call R_BJAfter
-                                            call R_Titjob
-                                        else:
-                                            ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."
-                        
-                                        
-                        "I also want to fondle her breasts." if Trigger2 != "fondle breasts":
-                                if R_Action and MultiAction:
-                                    $ Trigger2 = "fondle breasts"
-                                    "You start to fondle her breasts."
-                                    $ R_Action -= 1
-                                else:
-                                    ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"  
+                        "Other options":
+                                menu:   
+                                    "I also want to fondle her breasts." if Trigger2 != "fondle breasts":
+                                            if R_Action and MultiAction:
+                                                $ Trigger2 = "fondle breasts"
+                                                "You start to fondle her breasts."
+                                                $ R_Action -= 1
+                                            else:
+                                                ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"  
                                          
-                        "Let's try something else." if MultiAction: 
-                                $ Line = 0
-                                call Rogue_BJ_Reset
-                                $ Situation = "shift"
-                                jump R_BJAfter
-                        "Let's stop for now." if not MultiAction: 
-                                $ Line = 0
-                                call Rogue_BJ_Reset
-                                jump R_BJAfter 
+                                    "Shift primary action":
+                                            if R_Action and MultiAction:
+                                                    menu:
+                                                        "How about a handy?":
+                                                                if R_Action and MultiAction:
+                                                                    $ Situation = "shift"
+                                                                    call RBJ_After
+                                                                    call R_Handjob
+                                                                else:
+                                                                    ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."
+                                                        "How about a titjob?":
+                                                                if R_Action and MultiAction:
+                                                                    $ Situation = "shift"
+                                                                    call RBJ_After
+                                                                    call R_Titjob
+                                                                else:
+                                                                    ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."
+                                                        "Never Mind":
+                                                                jump RBJ_Cycle
+                                            else: 
+                                                ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"           
+                    
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Rogue to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Rogue_Les_Change
+                                            "Ask Rogue to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Kitty":
+                                                            call Kitty_Three_Change
+                                                        elif Partner == "Emma":
+                                                            call Emma_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Rogue")
+                                            "Undress [Partner]":
+                                                        if Partner == "Kitty":
+                                                                call K_Undress   
+                                                        elif Partner == "Emma":
+                                                                call E_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")    
+                                                        elif Partner == "Emma" and E_Spunk:
+                                                                call Emma_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump RBJ_Cycle 
+                                            "Never mind":
+                                                        jump RBJ_Cycle 
+                                    "Undress Rogue":
+                                            call R_Undress   
+                                    "Clean up Rogue (locked)" if not R_Spunk:
+                                            pass  
+                                    "Clean up Rogue" if R_Spunk:
+                                            call Rogue_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump RBJ_Cycle 
+                                                   
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call Rogue_BJ_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump RBJ_After
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call Rogue_BJ_Reset
+                                    $ Line = 0
+                                    jump RBJ_After
         #End menu (if Line)
-        
+                    
         call Sex_Dialog("Rogue",Partner)
                 
         #If either of you could cum 
-        if P_Focus >= 100 or R_Lust >= 100:  
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
+        
+        $ Cnt += 1
+        $ Round -= 1   
+        if Speed:
+            $ P_Wet = 1 #wets penis        
+            $ P_Spunk = 0 if P_Spunk else P_Spunk #cleans you off after one cycle
+    
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or R_Lust >= 100: 
+                    #If either of you could cum   
+                    if P_Focus >= 100:    
+                            #If you can cum:                                                 
                             call PR_Cumming
                             if "angry" in R_RecentActions:  
                                 call Rogue_BJ_Reset
@@ -1744,25 +1701,84 @@ label RBJ_Cycle:
                                 $ R_DailyActions.append("unsatisfied") 
                             
                             if P_Focus > 80:
-                                jump R_BJAfter 
+                                jump RBJ_After 
                             $ Line = "came"
      
-                    #If Rogue can cum
-                    if R_Lust >= 100:                                                                
+                    if R_Lust >= 100:  
+                            #If Rogue can cum                                             
                             call R_Cumming
                             if Situation == "shift" or "angry" in R_RecentActions:
-                                jump R_BJAfter            
-                    
-                    #If you came
-                    if Line == "came":
-                            if not P_Semen:
-                                "You're pretty wiped, better stop for now."
+                                jump RBJ_After
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
                             $ Line = 0
-                            jump R_BJAfter   
-                
+                            if not P_Semen:
+                                "You're emptied out, you should probably take a break."
+                            
+                            
+                            if "unsatisfied" in R_RecentActions:#And Rogue is unsatisfied,  
+                                "Rogue still seems a bit unsatisfied with the experience."
+                                menu:
+                                    "Finish her?"
+                                    "Yes, keep going for a bit.":
+                                        $ Line = "You get back into it" 
+                                    "No, I'm done.":
+                                        "You pull back."
+                                        jump RBJ_After    
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
+                elif Partner == "Emma" and E_Lust >= 100:                                          
+                    call E_Cumming
         #End orgasm
         
-   
+        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
+        
+        if R_SEXP >= 100 or ApprovalCheck("Rogue", 1200, "LO"):
+            pass
+        elif Cnt == (5 + R_Blow):
+                    $ R_Brows = "confused"
+                    ch_r "Are you getting close here? My jaw's getting pretty sore." 
+        elif Cnt == (10 + R_Blow):
+                    $ R_Brows = "angry"        
+                    menu:
+                        ch_r "I'm getting a little tired, [R_Petname]. Can we do something else?"
+                        "How about a Handy?" if R_Action and MultiAction:
+                                $ Situation = "shift"
+                                call RBJ_After
+                                call R_Handjob 
+                                return
+                        "Finish up." if P_FocusX:
+                                "You release your concentration. . ."             
+                                $ P_FocusX = 0
+                                $ P_Focus += 15
+                                jump RBJ_Cycle
+                        "Let's try something else." if MultiAction: 
+                                $ Line = 0
+                                call Rogue_BJ_Reset
+                                $ Situation = "shift"
+                                jump RBJ_After
+                        "No, get back down there.":
+                                if ApprovalCheck("Rogue", 1200) or ApprovalCheck("Rogue", 500, "O"):
+                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -5)
+                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 3)
+                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 2)
+                                    "She grumbles but gets back to work."
+                                else:
+                                    call RogueFace("angry", 1)  
+                                    "She scowls at you, drops you cock and pulls back."
+                                    ch_r "Well if that's your attitude you can handle your own business."
+                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -3, 1)
+                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -4, 1)
+                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 30, -1, 1)
+                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -1, 1)  
+                                    $ R_RecentActions.append("angry")
+                                    $ R_DailyActions.append("angry")   
+                                    jump RBJ_After
+        #End Count check
+           
         if Round == 10:
             ch_r "You might want to wrap this up, it's getting late."  
         elif Round == 5:
@@ -1773,7 +1789,7 @@ label RBJ_Cycle:
     $ Line = 0
     ch_r "Ok, [R_Petname], that's enough of that for now."
 
-label R_BJAfter:    
+label RBJ_After:    
     call RogueFace("sexy")  
         
     $ R_Blow += 1
@@ -1782,8 +1798,10 @@ label R_BJAfter:
     if "addictive" in P_Traits:
         $ R_Addictionrate += 1
                 
-    if K_Loc == bg_current and "noticed rogue" in K_RecentActions:
+    if K_Loc == bg_current and "noticed rogue" in K_RecentActions: #If Kitty was participating
             $ K_LikeRogue += 2 if K_LikeRogue >= 800 else 1
+    if E_Loc == bg_current and "noticed rogue" in E_RecentActions: #If Emma was participating
+            $ E_LikeRogue += 3 if E_LikeRogue >= 800 else 1
             
     if "Rogue Jobber" in Achievements:
         pass
@@ -2191,14 +2209,185 @@ label RDP_Cycle: #Repeating strokes
         call R_Pussy_Launch("dildo pussy")
         call RogueLust   
         
-        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
+        if Line and P_Focus < 100:                                                   
+                    #Player Command menu
+                    menu:
+                        "Keep going. . .":
+                                    pass
+                                               
+                        "Slap her ass":                     
+                                call R_Slap_Ass
+                                jump RDP_Cycle  
+                                
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                    
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if R_Action and MultiAction:
+                                                call Rogue_Offhand_Set
+                                                if Trigger2:
+                                                     $ R_Action -= 1
+                                            else:
+                                                ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"  
+                                                
+                                    "Shift primary action":
+                                            if R_Action and MultiAction:
+                                                    menu:
+                                                        "I want to stick a finger in her ass.":
+                                                                $ Situation = "shift"
+                                                                call RDP_After
+                                                                call R_Insert_Ass    
+                                                        "Just stick a finger in her ass without asking.":
+                                                                $ Situation = "auto"
+                                                                call RDP_After
+                                                                call R_Insert_Ass                                           
+                                                        "I want to shift the dilso to her ass.":
+                                                                $ Situation = "shift"
+                                                                call RDP_After
+                                                                call R_Dildo_Ass   
+                                                        "Never Mind":
+                                                                jump RDP_Cycle
+                                            else: 
+                                                ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"           
+                    
+                                    "Shift your focus" if Trigger2:
+                                                $ Situation = "shift focus"
+                                                call RDP_After
+                                                call Rogue_Offhand_Set   
+                                    "Shift your focus (locked)" if not Trigger2:
+                                                pass
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Rogue to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Rogue_Les_Change
+                                            "Ask Rogue to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Kitty":
+                                                            call Kitty_Three_Change
+                                                        elif Partner == "Emma":
+                                                            call Emma_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Rogue")
+                                            "Undress [Partner]":
+                                                        if Partner == "Kitty":
+                                                                call K_Undress   
+                                                        elif Partner == "Emma":
+                                                                call E_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")    
+                                                        elif Partner == "Emma" and E_Spunk:
+                                                                call Emma_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump RDP_Cycle 
+                                            "Never mind":
+                                                        jump RDP_Cycle 
+                                    "Undress Rogue":
+                                            call R_Undress   
+                                    "Clean up Rogue (locked)" if not R_Spunk:
+                                            pass  
+                                    "Clean up Rogue" if R_Spunk:
+                                            call Rogue_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump RDP_Cycle 
+                                                   
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call R_Pos_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump RDP_After
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call R_Pos_Reset
+                                    $ Line = 0
+                                    jump RDP_After
+        #End menu (if Line)
+        
+        if R_Panties or R_Legs == "pants" or HoseNum("Rogue") >= 5: #This checks if Rogue wants to strip down.
+                call R_Undress("auto")
             
-        if Cnt == (5 + R_DildoP):
+        call Sex_Dialog("Rogue",Partner)
+                
+        #If either of you could cum 
+        
+        $ Cnt += 1
+        $ Round -= 1   
+    
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or R_Lust >= 100: 
+                    #If either of you could cum   
+                    if P_Focus >= 100:    
+                            #If you can cum:                                                 
+                            call PR_Cumming
+                            if "angry" in R_RecentActions:  
+                                call R_Pos_Reset
+                                return    
+                            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5) 
+                            if 100 > R_Lust >= 70 and R_OCount < 2:             
+                                $ R_RecentActions.append("unsatisfied")                      
+                                $ R_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump RDP_After 
+                            $ Line = "came"
+     
+                    if R_Lust >= 100:  
+                            #If Rogue can cum                                             
+                            call R_Cumming
+                            if Situation == "shift" or "angry" in R_RecentActions:
+                                jump RDP_After
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
+                            $ Line = 0
+                            if not P_Semen:
+                                "You're emptied out, you should probably take a break."
+                            
+                            
+                            if "unsatisfied" in R_RecentActions:#And Rogue is unsatisfied,  
+                                "Rogue still seems a bit unsatisfied with the experience."
+                                menu:
+                                    "Finish her?"
+                                    "Yes, keep going for a bit.":
+                                        $ Line = "You get back into it" 
+                                    "No, I'm done.":
+                                        "You pull back."
+                                        jump RDP_After    
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
+                elif Partner == "Emma" and E_Lust >= 100:                                          
+                    call E_Cumming
+        #End orgasm
+        
+        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
+        
+        if R_SEXP >= 100 or ApprovalCheck("Rogue", 1200, "LO"):
+            pass
+        elif Cnt == (5 + R_DildoA):
                     $ R_Brows = "confused"
                     ch_r "What are you even doing down there?" 
         elif R_Lust >= 80:
                     pass
-        elif Cnt == (15 + R_DildoP) and R_SEXP >= 15 and not ApprovalCheck("Rogue", 1500):
+        elif Cnt == (15 + R_DildoA) and R_SEXP >= 15 and not ApprovalCheck("Rogue", 1500):
                     $ R_Brows = "confused"        
                     menu:
                         ch_r "[R_Petname], this is getting uncomfortable, maybe we could try something else."                         
@@ -2228,127 +2417,7 @@ label RDP_Cycle: #Repeating strokes
                                     $ R_DailyActions.append("angry")   
                                     jump RDP_After
         #End Count check
-        
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    menu:
-                        "[Line]"
-                        "Keep going. . .":
-                                    pass
-                                                     
-                        "Slap her ass":                     
-                                call R_Slap_Ass
-                                jump RDP_Cycle 
-                                
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0
-                                                
-                        "Maybe lose some clothes. . .":
-                                    call R_Undress    
-                                    
-                        "Shift actions":
-                                if R_Action and MultiAction:
-                                        menu:
-                                            "I want to stick a finger in her ass.":
-                                                    $ Situation = "shift"
-                                                    call RDP_After
-                                                    call R_Insert_Ass    
-                                            "Just stick a finger in her ass without asking.":
-                                                    $ Situation = "auto"
-                                                    call RDP_After
-                                                    call R_Insert_Ass                                           
-                                            "I want to shift the dilso to her ass.":
-                                                    $ Situation = "shift"
-                                                    call RDP_After
-                                                    call R_Dildo_Ass   
-                                            "Never Mind":
-                                                        pass                  
-                                else:
-                                    ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"           
-                    
-                    
-                        "I also want to. . . [[Offhand]":
-                                if R_Action and MultiAction:
-                                    call Rogue_Offhand_Set
-                                    if Trigger2:
-                                         $ R_Action -= 1
-                                else:
-                                    ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"  
-                        
-                        "Shift your focus" if Trigger2:
-                                    $ Situation = "shift focus"
-                                    call RDP_After
-                                    call Rogue_Offhand_Set   
-                        "Shift your focus (locked)" if not Trigger2:
-                                    pass
-                
-                        "Let's try something else." if MultiAction: 
-                                    call R_Pos_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump RDP_After
-                        "Let's stop for now." if not MultiAction: 
-                                    call R_Pos_Reset
-                                    $ Line = 0
-                                    jump RDP_After
-        #End menu (if Line)
-        
-        if R_Panties or R_Legs == "pants" or HoseNum("Rogue") >= 5: #This checks if Rogue wants to strip down.
-                call R_Undress("auto")
-            
-        call Sex_Dialog("Rogue",Partner)
-                
-        #If either of you could cum 
-            
-        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
-        
-        if P_Focus >= 100 or R_Lust >= 100: 
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PR_Cumming
-                            if "angry" in R_RecentActions:  
-                                call R_Pos_Reset
-                                return    
-                            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5) 
-                            if 100 > R_Lust >= 70 and R_OCount < 2:             
-                                $ R_RecentActions.append("unsatisfied")                      
-                                $ R_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump RDP_After 
-                            $ Line = "came"
-     
-                    #If Rogue can cum
-                    if R_Lust >= 100:                                               
-                        call R_Cumming
-                        if Situation == "shift" or "angry" in R_RecentActions:
-                            jump RDP_After
-                       
-                    if Line == "came": 
-                        $ Line = 0
-                        if not P_Semen:
-                            "You're emptied out, you should probably take a break."
-                            
-                            
-                        if "unsatisfied" in R_RecentActions:#And Rogue is unsatisfied,  
-                            "Rogue still seems a bit unsatisfied with the experience."
-                            menu:
-                                "Finish her?"
-                                "Yes, keep going for a bit.":
-                                    $ Line = "You get back into it" 
-                                "No, I'm done.":
-                                    "You pull back."
-                                    jump RDP_After
-        #End orgasm
-        
-   
+           
         if Round == 10:
             ch_r "You might want to wrap this up, it's getting late."  
         elif Round == 5:
@@ -2358,7 +2427,6 @@ label RDP_Cycle: #Repeating strokes
     call RogueFace("bemused", 0)
     $ Line = 0
     ch_r "Ok, [R_Petname], that's enough of that for now."
-    
     
 label RDP_After:
     if not Situation: #fix  Situation != "shift" and Situation != "auto" and Situation != "pullback": 
@@ -2370,7 +2438,9 @@ label RDP_After:
     $ R_Action -=1   
     
     if K_Loc == bg_current and "noticed rogue" in K_RecentActions: #If Kitty was participating
-        $ K_LikeRogue += 2 if K_LikeRogue >= 800 else 1
+            $ K_LikeRogue += 2 if K_LikeRogue >= 800 else 1
+    if E_Loc == bg_current and "noticed rogue" in E_RecentActions: #If Emma was participating
+            $ E_LikeRogue += 2 if E_LikeRogue >= 800 else 1
      
     if R_DildoP == 1:            
             $ R_SEXP += 10         
@@ -2776,9 +2846,180 @@ label RDA_Cycle: #Repeating strokes
         call R_Pussy_Launch("dildo anal")
         call RogueLust   
         
-        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
+        if Line and P_Focus < 100:                                                   
+                    #Player Command menu
+                    menu:
+                        "Keep going. . .":
+                                    pass
+                                               
+                        "Slap her ass":                     
+                                call R_Slap_Ass
+                                jump RDA_Cycle  
+                                
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                    
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if R_Action and MultiAction:
+                                                call Rogue_Offhand_Set
+                                                if Trigger2:
+                                                     $ R_Action -= 1
+                                            else:
+                                                ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"  
+                                                
+                                    "Shift primary action":
+                                            if R_Action and MultiAction:
+                                                    menu:
+                                                        "I want to stick a finger in her pussy.":
+                                                                $ Situation = "shift"
+                                                                call RDA_After
+                                                                call R_Fondle_Pussy    
+                                                        "Just stick a finger in her pussy without asking.":
+                                                                $ Situation = "auto"
+                                                                call RDA_After
+                                                                call R_Fondle_Pussy                                           
+                                                        "I want to shift the dilso to her pussy.":
+                                                                $ Situation = "shift"
+                                                                call RDA_After
+                                                                call R_Dildo_Pussy 
+                                                        "Never Mind":
+                                                                jump RDA_Cycle
+                                            else: 
+                                                ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"           
+                    
+                                    "Shift your focus" if Trigger2:
+                                                $ Situation = "shift focus"
+                                                call RDA_After
+                                                call Rogue_Offhand_Set   
+                                    "Shift your focus (locked)" if not Trigger2:
+                                                pass
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Rogue to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Rogue_Les_Change
+                                            "Ask Rogue to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Kitty":
+                                                            call Kitty_Three_Change
+                                                        elif Partner == "Emma":
+                                                            call Emma_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Rogue")
+                                            "Undress [Partner]":
+                                                        if Partner == "Kitty":
+                                                                call K_Undress   
+                                                        elif Partner == "Emma":
+                                                                call E_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")    
+                                                        elif Partner == "Emma" and E_Spunk:
+                                                                call Emma_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump RDA_Cycle 
+                                            "Never mind":
+                                                        jump RDA_Cycle 
+                                    "Undress Rogue":
+                                            call R_Undress   
+                                    "Clean up Rogue (locked)" if not R_Spunk:
+                                            pass  
+                                    "Clean up Rogue" if R_Spunk:
+                                            call Rogue_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump RDA_Cycle 
+                                                   
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call R_Pos_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump RDA_After
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call R_Pos_Reset
+                                    $ Line = 0
+                                    jump RDA_After
+        #End menu (if Line)
+        
+        if R_Panties or R_Legs == "pants" or HoseNum("Rogue") >= 5: #This checks if Rogue wants to strip down.
+                call R_Undress("auto")
             
-        if Cnt == (5 + R_DildoA):
+        call Sex_Dialog("Rogue",Partner)
+                
+        #If either of you could cum 
+        
+        $ Cnt += 1
+        $ Round -= 1   
+    
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or R_Lust >= 100: 
+                    #If either of you could cum   
+                    if P_Focus >= 100:    
+                            #If you can cum:                                                 
+                            call PR_Cumming
+                            if "angry" in R_RecentActions:  
+                                call R_Pos_Reset
+                                return    
+                            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5) 
+                            if 100 > R_Lust >= 70 and R_OCount < 2:             
+                                $ R_RecentActions.append("unsatisfied")                      
+                                $ R_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump RDA_After 
+                            $ Line = "came"
+     
+                    if R_Lust >= 100:  
+                            #If Rogue can cum                                             
+                            call R_Cumming
+                            if Situation == "shift" or "angry" in R_RecentActions:
+                                jump RDA_After
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
+                            $ Line = 0
+                            if not P_Semen:
+                                "You're emptied out, you should probably take a break."
+                            
+                            
+                            if "unsatisfied" in R_RecentActions:#And Rogue is unsatisfied,  
+                                "Rogue still seems a bit unsatisfied with the experience."
+                                menu:
+                                    "Finish her?"
+                                    "Yes, keep going for a bit.":
+                                        $ Line = "You get back into it" 
+                                    "No, I'm done.":
+                                        "You pull back."
+                                        jump RDA_After    
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
+                elif Partner == "Emma" and E_Lust >= 100:                                          
+                    call E_Cumming
+        #End orgasm
+        
+        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
+        
+        if R_SEXP >= 100 or ApprovalCheck("Rogue", 1200, "LO"):
+            pass
+        elif Cnt == (5 + R_DildoA):
                     $ R_Brows = "confused"
                     ch_r "What are you even doing down there?" 
         elif R_Lust >= 80:
@@ -2813,128 +3054,7 @@ label RDA_Cycle: #Repeating strokes
                                     $ R_DailyActions.append("angry")   
                                     jump RDA_After
         #End Count check
-        
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    menu:
-                        "[Line]"
-                        "Keep going. . .":
-                                    pass
-                                               
-                        "Slap her ass":                     
-                                call R_Slap_Ass
-                                jump RDA_Cycle  
-                                
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0
-                                                                        
-                        "Maybe lose some clothes. . .":
-                                    call R_Undress    
-                                    
-                        "Shift actions":
-                                if R_Action and MultiAction:
-                                        menu:
-                                            "I want to stick a finger in her pussy.":
-                                                    $ Situation = "shift"
-                                                    call RDA_After
-                                                    call R_Fondle_Pussy    
-                                            "Just stick a finger in her pussy without asking.":
-                                                    $ Situation = "auto"
-                                                    call RDA_After
-                                                    call R_Fondle_Pussy                                           
-                                            "I want to shift the dilso to her pussy.":
-                                                    $ Situation = "shift"
-                                                    call RDA_After
-                                                    call R_Dildo_Pussy   
-                                            "Never Mind":
-                                                        pass                  
-                                else:
-                                    ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"           
-                    
-                    
-                        "I also want to. . . [[Offhand]":
-                                if R_Action and MultiAction:
-                                    call Rogue_Offhand_Set
-                                    if Trigger2:
-                                         $ R_Action -= 1
-                                else:
-                                    ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"  
-                        
-                        "Shift your focus" if Trigger2:
-                                    $ Situation = "shift focus"
-                                    call RDA_After
-                                    call Rogue_Offhand_Set   
-                        "Shift your focus (locked)" if not Trigger2:
-                                    pass
-                
-                        "Let's try something else." if MultiAction: 
-                                    call R_Pos_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump RDA_After
-                        "Let's stop for now." if not MultiAction: 
-                                    call R_Pos_Reset
-                                    $ Line = 0
-                                    jump RDA_After
-        #End menu (if Line)
-        
-        if R_Panties or R_Legs == "pants" or HoseNum("Rogue") >= 5: #This checks if Rogue wants to strip down.
-                call R_Undress("auto")
-            
-        call Sex_Dialog("Rogue",Partner)
-                
-        #If either of you could cum 
-        
-    
-        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
-        
-        if P_Focus >= 100 or R_Lust >= 100: 
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PR_Cumming
-                            if "angry" in R_RecentActions:  
-                                call R_Pos_Reset
-                                return    
-                            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5) 
-                            if 100 > R_Lust >= 70 and R_OCount < 2:             
-                                $ R_RecentActions.append("unsatisfied")                      
-                                $ R_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump RDA_After 
-                            $ Line = "came"
-     
-                    #If Rogue can cum
-                    if R_Lust >= 100:                                               
-                        call R_Cumming
-                        if Situation == "shift" or "angry" in R_RecentActions:
-                            jump RDA_After
-                       
-                    if Line == "came": 
-                        $ Line = 0
-                        if not P_Semen:
-                            "You're emptied out, you should probably take a break."
-                            
-                            
-                        if "unsatisfied" in R_RecentActions:#And Rogue is unsatisfied,  
-                            "Rogue still seems a bit unsatisfied with the experience."
-                            menu:
-                                "Finish her?"
-                                "Yes, keep going for a bit.":
-                                    $ Line = "You get back into it" 
-                                "No, I'm done.":
-                                    "You pull back."
-                                    jump RDA_After
-        #End orgasm
-        
-   
+           
         if Round == 10:
             ch_r "You might want to wrap this up, it's getting late."  
         elif Round == 5:
@@ -2956,7 +3076,9 @@ label RDA_After:
     $ R_Action -=1            
     
     if K_Loc == bg_current and "noticed rogue" in K_RecentActions: #If Kitty was participating
-        $ K_LikeRogue += 2 if K_LikeRogue >= 800 else 1
+            $ K_LikeRogue += 2 if K_LikeRogue >= 800 else 1
+    if E_Loc == bg_current and "noticed rogue" in E_RecentActions: #If Emma was participating
+            $ E_LikeRogue += 2 if E_LikeRogue >= 800 else 1
      
     if R_DildoA == 1:            
             $ R_SEXP += 10         
@@ -2987,566 +3109,28 @@ label R_Vibrator_Check:                                                         
         "You don't have one of those on you."
         return 0
     return 1
-
-
-## R_Footjob //////////////////////////////////////////////////////////////////////
-label R_Footjob:
-    $ R_LegsUp = 0
-    call Shift_Focus("Rogue")
-    if R_Foot >= 7: # She loves it
-        $ Tempmod += 10
-    elif R_Foot >= 3: #You've done it before several times
-        $ Tempmod += 7
-    elif R_Foot: #You've done it before
-        $ Tempmod += 3
-        
-    if R_Addict >= 75 and R_Swallow >=3: #She's really strung out and has swallowed
-        $ Tempmod += 10
-    if R_Addict >= 75:
-        $ Tempmod += 5
-        
-    if Situation == "shift":
-        $ Tempmod += 15
-    if "exhibitionist" in R_Traits:
-        $ Tempmod += (3*Taboo)    
-    if "dating" in R_Traits or "sex friend" in R_Petnames:
-        $ Tempmod += 10
-    elif "ex" in R_Traits:
-        $ Tempmod -= 40 
-    if R_ForcedCount and not R_Forced:
-        $ Tempmod -= 5 * R_ForcedCount    
-    
-    if Taboo and "tabno" in R_DailyActions:        
-        $ Tempmod -= 10 
-        
-    if "no foot" in R_DailyActions:               
-        $ Tempmod -= 5 
-        $ Tempmod -= 10 if "no foot" in R_RecentActions else 0    
-        
-    $ Approval = ApprovalCheck("Rogue", 1250, TabM = 3) # 110, 125, 140, Taboo -120(230)
-    
-    if Situation == "Rogue":                                                                  #Rogue auto-starts   
-        if Approval > 2:                                                      # fix, add rogue auto stuff here
-            if Trigger2 == "jackin":
-                "Rogue leans and starts rubbing your cock between her feet."
-            else:
-                "Rogue gives you a mischevious smile, and starts to rub her foot along your cock."
-            menu:
-                "What do you do?"
-                "Nothing.":                    
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 3) 
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 2)                     
-                    "Rogue continues her actions."
-                "Praise her.":       
-                    call RogueFace("sexy, 1")                    
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 3) 
-                    ch_p "Oooh, that's good, [R_Pet]."
-                    call Rogue_Namecheck
-                    "Rogue continues her actions."
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, 1)
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 1)
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 2)
-                "Ask her to stop.":
-                    call RogueFace("surprised")       
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 1) 
-                    ch_p "Let's not do that for now, [R_Pet]."
-                    call Rogue_Namecheck
-                    "Rogue puts it down."
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 1)
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 1)
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 30, 2)
-                    return            
-            if Trigger:
-                $ Trigger3 = "foot"
-                return
-            jump RFJ_Prep
-        else:                
-            $ Tempmod = 0                               # fix, add rogue auto stuff here
-            $ Trigger2 = 0
-            return            
-    
-    if not R_Foot and "no foot" not in R_RecentActions:        
-        call RogueFace("confused", 2)
-        ch_r "Huh, so you'd like me to touch your cock with my feet?"
-        $ R_Blush = 1
-            
-    if not R_Foot and Approval:                                                 #First time dialog        
-        if R_Forced: 
-            call RogueFace("sad",1)
-            $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, -3, 1)
-            $ R_Love = Statupdate("Rogue", "Love", R_Love, 20, -2, 1)
-        elif R_Love >= (R_Obed + R_Inbt):
-            call RogueFace("sexy",1)
-            $ R_Brows = "sad"
-            $ R_Mouth = "smile" 
-            ch_r "I guess it couldn't hurt. . ."            
-        elif R_Obed >= R_Inbt:
-            call RogueFace("normal",1)
-            ch_r "If you want, [R_Petname]. . ."            
-        elif R_Addict >= 50:
-            call RogueFace("manic", 1)
-            ch_r "Okay. . ."  
-        else: # Uninhibited 
-            call RogueFace("lipbite",1)    
-            ch_r "Sure. . ."    
-            
-    elif Approval:                                                                       #Second time+ dialog
-        if R_Forced: 
-            call RogueFace("sad")
-            $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, -3, 1)
-            $ R_Love = Statupdate("Rogue", "Love", R_Love, 20, -2, 1)
-            ch_r "That's all?" 
-        elif not Taboo and "tabno" in R_DailyActions:        
-            ch_r "Um, I guess this is secluded enough. . ."    
-        elif "foot" in R_RecentActions:
-            call RogueFace("sexy", 1)
-            ch_r "I'm getting foot cramps. . ."
-            jump RFJ_Prep
-        elif "foot" in R_DailyActions:
-            call RogueFace("sexy", 1)
-            $ Line = renpy.random.choice(["Another one?",   
-                "You're going to give me calluses.", 
-                "Didn't get enough earlier?",
-                "My feet are kinda sore from earlier.",
-                "My feet are kinda sore from earlier."]) 
-            ch_r "[Line]"
-        elif R_Foot < 3:        
-            call RogueFace("sexy", 1)
-            $ R_Brows = "confused"
-            $ R_Mouth = "kiss"
-            ch_r "Hmm, magic toes. . ."        
-        else:       
-            call RogueFace("sexy", 1)
-            $ Rogue_Arms = 2
-            $ Line = renpy.random.choice(["You want me to use my feet?",                 
-                "So you'd like another foot sesh?",                 
-                "A little. . . [she rubs her foot along your leg]?", 
-                "A little TLC?"]) 
-            ch_r "[Line]"
-        $ Line = 0
-            
-    if Approval >= 2:                                                                   #She's into it. . .               
-        if R_Forced:
-            call RogueFace("sad")
-            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 1)
-            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 1)
-            ch_r "Ok, fine." 
-        elif "no foot" in R_DailyActions:               
-            ch_r "OK, geeze!"   
-        else:
-            call RogueFace("sexy", 1)
-            $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 1)
-            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3) 
-            $ Line = renpy.random.choice(["Sure, I guess.",                 
-                "Ooooookay.",                 
-                "Cool, lemme see it.", 
-                "I guess I could. . .",
-                "Ok. . . [She gestures for you to come over].",
-                "Heh, ok, ok."]) 
-            ch_r "[Line]"
-            $ Line = 0
-        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 20, 1)
-        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 60, 1)
-        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 2) 
-        jump RFJ_Prep   
-    
-    else:                                                                               #She's not into it, but maybe. . .            
-        call RogueFace("angry")
-        if "no foot" in R_RecentActions:  
-            ch_r "You don't listen do you, [R_Petname]."
-        elif Taboo and "tabno" in R_DailyActions and "no foot" in R_DailyActions: 
-            ch_r "I said not in public!"  
-        elif "no foot" in R_DailyActions:       
-            ch_r "I told you \"no,\" [R_Petname]."
-        elif Taboo and "tabno" in R_DailyActions:  
-            ch_r "I said not in public!"     
-        elif not R_Foot:
-            call RogueFace("bemused")
-            ch_r "I don't know, [R_Petname]. . ."
-        else:
-            call RogueFace("bemused")
-            ch_r "Not now, ok?"
-        menu:
-            extend ""
-            "Sorry, never mind." if "no foot" in R_DailyActions:
-                call RogueFace("bemused")
-                ch_r "Yeah."              
-                return
-            "Maybe later?" if "no foot" not in R_DailyActions:
-                call RogueFace("sexy")  
-                ch_r ". . ."
-                ch_r "Maybe."
-                $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, 2)
-                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 2)   
-                if Taboo:                    
-                    $ R_RecentActions.append("tabno")                      
-                    $ R_DailyActions.append("tabno") 
-                $ R_RecentActions.append("no foot")                      
-                $ R_DailyActions.append("no foot")            
-                return
-            "I'd really appreciate it. . .":             
-                if Approval:
-                    call RogueFace("sexy")     
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 2)
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 2)
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 3) 
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 40, 2) 
-                    $ Line = renpy.random.choice(["Sure, I guess.",                 
-                            "Ooooookay.",                 
-                            "Cool, lemme see it.", 
-                            "I guess I could. . .",
-                            "Ok. . . [She gestures for you to come over].",
-                            "Heh, ok, ok."]) 
-                    ch_r "[Line]"
-                    $ Line = 0                   
-                    jump RFJ_Prep
-                else:   
-                    pass
-                    
-            "Come on, get to work.":                                               # Pressured into it
-                $ Approval = ApprovalCheck("Rogue", 400, "OI", TabM = 3) # 35, 50, 65, -120(155)
-                if Approval > 1 or (Approval and R_Forced):
-                    call RogueFace("sad")
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, -5, 1)
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -2)                 
-                    ch_r "Ok, fine."  
-                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 4)
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 1) 
-                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 3)  
-                    $ R_Forced = 1  
-                    jump RFJ_Prep
-                else:                              
-                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -15)     
-                    $ R_RecentActions.append("angry")
-                    $ R_DailyActions.append("angry")   
-    
-    #She refused all offers.
-    $ Rogue_Arms = 1 
-    if "no foot" in R_DailyActions:
-        call RogueFace("angry", 1)
-        ch_r "I'm not telling you again."   
-        $ R_RecentActions.append("angry")
-        $ R_DailyActions.append("angry")   
-    elif R_Forced:
-        call RogueFace("angry", 1)
-        ch_r "I don't even want to step on it."
-        $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5)    
-        $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, -2) if R_Love > 300 else R_Love
-        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -2)    
-        $ R_RecentActions.append("angry")
-        $ R_DailyActions.append("angry")   
-    elif Taboo:                             # she refuses and this is too public a place for her
-        call RogueFace("angry", 1)          
-        $ R_DailyActions.append("tabno") 
-        ch_r "Not here, not anywhere near here."
-        $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5)  
-        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -3)   
-    elif R_Foot:
-        call RogueFace("sad") 
-        ch_r "I'm not feeling it today. . ."       
-    else:
-        call RogueFace("normal", 1)
-        ch_r "I don't know about using my feet for. . . that."  
-    $ R_RecentActions.append("no foot")                      
-    $ R_DailyActions.append("no foot") 
-    $ Tempmod = 0    
-    return
-    
-
-label RFJ_Prep:
-    if Trigger2 == "foot": 
-        return
-    
-    if Taboo:
-        $ R_Inbt += int(Taboo/10)  
-        $ R_Lust += int(Taboo/5)
-                
-    call RogueFace("sexy")
-    if R_Forced:
-        call RogueFace("sad")
-    elif R_Foot:
-        $ R_Brows = "confused"
-        $ R_Eyes = "sexy"
-        $ R_Mouth = "smile"
-    
-    if not R_Foot:        
-        if R_Forced:
-            $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -20)
-            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 25)
-            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 30) 
-        else:
-            $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 5)
-            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 20)
-            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 20)     
-    
-    call Seen_First_Peen(1)
-    
-    if Situation:     
-        $ renpy.pop_call() 
-        $ Situation = 0  
-    $ Line = 0
-    $ Cnt = 0
-    if Taboo:
-        call DrainWord("Rogue","tabno")
-    call DrainWord("Rogue","no foot")
-    $ R_RecentActions.append("foot")                      
-    $ R_DailyActions.append("foot") 
-  
-label RFJ_Cycle:    
-    while Round >=0:
-        call Shift_Focus("Rogue")
-        call Rogue_Sex_Launch("foot")
-#        call Rogue_FJ_Launch    #fix, change to sex launch with foot
-        call RogueLust   
-            
-        $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
-        
-        if Cnt == 20:
-                    $ R_Brows = "angry"        
-                    menu:
-                        ch_r "Ouch, foot cramp, can we take a break?"
-                        "How about a BJ?" if R_Action and MultiAction:
-                                $ Situation = "shift"
-                                call R_FJAfter
-                                call R_Blowjob   
-                        "How about a Handy?" if R_Action and MultiAction:
-                                $ Situation = "shift"
-                                call R_FJAfter
-                                call R_Handjob  
-                        "Finish up." if P_FocusX:
-                                "You release your concentration. . ."             
-                                $ P_FocusX = 0
-                                $ P_Focus += 15
-                                $ Cnt += 1
-                                "[Line]"
-                                jump RFJ_Cycle
-                        "Let's try something else." if MultiAction: 
-                                $ Line = 0
-                                call Rogue_Sex_Reset
-                                $ Situation = "shift"
-                                jump R_FJAfter
-                        "No, get back down there.":
-                                if ApprovalCheck("Rogue", 1200) or ApprovalCheck("Rogue", 500, "O"):
-                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -5)
-                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 3)                    
-                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 2)
-                                    "She grumbles but gets back to work."
-                                else:
-                                    call RogueFace("angry", 1)   
-                                    "She scowls at you, drops you cock and pulls back."
-                                    ch_r "Hey, I've got better things to do if you're going to be a dick about it."                                               
-                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -3, 1)
-                                    $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -4, 1)
-                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 30, -1, 1)                    
-                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -1, 1)                     
-                                    $ R_RecentActions.append("angry")
-                                    $ R_DailyActions.append("angry")   
-                                    jump R_FJAfter
-        elif Cnt == 10 and R_SEXP <= 100 and not ApprovalCheck("Rogue", 1200, "LO"):
-                    $ R_Brows = "confused"
-                    ch_r "Can we be done with this now? I'm getting sore."         
-        #End Count check
-        
-        if not Speed:
-            $ Speed = 1 
-
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    menu:
-                        "[Line]"
-                        "Keep going. . ." if Speed:
-                                    pass
-                        "Start moving? . ." if not Speed:
-                                    $ Speed = 1
-                            
-                        "Speed up. . ." if Speed < 2:                    
-                                    $ Speed = 2
-                                    if Trigger2 == "jackin":
-                                        "You ask her to up the pace a bit, and move your own hand out of the way."
-                                    else:
-                                        "You ask her to up the pace a bit."
-                                    
-                        "Speed up. . . (locked)" if Speed >= 2:
-                                    pass
-                            
-                        "Slow Down. . ." if Speed:                    
-                                    $ Speed -= 1
-                                    "You ask her to slow it down a bit."
-                        "Slow Down. . . (locked)" if not Speed:                
-                                    pass
-                            
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0
-
-                        # "Blindfold her" if R_Bondage and not R_Blindfold:
-                        #     call RogueFace("sexy", 1) 
-                        #     "You add a blindfold so she can't see a thing"
-                        #     $ R_Blindfold = 1
-            
-                        # "Remove blindfold" if R_Blindfold:
-                        #     call RogueFace("sexy", 1) 
-                        #     "You remove the blindfold"
-                        #     $ R_Blindfold = 0
-                   
-                        "Maybe lose some clothes. . .":
-                                    call R_Undress  
-                                    
-                        "Shift actions":
-                            menu:
-                                "How about a blowjob?":
-                                            if R_Action and MultiAction:
-                                                $ Situation = "shift"
-                                                call R_FJAfter                
-                                                call R_Blowjob
-                                            else:
-                                                ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."
-                                "How about a handjob?":
-                                            if R_Action and MultiAction:
-                                                $ Situation = "shift"
-                                                call R_FJAfter                
-                                                call R_Handjob
-                                            else:
-                                                ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."
-                                                
-                                "How about a titjob?":
-                                            if R_Action and MultiAction:
-                                                $ Situation = "shift"
-                                                call R_FJAfter
-                                                call R_Titjob
-                                            else:
-                                                ch_r "Actually I'm getting a bit worn out, let's finish up here. . ."
-                                        
-#                        "I also want to fondle her breasts." if R_Action and MultiAction:
-#                                    $ Trigger2 = "fondle breasts"
-#                                    $ Situation = "auto"
-#                                    call R_Fondle_Breasts
-#                                    if Trigger2:
-#                                         $ R_Action -= 1
-                                         
-                        "I also want to. . . [[Offhand]": #fix set this up
-                                if R_Action and MultiAction:
-                                    call Rogue_Offhand_Set
-                                    if Trigger2:
-                                         $ R_Action -= 1
-                                else:
-                                    ch_r "I kinda need a break, so if we could wrap this up?"  
-                                    
-                        "Let's try something else." if MultiAction: 
-                                    call Rogue_Sex_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump R_FJAfter
-                        "Let's stop for now." if not MultiAction: 
-                                    call Rogue_Sex_Reset
-                                    $ Line = 0
-                                    jump R_FJAfter
-        #End menu (if Line)
-        
-        call Sex_Dialog("Rogue",Partner)
-                
-        #If either of you could cum 
-        if P_Focus >= 100 or R_Lust >= 100:   
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PR_Cumming
-                            if "angry" in R_RecentActions:  
-                                call Rogue_Sex_Reset
-                                return    
-                            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5) 
-                            if 100 > R_Lust >= 70 and R_OCount < 2:             
-                                $ R_RecentActions.append("unsatisfied")                      
-                                $ R_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump R_FJAfter 
-                            $ Line = "came"
-     
-                    #If Rogue can cum
-                    if R_Lust >= 100:                                                                
-                            call R_Cumming
-                            if Situation == "shift" or "angry" in R_RecentActions:
-                                jump R_FJAfter            
-                    
-                    #If you came
-                    if Line == "came":
-                            if not P_Semen:
-                                "You're pretty wiped, better stop for now."
-                            $ Line = 0
-                            jump R_FJAfter   
-                
-        #End orgasm
-        
-   
-        if Round == 10:
-            ch_r "It's kind of time to get moving."   
-        elif Round == 5:
-            ch_r "For real time's up."      
-    
-    #Round = 0 loop breaks
-    call RogueFace("bemused", 0)
-    $ Line = 0
-    ch_r "Ok, we need to take a break."
-    
-label R_FJAfter:
-    call RogueFace("sexy") 
-    
-    $ R_Foot += 1  
-    $ R_Action -=1
-    $ R_Addictionrate += 1
-    if "addictive" in P_Traits:
-        $ R_Addictionrate += 1        
-    $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 5)
-    
-    if R_Loc == bg_current and "noticed kitty" in R_RecentActions: #If Rogue was participating
-        $ K_LikeRogue += 1
-    
-    if "Roguepedi" in Achievements:
-            pass  
-    elif R_Foot >= 10:
-            call RogueFace("smile", 1)
-            ch_r "I guess I've gotten pretty smooth at the \"Roguepedi.\""
-            $ Achievements.append("Roguepedi")
-            $ R_SEXP += 5          
-    elif R_Foot == 1:            
-            $ R_SEXP += 10
-            if R_Love >= 500:
-                $ R_Mouth = "smile"
-                ch_r "I could feel you down there. . ."
-            elif P_Focus <= 20:
-                $ R_Mouth = "sad"
-                ch_r "Did that work out for you?"
-    elif R_Foot == 5:
-                ch_r "Let me know any time you need me to \"foot you up.\""                  
-     
-    $ Tempmod = 0  
-    if Situation == "shift":
-        ch_r "Ok, so what were you thinking?"
-    else:
-        call Rogue_Sex_Reset    
-    call Checkout
-    return
-
-## end R_Footjob //////////////////////////////////////////////////////////////////////
-
     
 # Start R_Lesbian ////////////////////////////////////////////////////////////////////////
 label R_Les_Interupted:    
+        # Called if you catch them fucking 
         if "unseen" not in R_RecentActions:
-            jump R_Les_After
+                if R_Org < 3 and R_Action:                
+                    menu:
+                        "Did you want to stop them?"
+                        "Yeah.":
+                            pass
+                        "No, let them keep going.":
+                            $ R_Action -= 1 if R_Action > 0 else 0
+                            jump R_Les_Cycle 
+                else:
+                    ch_r "Ok, that's probably enough of that. . ."
+                jump R_Les_After
         call DrainWord("Rogue","unseen",1,0) #She sees you, so remove unseens
         call DrainWord(Partner,"unseen",1,0) #She sees you, so remove unseens
         call RogueFace("surprised", 2)
         "Suddenly, Rogue jerks up from what she was doing with a start, and gives [Partner] a nudge."
         ch_r "Um, [Playername], how long have you been watchin?"
         call RogueFace("surprised", 1)
-        call Rogue_First_Bottomless(1) 
         $ R_Action -= 1 if R_Action > 0 else 0
         call Checkout(1)
         $ Line = 0
@@ -3664,7 +3248,22 @@ label R_LesScene(Bonus = 0): #Repeating strokes
             elif R_LikeKitty <= 500:
                     $ Bonus -= 100
             call DrainWord("Kitty","unseen",1,0) #She sees you, so remove unseens
-                    
+    elif E_Loc == bg_current:
+            #if it's Emma. . .
+            $ E_RecentActions.append("noticed rogue")
+            $ Partner = "Emma"  
+            if R_LikeEmma >= 900:
+                    $ Bonus += 150
+            elif R_LikeEmma >= 800 or "poly emma" in R_Traits:
+                    $ Bonus += 100
+            elif R_LikeEmma >= 700:
+                    $ Bonus += 50
+            elif R_LikeEmma <= 200:
+                    $ Bonus -= 200
+            elif R_LikeEmma <= 500:
+                    $ Bonus -= 100
+            call DrainWord("Emma","unseen",1,0) #She sees you, so remove unseens
+            
     if bg_current in ("bg player", "bg rogue", "bg kitty", "bg emma"):
         $ Taboo == 0
     if R_ForcedCount and not R_Forced:
@@ -3683,13 +3282,17 @@ label R_LesScene(Bonus = 0): #Repeating strokes
                             # if Rogue is very much in
                             ch_r "Well, I didn't say you had to leave. . ."
                             if K_Loc == bg_current:
-                                    call K_Les_Response("Rogue",3,Bonus2=Bonus)
+                                    call K_Les_Response("Rogue",3,Bonus2=Bonus)                            
+                            elif E_Loc == bg_current:
+                                    call E_Les_Response("Rogue",3,Bonus2=Bonus)
                             if not _result:
                                     return
                     else:
                             # If Rogue is only so/so, but Kitty is on board, she tries to convince Rogue
                             if K_Loc == bg_current:
-                                    call K_Les_Response("Rogue",1,Bonus2=Bonus)                        
+                                    call K_Les_Response("Rogue",1,Bonus2=Bonus)                            
+                            elif E_Loc == bg_current:
+                                    call E_Les_Response("Rogue",3,Bonus2=Bonus)                      
                             if not _result:
                                     #this is the default reaction if Kitty is not into it either
                                     if Approval:
@@ -3878,6 +3481,8 @@ label R_LesScene(Bonus = 0): #Repeating strokes
     
     if K_Loc == bg_current:
             call K_Les_Response("Rogue",1,Bonus2=Bonus)
+    elif E_Loc == bg_current:
+            call E_Les_Response("Rogue",1,Bonus2=Bonus)
     if _result:
             #if the other girl convinces her
             call RogueFace("smile", 1)
@@ -3920,10 +3525,16 @@ label R_LesScene(Bonus = 0): #Repeating strokes
     return
     
 label R_Les_Partner:
+    # This checks to see if the other girl is into it. 
     if K_Loc == bg_current:
             call K_Les_Response("Rogue",2)
             if not _return:
                     # If Kitty refused
+                    return
+    elif E_Loc == bg_current:
+            call E_Les_Response("Kitty",2)
+            if not _return:
+                    # If Emma refused
                     return
             
 label R_Les_Prep:    
@@ -3931,8 +3542,16 @@ label R_Les_Prep:
     
     if K_Loc == bg_current:
             if "noticed rogue" not in K_RecentActions:
-                    $ K_RecentActions.append("noticed rogue")           
+                    $ K_RecentActions.append("noticed rogue")  
+            if "noticed kitty" not in R_RecentActions:
+                    $ R_RecentActions.append("noticed kitty")           
             $ Partner = "Kitty"  
+    elif E_Loc == bg_current:
+            if "noticed rogue" not in E_RecentActions:
+                    $ E_RecentActions.append("noticed rogue")  
+            if "noticed emma" not in R_RecentActions:
+                    $ R_RecentActions.append("noticed emma")           
+            $ Partner = "Emma"  
             
     if "unseen" in R_RecentActions:
             pass
@@ -3958,7 +3577,8 @@ label R_Les_Prep:
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 20)
                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 60)  
             call R_Les_FirstKiss
-            $ Trigger3 == "kissing"
+            $ Trigger3 == "kiss girl"
+            $ Trigger4 == "kiss girl"
         
     $ Trigger = "lesbian"   
     if Situation:     
@@ -3976,17 +3596,13 @@ label R_Les_Cycle: #Repeating strokes
         call Shift_Focus("Rogue")
 #        call Rogue_Les_Launch    
         call RogueLust     
-        
-        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
-                
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
+
+        if Line and P_Focus < 100:                                                    
+                    #Player Command menu
                     menu:
-                        "[Line]"
                         "Keep watching. . .":
                                     pass
-                            
+                                   
                         "\"Ahem. . .\"" if "unseen" in R_RecentActions:  
                                 jump R_Les_Interupted   
                                 
@@ -4003,111 +3619,156 @@ label R_Les_Cycle: #Repeating strokes
                         "Release your focus." if P_FocusX:
                                     "You release your concentration. . ."                
                                     $ P_FocusX = 0
+                                    
+                        "Threesome options":
+                                menu:
+                                    "Ask Rogue to do something else with [Partner]":
+                                                call Rogue_Les_Change
+                                    "Ask [Partner] to do something else":
+                                                if Partner == "Kitty":
+                                                    call Kitty_Three_Change
+                                                elif Partner == "Emma":
+                                                    call Emma_Three_Change
+                                    "Don't stop what you're doing. . .":
+                                                $ ThreeCount = 0
+                                    "Never mind":
+                                            jump R_Les_Cycle
                         
-                        "Ask Rogue to do something else with [Partner]":
-                                    call Rogue_Les_Change
-                        "Ask [Partner] to do something else with Rogue":
-                                if Partner == "Kitty":
-                                    call Kitty_Three_Change
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if R_Action and MultiAction:
+                                                call Rogue_Offhand_Set
+                                                if Trigger2:
+                                                     $ R_Action -= 1
+                                            else:
+                                                ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"  
                                             
-                        "Maybe lose some clothes. . .":
-                                    call R_Undress           
-                                        
-#                        "Shift actions":
-#                            if R_Action and MultiAction:
-#                                menu:
-#                                    "Ask to suck on them.":
-#                                            if R_Action and MultiAction:                        
-#                                                $ Situation = "shift"
-#                                                call RFB_After
-#                                                call R_Suck_Breasts
-#                                            else:
-#                                                ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"
-#                                    "Just suck on them without asking.":
-#                                            if R_Action and MultiAction:                            
-#                                                $ Situation = "auto"
-#                                                call RFB_After
-#                                                call R_Suck_Breasts
-#                                            else:
-#                                                "As you lean in to suck on her breast, she grabs your head and pushes back."
-#                                                ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"
+                                    "Threesome actions":   
+                                        menu:
+                                            "Ask Rogue to do something else with [Partner]":
+                                                    if "unseen" in R_RecentActions:
+                                                            ch_p "Oh yeah, why don't you. . ."
+                                                            jump R_Les_Interupted
+                                                    else:                        
+                                                            call Rogue_Les_Change
+                                            "Ask [Partner] to do something else":
+                                                    if "unseen" in R_RecentActions:
+                                                            ch_p "Oh yeah, why don't you. . ."
+                                                            jump R_Les_Interupted
+                                                    else:                        
+                                                            if Partner == "Kitty":
+                                                                call Kitty_Three_Change
+                                                            elif Partner == "Emma":
+                                                                call Emma_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                    if "unseen" in R_RecentActions:
+                                                            ch_p "Oh, that's good. . ."
+                                                            jump R_Les_Interupted
+                                                    else:                        
+                                                            $ ThreeCount = 0          
+#                                            "Swap to [Partner]":
+#                                                        call Trigger_Swap("Rogue")
+                                            "Undress [Partner]":
+                                                    if "unseen" in R_RecentActions:
+                                                            ch_p "Oh, yeah, take it off. . ."
+                                                            jump R_Les_Interupted
+                                                    else:                        
+                                                        if Partner == "Kitty":
+                                                                call K_Undress   
+                                                        elif Partner == "Emma":
+                                                                call E_Undress 
+                                            "Clean up Partner":
+                                                    if "unseen" in R_RecentActions:
+                                                            ch_p "You've got a little something. . ."
+                                                            jump R_Les_Interupted
+                                                    else:                        
+                                                        if Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")    
+                                                        elif Partner == "Emma" and E_Spunk:
+                                                                call Emma_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump R_Les_Cycle 
+                                            "Never mind":
+                                                        jump R_Les_Cycle 
+                                    "Undress Rogue":
+                                            if "unseen" in R_RecentActions:
+                                                    ch_p "Oh yeah, why don't you. . ."
+                                                    jump R_Les_Interupted
+                                            else:                        
+                                                    call R_Undress   
+                                    "Clean up Rogue (locked)" if not R_Spunk:
+                                            pass  
+                                    "Clean up Rogue" if R_Spunk:
+                                            if "unseen" in R_RecentActions:
+                                                ch_p "You've got a little something. . ."
+                                                jump R_Les_Interupted
+                                            else:                        
+                                                call Rogue_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump R_Les_Cycle  
                                             
-#                                    "Never Mind":
-#                                            pass
-#                            else:
-#                                ch_r "I'm actually getting a little tired, so maybe we could wrap this up?" 
-                    
-#                        "I also want to. . . [[Offhand]":
-#                                if R_Action and MultiAction:
-#                                    call Rogue_Offhand_Set
-#                                    if Trigger2:
-#                                         $ R_Action -= 1
-#                                else:
-#                                    ch_r "I'm actually getting a little tired, so maybe we could wrap this up?"  
-                        
-#                        "Shift your focus" if Trigger2:
-#                                    $ Situation = "shift focus"
-#                                    call RFB_After
-#                                    call Rogue_Offhand_Set   
-#                        "Shift your focus (locked)" if not Trigger2:
-#                                    pass
-                
-                        "Let's try something else." if MultiAction: 
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
                                     call R_Pos_Reset
                                     $ Situation = "shift"
                                     $ Line = 0
-                                    jump RFB_After
-                        "Let's stop for now." if not MultiAction: 
+                                    jump R_Les_After
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
                                     call R_Pos_Reset
                                     $ Line = 0
-                                    jump RFB_After
+                                    jump R_Les_After   
         #End menu (if Line)
         
         call Sex_Dialog("Rogue",Partner)
-                
-        #If either of you could cum 
         
-    
+        $ Cnt += 1
+        $ Round -= 1
+             
         $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
         
         if P_Focus >= 100 or R_Lust >= 100:    
-                    #If you can cum:
+                    #If either of you can cum:
                     if P_Focus >= 100:
-                        if "unseen" not in R_RecentActions: #if she knows you're there
-                            call PR_Cumming
-                            if "angry" in R_RecentActions:  
-                                call R_Pos_Reset
-                                return    
-                            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5) 
-                            if 100 > R_Lust >= 70 and R_OCount < 2:             
-                                $ R_RecentActions.append("unsatisfied")                      
-                                $ R_DailyActions.append("unsatisfied") 
-                            $ Line = "came"
-                        else: #If she wasn't aware you were there
-                            $ P_Focus = 95
-                            jump R_Les_Interupted
+                            #If you can cum:  
+                            if "unseen" not in R_RecentActions: #if she knows you're there
+                                call PR_Cumming
+                                if "angry" in R_RecentActions:  
+                                    call R_Pos_Reset
+                                    return    
+                                $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5) 
+                                if 100 > R_Lust >= 70 and R_OCount < 2:             
+                                    $ R_RecentActions.append("unsatisfied")                      
+                                    $ R_DailyActions.append("unsatisfied") 
+                                $ Line = "came"
+                            else: #If she wasn't aware you were there
+                                "You grunt and try to hold it in."
+                                $ P_Focus = 95
+                                jump R_Les_Interupted
      
-                    #If Rogue can cum
-                    if R_Lust >= 100:                                               
-                        call R_Cumming
-                        jump R_Les_Interupted
+                    if R_Lust >= 100: 
+                            #If Rogue can cum                                              
+                            call R_Cumming
+                            jump R_Les_Interupted
                        
                     if Line == "came": 
-                        $ Line = 0
-                        if not P_Semen:
-                            "You're emptied out, you should probably take a break."
+                            $ Line = 0
+                            if not P_Semen:
+                                "You're emptied out, you should probably take a break."      
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
+                elif Partner == "Emma" and E_Lust >= 100:                                          
+                    call E_Cumming
                             
-                            
-#                        if "unsatisfied" in R_RecentActions:#And Rogue is unsatisfied,  
-#                            "Rogue still seems a bit unsatisfied with the experience."
-#                            menu:
-#                                "Finish her?"
-#                                "Yes, keep going for a bit.":
-#                                    $ Line = "You get back into it" 
-#                                "No, I'm done.":
-#                                    "You pull back."
-##                                    jump RFB_After
         #End orgasm
+        
+        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
         
         if "unseen" in R_RecentActions:
                 if Round == 10:
@@ -4132,10 +3793,12 @@ label R_Les_After:
         call R_Pos_Reset
         
     call RogueFace("sexy") 
-    
-    if K_Loc == bg_current: #If Kitty was participating
-        $ K_LikeRogue += 3 if K_LikeRogue >= 800 else 1
         
+    if K_Loc == bg_current and "noticed rogue" in K_RecentActions: #If Kitty was participating
+            $ K_LikeRogue += 3 if K_LikeRogue >= 800 else 1
+    if E_Loc == bg_current and "noticed rogue" in E_RecentActions: #If Emma was participating
+            $ E_LikeRogue += 4 if E_LikeRogue >= 800 else 1
+            
     $ R_LesWatch += 1 
     if R_LesWatch == 1:            
             $ R_SEXP += 15    
@@ -4159,6 +3822,21 @@ label R_Les_After:
                 else:
                     #second time
                     ch_k "Mmmm yeah that was good. . ."
+            elif E_Loc == bg_current:
+                if "les rogue" not in E_History:
+                        if R_LikeEmma >= 600:
+                                ch_r "You. . . really know what you're doing down there. . ."
+                        else:
+                                ch_r "That. . . wasn't awful. . ."
+                        if E_LikeRogue >= 600:
+                                ch_e "Practice, dear. . ."
+                        else:
+                                ch_e "You could certainly do with more practice. . ."
+                        $ R_History.append("les emma")   
+                        $ E_History.append("les rogue")  
+                else:
+                    #second time
+                    ch_e "Certainly. . ."
                     
                         
      
@@ -4174,78 +3852,234 @@ label R_Les_After:
     
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-label Rogue_Les_Change(D20S=0, Secondary=Partner, PrimaryLust=0, SecondaryLust=0):
-        #this is called when the player wants to change over a lesbian behavior.
+label Rogue_Les_Change(D20S=0, Secondary=Partner, Primary = "Rogue", PrimaryLust=0, SecondaryLust=0):
+        # for Lesbian primary activity: Rogue_Threeway_Set("preset", "lesbian", Trigger3, ActiveGirl)
+        #this is called when the player wants to change over a lesbian T3 behavior.
+        $ Line = 0
         menu:
             "Hey Rogue. . ."
             "why don't you kiss her?" if Trigger5 != "kiss girl" and Trigger5 != "kiss both":
-                    call Rogue_Threeway_Set("kiss girl", "lesbian", Trigger3, "Rogue")
+                    call Rogue_Threeway_Set("kiss girl", "lesbian", Trigger3)
             "why don't you grab her tits?" if Trigger3 != "fondle breasts":
-                    call Rogue_Threeway_Set("fondle breasts", "lesbian", Trigger3, "Rogue")
+                    call Rogue_Threeway_Set("fondle breasts", "lesbian", Trigger3)
             "why don't you suck her breasts?" if Trigger3 != "suck breasts":
-                    call Rogue_Threeway_Set("suck breasts", "lesbian", Trigger3, "Rogue")
+                    call Rogue_Threeway_Set("suck breasts", "lesbian", Trigger3)
             "why don't you finger her?" if Trigger3 != "fondle pussy":
-                    call Rogue_Threeway_Set("fondle pussy", "lesbian", Trigger3, "Rogue")
+                    call Rogue_Threeway_Set("fondle pussy", "lesbian", Trigger3)
             "why don't you go down on her?" if Trigger3 != "lick pussy":
-                    call Rogue_Threeway_Set("lick pussy", "lesbian", Trigger3, "Rogue")
+                    call Rogue_Threeway_Set("lick pussy", "lesbian", Trigger3)
             "why don't you grab her ass?" if Trigger3 != "fondle ass":
-                    call Rogue_Threeway_Set("fondle breasts", "lesbian", Trigger3, "Rogue")
+                    call Rogue_Threeway_Set("fondle breasts", "lesbian", Trigger3)
             "why don't you lick her ass?" if Trigger3 != "lick ass":
-                    call Rogue_Threeway_Set("lick ass", "lesbian", Trigger3, "Rogue")  
-        
+                    call Rogue_Threeway_Set("lick ass", "lesbian", Trigger3) 
+            "never mind.":
+                pass
+        if not Line:
+            $ Line = "You return to what you were doing." 
+        else:
+            $ Situation = "skip"
+        "[Line]"
         return
 
-label Rogue_Three_Change(D20S=0, Secondary=Partner, PrimaryLust=0, SecondaryLust=0):
+label Rogue_Three_Change(ActiveGirl = "Kitty", D20S=0, Secondary="Rogue", PrimaryLust=0, SecondaryLust=0):
         #this is called when the player wants to change over a threeway behavior.
-        menu:
-            "Hey Rogue. . ."
-            "why don't you kiss her?" if Trigger5 != "kiss girl" and Trigger5 != "kiss both":
-                    call Rogue_Threeway_Set("kiss girl", 0, Trigger4, "Rogue")
-            "why don't you kiss me?" if Trigger5 != "kiss you" and Trigger5 != "kiss both":
-                    call Rogue_Threeway_Set("kiss you", 0, Trigger4, "Rogue")
-            "why don't you grab her tits?" if Trigger4 != "fondle breasts":
-                    call Rogue_Threeway_Set("fondle breasts", 0, Trigger4, "Rogue")
-            "why don't you suck her breasts?" if Trigger4 != "suck breasts":
-                    call Rogue_Threeway_Set("suck breasts", 0, Trigger4, "Rogue")
-            "why don't you finger her?" if Trigger4 != "fondle pussy":
-                    call Rogue_Threeway_Set("fondle pussy", 0, Trigger4, "Rogue")
-            "why don't you go down on her?" if Trigger4 != "lick pussy":
-                    call Rogue_Threeway_Set("lick pussy", 0, Trigger4, "Rogue")
-            "why don't you grab her ass?" if Trigger4 != "fondle ass":
-                    call Rogue_Threeway_Set("fondle breasts", 0, Trigger4, "Rogue")
-            "why don't you lick her ass?" if Trigger4 != "lick ass":
-                    call Rogue_Threeway_Set("lick ass", 0, Trigger4, "Rogue")
-            "maybe take me in hand?" if Trigger4 != "hand":
-                    call Rogue_Threeway_Set("hand", 0, Trigger4, "Rogue")
-            "maybe give me a lick?" if Trigger4 != "blow":
-                    call Rogue_Threeway_Set("blow", 0, Trigger4, "Rogue")
+        # for Threeway secondary activity: Rogue_Threeway_Set("preset", 0, Trigger4, "ActiveGirl")        
+        menu R_Three_Change:
+            ch_p "Hey Rogue. . ."
+            "about [ActiveGirl]. . .":
+                menu:
+                    ch_p "about [ActiveGirl]. . ."
+                    "why don't you kiss her?" if Trigger5 != "kiss girl" and Trigger5 != "kiss both":
+                            call Rogue_Threeway_Set("kiss girl", 0, Trigger4, ActiveGirl)                            
+                    "why don't you grab her tits?" if Trigger4 != "fondle breasts":
+                            call Rogue_Threeway_Set("fondle breasts",0, Trigger4, ActiveGirl)                    
+                    "why don't you suck her breasts?" if Trigger4 != "suck breasts":
+                            call Rogue_Threeway_Set("suck breasts",0, Trigger4, ActiveGirl)                            
+                    "why don't you finger her?" if Trigger4 != "fondle pussy":
+                            call Rogue_Threeway_Set("fondle pussy",0, Trigger4, ActiveGirl)                            
+                    "why don't you go down on her?" if Trigger4 != "lick pussy":
+                            call Rogue_Threeway_Set("lick pussy", 0, Trigger4, ActiveGirl)                            
+                    "why don't you grab her ass?" if Trigger4 != "fondle ass":
+                            call Rogue_Threeway_Set("fondle breasts", 0, Trigger4, ActiveGirl)                            
+                    "why don't you lick her ass?" if Trigger4 != "lick ass":
+                            call Rogue_Threeway_Set("lick ass", 0, Trigger4, ActiveGirl)
+                    "wait, I meant. . .":
+                            jump R_Three_Change
+                    
+            "about me. . .":
+                menu:
+                    ch_p "about me. . ."
+                    "why don't you kiss me?" if Trigger5 != "kiss you" and Trigger5 != "kiss both":
+                            call Rogue_Threeway_Set("kiss you", 0, Trigger4, ActiveGirl)                            
+                    "maybe take me in hand?" if Trigger4 != "hand":
+                            call Rogue_Threeway_Set("hand", 0, Trigger4, ActiveGirl)                            
+                    "maybe give me a lick?" if Trigger4 != "blow":
+                            call Rogue_Threeway_Set("blow", 0, Trigger4, ActiveGirl)
+                    "wait, I meant. . .":
+                            jump R_Three_Change
+            "never mind.":
+                pass
         return
+
+#Start R_Les_Response >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >
+label R_Les_Response(Girl="Kitty", Step=1, B=0, B2=0, Tempmod=0, Result=0, Approval = 0):
+        #Dialog for responses to Lesbian scenes, Girl is the initial girl in the scene. Step is the phase of the conversation
+        # call R_Les_Response("Kitty",1)
+        if R_Les:
+            $ Tempmod += 10
+        if R_SEXP >= 50:
+            $ Tempmod += 25
+        elif R_SEXP >= 30:
+            $ Tempmod += 15
+        elif R_SEXP >= 15:
+            $ Tempmod += 5
+                    
+        elif R_Inbt >= 750:
+            $ Tempmod += 5
+            
+        if "exhibitionist" in R_Traits:      
+            $ Tempmod += (3*Taboo) 
+            
+        if "dating" in R_Traits or "sex friend" in R_Petnames:
+            $ Tempmod += 10        
+        elif "ex" in R_Traits:
+            $ Tempmod -= 40  
+            
+        if Girl == "Kitty":
+                #if it's Kitty. . .
+                if R_LikeKitty >= 900:
+                        $ B += 150
+                elif R_LikeKitty >= 800 or "poly kitty" in R_Traits:
+                        $ B += 100
+                elif R_LikeKitty >= 700:
+                        $ B += 50
+                elif R_LikeKitty <= 200:
+                        $ B -= 200
+                elif R_LikeKitty <= 500:
+                        $ B -= 100
+        elif Girl == "Emma":
+                #if it's Emma. . .
+                if R_LikeEmma >= 900:
+                        $ B += 150
+                elif R_LikeEmma >= 800 or "poly emma" in R_Traits:
+                        $ B += 100
+                elif R_LikeEmma >= 700:
+                        $ B += 50
+                elif R_LikeEmma <= 200:
+                        $ B -= 200
+                elif R_LikeEmma <= 500:
+                        $ B -= 100
+                        
+        $ Approval = ApprovalCheck("Rogue", 1300, TabM = 2, Bonus = B) # 1300, 1450, 1600, Taboo -800
         
-label Kitty_Three_Change(D20S=0, Secondary=Partner, PrimaryLust=0, SecondaryLust=0):
-        #this is called when the player wants to change over a threeway behavior.
-        menu:
-            "Hey Kitty. . ."
-            "why don't you kiss her?" if Trigger5 != "kiss girl" and Trigger5 != "kiss both":
-                    call Kitty_Threeway_Set("kiss girl", 0, Trigger4, "Kitty")
-            "why don't you kiss me?" if Trigger5 != "kiss you" and Trigger5 != "kiss both":
-                    call Kitty_Threeway_Set("kiss you", 0, Trigger4, "Kitty")
-            "why don't you grab her tits?" if Trigger4 != "fondle breasts":
-                    call Kitty_Threeway_Set("fondle breasts", 0, Trigger4, "Kitty")
-            "why don't you suck her breasts?" if Trigger4 != "suck breasts":
-                    call Kitty_Threeway_Set("suck breasts", 0, Trigger4, "Kitty")
-            "why don't you finger her?" if Trigger4 != "fondle pussy":
-                    call Kitty_Threeway_Set("fondle pussy", 0, Trigger4, "Kitty")
-            "why don't you go down on her?" if Trigger4 != "lick pussy":
-                    call Kitty_Threeway_Set("lick pussy", 0, Trigger4, "Kitty")
-            "why don't you grab her ass?" if Trigger4 != "fondle ass":
-                    call Kitty_Threeway_Set("fondle breasts", 0, Trigger4, "Kitty")
-            "why don't you lick her ass?" if Trigger4 != "lick ass":
-                    call Kitty_Threeway_Set("lick ass", 0, Trigger4, "Kitty")
-            "maybe take me in hand?" if Trigger4 != "hand":
-                    call Kitty_Threeway_Set("hand", 0, Trigger4, "Kitty")
-            "maybe give me a lick?" if Trigger4 != "blow":
-                    call Kitty_Threeway_Set("blow", 0, Trigger4, "Kitty")
-        return
+        if Step == 1:
+            #this is if the first girl's check failed, but Rogue likes her.
+            if Approval >= 2 or (Approval and B >= 150):
+                call RogueFace("sexy", 1)
+                ch_r "You sure [Girl]? Could be a lot of fun?"
+                if B2 >= 100:
+                    $ Result = 1
+                    if Girl == "Kitty":
+                            $ R_LikeKitty += (int(B/10))
+                            $ K_LikeRogue += (int(B2/10))
+                    elif Girl == "Emma":
+                            $ R_LikeEmma += (int(B/10))
+                            $ E_LikeRogue += (int(B2/10))
+            else:
+                return Result
+        
+        if Step == 2:
+            #this is the second step, usually in the Prep phase
+            if Approval >= 2:
+                call RogueFace("smile", 1)
+                ch_r "'Course!"
+                $ Result = 1
+            elif Approval:
+                call RogueFace("sly", 2)
+                if B >= 100:
+                        ch_r "I don't know, maybe. . ."
+                if B >= 0:
+                        ch_r "I'm not sure about her though. . ."
+                $ R_Blush = 1
+                menu:
+                    extend ""
+                    "Ok, that's fine. . .":
+                            if B >= 100:                            
+                                ch_r "Never mind, I'm in."
+                                $ Result = 1
+                            else:
+                                call RogueFace("smile")
+                                ch_r "Thanks, I appreciate it."
+                    "Come on, you might enjoy it. . .":
+                            if B >= 50:
+                                ch_r "Well, I suppose." 
+                                $ Result = 1
+                            else:
+                                call RogueFace("sad", 2)
+                                ch_r "I don't think so." 
+                    "Get in there, now.":
+                            if ApprovalCheck("Rogue", 550, "OI", TabM = 2):
+                                call RogueFace("sadside", 1)
+                                ch_r "Fine, whatever."
+                                $ Result = 1
+                            else:
+                                call RogueFace("angry")
+                                ch_r "Who do you think you're talk'in to?"  
+                                $ R_RecentActions.append("angry")
+                                $ R_DailyActions.append("angry")
+                    "[Girl], what do you think?":
+                            if Girl == "Kitty":
+                                call KittyFace("sexy", 1)
+                                if K_Les and R_Les:
+                                        ch_k "Come on Rogue, you know we have fun."
+                                else:
+                                        ch_k "Come on Rogue, could be fun."
+                                $ R_LikeKitty += (int(B/10))
+                                if B >= 50:
+                                        $ K_LikeRogue += 5
+                            elif Girl == "Emma":
+                                call EmmaFace("sexy", 1)
+                                if E_Les and R_Les:
+                                        ch_e "What's the matter Rogue, shy around [Playername]?"
+                                else:
+                                        ch_e "What's the matter Rogue, I don't bite. . ."
+                                $ R_LikeEmma += (int(B/10))
+                                if B >= 50:
+                                        $ E_LikeRogue += 5
+                            if B >= 50:
+                                call RogueFace("smile", 1)
+                                ch_r "You know, I can't argue with that, [Girl]."
+                                $ Result = 1
+                            else:
+                                call RogueFace("angry", 1, Eyes="side")
+                                ch_r "Sorry [Girl], nothin personal."
+            if Step == 3:
+                    #This is a check if you interrupted them and Primary wants to do it, does Secondary?
+                    if Approval:
+                            call RogueFace("smile", 1)
+                            ch_r "I mean, I guess so. . ."
+                            $ Result = 1
+                    else:
+                            call RogueFace("sadside", 1)
+                            ch_r "I'm really not into that right now. . ."
+            
+            if not Result:      
+                #no approval
+                $ R_RecentActions.append("no lesbian")                      
+                $ R_DailyActions.append("no lesbian") 
+                call RogueFace("sadside", 1)
+                if B <= 0:
+                    ch_r "Sorry, [R_Petname], it's just not like that with her."
+                if Taboo:
+                    ch_r "Sorry, [R_Petname], this isn't a good place for it."
+                if B >= 100:
+                    ch_r "Sorry, [R_Petname], maybe if you weren't around. . ."
+                else:
+                    ch_r "Sorry, [R_Petname], I'm just not interested."
+                
+        return Result
+#End R_Les_Response >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >
+
 
 label R_Les_FirstKiss:
     # called when there is a first kiss situation between two girls
@@ -4261,6 +4095,19 @@ label R_Les_FirstKiss:
                 $ Line = "first girl"
             elif K_Les:
                 #Kitty's had experience                
+                $ Line = "first partner"
+    elif Partner == "Emma":
+            if "les emma" in R_History:
+                #if they've been together before              
+                $ Line = "experienced"
+            elif R_Les and E_Les:   
+                #if both have kissed girls before
+                $ Line = "first both"
+            elif R_Les:
+                #Rogue's had experience              
+                $ Line = "first girl"
+            elif E_Les:
+                #Emma's had experience                
                 $ Line = "first partner"
     
     if Line == "experienced":
@@ -4278,6 +4125,6 @@ label R_Les_FirstKiss:
                 "[Partner] pulls back a bit, but slowly leans into the enbrace."
             else:
                 #not other girl's first time
-                "[Partner]'s lips curl up into a smile and she draw's Rogue even closer."                    
+                "[Partner]'s lips curl up into a smile and she draws Rogue even closer."                    
             "After a few seconds, it begins to grow more passionate."
     return

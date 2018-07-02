@@ -424,7 +424,7 @@ label Emma_Sleepover(sleepover = 0):  #Emma_Update
                     if Weekday < 4 or Weekday > 5:
                             ch_e "I'm afraid I have class tommorrow. . ."
                     else:
-                            ch_e "I'm need to get some sleep in. . ."
+                            ch_e "I'll need to get some sleep in. . ."
             else:
                     ch_e "It's getting late, I should retire for the evening. . ."  
             if Day <= 14:        
@@ -454,7 +454,7 @@ label Emma_Sleepover(sleepover = 0):  #Emma_Update
                 if R_Loc == bg_current:
                     ch_e "And of course you as well, Rogue."   
                 if K_Loc == bg_current:
-                    ch_e "And of course you as well, Kitten."
+                    ch_e "And of course you as well, Kitty."
                                           
             menu:
                 extend ""
@@ -465,26 +465,26 @@ label Emma_Sleepover(sleepover = 0):  #Emma_Update
                             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 25)
                             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 25, 25) 
                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 5)
-                        ch_e "Great! I'll get changed."
+                        ch_e "Lovely, I'll get changed."
                     
                 "No, sorry." if sleepover:                  
                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 3)
                         $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 30, 6)
                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 40, 4)
                         $ E_Brows = "sad"
-                        ch_e "Alright. . . see you tomorrow. . ."
+                        ch_e "Very well. . . I'll see you tomorrow then."
                         $ sleepover = 0
                         
                 "Ok, I'll head out. Good night." if not sleepover and bg_current == "bg emma":                        
                         $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 3)
                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 25, 2)            
                         call EmmaFace("smile")
-                        ch_e "Ok, good night. . ."
+                        ch_e "Good night then. . ."
                 "Ok, see you later then. Good night." if not sleepover and bg_current != "bg emma":                        
                         $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 3)
                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 25, 2)            
                         call EmmaFace("smile")
-                        ch_e "Yeah, 'night, [E_Petname]. . ."
+                        ch_e "Yes, good night, [E_Petname]. . ."
                     
                 "Are you sure I can't stay the night? . ." if not sleepover and not E_Sleep and bg_current == "bg emma": 
                         if ApprovalCheck("Emma", 1000) or ApprovalCheck("Emma", 700, "L") or ApprovalCheck("Emma", 500, "O"):
@@ -877,7 +877,11 @@ label Emma_Caught_Classroom:
             $ E_RecentActions.append("masturbation")                      
             $ E_DailyActions.append("masturbation") 
             "You see Ms Frost leaning back against her desk, her hands tracing slow paths across her body."
-            call EM_Cycle
+            
+            if "Historia" in P_Traits:
+                    call EM_Interupted
+            else:
+                    call EM_Cycle
             if "angry" in E_RecentActions:
                 return
         
@@ -998,6 +1002,8 @@ label Emma_Caught_Classroom:
                                 ch_e "I suppose I could accomodate that. . ."
                                 ch_e "to a point. . ."
                                 "Ms Frost walks to the door and locks it behind her."
+                                if "Historia" in P_Traits:
+                                        return 1
                                 $ Tempmod = 50
                                 call E_Strip
                         "Could you just keep going?":
@@ -1015,7 +1021,7 @@ label Emma_Caught_Classroom:
                                         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 10) 
                                         $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 80, 5)
                                         ch_e "Excellent."
-                                        if "cockout" not in P_RecentActions:
+                                        if "cockout" not in P_RecentActions and "Historia" not in P_Traits:
                                             call Emma_First_Peen
                                         "You begin to stroke your cock."
                                         $ Trigger2 = "jackin"
@@ -1031,6 +1037,8 @@ label Emma_Caught_Classroom:
                                 $Trigger = "masturbation"
                                 $Trigger3 = "fondle breasts"
                                 "Ms Frost leans back and runs her fingertips along her breasts."
+                                if "Historia" in P_Traits:
+                                        return 1
                                 $ Tempmod = 50
                                 call EM_Cycle
                         "Could I feel you up?":
@@ -1042,6 +1050,8 @@ label Emma_Caught_Classroom:
                                 ch_e "perhaps you have some suggestions?"
                                 "Ms Frost walks to the door and locks it behind her."
                                 $ Taboo = 0
+                                if "Historia" in P_Traits:
+                                        return 1
                                 $ Tempmod = 50
                                 call E_FB_Prep
                         "Could you give me a hand? [[point to your cock]":
@@ -1055,6 +1065,8 @@ label Emma_Caught_Classroom:
                                 $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 80, 5)
                                 ch_e "Perhaps instead I could just offer a little. . . token of my appreciation."
                                 "Ms Frost walks to the door and locks it behind her."
+                                if "Historia" in P_Traits:
+                                        return 1
                                 $ Tempmod = 50
                                 call E_Strip
                         "I should just get going then.":
@@ -1216,7 +1228,8 @@ label Emma_Key: #Emma_Update
             call Set_The_Scene
             call EmmaFace("bemused")
             $ Emma_Arms = 2
-            ch_e "So you've been dropping by a lot lately, I figured you might want a key. . ."
+            ch_e "You've been coming by fairly often. . ."
+            ch_e ". . . you might want a key. . ."
             ch_p "Thanks."
             $ Emma_Arms = 1    
             $ Keys.append("Emma")
@@ -1227,7 +1240,8 @@ label Emma_Key: #Emma_Update
 
 # Event Emma_Caught /////////////////////////////////////////////////////  
 
-label Emma_Caught: #Emma_Update   
+label Emma_Caught(TotalCaught=0): #Emma_Update   
+    $ TotalCaught = R_Caught + K_Caught + E_Caught
     call Shift_Focus("Emma")
     call Checkout
     ch_e "!!!"        
@@ -1238,22 +1252,22 @@ label Emma_Caught: #Emma_Update
     $ Trigger4 = 0
     $ Trigger5 = 0
     call EmmaOutfit
+    if R_Loc == bg_current:         
+        $ R_Loc = "bg study"
+    elif K_Loc == bg_current:                
+        $ K_Loc = "bg study"        
     $ bg_current = "bg study"  
     $ E_Loc = "bg study"
     call Set_The_Scene(0)
-
     show Professor at SpriteLoc(StageLeft)    
-    show Emma_Sprite at SpriteLoc(StageRight) with ease
-    if K_Loc == bg_current:         
-        show Kitty_Sprite at SpriteLoc(StageFarRight) with ease
+    show Emma_Sprite at SpriteLoc(StageRight) with ease    
     if R_Loc == bg_current:         
         show Rogue at SpriteLoc(StageFarRight) with ease
-
-    # show Professor at center
-    # with fade
+    elif K_Loc == bg_current:         
+        show Kitty_Sprite at SpriteLoc(StageFarRight) with ease
     call XavierFace("shocked")
     call EmmaFace("sad")
-    ch_x "I'm very disappointed in your behavior, the both of you."
+    ch_x "I'm very disappointed in your behavior, particularly yours, Emma."
     
     if Line == "fondle thighs" or Line == "fondle breasts" or Line == "fondle pussy" or Line == "hotdog" or Line == "hand":
         ch_x "The two of you, feeling each other up like animals!"
@@ -1268,12 +1282,13 @@ label Emma_Caught: #Emma_Update
     
     if E_Shame >= 40:
         ch_x "Emma, my dear, you're practically naked! At least throw a towel on!"
-        "He throws Emma the towel."
+        "He throws Emma a towel."
         show blackscreen onlayer black 
         $ E_Over = "towel"         
         hide blackscreen onlayer black
+        ch_x "Well that's hardly any better."        
     elif E_Shame >= 20:
-        ch_x "Emma, my dear, that attire is positively scandalous."
+        ch_x "Emma, that attire is positively scandalous."
     
     if E_Caught:
         "And this isn't even the first time this has happened!"
@@ -1281,35 +1296,59 @@ label Emma_Caught: #Emma_Update
     if R_Loc == bg_current:             #fix, might not currently work?
         call RogueFace("surprised",2)
         ch_x "And Rogue, you were just watching this occur!"        
-        call RogueFace("bemused",1)
-        $ R_Eyes = "side"
-        
+        call RogueFace("bemused",1,Eyes="side")
+    elif K_Loc == bg_current:             #fix, might not currently work?
+        call KittyFace("surprised",2)
+        ch_x "And Kitty, you were just watching this occur!"        
+        call KittyFace("bemused",1,Eyes="side")
+    
+    if "rules" in Rules: #if the rules had been removed in a previous game
+            call XavierFace("hypno")
+            ch_x ". . ."
+            ch_x "Hmm, I seem to be having a bit of deja vu here. . ."
+            ch_x "I could swear that we've had a conversation like this before, but I cannot recall when. . ."
+            call XavierFace("angry")
+            ch_x "Regardless, this is a serious issue."
+            $ Rules.remove("rules")
+            
+    if not E_Caught:
+            ch_x "Emma, you are entrusted as a teacher here, I can't have you fraternizing with the students."
+            ch_x "This is especially true in the school's public spaces!"
+            ch_x "What sort of message does that send?"
+            ch_x "How appropriate would it be if I were to just wander the halls with Miss Grey on my lap?"
+            call XavierFace("hypno")
+            ch_x "Just. . . running my hands along her firm little body without a care in the world. . ."
+            call XavierFace("happy")
+            ch_x ". . ."
+            call XavierFace("shocked")
+            ch_x "Yes, well, as I was saying! . ."
     $ Count = E_Caught
     menu:
         "Well what have you to say for yourselves?"
         "Sorry sir, won't do it again.":
             if E_Caught < 5:
-                $ E_Love = Statupdate("Emma", "Love", E_Love, 70, 10)
-                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, -25)            
-            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -10) 
+                $ E_Love = Statupdate("Emma", "Love", E_Love, 70, 5)
+                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, -15) 
             call XavierFace("happy")  
             if E_Caught:
                 ch_x "But you know you've done this before. . . at least [E_Caught] times. . ." 
-            elif R_Caught:
-                ch_x "Not with this young lady, perhaps, but you know you've done this before. . ."
-                ch_x "at least [R_Caught] times. . ." 
+            elif TotalCaught:
+                ch_x "Not with Ms. Frost, perhaps, but you know you've done this before. . ."
+                ch_x "at least [TotalCaught] times. . ." 
+                call EmmaFace("sexy",Brows="confused")                 
             else:
-                ch_x "Very well, just don't let it happen again. "
+                ch_x "Very well, just don't let it happen again."
             $ Count += 5
             if PunishmentX:
                 ch_x "I'm extending your punishment by [Count] days."
             else:
                 ch_x "I'm halving your daily stipend for [Count] days."
-            ch_x "Now return to your rooms and reflect on what you've done."
+            ch_x "Now return to your room and reflect on what you've done."
+            ch_x "Emma, I'd like you to stay after for a brief discussion about \"boundaries\". . ."
             
         "Just having a little fun, right [E_Pet]?":
             call Emma_Namecheck
-            call EmmaFace("bemused")         
+            call EmmaFace("sly")         
             $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 90, 5)
             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 90, 10)   
             $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 10) 
@@ -1325,13 +1364,13 @@ label Emma_Caught: #Emma_Update
             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, -20)   
             ch_x "I've had enough of you, begone."
             
-        "Just this. . . Plan Psi, Emma!" if "Xavier's photo" in P_Inventory and P_Lvl >= 5:
+        "Just this. . . Plan Psi, Emma!" if P_Lvl >= 5:
             if ApprovalCheck("Emma", 1500, TabM=1, Loc="No"):                   
                     jump Plan_Psi
             elif ApprovalCheck("Emma", 1000, TabM=1, Loc="No"):
                     call EmmaFace("perplexed") 
                     $ E_Brows = "sad"
-                    ch_e "You know. . . I really don't think that's a good idea. . ."
+                    ch_e "Um, I don't believe we're quite at that point yet, [E_Petname]. . ."
                     menu:
                         "Dammit Emma. . .":
                                 call EmmaFace("angry")
@@ -1339,12 +1378,11 @@ label Emma_Caught: #Emma_Update
                                 $ E_Love = Statupdate("Emma", "Love", E_Love, 90, -5) 
                         "Yeah, I guess you're right. . .":
                                 call EmmaFace("bemused") 
-                                $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 5) 
             else:
                     call EmmaFace("confused") 
-                    ch_e "Wait, Plan what??"
+                    ch_e "Lord child, what are you talking about now?"
                     ch_p "Plan {i}Psi!{/i} . . you know. . ."
-                    ch_e "I have no {i}idea{/i} what you're talking about."
+                    ch_e "I wish that I did."
                     ch_p "oh, yeah, I guess I haven't mentioned that. . ."
                     call EmmaFace("bemused") 
             call XavierFace("angry")
@@ -1355,8 +1393,6 @@ label Emma_Caught: #Emma_Update
             else:
                 ch_x "I'm halving your daily stipend for [Count] days."                
             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 10)
-            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 10)
-            $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 30, -10)
             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -5)   
             ch_x "I've had enough of you, begone."
                         
@@ -1364,8 +1400,9 @@ label Emma_Caught: #Emma_Update
         "You can suck it, old man.":
             call EmmaFace("surprised")
             $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 90, 10)
-            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 25)
-            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 40)  
+            $ E_Love = Statupdate("Emma", "Love", E_Love, 90, 5) 
+            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 20)
+            $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 90, 30)  
             call XavierFace("angry")
             $ Count += 20
             ch_x "If that's your attitude, harsher methods might be necessary."
@@ -1382,11 +1419,8 @@ label Emma_Caught: #Emma_Update
     $ PunishmentX += Count            
     $ E_Caught += 1
     $ E_RecentActions.append("caught")
-    $ E_DailyActions.append("caught")     
-    if "Emma" in Party:
-        $ Party.remove("Emma")     
-    if "Rogue" in Party:
-        $ Party.remove("Rogue")
+    $ E_DailyActions.append("caught")    
+    call Remove_Girl("All")  
     "You return to your room"
     jump Player_Room
 #    $ bg_current = "bg player"
@@ -1395,7 +1429,7 @@ label Emma_Caught: #Emma_Update
 label Plan_Psi: #Emma_Update   
     call EmmaFace("sly")         
     "As you say this, a sly grin crosses Emma's face."
-    #$ E_Arms = 0
+    $ E_Arms = 0
     $ Emma_Arms = 2
     "You quickly approach Xavier and place your hands on his head."
     call XavierFace("psychic")
@@ -1403,74 +1437,62 @@ label Plan_Psi: #Emma_Update
     call XavierFace("shocked")
     "Xavier realizes with a shock that with your powers, his telepathy is useless."    
     $ Emma_Arms = 2
-    show Emma_Sprite at SpriteLoc(650,150) with ease 
-    $ ESpriteLoc = StageLeft
-    "Emma moves in sits on his lap, pinning his arms to the chair."
+    show Emma_Sprite at SpriteLoc(StageLeft+100,85) zorder 24 with ease
+    "Emma moves behind Xavier and activates her own telepathy."
     if R_Loc == bg_current and "Omega" not in P_Traits:        
         call RogueFace("surprised")      
         "Rogue looks a bit caught off guard, but goes along with the idea."        
         call RogueFace("sly")
+    elif K_Loc == bg_current and "Kappa" not in P_Traits:        
+        call KittyFace("surprised")      
+        "Kitty looks a bit caught off guard, but goes along with the idea."        
+        call KittyFace("sly")
     call XavierFace("angry")
     
-    if "Kappa" in P_Traits:
-            ch_x "Oh, not again."
-            ch_x "What is it you want this time?"
+    if "Psi" in P_Traits or "Omega" in P_Traits:
+            ch_x "Oh, not again. . ."
     else:
-            ch_x "What is the meaning of this? Unhand me!"
-            "You pull out the photo you found earlier in his study."
-            ch_p "I have here a rather. . . compromising photo of you and Mystique."
-            ch_p "I was thinking maybe you could cut me a little slack around here."
-            ch_x "And if I do not?"
-            ch_p "Emma here's set it to distribute to every computer in school, every day."
-            ch_p "And only I know the password." 
-            ch_x "Very well. . . I'll forget about your punishment."
-            ch_p "Oh, I think we can do a bit better than that. . ." 
             $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 40)
             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 30)
     $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 200, 30)
     $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 200, 10)   
     $ Count = 3
     $ PunishmentX = 0
+    ch_e "I think we can get 3 demands out of him, like a genie!"
     while Count:
         $ Count -= 1
         menu:
             ch_e "Well, [E_Petname], what should we ask for?"
-            "Don't bother us anymore when we're having fun." if E_Rules:
-                    ch_x "Very well. . . I could offer you some. . . discretion. . ."
-                    $ E_Rules = 0
-            "You know, it's kinda fun dodging you, catch us if you can." if not E_Rules:
-                    ch_x "If you. . . want me to, I suppose. . ."
-                    $ E_Rules = 1
-            "Raise my stipend." if P_Income < 30 and "Psi" not in P_Traits:    
-                    ch_x "Very well. . . but I can only raise it by so much. . ."        
+            "Don't bother us anymore when we're having fun." if "Emma" not in Rules:
+                    $ Rules.append("Emma")
+            "You know, it's kinda fun dodging you, catch us if you can." if "Emma" in Rules:
+                    $ Rules.remove("Emma")
+            "Raise my stipend." if P_Income < 30 and "Psi" not in P_Traits:       
                     $ P_Income += 2
             "Raise my stipend. [[Used](locked)" if P_Income >= 30 or "Psi" in P_Traits:           
                     pass
-            "I was interested in a key. . . ":
+            "In was interested in a key. . . ":
                 menu:
                     "Give me the key to your study." if "Xavier" not in Keys:  
-                            ch_x "Fine, although you don't seem to need it. . ."  
                             $ Keys.append("Xavier")
                     "Give me the key to your study.[[Owned] (locked)" if "Xavier" in Keys:  
                             pass
                             
                     "Give me the key to Rogue's room." if "Rogue" not in Keys:  
-                            ch_x "I. . . suppose I could do that. . ."  
                             $ Keys.append("Rogue")
                     "Give me the key to Rogue's room.[[Owned] (locked)" if "Rogue" in Keys:  
                             pass
                     
-                    "Give me the key to Emma's room." if "Emma" not in Keys:  
-                            ch_x "Couldn't she provide it? Oh, never mind, here. . ."  
-                            $ Keys.append("Emma")
-                    "Give me the key to Emma's room.[[Owned] (locked)" if "Emma" in Keys:  
+                    "Give me the key to Kitty's room." if "Kitty" not in Keys:  
+                            $ Keys.append("Kitty")
+                    "Give me the key to Kitty's room.[[Owned] (locked)" if "Kitty" in Keys:  
                             pass
                     
                     "Never mind the keys.":
                             $ Count += 1
             "That should do it.":
                 $ Count = 0
-    ch_x "Very well, that should conlude our business. Please leave." 
+    ch_p "Ok, that's enough. Make Xavier forget that any of this happened, and then let's get out of here." 
     if "Psi" not in P_Traits:
         $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 90, 10)
         $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 80, 10)
@@ -2882,3 +2904,240 @@ label Emma_Cheated(Other = "Rogue", Resolution = 0, B = 0):  #Other is the other
     return
 
 # end EmmaBreakup //////////////////////////////////////////////////////////    
+
+
+label Emma_Study:                       #study events
+            call Shift_Focus("Emma")
+            if Current_Time == "Night":
+                ch_e "It's a little late for a study session, maybe tomorrow."
+                return
+            elif Round <= 30:        
+                ch_e "I'm afraid it's getting a bit later, perhaps another time. . ."
+                return
+            elif bg_current in (R_Loc,K_Loc): 
+                ch_e "I suppose you could all use some work."
+            else:
+                ch_e "Very well."
+                        
+            $ P_XP += 5
+            $ Trigger = 0
+            $ Line = renpy.random.choice(["She runs you through the routines, it's fairly uneventful.", 
+                    "You study up for the mutant biology test.", 
+                    "You study for the math quiz.",
+                    "You get bored and discuss student gossip instead.",
+                    "You study for a few hours, that was fun.",
+                    "You spend the next few hours studying the lit test."
+                    "You study for the game design course."]) 
+            "[Line]"       
+            $ Line = 0
+            $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 2)
+            $ D20 = renpy.random.randint(1, 20)    
+            if D20 > 10:
+                if bg_current in (R_Loc,K_Loc):                     
+                    ch_e "I'm afraid it's getting a bit later, perhaps another time. . ."
+                    $ P_XP += 5 
+                else:
+                    call Emma_Frisky_Study   
+            else:        
+                $ P_XP += 5  
+            call Wait 
+            call Emma_Leave
+            call Rogue_Leave
+            call Kitty_Leave
+            return
+#End Emma Study
+            
+label Emma_Frisky_Study(Line=0):
+            if D20 > 17 and ApprovalCheck("Emma", 1000) and E_Blow > 5:
+                        call EmmaFace("sly")
+                        "Emma get predatory grin, and begins to unzip your pants."
+                        "She pulls your dick out and pops it into her mouth."        
+                        call Emma_SexAct("blow") 
+            elif D20 > 14 and ApprovalCheck("Emma", 1000) and E_Hand >= 5:
+                        call EmmaFace("sly")
+                        "Emma get predatory grin, and begins to unzip your pants."
+                        "She pulls your dick out and begins to slowly stroke it."        
+                        call Emma_SexAct("hand") 
+            elif D20 > 10 and (ApprovalCheck("Emma", 1300) or (E_Mast and ApprovalCheck("Emma", 1000))) and E_Lust >= 70:
+                        call EmmaFace("sly", Eyes="side")
+                        "Emma leans back a bit and starts to rub herself."          
+                        $ E_RecentActions.remove("unseen") if "unseen" in E_RecentActions else E_RecentActions #she sees you're there
+                        $ Trigger = "masturbation"
+                        call Emma_SexAct("masturbate")      
+            elif D20 > 10 and ApprovalCheck("Emma", 1200) and E_Lust >= 30:                
+                        if not E_Over and not E_Legs:
+                                #if she's mostly naked, cheat
+                                call EmmaFace("sly")                                
+                                ch_e "I was considering some way of. . . motivating you. . ." 
+                                $ E_Eyes = "down"
+                                ch_e "but but I suppose we're already past that. . ."
+                                $ E_Eyes = "squint"
+                                ch_e "Do you have any ideas?"                                
+                                call Emma_SexMenu   
+                        else:
+                                "Emma moves a bit closer to you. . ."
+                                ch_e "I was curious, [E_Petname]. . ."
+                                ch_e "do you feel that a little \"motivation\" might help you to learn?"
+                                menu:
+                                    extend ""                                        
+                                    "What sort of motivation?": 
+                                            if "frisky" not in E_History:
+                                                call EmmaFace("sly") 
+                                                $ Line = "ask"                                                
+                                            else:                                   
+                                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 3)
+                                                call EmmaFace("confused",1)  
+                                                ch_e "You aren't going to make me say it, are you. . ."
+                                                menu:
+                                                    extend ""
+                                                    "Um. . . oh, OH! Yeah, sounds good. [[Strip tutoring]":
+                                                        $ Line = "strip"
+                                                    "Looks like I am. . .":
+                                                        if ApprovalCheck("Emma", 500, "O"):                              
+                                                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 5)
+                                                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5)  
+                                                                call EmmaFace("sly", 2)  
+                                                                $ Line = "ask"
+                                                        elif ApprovalCheck("Emma", 500, "LO"):
+                                                                call EmmaFace("confused", 2)            
+                                                                $ E_Love = Statupdate("Emma", "Love", E_Love, 70, -5) 
+                                                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 5)  
+                                                                ch_e "Very well. . ."
+                                                                $ Line = "ask"                                                            
+                                                        else:          
+                                                                $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -5) 
+                                                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -5)  
+                                                                call EmmaFace("angry", 1)  
+                                                                ch_e "Oh, never mind then."
+                                                    ". . .":
+                                                        if ApprovalCheck("Emma", 400, "O"):           
+                                                                call EmmaFace("confused", 2)            
+                                                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5)  
+                                                                $ Line = "ask"
+                                                        elif ApprovalCheck("Emma", 500, "LO"):
+                                                                call EmmaFace("confused", 1, Brows="angry")           
+                                                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 5)
+                                                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5)  
+                                                                $ Line = "ask"                                                            
+                                                        else:          
+                                                                $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -5) 
+                                                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -5)  
+                                                                call EmmaFace("angry", 1)  
+                                                                ch_e "Oh, never mind then."
+                                                
+                                    "I think it might." if "frisky" in E_History:
+                                                call EmmaFace("sly")           
+                                                $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 5) 
+                                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 3)
+                                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5)  
+                                                ch_e "I was hoping you would. . ."
+                                                $ Line = "strip"                                            
+                                    "No, I've got this.":
+                                            call EmmaFace("confused", Eyes="side")    
+                                            if "frisky" in E_History:
+                                                    $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -10) 
+                                                    $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 5)
+                                                    $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -5)   
+                                            else:
+                                                    $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -5) 
+                                                    $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -5)   
+                                            ch_e "Oh. . . Very well then."
+                                            call EmmaFace("confused")  
+                                if Line == "ask":
+                                        ch_e "Well, perhaps I could quiz you about mutant psychology. . ."
+                                        $ E_Eyes = "side"
+                                        ch_e "and, perhaps, if you were to get a question right. . ."
+                                        $ E_Eyes = "squint"
+                                        ch_e "I could. . ."
+                                        menu:
+                                            extend ""
+                                            "Take off some clothes?":
+                                                    $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5)   
+                                                    ch_e "Yes."
+                                                    $ Line = "strip"
+                                            "Yes? . .":
+                                                    if ApprovalCheck("Emma", 500, "O"):
+                                                        call EmmaFace("confused", 2) 
+                                                        if "frisky" in E_History:
+                                                                $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -5) 
+                                                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 10)   
+                                                        else:
+                                                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 5)
+                                                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -5)  
+                                                        $ Line = "ask"
+                                                    elif ApprovalCheck("Emma", 500, "LO"):
+                                                        call EmmaFace("confused", 1, Brows="angry") 
+                                                        if "frisky" in E_History:
+                                                                $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -5) 
+                                                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 5)  
+                                                        else:
+                                                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 5)
+                                                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -5)  
+                                                        $ Line = "ask"            
+                                            ". . .":
+                                                    if ApprovalCheck("Emma", 500, "O"):
+                                                        call EmmaFace("confused", 2) 
+                                                        if "frisky" in E_History:
+                                                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 5)
+                                                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -5)   
+                                                        else:
+                                                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 5)
+                                                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -5)  
+                                                        $ Line = "ask"
+                                                    elif ApprovalCheck("Emma", 500, "LO"):
+                                                        call EmmaFace("confused", 1, Brows="angry") 
+                                                        if "frisky" in E_History:
+                                                                $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -5) 
+                                                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 5)
+                                                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -5)   
+                                                        else:
+                                                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 5)
+                                                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -5)  
+                                                        $ Line = "ask"   
+                                        if Line == "ask":
+                                            call EmmaFace("bemused", Eyes="side") 
+                                            ch_e "Take off some clothes. . ."
+                                            $ Line = "strip"
+                                        call EmmaFace("sly", Brows="confused") 
+                                        menu:
+                                            ch_e "Would that interest you?"
+                                            "Definitely!":
+                                                call EmmaFace("sly",Mouth="smile")    
+                                                $ E_Love = Statupdate("Emma", "Love", E_Love, 50, 5)
+                                                $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 5) 
+                                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 5)                                               
+                                            "Yeah.":
+                                                call EmmaFace("sly")     
+                                                $ E_Love = Statupdate("Emma", "Love", E_Love, 80, 3) 
+                                                $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 50, 3)
+                                                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 3)                                              
+                                            "No thanks.":
+                                                if "frisky" in E_History:
+                                                        $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -10) 
+                                                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 10)
+                                                        $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -5)   
+                                                else:
+                                                        $ E_Love = Statupdate("Emma", "Love", E_Love, 200, -5) 
+                                                        $ E_Obed = Statupdate("Emma", "Obed", E_Obed, 80, 5)
+                                                        $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, -5)  
+                                                call EmmaFace("angry") 
+                                                ch_e "Hrm."
+                                                $ Line = "no"
+                                        
+                                            
+                                if Line == "strip":
+                                        call EmmaFace("sly", 0)  
+                                        call Emma_Strip_Study
+                                else: 
+                                        return
+            elif ApprovalCheck("Emma", 700) and E_Kissed > 1:
+                        "Emma leans close to you, and leans in for a kiss."         
+                        call Emma_SexAct("kissing")
+            elif ApprovalCheck("Emma", 500) and "frisky" in E_History:
+                        "Emma leans close to you and you spend the rest of the study session nuzzled close."
+            else:
+                        return
+            if "frisky" not in E_History:
+                    $ E_History.append("frisky")
+            "Well that was certainly a productive use of your study time. . ."    
+            return

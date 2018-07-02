@@ -363,32 +363,25 @@ label K_SexPrep:
         call Kitty_Bottoms_Off       
         
         
-        if K_Panties or K_Legs or HoseNum("Kitty") >= 5: #If she refuses to take off her pants but agreed to sex
+        if (K_Panties and not K_PantiesDown) or (K_Legs and not K_Upskirt) or HoseNum("Kitty") >= 5: #If she refuses to take off her pants but agreed to anal
             ch_k "We can't exactly do much like this, huh."
-        
-        if K_Panties == "zipper panties":
-            "She pulls the zippers down"
-            $ K_Panties = "zipper panties open"
-            if K_Chest == "bustier bra":
-                $ K_Chest = "bustier bra open"
-        elif K_Panties == "zipper panties open":
-            ch_k "I'm ready"    
-        elif K_Panties and (K_Legs == "capris" or K_Legs == "black jeans"):
-            "She quickly drops her pants and her [K_Panties]."
-        elif K_Panties and K_Legs == "shorts":
-            "She quickly drops her shorts and her [K_Panties]."
-        elif K_Legs == "capris" or K_Legs == "black jeans":
-            "She shrugs and her pants drop through her, exposing her bare pussy."
-        elif K_Legs == "shorts":
-            "She shrugs and her shorts drop through her, exposing her bare pussy."
-        elif HoseNum("Kitty") >= 5 and K_Panties:
-            "She shrugs and her [K_Hose] and [K_Panties] fall to the ground."
-            $ K_Hose = 0
-        elif HoseNum("Kitty") >= 5:
-            "She shrugs and her [K_Hose] fall to the ground."
-            $ K_Hose = 0
-        elif K_Panties:
-            "She shrugs as her [K_Panties] fall to the ground."  
+            
+            if (K_Panties and not K_PantiesDown) and (PantsNum("Kitty") > 5 and not K_Upskirt):
+                "She quickly drops her pants and her [K_Panties]."
+            elif (K_Panties and not K_PantiesDown) and (K_Legs == "shorts" and not K_Upskirt):
+                "She quickly drops her shorts and her [K_Panties]."
+            elif PantsNum("Kitty") > 5 and not K_Upskirt:
+                "She shrugs and her pants drop through her, exposing her bare pussy."
+            elif K_Legs == "shorts" and not K_Upskirt:
+                "She shrugs and her shorts drop through her, exposing her bare pussy."
+            elif HoseNum("Kitty") >= 5 and (K_Panties and not K_PantiesDown):
+                "She shrugs and her [K_Hose] and [K_Panties] fall to the ground."
+                $ K_Hose = 0
+            elif HoseNum("Kitty") >= 5:
+                "She shrugs and her [K_Hose] fall to the ground."
+                $ K_Hose = 0
+            elif (K_Panties and not K_PantiesDown):
+                "She shrugs as her [K_Panties] fall to the ground."  
             
         $ K_Upskirt = 1
         $ K_PantiesDown = 1       
@@ -419,19 +412,11 @@ label K_SexPrep:
                 "Kitty leans back and presses against you suggestively."
                 "You take careful aim and then ram your cock in."
                             
-    else:  #if Situation == "auto"  
-        if K_Panties == "zipper panties":
-            "You quickly pull the zippers down"
-            $ K_Panties = "zipper panties open"
-            if K_Chest == "bustier bra":
-                $ K_Chest = "bustier bra open"
-        elif K_Panties == "zipper panties open":
-            "You get ready"    
-        else:     
-            if K_Legs == "pants" and K_Panties:
-                "You quickly pull down her pants and her [K_Panties] and press against her slit."
-            if K_Panties and K_Legs != "pants":
-                "You quickly pull down her [K_Panties] and press against her slit."  
+    else:  #if Situation == "auto"         
+        if K_Legs == "pants" and K_Panties:
+            "You quickly pull down her pants and her [K_Panties] and press against her slit."
+        if K_Panties and K_Legs != "pants":
+            "You quickly pull down her [K_Panties] and press against her slit."  
         $ K_Upskirt = 1
         $ K_PantiesDown = 1       
         $ K_SeenPanties = 1
@@ -473,6 +458,189 @@ label K_Sex_Cycle: #Repeating strokes
         $ K_Upskirt = 1
         $ K_PantiesDown = 1  
         
+        if Line and P_Focus < 100:                                                    
+                    #Player Command menu
+                    menu:
+                        "Keep going. . ." if Speed:
+                                    pass
+                        "Keep going. . . (locked)" if not Speed:
+                                    pass
+                                    
+                        "Start moving? . ." if not Speed:
+                                    $ Speed = 1                            
+                        "Speed up. . ." if 0 < Speed < 3:                    
+                                    $ Speed += 1
+                                    "You ask her to up the pace a bit."
+                        "Speed up. . . (locked)" if Speed >= 3:
+                                    pass
+                            
+                        "Slow Down. . ." if Speed:                    
+                                    $ Speed -= 1
+                                    "You ask her to slow it down a bit."
+                        "Slow Down. . . (locked)" if not Speed:                
+                                    pass
+                            
+                        "Slap her ass":                     
+                                    call K_Slap_Ass  
+                                    $ Cnt += 1
+                                    $ Round -= 1                                      
+                                    jump K_Sex_Cycle  
+                                    
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                        
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if K_Action and MultiAction:
+                                                call Kitty_Offhand_Set
+                                                if Trigger2:
+                                                     $ K_Action -= 1
+                                            else:
+                                                ch_k "I'm[K_like]kinda tired here? Could we wrap it up?" 
+                                                
+                                    "Shift primary action":
+                                            if K_Action and MultiAction:
+                                                    menu:
+                                                        "How about anal?":
+                                                                $ Situation = "shift"
+                                                                call K_SexAfter
+                                                                call K_Sex_A
+                                                        "Just stick it in her ass [[without asking].":
+                                                                $ Situation = "auto"
+                                                                call K_SexAfter
+                                                                call K_Sex_A
+                                                        "Pull back to hotdog her.":
+                                                                $ Situation = "pullback"
+                                                                call K_SexAfter
+                                                                call K_Sex_H
+                                                        "Never Mind":
+                                                                jump K_Sex_Cycle
+                                            else:
+                                                ch_k "I'm[K_like]kinda tired here? Could we wrap it up?" 
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Kitty to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Kitty_Les_Change
+                                            "Ask Kitty to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Kitty":
+                                                            call Kitty_Three_Change
+                                                        elif Partner == "Emma":
+                                                            call Emma_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Kitty")
+                                            "Undress [Partner]":
+                                                        if Partner == "Rogue":
+                                                                call R_Undress   
+                                                        elif Partner == "Emma":
+                                                                call E_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Rogue" and R_Spunk:
+                                                                call Rogue_Cleanup("ask")    
+                                                        elif Partner == "Emma" and E_Spunk:
+                                                                call Emma_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump K_Sex_Cycle 
+                                            "Never mind":
+                                                        jump K_Sex_Cycle 
+                                    "Undress Kitty":
+                                            call K_Undress   
+                                    "Clean up Kitty (locked)" if not K_Spunk:
+                                            pass  
+                                    "Clean up Kitty" if K_Spunk:
+                                            call Kitty_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump K_Sex_Cycle                                    
+                                                        
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call Kitty_Sex_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump K_SexAfter
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call Kitty_Sex_Reset
+                                    $ Line = 0
+                                    jump K_SexAfter
+        #End menu (if Line)              
+        
+        call Sex_Dialog("Kitty",Partner)
+        
+        $ Cnt += 1
+        $ Round -= 1     
+        
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or K_Lust >= 100:   
+                    #If either of you could cum    
+                    if P_Focus >= 100:
+                            #If you can cum:                                                
+                            call PK_Cumming
+                            if "angry" in K_RecentActions:  
+                                call Kitty_Sex_Reset
+                                return    
+                            $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5) 
+                            if 100 > K_Lust >= 70 and K_OCount < 2:             
+                                    $ K_RecentActions.append("unsatisfied")                      
+                                    $ K_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump K_SexAfter 
+                            $ Line = "came"
+
+                    if K_Lust >= 100:         
+                            #If you're still going at it and Kitty can cum
+                            call K_Cumming
+                            if Situation == "shift" or "angry" in K_RecentActions:
+                                jump K_SexAfter
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
+                            $ Line = 0
+                            if not P_Semen:
+                                "She's emptied you out, you'll need to take a break."
+                                jump K_SexAfter
+                            elif "unsatisfied" in K_RecentActions:
+                                #And Kitty is unsatisfied,  
+                                $ Line = renpy.random.choice(["She continues to shake a little with pleasure.", 
+                                    "She is breathing heavily as your cock rubs inside her.", 
+                                    "She slowly turns back towards you and smiles.",
+                                    "She doesn't seem ready to stop."])
+                                "[Line] Keep going?"
+                                menu:
+                                    extend ""
+                                    "Yes, keep going for a bit." if P_Semen:
+                                        $ Line = "You get back into it" 
+                                        jump K_Sex_Cycle  
+                                    "No, I'm done." if P_Semen:
+                                        "You pull back."
+                                        jump K_SexAfter
+                                    "No, I'm spent." if not P_Semen:
+                                        "You pull back."
+                                        jump K_SexAfter        
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Rogue" and R_Lust >= 100:                                          
+                    call R_Cumming
+                elif Partner == "Emma" and E_Lust >= 100:                                          
+                    call E_Cumming
+        #End orgasm
+        
         $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
         
         if K_SEXP >= 100 or ApprovalCheck("Kitty", 1200, "LO"):
@@ -494,7 +662,6 @@ label K_Sex_Cycle: #Repeating strokes
                                 $ P_FocusX = 0
                                 $ P_Focus += 15
                                 $ Cnt += 1
-                                "[Line]"
                                 jump K_Sex_Cycle
                         "Let's try something else." if MultiAction: 
                                 $ Line = 0
@@ -520,153 +687,6 @@ label K_Sex_Cycle: #Repeating strokes
                                     $ K_DailyActions.append("angry")   
                                     jump K_SexAfter
         #End Count check
-        
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    menu:
-                        "[Line]"
-                        "Keep going. . ." if Speed:
-                                    pass
-                        "Start moving? . ." if not Speed:
-                                    $ Speed = 1
-                            
-                        "Speed up. . ." if Speed < 3:                    
-                                    $ Speed += 1
-                                    "You ask her to up the pace a bit."
-                        "Speed up. . . (locked)" if Speed >= 3:
-                                    pass
-                            
-                        "Slow Down. . ." if Speed > 0:                    
-                                    $ Speed -= 1
-                                    "You ask her to slow it down a bit."
-                        "Slow Down. . . (locked)" if not Speed:                
-                                    pass
-                            
-                        "Slap her ass":                     
-                                    call K_Slap_Ass                                    
-                                    jump K_Sex_Cycle 
-
-                        "Put her legs up" if not K_LegsUp:
-                                    $ K_LegsUp = 1
-                                    "You put her legs up."
-
-                        "Put her legs down" if K_LegsUp:
-                                    $ K_LegsUp = 0
-                                    "You put her legs down."
-
-                        "Blindfold her" if K_Bondage and not K_Blindfold:
-                            call KittyFace("sexy", 1) 
-                            "You add a blindfold so she can't see a thing"
-                            $ K_Blindfold = 1
-
-                        "Remove blindfold" if K_Blindfold:
-                            call KittyFace("sexy", 1) 
-                            "You remove the blindfold"
-                            $ K_Blindfold = 0
-                                    
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0
-                                    
-                        "Maybe lose some clothes. . .":
-                                    call K_Undress  
-                        
-                        "Shift actions":
-                            if K_Action and MultiAction:
-                                menu:
-                                    "How about anal?":
-                                            $ Situation = "shift"
-                                            call K_SexAfter
-                                            call K_Sex_A
-                                    "Just stick it in her ass [[without asking].":
-                                            $ Situation = "auto"
-                                            call K_SexAfter
-                                            call K_Sex_A
-                                    "Pull back to hotdog her.":
-                                            $ Situation = "pullback"
-                                            call K_SexAfter
-                                            call K_Sex_H
-                                    "Never Mind":
-                                            pass
-                            else:
-                                ch_k "I'm[K_like]kinda tired here? Could we wrap it up?" 
-                    
-                        "I also want to. . . [[Offhand]":
-                                if K_Action and MultiAction:
-                                    call Kitty_Offhand_Set
-                                    if Trigger2:
-                                         $ K_Action -= 1
-                                else:
-                                    ch_k "I'm[K_like]kinda tired here? Could we wrap it up?"  
-                           
-                        "Let's try something else." if MultiAction: 
-                                    call Kitty_Sex_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump K_SexAfter
-                        "Let's stop for now." if not MultiAction: 
-                                    call Kitty_Sex_Reset
-                                    $ Line = 0
-                                    jump K_SexAfter
-        #End menu (if Line)
-        
-        call Sex_Dialog("Kitty",Partner)
-        
-        #If either of you could cum 
-        if P_Focus >= 100 or K_Lust >= 100:                     
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PK_Cumming
-                            if "angry" in K_RecentActions:  
-                                call Kitty_Sex_Reset
-                                return    
-                            $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5) 
-                            if 100 > K_Lust >= 70 and K_OCount < 2:             
-                                $ K_RecentActions.append("unsatisfied")                      
-                                $ K_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump K_SexAfter 
-                            $ Line = "came"
-     
-                    #If Kitty can cum
-                    if renpy.showing("Kitty_SexSprite"):                    #If you're still going at it,
-                        if K_Lust >= 100:                                               
-                            call K_Cumming
-                            if Situation == "shift" or "angry" in K_RecentActions:
-                                jump K_SexAfter
-                       
-                    if Line == "came": #ex P_Focus <= 20: #If you've just cum,  
-                        $ Line = 0
-                        if not P_Semen:
-                            "She's emptied you out, you'll need to take a break."
-                            jump K_SexAfter
-                        elif "unsatisfied" in K_RecentActions:#And Kitty is unsatisfied,                    
-                            call Kitty_Sex_Launch(Trigger)
-                            $ Line = renpy.random.choice(["She continues to shake a little with pleasure.", 
-                                "She is breathing heavily as your cock rubs inside her.", 
-                                "She slowly turns back towards you and smiles.",
-                                "She doesn't seem ready to stop."])
-                            "[Line] Keep going?"
-                            menu:
-                                extend ""
-                                "Yes, keep going for a bit." if P_Semen:
-                                    $ Line = "You get back into it" 
-                                    jump K_Sex_Cycle  
-                                "No, I'm done." if P_Semen:
-                                    "You pull back."
-                                    jump K_SexAfter
-                                "No, I'm spent." if not P_Semen:
-                                    "You pull back."
-                                    jump K_SexAfter
-        #End orgasm
-        
    
         if Round == 10:
             ch_k "You might want to wrap this up, it's getting late."  
@@ -677,9 +697,6 @@ label K_Sex_Cycle: #Repeating strokes
     call KittyFace("bemused", 0)
     $ Line = 0
     ch_k "Ok, [K_Petname], that's enough of that for now."
-    
-    
-
     
 label K_SexAfter:
     if not Situation: #fix  Situation != "shift" and Situation != "auto" and Situation != "pullback": 
@@ -696,9 +713,11 @@ label K_SexAfter:
         $ K_Addictionrate += 1        
     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 2) 
     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 1) 
-    
+        
     if R_Loc == bg_current and "noticed kitty" in R_RecentActions: #If Rogue was participating
-        $ R_LikeKitty += 2 if R_LikeKitty >= 800 else 1
+            $ R_LikeKitty += 3 if R_LikeKitty >= 700 else 2    
+    if E_Loc == bg_current and "noticed kitty" in E_RecentActions: #If Emma was participating
+            $ E_LikeKitty += 3 if E_LikeKitty >= 700 else 2
     
     if "Kitty Sex Addict" in Achievements:
             pass 
@@ -1123,32 +1142,25 @@ label K_AnalPrep:
     
     if Situation != "auto":
         call Kitty_Bottoms_Off        
-        if K_Panties or K_Legs or HoseNum("Kitty") >= 5: #If she refuses to take off her pants but agreed to anal
+        if (K_Panties and not K_PantiesDown) or (K_Legs and not K_Upskirt) or HoseNum("Kitty") >= 5: #If she refuses to take off her pants but agreed to anal
             ch_k "We can't exactly do much like this, huh."
-
-        if K_Panties == "zipper panties":
-            "She pulls the zippers down"
-            $ K_Panties = "zipper panties open"
-            if K_Chest == "bustier bra":
-                $ K_Chest = "bustier bra open"
-        elif K_Panties == "zipper panties open":
-            ch_k "I'm ready"  
-        elif K_Panties and (K_Legs == "capris" or K_Legs == "black jeans"):
-            "She quickly drops her pants and her [K_Panties]."
-        elif K_Panties and K_Legs == "shorts":
-            "She quickly drops her shorts and her [K_Panties]."
-        elif K_Legs == "capris" or K_Legs == "black jeans":
-            "She shrugs and her pants drop through her, exposing her bare pussy."
-        elif K_Legs == "shorts":
-            "She shrugs and her shorts drop through her, exposing her bare pussy."
-        elif HoseNum("Kitty") >= 5 and K_Panties:
-            "She shrugs and her [K_Hose] and [K_Panties] fall to the ground."
-            $ K_Hose = 0
-        elif HoseNum("Kitty") >= 5:
-            "She shrugs and her [K_Hose] fall to the ground."
-            $ K_Hose = 0
-        elif K_Panties:
-            "She shrugs as her [K_Panties] fall to the ground."  
+            
+            if (K_Panties and not K_PantiesDown) and (PantsNum("Kitty") > 5 and not K_Upskirt):
+                "She quickly drops her pants and her [K_Panties]."
+            elif (K_Panties and not K_PantiesDown) and (K_Legs == "shorts" and not K_Upskirt):
+                "She quickly drops her shorts and her [K_Panties]."
+            elif PantsNum("Kitty") > 5 and not K_Upskirt:
+                "She shrugs and her pants drop through her, exposing her bare pussy."
+            elif K_Legs == "shorts" and not K_Upskirt:
+                "She shrugs and her shorts drop through her, exposing her bare pussy."
+            elif HoseNum("Kitty") >= 5 and (K_Panties and not K_PantiesDown):
+                "She shrugs and her [K_Hose] and [K_Panties] fall to the ground."
+                $ K_Hose = 0
+            elif HoseNum("Kitty") >= 5:
+                "She shrugs and her [K_Hose] fall to the ground."
+                $ K_Hose = 0
+            elif (K_Panties and not K_PantiesDown):
+                "She shrugs as her [K_Panties] fall to the ground."  
             
         $ K_Upskirt = 1
         $ K_PantiesDown = 1       
@@ -1181,18 +1193,10 @@ label K_AnalPrep:
                 "You press against her rim and nudge your cock in."
                      
     else: #if Situation == "auto"       
-        if K_Panties == "zipper panties":
-            "You quickly pull the zippers down"
-            $ K_Panties = "zipper panties open"
-            if K_Chest == "bustier bra":
-                $ K_Chest = "bustier bra open"
-        elif K_Panties == "zipper panties open":
-            "You get ready"  
-        else: 
-            if K_Legs == "pants" and K_Panties:
-                "You quickly pull down her pants and her [K_Panties] and press against her back door."
-            if K_Panties and K_Legs != "pants":
-                "You quickly pull down her [K_Panties] and press against her back door."  
+        if K_Legs == "pants" and K_Panties:
+            "You quickly pull down her pants and her [K_Panties] and press against her back door."
+        if K_Panties and K_Legs != "pants":
+            "You quickly pull down her [K_Panties] and press against her back door."  
         $ K_Upskirt = 1
         $ K_PantiesDown = 1       
         $ K_SeenPanties = 1
@@ -1239,11 +1243,192 @@ label K_Anal_Cycle: #Repeating strokes
         call KittyLust        
         $ P_Cock = "anal"
         $ Trigger = "anal"
-        $ K_Upskirt = 1
-        $ K_PantiesDown = 1  
+        
+        if Line and P_Focus < 100:                                                    
+                    #Player Command menu
+                    menu:
+                        "Keep going. . ." if Speed:
+                                    pass
+                        "Keep going. . . (locked)" if not Speed:
+                                    pass
+                                    
+                        "Start moving? . ." if not Speed:
+                                    $ Speed = 1                            
+                        "Speed up. . ." if 0 < Speed < 3:                    
+                                    $ Speed += 1
+                                    "You ask her to up the pace a bit."
+                        "Speed up. . . (locked)" if Speed >= 3:
+                                    pass
+                            
+                        "Slow Down. . ." if Speed:                    
+                                    $ Speed -= 1
+                                    "You ask her to slow it down a bit."
+                        "Slow Down. . . (locked)" if not Speed:                
+                                    pass
+                            
+                        "Slap her ass":                     
+                                    call K_Slap_Ass  
+                                    $ Cnt += 1
+                                    $ Round -= 1                                      
+                                    jump K_Anal_Cycle  
+                                    
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                        
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if K_Action and MultiAction:
+                                                call Kitty_Offhand_Set
+                                                if Trigger2:
+                                                     $ K_Action -= 1
+                                            else:
+                                                ch_k "I'm[K_like]kinda tired here? Could we wrap it up?" 
+                                                
+                                    "Shift primary action":
+                                            if K_Action and MultiAction:
+                                                    menu:
+                                                        "How about sex?":
+                                                                $ Situation = "shift"
+                                                                call K_AnalAfter
+                                                                call K_Sex_P
+                                                        "Just stick it in her pussy [[without asking].":
+                                                                $ Situation = "auto"
+                                                                call K_AnalAfter
+                                                                call K_Sex_P
+                                                        "Pull back to hotdog her.":
+                                                                $ Situation = "pullback"
+                                                                call K_AnalAfter
+                                                                call K_Sex_H
+                                                        "Never Mind":
+                                                                jump K_Anal_Cycle
+                                            else:
+                                                ch_k "I'm[K_like]kinda tired here? Could we wrap it up?" 
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Kitty to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Kitty_Les_Change
+                                            "Ask Kitty to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Kitty":
+                                                            call Kitty_Three_Change
+                                                        elif Partner == "Emma":
+                                                            call Emma_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Kitty")
+                                            "Undress [Partner]":
+                                                        if Partner == "Rogue":
+                                                                call R_Undress   
+                                                        elif Partner == "Emma":
+                                                                call E_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Rogue" and R_Spunk:
+                                                                call Rogue_Cleanup("ask")    
+                                                        elif Partner == "Emma" and E_Spunk:
+                                                                call Emma_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump K_Anal_Cycle 
+                                            "Never mind":
+                                                        jump K_Anal_Cycle 
+                                    "Undress Kitty":
+                                            call K_Undress   
+                                    "Clean up Kitty (locked)" if not K_Spunk:
+                                            pass  
+                                    "Clean up Kitty" if K_Spunk:
+                                            call Kitty_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump K_Anal_Cycle                                    
+                                                        
+                        "Back to Anal Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call Kitty_Sex_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump K_AnalAfter
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call Kitty_Sex_Reset
+                                    $ Line = 0
+                                    jump K_AnalAfter
+        #End menu (if Line)              
+        
+        call Sex_Dialog("Kitty",Partner)
+        
+        $ Cnt += 1
+        $ Round -= 1     
+        
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or K_Lust >= 100:   
+                    #If either of you could cum    
+                    if P_Focus >= 100:
+                            #If you can cum:                                                
+                            call PK_Cumming
+                            if "angry" in K_RecentActions:  
+                                call Kitty_Sex_Reset
+                                return    
+                            $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5) 
+                            if 100 > K_Lust >= 70 and K_OCount < 2:             
+                                    $ K_RecentActions.append("unsatisfied")                      
+                                    $ K_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump K_AnalAfter 
+                            $ Line = "came"
+
+                    if K_Lust >= 100:         
+                            #If you're still going at it and Kitty can cum
+                            call K_Cumming
+                            if Situation == "shift" or "angry" in K_RecentActions:
+                                jump K_AnalAfter
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
+                            $ Line = 0
+                            if not P_Semen:
+                                "She's emptied you out, you'll need to take a break."
+                                jump K_AnalAfter
+                            elif "unsatisfied" in K_RecentActions:
+                                #And Kitty is unsatisfied,  
+                                $ Line = renpy.random.choice(["She continues to shake a little with pleasure.", 
+                                    "She is breathing heavily as your cock rubs inside her.", 
+                                    "She slowly turns back towards you and smiles.",
+                                    "She doesn't seem ready to stop."])
+                                "[Line] Keep going?"
+                                menu:
+                                    extend ""
+                                    "Yes, keep going for a bit." if P_Semen:
+                                        $ Line = "You get back into it" 
+                                        jump K_Anal_Cycle  
+                                    "No, I'm done." if P_Semen:
+                                        "You pull back."
+                                        jump K_AnalAfter
+                                    "No, I'm spent." if not P_Semen:
+                                        "You pull back."
+                                        jump K_AnalAfter        
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Rogue" and R_Lust >= 100:                                          
+                    call R_Cumming
+                elif Partner == "Emma" and E_Lust >= 100:                                          
+                    call E_Cumming
+        #End orgasm
         
         $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
-            
+        
         if K_SEXP >= 100 or ApprovalCheck("Kitty", 1200, "LO"):
             pass
         elif Cnt == (5 + K_Anal):
@@ -1276,7 +1461,6 @@ label K_Anal_Cycle: #Repeating strokes
                                 $ P_FocusX = 0
                                 $ P_Focus += 15
                                 $ Cnt += 1
-                                "[Line]"
                                 jump K_Anal_Cycle
                         "Let's try something else." if MultiAction: 
                                 $ Line = 0
@@ -1302,153 +1486,6 @@ label K_Anal_Cycle: #Repeating strokes
                                     $ K_DailyActions.append("angry")   
                                     jump K_AnalAfter
         #End Count check
-        
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    menu:
-                        "[Line]"
-                        "Keep going. . ." if Speed:
-                                    pass
-                        "Start moving? . ." if not Speed:
-                                    $ Speed = 1
-                            
-                        "Speed up. . ." if Speed < 3:                    
-                                    $ Speed += 1
-                                    "You ask her to up the pace a bit."
-                        "Speed up. . . (locked)" if Speed >= 3:
-                                    pass
-                            
-                        "Slow Down. . ." if Speed > 0:                    
-                                    $ Speed -= 1
-                                    "You ask her to slow it down a bit."
-                        "Slow Down. . . (locked)" if not Speed:                
-                                    pass
-                            
-                        "Slap her ass":                     
-                                    call K_Slap_Ass                                    
-                                    jump K_Anal_Cycle  
-
-                        "Put her legs up" if not K_LegsUp:
-                                    $ K_LegsUp = 1
-                                    "You put her legs up."
-
-                        "Put her legs down" if K_LegsUp:
-                                    $ K_LegsUp = 0
-                                    "You put her legs down."
-
-                        "Blindfold her" if K_Bondage and not K_Blindfold:
-                            call KittyFace("sexy", 1) 
-                            "You add a blindfold so she can't see a thing"
-                            $ K_Blindfold = 1
-
-                        "Remove blindfold" if K_Blindfold:
-                            call KittyFace("sexy", 1) 
-                            "You remove the blindfold"
-                            $ K_Blindfold = 0
-                                    
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0       
-                                    
-                        "Maybe lose some clothes. . .":
-                                    call K_Undress  
-                        
-                        "Shift actions":
-                            if K_Action and MultiAction:
-                                menu:
-                                    "How about sex?":
-                                            $ Situation = "shift"
-                                            call K_AnalAfter
-                                            call K_Sex_P
-                                    "Just stick it in her pussy [[without asking].":
-                                            $ Situation = "auto"
-                                            call K_AnalAfter
-                                            call K_Sex_P
-                                    "Pull back to hotdog her.":
-                                            $ Situation = "pullback"
-                                            call K_AnalAfter
-                                            call K_Sex_H
-                                    "Never Mind":
-                                            pass
-                            else:
-                                ch_k "I'm[K_like]kinda tired here? Could we wrap it up?" 
-                    
-                        "I also want to. . . [[Offhand]":
-                                if K_Action and MultiAction:
-                                    call Kitty_Offhand_Set
-                                    if Trigger2:
-                                         $ K_Action -= 1
-                                else:
-                                    ch_k "I'm[K_like]kinda tired here? Could we wrap it up?"  
-                           
-                        "Let's try something else." if MultiAction: 
-                                    call Kitty_Sex_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump K_AnalAfter
-                        "Let's stop for now." if not MultiAction: 
-                                    call Kitty_Sex_Reset
-                                    $ Line = 0
-                                    jump K_AnalAfter
-        #End menu (if Line)
-        
-        call Sex_Dialog("Kitty",Partner)
-                
-        #If either of you could cum 
-        if P_Focus >= 100 or K_Lust >= 100:                        
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PK_Cumming
-                            if "angry" in K_RecentActions:  
-                                call Kitty_Sex_Reset
-                                return    
-                            $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5) 
-                            if 100 > K_Lust >= 70 and K_OCount < 2:             
-                                $ K_RecentActions.append("unsatisfied")                      
-                                $ K_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump K_AnalAfter 
-                            $ Line = "came"
-     
-                    #If Kitty can cum
-                    if renpy.showing("Kitty_SexSprite"):                    #If you're still going at it,
-                        if K_Lust >= 100:                                               
-                            call K_Cumming
-                            if Situation == "shift" or "angry" in K_RecentActions:
-                                jump K_AnalAfter
-                       
-                    if Line == "came": #ex P_Focus <= 20: #If you've just cum,  
-                        $ Line = 0
-                        if not P_Semen:
-                            "She's emptied you out, you'll need to take a break."
-                            jump K_SexAfter
-                        elif "unsatisfied" in K_RecentActions:#And Kitty is unsatisfied,                    
-                            call Kitty_Sex_Launch(Trigger)
-                            $ Line = renpy.random.choice(["She continues to shake a little with pleasure.", 
-                                "She is breathing heavily as your cock rubs inside her.", 
-                                "She slowly turns back towards you and smiles.",
-                                "She doesn't seem ready to stop."])
-                            "[Line] Keep going?"
-                            menu:
-                                extend ""
-                                "Yes, keep going for a bit." if P_Semen:
-                                    $ Line = "You get back into it" 
-                                    jump K_Anal_Cycle  
-                                "No, I'm done." if P_Semen:
-                                    "You pull back."                                
-                                    jump K_AnalAfter
-                                "No, I'm spent." if not P_Semen:
-                                    "You pull back."                                
-                                    jump K_AnalAfter
-        #End orgasm
-        
    
         if Round == 10:
             ch_k "You might want to wrap this up, it's getting late."  
@@ -1459,9 +1496,6 @@ label K_Anal_Cycle: #Repeating strokes
     call KittyFace("bemused", 0)
     $ Line = 0
     ch_k "Ok, [K_Petname], that's enough of that for now."
-    
-    
-
     
 label K_AnalAfter:
     if not Situation: #fix  Situation != "shift" and Situation != "auto" and Situation != "pullback": 
@@ -1480,7 +1514,9 @@ label K_AnalAfter:
     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 1) 
     
     if R_Loc == bg_current and "noticed kitty" in R_RecentActions: #If Rogue was participating
-        $ R_LikeKitty += 2 if R_LikeKitty >= 800 else 1
+            $ R_LikeKitty += 3   
+    if E_Loc == bg_current and "noticed kitty" in E_RecentActions: #If Emma was participating
+            $ E_LikeKitty += 4 if E_LikeKitty >= 800 else 3
     
     if "Kitty Anal Addict" in Achievements:
             pass 
@@ -1882,8 +1918,7 @@ label K_HotdogPrep:
     $ K_RecentActions.append("hotdog")                      
     $ K_DailyActions.append("hotdog") 
 
-label K_Hotdog_Cycle: #Repeating strokes  
-    
+label K_Hotdog_Cycle: #Repeating strokes 
     while Round >=0:  
         call Shift_Focus("Kitty")
         call Kitty_Sex_Launch("hotdog") 
@@ -1891,7 +1926,194 @@ label K_Hotdog_Cycle: #Repeating strokes
         $ P_Cock = "out"
         $ Trigger = "hotdog"
         
-        $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
+        if Line and P_Focus < 100:                                                    
+                    #Player Command menu
+                    menu:
+                        "Keep going. . ." if Speed:
+                                    pass
+                        "Keep going. . . (locked)" if not Speed:
+                                    pass
+                                    
+                        "Start moving? . ." if not Speed:
+                                    $ Speed = 1                            
+                        "Speed up. . ." if 0 < Speed < 3:                    
+                                    $ Speed += 1
+                                    "You ask her to up the pace a bit."
+                        "Speed up. . . (locked)" if Speed >= 3:
+                                    pass
+                            
+                        "Slow Down. . ." if Speed:                    
+                                    $ Speed -= 1
+                                    "You ask her to slow it down a bit."
+                        "Slow Down. . . (locked)" if not Speed:                
+                                    pass
+                            
+                        "Slap her ass":                     
+                                    call K_Slap_Ass  
+                                    $ Cnt += 1
+                                    $ Round -= 1                                      
+                                    jump K_Hotdog_Cycle  
+                                    
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                        
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if K_Action and MultiAction:
+                                                call Kitty_Offhand_Set
+                                                if Trigger2:
+                                                     $ K_Action -= 1
+                                            else:
+                                                ch_k "I'm[K_like]kinda tired here? Could we wrap it up?" 
+                                                
+                                    "Shift primary action":
+                                            if K_Action and MultiAction:
+                                                    menu:
+                                                        "How about sex?":
+                                                            $ Situation = "shift"
+                                                            call K_HotdogAfter
+                                                            call K_Sex_P
+                                                        "Just stick it in her pussy [[without asking].":
+                                                            $ Situation = "auto"
+                                                            call K_HotdogAfter
+                                                            call K_Sex_P
+                                                        "How about anal?":
+                                                            $ Situation = "shift"
+                                                            call K_HotdogAfter
+                                                            call K_Sex_A
+                                                        "Just stick it in her ass [[without asking].":
+                                                            $ Situation = "auto"
+                                                            call K_HotdogAfter
+                                                            call K_Sex_A
+                                                        "Never Mind":
+                                                                jump K_Hotdog_Cycle
+                                            else:
+                                                ch_k "I'm[K_like]kinda tired here? Could we wrap it up?" 
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Kitty to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Kitty_Les_Change
+                                            "Ask Kitty to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Kitty":
+                                                            call Kitty_Three_Change
+                                                        elif Partner == "Emma":
+                                                            call Emma_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Kitty")
+                                            "Undress [Partner]":
+                                                        if Partner == "Rogue":
+                                                                call R_Undress   
+                                                        elif Partner == "Emma":
+                                                                call E_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Rogue" and R_Spunk:
+                                                                call Rogue_Cleanup("ask")    
+                                                        elif Partner == "Emma" and E_Spunk:
+                                                                call Emma_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump K_Hotdog_Cycle 
+                                            "Never mind":
+                                                        jump K_Hotdog_Cycle 
+                                    "Undress Kitty":
+                                            call K_Undress   
+                                    "Clean up Kitty (locked)" if not K_Spunk:
+                                            pass  
+                                    "Clean up Kitty" if K_Spunk:
+                                            call Kitty_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump K_Hotdog_Cycle                                    
+                                                        
+                        "Back to Hotdog Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call Kitty_Sex_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump K_HotdogAfter
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call Kitty_Sex_Reset
+                                    $ Line = 0
+                                    jump K_HotdogAfter
+        #End menu (if Line)              
+        
+        call Sex_Dialog("Kitty",Partner)
+        
+        $ Cnt += 1
+        $ Round -= 1     
+        
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or K_Lust >= 100:   
+                    #If either of you could cum    
+                    if P_Focus >= 100:
+                            #If you can cum:                                                
+                            call PK_Cumming
+                            if "angry" in K_RecentActions:  
+                                call Kitty_Sex_Reset
+                                return    
+                            $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5) 
+                            if 100 > K_Lust >= 70 and K_OCount < 2:             
+                                    $ K_RecentActions.append("unsatisfied")                      
+                                    $ K_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump K_HotdogAfter 
+                            $ Line = "came"
+
+                    if K_Lust >= 100:         
+                            #If you're still going at it and Kitty can cum
+                            call K_Cumming
+                            if Situation == "shift" or "angry" in K_RecentActions:
+                                jump K_HotdogAfter
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
+                            $ Line = 0
+                            if not P_Semen:
+                                "She's emptied you out, you'll need to take a break."
+                                jump K_HotdogAfter
+                            elif "unsatisfied" in K_RecentActions:
+                                #And Kitty is unsatisfied,  
+                                $ Line = renpy.random.choice(["She continues to shake a little with pleasure.", 
+                                    "She is breathing heavily as your cock rubs inside her.", 
+                                    "She slowly turns back towards you and smiles.",
+                                    "She doesn't seem ready to stop."])
+                                "[Line] Keep going?"
+                                menu:
+                                    extend ""
+                                    "Yes, keep going for a bit." if P_Semen:
+                                        $ Line = "You get back into it" 
+                                        jump K_Hotdog_Cycle  
+                                    "No, I'm done." if P_Semen:
+                                        "You pull back."
+                                        jump K_HotdogAfter
+                                    "No, I'm spent." if not P_Semen:
+                                        "You pull back."
+                                        jump K_HotdogAfter        
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Rogue" and R_Lust >= 100:                                          
+                    call R_Cumming
+                elif Partner == "Emma" and E_Lust >= 100:                                          
+                    call E_Cumming
+        #End orgasm
+        
+        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
         
         if K_SEXP >= 100 or ApprovalCheck("Kitty", 1200, "LO"):
             pass
@@ -1911,7 +2133,6 @@ label K_Hotdog_Cycle: #Repeating strokes
                                 $ P_FocusX = 0
                                 $ P_Focus += 15
                                 $ Cnt += 1
-                                "[Line]"
                                 jump K_Hotdog_Cycle
                         "Let's try something else." if MultiAction: 
                                 $ Line = 0
@@ -1937,159 +2158,6 @@ label K_Hotdog_Cycle: #Repeating strokes
                                     $ K_DailyActions.append("angry")   
                                     jump K_HotdogAfter
         #End Count check
-        
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    menu:
-                        "[Line]"
-                        "Keep going. . ." if Speed:
-                                    pass
-                        "Start moving? . ." if not Speed:
-                                    $ Speed = 1
-                            
-                        "Speed up. . ." if Speed < 2:                    
-                                    $ Speed = 2
-                                    "You ask her to up the pace a bit."
-                        "Speed up. . . (locked)" if Speed >= 2:
-                                    pass
-                            
-                        "Slow Down. . ." if Speed:                    
-                                    $ Speed -= 1
-                                    "You ask her to slow it down a bit."
-                        "Slow Down. . . (locked)" if not Speed:                
-                                    pass
-                            
-                        "Slap her ass":                     
-                                    call K_Slap_Ass                                    
-                                    jump K_Hotdog_Cycle  
-
-                        "Put her legs up" if not K_LegsUp:
-                                    $ K_LegsUp = 1
-                                    "You put her legs up."
-
-                        "Put her legs down" if K_LegsUp:
-                                    $ K_LegsUp = 0
-                                    "You put her legs down."
-
-                        "Blindfold her" if K_Bondage and not K_Blindfold:
-                            call KittyFace("sexy", 1) 
-                            "You add a blindfold so she can't see a thing"
-                            $ K_Blindfold = 1
-
-                        "Remove blindfold" if K_Blindfold:
-                            call KittyFace("sexy", 1) 
-                            "You remove the blindfold"
-                            $ K_Blindfold = 0
-                                    
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0
-                                    
-                        "Maybe lose some clothes. . .":
-                                    call K_Undress
-                                    
-                        "Shift actions":
-                            if K_Action and MultiAction:
-                                menu:
-                                    "How about sex?":
-                                        $ Situation = "shift"
-                                        call K_HotdogAfter
-                                        call K_Sex_P
-                                    "Just stick it in her pussy [[without asking].":
-                                        $ Situation = "auto"
-                                        call K_HotdogAfter
-                                        call K_Sex_P
-                                    "How about anal?":
-                                        $ Situation = "shift"
-                                        call K_HotdogAfter
-                                        call K_Sex_A
-                                    "Just stick it in her ass [[without asking].":
-                                        $ Situation = "auto"
-                                        call K_HotdogAfter
-                                        call K_Sex_A
-                                    "Never Mind":
-                                        pass
-                            else:
-                                ch_k "I'm[K_like]kinda tired here? Could we wrap it up?"  
-                    
-                        "I also want to. . .[[Offhand]":
-                                if K_Action and MultiAction:
-                                    call Kitty_Offhand_Set
-                                    if Trigger2:
-                                         $ K_Action -= 1
-                                else:
-                                    ch_k "I'm[K_like]kinda tired here? Could we wrap it up?"  
-                           
-                        "Let's try something else." if MultiAction: 
-                                    call Kitty_Sex_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump K_HotdogAfter
-                        "Let's stop for now." if not MultiAction: 
-                                    call Kitty_Sex_Reset
-                                    $ Line = 0
-                                    jump K_HotdogAfter
-        #End menu (if Line)
-        
-        call Sex_Dialog("Kitty",Partner)
-                
-        #If either of you could cum 
-        if P_Focus >= 100 or K_Lust >= 100:                      
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PK_Cumming
-                            if "angry" in K_RecentActions:  
-                                call Kitty_Sex_Reset
-                                return    
-                            $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5) 
-                            if 100 > K_Lust >= 70 and K_OCount < 2:             
-                                $ K_RecentActions.append("unsatisfied")                      
-                                $ K_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump K_HotdogAfter 
-                            $ Line = "came"
-     
-     
-                    #If Kitty can cum
-                    if renpy.showing("Kitty_SexSprite"):                    #If you're still going at it,
-                        if K_Lust >= 100:                                               
-                            call K_Cumming
-                            if Situation == "shift" or "angry" in K_RecentActions:
-                                jump K_HotdogAfter
-                       
-                    if Line == "came": #ex P_Focus <= 20: #If you've just cum,  
-                        $ Line = 0
-                        if not P_Semen:
-                            "She's emptied you out, you'll need to take a break."
-                            jump K_SexAfter
-                        elif "unsatisfied" in K_RecentActions:#And Kitty is unsatisfied,                    
-                            call Kitty_Sex_Launch("hotdog")
-                            $ Line = renpy.random.choice(["She continues to shake a little with pleasure.", 
-                                "She is breathing heavily as your cock rubs against her.", 
-                                "She slowly turns back towards you and smiles.",
-                                "She doesn't seem ready to stop."])
-                            "[Line] Keep going?"
-                            menu:
-                                extend ""
-                                "Yes, keep going for a bit." if P_Semen:
-                                    $ Line = "You get back into it" 
-                                    jump K_Hotdog_Cycle  
-                                "No, I'm done." if P_Semen:
-                                    "You pull back."                                    
-                                    jump K_HotdogAfter
-                                "No, I'm spent." if not P_Semen:
-                                    "You pull back."
-                                    jump K_HotdogAfter
-                        
-        #End orgasm
-        
    
         if Round == 10:
             ch_k "You might want to wrap this up, it's getting late."  
@@ -2100,9 +2168,6 @@ label K_Hotdog_Cycle: #Repeating strokes
     call KittyFace("bemused", 0)
     $ Line = 0
     ch_k "Ok, [K_Petname], that's enough of that for now."
-    
-    
-
     
 label K_HotdogAfter:
     if not Situation: #fix  Situation != "shift" and Situation != "auto" and Situation != "pullback": 
@@ -2121,7 +2186,9 @@ label K_HotdogAfter:
     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 1) 
     
     if R_Loc == bg_current and "noticed kitty" in R_RecentActions: #If Rogue was participating
-        $ R_LikeKitty += 1
+            $ R_LikeKitty += 2 if R_LikeKitty >= 800 else 1    
+    if E_Loc == bg_current and "noticed kitty" in E_RecentActions: #If Emma was participating
+            $ E_LikeKitty += 2 if E_LikeKitty >= 800 else 1
     
     if K_Hotdog == 10:
         $ K_SEXP += 5             

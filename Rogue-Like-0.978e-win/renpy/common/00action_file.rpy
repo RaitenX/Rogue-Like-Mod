@@ -468,9 +468,9 @@ init -1500 python:
 
             fn = __slotname(self.name, self.page)
 
-            #if self.confirm:
-            #    layout.yesno_screen(layout.DELETE_SAVE, FileDelete(self.name, False, self.page))
-            #    return
+            if self.confirm:
+                layout.yesno_screen(layout.DELETE_SAVE, FileDelete(self.name, False, self.page))
+                return
 
             renpy.unlink_save(fn)
 

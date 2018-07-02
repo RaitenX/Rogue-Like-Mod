@@ -105,25 +105,13 @@ label Kitty_Date_Night:
             $ K_Outfit = "custom2"
         elif K_Schedule[7] == 6:
             $ K_Outfit = "custom3"
-        elif K_Schedule[7] == 11:
-            $ K_Outfit = "custom4"
-        elif K_Schedule[7] == 12:
-            $ K_Outfit = "custom5"
-        elif K_Schedule[7] == 13:
-            $ K_Outfit = "custom6"
-        elif K_Schedule[7] == 14:
-            $ K_Outfit = "custom7"
         else:
             $ K_Outfit = "pink outfit"
     else:
-        $ Options = ["red outfit", "black dress"]
+        $ Options = ["pink outfit", "red outfit"]
         $ Options.append("custom1") if K_Custom[0] == 2 else Options
         $ Options.append("custom2") if K_Custom2[0] == 2 else Options
         $ Options.append("custom3") if K_Custom3[0] == 2 else Options
-        $ Options.append("custom4") if K_Custom4[0] == 2 else Options
-        $ Options.append("custom5") if K_Custom5[0] == 2 else Options
-        $ Options.append("custom6") if K_Custom6[0] == 2 else Options
-        $ Options.append("custom7") if K_Custom7[0] == 2 else Options
         $ renpy.random.shuffle(Options) 
         $ K_Outfit = Options[0]
         $ del Options[:]  

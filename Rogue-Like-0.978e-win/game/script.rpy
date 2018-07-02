@@ -43,6 +43,7 @@ define ch_e = Character('[EmmaName]', color="#98bee7", image = "arrow", show_two
 define ch_b = Character('Dr. McCoy', color="#1033b2", image = "arrow", show_two_window=True)
 define ch_u = Character('???', color="#85bb65", image = "arrow", show_two_window=True)
 define ch_usher = Character('Usher', color="#DF0174", show_two_window=True)
+define ch_danger = Character('Danger Room:', color="#1033b2",what_color="#1033b2",what_font="dungeon.ttf",show_two_window=False)
 #define e = Character("Eileen", what_color="#c8ffc8") #this sets the chat text color, handy
 
 
@@ -91,7 +92,7 @@ init -1:
     #girlnew.girls[0].add_flight(5)
     #girlnew.girls[0].flights
 #World Stats
-    default SaveVersion = 978
+    default SaveVersion = 979
     default Day = 1
     default Cheat = 0
     default Time_Options = ["Morning", "Midday", "Evening", "Night"]
@@ -103,7 +104,7 @@ init -1:
     default bg_current = "bg study"
     default Party = []
     default Taboo = 0
-    default Rules = 1
+    default Rules = []
     default R_Rules = 1
     default K_Rules = 1
     default E_Rules = 1
@@ -115,6 +116,7 @@ init -1:
     default Trigger3 = 0                #Girl's offhand    
     default Trigger4 = 0                #this is the 4th sexual act performed by the second girl 
     default Trigger5 = 0                #this is the 5th sexual act performed by the second girl if masturbating
+    default ThreeCount = 0              #This is a timer for changing sexual positions on auto
     default Adjacent = 0                #this is the girl you're sitting next to in class
     default Present = []                #This list tracks which girls are in this scene
 #    default LesFlag = 0                #This is triggered if a lesbian action is occurring
@@ -488,7 +490,7 @@ init -1:
     default E_Event = [0,0,0,0,0,0,0,0,0,0,0]  
     default E_Todo = []
     default E_PubeC = 0    
-#Kitty Sprite Variables
+#Emma Sprite Variables
     default E_Outfit = "pink outfit"
     default E_OutfitDay = "teacher"
     default E_Emote = "normal"
@@ -500,6 +502,7 @@ init -1:
     default E_Chest = "corset"    
     default E_Pierce = 0
     default E_Panties = "white panties"
+    default E_Boots = 0
     default E_Neck = "choker"
     default E_Hose = 0
     default E_Mouth = "normal"
@@ -671,7 +674,7 @@ label VersionNumber:
     if SaveVersion == 975: #error correction, remove this eventually
         $ SaveVersion = 957  
         
-    if SaveVersion < 978:
+    if SaveVersion < 979:
         if SaveVersion < 976:
                 if SaveVersion < 94:
                     $ R_Love = R_Love * 10
@@ -942,55 +945,92 @@ label VersionNumber:
                     $ R_Inventory.append("stockings and garterbelt")
             $ E_Loose = 2
             $ SaveVersion = 978
-    $ StageFarRight = 900            #these are values for location points on the screen
-    $ StageRight = 715            #these are values for location points on the screen
-    $ StageCenter = 550
-    $ StageLeft = 350
-    $ StageFarLeft = 150
-    #make sure to set K_SpriteLoc etc. to new values, 
-    # $ K_SpriteLoc = 200 if K_SpriteLoc = 550 else K_SpriteLoc
-    # if "exhibitionist" in E_Traits:
-    #     $ E_Traits.remove("exhibitionist")
-    if len(R_Sleepwear) <= 9: #this should be the case on any busted-ass og versions
-        $ R_Sleepwear.append(0)
-        $ R_Sleepwear.append(0)
-        $ R_Sleepwear.append(0)
-        $ R_Sleepwear[9] = R_Sleepwear[6] #Hose 6>9
-        $ R_Sleepwear[8] = "evo"            #Hair
-        $ R_Sleepwear[6] = R_Sleepwear[5] #Panties 5>6
-        $ R_Sleepwear[5] = R_Sleepwear[4] #Chest 4>5
-        $ R_Sleepwear[4] = R_Sleepwear[3] #Neck 3>4 "choker"  
-        $ R_Sleepwear[3] = R_Sleepwear[2] #Over 2>3
-        $ R_Sleepwear[2] = R_Sleepwear[1] #Legs 1>2
-        $ R_Sleepwear[1] = R_Sleepwear[0] #Arms 0>1
-        $ R_Sleepwear[0] = 1                #new toggle
-        
-        $ K_Sleepwear.append(0)
-        $ K_Sleepwear.append(0)
-        $ K_Sleepwear.append(0)
-        $ K_Sleepwear[9] = K_Sleepwear[6] #Hose 6>9
-        $ K_Sleepwear[8] = "long"           #Hair
-        $ K_Sleepwear[6] = K_Sleepwear[5] #Panties 5>6
-        $ K_Sleepwear[5] = K_Sleepwear[4] #Chest 4>5
-        $ K_Sleepwear[4] = K_Sleepwear[3] #Neck 3>4 "choker"  
-        $ K_Sleepwear[3] = K_Sleepwear[2] #Over 2>3
-        $ K_Sleepwear[2] = K_Sleepwear[1] #Legs 1>2
-        $ K_Sleepwear[1] = K_Sleepwear[0] #Arms 0>1
-        $ K_Sleepwear[0] = 1                #new toggle
-        
-        $ E_Sleepwear.append(0)
-        $ E_Sleepwear.append(0)
-        $ E_Sleepwear.append(0)
-        $ E_Sleepwear[9] = E_Sleepwear[6] #Hose 6>9
-        $ E_Sleepwear[8] = E_Hair          #Hair
-        $ E_Sleepwear[6] = E_Sleepwear[5] #Panties 5>6
-        $ E_Sleepwear[5] = E_Sleepwear[4] #Chest 4>5
-        $ E_Sleepwear[4] = E_Sleepwear[3] #Neck 3>4 "choker"  
-        $ E_Sleepwear[3] = E_Sleepwear[2] #Over 2>3
-        $ E_Sleepwear[2] = E_Sleepwear[1] #Legs 1>2
-        $ E_Sleepwear[1] = E_Sleepwear[0] #Arms 0>1
-        $ E_Sleepwear[0] = 1                #new toggle
-#            #end of sleepwear overhaul
+        if SaveVersion < 979:      
+            $ StageFarRight = 900            #these are values for location points on the screen
+            $ StageRight = 715            #these are values for location points on the screen
+            $ StageCenter = 550
+            $ StageLeft = 350
+            $ StageFarLeft = 150
+            #make sure to set K_SpriteLoc etc. to new values, 
+            # $ K_SpriteLoc = 200 if K_SpriteLoc = 550 else K_SpriteLoc
+            if "exhibitionist" in E_Traits:
+                    $ E_Traits.remove("exhibitionist")
+            if len(R_Sleepwear) <= 9: #this should be the case on any busted-ass og versions
+                    $ R_Sleepwear.append(0)
+                    $ R_Sleepwear.append(0)
+                    $ R_Sleepwear.append(0)
+                    $ R_Sleepwear[9] = R_Sleepwear[6] #Hose 6>9
+                    $ R_Sleepwear[8] = "evo"            #Hair
+                    $ R_Sleepwear[6] = R_Sleepwear[5] #Panties 5>6
+                    $ R_Sleepwear[5] = R_Sleepwear[4] #Chest 4>5
+                    $ R_Sleepwear[4] = R_Sleepwear[3] #Neck 3>4 "choker"  
+                    $ R_Sleepwear[3] = R_Sleepwear[2] #Over 2>3
+                    $ R_Sleepwear[2] = R_Sleepwear[1] #Legs 1>2
+                    $ R_Sleepwear[1] = R_Sleepwear[0] #Arms 0>1
+                    $ R_Sleepwear[0] = 1                #new toggle
+                    
+                    $ K_Sleepwear.append(0)
+                    $ K_Sleepwear.append(0)
+                    $ K_Sleepwear.append(0)
+                    $ K_Sleepwear[9] = K_Sleepwear[6] #Hose 6>9
+                    $ K_Sleepwear[8] = "long"           #Hair
+                    $ K_Sleepwear[6] = K_Sleepwear[5] #Panties 5>6
+                    $ K_Sleepwear[5] = K_Sleepwear[4] #Chest 4>5
+                    $ K_Sleepwear[4] = K_Sleepwear[3] #Neck 3>4 "choker"  
+                    $ K_Sleepwear[3] = K_Sleepwear[2] #Over 2>3
+                    $ K_Sleepwear[2] = K_Sleepwear[1] #Legs 1>2
+                    $ K_Sleepwear[1] = K_Sleepwear[0] #Arms 0>1
+                    $ K_Sleepwear[0] = 1                #new toggle
+                    
+                    $ E_Sleepwear.append(0)
+                    $ E_Sleepwear.append(0)
+                    $ E_Sleepwear.append(0)
+                    $ E_Sleepwear[9] = E_Sleepwear[6] #Hose 6>9
+                    $ E_Sleepwear[8] = E_Hair          #Hair
+                    $ E_Sleepwear[6] = E_Sleepwear[5] #Panties 5>6
+                    $ E_Sleepwear[5] = E_Sleepwear[4] #Chest 4>5
+                    $ E_Sleepwear[4] = E_Sleepwear[3] #Neck 3>4 "choker"  
+                    $ E_Sleepwear[3] = E_Sleepwear[2] #Over 2>3
+                    $ E_Sleepwear[2] = E_Sleepwear[1] #Legs 1>2
+                    $ E_Sleepwear[1] = E_Sleepwear[0] #Arms 0>1
+                    $ E_Sleepwear[0] = 1                #new toggle
+            #end of sleepwear overhaul
+            
+                
+            if Trigger == "kissing": #add to update
+                    if Trigger5 == "kiss girl":
+                        $ Trigger = "kiss girl"
+                    elif Trigger5 == "kiss both":
+                        $ Trigger = "kiss both"
+                    else:
+                        $ Trigger = "kiss you"
+            if Trigger2 == "kissing":
+                        $ Trigger2 = "kiss you"        
+            if Trigger3 == "kissing": #add to update
+                    if Trigger5 == "kiss both":
+                        $ Trigger3 = "kiss both"
+                    elif Trigger5 == "kiss girl" or Trigger == "lesbian":
+                        $ Trigger3 = "kiss girl"
+                    else:
+                        $ Trigger3 = "kiss you"
+            if Trigger4 == "kissing": #add to update
+                    if Trigger5 == "kiss both":
+                        $ Trigger4 = "kiss both"
+                    elif Trigger5 == "kiss girl" or Trigger == "lesbian":
+                        $ Trigger4 = "kiss girl"
+                    else:
+                        $ Trigger4 = "kiss you"
+            if Trigger5 in ("kiss you", "kiss girl", "kiss both"):
+                    $ Trigger5 = 0 #Clear out Trigger 5 if it's for kissing.  
+            $ E_Caught = 0
+            if Rules == 1:
+                $ Rules = []
+            elif Rules == 0:
+                $ Rules = ["rules"]
+            # if "exhibitionist" in E_Traits:  
+            #         $ E_Traits.remove("exhibitionist")
+            #$ E_Gym = [2,0,0,0,0,"sports bra","sports panties",0,0,0,0]                        
+            $ SaveVersion = 979  
             
 #        call Failsafe
     return
@@ -1189,13 +1229,17 @@ label EventCalls:
                         else:
                             call AskedMeet("Rogue","bemused")
                 elif "sex friend" not in R_Petnames and R_Inbt >= 500: # R_Event[9]  Fix this one
-                        if bg_current == "bg rogue" or bg_current == "bg player":
+                        if bg_current == "bg rogue" or bg_current == "bg player" or "dating" in R_Traits:
                             jump Rogue_Sexfriend
+                        elif "dating" in R_Traits and R_Loc == bg_current:
+                            jump Rogue_Sexfriend                            
                         else:
                             call AskedMeet("Rogue","bemused")
                 elif "fuck buddy" not in R_Petnames and R_Inbt >= 900: # R_Event[10]  Fix this one
-                        if bg_current == "bg rogue" or bg_current == "bg player":
+                        if bg_current == "bg rogue" or bg_current == "bg player" or "dating" in R_Traits:
                             jump Rogue_Fuckbuddy
+                        elif "dating" in R_Traits and R_Loc == bg_current:
+                            jump Rogue_Fuckbuddy    
                         else:
                             call AskedMeet("Rogue","bemused")
         #end Rogue relationship stuff
@@ -1208,12 +1252,12 @@ label EventCalls:
                             return
                         else:
                             call AskedMeet("Kitty","bemused") 
-                elif "lover" not in K_Petnames and K_Love >= 950: # K_Event[6]   
-                        if K_Event[6] == 20:
-                            pass
-                        else:
+                elif "lover" not in K_Petnames and K_Love >= 950 and K_Event[6] != 20: # K_Event[6]   
+                        if bg_current == "bg kitty" or bg_current == "bg player":
                             call Kitty_Love
                             return
+                        else:
+                            call AskedMeet("Kitty","bemused") 
                 elif "sir" not in K_Petnames and K_Obed >= 500 and "sir" not in K_History: # K_Event[7]
                         if bg_current == "bg kitty" or bg_current == "bg player":
                             call Kitty_Sub
@@ -2629,7 +2673,8 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     $ E_Over = "jacket"
                     $ E_Chest = "corset"
                     $ E_Panties = "white panties"        
-                    $ E_Neck = "choker"
+                    $ E_Neck = "choker"                 
+                    $ E_Boots = 0
                     $ E_Hair = "wavy"
                     $ E_Hose = 0  
         elif E_OutfitTemp == "costume":
@@ -2642,33 +2687,8 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     $ E_Over = 0
                     $ E_Chest = "corset"
                     $ E_Panties = "white panties"        
-                    $ E_Neck = "choker"
-                    $ E_Hair = "wavy"
-                    $ E_Hose = 0 
-        elif E_OutfitTemp == "sexy costume":
-                    if E_Chest == 0:
-                            $ Undressed = 1
-                    elif E_Panties == 0 and "pantyless" not in E_DailyActions:                        
-                            $ Undressed = 1   
-                    $ E_Arms = "white gloves"
-                    $ E_Legs = 0
-                    $ E_Over = 0
-                    $ E_Chest = "corset"
-                    $ E_Panties = "white panties"        
-                    $ E_Neck = "choker"
-                    $ E_Hair = "wavy"
-                    $ E_Hose = 0 
-        elif E_OutfitTemp == "bikini":
-                    if E_Chest == 0:
-                            $ Undressed = 1
-                    elif E_Panties == 0 and "pantyless" not in E_DailyActions:                        
-                            $ Undressed = 1   
-                    $ E_Arms = 0
-                    $ E_Legs = 0
-                    $ E_Over = 0
-                    $ E_Chest = "bikini"
-                    $ E_Panties = "bikini"        
-                    $ E_Neck = 0
+                    $ E_Neck = "choker"                 
+                    $ E_Boots = 0
                     $ E_Hair = "wavy"
                     $ E_Hose = 0     
         elif E_OutfitTemp == "towel":
@@ -2680,8 +2700,9 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     $ E_Over = "towel"
                     $ E_Panties = 0        
                     $ E_Hose = 0          
-                    $ E_Neck = 0  
-                    $ E_Hair = "bun" 
+                    $ E_Neck = 0                   
+                    $ E_Boots = 0
+                    $ E_Hair = "wet" 
                     $ E_Shame = 35
         elif E_OutfitTemp == "nude":
                     $ E_Arms = 0
@@ -2689,7 +2710,8 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     $ E_Chest = 0
                     $ E_Over = 0
                     $ E_Panties = 0              
-                    $ E_Neck = 0
+                    $ E_Neck = 0                    
+                    $ E_Boots = 0
                     $ E_Hose = 0   
                     $ E_Shame = 50
         elif E_OutfitTemp == "naked pool":
@@ -2719,6 +2741,7 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     $ E_Neck = E_Custom[4]
                     $ E_Chest = E_Custom[5]
                     $ E_Panties = E_Custom[6]  
+                    $ E_Boots = E_Custom[7] 
                     $ E_Hair = E_Custom[8] if E_Custom[8] else E_Hair 
                     $ E_Hose = E_Custom[9]                     
                     $ E_Shame = E_OutfitShame[3]
@@ -2740,6 +2763,7 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     $ E_Neck = E_Custom2[4]
                     $ E_Chest = E_Custom2[5]
                     $ E_Panties = E_Custom2[6] 
+                    $ E_Boots = E_Custom2[7] 
                     $ E_Hair = E_Custom2[8] if E_Custom2[8] else E_Hair
                     $ E_Hose = E_Custom2[9]                      
                     $ E_Shame = E_OutfitShame[5]
@@ -2760,7 +2784,8 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     $ E_Over = E_Custom3[3]
                     $ E_Neck = E_Custom3[4]
                     $ E_Chest = E_Custom3[5]
-                    $ E_Panties = E_Custom3[6]  
+                    $ E_Panties = E_Custom3[6] 
+                    $ E_Boots = E_Custom3[7]  
                     $ E_Hair = E_Custom3[8] if E_Custom3[8] else E_Hair  
                     $ E_Hose = E_Custom3[9]                         
                     $ E_Shame = E_OutfitShame[6]
@@ -2778,10 +2803,11 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                         
                     $ E_Arms = E_Sleepwear[1] #0
                     $ E_Legs = E_Sleepwear[2] #shorts
-                    $ E_Over = E_Sleepwear[3] #0
+                    $ E_Over = E_Sleepwear[3] #nighty
                     $ E_Neck = E_Sleepwear[4] #0
-                    $ E_Chest = E_Sleepwear[5] #"cami"
-                    $ E_Panties = E_Sleepwear[6] #"green panties"
+                    $ E_Chest = E_Sleepwear[5] #corset
+                    $ E_Panties = E_Sleepwear[6] #"white panties"
+                    $ E_Boots = E_Sleepwear[7] 
                     $ E_Hair = E_Sleepwear[8] if E_Sleepwear[8] else E_Hair 
                     $ E_Hose = E_Sleepwear[9] #0  
                     
@@ -2805,7 +2831,8 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     $ E_Over = E_Gym[3] 
                     $ E_Neck = E_Gym[4]
                     $ E_Chest = E_Gym[5]
-                    $ E_Panties = E_Gym[6]   
+                    $ E_Panties = E_Gym[6]  
+                    $ E_Boots = E_Gym[7]  
                     $ E_Hair = E_Gym[8] if E_Gym[8] else E_Hair 
                     $ E_Hose = E_Gym[9]     
                     $ E_Shame = E_OutfitShame[7]   
@@ -3377,6 +3404,7 @@ label Wait (Outfit = 1, Lights = 1):
     $ E_XP = 3330 if E_XP > 3330 else E_XP
     
         
+                    
     if Time_Count < 3:  #not sleep time                                          
                 $ Time_Count += 1
                 $ R_Action += 1  
@@ -4100,6 +4128,7 @@ label Checkout(Total = 0):
                     $ Trigger3 = 0
                     $ Trigger4 = 0
                     $ Trigger5 = 0
+                    $ ThreeCount = 100
                     $ Partner = 0 
                     $ P_FocusX = 0
             return
@@ -4112,12 +4141,15 @@ transform SpriteLoc(Loc = StageRight, LocY = 50):  #This puts the sprite at a lo
         pos (Loc,LocY)
     
 
-label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
+label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1, TrigReset = 1, Quiet=0):
         # If Chr, then display the characters in the room
         # If Entry, then show the "entry" version of a room, such as a closed door, does not display characters
         # If Dress, then check whether the character is underdressed when displaying her
+        # Trigreset resets triggers
+        # if Quiet, no fade to black
         
-        show blackscreen onlayer black 
+        if not Quiet:
+            show blackscreen onlayer black 
         
         if Entry:
             $ Chr = 0
@@ -4350,7 +4382,12 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1):
         
         if not renpy.showing("Chibi_UI") and "cockout" in P_RecentActions:
                     show Chibi_UI
-                    
+        
+        if "Historia" in P_Traits: #Simulation haze
+                show BlueScreen onlayer black
+        else:
+                hide BlueScreen onlayer black
+        
         hide blackscreen onlayer black
         return
 # End primary Display function <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<  <<
@@ -4701,7 +4738,7 @@ label Change_Focus(Chr = "Rogue", Second = 0, Dress = 1):       #When used like 
         $ renpy.restart_interaction() 
         return
     
-label Display_Rogue(Dress = 1, DLoc = R_SpriteLoc):
+label Display_Rogue(Dress = 1, DLoc = R_SpriteLoc, TrigReset = 1):
     # If Dress, then check whether the character is underdressed when displaying her
     
     if Taboo and Dress and R_Loc != "bg pool":        
@@ -4713,12 +4750,13 @@ label Display_Rogue(Dress = 1, DLoc = R_SpriteLoc):
     
     $ R_SpriteLoc = DLoc
     
-    # resets triggers
-    $ Trigger = 0    
-    $ Trigger2 = 0 if Trigger2 != "jackin" else "jackin"
-    $ Trigger3 = 0
-    $ Trigger4 = 0
-    $ Trigger5 = 0
+    if TrigReset:
+            # resets triggers
+            $ Trigger = 0    
+            $ Trigger2 = 0 if Trigger2 != "jackin" else "jackin"
+            $ Trigger3 = 0
+            $ Trigger4 = 0
+            $ Trigger5 = 0
     
     if "Rogue" in Party or R_Loc == bg_current:         
             #displays Rogue if present, Sets her as local if in a party
@@ -4734,13 +4772,14 @@ label Display_Rogue(Dress = 1, DLoc = R_SpriteLoc):
                     zoom 1
                     offset (0,0)
                     anchor (0.6, 0.0)
+            with ease
     else:       
             # If Rogue isn't there, put her away
             hide Rogue
             call Rogue_Hide
     return
 
-label Display_Kitty(Dress = 1, DLoc = K_SpriteLoc):
+label Display_Kitty(Dress = 1, DLoc = K_SpriteLoc, TrigReset = 1):
    # If Dress, then check whether the character is underdressed when displaying her
     
     if Taboo and Dress and K_Loc != "bg pool": #If not in the showers, get dressed and dry off        
@@ -4752,12 +4791,13 @@ label Display_Kitty(Dress = 1, DLoc = K_SpriteLoc):
      
     $ K_SpriteLoc = DLoc
     
-    # resets triggers
-    $ Trigger = 0    
-    $ Trigger2 = 0 if Trigger2 != "jackin" else "jackin" 
-    $ Trigger3 = 0
-    $ Trigger4 = 0
-    $ Trigger5 = 0
+    if TrigReset:
+            # resets triggers
+            $ Trigger = 0    
+            $ Trigger2 = 0 if Trigger2 != "jackin" else "jackin"
+            $ Trigger3 = 0
+            $ Trigger4 = 0
+            $ Trigger5 = 0
     
     if "Kitty" in Party or K_Loc == bg_current:         
             #displays Kitty if present, Sets her as local if in a party
@@ -4772,14 +4812,16 @@ label Display_Kitty(Dress = 1, DLoc = K_SpriteLoc):
                     alpha 1
                     zoom 1
                     offset (0,0)
-                    anchor (0.5, 0.0)
+                    anchor (0.5, 0.0)  
+            with ease
+            
     else:
             # If Kitty isn't there, put her away
             hide Kitty_Sprite
             call Kitty_Hide
     return
 
-label Display_Emma(Dress = 1, DLoc = E_SpriteLoc, Location = E_Loc):
+label Display_Emma(Dress = 1, DLoc = E_SpriteLoc, Location = E_Loc, TrigReset = 1):
     # If Dress, then check whether the character is underdressed when displaying her
     
     if Taboo and Dress and E_Loc != "bg pool": #If not in the showers, get dressed and dry off        
@@ -4791,12 +4833,13 @@ label Display_Emma(Dress = 1, DLoc = E_SpriteLoc, Location = E_Loc):
         
     $ E_SpriteLoc = DLoc
     
-    # resets triggers
-    $ Trigger = 0    
-    $ Trigger2 = 0 if Trigger2 != "jackin" else "jackin"
-    $ Trigger3 = 0
-    $ Trigger4 = 0
-    $ Trigger5 = 0
+    if TrigReset:
+            # resets triggers
+            $ Trigger = 0    
+            $ Trigger2 = 0 if Trigger2 != "jackin" else "jackin"
+            $ Trigger3 = 0
+            $ Trigger4 = 0
+            $ Trigger5 = 0
     
     if "Emma" in Party or Location == bg_current:         
             #displays Emma if present, Sets her as local if in a party
@@ -4816,6 +4859,7 @@ label Display_Emma(Dress = 1, DLoc = E_SpriteLoc, Location = E_Loc):
                     zoom 1
                     offset (0,0)
                     anchor (0.5, 0.0)
+            with ease
     else:
             # If Emma isn't there, put her away
             hide Emma_Sprite
@@ -5295,6 +5339,13 @@ label Shop:
                         $ P_Cash -= 110
                     else:
                         "You don't have enough for that."  
+                "Buy stockings and garterbelt for $100." if "stockings and garterbelt" not in R_Inventory and "stockings and garterbelt" not in P_Inventory and ApprovalCheck("Rogue", 1500):          
+                    if P_Cash >= 100:
+                        "You purchase the stockings, these will look nice on Rogue."             
+                        $ P_Inventory.append("stockings and garterbelt")
+                        $ P_Cash -= 100
+                    else:
+                        "You don't have enough for that."   
                 "Never mind.":
                     pass
         "Gifts for Kitty":

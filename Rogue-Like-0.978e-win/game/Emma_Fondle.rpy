@@ -304,7 +304,7 @@ label E_Fondle_Breasts:
             
    
 label E_FB_Prep: #Animation set-up 
-    if Trigger == "kissing": 
+    if Trigger == "kiss you": 
         $ Trigger = "fondle breasts" 
         return
         
@@ -346,12 +346,177 @@ label E_FB_Prep: #Animation set-up
     
 label E_FB_Cycle: #Repeating strokes
     while Round >=0:  
-        call Shift_Focus("Emma")
+        call Shift_Focus("Emma") 
         call E_Breasts_Launch("fondle breasts")
-        call EmmaLust     
+        call EmmaLust   
         
-        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
-            
+        if Line and P_Focus < 100:                                                   
+                    #Player Command menu
+                    menu:
+                        "Keep going. . .":
+                                    pass
+                         
+                        "Slap her ass":                     
+                                    call E_Slap_Ass  
+                                    $ Cnt += 1
+                                    $ Round -= 1                                      
+                                    jump E_FB_Cycle  
+                                    
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                    
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if E_Action and MultiAction:
+                                                call Emma_Offhand_Set
+                                                if Trigger2:
+                                                     $ E_Action -= 1
+                                            else:
+                                                ch_e "I could use a break, are you about finished here?"  
+                                                
+                                    "Shift primary action":
+                                            if E_Action and MultiAction:
+                                                    menu:
+                                                        "Ask to suck on them.":
+                                                                if E_Action and MultiAction:                        
+                                                                    $ Situation = "shift"
+                                                                    call E_FB_After
+                                                                    call E_Suck_Breasts
+                                                                else:
+                                                                    ch_e "I could use a break, are you about finished here?"
+                                                        "Just suck on them without asking.":
+                                                                if E_Action and MultiAction:                            
+                                                                    $ Situation = "auto"
+                                                                    call E_FB_After
+                                                                    call E_Suck_Breasts
+                                                                else:
+                                                                    "As you lean in to suck on her breast, she grabs your head and pushes back."
+                                                                    ch_e "I could use a break, are you about finished here?"
+                                                        "Never Mind":
+                                                                jump E_FB_Cycle
+                                            else: 
+                                                ch_e "I could use a break, are you about finished here?"
+                    
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Emma to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Emma_Les_Change
+                                            "Ask Emma to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Rogue":
+                                                            call Rogue_Three_Change
+                                                        elif Partner == "Kitty":
+                                                            call Kitty_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Emma")
+                                            "Undress [Partner]":
+                                                        if Partner == "Rogue":
+                                                                call R_Undress   
+                                                        elif Partner == "Kitty":
+                                                                call K_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Rogue" and R_Spunk:
+                                                                call Rogue_Cleanup("ask")    
+                                                        elif Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump E_FB_Cycle 
+                                            "Never mind":
+                                                        jump E_FB_Cycle 
+                                    "Undress Emma":
+                                            call E_Undress   
+                                    "Clean up Emma (locked)" if not E_Spunk:
+                                            pass  
+                                    "Clean up Emma" if E_Spunk:
+                                            call Emma_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump E_FB_Cycle 
+                                                   
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call E_Pos_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump E_FB_After
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call E_Pos_Reset
+                                    $ Line = 0
+                                    jump E_FB_After
+        #End menu (if Line)
+        
+        call Sex_Dialog("Emma",Partner)
+                
+        #If either of you could cum 
+        
+        $ Cnt += 1
+        $ Round -= 1   
+    
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or E_Lust >= 100: 
+                    #If either of you could cum   
+                    if P_Focus >= 100:    
+                            #If you can cum:                                                 
+                            call PE_Cumming
+                            if "angry" in E_RecentActions:  
+                                call E_Pos_Reset
+                                return    
+                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
+                            if 100 > E_Lust >= 70 and E_OCount < 2:             
+                                $ E_RecentActions.append("unsatisfied")                      
+                                $ E_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump E_FB_After 
+                            $ Line = "came"
+     
+                    if E_Lust >= 100:  
+                            #If Emma can cum                                             
+                            call E_Cumming
+                            if Situation == "shift" or "angry" in E_RecentActions:
+                                jump E_FB_After
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
+                            $ Line = 0
+                            if not P_Semen:
+                                "You're emptied out, you should probably take a break."
+                            
+                            
+                            if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
+                                "Emma still seems a bit unsatisfied with the experience."
+                                menu:
+                                    "Finish her?"
+                                    "Yes, keep going for a bit.":
+                                        $ Line = "You get back into it" 
+                                    "No, I'm done.":
+                                        "You pull back."
+                                        jump E_FB_After    
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Rogue" and R_Lust >= 100:                                          
+                    call R_Cumming
+                elif Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
+        #End orgasm
+        
+        $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
+        
         if E_SEXP >= 100 or ApprovalCheck("Emma", 1200, "LO"):
             pass
         elif Cnt == (5 + E_FondleB):
@@ -389,132 +554,11 @@ label E_FB_Cycle: #Repeating strokes
                                     $ E_DailyActions.append("angry")   
                                     jump E_FB_After
         #End Count check
-        
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    menu:
-                        "[Line]"
-                        "Keep going. . .":
-                                    pass
-                                     
-                        "Slap her ass":                     
-                                call E_Slap_Ass
-                                jump E_FB_Cycle  
-                                
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0
-                                            
-                        "Maybe lose some clothes. . .":
-                                    call E_Undress  
-                                    
-                        "Shift actions":
-                            if E_Action and MultiAction:
-                                menu:
-                                    "Ask to suck on them.":
-                                            if E_Action and MultiAction:                        
-                                                $ Situation = "shift"
-                                                call E_FB_After
-                                                call E_Suck_Breasts
-                                            else:
-                                                ch_e "I could use a break, are you about finished here?"
-                                    "Just suck on them without asking.":
-                                            if E_Action and MultiAction:                            
-                                                $ Situation = "auto"
-                                                call E_FB_After
-                                                call E_Suck_Breasts
-                                            else:
-                                                "As you lean in to suck on her breast, she grabs your head and pushes back."
-                                                ch_e "I could use a break, are you about finished here?"
-                                            
-                                    "Never Mind":
-                                            pass
-                            else:
-                                ch_e "I could use a break, are you about finished here?" 
-                    
-                        "I also want to. . . [[Offhand]":
-                                if E_Action and MultiAction:
-                                    call Emma_Offhand_Set
-                                    if Trigger2:
-                                         $ E_Action -= 1
-                                else:
-                                    ch_e "I could use a break, are you about finished here?"  
-                        
-                        "Shift your focus" if Trigger2:
-                                    $ Situation = "shift focus"
-                                    call E_FB_After
-                                    call Emma_Offhand_Set   
-                        "Shift your focus (locked)" if not Trigger2:
-                                    pass
-                
-                        "Let's try something else." if MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump E_FB_After
-                        "Let's stop for now." if not MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Line = 0
-                                    jump E_FB_After
-        #End menu (if Line)
-        
-        call Sex_Dialog("Emma",Partner)
-                
-        #If either of you could cum 
-        
-    
-        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
-        
-        if P_Focus >= 100 or E_Lust >= 100:    
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PE_Cumming
-                            if "angry" in E_RecentActions:  
-                                call E_Pos_Reset
-                                return    
-                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
-                            if 100 > E_Lust >= 70 and E_OCount < 2:             
-                                $ E_RecentActions.append("unsatisfied")                      
-                                $ E_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump E_FB_After 
-                            $ Line = "came"
-     
-                    #If Emma can cum
-                    if E_Lust >= 100:                                               
-                        call E_Cumming
-                        if Situation == "shift" or "angry" in E_RecentActions:
-                            jump E_FB_After
-                       
-                    if Line == "came": 
-                        $ Line = 0
-                        if not P_Semen:
-                            "You're emptied out, you should probably take a break."
-                            
-                            
-                        if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
-                            "Emma still seems a bit unsatisfied with the experience."
-                            menu:
-                                "Finish her?"
-                                "Yes, keep going for a bit.":
-                                    $ Line = "You get back into it" 
-                                "No, I'm done.":
-                                    "You pull back."
-                                    jump E_FB_After  
-        #End orgasm
-        
-   
+           
         if Round == 10:
             ch_e "It's getting late. . ."  
         elif Round == 5:
-            ch_e "We should take a break soon."       
+            ch_e "We should take a break soon."        
     
     #Round = 0 loop breaks
     call EmmaFace("bemused", 0)
@@ -766,15 +810,173 @@ label E_SB_Prep:                                                                
     $ E_DailyActions.append("suck breasts") 
     
 label E_SB_Cycle: #Repeating strokes  
-    if Trigger2 == "kissing":
-            $ Trigger2 = 0 
+    if Trigger2 == "kiss you":
+            $ Trigger2 = 0
     while Round >=0:  
-        call Shift_Focus("Emma")
+        call Shift_Focus("Emma") 
         call E_Breasts_Launch("suck breasts")
-        call EmmaLust     
+        call EmmaLust   
         
-        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
-            
+        if Line and P_Focus < 100:                                                   
+                    #Player Command menu
+                    menu:
+                        "Keep going. . .":
+                                    pass
+                         
+                        "Slap her ass":                     
+                                    call E_Slap_Ass  
+                                    $ Cnt += 1
+                                    $ Round -= 1                                      
+                                    jump E_SB_Cycle  
+                                    
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                    
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if E_Action and MultiAction:
+                                                call Emma_Offhand_Set
+                                                if Trigger2:
+                                                     $ E_Action -= 1
+                                            else:
+                                                ch_e "I could use a break, are you about finished here?"  
+                                                
+                                    "Shift primary action":
+                                            if E_Action and MultiAction:
+                                                    menu:
+                                                        "Pull back to fondling.":  
+                                                            if E_Action and MultiAction:
+                                                                $ Situation = "pullback"
+                                                                call E_SB_After
+                                                                call E_Fondle_Breasts
+                                                            else:
+                                                                "As you pull back, Emma pushes you back in close."
+                                                                ch_e "I could use a break, are you about finished here?"
+                                                        "Never Mind":
+                                                                jump E_SB_Cycle
+                                            else: 
+                                                ch_e "I could use a break, are you about finished here?"           
+                    
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Emma to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Emma_Les_Change
+                                            "Ask Emma to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Rogue":
+                                                            call Rogue_Three_Change
+                                                        elif Partner == "Kitty":
+                                                            call Kitty_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Emma")
+                                            "Undress [Partner]":
+                                                        if Partner == "Rogue":
+                                                                call R_Undress   
+                                                        elif Partner == "Kitty":
+                                                                call K_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Rogue" and R_Spunk:
+                                                                call Rogue_Cleanup("ask")    
+                                                        elif Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump E_SB_Cycle 
+                                            "Never mind":
+                                                        jump E_SB_Cycle 
+                                    "Undress Emma":
+                                            call E_Undress   
+                                    "Clean up Emma (locked)" if not E_Spunk:
+                                            pass  
+                                    "Clean up Emma" if E_Spunk:
+                                            call Emma_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump E_SB_Cycle 
+                                                   
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call E_Pos_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump E_SB_After
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call E_Pos_Reset
+                                    $ Line = 0
+                                    jump E_SB_After
+        #End menu (if Line)
+        
+        call Sex_Dialog("Emma",Partner)
+                
+        #If either of you could cum 
+        
+        $ Cnt += 1
+        $ Round -= 1   
+    
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or E_Lust >= 100: 
+                    #If either of you could cum   
+                    if P_Focus >= 100:    
+                            #If you can cum:                                                 
+                            call PE_Cumming
+                            if "angry" in E_RecentActions:  
+                                call E_Pos_Reset
+                                return    
+                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
+                            if 100 > E_Lust >= 70 and E_OCount < 2:             
+                                $ E_RecentActions.append("unsatisfied")                      
+                                $ E_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump E_SB_After 
+                            $ Line = "came"
+     
+                    if E_Lust >= 100:  
+                            #If Emma can cum                                             
+                            call E_Cumming
+                            if Situation == "shift" or "angry" in E_RecentActions:
+                                jump E_SB_After
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
+                            $ Line = 0
+                            if not P_Semen:
+                                "You're emptied out, you should probably take a break."
+                            
+                            
+                            if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
+                                    "Emma still seems a bit unsatisfied with the experience."
+                                    menu:
+                                        "Finish her?"
+                                        "Yes, keep going for a bit.":
+                                            $ Line = "You get back into it" 
+                                        "No, I'm done.":
+                                            "You pull back."
+                                            jump E_SB_After    
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Rogue" and R_Lust >= 100:                                          
+                    call R_Cumming
+                elif Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
+        #End orgasm
+        
+        $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
+        
         if E_SEXP >= 100 or ApprovalCheck("Emma", 1200, "LO"):
             pass
         elif Cnt == (5 + E_SuckB):
@@ -812,117 +1014,11 @@ label E_SB_Cycle: #Repeating strokes
                                     $ E_DailyActions.append("angry")   
                                     jump E_SB_After
         #End Count check
-        
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    menu:
-                        "[Line]"
-                        "Keep going. . .":
-                                    pass
-                                   
-                        "Slap her ass":                     
-                                call E_Slap_Ass
-                                jump E_SB_Cycle  
-                                
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0
-                            
-                        "Maybe lose some clothes. . .":
-                                    call E_Undress  
-                                    
-                        "Pull back to fondling.":  
-                            if E_Action and MultiAction:
-                                $ Situation = "pullback"
-                                call E_SB_After
-                                call E_Fondle_Breasts
-                            else:
-                                "As you pull back, Emma pushes you back in close."
-                                ch_e "I could use a break, are you about finished here?"
-                    
-                        "I also want to. . . [[Offhand]":
-                                if E_Action and MultiAction:
-                                    call Emma_Offhand_Set
-                                    if Trigger2:
-                                         $ E_Action -= 1
-                                else:
-                                    ch_e "I could use a break, are you about finished here?"  
-                        
-                        "Shift your focus" if Trigger2:
-                                    $ Situation = "shift focus"
-                                    call E_SB_After
-                                    call Emma_Offhand_Set   
-                        "Shift your focus (locked)" if not Trigger2:
-                                    pass
-                
-                        "Let's try something else." if MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump E_SB_After
-                        "Let's stop for now." if not MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Line = 0
-                                    jump E_SB_After
-        #End menu (if Line)
-        
-        call Sex_Dialog("Emma",Partner)
-                
-        #If either of you could cum 
-        
-    
-        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
-        
-        if P_Focus >= 100 or E_Lust >= 100:  
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PE_Cumming
-                            if "angry" in E_RecentActions:  
-                                call E_Pos_Reset
-                                return    
-                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
-                            if 100 > E_Lust >= 70 and E_OCount < 2:             
-                                $ E_RecentActions.append("unsatisfied")                      
-                                $ E_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump E_SB_After 
-                            $ Line = "came"
-     
-                    #If Emma can cum
-                    if E_Lust >= 100:                                               
-                        call E_Cumming
-                        if Situation == "shift" or "angry" in E_RecentActions:
-                            jump E_SB_After
-                       
-                    if Line == "came": 
-                        $ Line = 0
-                        if not P_Semen:
-                            "You're emptied out, you should probably take a break."
-                            
-                            
-                        if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
-                            "Emma still seems a bit unsatisfied with the experience."
-                            menu:
-                                "Finish her?"
-                                "Yes, keep going for a bit.":
-                                    $ Line = "You get back into it" 
-                                "No, I'm done.":
-                                    "You pull back."
-                                    jump E_SB_After  
-        #End orgasm
-        
-   
+           
         if Round == 10:
             ch_e "It's getting late. . ."  
         elif Round == 5:
-            ch_e "We should take a break soon."       
+            ch_e "We should take a break soon."        
     
     #Round = 0 loop breaks
     call EmmaFace("bemused", 0)
@@ -1133,7 +1229,7 @@ label E_Fondle_Thighs:
     return
     
 label E_FT_Prep:                                                                 #Animation set-up 
-    if Trigger == "kissing": 
+    if Trigger == "kiss you": 
         $ Trigger = "fondle thighs" 
         return
         
@@ -1177,10 +1273,182 @@ label E_FT_Cycle:                                                               
     while Round >=0:  
         call Shift_Focus("Emma") 
         call E_Pussy_Launch("fondle thighs")
-        call EmmaLust     
+        call EmmaLust   
         
-        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
-            
+        if Line and P_Focus < 100:                                                   
+                    #Player Command menu
+                    menu:
+                        "Keep going. . .":
+                                    pass
+                         
+                        "Slap her ass":                     
+                                    call E_Slap_Ass  
+                                    $ Cnt += 1
+                                    $ Round -= 1                                      
+                                    jump E_FT_Cycle  
+                                    
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                    
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if E_Action and MultiAction:
+                                                call Emma_Offhand_Set
+                                                if Trigger2:
+                                                     $ E_Action -= 1
+                                            else:
+                                                ch_e "I could use a break, are you about finished here?"  
+                                                
+                                    "Shift primary action":
+                                            if E_Action and MultiAction:
+                                                    menu:                                                             
+                                                        "Can I do a little deeper?":
+                                                                if E_Action and MultiAction:
+                                                                    $ Situation = "shift"
+                                                                    call E_FT_After
+                                                                    call E_Fondle_Pussy                
+                                                                else:
+                                                                    ch_e "I could use a break, are you about finished here?"  
+                                                        "Shift your hands a bit higher without asking":
+                                                                if E_Action and MultiAction:
+                                                                    $ Situation = "auto"
+                                                                    call E_FT_After
+                                                                    call E_Fondle_Pussy    
+                                                                else:
+                                                                    "As your hands creep upwards, she grabs your wrists."
+                                                                    ch_e "I could use a break, are you about finished here?" 
+                                                        "Never Mind":
+                                                                jump E_FT_Cycle
+                                            else: 
+                                                ch_e "I could use a break, are you about finished here?"           
+                                    
+                                    "Shift your focus" if Trigger2:
+                                                $ Situation = "shift focus"
+                                                call E_FT_After
+                                                call Emma_Offhand_Set   
+                                    "Shift your focus (locked)" if not Trigger2:
+                                                pass
+                                    
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Emma to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Emma_Les_Change
+                                            "Ask Emma to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Rogue":
+                                                            call Rogue_Three_Change
+                                                        elif Partner == "Kitty":
+                                                            call Kitty_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Emma")
+                                            "Undress [Partner]":
+                                                        if Partner == "Rogue":
+                                                                call R_Undress   
+                                                        elif Partner == "Kitty":
+                                                                call K_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Rogue" and R_Spunk:
+                                                                call Rogue_Cleanup("ask")    
+                                                        elif Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump E_FT_Cycle 
+                                            "Never mind":
+                                                        jump E_FT_Cycle 
+                                    "Undress Emma":
+                                            call E_Undress   
+                                    "Clean up Emma (locked)" if not E_Spunk:
+                                            pass  
+                                    "Clean up Emma" if E_Spunk:
+                                            call Emma_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump E_FT_Cycle 
+                                                   
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call E_Pos_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump E_FT_After
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call E_Pos_Reset
+                                    $ Line = 0
+                                    jump E_FT_After
+        #End menu (if Line)
+        
+        call Sex_Dialog("Emma",Partner)
+                
+        #If either of you could cum 
+        
+        $ Cnt += 1
+        $ Round -= 1   
+    
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or E_Lust >= 100: 
+                    #If either of you could cum   
+                    if P_Focus >= 100:    
+                            #If you can cum:                                                 
+                            call PE_Cumming
+                            if "angry" in E_RecentActions:  
+                                call E_Pos_Reset
+                                return    
+                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
+                            if 100 > E_Lust >= 70 and E_OCount < 2:             
+                                $ E_RecentActions.append("unsatisfied")                      
+                                $ E_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump E_FT_After 
+                            $ Line = "came"
+     
+                    if E_Lust >= 100:  
+                            #If Emma can cum                                             
+                            call E_Cumming
+                            if Situation == "shift" or "angry" in E_RecentActions:
+                                jump E_FT_After
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
+                            $ Line = 0
+                            if not P_Semen:
+                                "You're emptied out, you should probably take a break."
+                            
+                            
+                            if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
+                                    "Emma still seems a bit unsatisfied with the experience."
+                                    menu:
+                                        "Finish her?"
+                                        "Yes, keep going for a bit.":
+                                            $ Line = "You get back into it" 
+                                        "No, I'm done.":
+                                            "You pull back."
+                                            jump E_FT_After    
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Rogue" and R_Lust >= 100:                                          
+                    call R_Cumming
+                elif Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
+        #End orgasm
+        
+        $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
+        
         if E_SEXP >= 100 or ApprovalCheck("Emma", 1200, "LO"):
             pass
         elif Cnt == (5 + E_FondleT):
@@ -1216,124 +1484,11 @@ label E_FT_Cycle:                                                               
                                     $ E_DailyActions.append("angry")   
                                     jump E_FT_After
         #End Count check
-        
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    menu:
-                        "[Line]"
-                        "Keep going. . .":
-                                    pass
-                                       
-                        "Slap her ass":                     
-                                call E_Slap_Ass
-                                jump E_FT_Cycle  
-                                
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0
-                                    
-                        "Maybe lose some clothes. . .":
-                                    call E_Undress  
-                                    
-                        "Can I do a little deeper?":
-                                if E_Action and MultiAction:
-                                    $ Situation = "shift"
-                                    call E_FT_After
-                                    call E_Fondle_Pussy                
-                                else:
-                                    ch_e "I could use a break, are you about finished here?"  
-                        "Shift your hands a bit higher without asking":
-                                if E_Action and MultiAction:
-                                    $ Situation = "auto"
-                                    call E_FT_After
-                                    call E_Fondle_Pussy    
-                                else:
-                                    "As your hands creep upwards, she grabs your wrists."
-                                    ch_e "I could use a break, are you about finished here?" 
-                
-                        "I also want to. . . [[Offhand]":
-                                if E_Action and MultiAction:
-                                    call Emma_Offhand_Set
-                                    if Trigger2:
-                                         $ E_Action -= 1
-                                else:
-                                    ch_e "I could use a break, are you about finished here?"  
-                        
-                        "Shift your focus" if Trigger2:
-                                    $ Situation = "shift focus"
-                                    call E_FT_After
-                                    call Emma_Offhand_Set   
-                        "Shift your focus (locked)" if not Trigger2:
-                                    pass
-                                    
-                        "Let's try something else." if MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump E_FT_After
-                        "Let's stop for now." if not MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Line = 0
-                                    jump E_FT_After
-        #End menu (if Line)
-        
-        call Sex_Dialog("Emma",Partner)
-                
-        #If either of you could cum 
-        
-    
-        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
-        
-        if P_Focus >= 100 or E_Lust >= 100: 
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PE_Cumming
-                            if "angry" in E_RecentActions:  
-                                call E_Pos_Reset
-                                return    
-                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
-                            if 100 > E_Lust >= 70 and E_OCount < 2:             
-                                $ E_RecentActions.append("unsatisfied")                      
-                                $ E_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump E_FT_After 
-                            $ Line = "came"
-     
-                    #If Emma can cum
-                    if E_Lust >= 100:                                               
-                        call E_Cumming
-                        if Situation == "shift" or "angry" in E_RecentActions:
-                            jump E_FT_After
-                       
-                    if Line == "came": 
-                        $ Line = 0
-                        if not P_Semen:
-                            "You're emptied out, you should probably take a break."
-                            
-                            
-                        if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
-                            "Emma still seems a bit unsatisfied with the experience."
-                            menu:
-                                "Finish her?"
-                                "Yes, keep going for a bit.":
-                                    $ Line = "You get back into it" 
-                                "No, I'm done.":
-                                    "You pull back."
-                                    jump E_FT_After  
-        #End orgasm
-        
-   
+           
         if Round == 10:
             ch_e "It's getting late. . ."  
         elif Round == 5:
-            ch_e "We should take a break soon."       
+            ch_e "We should take a break soon."        
     
     #Round = 0 loop breaks
     call EmmaFace("bemused", 0)
@@ -1593,10 +1748,201 @@ label E_FP_Cycle: #Repeating strokes
     while Round >=0:  
         call Shift_Focus("Emma") 
         call E_Pussy_Launch("fondle pussy")
-        call EmmaLust     
+        call EmmaLust   
         
-        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
-            
+        if Line and P_Focus < 100:                                                   
+                    #Player Command menu
+                    menu:
+                        "Keep going. . .":
+                                    pass
+                          
+                        "I want to stick a finger in. . ." if Speed != 2:
+                                if E_InsertP: 
+                                    $ Speed = 2
+                                else:
+                                    menu:                                
+                                        "Ask her first":
+                                            $ Situation = "shift"
+                                        "Don't ask first [[just stick it in]":                                    
+                                            $ Situation = "auto"
+                                    call E_Insert_Pussy 
+                        
+                        "Pull back a bit. . ." if Speed == 2:
+                                    $ Speed = 0
+                                    
+                        "Slap her ass":                     
+                                    call E_Slap_Ass  
+                                    $ Cnt += 1
+                                    $ Round -= 1                                      
+                                    jump E_FP_Cycle  
+                                    
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                    
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if E_Action and MultiAction:
+                                                call Emma_Offhand_Set
+                                                if Trigger2:
+                                                     $ E_Action -= 1
+                                            else:
+                                                ch_e "I could use a break, are you about finished here?"  
+                                                
+                                    "Shift primary action":
+                                            if E_Action and MultiAction:
+                                                    menu:                                                             
+                                                        "I want to lick your pussy.":
+                                                                $ Situation = "shift"
+                                                                call E_FP_After
+                                                                call E_Lick_Pussy                 
+                                                        "Just start licking":
+                                                                $ Situation = "auto"
+                                                                call E_FP_After
+                                                                call E_Lick_Pussy         
+                                                        "Pull back to the thighs":
+                                                                $ Situation = "pullback"
+                                                                call E_FP_After
+                                                                call E_Fondle_Thighs
+                                                        "I want to stick a dildo in.":
+                                                                call E_Dildo_Check
+                                                                if _return:
+                                                                    $ Situation = "shift"
+                                                                    call E_FP_After
+                                                                    call E_Dildo_Pussy  
+                                                                else:
+                                                                    jump E_FP_Cycle  
+                                                        "Never Mind":
+                                                                jump E_FP_Cycle
+                                            else: 
+                                                ch_e "I could use a break, are you about finished here?"           
+                                    
+                                    "Shift your focus" if Trigger2:
+                                                $ Situation = "shift focus"
+                                                call E_FP_After
+                                                call Emma_Offhand_Set   
+                                    "Shift your focus (locked)" if not Trigger2:
+                                                pass
+                                    
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Emma to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Emma_Les_Change
+                                            "Ask Emma to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Rogue":
+                                                            call Rogue_Three_Change
+                                                        elif Partner == "Kitty":
+                                                            call Kitty_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Emma")
+                                            "Undress [Partner]":
+                                                        if Partner == "Rogue":
+                                                                call R_Undress   
+                                                        elif Partner == "Kitty":
+                                                                call K_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Rogue" and R_Spunk:
+                                                                call Rogue_Cleanup("ask")    
+                                                        elif Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump E_FP_Cycle 
+                                            "Never mind":
+                                                        jump E_FP_Cycle 
+                                    "Undress Emma":
+                                            call E_Undress   
+                                    "Clean up Emma (locked)" if not E_Spunk:
+                                            pass  
+                                    "Clean up Emma" if E_Spunk:
+                                            call Emma_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump E_FP_Cycle 
+                                                   
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call E_Pos_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump E_FP_After
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call E_Pos_Reset
+                                    $ Line = 0
+                                    jump E_FP_After
+        #End menu (if Line)
+        
+        call Sex_Dialog("Emma",Partner)
+                
+        #If either of you could cum 
+        
+        $ Cnt += 1
+        $ Round -= 1   
+    
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or E_Lust >= 100: 
+                    #If either of you could cum   
+                    if P_Focus >= 100:    
+                            #If you can cum:                                                 
+                            call PE_Cumming
+                            if "angry" in E_RecentActions:  
+                                call E_Pos_Reset
+                                return    
+                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
+                            if 100 > E_Lust >= 70 and E_OCount < 2:             
+                                $ E_RecentActions.append("unsatisfied")                      
+                                $ E_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump E_FP_After 
+                            $ Line = "came"
+     
+                    if E_Lust >= 100:  
+                            #If Emma can cum                                             
+                            call E_Cumming
+                            if Situation == "shift" or "angry" in E_RecentActions:
+                                jump E_FP_After
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
+                            $ Line = 0
+                            if not P_Semen:
+                                "You're emptied out, you should probably take a break."
+                            
+                            
+                            if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
+                                    "Emma still seems a bit unsatisfied with the experience."
+                                    menu:
+                                        "Finish her?"
+                                        "Yes, keep going for a bit.":
+                                            $ Line = "You get back into it" 
+                                        "No, I'm done.":
+                                            "You pull back."
+                                            jump E_FP_After    
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Rogue" and R_Lust >= 100:                                          
+                    call R_Cumming
+                elif Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
+        #End orgasm
+        
+        $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
+        
         if E_SEXP >= 100 or ApprovalCheck("Emma", 1200, "LO"):
             pass
         elif Cnt == (5 + E_FondleP):
@@ -1634,150 +1980,11 @@ label E_FP_Cycle: #Repeating strokes
                                     $ E_DailyActions.append("angry")   
                                     jump E_FP_After
         #End Count check
-        
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    menu:
-                        "[Line]"
-                        "Keep going. . .":
-                                    pass
-                        
-                        "I want to stick a finger in. . ." if Speed != 2:
-                            if E_InsertP: 
-                                $ Speed = 2
-                            else:
-                                menu:                                
-                                    "Ask her first":
-                                        $ Situation = "shift"
-                                    "Don't ask first [[just stick it in]":                                    
-                                        $ Situation = "auto"
-                                call E_Insert_Pussy  
-                       
-                        "Pull back to fondling" if Speed == 2:
-                                $ Speed = 1   
-                                      
-                        "Slap her ass":                     
-                                call E_Slap_Ass
-                                jump E_FP_Cycle  
-                                
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0
-                                            
-                        "Maybe lose some clothes. . .":
-                                    call E_Undress  
-                        
-                        "Shift actions":
-                                if E_Action and MultiAction:
-                                        menu:                                                                                         
-                                            "I want to lick your pussy.":
-                                                    $ Situation = "shift"
-                                                    call E_FP_After
-                                                    call E_Lick_Pussy                 
-                                            "Just start licking":
-                                                    $ Situation = "auto"
-                                                    call E_FP_After
-                                                    call E_Lick_Pussy         
-                                            "Pull back to the thighs":
-                                                    $ Situation = "pullback"
-                                                    call E_FP_After
-                                                    call E_Fondle_Thighs
-#                                            "I want to stick a dildo in.":
-#                                                    call E_Dildo_Check
-#                                                    if _return:
-#                                                        $ Situation = "shift"
-#                                                        call E_FP_After
-#                                                        call E_Dildo_Pussy  
-#                                                    else:
-#                                                        jump E_FP_Cycle   
-                                            "Never Mind":
-                                                    pass
-                                else:
-                                    ch_e "I could use a break, are you about finished here?"           
-                                        
-                        "I also want to. . . [[Offhand]":
-                                if E_Action and MultiAction:
-                                    call Emma_Offhand_Set
-                                    if Trigger2:
-                                         $ E_Action -= 1
-                                else:
-                                    ch_e "I could use a break, are you about finished here?"  
-                        
-                        "Shift your focus" if Trigger2:
-                                    $ Situation = "shift focus"
-                                    call E_FP_After
-                                    call Emma_Offhand_Set   
-                        "Shift your focus (locked)" if not Trigger2:
-                                    pass
-                
-                        "Let's try something else." if MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump E_FP_After
-                        "Let's stop for now." if not MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Line = 0
-                                    jump E_FP_After
-        #End menu (if Line)
-        
-        call Sex_Dialog("Emma",Partner)
-                
-        #If either of you could cum 
-        
-    
-        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
-        
-        if P_Focus >= 100 or E_Lust >= 100:  
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PE_Cumming
-                            if "angry" in E_RecentActions:  
-                                call E_Pos_Reset
-                                return    
-                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
-                            if 100 > E_Lust >= 70 and E_OCount < 2:             
-                                $ E_RecentActions.append("unsatisfied")                      
-                                $ E_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump E_FP_After 
-                            $ Line = "came"
-     
-                    #If Emma can cum
-                    if E_Lust >= 100:                                               
-                        call E_Cumming
-                        if Situation == "shift" or "angry" in E_RecentActions:
-                            jump E_FP_After
-                       
-                    if Line == "came": 
-                        $ Line = 0
-                        if not P_Semen:
-                            "You're emptied out, you should probably take a break."
-                            
-                            
-                        if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
-                            "Emma still seems a bit unsatisfied with the experience."
-                            menu:
-                                "Finish her?"
-                                "Yes, keep going for a bit.":
-                                    $ Line = "You get back into it" 
-                                "No, I'm done.":
-                                    "You pull back."
-                                    jump E_FP_After  
-        #End orgasm
-        
-   
+           
         if Round == 10:
             ch_e "It's getting late. . ."  
         elif Round == 5:
-            ch_e "We should take a break soon."       
+            ch_e "We should take a break soon."        
     
     #Round = 0 loop breaks
     call EmmaFace("bemused", 0)
@@ -1890,8 +2097,7 @@ label E_IP_Prep: #Animation set-up
         $ E_Inbt += int(Taboo/10)  
         $ E_Lust += int(Taboo/5)
         
-    $ Line = 0 
-    $ Cnt = 0     
+    $ Line = 0  
     $ Speed = 2
     return
 
@@ -2129,15 +2335,190 @@ label E_LP_Prep: #Animation set-up
     $ E_DailyActions.append("lick pussy") 
     
 label E_LP_Cycle: #Repeating strokes
-    if Trigger2 == "kissing":
-            $ Trigger2 = 0
+    if Trigger2 == "kiss you":
+            $ Trigger2 = 0   
     while Round >=0:  
         call Shift_Focus("Emma") 
         call E_Pussy_Launch("lick pussy")
-        call EmmaLust     
+        call EmmaLust   
         
-        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
-            
+        if Line and P_Focus < 100:                                                   
+                    #Player Command menu
+                    menu:
+                        "Keep going. . .":
+                                    pass
+                                                              
+                        "Slap her ass":                     
+                                    call E_Slap_Ass  
+                                    $ Cnt += 1
+                                    $ Round -= 1                                      
+                                    jump RLP_Cycle  
+                                    
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                    
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if E_Action and MultiAction:
+                                                call Emma_Offhand_Set
+                                                if Trigger2:
+                                                     $ E_Action -= 1
+                                            else:
+                                                ch_e "I could use a break, are you about finished here?"  
+                                                
+                                    "Shift primary action":
+                                            if E_Action and MultiAction:
+                                                    menu:                                                             
+                                                        "Pull out and start rubbing again.":
+                                                                if E_Action and MultiAction:
+                                                                    $ Situation = "pullback"
+                                                                    call RLP_After
+                                                                    call E_Fondle_Pussy
+                                                                else:
+                                                                    ch_e "I could use a break, are you about finished here?"  
+                                                        "I want to stick a dildo in.":
+                                                                call E_Dildo_Check
+                                                                if _return:
+                                                                    $ Situation = "shift"
+                                                                    call RLP_After
+                                                                    call E_Dildo_Pussy  
+                                                                else:
+                                                                    jump RLP_Cycle 
+                                                        "Never Mind":
+                                                                jump RLP_Cycle
+                                            else: 
+                                                ch_e "I could use a break, are you about finished here?"           
+                                    
+                                    "Shift your focus" if Trigger2:
+                                                $ Situation = "shift focus"
+                                                call RLP_After
+                                                call Emma_Offhand_Set   
+                                    "Shift your focus (locked)" if not Trigger2:
+                                                pass
+                                    
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Emma to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Emma_Les_Change
+                                            "Ask Emma to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Rogue":
+                                                            call Rogue_Three_Change
+                                                        elif Partner == "Kitty":
+                                                            call Kitty_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Emma")
+                                            "Undress [Partner]":
+                                                        if Partner == "Rogue":
+                                                                call R_Undress   
+                                                        elif Partner == "Kitty":
+                                                                call K_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Rogue" and R_Spunk:
+                                                                call Rogue_Cleanup("ask")    
+                                                        elif Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump RLP_Cycle 
+                                            "Never mind":
+                                                        jump RLP_Cycle 
+                                    "Undress Emma":
+                                            call E_Undress   
+                                    "Clean up Emma (locked)" if not E_Spunk:
+                                            pass  
+                                    "Clean up Emma" if E_Spunk:
+                                            call Emma_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump RLP_Cycle 
+                                                   
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call E_Pos_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump E_LP_After
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call E_Pos_Reset
+                                    $ Line = 0
+                                    jump E_LP_After
+        #End menu (if Line)
+        
+        if E_Panties or E_Legs == "pants" or HoseNum("Emma") >= 5: #This checks if Emma wants to strip down.
+                call E_Undress("auto")
+                
+        call Sex_Dialog("Emma",Partner)
+                
+        #If either of you could cum 
+        
+        $ Cnt += 1
+        $ Round -= 1   
+    
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or E_Lust >= 100: 
+                    #If either of you could cum   
+                    if P_Focus >= 100:    
+                            #If you can cum:                                                 
+                            call PE_Cumming
+                            if "angry" in E_RecentActions:  
+                                call E_Pos_Reset
+                                return    
+                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
+                            if 100 > E_Lust >= 70 and E_OCount < 2:             
+                                $ E_RecentActions.append("unsatisfied")                      
+                                $ E_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump RLP_After 
+                            $ Line = "came"
+     
+                    if E_Lust >= 100:  
+                            #If Emma can cum                                             
+                            call E_Cumming
+                            if Situation == "shift" or "angry" in E_RecentActions:
+                                jump RLP_After
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
+                            $ Line = 0
+                            if not P_Semen:
+                                "You're emptied out, you should probably take a break."
+                            
+                            
+                            if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
+                                    "Emma still seems a bit unsatisfied with the experience."
+                                    menu:
+                                        "Finish her?"
+                                        "Yes, keep going for a bit.":
+                                            $ Line = "You get back into it" 
+                                        "No, I'm done.":
+                                            "You pull back."
+                                            jump RLP_After    
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Rogue" and R_Lust >= 100:                                          
+                    call R_Cumming
+                elif Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
+        #End orgasm
+        
+        $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
+        
         if E_SEXP >= 100 or ApprovalCheck("Emma", 1200, "LO"):
             pass
         elif Cnt == (5 + E_LickP):
@@ -2175,132 +2556,11 @@ label E_LP_Cycle: #Repeating strokes
                                     $ E_DailyActions.append("angry")   
                                     jump E_LP_After
         #End Count check
-        
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    menu:
-                        "[Line]"
-                        "Keep going. . .":
-                                    pass
-                                  
-                        "Slap her ass":                     
-                                call E_Slap_Ass
-                                jump E_LP_Cycle  
-                                
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0
-                                            
-                        "Maybe lose some clothes. . .":
-                                    call E_Undress  
-                        
-                        "Shift actions":
-                                if E_Action and MultiAction:
-                                        menu:
-                                            "Pull out and start rubbing again.":
-                                                    if E_Action and MultiAction:
-                                                        $ Situation = "pullback"
-                                                        call E_LP_After
-                                                        call E_Fondle_Pussy
-                                                    else:
-                                                        ch_e "I could use a break, are you about finished here?"  
-#                                            "I want to stick a dildo in.":
-#                                                    call E_Dildo_Check
-#                                                    if _return:
-#                                                        $ Situation = "shift"
-#                                                        call E_LP_After
-#                                                        call E_Dildo_Pussy  
-#                                                    else:
-#                                                        jump E_LP_Cycle   
-                                            "Never Mind":
-                                                    pass
-                                else:
-                                    ch_e "I could use a break, are you about finished here?"           
-                    
-                    
-                        "I also want to. . . [[Offhand]":
-                                if E_Action and MultiAction:
-                                    call Emma_Offhand_Set
-                                    if Trigger2:
-                                         $ E_Action -= 1
-                                else:
-                                    ch_e "I could use a break, are you about finished here?"  
-                        
-                        "Shift your focus" if Trigger2:
-                                    $ Situation = "shift focus"
-                                    call E_LP_After
-                                    call Emma_Offhand_Set   
-                        "Shift your focus (locked)" if not Trigger2:
-                                    pass
-                
-                        "Let's try something else." if MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump E_LP_After
-                        "Let's stop for now." if not MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Line = 0
-                                    jump E_LP_After
-        #End menu (if Line)
-        if E_Panties or E_Legs == "pants" or HoseNum("Emma") >= 5: #This checks if Emma wants to strip down.
-                call E_Undress("auto")
-        call Sex_Dialog("Emma",Partner)
-        #If either of you could cum 
-        
-    
-        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
-        
-        if P_Focus >= 100 or E_Lust >= 100:    
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PE_Cumming
-                            if "angry" in E_RecentActions:  
-                                call E_Pos_Reset
-                                return    
-                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
-                            if 100 > E_Lust >= 70 and E_OCount < 2:             
-                                $ E_RecentActions.append("unsatisfied")                      
-                                $ E_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump E_LP_After 
-                            $ Line = "came"
-     
-                    #If Emma can cum
-                    if E_Lust >= 100:                                               
-                        call E_Cumming
-                        if Situation == "shift" or "angry" in E_RecentActions:
-                            jump E_LP_After
-                       
-                    if Line == "came": 
-                        $ Line = 0
-                        if not P_Semen:
-                            "You're emptied out, you should probably take a break."
-                            
-                            
-                        if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
-                            "Emma still seems a bit unsatisfied with the experience."
-                            menu:
-                                "Finish her?"
-                                "Yes, keep going for a bit.":
-                                    $ Line = "You get back into it" 
-                                "No, I'm done.":
-                                    "You pull back."
-                                    jump E_LP_After  
-        #End orgasm
-        
-   
+           
         if Round == 10:
             ch_e "It's getting late. . ."  
         elif Round == 5:
-            ch_e "We should take a break soon."       
+            ch_e "We should take a break soon."        
     
     #Round = 0 loop breaks
     call EmmaFace("bemused", 0)
@@ -2561,10 +2821,194 @@ label E_FA_Cycle: #Repeating strokes
     while Round >=0:  
         call Shift_Focus("Emma") 
         call E_Pussy_Launch("fondle ass")
-        call EmmaLust     
+        call EmmaLust   
         
-        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
-            
+        if Line and P_Focus < 100:                                                   
+                    #Player Command menu
+                    menu:
+                        "Keep going. . .":
+                                    pass
+                                                              
+                        "Slap her ass":                     
+                                    call E_Slap_Ass  
+                                    $ Cnt += 1
+                                    $ Round -= 1                                      
+                                    jump E_FA_Cycle  
+                                    
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                    
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if E_Action and MultiAction:
+                                                call Emma_Offhand_Set
+                                                if Trigger2:
+                                                     $ E_Action -= 1
+                                            else:
+                                                ch_e "I could use a break, are you about finished here?"  
+                                                
+                                    "Shift primary action":
+                                            if E_Action and MultiAction:
+                                                    menu:                                                             
+                                                        "I want to stick a finger in.":
+                                                                $ Situation = "shift"
+                                                                call E_FA_After
+                                                                call E_Insert_Ass    
+                                                        "Just stick a finger in without asking.":
+                                                                $ Situation = "auto"
+                                                                call E_FA_After
+                                                                call E_Insert_Ass
+                                                        "I want to lick your asshole.":
+                                                                $ Situation = "shift"
+                                                                call E_FA_After
+                                                                call E_Lick_Ass                 
+                                                        "Just start licking.":
+                                                                $ Situation = "auto"
+                                                                call E_FA_After
+                                                                call E_Lick_Ass    
+                                                        "I want to stick a dildo in.":
+                                                                call E_Dildo_Check
+                                                                if Line == "yes":
+                                                                    $ Situation = "shift"
+                                                                    call E_FA_After
+                                                                    call E_Dildo_Ass  
+                                                                else:
+                                                                    jump E_FA_Cycle 
+                                                        "Never Mind":
+                                                                jump E_FA_Cycle
+                                            else: 
+                                                ch_e "I could use a break, are you about finished here?"           
+                                    
+                                    "Shift your focus" if Trigger2:
+                                                $ Situation = "shift focus"
+                                                call E_FA_After
+                                                call Emma_Offhand_Set   
+                                    "Shift your focus (locked)" if not Trigger2:
+                                                pass
+                                    
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Emma to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Emma_Les_Change
+                                            "Ask Emma to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Rogue":
+                                                            call Rogue_Three_Change
+                                                        elif Partner == "Kitty":
+                                                            call Kitty_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Emma")
+                                            "Undress [Partner]":
+                                                        if Partner == "Rogue":
+                                                                call R_Undress   
+                                                        elif Partner == "Kitty":
+                                                                call K_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Rogue" and R_Spunk:
+                                                                call Rogue_Cleanup("ask")    
+                                                        elif Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump E_FA_Cycle 
+                                            "Never mind":
+                                                        jump E_FA_Cycle 
+                                    "Undress Emma":
+                                            call E_Undress   
+                                    "Clean up Emma (locked)" if not E_Spunk:
+                                            pass  
+                                    "Clean up Emma" if E_Spunk:
+                                            call Emma_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump E_FA_Cycle 
+                                                   
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call E_Pos_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump E_FA_After
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call E_Pos_Reset
+                                    $ Line = 0
+                                    jump E_FA_After
+        #End menu (if Line)
+        
+        if E_Panties or E_Legs == "pants" or HoseNum("Emma") >= 5: #This checks if Emma wants to strip down.
+                call E_Undress("auto")
+                
+        call Sex_Dialog("Emma",Partner)
+                
+        #If either of you could cum 
+        
+        $ Cnt += 1
+        $ Round -= 1   
+    
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or E_Lust >= 100: 
+                    #If either of you could cum   
+                    if P_Focus >= 100:    
+                            #If you can cum:                                                 
+                            call PE_Cumming
+                            if "angry" in E_RecentActions:  
+                                call E_Pos_Reset
+                                return    
+                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
+                            if 100 > E_Lust >= 70 and E_OCount < 2:             
+                                $ E_RecentActions.append("unsatisfied")                      
+                                $ E_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump E_FA_After 
+                            $ Line = "came"
+     
+                    if E_Lust >= 100:  
+                            #If Emma can cum                                             
+                            call E_Cumming
+                            if Situation == "shift" or "angry" in E_RecentActions:
+                                jump E_FA_After
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
+                            $ Line = 0
+                            if not P_Semen:
+                                "You're emptied out, you should probably take a break."
+                            
+                            
+                            if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
+                                    "Emma still seems a bit unsatisfied with the experience."
+                                    menu:
+                                        "Finish her?"
+                                        "Yes, keep going for a bit.":
+                                            $ Line = "You get back into it" 
+                                        "No, I'm done.":
+                                            "You pull back."
+                                            jump E_FA_After    
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Rogue" and R_Lust >= 100:                                          
+                    call R_Cumming
+                elif Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
+        #End orgasm
+        
+        $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
+                    
         if E_SEXP >= 100 or ApprovalCheck("Emma", 1200, "LO"):
             pass
         elif Cnt == (5 + E_FondleA):
@@ -2603,140 +3047,10 @@ label E_FA_Cycle: #Repeating strokes
                                     jump E_FA_After
         #End Count check
         
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    menu:
-                        "[Line]"
-                        "Keep going. . .":
-                                    pass
-                             
-                        "Slap her ass":                     
-                                call E_Slap_Ass
-                                jump E_FA_Cycle  
-                                
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0
-                                            
-                        "Maybe lose some clothes. . .":
-                                    call E_Undress  
-                        
-                        "Shift actions":
-                                if E_Action and MultiAction:
-                                        menu:
-                                            "I want to stick a finger in.":
-                                                    $ Situation = "shift"
-                                                    call E_FA_After
-                                                    call E_Insert_Ass                 
-                                            "Just stick a finger in without asking.":
-                                                    $ Situation = "auto"
-                                                    call E_FA_After
-                                                    call E_Insert_Ass
-                                            "I want to lick your asshole.":
-                                                    $ Situation = "shift"
-                                                    call E_FA_After
-                                                    call E_Lick_Ass                 
-                                            "Just start licking.":
-                                                    $ Situation = "auto"
-                                                    call E_FA_After
-                                                    call E_Lick_Ass    
-#                                            "I want to stick a dildo in.":
-#                                                    call E_Dildo_Check
-#                                                    if Line == "yes":
-#                                                        $ Situation = "shift"
-#                                                        call E_FA_After
-#                                                        call E_Dildo_Ass  
-#                                                    else:
-#                                                        jump E_FA_Cycle   
-                                            "Never Mind":
-                                                        pass              
-                                else:
-                                    ch_e "I could use a break, are you about finished here?"           
-                    
-                    
-                        "I also want to. . . [[Offhand]":
-                                if E_Action and MultiAction:
-                                    call Emma_Offhand_Set
-                                    if Trigger2:
-                                         $ E_Action -= 1
-                                else:
-                                    ch_e "I could use a break, are you about finished here?"  
-                        
-                        "Shift your focus" if Trigger2:
-                                    $ Situation = "shift focus"
-                                    call E_FA_After
-                                    call Emma_Offhand_Set   
-                        "Shift your focus (locked)" if not Trigger2:
-                                    pass
-                
-                        "Let's try something else." if MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump E_FA_After
-                        "Let's stop for now." if not MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Line = 0
-                                    jump E_FA_After
-        #End menu (if Line)
-        
-        call Sex_Dialog("Emma",Partner)
-                
-        #If either of you could cum 
-        
-    
-        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
-        
-        if P_Focus >= 100 or E_Lust >= 100:  
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PE_Cumming
-                            if "angry" in E_RecentActions:  
-                                call E_Pos_Reset
-                                return    
-                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
-                            if 100 > E_Lust >= 70 and E_OCount < 2:             
-                                $ E_RecentActions.append("unsatisfied")                      
-                                $ E_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump E_FA_After 
-                            $ Line = "came"
-     
-                    #If Emma can cum
-                    if E_Lust >= 100:                                               
-                        call E_Cumming
-                        if Situation == "shift" or "angry" in E_RecentActions:
-                            jump E_FA_After
-                       
-                    if Line == "came": 
-                        $ Line = 0
-                        if not P_Semen:
-                            "You're emptied out, you should probably take a break."
-                            
-                            
-                        if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
-                            "Emma still seems a bit unsatisfied with the experience."
-                            menu:
-                                "Finish her?"
-                                "Yes, keep going for a bit.":
-                                    $ Line = "You get back into it" 
-                                "No, I'm done.":
-                                    "You pull back."
-                                    jump E_FA_After  
-        #End orgasm
-        
-   
         if Round == 10:
             ch_e "It's getting late. . ."  
         elif Round == 5:
-            ch_e "We should take a break soon."       
+            ch_e "We should take a break soon."        
     
     #Round = 0 loop breaks
     call EmmaFace("bemused", 0)
@@ -2999,10 +3313,190 @@ label E_IA_Cycle: #Repeating strokes
     while Round >=0:  
         call Shift_Focus("Emma") 
         call E_Pussy_Launch("insert ass")
-        call EmmaLust     
+        call EmmaLust   
         
-        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
-            
+        if Line and P_Focus < 100:                                                   
+                    #Player Command menu
+                    menu:
+                        "Keep going. . .":
+                                    pass
+                                                              
+                        "Slap her ass":                     
+                                    call E_Slap_Ass  
+                                    $ Cnt += 1
+                                    $ Round -= 1                                      
+                                    jump E_IA_Cycle  
+                                    
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                    
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if E_Action and MultiAction:
+                                                call Emma_Offhand_Set
+                                                if Trigger2:
+                                                     $ E_Action -= 1
+                                            else:
+                                                ch_e "I could use a break, are you about finished here?"  
+                                                
+                                    "Shift primary action":
+                                            if E_Action and MultiAction:
+                                                    menu:                                                             
+                                                        "Pull out and start rubbing again.":
+                                                                $ Situation = "pullback"
+                                                                call E_IA_After
+                                                                call E_Fondle_Ass
+                                                        "I want to lick your asshole.":
+                                                                $ Situation = "shift"
+                                                                call E_IA_After
+                                                                call E_Lick_Ass                 
+                                                        "Just start licking.":
+                                                                $ Situation = "auto"
+                                                                call E_IA_After
+                                                                call E_Lick_Ass    
+                                                        "I want to stick a dildo in.":
+                                                                call E_Dildo_Check
+                                                                if Line == "yes":
+                                                                    $ Situation = "shift"
+                                                                    call E_IA_After
+                                                                    call E_Dildo_Ass  
+                                                                else:
+                                                                    jump E_IA_Cycle  
+                                                        "Never Mind":
+                                                                jump E_IA_Cycle
+                                            else: 
+                                                ch_e "I could use a break, are you about finished here?"           
+                                    
+                                    "Shift your focus" if Trigger2:
+                                                $ Situation = "shift focus"
+                                                call E_IA_After
+                                                call Emma_Offhand_Set   
+                                    "Shift your focus (locked)" if not Trigger2:
+                                                pass
+                                    
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Emma to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Emma_Les_Change
+                                            "Ask Emma to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Rogue":
+                                                            call Rogue_Three_Change
+                                                        elif Partner == "Kitty":
+                                                            call Kitty_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Emma")
+                                            "Undress [Partner]":
+                                                        if Partner == "Rogue":
+                                                                call R_Undress   
+                                                        elif Partner == "Kitty":
+                                                                call K_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Rogue" and R_Spunk:
+                                                                call Rogue_Cleanup("ask")    
+                                                        elif Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump E_IA_Cycle 
+                                            "Never mind":
+                                                        jump E_IA_Cycle 
+                                    "Undress Emma":
+                                            call E_Undress   
+                                    "Clean up Emma (locked)" if not E_Spunk:
+                                            pass  
+                                    "Clean up Emma" if E_Spunk:
+                                            call Emma_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump E_IA_Cycle 
+                                                   
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call E_Pos_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump E_IA_After
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call E_Pos_Reset
+                                    $ Line = 0
+                                    jump E_IA_After
+        #End menu (if Line)
+        
+        if E_Panties or E_Legs == "pants" or HoseNum("Emma") >= 5: #This checks if Emma wants to strip down.
+                call E_Undress("auto")
+                
+        call Sex_Dialog("Emma",Partner)
+                
+        #If either of you could cum 
+        
+        $ Cnt += 1
+        $ Round -= 1   
+    
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or E_Lust >= 100: 
+                    #If either of you could cum   
+                    if P_Focus >= 100:    
+                            #If you can cum:                                                 
+                            call PE_Cumming
+                            if "angry" in E_RecentActions:  
+                                call E_Pos_Reset
+                                return    
+                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
+                            if 100 > E_Lust >= 70 and E_OCount < 2:             
+                                $ E_RecentActions.append("unsatisfied")                      
+                                $ E_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump E_IA_After 
+                            $ Line = "came"
+     
+                    if E_Lust >= 100:  
+                            #If Emma can cum                                             
+                            call E_Cumming
+                            if Situation == "shift" or "angry" in E_RecentActions:
+                                jump E_IA_After
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
+                            $ Line = 0
+                            if not P_Semen:
+                                "You're emptied out, you should probably take a break."
+                            
+                            
+                            if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
+                                    "Emma still seems a bit unsatisfied with the experience."
+                                    menu:
+                                        "Finish her?"
+                                        "Yes, keep going for a bit.":
+                                            $ Line = "You get back into it" 
+                                        "No, I'm done.":
+                                            "You pull back."
+                                            jump E_IA_After    
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Rogue" and R_Lust >= 100:                                          
+                    call R_Cumming
+                elif Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
+        #End orgasm
+        
+        $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
+        
         if E_SEXP >= 100 or ApprovalCheck("Emma", 1200, "LO"):
             pass
         elif Cnt == (5 + E_InsertA):
@@ -3040,140 +3534,11 @@ label E_IA_Cycle: #Repeating strokes
                                     $ E_DailyActions.append("angry")   
                                     jump E_IA_After
         #End Count check
-        
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    menu:
-                        "[Line]"
-                        "Keep going. . .":
-                                    pass
-                             
-                        "Slap her ass":                     
-                                call E_Slap_Ass
-                                jump E_IA_Cycle  
-                                
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0
-                                            
-                        "Maybe lose some clothes. . .":
-                                    call E_Undress  
-                        
-                        "Shift actions":
-                                if E_Action and MultiAction:
-                                        menu:
-                                            "Pull out and start rubbing again.":
-                                                    $ Situation = "pullback"
-                                                    call E_IA_After
-                                                    call E_Fondle_Ass
-                                            "I want to lick your asshole.":
-                                                    $ Situation = "shift"
-                                                    call E_IA_After
-                                                    call E_Lick_Ass                 
-                                            "Just start licking.":
-                                                    $ Situation = "auto"
-                                                    call E_IA_After
-                                                    call E_Lick_Ass    
-#                                            "I want to stick a dildo in.":
-#                                                    call E_Dildo_Check
-#                                                    if Line == "yes":
-#                                                        $ Situation = "shift"
-#                                                        call E_IA_After
-#                                                        call E_Dildo_Ass  
-#                                                    else:
-#                                                        jump E_IA_Cycle  
-                                            "Never Mind":
-                                                    pass              
-                                else:
-                                    ch_e "I could use a break, are you about finished here?"           
-                    
-                    
-                        "I also want to. . . [[Offhand]":
-                                if E_Action and MultiAction:
-                                    call Emma_Offhand_Set
-                                    if Trigger2:
-                                         $ E_Action -= 1
-                                else:
-                                    ch_e "I could use a break, are you about finished here?"  
-                        
-                        "Shift your focus" if Trigger2:
-                                    $ Situation = "shift focus"
-                                    call E_IA_After
-                                    call Emma_Offhand_Set   
-                        "Shift your focus (locked)" if not Trigger2:
-                                    pass
-                
-                        "Let's try something else." if MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump E_IA_After
-                        "Let's stop for now." if not MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Line = 0
-                                    jump E_IA_After
-        #End menu (if Line)
-        
-        if E_Panties or E_Legs == "pants" or HoseNum("Emma") >= 5: #This checks if Emma wants to strip down.
-                call E_Undress("auto")
-            
-        call Sex_Dialog("Emma",Partner)
-                
-        #If either of you could cum 
-        
-    
-        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
-        
-        if P_Focus >= 100 or E_Lust >= 100: 
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PE_Cumming
-                            if "angry" in E_RecentActions:  
-                                call E_Pos_Reset
-                                return    
-                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
-                            if 100 > E_Lust >= 70 and E_OCount < 2:             
-                                $ E_RecentActions.append("unsatisfied")                      
-                                $ E_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump E_IA_After 
-                            $ Line = "came"
-     
-                    #If Emma can cum
-                    if E_Lust >= 100:                                               
-                        call E_Cumming
-                        if Situation == "shift" or "angry" in E_RecentActions:
-                            jump E_IA_After
-                       
-                    if Line == "came": 
-                        $ Line = 0
-                        if not P_Semen:
-                            "You're emptied out, you should probably take a break."
-                            
-                            
-                        if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
-                            "Emma still seems a bit unsatisfied with the experience."
-                            menu:
-                                "Finish her?"
-                                "Yes, keep going for a bit.":
-                                    $ Line = "You get back into it" 
-                                "No, I'm done.":
-                                    "You pull back."
-                                    jump E_IA_After  
-        #End orgasm
-        
-   
+           
         if Round == 10:
             ch_e "It's getting late. . ."  
         elif Round == 5:
-            ch_e "We should take a break soon."       
+            ch_e "We should take a break soon."        
     
     #Round = 0 loop breaks
     call EmmaFace("bemused", 0)
@@ -3449,15 +3814,195 @@ label E_LA_Prep: #Animation set-up
     $ E_DailyActions.append("ass") if "ass" not in E_DailyActions else E_RecentActions                    
     $ E_DailyActions.append("lick ass")  
 label E_LA_Cycle: #Repeating strokes
-    if Trigger2 == "kissing":
+    if Trigger2 == "kiss you":
             $ Trigger2 = 0
     while Round >=0:  
         call Shift_Focus("Emma") 
         call E_Pussy_Launch("lick ass")
-        call EmmaLust     
+        call EmmaLust   
         
-        $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
-            
+        if Line and P_Focus < 100:                                                   
+                    #Player Command menu
+                    menu:
+                        "Keep going. . .":
+                                    pass
+                                                              
+                        "Slap her ass":                     
+                                    call E_Slap_Ass  
+                                    $ Cnt += 1
+                                    $ Round -= 1                                      
+                                    jump E_LA_Cycle  
+                                    
+                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
+                                    pass
+                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
+                                    "You concentrate on not burning out too quickly."                
+                                    $ P_FocusX = 1
+                        "Release your focus." if P_FocusX:
+                                    "You release your concentration. . ."                
+                                    $ P_FocusX = 0
+                                    
+                        "Other options":
+                                menu:   
+                                    "Offhand action":
+                                            if E_Action and MultiAction:
+                                                call Emma_Offhand_Set
+                                                if Trigger2:
+                                                     $ E_Action -= 1
+                                            else:
+                                                ch_e "I could use a break, are you about finished here?"  
+                                                
+                                    "Shift primary action":
+                                            if E_Action and MultiAction:
+                                                    menu:                                                             
+                                                        "Switch to fondling.":
+                                                                $ Situation = "pullback"
+                                                                call E_LA_After
+                                                                call E_Fondle_Ass
+                                                        "I want to stick a finger in.":
+                                                                $ Situation = "shift"
+                                                                call E_LA_After
+                                                                call E_Insert_Ass                 
+                                                        "Just stick a finger in [[without asking].":
+                                                                $ Situation = "auto"
+                                                                call E_LA_After
+                                                                call E_Insert_Ass                        
+                                                        "I want to stick a dildo in.":
+                                                                call E_Dildo_Check
+                                                                if Line == "yes":
+                                                                    $ Situation = "shift"
+                                                                    call E_LA_After
+                                                                    call E_Dildo_Ass  
+                                                                else:
+                                                                    jump E_LA_Cycle   
+                                                        "Never Mind":
+                                                                jump E_LA_Cycle
+                                            else: 
+                                                ch_e "I could use a break, are you about finished here?"           
+                                    
+                                    "Shift your focus" if Trigger2:
+                                                $ Situation = "shift focus"
+                                                call E_LA_After
+                                                call Emma_Offhand_Set   
+                                    "Shift your focus (locked)" if not Trigger2:
+                                                pass
+                                    
+                                    "Threesome actions (locked)" if not Partner: 
+                                        pass
+                                    "Threesome actions" if Partner:   
+                                        menu:
+                                            "Ask Emma to do something else with [Partner]" if Trigger == "lesbian":
+                                                        call Emma_Les_Change
+                                            "Ask Emma to do something else with [Partner] (locked)" if Trigger != "lesbian":
+                                                        pass
+                                            "Ask [Partner] to do something else":
+                                                        if Partner == "Rogue":
+                                                            call Rogue_Three_Change
+                                                        elif Partner == "Kitty":
+                                                            call Kitty_Three_Change                                                  
+                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
+                                                        $ ThreeCount = 0                                                            
+                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
+                                                        $ ThreeCount = 0          
+                                            "Swap to [Partner]":
+                                                        call Trigger_Swap("Emma")
+                                            "Undress [Partner]":
+                                                        if Partner == "Rogue":
+                                                                call R_Undress   
+                                                        elif Partner == "Kitty":
+                                                                call K_Undress 
+                                            "Clean up Partner":
+                                                        if Partner == "Rogue" and R_Spunk:
+                                                                call Rogue_Cleanup("ask")    
+                                                        elif Partner == "Kitty" and K_Spunk:
+                                                                call Kitty_Cleanup("ask")  
+                                                        else:
+                                                                "She seems fine."
+                                                                jump E_LA_Cycle 
+                                            "Never mind":
+                                                        jump E_LA_Cycle 
+                                    "Undress Emma":
+                                            call E_Undress   
+                                    "Clean up Emma (locked)" if not E_Spunk:
+                                            pass  
+                                    "Clean up Emma" if E_Spunk:
+                                            call Emma_Cleanup("ask")                                         
+                                    "Never mind":
+                                            jump E_LA_Cycle 
+                                                   
+                        "Back to Sex Menu" if MultiAction: 
+                                    ch_p "Let's try something else."
+                                    call E_Pos_Reset
+                                    $ Situation = "shift"
+                                    $ Line = 0
+                                    jump E_LA_After
+                        "End Scene" if not MultiAction: 
+                                    ch_p "Let's stop for now."
+                                    call E_Pos_Reset
+                                    $ Line = 0
+                                    jump E_LA_After
+        #End menu (if Line)
+        
+        if E_Panties or E_Legs == "pants" or HoseNum("Emma") >= 5: #This checks if Emma wants to strip down.
+                call E_Undress("auto")
+                
+        call Sex_Dialog("Emma",Partner)
+                
+        #If either of you could cum 
+        
+        $ Cnt += 1
+        $ Round -= 1   
+    
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
+        if P_Focus >= 100 or E_Lust >= 100: 
+                    #If either of you could cum   
+                    if P_Focus >= 100:    
+                            #If you can cum:                                                 
+                            call PE_Cumming
+                            if "angry" in E_RecentActions:  
+                                call E_Pos_Reset
+                                return    
+                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
+                            if 100 > E_Lust >= 70 and E_OCount < 2:             
+                                $ E_RecentActions.append("unsatisfied")                      
+                                $ E_DailyActions.append("unsatisfied") 
+                            
+                            if P_Focus > 80:
+                                jump E_LA_After 
+                            $ Line = "came"
+     
+                    if E_Lust >= 100:  
+                            #If Emma can cum                                             
+                            call E_Cumming
+                            if Situation == "shift" or "angry" in E_RecentActions:
+                                jump E_LA_After
+                       
+                    if Line == "came": #ex P_Focus <= 20: 
+                            #If you've just cum,  
+                            $ Line = 0
+                            if not P_Semen:
+                                "You're emptied out, you should probably take a break."
+                            
+                            
+                            if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
+                                    "Emma still seems a bit unsatisfied with the experience."
+                                    menu:
+                                        "Finish her?"
+                                        "Yes, keep going for a bit.":
+                                            $ Line = "You get back into it" 
+                                        "No, I'm done.":
+                                            "You pull back."
+                                            jump E_LA_After    
+        if Partner:
+                #Checks if partner could orgasm
+                if Partner == "Rogue" and R_Lust >= 100:                                          
+                    call R_Cumming
+                elif Partner == "Kitty" and K_Lust >= 100:                                          
+                    call K_Cumming
+        #End orgasm
+        
+        $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
+                    
         if E_SEXP >= 100 or ApprovalCheck("Emma", 1200, "LO"):
             pass
         elif Cnt == (5 + E_LickA):
@@ -3495,140 +4040,11 @@ label E_LA_Cycle: #Repeating strokes
                                     $ E_DailyActions.append("angry")   
                                     jump E_LA_After
         #End Count check
-        
-        if Line and P_Focus < 100:                                                    #Player Command menu
-                    $ Cnt += 1
-                    $ Round -= 1
-                    menu:
-                        "[Line]"
-                        "Keep going. . .":
-                                    pass
-                           
-                        "Slap her ass":                     
-                                call E_Slap_Ass
-                                jump E_LA_Cycle  
-                                
-                        "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
-                                    pass
-                        "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
-                                    "You concentrate on not burning out too quickly."                
-                                    $ P_FocusX = 1
-                        "Release your focus." if P_FocusX:
-                                    "You release your concentration. . ."                
-                                    $ P_FocusX = 0
-                                            
-                        "Maybe lose some clothes. . .":
-                                    call E_Undress  
-                        
-                        "Shift actions":
-                                if E_Action and MultiAction:
-                                        menu:   
-                                            "Switch to fondling.":
-                                                    $ Situation = "pullback"
-                                                    call E_LA_After
-                                                    call E_Fondle_Ass
-                                            "I want to stick a finger in.":
-                                                    $ Situation = "shift"
-                                                    call E_LA_After
-                                                    call E_Insert_Ass                 
-                                            "Just stick a finger in [[without asking].":
-                                                    $ Situation = "auto"
-                                                    call E_LA_After
-                                                    call E_Insert_Ass                        
-#                                            "I want to stick a dildo in.":
-#                                                    call E_Dildo_Check
-#                                                    if Line == "yes":
-#                                                        $ Situation = "shift"
-#                                                        call E_LA_After
-#                                                        call E_Dildo_Ass  
-#                                                    else:
-#                                                        jump E_LA_Cycle   
-                                            "Never Mind":
-                                                    pass              
-                                else:
-                                    ch_e "I could use a break, are you about finished here?"           
-                    
-                    
-                        "I also want to. . . [[Offhand]":
-                                if E_Action and MultiAction:
-                                    call Emma_Offhand_Set
-                                    if Trigger2:
-                                         $ E_Action -= 1
-                                else:
-                                    ch_e "I could use a break, are you about finished here?"  
-                        
-                        "Shift your focus" if Trigger2:
-                                    $ Situation = "shift focus"
-                                    call E_LA_After
-                                    call Emma_Offhand_Set   
-                        "Shift your focus (locked)" if not Trigger2:
-                                    pass
-                
-                        "Let's try something else." if MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Situation = "shift"
-                                    $ Line = 0
-                                    jump E_LA_After
-                        "Let's stop for now." if not MultiAction: 
-                                    call E_Pos_Reset
-                                    $ Line = 0
-                                    jump E_LA_After
-        #End menu (if Line)
-        
-        if E_Panties or E_Legs == "pants" or HoseNum("Emma") >= 5: #This checks if Emma wants to strip down.
-                call E_Undress("auto")
-            
-        call Sex_Dialog("Emma",Partner)
-                
-        #If either of you could cum 
-        
-    
-        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
-        
-        if P_Focus >= 100 or E_Lust >= 100:   
-                    #If you can cum:
-                    if P_Focus >= 100:                                                     
-                            call PE_Cumming
-                            if "angry" in E_RecentActions:  
-                                call E_Pos_Reset
-                                return    
-                            $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, 5) 
-                            if 100 > E_Lust >= 70 and E_OCount < 2:             
-                                $ E_RecentActions.append("unsatisfied")                      
-                                $ E_DailyActions.append("unsatisfied") 
-                            
-                            if P_Focus > 80:
-                                jump E_LA_After 
-                            $ Line = "came"
-     
-                    #If Emma can cum
-                    if E_Lust >= 100:                                               
-                        call E_Cumming
-                        if Situation == "shift" or "angry" in E_RecentActions:
-                            jump E_LA_After
-                       
-                    if Line == "came": 
-                        $ Line = 0
-                        if not P_Semen:
-                            "You're emptied out, you should probably take a break."
-                            
-                            
-                        if "unsatisfied" in E_RecentActions:#And Emma is unsatisfied,  
-                            "Emma still seems a bit unsatisfied with the experience."
-                            menu:
-                                "Finish her?"
-                                "Yes, keep going for a bit.":
-                                    $ Line = "You get back into it" 
-                                "No, I'm done.":
-                                    "You pull back."
-                                    jump E_LA_After  
-        #End orgasm
-        
-   
+           
         if Round == 10:
             ch_e "It's getting late. . ."  
         elif Round == 5:
-            ch_e "We should take a break soon."       
+            ch_e "We should take a break soon."        
     
     #Round = 0 loop breaks
     call EmmaFace("bemused", 0)
