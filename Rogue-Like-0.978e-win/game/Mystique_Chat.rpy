@@ -200,9 +200,9 @@ label Mystique_Chat:
         "I just wanted to talk. . .":
                     call Mystique_Chitchat   
                     
-        # "Mystique's settings":
-        #             ch_p "Let's talk about you."
-        #             call Mystique_Settings   
+        "Mystique's settings":
+                    ch_p "Let's talk about you."
+                    call Mystique_Settings   
         
         # "Relationship status":      
         #             ch_p "Could we talk about us?"       
@@ -669,132 +669,132 @@ label Mystique_Settings:
                 else:
                     ch_m "I'll let you know when I care what you think."
 
-        "Wear this vibrator to class" if "vibeclass" not in newgirl["Mystique"].Traits:
-                if "exhibitionist" in newgirl["Mystique"].Traits:
-                    call NewGirl_FaceSpecial("Mystique", "sexy",1)
-                    ch_m "Oooh, i think that could be hot. . ."  
-                elif ApprovalCheck("Mystique", 1000, TabM=3) or ApprovalCheck("Mystique", 800, "I") or ApprovalCheck("Mystique", 750, "O"): 
-                    call NewGirl_FaceSpecial("Mystique", "surprised",1)
-                    ch_m "Well, I mean, maybe I could. . ."
-                else:
-                    call NewGirl_FaceSpecial("Mystique", "angry",1)
-                    $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -5) 
-                    ch_m "You hit your head or something?"
-                    return
-                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 90, 5) 
-                $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 90, 5) 
-                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 90, 5) 
-                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 5) 
-                $ newgirl["Mystique"].Traits.append("vibeclass")
+        # "Wear this vibrator to class" if "vibeclass" not in newgirl["Mystique"].Traits:
+        #         if "exhibitionist" in newgirl["Mystique"].Traits:
+        #             call NewGirl_FaceSpecial("Mystique", "sexy",1)
+        #             ch_m "Oooh, i think that could be hot. . ."  
+        #         elif ApprovalCheck("Mystique", 1000, TabM=3) or ApprovalCheck("Mystique", 800, "I") or ApprovalCheck("Mystique", 750, "O"): 
+        #             call NewGirl_FaceSpecial("Mystique", "surprised",1)
+        #             ch_m "Well, I mean, maybe I could. . ."
+        #         else:
+        #             call NewGirl_FaceSpecial("Mystique", "angry",1)
+        #             $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -5) 
+        #             ch_m "You hit your head or something?"
+        #             return
+        #         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 90, 5) 
+        #         $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 90, 5) 
+        #         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 90, 5) 
+        #         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, 5) 
+        #         $ newgirl["Mystique"].Traits.append("vibeclass")
                 
-        "Don't wear the vibrator to class" if "vibeclass" in newgirl["Mystique"].Traits:
-                ch_m "Ok"
-                $ newgirl["Mystique"].Traits.remove("vibeclass")
+        # "Don't wear the vibrator to class" if "vibeclass" in newgirl["Mystique"].Traits:
+        #         ch_m "Ok"
+        #         $ newgirl["Mystique"].Traits.remove("vibeclass")
                 
-        "Shift her Personality" if ApprovalCheck("Mystique", 900, "L", TabM=0) or ApprovalCheck("Mystique", 900, "O", TabM=0) or ApprovalCheck("Mystique", 900, "I", TabM=0):
-                ch_p "Could we talk about us?"
-                call Mystique_Personality
+        # "Shift her Personality" if ApprovalCheck("Mystique", 900, "L", TabM=0) or ApprovalCheck("Mystique", 900, "O", TabM=0) or ApprovalCheck("Mystique", 900, "I", TabM=0):
+        #         ch_p "Could we talk about us?"
+        #         call Mystique_Personality
             
-        "Your Pet Name":
-                ch_p "Could we talk about my pet name?"
-                if ApprovalCheck("Mystique", 600, "L", TabM=0) or ApprovalCheck("Mystique", 300, "O", TabM=0):
-                    call Mystique_Names    
-                else:
-                    $ newgirl["Mystique"].Mouth = "smile"
-                    ch_m "It's your name, [newgirl[Mystique].Petname]."
+        # "Your Pet Name":
+        #         ch_p "Could we talk about my pet name?"
+        #         if ApprovalCheck("Mystique", 600, "L", TabM=0) or ApprovalCheck("Mystique", 300, "O", TabM=0):
+        #             call Mystique_Names    
+        #         else:
+        #             $ newgirl["Mystique"].Mouth = "smile"
+        #             ch_m "It's your name, [newgirl[Mystique].Petname]."
                 
-        "Her Pet Name":
-                ch_p "I've got a pet name for you, you know?"
-                if ApprovalCheck("Mystique", 600, "L", TabM=0):
-                    ch_m "I'm dying to hear it. . ." 
-                elif ApprovalCheck("Mystique", 300, "O", TabM=0):
-                    ch_m "Do you now."
-                else:
-                    ch_m "You've made me curious. . ."          
-                call Mystique_Pet   
+        # "Her Pet Name":
+        #         ch_p "I've got a pet name for you, you know?"
+        #         if ApprovalCheck("Mystique", 600, "L", TabM=0):
+        #             ch_m "I'm dying to hear it. . ." 
+        #         elif ApprovalCheck("Mystique", 300, "O", TabM=0):
+        #             ch_m "Do you now."
+        #         else:
+        #             ch_m "You've made me curious. . ."          
+        #         call Mystique_Pet   
                     
-        "Other girls":
-            menu:
-                ch_p "How do you feel about. . ."
-                "Rogue?":
-                    call Mystique_AboutRogue  
-                "Kitty?":
-                    call Mystique_AboutKitty
-                "Never mind.":
-                    pass
+        # "Other girls":
+        #     menu:
+        #         ch_p "How do you feel about. . ."
+        #         "Rogue?":
+        #             call Mystique_AboutRogue  
+        #         "Kitty?":
+        #             call Mystique_AboutKitty
+        #         "Never mind.":
+        #             pass
         
-        "Follow options" if "follow" in newgirl["Mystique"].Traits:
-                ch_p "You know how you ask if I want to follow you sometimes?"
-                $ Line = 0
-                menu:
-                    ch_m "Yes?"
-                    "You can go where you want, I'll catch up later." if "freetravels" not in newgirl["Mystique"].Traits:
-                            call NewGirl_Face("Mystique","perplexed")
-                            ch_m "Fine, I'll leave some mystery."
-                            if "follow" not in newgirl["Mystique"].DailyActions:
-                                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -2)
-                                $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 30, 5) 
-                            $ newgirl["Mystique"].Traits.append("freetravels")
-                            $ Line = "free"
+        # "Follow options" if "follow" in newgirl["Mystique"].Traits:
+        #         ch_p "You know how you ask if I want to follow you sometimes?"
+        #         $ Line = 0
+        #         menu:
+        #             ch_m "Yes?"
+        #             "You can go where you want, I'll catch up later." if "freetravels" not in newgirl["Mystique"].Traits:
+        #                     call NewGirl_Face("Mystique","perplexed")
+        #                     ch_m "Fine, I'll leave some mystery."
+        #                     if "follow" not in newgirl["Mystique"].DailyActions:
+        #                         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 90, -2)
+        #                         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 30, 5) 
+        #                     $ newgirl["Mystique"].Traits.append("freetravels")
+        #                     $ Line = "free"
                             
-                    "You can ask if I want to follow you." if "asktravels" not in newgirl["Mystique"].Traits:
-                            call NewGirl_Face("Mystique","perplexed")
-                            ch_m "Don't want to be left behind?"
-                            if "follow" not in newgirl["Mystique"].DailyActions:
-                                $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 2) 
-                                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 60, 2) 
-                            $ Line = "ask"
+        #             "You can ask if I want to follow you." if "asktravels" not in newgirl["Mystique"].Traits:
+        #                     call NewGirl_Face("Mystique","perplexed")
+        #                     ch_m "Don't want to be left behind?"
+        #                     if "follow" not in newgirl["Mystique"].DailyActions:
+        #                         $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 70, 2) 
+        #                         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 60, 2) 
+        #                     $ Line = "ask"
                                                 
-                    "Don't ever leave when I'm around." if "lockedtravels" not in newgirl["Mystique"].Traits:
-                            if ApprovalCheck("Mystique", 600, "O") or ApprovalCheck("Mystique", 900, "L"):   
-                                call NewGirl_Face("Mystique","angry", Eyes="side")
-                                ch_m "I don't know why I put up with your nonsense."
-                                call NewGirl_Face("Mystique","sexy",1)
-                                ch_m "But {i}fine.{/i}"
-                                if "follow" not in newgirl["Mystique"].DailyActions:
-                                        if newgirl["Mystique"].Love > 90:
-                                            $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 99, 2)
-                                        $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 60, 10)                             
-                                $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, -5, 1) 
-                                $ Line = "lock"
-                            else:
-                                call NewGirl_Face("Mystique","angry")                        
-                                ch_m "Where I go is my own business."
+        #             "Don't ever leave when I'm around." if "lockedtravels" not in newgirl["Mystique"].Traits:
+        #                     if ApprovalCheck("Mystique", 600, "O") or ApprovalCheck("Mystique", 900, "L"):   
+        #                         call NewGirl_Face("Mystique","angry", Eyes="side")
+        #                         ch_m "I don't know why I put up with your nonsense."
+        #                         call NewGirl_Face("Mystique","sexy",1)
+        #                         ch_m "But {i}fine.{/i}"
+        #                         if "follow" not in newgirl["Mystique"].DailyActions:
+        #                                 if newgirl["Mystique"].Love > 90:
+        #                                     $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 99, 2)
+        #                                 $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 60, 10)                             
+        #                         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, -5, 1) 
+        #                         $ Line = "lock"
+        #                     else:
+        #                         call NewGirl_Face("Mystique","angry")                        
+        #                         ch_m "Where I go is my own business."
                             
-                    "Never mind.":
-                            ch_m "Whatever."
+        #             "Never mind.":
+        #                     ch_m "Whatever."
                         
-                if Line:
-                    $ newgirl["Mystique"].DailyActions.append("follow")                
-                    if "freetravels" in newgirl["Mystique"].Traits:
-                        $ newgirl["Mystique"].Traits.remove("freetravels") 
-                    if "asktravels" in newgirl["Mystique"].Traits:
-                        $ newgirl["Mystique"].Traits.remove("asktravels") 
-                    if "lockedtravels" in newgirl["Mystique"].Traits:
-                        $ newgirl["Mystique"].Traits.remove("lockedtravels") 
+        #         if Line:
+        #             $ newgirl["Mystique"].DailyActions.append("follow")                
+        #             if "freetravels" in newgirl["Mystique"].Traits:
+        #                 $ newgirl["Mystique"].Traits.remove("freetravels") 
+        #             if "asktravels" in newgirl["Mystique"].Traits:
+        #                 $ newgirl["Mystique"].Traits.remove("asktravels") 
+        #             if "lockedtravels" in newgirl["Mystique"].Traits:
+        #                 $ newgirl["Mystique"].Traits.remove("lockedtravels") 
                 
-                    if Line == "free":
-                        $ newgirl["Mystique"].Traits.append("freetravels")            
-                    elif Line == "ask":
-                        $ newgirl["Mystique"].Traits.append("asktravels")                
-                    elif Line == "lock":
-                        $ newgirl["Mystique"].Traits.append("lockedtravels")    
-                    $ Line = 0        
+        #             if Line == "free":
+        #                 $ newgirl["Mystique"].Traits.append("freetravels")            
+        #             elif Line == "ask":
+        #                 $ newgirl["Mystique"].Traits.append("asktravels")                
+        #             elif Line == "lock":
+        #                 $ newgirl["Mystique"].Traits.append("lockedtravels")    
+        #             $ Line = 0        
                               
-        "Gym clothes" if "asked gym" in newgirl["Mystique"].DailyActions and "no ask gym" not in newgirl["Mystique"].Traits:
-                    ch_p "You asked me about your gym clothes?"
-                    ch_p "Don't worry about that, your gym clothes are cute."   
-                    ch_m "I'm glad you approve."
-                    $ newgirl["Mystique"].Traits.append("no ask gym")
-        "Gym clothes" if "no ask gym" in newgirl["Mystique"].Traits:
-                    ch_p "You asked me about your gym clothes?"
-                    ch_p "Forget about that, I changed my mind."   
-                    ch_m "Ok, I'll keep that in mind."
-                    $ newgirl["Mystique"].Traits.remove("no ask gym")
+        # "Gym clothes" if "asked gym" in newgirl["Mystique"].DailyActions and "no ask gym" not in newgirl["Mystique"].Traits:
+        #             ch_p "You asked me about your gym clothes?"
+        #             ch_p "Don't worry about that, your gym clothes are cute."   
+        #             ch_m "I'm glad you approve."
+        #             $ newgirl["Mystique"].Traits.append("no ask gym")
+        # "Gym clothes" if "no ask gym" in newgirl["Mystique"].Traits:
+        #             ch_p "You asked me about your gym clothes?"
+        #             ch_p "Forget about that, I changed my mind."   
+        #             ch_m "Ok, I'll keep that in mind."
+        #             $ newgirl["Mystique"].Traits.remove("no ask gym")
                     
-        "Tasks" if "sir" in newgirl["Mystique"].Petnames:
-                    ch_p "I have some tasks for you."
-                    call Mystique_Controls
+        # "Tasks" if "sir" in newgirl["Mystique"].Petnames:
+        #             ch_p "I have some tasks for you."
+        #             call Mystique_Controls
             
         "Never mind.":
             return  
@@ -3698,11 +3698,21 @@ label Mystique_Clothes(Public=0,Bonus=0):
                 "Let's try something else though.":
                     ch_m "Very well."            
                     
-        "That combat uniform you have looks really nice on you.":
-            call MystiqueOutfit("costume")
+        # "That combat uniform you have looks really nice on you.":
+        #     call MystiqueOutfit("costume")
+        #     menu:
+        #         "You should wear this one out. [[set current outfit]":
+        #             $ newgirl["Mystique"].Outfit = "costume"
+        #             $ newgirl["Mystique"].Shame = newgirl["Mystique"].OutfitShame[2]
+        #             ch_m "I really enjoyed wearing that one."
+        #         "Let's try something else though.":
+        #             ch_m "Very well." 
+
+        "Those regular clothes look good on you.":
+            call MystiqueOutfit("regular")
             menu:
                 "You should wear this one out. [[set current outfit]":
-                    $ newgirl["Mystique"].Outfit = "costume"
+                    $ newgirl["Mystique"].Outfit = "regular"
                     $ newgirl["Mystique"].Shame = newgirl["Mystique"].OutfitShame[2]
                     ch_m "I really enjoyed wearing that one."
                 "Let's try something else though.":
@@ -3870,46 +3880,27 @@ label Mystique_Clothes(Public=0,Bonus=0):
             if not newgirl["Mystique"].Chest:
                 call Mystique_First_Topless
             
-        "Try on that white jacket you have." if newgirl["Mystique"].Over != "jacket":
+        "Try on that workout jacket you have." if newgirl["Mystique"].Over != "workout jacket":
             call NewGirl_Face("Mystique","bemused")
-            if newgirl["Mystique"].Chest or newgirl["Mystique"].SeenChest or ApprovalCheck("Mystique", 500, TabM=(3-Public)):
+            if newgirl["Mystique"].Chest or newgirl["Mystique"].SeenChest or ApprovalCheck("Mystique", 700, TabM=(3-Public)):
                 ch_m "Yeah, ok."          
             else:
                 call NewGirl_Face("Mystique","bemused", 1)
                 ch_m "I'm not sure this is appropriate without something more substantial underneath."
                 jump Mystique_Clothes    
-            $ newgirl["Mystique"].Over = "jacket"
+            $ newgirl["Mystique"].Over = "workout jacket"
 
-        "Try on that black jacket you have." if newgirl["Mystique"].Over != "black jacket":
+        "Try on that lavender shirt you have." if newgirl["Mystique"].Over != "lavender shirt":
             call NewGirl_Face("Mystique","bemused")
-            if newgirl["Mystique"].Chest or newgirl["Mystique"].SeenChest or ApprovalCheck("Mystique", 500, TabM=(3-Public)):
-                ch_m "Yeah, ok."          
-            else:
-                call NewGirl_Face("Mystique","bemused", 1)
-                ch_m "I'm not sure this is appropriate without something more substantial underneath."
-                jump Mystique_Clothes    
-            $ newgirl["Mystique"].Over = "black jacket"
+            #if ApprovalCheck("Mystique", 400, TabM=(3-Public)):
+            ch_m "Yeah, ok."          
+            $ newgirl["Mystique"].Over = "lavender shirt"
 
-        "Try on that white cape you have." if newgirl["Mystique"].Over != "cape":
+        "Try on that red shirt you have." if newgirl["Mystique"].Over != "red shirt":
             call NewGirl_Face("Mystique","bemused")
-            if newgirl["Mystique"].Chest or newgirl["Mystique"].SeenChest or ApprovalCheck("Mystique", 500, TabM=(3-Public)):
-                ch_m "Yeah, ok."          
-            else:
-                call NewGirl_Face("Mystique","bemused", 1)
-                ch_m "I'm not sure this is appropriate without something more substantial underneath."
-                jump Mystique_Clothes    
-            $ newgirl["Mystique"].Over = "cape"   
-
-        "Try on that black cape you have." if newgirl["Mystique"].Over != "black cape":
-            call NewGirl_Face("Mystique","bemused")
-            if newgirl["Mystique"].Chest or newgirl["Mystique"].SeenChest or ApprovalCheck("Mystique", 500, TabM=(3-Public)):
-                ch_m "Yeah, ok."          
-            else:
-                call NewGirl_Face("Mystique","bemused", 1)
-                ch_m "I'm not sure this is appropriate without something more substantial underneath."
-                jump Mystique_Clothes    
-            $ newgirl["Mystique"].Over = "black cape"   
-                
+            #if ApprovalCheck("Mystique", 400, TabM=(3-Public)):
+            ch_m "Yeah, ok."          
+            $ newgirl["Mystique"].Over = "red shirt"
             
         "Maybe just throw on a towel?" if newgirl["Mystique"].Over != "towel":
             call NewGirl_Face("Mystique","bemused", 1)
@@ -3941,20 +3932,20 @@ label Mystique_Clothes(Public=0,Bonus=0):
             "Then you could slip something on under it. . .":   
                         if (newgirl["Mystique"].SeenChest and ApprovalCheck("Mystique", 1000, TabM=(4-Public))) or ApprovalCheck("Mystique", 1200, TabM=(5-Public)):
                                 ch_m "-not that I'm overly concerned about it. . ."
-                        elif ApprovalCheck("Mystique", 900, TabM=2) and "lace bra" in newgirl["Mystique"].Inventory:
+                        elif ApprovalCheck("Mystique", 900, TabM=2) and "black bra" in newgirl["Mystique"].Inventory:
                                 ch_m "I suppose I could."
-                                $ newgirl["Mystique"].Chest  = "lace bra"    
+                                $ newgirl["Mystique"].Chest  = "black bra"    
                                 call Mystique_Tits_Up
-                                "She pulls out her lace bra and slips it on under her [newgirl[Mystique].Over]."
+                                "She pulls out her black bra and slips it on under her [newgirl[Mystique].Over]."
                         elif ApprovalCheck("Mystique", 800, TabM=2):
                                 ch_m "I suppose I could."
-                                $ newgirl["Mystique"].Chest = "NewX"
-                                "She pulls out her X-men bra and slips it on under her [newgirl[Mystique].Over]."
+                                $ newgirl["Mystique"].Chest = "top"
+                                "She pulls out her top and slips it on under her [newgirl[Mystique].Over]."
                         elif ApprovalCheck("Mystique", 700, TabM=(3-Public)):
                                 ch_m "I suppose I could."
-                                $ newgirl["Mystique"].Chest = "corset"   
+                                $ newgirl["Mystique"].Chest = "workout top"   
                                 call Mystique_Tits_Up
-                                "She pulls out her corset and slips it on under her [newgirl[Mystique].Over]."
+                                "She pulls out her workout top and slips it on under her [newgirl[Mystique].Over]."
                         else:
                                 ch_m "Yes, but I'd rather not."
                                 return 0
