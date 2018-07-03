@@ -100,6 +100,14 @@ label Rogue_Date_Night:
             $ R_Outfit = "custom2"
         elif R_Schedule[7] == 6:
             $ R_Outfit = "custom3"
+        elif R_Schedule[7] == 11:
+            $ R_Outfit = "custom4"
+        elif R_Schedule[7] == 12:
+            $ R_Outfit = "custom5"
+        elif R_Schedule[7] == 13:
+            $ R_Outfit = "custom6"
+        elif R_Schedule[7] == 14:
+            $ R_Outfit = "custom7"
         else:
             $ R_Outfit = "evo_green"
     else:
@@ -107,6 +115,10 @@ label Rogue_Date_Night:
         $ Options.append("custom1") if R_Custom[0] == 2 else Options
         $ Options.append("custom2") if R_Custom2[0] == 2 else Options
         $ Options.append("custom3") if R_Custom3[0] == 2 else Options
+        $ Options.append("custom4") if R_Custom4[0] == 2 else Options
+        $ Options.append("custom5") if R_Custom5[0] == 2 else Options
+        $ Options.append("custom6") if R_Custom6[0] == 2 else Options
+        $ Options.append("custom7") if R_Custom7[0] == 2 else Options
         $ renpy.random.shuffle(Options) 
         $ R_Outfit = Options[0]
         $ del Options[:]  

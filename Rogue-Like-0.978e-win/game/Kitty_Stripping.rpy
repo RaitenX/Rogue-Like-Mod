@@ -131,7 +131,11 @@ label K_Stripping:
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 50, 1)
                     $ P_Focus = Statupdate("Kitty", "Focus", P_Focus, 80, 15)      
                     $ Line = K_Chest
-                    $ K_Chest = 0                        
+                    if K_Chest == "swimsuit3":
+                        if K_Panties:
+                            $ K_Panties = 0
+                            call Kitty_First_Bottomless
+                    $ K_Chest = 0  
                     if not K_SeenChest:
                         call KittyFace("bemused", 1)
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 3)                              
@@ -206,7 +210,11 @@ label K_Stripping:
                 if ApprovalCheck("Kitty", 1250, TabM = 3) or (K_SeenChest and not Taboo):
                     $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 60, 5)  
                     $ Line = K_Chest
-                    $ K_Chest = 0         
+                    if K_Chest == "swimsuit3":
+                        if K_Panties:
+                            $ K_Panties = 0
+                            call Kitty_First_Bottomless
+                    $ K_Chest = 0       
                     if not K_SeenChest:
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 3)                              
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 4)               
@@ -227,7 +235,11 @@ label K_Stripping:
                 if ApprovalCheck("Kitty", 1350, TabM = 3) or (K_SeenPussy and not Taboo):
                     $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 75, 10) 
                     $ Line = K_Panties
-                    $ K_Panties = 0         
+                    if K_Panties == "swimsuit3":
+                        if K_Chest:
+                            $ K_Chest = 0
+                            call Kitty_First_Topless
+                    $ K_Panties = 0       
                     if not K_SeenPussy:
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 60, 3)                              
                         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 5)
@@ -528,11 +540,19 @@ label Kitty_Top_Off(Intro = 1, Line = 0, Cnt = 0):                              
                     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 90, (int(Taboo/20)))  
                 if Line:
                     $ Line = K_Chest
-                    $ K_Chest = 0
+                    if K_Chest == "swimsuit3":
+                        if K_Panties:
+                            $ K_Panties = 0
+                            call Kitty_First_Bottomless
+                    $ K_Chest = 0 
                     "As it hits the floor, she lets her [Line] fall through her."  
                 else:
                     $ Line = K_Chest
-                    $ K_Chest = 0
+                    if K_Chest == "swimsuit3":
+                        if K_Panties:
+                            $ K_Panties = 0
+                            call Kitty_First_Bottomless
+                    $ K_Chest = 0 
                     "Kitty growls slightly, and her [Line] falls through her body to the floor."                     
                 call Kitty_First_Topless(1) 
                 ch_k "I[K_like]wasn't feeling it that way."  
@@ -563,16 +583,28 @@ label Kitty_Top_Off(Intro = 1, Line = 0, Cnt = 0):                              
                 "Just lose the [K_Chest]." if K_Over and K_Chest:
                     call KittyFace("bemused", 1)                    
                     $ Line = K_Chest
-                    $ K_Chest = 0                 
+                    if K_Chest == "swimsuit3":
+                        if K_Panties:
+                            $ K_Panties = 0
+                            call Kitty_First_Bottomless
+                    $ K_Chest = 0                
                     "Kitty reaches through her [K_Over] and grabs, pulling her [Line] from underneath it."   
                 "Lose the [K_Chest]." if not K_Over and K_Chest:
                     call KittyFace("bemused", 1)
                     $ Line = K_Chest
+                    if K_Chest == "swimsuit3":
+                        if K_Panties:
+                            $ K_Panties = 0
+                            call Kitty_First_Bottomless
                     $ K_Chest = 0                 
                     "Kitty lets her [Line] fall to the ground."   
                 "Lose both tops." if K_Over and K_Chest:
                     call KittyFace("bemused", 1)
                     $ Line = K_Chest
+                    if K_Chest == "swimsuit3":
+                        if K_Panties:
+                            $ K_Panties = 0
+                            call Kitty_First_Bottomless
                     $ K_Chest = 0 
                     "Kitty smiles and suddenly her [Line] falls to between her legs. . ."     
                     $ Line = K_Over
@@ -693,10 +725,18 @@ label Kitty_Top_Off(Intro = 1, Line = 0, Cnt = 0):                              
                     $ K_Over = 0
                     "Kitty tosses the [Line] over her head. . ."   
                     $ Line = K_Chest
+                    if K_Chest == "swimsuit3":
+                        if K_Panties:
+                            $ K_Panties = 0
+                            call Kitty_First_Bottomless
                     $ K_Chest = 0 
                     ". . .and then the [Line] as well."
                 else: 
                     $ Line = K_Chest
+                    if K_Chest == "swimsuit3":
+                        if K_Panties:
+                            $ K_Panties = 0
+                            call Kitty_First_Bottomless
                     $ K_Chest = 0 
                     "Kitty lets the [Line] drop to the ground."                     
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 1)  
@@ -772,7 +812,11 @@ label Kitty_ToplessorNothing:
         if K_Over:
             if K_Chest:
                 $ Line = K_Chest
-                $ K_Chest = 0
+                if K_Chest == "swimsuit3":
+                    if K_Panties:
+                        $ K_Panties = 0
+                        call Kitty_First_Bottomless
+                $ K_Chest = 0 
                 "Kitty lets her [Line] drop to the floor. . ."            
                 $ Line = K_Over
                 $ K_Over = 0 
@@ -783,6 +827,10 @@ label Kitty_ToplessorNothing:
                 "Kitty lets her [Line] drop to the floor. . ."                  
         elif K_Chest:
             $ Line = K_Chest
+            if K_Chest == "swimsuit3":
+                if K_Panties:
+                    $ K_Panties = 0
+                    call Kitty_First_Bottomless
             $ K_Chest = 0 
             "Kitty lets her [Line] drop to the floor. . ."   
         call Kitty_First_Topless                       
@@ -1161,7 +1209,11 @@ label Kitty_Bottoms_Off_Legs:
                         call Kitty_NoPanties   
                     if K_Panties:                               
                         $ Line = K_Panties   
-                        $ K_Panties = 0  
+                        if K_Panties == "swimsuit3":
+                            if K_Chest:
+                                $ K_Chest = 0
+                                call Kitty_First_Topless
+                        $ K_Panties = 0 
                         "She glances up at you as she lets her [Line] drop." 
                     call Kitty_First_Bottomless   
                     
@@ -1203,9 +1255,12 @@ label Kitty_Bottoms_Off_Legs:
                         ch_k "[K_Like]I guess. . ."
                     else:
                         ch_k "Ok, sure, [K_Petname]."                                            
-                    $ Line = K_Panties   
-                    $ K_Panties = 0  
-                             
+                    $ Line = K_Panties
+                    if K_Panties == "swimsuit3":
+                        if K_Chest:
+                            $ K_Chest = 0
+                            call Kitty_First_Topless
+                    $ K_Panties = 0   
                     if PantsNum("Kitty") >= 10:
                         "She reaches into her pants, then pulls her [Line] through them."    
                     elif PantsNum("Kitty") >= 5:
@@ -1435,7 +1490,7 @@ label Kitty_First_Peen(Silent = 0, Undress = 0, GirlsNum = 0): #checked each tim
                             $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -5)                
                             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 12)
                             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 60, 10)                            
-        elif Taboo and (not ApprovalCheck("Kitty", 1500) or K_SEXP < 10) and bg_current != "bg showerroom":
+        elif (Taboo and not ApprovalCheck("Kitty", 1500) or K_SEXP < 10) and bg_current != "bg showerroom":
                 call KittyFace("surprised", 2)  
                 ch_k "Um, you should[K_like]put that away in public."
                 call KittyFace("bemused", 1)  

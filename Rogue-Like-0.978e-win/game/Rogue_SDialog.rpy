@@ -1,16 +1,11 @@
 ﻿# This is the section for Rogue's sex-related dialog options to be chosen. 
 
-label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):    
-    if Situation == "skip" and Line:
-            # if the action was set by a previous trigger, skip this element
-            $ Situation = 0
-            return
+label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
     
     if Trigger == "hand":
             $ Line = "Rogue continues stroke your cock. "
                
             if not Speed:
-                        $ Line = "Rogue holds your cock in her hand. "
                         if R_Hand > 2:
                                 $ Line = Line + "She just seems to be enjoying the feel of it"
                                 $ TempLust += 2 if R_Lust < 60 else 0
@@ -346,9 +341,10 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                         
             elif Speed < 2: 
                     $ Line = "You continue to pound Rogue. "        #if Rogue is the primary but is licking
-            else: 
+            elif Speed == 2: 
                     $ Line = "You continue to slowly drive into Rogue. "        #if Rogue is the primary and is heading or sucking
-            
+            else:
+                    $ Line = "You're going very fast now."
             if R_Sex > 4:
                 if Speed > 1:                       # After the 5th time fast
                         $ Line = Line + renpy.random.choice(["She bounces rapidly against your cock", 
@@ -487,8 +483,10 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                 
             elif Speed < 2: 
                     $ Line = "You continue to pound into Rogue's ass. "       
-            else: 
-                    $ Line = "You continue to push into Rogue's ass. " 
+            elif Speed == 2: 
+                    $ Line = "You continue to push into Rogue's ass. "
+            else:
+                    $ Line = "You're going very fast now." 
                     
                  
             if R_Anal >= 5:
@@ -668,7 +666,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
                                 $ TempLust += 1 if R_Lust < 50 else 0
                             
-                    elif R_Legs == "skirt" and HoseNum("Rogue") >= 5: # skirt with full hose          
+                    elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt") and HoseNum("Rogue") >= 5: # skirt with full hose           
                                 $ Line = renpy.random.choice(["You reach under skirt and stroke her thighs", 
                                         "You lift her skirt a bit and feel her firm thighs", 
                                         "Her legs twitch a bit beneath her skirt",
@@ -677,7 +675,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 $ TempFocus += 2 if P_Focus < 40 else 0  
                                 $ TempLust += 2 if R_Lust < 40 else 0                                
                                 $ R_Addict -= 1 if D20S > 10 else 0                            
-                    elif R_Legs == "skirt" and R_Hose: #skirt with stockings         
+                    elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt") and R_Hose: #skirt with stockings       
                                 $ Line = renpy.random.choice(["You reach under skirt and stroke her thighs", 
                                         "You lift her skirt a bit and feel her firm thighs", 
                                         "Her legs twitch a bit beneath her skirt",
@@ -686,7 +684,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 $ TempFocus += 2 if P_Focus < 50 else 0  
                                 $ TempLust += 2 if R_Lust < 50 else 0                               
                                 $ R_Addict -= 1 if D20S > 10 else 0                            
-                    elif R_Legs == "skirt":  #and no hose
+                    elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):  #and no hose
                                 $ Line = renpy.random.choice(["You reach under skirt and stroke her thighs", 
                                         "You lift her skirt a bit and feel her firm thighs", 
                                         "Her legs twitch a bit beneath her skirt",
@@ -742,7 +740,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "You slide a finger into her pussy and stroke the top", 
                                                     "You pull her pants out a bit and she gasps as you slide two fingers between her lips", 
                                                     "You rub her clit with your palm as you dive into her pussy with your middle finger"]) 
-                            elif R_Legs == "skirt":
+                            elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                                     if R_Panties == "shorts" and not R_PantiesDown: #shorts on
                                             $ Line = renpy.random.choice(["You push her skirt and shorts up, and slide a finger between her lips", 
                                                     "You slide a finger into her pussy and stroke the top", 
@@ -797,7 +795,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "She gasps as you reach under her and lightly stroke her ass through the jeans",
                                                     "You slide a hand up her inner thigh, she moans a little as you reach the point where they meet"])
                                                 
-                            elif R_Legs == "skirt":
+                            elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                                     if R_Panties == "shorts" and not R_PantiesDown: #shorts on
                                             $ Line = renpy.random.choice(["You reach under skirt and ran your hands over the thin shorts covering her", 
                                                     "You slide a hand up the leg of her shorts, and brush your hands across her pussy underneath", 
@@ -903,7 +901,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                             $ TempFocus += 1 if P_Focus < 70 else 0  
                                             $ TempLust += 3 if R_Lust > 60 else 2
                             else:                    
-                                if R_Legs == "skirt":
+                                if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                                         if R_Panties == "shorts" and not R_PantiesDown: #shorts on
                                                 $ Line = renpy.random.choice(["You push her skirt up and lick at her pussy through her shorts",                 
                                                         "You bend down and lick the edges of her lips through the shorts",                 
@@ -1030,7 +1028,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 "She gasps as you reach under her and lightly stroke her ass through the jeans",
                                                 "You slide a hand up her inner thigh, she moans a little as it slides betweek her cheeks"])  
                                             
-                        elif R_Legs == "skirt":
+                        elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                                 if R_Panties == "shorts" and not R_PantiesDown: #shorts on
                                         $ Line = renpy.random.choice(["You reach under skirt and brush across her shorts", 
                                                 "You lift her skirt a bit and grind against her shorts", 
@@ -1125,7 +1123,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                     "You slide a finger into her tight anus", 
                                                     "You pull her pants out a bit and she gasps as you slide a finger up her hole", 
                                                     "You gasps as you rub her asshole with your fingers"]) 
-                            elif R_Legs == "skirt":
+                            elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                                     if R_Panties == "shorts" and not R_PantiesDown: #shorts on
                                             $ Line = renpy.random.choice(["You push her skirt and shorts up, and slide a finger into her anus", 
                                                     "You slide a finger into her tight anus", 
@@ -1182,7 +1180,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                                 $ TempFocus += 1 if P_Focus < 70 else 0  
                                                 $ TempLust += 1 if R_Lust < 60 else 0
                             else:                    
-                                if R_Legs == "skirt":
+                                if (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):
                                         if R_Panties == "shorts" and not R_PantiesDown: #shorts on
                                                 $ Line = renpy.random.choice(["You push her skirt up and lick at her asshole through her shorts",                 
                                                         "You bend down and stroke the edges of her shorts with your tongue",                 
@@ -1299,14 +1297,14 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
                                 $ TempLust += 3 if R_Lust < 50 else 1
                         else:
-                                if R_Legs == "skirt" and R_Panties:            
+                                if (R_Legs == "skirt" or R_Legs == "cheerleader skirt") and R_Panties:           
                                     $ Line = renpy.random.choice(["You push her skirt and panties aside, and slide the dildo into her pussy", 
                                             "You slide the toy deep into her pussy", 
                                             "She gasps as you rotate the dildo within her tight pussy",
                                             "You rub her clit with your thumb as you dive into her puss with the rubber phallus"])
                                     $ TempFocus += 2 if P_Focus < 50 else 1  
                                     $ TempLust += 8 if R_Lust > 70 else 5
-                                elif R_Legs == "skirt":            
+                                elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):             
                                     $ Line = renpy.random.choice(["You push her skirt aside, and slide the dildo into her tight hole", 
                                             "You slide the toy deep into her pussy",
                                             "You lift her skirt a bit and she gasps as you slide the dildo firmly into her tight puss", 
@@ -1352,14 +1350,14 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                 $ TempFocus += 1 if P_Focus < 50 else 0  
                                 $ TempLust += 3 if R_Lust < 50 else 1
                         else:
-                                if R_Legs == "skirt" and R_Panties:            
+                                if (R_Legs == "skirt" or R_Legs == "cheerleader skirt") and R_Panties:            
                                     $ Line = renpy.random.choice(["You push her skirt and panties aside, and slide the dildo into her ass", 
                                             "You slide the toy deep into her ass", 
                                             "She gasps as you rotate the dildo within her tight asshole",
                                             "You rub her clit with your thumb as you dive into her ass with the rubber phallus"])
                                     $ TempFocus += 2 if P_Focus < 50 else 1  
                                     $ TempLust += 8 if R_Lust > 70 else 5
-                                elif R_Legs == "skirt":            
+                                elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):           
                                     $ Line = renpy.random.choice(["You push her skirt aside, and slide the dildo into her tight hole", 
                                             "You slide the toy deep into her ass",
                                             "You lift her skirt a bit and she gasps as you slide the dildo firmly into her tight anus", 
@@ -1392,6 +1390,65 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
                                         $ TempLust += 1   
     # end R dildo ass                              /////////////////////////////////////////////////////////////////////////////
     
+    elif Trigger == "plug":
+                        if R_Legs == "pants" and not R_Upskirt:
+                                $ Line = renpy.random.choice(["You rub the plug against the outside of her jeans", 
+                                        "You slap the plug lightly against her ass"])
+                                $ TempFocus += 1 if P_Focus < 50 else 0  
+                                $ TempLust += 3 if R_Lust < 50 else 1
+                        elif HoseNum("Rogue") >= 10:
+                                $ Line = renpy.random.choice(["You rub the plug against the outside of her tights", 
+                                        "You slap the plug lightly at the outside of her tights"])
+                                $ TempFocus += 1 if P_Focus < 50 else 0  
+                                $ TempLust += 3 if R_Lust < 50 else 1
+                        elif HoseNum("Rogue") >= 5:
+                                $ Line = renpy.random.choice(["You rub the plug against the outside of her hose", 
+                                        "You slap the plug lightly at the outside of her hose"])
+                                $ TempFocus += 1 if P_Focus < 50 else 0  
+                                $ TempLust += 3 if R_Lust < 50 else 1
+                        else:
+                                if (R_Legs == "skirt" or R_Legs == "cheerleader skirt") and R_Panties:            
+                                    $ Line = renpy.random.choice(["You push her skirt and panties aside, and slide the plug into her ass", 
+                                            "You slide the toy deep into her ass", 
+                                            "She gasps as you rotate the plug within her tight asshole",
+                                            "You rub her clit with your thumb as you dive into her ass with the rubber phallus"])
+                                    $ TempFocus += 2 if P_Focus < 50 else 1  
+                                    $ TempLust += 8 if R_Lust > 70 else 5
+                                elif (R_Legs == "skirt" or R_Legs == "cheerleader skirt"):           
+                                    $ Line = renpy.random.choice(["You push her skirt aside, and slide the plug into her tight hole", 
+                                            "You slide the toy deep into her ass",
+                                            "You lift her skirt a bit and she gasps as you slide the plug firmly into her tight anus", 
+                                            "She gasps as you rotate the plug within her ass",
+                                            "You rub her clit with your thumb as you dive into her ass with the rubber phallus"])
+                                    $ TempFocus += 2 if P_Focus < 50 else 1  
+                                    $ TempLust += 8 if R_Lust > 70 else 5
+                                elif R_Panties and not R_PantiesDown:            
+                                    $ Line = renpy.random.choice(["You push her panties aside, and slide the plug into her tight ass", 
+                                            "You slide the plug into her ass and stroke it rapidly", 
+                                            "You lift her panties a bit and she gasps as you slide the plug between her cheeks", 
+                                            "She gasps as you rub her tight asshole with the toy",
+                                            "You rub her clit with your thumb as you dive into her asshole with the plug",
+                                            "You reach into her gap and she gasps as you slide the plug in and press against her tight anus through the thin material"])
+                                    $ TempFocus += 2 if P_Focus < 50 else 1  
+                                    $ TempLust += 8 if R_Lust > 70 else 5
+                                else:            
+                                    $ Line = renpy.random.choice(["You reach out and slide the plug between her cheeks", 
+                                            "You slide the toy into her asshole and stroke it against the sides", 
+                                            "You pull her cheeks apart and she gasps as you slide the plug between them", 
+                                            "You can feel her twitching as you press your thumb against her anus",
+                                            "She gasps as you rub her anus with the hard rubber",
+                                            "You rub her clit with your thumb as you dive into her asshole with the plug",
+                                            "You reach into her gap and she gasps as you slide the toy across and press it into her firm anus"])            
+                                    $ TempFocus += 3 if P_Focus < 50 else 1  
+                                    $ TempLust += 10 if R_Lust > 70 else 6
+                                if not R_Loose:
+                                        $ TempLust -= 3
+                                elif R_Loose < 2:
+                                        $ TempLust += 1   
+    # end R dildo ass                              /////////////////////////////////////////////////////////////////////////////
+    
+
+
     elif Trigger == "masturbation":
                 call Rogue_Self_Lines  
                 if "unseen" not in R_RecentActions:
@@ -1403,7 +1460,7 @@ label Rogue_SexDialog(TempLine = 0, TempLust = 0, TempLust2 = 0):
     elif Trigger == "lesbian":
                 call Rogue_SexDialog_Threeway("lesbian")      
     
-    elif Trigger == "kiss you":  
+    elif Trigger == "kissing":  
                         $ R_Addict -= 3 
                         if R_Kissed > 10 and R_Love >= 700:#Loving
                                 $ Line = renpy.random.choice(["She hungrily presses her lips against yours", 
@@ -1485,13 +1542,19 @@ label Rogue_Self_Lines(Mode = "T3", Action = Trigger3, TempLustX = 0):
                     $ Action = Trigger5  
             if not Action: 
                     return
+            elif (R_Over == "bondage" or R_Over == "bondage cuffs" or R_Over == "armbinder") and not Line:
+                    $ Line = "Also, Rogue continues stroke your cock. "
             elif Action == "hand" and not Line: 
                     $ Line = "Also, Rogue continues stroke your cock. "
             elif not Line:        
                     $ Line = "Also, Rogue continues to masturbate. "      
     elif Action == "hand": 
             $ Line = "Rogue continues stroke your cock. "
-    else:        
+    elif R_Over == "bondage" or R_Over == "bondage cuffs" or R_Over == "armbinder": 
+            $ Line = renpy.random.choice(["Rogue tries to move her arms around. ", 
+                    "Rogue can't keep still. ",
+                    "Rogue can't keep still. "])
+    else:       
             $ Line = renpy.random.choice(["Rogue continues to masturbate. ", 
                     "Rogue's hands move across her body. ",
                     "Rogue continues to feel herself. ",
@@ -1701,7 +1764,7 @@ label Rogue_Self_Set(Mode = "T3", Action = Trigger3, Length=0, Count2=0, Options
                         $ Options.append("vibrator pussy") 
             
     else:
-                if Mode != "T5" and Trigger in ("fondle pussy", "fondle breasts", "fondle thighs", "kiss you", "fondle ass", "suck breasts") and R_Hand >= 5:
+                if Mode != "T5" and Trigger in ("fondle pussy", "fondle breasts", "fondle thighs", "kissing", "fondle ass", "suck breasts") and R_Hand >= 5:
                         $ Options.append("hand")
                     
                 if Trigger not in ("sex", "fondle pussy", "lick pussy", "dildo pussy"):
@@ -1746,7 +1809,9 @@ label Rogue_Self_Set(Mode = "T3", Action = Trigger3, Length=0, Count2=0, Options
     $ Count2 = Length if Count2 > Length else Count2
     if Action != Options[Count2]: #If the action remains the same as it was.
             $ Action = Options[Count2] #Sets Action to the selected Option
-            if Action == "hand": 
+            if R_Over == "bondage" or R_Over == "bondage cuffs" or R_Over == "armbinder":
+                    $ Line = "Rogue presses her tits together against your cock. "
+            elif Action == "hand": 
                     $ Line = "Rogue slides her hand down and firmly grabs your dick. "
             elif Action == "fondle pussy":
                     $ Line = "Rogue's hand slides down and begins to stroke her pussy. "
@@ -1760,7 +1825,9 @@ label Rogue_Self_Set(Mode = "T3", Action = Trigger3, Length=0, Count2=0, Options
                     $ Line = "Rogue pulls out her vibrator and strokes it across her body. "      
             else: # Action == "fondle breasts"
                     $ Line = "Rogue's hands slide up her body and begin to kneed her breasts. "
-    elif Action == "hand": 
+    elif R_Over == "bondage" or R_Over == "bondage cuffs" or R_Over == "armbinder":
+            $ Line = "Also, Rogue continues stroke your cock. "
+    elif Action == "hand" or R_Over == "bondage" or R_Over == "bondage cuffs" or R_Over == "armbinder": 
             $ Line = "Also, Rogue continues stroke your cock. "
     else:        
             $ Line = "Also, Rogue continues to masturbate. "
@@ -1777,13 +1844,11 @@ label Rogue_Self_Set(Mode = "T3", Action = Trigger3, Length=0, Count2=0, Options
 
 
 # Start Rogue Threeway Dialog / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
 label Rogue_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, TempLine = 0, TempLust = 0, TempLust2 = 0, TempFocus = 0):
     # This is the dialog checked for Trigger 4, activated when Rogue is the second girl in a scene, or for Lesbian activities.
     # if Mode is "lesbian" then it means she's doing a girl/girl sequence, and activating secondary dialogs.
     # By default, ActiveGirl will be the primary and this sequence will build text for what the secondary girl does.
     # In "lesbian" mode, ActiveGirl will be the secondary girl, and this sequence will build text for what the primary will do to her.
-    # Lesbian Trigger1 dialog calls "call Rogue_SexDialog_Threeway("lesbian")"
     
     call Rogue_Threeway_Set(Mode = Mode)   #Picks a new activty on a 7-9 roll or when not set, otherwise returns
     
@@ -2192,39 +2257,38 @@ label Rogue_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, TempL
         
     # end R lick ass Threeway                              /////////////////////////////////////////////////////////////////////////////
     
-    elif Action == "masturbation":            
+    elif Action == "masturbation":
+                        if Trigger5 in ("kiss you", "kiss girl", "kiss both"):
+                                $ Trigger5 = 0 #Clear out Trigger 5 if it's for kissing.                
                         call Rogue_Self_Lines("T5",Trigger5)  
                         $ TempLust = 0
                 
     # end R Masturbation Threeway                              /////////////////////////////////////////////////////////////////////////////
     
-    elif Action in ("kiss you", "kiss girl", "kiss both"):
-                        if Trigger == "blow" and R_Blow > 5 and Trigger4 == "kiss girl":
+    elif Action == "kissing":
+                        if Trigger == "blow" and R_Blow > 5 and Trigger5 != "kiss you":
                                     $ Line = "Rogue also continues to kiss " + ActiveGirl
                                     $ Line = Line + renpy.random.choice([", occasionally taking a lick of your cock as well", 
                                             ", licking along her cheek",
                                             ", nudging you out of her mouth to get a deep kiss in",
                                             ", taking the occasional lick down your shaft",
                                             ", nudging her aside to kiss the head of your cock"])
-                        elif Trigger == "blow" and Trigger4 == "kiss girl":
+                        elif Trigger == "blow" and Trigger5 != "kiss you":
                                     $ Line = "Rogue also continues to kiss " + ActiveGirl
                                     $ Line = Line + renpy.random.choice([", occasionally bumping into your cock as well", 
                                             ", licking along her cheek",
                                             ", nudging you out of her mouth to get a deep kiss in",
                                             ", trailing kisses down her neck"])
                         else: #they're just kissing
-                                    if Action == "kiss girl" or Mode == "lesbian":
-                                        if Trigger == "lesbian" and Primary == "Rogue":
-                                                $ Line = "Rogue continues to make out with " + ActiveGirl
-                                        else:                                            
-                                                $ Line = "Rogue also continues to make out with " + ActiveGirl
+                                    if Trigger5 == "kiss girl" or Mode == "lesbian":
+                                        $ Line = "Rogue also continues to make out with " + ActiveGirl
                                         $ Line = Line + renpy.random.choice([", occasionally coming up for air", 
                                                 ", licking along her cheek",
                                                 ", grabbing her face in both hands",
                                                 ", their tongues swirl around each other",
                                                 ", occasionally nibbling at her ears",
                                                 ", trailing kisses down her neck"])
-                                    elif Action == "kiss you":
+                                    elif Trigger5 == "kiss you":
                                         $ Line = "Rogue also continues to make out with you" 
                                         $ Line = Line + renpy.random.choice([", occasionally coming up for air", 
                                                 ", licking along your cheek",
@@ -2232,7 +2296,7 @@ label Rogue_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, TempL
                                                 ", your tongues swirl around each other",
                                                 ", occasionally nibbling at your ears",
                                                 ", trailing kisses down your neck"])
-                                    else: #Action == "kiss both":
+                                    else: #Trigger5 == "kiss both":
                                         $ Line = "Rogue also continues to make out with both of you"
                                         $ Line = Line + renpy.random.choice([", occasionally coming up for air", 
                                                 ", licking along your cheek",
@@ -2302,29 +2366,23 @@ label Rogue_SexDialog_Threeway(Mode = 0, Action = 0, ActiveGirl = Primary, TempL
 # Start Rogue Threeway-set ////////////////////////////////////////////////////////////////////////
 
 label Rogue_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = Primary, State = "watcher", TempLust = 0, TempLust2 = 0, TempFocus = 0):
-            # Action defaults to Trigger4, the action of the seondary girl and ActiveGirl to the lead girl in the scene
-            # In lesbian mode, Action becomes Trigger3, the secondary action of the primary girl, and ActiveGirl is the secondary girl
-            # If Set gets passed a preset, it chooses that preset, otherwise it chooses one randomly
-            # for Lesbian: Rogue_Threeway_Set("activity", "lesbian", Trigger3, "Rogue")
-            # for Threeway: Rogue_Threeway_Set("activity", 0, Trigger4, "Other girl")
-            
-            if not Preset: 
-                    #if no preset is offered
-                    if Mode == "lesbian": 
-                            #If it's in lesbian mode, there is already a trigger set, and the roll is good, continue
-                            
-                            if Trigger3 == "kiss girl" and R_Lust <= 20 and R_Org < 1:
-                                    # If kissing at low lust, keep doing it
-                                    return
-                            elif Trigger3 and ThreeCount <= Round:
-                                    # If a Trigger3 is already set and it's under the count, return
-                                    return
-                    elif Trigger4 and D20S < 15 and Trigger4 != "watch": 
-                            #If there is a trigger, it's not set to "watch," and the roll is good, continue
+    # Action defaults to Trigger4, the action of the seondary girl and ActiveGirl to the lead girl in the scene
+    # In lesbian mode, Action becomes Trigger3, the secondary action of the primary girl, and ActiveGirl is the secondary girl
+    # If Set gets passed a preset, it chooses that preset, otherwise it chooses one randomly
+    # for Lesbian: Rogue_Threeway_Set("activity", "lesbian", Trigger3, "Rogue")
+    # for Threeway: Rogue_Threeway_Set("activity", 0, Trigger4, "Rogue")
+    
+            if Mode == "lesbian" and Trigger3 and not Preset:
+                    #If it's in lesbian mode, there is already a trigger set, and the roll is good, continue
+                    if 5 <= D20S <= 15:
                             return
-                    elif Trigger4 and ThreeCount <= Round:
-                            # if there's not a Preset, and it's only been X turns since the last change, return.
+                    if Trigger3 == "kissing" and K_Lust <= 30:
+                            # If kissing at low lust, keep doing it
                             return
+            elif Trigger4 and D20S < 10 and Trigger4 != "watch" and not Preset: 
+                    #If there is a trigger, it's not set to "watch," and the roll is good, continue
+                    return
+                    
             $ Options = ["watch", "masturbation", "masturbation", "masturbation"]
                         
             if Trigger == "lesbian":
@@ -2334,44 +2392,27 @@ label Rogue_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = P
                     $ Options = ["kiss girl","kiss girl"]        
                     if Preset in ("hand","blow","kiss you","kiss both"):
                             #if you send it presets that you want the other girl to touch you. . .
-                            $ State = "threeway"   
-                    elif Preset:
-                            pass
-                    elif ActiveGirl == "Kitty" and R_LikeKitty >= 600 and ApprovalCheck("Rogue", 500, "I"):
-                            pass
-                    elif ActiveGirl == "Emma" and R_LikeEmma >= 600 and ApprovalCheck("Rogue", 500, "I"):
-                            pass
-                    else:
-                            #this returns if she doesn't like the other girl enough to do anything more.
-                            if Action != "kiss girl":                                
-                                    $ Line = "Rogue gives " + ActiveGirl + " a passionate kiss"
-                                    $ Action = "kiss girl" 
-                                    $ Trigger3 = "kiss girl" 
-                                    if "lesbian" not in R_RecentActions:
-                                            $ R_Les += 1
-                                            $ R_RecentActions.append("lesbian")    
-                            return
-                        
+                            $ State = "threeway"                        
             elif not ApprovalCheck("Rogue", 500, "I"): # If Rogue is too timid to do anything
                     pass
-            elif ActiveGirl == "Kitty":
+            elif Primary == "Kitty":
                     if R_LikeKitty >= 700 and ApprovalCheck("Rogue", (1500-(10*R_Les)-(10*(R_LikeKitty-60)))): #If she likes both of you a lot, threeway
                             $ State = "threeway"
                     elif ApprovalCheck("Rogue", 1000): #If she likes you well enough, Hetero
                             $ State = "hetero"            
                     elif R_LikeKitty >= 700: #if she doesn't like you but likes Kitty, lesbian
                             $ State = "lesbian"
-            elif ActiveGirl == "Emma":
-                    if R_LikeEmma >= 600 and ApprovalCheck("Rogue", (1500-(10*R_Les)-(10*(R_LikeEmma-60)))): #If she likes both of you a lot, threeway
+            elif Primary == "Emma":
+                    if K_LikeEmma >= 600 and ApprovalCheck("Kitty", (1500-(10*K_Les)-(10*(K_LikeEmma-60)))): #If she likes both of you a lot, threeway
                             $ State = "threeway"
-                    elif ApprovalCheck("Rogue", 1000): #If she likes you well enough, Hetero
+                    elif ApprovalCheck("Kitty", 1000): #If she likes you well enough, Hetero
                             $ State = "hetero"            
-                    elif R_LikeEmma >= 700: #if she doesn't like you but likes Emma, lesbian
+                    elif K_LikeRogue >= 700: #if she doesn't like you but likes Emma, lesbian
                             $ State = "lesbian"
             
-            if State == "lesbian" or State == "threeway":  
+            
+            if State == "lesbian" or State == "threeway":
                 $ Options.extend(("fondle breasts","suck breasts","fondle pussy","fondle ass","kiss girl")) 
-                
                 if ActiveGirl == "Kitty":
                             if ApprovalCheck("Rogue", 800, "I") or R_LikeKitty >= 800:
                                 $ Options.append("lick pussy")
@@ -2392,7 +2433,7 @@ label Rogue_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = P
             if State == "hetero" or State == "threeway":
                     $ Options.extend(("hand","blow","kiss you"))                 
             $ renpy.random.shuffle(Options)
-             
+            
             if Preset in Options:
                     #if the suggested action is in the possible actions. . .
                     $ Options[0] = Preset 
@@ -2416,6 +2457,9 @@ label Rogue_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = P
                     
             if Options[0] == "masturbation":
                         $ Action = "masturbation"  
+                        if Trigger != "lesbian" and Trigger5 in ("kiss you", "kiss girl", "kiss both"):
+                                #Clear out Trigger 5 if it's for kissing.  
+                                $ Trigger5 = 0 
                         call Rogue_Self_Lines("T5",Trigger5)
             elif Options[0] == "hand":
                         $ Line = Line + " before she slides her hand down and firmly grabs your dick"
@@ -2520,27 +2564,47 @@ label Rogue_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = P
                                 $ TempLust2 += 6 if E_LikeRogue >= 800 else 4
                         $ TempFocus += 2  
                         
-            elif Options[0] == "kiss girl" or Mode == "lesbian":                               
-                        $ Line = Line + " and gives " + ActiveGirl + " a passionate kiss"
-                        $ Action = "kiss girl"
-                        if Mode != "lesbian" and "kiss you" in Options:
-                                if Trigger == "kiss you":
-                                        $ Action = "kiss both"                        
-                                elif Trigger3 == "kiss you":
-                                        $ Action = "kiss both"           
-                                elif Trigger4 == "kiss you":
-                                        $ Action = "kiss both" 
+            elif Options[0] == "kiss girl" or Mode == "lesbian":   
+#                        call RThreewayBreasts_Launch #Launches position change                                
+                        $ Line = Line + " and gives " + ActiveGirl + " a passionate kiss" #use T5 on this to choose targets
+                        $ Action = "kissing"  
+                        if Mode != "lesbian":
+                            if "kiss you" in Options:
+                                $ Trigger5 = "kiss both" 
+                            else:
+                                $ Trigger5 = "kiss girl"  
+                        if "lesbian" not in R_RecentActions:
+                                $ R_Les += 1
+                                $ R_RecentActions.append("lesbian") 
+                        if ActiveGirl == "Kitty": #If Rogue is kissing Kitty
+                                $ TempLust += 1 if ApprovalCheck("Rogue", 500, "I") else 0  # Rogue's lust
+                                $ TempLust += 1 if R_LikeKitty >= 800 else 0
+                                $ TempLust2 += 2 if K_LikeRogue >= 800 else 1
+                        elif ActiveGirl == "Emma": #If Rogue is kissing Emma
+                                $ TempLust += 1 if ApprovalCheck("Rogue", 500, "I") else 0  # Rogue's lust
+                                $ TempLust += 1 if R_LikeEmma >= 800 else 0
+                                $ TempLust2 += 2
                         $ TempFocus += 1  
             elif Options[0] == "kiss you":   
-                        $ Line = Line + " and gives you a passionate kiss"
-                        $ Action = "kiss you"  
-                        if "kiss girl" in Options: 
-                                if Trigger == "kiss you":
-                                        $ Action = "kiss both"                         
-                                elif Trigger3 == "kiss you":
-                                        $ Action = "kiss both"           
-                                elif Trigger4 == "kiss you":
-                                        $ Action = "kiss both" 
+#                        call RThreewayBreasts_Launch #Launches position change
+                        $ Line = Line + " and gives you a passionate kiss" #use T5 on this to choose targets
+                        $ Action = "kissing"   
+                        if "kiss girl" in Options:
+                            $ Trigger5 = "kiss both" 
+                            if "lesbian" not in R_RecentActions:
+                                    $ R_Les += 1
+                                    $ R_RecentActions.append("lesbian")                                     
+                            if ActiveGirl == "Kitty": #If Rogue is kissing Kitty
+                                    $ TempLust += 1 if ApprovalCheck("Rogue", 500, "I") else 0  # Rogue's lust
+                                    $ TempLust += 1 if R_LikeKitty >= 800 else 0
+                                    $ TempLust2 += 2 if K_LikeRogue >= 800 else 1
+                            elif ActiveGirl == "Emma": #If Rogue is kissing Emma
+                                    $ TempLust += 1 if ApprovalCheck("Rogue", 500, "I") else 0  # Rogue's lust
+                                    $ TempLust += 1 if R_LikeEmma >= 800 else 0
+                                    $ TempLust2 += 2
+                            $ TempFocus += 1 
+                        else:
+                            $ Trigger5 = "kiss you" 
                         $ TempLust += 1 
                         $ TempFocus += 1 
                         
@@ -2560,28 +2624,8 @@ label Rogue_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = P
                                 $ TempLust += 3 if R_LikeEmma >= 800 else 2  # Rogue's lust
                                 $ TempLust2 += 2 if ApprovalCheck("Emma", 700, "I") else 1
                         $ TempFocus += 1 
-            
-            if Action == "kiss girl" or Action == "kiss both":
-                    #If there's a semi-lesbian make-out. . .
-                    if "lesbian" not in R_RecentActions:
-                            $ R_Les += 1
-                            $ R_RecentActions.append("lesbian")                                     
-                    if ActiveGirl == "Kitty": #If Rogue is kissing Kitty
-                            $ TempLust += 1 if ApprovalCheck("Rogue", 500, "I") else 0  # Rogue's lust
-                            $ TempLust += 1 if R_LikeKitty >= 800 else 0
-                            $ TempLust2 += 2 if K_LikeRogue >= 800 else 1
-                    elif ActiveGirl == "Emma": #If Rogue is kissing Emma
-                            $ TempLust += 1 if ApprovalCheck("Rogue", 500, "I") else 0  # Rogue's lust
-                            $ TempLust += 1 if R_LikeEmma >= 800 else 0
-                            $ TempLust2 += 2
-                    $ TempFocus += 1 
-                                
+                 
             # Wrap-up
-            if Preset:
-                    $ ThreeCount = Round - 2
-            else: 
-                    #this sets a delay before the values change again on their own
-                    $ ThreeCount = Round - 1
             $ TempLust2 += 2       
             if Mode == "lesbian":
                 #Sets Primary Girl's secondary action
@@ -2600,244 +2644,112 @@ label Rogue_Threeway_Set(Preset = 0, Mode = 0, Action = Trigger4, ActiveGirl = P
 # end Rogue Threeway-set ////////////////////////////////////////////////////////////////////////
 
 
-label Dirty_Talk(D20=0, TempCheck=0, TempLine=0, TempTrigger=Trigger4, ActiveGirl=0):    
-    $ D20 = renpy.random.randint(1, 20)  
+label Dirty_Talk(D20=0, TempCheck=0, Line=0):    
+    $ D20 = renpy.random.randint(1, 20)   
+    if D20 >= 15 and Secondary:
+            #if it's a high roll and there is a second girl, do a threesome line
+#            $ Line = "threesome" #fix this when there are threesome lines to add.
+            $ Line = "partner"
+    elif D20 >= 10 and Secondary:
+            #if it's a medium roll and there is a second girl, do a partner line
+            $ Line = "partner"
+    else:
+            #if it's a lower roll, do a single girl line. Primary
+            $ Line = "primary"
+        
     #Rogue    
-    if (Primary == "Rogue" and D20 <= 10) or (Secondary == "Rogue" and Trigger4 and D20 >= 15):
-            #If the primary is Rogue or Rogue is the Partner            
-            if Trigger == "lesbian" and "unseen" in R_RecentActions:
-                    if Primary == "Rogue":
-                        $ ActiveGirl = Secondary
-                    else:
-                        $ ActiveGirl = Primary
-                    $ TempLine = renpy.random.choice([
-                            "Touching ya is so amazing, " + ActiveGirl + ".",
-                            "Your body feels so amazing. . .",
-                            "Mmmm. . .right there.",
-                            "Ya like that, " + ActiveGirl + "?"
-                            ]) 
-            elif R_SEXP <= 30 and ApprovalCheck("Rogue", 400, "I"):
+    $ D20 = renpy.random.randint(1, 20)   
+    if Primary == "Rogue" or (Line == "partner" and Secondary == "Rogue" and D20 >= 15):
+            #If the primary is Rogue or Rogue is the Partner
+            if D20 <= 5 or (R_SEXP <= 30 and ApprovalCheck("Rogue", 400, "I")):
                     #If she's relatively inexperienced or there is a low roll
-                    $ TempLine = renpy.random.choice([
+                    $ Line = renpy.random.choice([
                             "Touching ya is so amazing, " + R_Petname + ".",
                             "Every time you touch me. . .it's like, I can't even put it into words.",
                             "Mmmm. . .right there.",
                             "Ya like that, " + R_Petname + "?"
                             ])
-            else: #under 8/over 17 roll and experienced
-                    if Primary == "Rogue":
-                        #if Rogue is primary, Tempcheck is the Trigger variable
-                        $ TempCheck = Trigger                
-                        $ ActiveGirl = Secondary
-                        $ TempTrigger = Trigger3
-                    else:
-                        #if Rogue is secondary, Tempcheck is the Trigger4 variable
-                        $ TempCheck = Trigger4
-                        $ ActiveGirl = Primary
-                        $ TempTrigger = Trigger4
-                                                
-                    if TempCheck == "hand":
-                        $ TempLine = "Seems like you like my hand, huh, " + R_Petname + "?" #hand
-                    elif TempCheck == "blow":
-                        $ TempLine = "You taste so nice, " + R_Petname + "." #blow
-                    elif TempCheck == "sex":
-                        $ TempLine = "Ohhh. . .that's sooo good." #sex
-                    elif TempCheck == "anal":
-                        if R_Loose <= 1:
-                            $ TempLine = "It. . .hurts. But it kinda feels good, too." #anal
-                        else:
-                            $ TempLine = "Mmm, that's good. . ." #anal
-                    elif Trigger == "lesbian":
-                        if TempTrigger == "fondle breasts":                            
-                                $ TempLine = "Your titties feel so nice, "+ActiveGirl+"." #fondle breasts
-                        elif TempTrigger == "suck breasts":                            
-                                $ TempLine = "Your titties taste so good, "+ActiveGirl+"." #suck breasts
-                        elif TempTrigger == "fondle pussy":                            
-                                $ TempLine = "You're sucking me in, "+ActiveGirl+"." #fondle pussy
-                        elif TempTrigger == "lick pussy":                            
-                                $ TempLine = "You taste so good, "+ActiveGirl+"." #lick pussy
-                        if not TempLine:
-                                $ TempLine = renpy.random.choice([
-                                        "Touching ya is so amazing, " + ActiveGirl + ".",
-                                        "Your body feels so amazing. . .",
-                                        "Mmmm. . .right there.",
-                                        "Ya like that, " + ActiveGirl + "?"
-                                        ]) 
-                            
-                    if not TempLine or 8 <= D20 <= 17:
-                        #if it's none of those, this will work
-                        $ TempLine = renpy.random.choice([
+            elif D20 <= 15: 
+                    #If she's relatively experienced and there's a moderate roll
+                    $ Line = renpy.random.choice([
                                 "I want ya so bad, " + R_Petname + ".",
                                 "I'm all yours, " + R_Petname + ". Take me however ya want.",
                                 "I love it when ya do that, " + R_Petname + ".",
-                                "I love the look you get on your face, " + R_Petname + "."
+                                "I love the look you get on your face when we do that, " + R_Petname + "."
                                 ])
-            if TempLine:
-                    ch_r "[TempLine]"
+            else: #a 15+ roll and experienced
+                    if Primary == "Rogue":
+                        #if Rogue is primary, Tempcheck is the Trigger variable
+                        $ TempCheck = Trigger
+                    else:
+                        #if Rogue is secondary, Tempcheck is the Trigger4 variable
+                        $ TempCheck = Trigger4
+                    
+                    if TempCheck == "hand":
+                        $ Line = "Seems like you like this, huh, " + R_Petname + "?" #hand
+                    elif TempCheck == "blow":
+                        $ Line = "You taste so nice, " + R_Petname + "." #blow
+                    elif TempCheck == "sex":
+                        $ Line = "Ohhh. . .that's sooo good." #sex
+                    elif TempCheck == "anal":
+                        $ Line = "It. . .hurts. But it kinda feels good, too." #anal
+                    else:
+                        #if it's none of those, this will work
+                        $ Line = renpy.random.choice([
+                                "I want ya so bad, " + R_Petname + ".",
+                                "I'm all yours, " + R_Petname + ". Take me however ya want.",
+                                "I love it when ya do that, " + R_Petname + ".",
+                                "I love the look you get on your face when we do that, " + R_Petname + "."
+                                ])
+            if Line and Line != "partner":
+                    ch_r "[Line]"
     #end Primary Rogue        
             
-    elif (Primary == "Kitty" and D20 <= 10) or (Secondary == "Kitty" and Trigger4 and D20 >= 15):
-            #procs if she's prinary under 10, or secondary over 15
-            if Trigger == "lesbian" and "unseen" in K_RecentActions:
-                    if Primary == "Kitty":
-                        $ ActiveGirl = Secondary
-                    else:
-                        $ ActiveGirl = Primary
-                    $ TempLine = renpy.random.choice([
-                            "You're so amazing, " + ActiveGirl + ".",
-                            "You know how to push, like, every one of my buttons. . .",
-                            "Heh. . .{i}somebody{/i} seems to like that.",
-                            "That's, like, {i}so{/i} good.",
-                            "You taste so good. . ."
-                            ])                
-            elif K_SEXP <= 30 and ApprovalCheck("Kitty", 400, "I"):
+    elif Primary == "Kitty" or (Line == "partner" and Secondary == "Kitty" and D20 >= 15):
+            if D20 <= 5 or (K_SEXP <= 30 and ApprovalCheck("Kitty", 400, "I")):
                     #If she's relatively inexperienced or there is a low roll
-                    $ TempLine = renpy.random.choice([
+                    $ Line = renpy.random.choice([
                             "You're so amazing, " + K_Petname + ".",
                             "You know how to push, like, every one of my buttons. . .",
                             "Heh. . .{i}somebody{/i} seems to like that.",
                             "That's, like, {i}so{/i} good."
                             ])
-            elif 8 <= D20 <= 17: 
+            elif D20 <= 15: 
                     #If she's relatively experienced and there's a moderate roll
-                    $ TempLine = renpy.random.choice([
+                    $ Line = renpy.random.choice([
                                 "This is {i}so{/i} hot, " + K_Petname + ".",
                                 "I think I just, like, discovered one of your other mutant powers, " + K_Petname + ".",
                                 "I like it.  Like, a {i}lot{/i}.",
                                 "I've never wanted a guy like I want you, " + K_Petname + "."
                                 ])
-            else: # under 8/over 17 roll and experienced
+            else: #a 15+ roll and experienced
                     if Primary == "Kitty":
                         #if Kitty is primary, Tempcheck is the Trigger variable
                         $ TempCheck = Trigger
-                        $ ActiveGirl = Secondary
-                        $ TempTrigger = Trigger3
                     else:
                         #if Kitty is secondary, Tempcheck is the Trigger4 variable
                         $ TempCheck = Trigger4
-                        $ ActiveGirl = Primary
-                        $ TempTrigger = Trigger4
                     
                     if TempCheck == "hand":
-                        $ TempLine = "I love the way it"+[K_like]+"feels in my hands." #hand
+                        $ Line = "I love the way it, like, feels in my hands." #hand
                     elif TempCheck == "blow":
-                        $ TempLine = "I hope you don't think I'm"+[K_like]+"a slut for saying this. . .but I love how you taste, " + K_Petname + "." #blow
+                        $ Line = "I hope you don't think I'm, like, a slut for saying this. . .but I love how you taste, " + K_Petname + "." #blow
                     elif TempCheck == "sex":
-                        $ TempLine = "Oooohh. . .just like {i}that{/i}." #sex
+                        $ Line = "Oooohh. . .just like {i}that{/i}." #sex
                     elif TempCheck == "anal":
-                        if K_Loose <= 1:
-                            $ TempLine = "Please. . .go slow, 'kay?  You feel so {i}big{/i}." #anal
-                        else:
-                            $ TempLine = "Mmm, you feel so huge. . ." #anal
-                    elif Trigger == "lesbian":
-                        if TempTrigger == "fondle breasts":                            
-                                $ TempLine = "I can't get enough of your tits, "+ActiveGirl+"." #fondle breasts
-                        elif TempTrigger == "suck breasts":                            
-                                $ TempLine = ActiveGirl+", your tits taste amazing!" #suck breasts
-                        elif TempTrigger == "fondle pussy":                            
-                                $ TempLine = "So tight, "+ActiveGirl+"." #fondle pussy
-                        elif TempTrigger == "lick pussy":                            
-                                $ TempLine = "I'm drowning here, "+ActiveGirl+"." #lick pussy
-                        if not TempLine:
-                                $ TempLine = renpy.random.choice([
-                                        "You're so amazing, " + ActiveGirl + ".",
-                                        "You know how to push, like, every one of my buttons. . .",
-                                        "Heh. . .{i}somebody{/i} seems to like that.",
-                                        "That's, like, {i}so{/i} good.",
-                                        "You taste so good. . ."
-                                        ])        
-                    if not TempLine or 8 <= D20 <= 17:
-                            #if it's none of those, this will work
-                            $ TempLine = renpy.random.choice([
-                                    "This is {i}so{/i} hot, " + K_Petname + ".",
-                                    "I think I just, like, discovered one of your other mutant powers, " + K_Petname + ".",
-                                    "I like it.  Like, a {i}lot{/i}.",
-                                    "I've never wanted a guy like I want you, " + K_Petname + "."
-                                    ])
-            if TempLine:
-                    ch_k "[TempLine]"
+                        $ Line = "Please. . .go slow, 'kay?  You feel so {i}big{/i}." #anal
+                    else:
+                        #if it's none of those, this will work
+                        $ Line = renpy.random.choice([
+                                "This is {i}so{/i} hot, " + K_Petname + ".",
+                                "I think I just, like, discovered one of your other mutant powers, " + K_Petname + ".",
+                                "I like it.  Like, a {i}lot{/i}.",
+                                "I've never wanted a guy like I want you, " + K_Petname + "."
+                                ])
+            if Line and Line != "partner":
+                    ch_k "[Line]"
                         
     #end Primary Kitty  
-    
-    elif (Primary == "Emma" and D20 <= 10) or (Secondary == "Emma" and Trigger4 and D20 >= 15):
-            #procs if she's prinary under 10, or secondary over 15
-            if Trigger == "lesbian" and "unseen" in E_RecentActions:
-                    if Primary == "Emma":
-                        $ ActiveGirl = Secondary
-                    else:
-                        $ ActiveGirl = Primary
-                    $ TempLine = renpy.random.choice([
-                            "You're incredible, " + ActiveGirl + ".",
-                            "You're surprisingly skilled at this. . .",
-                            "Well, that certainly got a positive response.",
-                            "Exceptional, darling.",
-                            "Delicious. . ."
-                            ])                
-            elif E_SEXP <= 30 and ApprovalCheck("Emma", 400, "I"):
-                    #If she's relatively inexperienced or there is a low roll
-                    $ TempLine = renpy.random.choice([
-                            "You're incredible, " + E_Petname + ".",
-                            "You're surprisingly skilled at this. . .",
-                            "Well, that certainly got a positive response.",
-                            "Exceptional, darling.",
-                            ])
-            elif 8 <= D20 <= 17: 
-                    #If she's relatively experienced and there's a moderate roll
-                    $ TempLine = renpy.random.choice([
-                                "I'm overwhelmed, " + E_Petname + ".",
-                                "Well now we have another skill to develop, " + E_Petname + ".",
-                                "Ooh, you'll have to do that one again. . .",
-                                "You certainly do leave an impression, " + E_Petname + "."
-                                ])
-            else: # under 8/over 17 roll and experienced
-                    if Primary == "Emma":
-                        #if Emma is primary, Tempcheck is the Trigger variable
-                        $ TempCheck = Trigger
-                        $ ActiveGirl = Secondary
-                        $ TempTrigger = Trigger3
-                    else:
-                        #if Emma is secondary, Tempcheck is the Trigger4 variable
-                        $ TempCheck = Trigger4
-                        $ ActiveGirl = Primary
-                        $ TempTrigger = Trigger4
-                    
-                    if TempCheck == "hand":
-                        $ TempLine = "I trust you're enjoying the massage?" #hand
-                    elif TempCheck == "blow":
-                        $ TempLine = "I must say, I enjoy the flavor, " + E_Petname + "." #blow
-                    elif TempCheck == "sex":
-                        $ TempLine = "Mmmm, give me more like that. . ." #sex
-                    elif TempCheck == "anal":
-                        $ TempLine = "Mmm, how filling. . ." #anal
-                    elif Trigger == "lesbian":
-                        if TempTrigger == "fondle breasts" or TempTrigger == "suck breasts":    
-                                if ActiveGirl == "Kitty":
-                                    $ TempLine = "Oh my, these breasts are adorable!" #fondle breasts
-                                else: #if ActiveGirl == "Rogue":
-                                    $ TempLine = "These really are wonderfully. . . pert." #fondle breasts
-                        elif TempTrigger == "fondle pussy":                            
-                                $ TempLine = "Suck pressure, "+ActiveGirl+"." #fondle pussy
-                        elif TempTrigger == "lick pussy":                            
-                                $ TempLine = "What an exotic flavor, "+ActiveGirl+"." #lick pussy
-                        if not TempLine:
-                                $ TempLine = renpy.random.choice([
-                                        "You're incredible, " + ActiveGirl + ".",
-                                        "You're surprisingly skilled at this. . .",
-                                        "Well, that certainly got a positive response.",
-                                        "Exceptional, darling.",
-                                        "Delicious. . ."
-                                        ])   
-                    if not TempLine or 8 <= D20 <= 17:
-                            #if it's none of those, this will work
-                            $ TempLine = renpy.random.choice([
-                                "I'm overwhelmed, " + E_Petname + ".",
-                                "Well now we have another skill to develop, " + E_Petname + ".",
-                                "Ooh, you'll have to do that one again. . .",
-                                "You certainly do leave an impression, " + E_Petname + "."
-                                ])
-            if TempLine:
-                    ch_e "[TempLine]"           
-    #end Primary Emma  
     return
         
 #    #Kitty
@@ -2874,3 +2786,8 @@ label Dirty_Talk(D20=0, TempCheck=0, TempLine=0, TempTrigger=Trigger4, ActiveGir
 #        "I can't believe you can take all of him like that!" #anal
                 
 #    return
+
+#Ok, this is a formatting thing, but when you have an explanation thing, like labeling something as "innocent," if it's on its own line, put a # in front of it, and if it's on a line with other text, 
+# put it behind that text, and put a # in between, like "I love the way it, like, feels in my hands." #(Handjob) Stuff behind #s is not counted by the code. Also, try to find a way to use more generic 
+# quotation marks or something? The ones used are different than the default ones, they have in and out directions, and if I copy/paste them into my editor they don't get counted as actual quotation marks
+# and I need to replace them all. I can batch replace them, so it's not a huge problem, but it's not ideal. ;)

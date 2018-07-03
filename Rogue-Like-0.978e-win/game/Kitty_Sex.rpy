@@ -1,18 +1,10 @@
 ﻿# Kitty_SexMenu //////////////////////////////////////////////////////////////////////
 label Kitty_SexAct(Act = 0):    
-    call Shift_Focus("Kitty")    
-    if Act == "SkipTo":
-        $ renpy.pop_call() #causes it to skip past the cycle you were in before
-        $ renpy.pop_call() #causes it to skip past the sex menu you were in before that
-        call SkipTo("Kitty")
-    elif Act == "masturbate":         
+    call Shift_Focus("Kitty")
+    if Act == "masturbate":         
         call KM_Prep
         if not Situation:
-            return    
-    elif Act == "lesbian":         
-        call K_Les_Prep
-        if not Situation:
-            return       
+            return        
     elif Act == "morningwood":
         # This action is called for by the label Kitty_Morning and returns to there
         $ K_RecentActions.append("blow")           
@@ -57,7 +49,11 @@ label Kitty_SexMenu:
     call Kitty_Hide    
     $ K_Arms = 1
     call Set_The_Scene(Dress = 0)
-    
+#    show Kitty_Sprite at SpriteLoc(K_SpriteLoc):
+#        alpha 1
+#        zoom 1
+#        offset (0,0)
+#        anchor (0.5, 0.0)
     if not P_Semen:
         "You're a little out of juice at the moment, you might want to wait a bit." 
     if P_Focus >= 95:
@@ -113,7 +109,7 @@ label Kitty_SexMenu:
 #                            call K_Titjob         
                         "Could you suck my cock?":
                             call K_Blowjob 
-                        "Could use your feet?":
+                        "Could you use your feet?":
                             call K_Footjob 
                         "Never mind [[something else]":
                             jump Kitty_SMenu
@@ -146,25 +142,74 @@ label Kitty_SexMenu:
                                 else:
                                     ch_k "Sorry [K_Petname], I'm a bit worn out."
                         
-                        "Maybe make out with Rogue?" if R_Loc == bg_current:
-                                call K_LesScene
-#                        "Maybe make out with Emma?" if E_Loc == bg_current:
-#                                call K_LesScene
-
                         "Never mind [[something else]":
                                 jump Kitty_SMenu
                           
                 
         "Could we maybe?. . . [[fuck]":
                 if P_Semen and K_Action:
-                    menu:
+                    if ("master" in K_Petnames or "sir" in K_Petnames or K_Pet == "slave") and ApprovalCheck("Kitty", 750, "O") and not K_Bondage: # bondage event
+                        $ K_Bondage = 1
+                        ch_k "Hey, [K_Petname], I've got some new things here, do you think we could try them?"
+                        "She grabs what it looks like some bondage gear"
+                        menu:
+                            "Yep":
+                                call KittyFace("sexy", 1) 
+                                if K_Over or K_Chest or K_Panties or K_Legs:
+                                    "She glances up at you as her clothes drop to the ground."
+                                $ K_Over = 0
+                                $ K_Legs = 0
+                                $ K_Chest = 0
+                                $ K_Panties = 0
+                                "She starts dressing the new outfit"
+                                $ K_Over = "armbinder"
+                                $ K_Chest = "bustier bra"
+                                $ K_Panties = "zipper panties"
+                                $ K_Outfit = "zipper bondage"
+                                $ K_Shame = K_OutfitShame[1]
+                                jump K_HotdogPrep
+                                #pass
+                                #call Kitty_Bottoms_Off_Legs
+                                #call Kitty_Top_Off
+                                #call Kitty_Bottoms_Off
+                                #shes gonna wear it
+                            "Not now, but let's save it for another time":
+                                pass
+                                #nope
+
+                    menu Kitty_SMenu2:
                         "What did you want to do?"
-                        "Lean back, I've got something in mind. . .":
-                                call K_Sex_H           
-                        "Fuck your pussy.":                        
+                        "Lean back, I've got something in mind (Missionary). . .":
+                                call K_Sex_H  
+                        "Fuck your pussy. (Missionary)":                        
                                 call K_Sex_P           
-                        "Fuck your ass.":                        
+                        "Fuck your ass. (Missionary)":                        
                                 call K_Sex_A    
+                        "Turn around, I've got something in mind (DoggyStyle). . .":
+                                call K_Doggy_H  
+                        "Fuck your pussy. (DoggyStyle)":                        
+                                call K_Doggy_P           
+                        "Fuck your ass. (DoggyStyle)":                        
+                                call K_Doggy_A 
+                        "How about you put that bondage outfit" if K_Bondage and K_Outfit != "zipper bondage" and K_Outfit != "zipper bondage open":
+                            call KittyFace("sexy", 1) 
+                            if K_Over or K_Chest or K_Panties or K_Legs:
+                                "She glances up at you as her clothes drop to the ground."
+                            $ K_Over = 0
+                            $ K_Legs = 0
+                            $ K_Chest = 0
+                            $ K_Panties = 0
+                            "She starts dressing the new outfit"
+                            $ K_Over = "armbinder"
+                            $ K_Chest = "bustier bra"
+                            $ K_Panties = "zipper panties"
+                            $ K_Outfit = "zipper bondage"
+                            $ K_Shame = K_OutfitShame[1]
+                            jump K_HotdogPrep
+
+
+                            #jump Kitty_SMenu2
+                            
                         "How about some toys? [[Pussy]":                        
                             call K_Dildo_Pussy     
                         "How about some toys? [[Anal]":                        
@@ -242,10 +287,9 @@ label Kitty_SexMenu:
                 else:
                     ch_k "Ok, fine."
                     
-                call Sex_Over  
-#                $ K_OCount = 0    
-#                call Kitty_Cleanup
-#                call KittyOutfit
+                $ K_OCount = 0    
+                call Kitty_Cleanup
+                call KittyOutfit
                 return
     if K_Loc != bg_current:
         call Set_The_Scene
@@ -348,7 +392,74 @@ label Kitty_Cheat_Menu:
             return
     jump Kitty_Cheat_Menu
     return
-  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 label K_Jackin(Cnt = 0, TempVar = 0):
     if "unseen" in K_RecentActions:
             $ P_RecentActions.append("cockout") 
@@ -643,9 +754,13 @@ label K_TouchCheek:
 
 label K_Slap_Ass:
     call Shift_Focus("Kitty")
+    $ renpy.play('sounds/slap.mp3')
     # fix add sound here?
     if renpy.showing("Kitty_SexSprite"):
             show Kitty_SexSprite #fix, test this
+            with vpunch
+    if renpy.showing("Kitty_Doggy"):
+            show Kitty_Doggy #fix, test this
             with vpunch
     elif renpy.showing("Kitty_BJ_Animation"):           #fix, make this animation work better when paused for this effect.
             show Kitty_BJ_Animation
@@ -659,7 +774,8 @@ label K_Slap_Ass:
     else:
             show Kitty_Sprite
             with vpunch
-    $ K_Slap += 1                               #add in slap-base obedience        
+    $ K_Slap += 1                               #add in slap-base obedience    
+    $ K_Spank += 1    
     if ApprovalCheck("Kitty", 300, "O", TabM=1):   
         call KittyFace("sexy", 1)  
         $ K_Mouth = "surprised"
@@ -669,16 +785,38 @@ label K_Slap_Ass:
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 50, 2) if K_Slap <= 5 else K_Obed
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 1) if K_Slap <= 10 else K_Obed
         $ Line = "You slap her ass and she jumps with pleasure"
+        if renpy.showing("Kitty_Doggy"):
+            #$ Line2 = "This feels good"
+            if K_Spank == 1:
+                $ Line2 = "This feels good" 
+            elif K_Spank < 4:
+                $ Line2 = "Keep hitting me"
+            elif K_Spank < 10:
+                $ Line2 = "Harder!"  
+            else:
+                $ Line2 = "Don't stop, " + K_Petname
     else:                
         call KittyFace("surprised", 1)        
         if Action_Check("Kitty", "recent", "slap") < 4:
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 2)        
             $ K_Love = Statupdate("Kitty", "Love", K_Love, 50, -1)
         $ Line = "You slap her ass and she looks back at you a bit startled"  
+        if renpy.showing("Kitty_Doggy"):
+            if K_Spank == 1:
+                $ Line2 = K_Petname + "?" 
+            elif K_Spank < 4:
+                $ Line2 = "Ouch"
+            elif K_Spank < 10:
+                $ Line2 = "This hurts, " + K_Petname
+            else:
+                $ Line2 = "Please stop, " + K_Petname
     
     if Taboo:    
         $ K_Blush = 2
         "[Line]."
+        if renpy.showing("Kitty_Doggy"):
+            ch_k "[Line2]"
+            $ Line2 = 0
         if not ApprovalCheck("Kitty", 900, TabM=2):
             if K_Slap <= 5:
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 80, 2)  
@@ -697,9 +835,12 @@ label K_Slap_Ass:
             $ Line = "She gives you a naughty grin" 
         $ K_Blush = 1
         
-    if not Trigger:
-        "[Line]."
-        $ Line = 0
+    #if not Trigger:
+    "[Line]."
+    $ Line = 0
+    if renpy.showing("Kitty_Doggy") and Line2:
+        ch_k "[Line2]"
+        $ Line2 = 0
         
     $ K_RecentActions.append("slap") if Action_Check("Kitty", "recent", "slap") < 4 else K_RecentActions
     $ K_DailyActions.append("slap") if Action_Check("Kitty", "daily", "slap") < 10 else K_DailyActions
@@ -762,7 +903,7 @@ label K_Makeout:
 label K_KissPrep:    
     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 10, 1)
     $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 20, 1)
-    call K_Kissing_Launch("kiss you")
+    call K_Kissing_Launch("kissing")
     if K_Kissed >= 10 and K_Inbt >= 300:
         call KittyFace("sucking")
     elif K_Kissed > 1 and K_Addict >= 50:
@@ -790,7 +931,7 @@ label K_KissPrep:
         $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 30, 20)
         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 30, 20)
         jump K_Kiss_After
-    $ Trigger = "kiss you"
+    $ Trigger = "kissing"
     $ Line = 0
     $ Cnt = 0
     if Situation:     
@@ -800,22 +941,52 @@ label K_KissPrep:
 label K_KissCycle:
     while Round >=0:
         call Shift_Focus("Kitty")
-        call K_Kissing_Launch("kiss you")       
+        call K_Kissing_Launch("kissing")       
         call KittyLust   
             
         $ P_Focus -= 10 if P_FocusX and P_Focus > 50 else 0
                   
-        if Line and P_Focus < 100:                                                    
-                    #Player Command menu
+        if Line:                                                    #Player Command menu
+                    $ Cnt += 1
+                    $ Round -= 1
                     menu:
+                        "[Line]"
                         "Keep going. . .":
                                 pass                
-                        "Slap her ass":                     
-                                    call K_Slap_Ass  
-                                    $ Cnt += 1
-                                    $ Round -= 1                                      
-                                    jump K_KissCycle  
+                        "Move a hand to her breasts. . ." if K_Kissed >= 5 and MultiAction:
+                                if K_Action and MultiAction:
+                                    $ Situation = "auto"
+                                    call K_Kiss_After
+                                    call K_Fondle_Breasts                          
+                                    if Trigger == "fondle breasts": 
+                                        $ Trigger2 = "kissing"                                   
+                                        call KFB_Prep        
+                                    else: 
+                                        $ Trigger = "kissing"
+                                else:
+                                    "As your hands creep upwards, she grabs your wrists."
+                                    ch_k "I'm actually getting a little tired, so maybe we could wrap this up?"  
+                        "Move a hand to her thighs. . ." if K_Kissed >= 5 and MultiAction:
+                                if K_Action and MultiAction:
+                                    $ Situation = "auto"
+                                    call K_Kiss_After
+                                    call K_Fondle_Thighs   
+                                    if Trigger == "fondle thighs": 
+                                        $ Trigger2 = "kissing"      
+                                        call KFT_Prep  
+                                    else: 
+                                        $ Trigger = "kissing"    
+                                else:
+                                    "As your hands creep downwards, she grabs your wrists."
+                                    ch_k "I'm actually getting a little tired, so maybe we could wrap this up?" 
                         
+                        "Start jack'in it." if MultiAction and Trigger2 != "jackin":
+                                call K_Jackin
+                        
+                        "Stop jack'in it." if MultiAction and Trigger2 == "jackin":
+                                "You stop jack'in it."
+                                $ Trigger2 = 0
+                          
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
                         "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
@@ -824,135 +995,42 @@ label K_KissCycle:
                         "Release your focus." if P_FocusX:
                                     "You release your concentration. . ."                
                                     $ P_FocusX = 0
-                                        
-                        "Start jack'in it." if MultiAction and Trigger2 != "jackin":
-                                call K_Jackin                        
-                        "Stop jack'in it." if MultiAction and Trigger2 == "jackin":
-                                "You stop jack'in it."
-                                $ Trigger2 = 0
                                 
-                        "Other options":
-                                menu:   
-                                    "Offhand action":
-                                            if K_Action and MultiAction:
-                                                call Kitty_Offhand_Set
-                                                if Trigger2:
-                                                     $ K_Action -= 1
-                                            else:
-                                                ch_k "I'm actually getting a little tired, so maybe we could wrap this up?"  
-                                                
-                                    "Shift primary action":
-                                            if K_Action and MultiAction:
-                                                    menu:  
-                                                        "Move a hand to her breasts. . ." if K_Kissed >= 5 and MultiAction:
-                                                                if K_Action and MultiAction:
-                                                                    $ Situation = "auto"
-                                                                    call K_Kiss_After
-                                                                    call K_Fondle_Breasts                          
-                                                                    if Trigger == "fondle breasts": 
-                                                                        $ Trigger2 = "kiss you"                                   
-                                                                        call KFB_Prep   
-                                                                    else: 
-                                                                        $ Trigger = "kiss you"     
-                                                                else:
-                                                                    "As your hands creep upwards, she grabs your wrists."
-                                                                    ch_k "I'm actually getting a little tired, so maybe we could wrap this up?"  
-                                                        "Move a hand to her thighs. . ." if K_Kissed >= 5 and MultiAction:
-                                                                if K_Action and MultiAction:
-                                                                    $ Situation = "auto"
-                                                                    call K_Kiss_After
-                                                                    call K_Fondle_Thighs   
-                                                                    if Trigger == "fondle thighs": 
-                                                                        $ Trigger2 = "kiss you"      
-                                                                        call KFT_Prep 
-                                                                    else: 
-                                                                        $ Trigger = "kiss you"     
-                                                                else:
-                                                                    "As your hands creep downwards, she grabs your wrists."
-                                                                    ch_k "I'm actually getting a little tired, so maybe we could wrap this up?" 
-                                                        "Never Mind":
-                                                                jump K_KissCycle
-                                            else:
-                                                ch_k "I'm actually getting a little tired, so maybe we could wrap this up?" 
-                                    "Threesome actions (locked)" if not Partner: 
-                                        pass
-                                    "Threesome actions" if Partner:   
-                                        menu:
-                                            "Ask Kitty to do something else with [Partner]" if Trigger == "lesbian":
-                                                        call Kitty_Les_Change
-                                            "Ask Kitty to do something else with [Partner] (locked)" if Trigger != "lesbian":
-                                                        pass
-                                            "Ask [Partner] to do something else":
-                                                        if Partner == "Rogue":
-                                                            call Rogue_Three_Change
-                                                        elif Partner == "Emma":
-                                                            call Emma_Three_Change                                                  
-                                            "Don't stop what you're doing. . .(locked)" if not ThreeCount or not Trigger4:
-                                                        $ ThreeCount = 0                                                            
-                                            "Don't stop what you're doing. . ." if ThreeCount and Trigger4:
-                                                        $ ThreeCount = 0          
-                                            "Swap to [Partner]":
-                                                        call Trigger_Swap("Kitty")
-                                            "Undress [Partner]":
-                                                        if Partner == "Rogue":
-                                                                call R_Undress   
-                                                        elif Partner == "Emma":
-                                                                call E_Undress 
-                                            "Clean up Partner":
-                                                        if Partner == "Rogue" and R_Spunk:
-                                                                call Rogue_Cleanup("ask")    
-                                                        elif Partner == "Emma" and E_Spunk:
-                                                                call Emma_Cleanup("ask")  
-                                                        else:
-                                                                "She seems fine."
-                                                                jump K_KissCycle 
-                                            "Never mind":
-                                                        jump K_KissCycle 
-                                    "Undress Kitty":
-                                            call K_Undress   
-                                    "Clean up Kitty (locked)" if not K_Spunk:
-                                            pass  
-                                    "Clean up Kitty" if K_Spunk:
-                                            call Kitty_Cleanup("ask")                                         
-                                    "Never mind":
-                                            jump K_KissCycle 
-                        
-                        "Back to Sex Menu" if MultiAction and K_Kissed >= 5:  
-                                ch_p "Let's try something else." 
+                        "Maybe lose some clothes. . .":
+                                    call K_Undress  
+                                    
+                        "Let's try something else." if MultiAction and K_Kissed >= 5:   
                                 $ Situation = "shift"
-                                $ Line = 0
                                 jump K_Kiss_After
-                        "End Scene": 
-                                ch_p "Let's stop for now."
-                                $ Line = 0
+                        "Let's stop for now.": 
                                 jump K_Kiss_After
         #End menu (if Line)
         
         call Sex_Dialog("Kitty",Partner)
         
-        $ Cnt += 1
-        $ Round -= 1  
+        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
         
-        $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up     
-        if P_Focus >= 100 or K_Lust >= 100:      
-                    #If either of you could cum   
-                    if P_Focus >= 100: 
-                            #If you can cum:
+        #If either of you could cum 
+        if P_Focus >= 100 or K_Lust >= 100:                                           
+                    "[Line]"    
+                    
+                    #If you can cum:
+                    if P_Focus >= 100:                                                     
                             call PK_Cumming
                             if "angry" in K_RecentActions:  
                                 call K_Pos_Reset
                                 return    
                             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 200, 5) 
                             if 100 > K_Lust >= 70 and K_OCount < 2:             
-                                    $ K_RecentActions.append("unsatisfied")                      
-                                    $ K_DailyActions.append("unsatisfied") 
+                                $ K_RecentActions.append("unsatisfied")                      
+                                $ K_DailyActions.append("unsatisfied") 
                             
                             if P_Focus > 80:
                                 jump K_Kiss_After 
                             $ Line = "came"
      
-                    if K_Lust >= 100:       
-                            #If you're still going at it and Kitty can cum
+                    #If Kitty can cum
+                    if K_Lust >= 100:                                                                
                             call K_Cumming
                             if Situation == "shift" or "angry" in K_RecentActions:
                                 jump K_Kiss_After            
@@ -962,16 +1040,11 @@ label K_KissCycle:
                             if not P_Semen:
                                 "You're pretty wiped, better stop for now."
                             $ Line = 0
-                            jump R_Kiss_After                 
+                            jump K_Kiss_After   
                 
-        if Partner:
-                #Checks if partner could orgasm
-                if Partner == "Rogue" and R_Lust >= 100:                                          
-                    call R_Cumming
-                elif Partner == "Emma" and E_Lust >= 100:                                          
-                    call E_Cumming
         #End orgasm
         
+   
         if Round == 10:
             ch_k "You might want to wrap this up, it's getting late."  
         elif Round == 5:
@@ -1399,8 +1472,6 @@ label KM_Prep:
     $ K_DailyActions.append("masturbation") 
             
 label KM_Cycle:  
-    $ Trigger = "masturbation"
-    
     if Situation == "join":
         $ renpy.pop_call() 
         $ Situation = 0 
@@ -1413,9 +1484,13 @@ label KM_Cycle:
         
         $ P_Focus -= 12 if P_FocusX and P_Focus > 50 else 0
             
-        if Line and P_Focus < 100:                                                    
-                    #Player Command menu                                        
+        if Line:                                                    #Player Command menu
+                    $ Cnt += 1
+                    $ Round -= 1
+                                        
                     menu:
+                        "[Line]"
+                        
                         "Keep Watching.":
                                 pass
                                 
@@ -1425,23 +1500,30 @@ label KM_Cycle:
                                 $ Situation = "join"
                                 call K_Masturbate               
                         "\"Ahem. . .\"" if "unseen" in K_RecentActions:  
-                                jump KM_Interupted    
-                                                   
-                        "Start jack'in it." if Trigger2 != "jackin":
-                                call K_Jackin                   
-                        "Stop jack'in it." if Trigger2 == "jackin":
-                                $ Trigger2 = 0    
-                                            
+                                jump KM_Interupted      
                         "Slap her ass":    
                                 if "unseen" in K_RecentActions:
+                                        $ renpy.play('sounds/slap.mp3')
                                         "You smack Kitty firmly on the ass!"
                                         jump KM_Interupted                                          
                                 else:
-                                        call K_Slap_Ass                                        
-                                        $ Cnt += 1
-                                        $ Round -= 1    
+                                        call K_Slap_Ass
                                         jump KM_Cycle  
-                           
+                                
+                        "Change what I'm doing":
+                                menu:
+                                    "Start jack'in it." if Trigger2 != "jackin":
+                                            call K_Jackin                   
+                                    "Stop jack'in it." if Trigger2 == "jackin":
+                                            $ Trigger2 = 0
+                                
+                                    "Fondle her breasts" if "unseen" not in K_RecentActions and Trigger2 != "fondle breasts":
+                                            $ Trigger2 = "fondle breasts"
+                                    "Suck on her breasts" if "unseen" not in K_RecentActions and Trigger2 != "suck breasts":
+                                            $ Trigger2 = "suck breasts" 
+                                    "Nevermind":
+                                            pass
+                             
                         "Focus to last longer [[not unlocked]. (locked)" if "focus" not in P_Traits:
                                     pass
                         "Focus to last longer." if not P_FocusX and "focus" in P_Traits:
@@ -1450,68 +1532,16 @@ label KM_Cycle:
                         "Release your focus." if P_FocusX:
                                     "You release your concentration. . ."                
                                     $ P_FocusX = 0
+                        
+                        "Maybe lose some clothes. . ." if "unseen" not in K_RecentActions:
+                                    call K_Undress  
                                     
-                        "Change what I'm doing":
-                                menu:
-                                    "Offhand action":
-                                            if K_Action and MultiAction:
-                                                call Kitty_Offhand_Set
-                                                if Trigger2:
-                                                     $ K_Action -= 1
-                                            else:
-                                                ch_k "I'm actually getting a little tired, so maybe we could wrap this up?"  
-                                                           
-                                    "Threesome actions (locked)" if not Partner or "unseen" in K_RecentActions: 
-                                        pass
-                                    "Threesome actions" if Partner and "unseen" not in K_RecentActions:   
-                                        menu:
-                                            "Ask [Partner] to do something else":
-                                                        if Partner == "Rogue":
-                                                            call Rogue_Three_Change
-                                                        elif Partner == "Emma":
-                                                            call Emma_Three_Change     
-                                            "Swap to [Partner]":
-                                                        call Trigger_Swap("Kitty")
-                                            "Undress [Partner]":
-                                                        if Partner == "Rogue":
-                                                                call R_Undress   
-                                                        elif Partner == "Emma":
-                                                                call E_Undress 
-                                            "Clean up Partner":
-                                                        if Partner == "Rogue" and R_Spunk:
-                                                                call Rogue_Cleanup("ask")    
-                                                        elif Partner == "Emma" and E_Spunk:
-                                                                call Emma_Cleanup("ask")  
-                                                        else:
-                                                                "She seems fine."
-                                                                jump KM_Cycle 
-                                            "Never mind":
-                                                        jump KM_Cycle 
-                                    "Undress Kitty":
-                                            if "unseen" in K_RecentActions:
-                                                    ch_p "Oh, yeah, take it off. . ."
-                                                    jump KM_Interupted
-                                            else:                                        
-                                                    call K_Undress   
-                                    "Clean up Kitty (locked)" if not K_Spunk:
-                                            pass  
-                                    "Clean up Kitty" if K_Spunk:
-                                            if "unseen" in K_RecentActions:
-                                                    ch_p "You've got a little something on you. . ."
-                                                    jump KM_Interupted
-                                            else:                      
-                                                    call Kitty_Cleanup("ask")                                         
-                                    "Never mind":
-                                            jump KM_Cycle                               
-                         
-                        "Back to Sex Menu" if MultiAction: 
-                                    ch_p "Let's try something else."
+                        "Let's try something else." if MultiAction and "unseen" not in K_RecentActions: 
                                     call K_Pos_Reset
                                     $ Situation = "shift"
                                     $ Line = 0
                                     jump KM_Interupted
-                        "End Scene" if not MultiAction: 
-                                    ch_p "Let's stop for now."
+                        "Let's stop for now." if not MultiAction and "unseen" not in K_RecentActions: 
                                     call K_Pos_Reset
                                     $ Line = 0
                                     jump KM_Interupted
@@ -1521,16 +1551,13 @@ label KM_Cycle:
                 
         #If either of you could cum 
         
-        $ Cnt += 1
-        $ Round -= 1
     
         $ P_Focus = 50 if not P_Semen and P_Focus >= 50 else P_Focus #Resets P_Focus if can't get it up
         
         if P_Focus >= 100 or K_Lust >= 100:   
                     #If you can cum:
                     if P_Focus >= 100:
-                        if "unseen" not in K_RecentActions: 
-                            #if she knows you're there
+                        if "unseen" not in K_RecentActions: #if she knows you're there
                             call PK_Cumming
                             if "angry" in K_RecentActions:  
                                 call K_Pos_Reset
@@ -1541,7 +1568,6 @@ label KM_Cycle:
                                 $ K_DailyActions.append("unsatisfied") 
                             $ Line = "came"
                         else: #If she wasn't aware you were there
-                            "You grunt and try to hold it in."
                             $ P_Focus = 95
                             jump KM_Interupted
      
@@ -1566,12 +1592,6 @@ label KM_Cycle:
                                 "No, I'm done.":
                                     "You pull back."
                                     return
-        if Partner:
-                #Checks if partner could orgasm
-                if Partner == "Rogue" and R_Lust >= 100:                                          
-                    call R_Cumming
-                elif Partner == "Emma" and E_Lust >= 100:                                          
-                    call E_Cumming                    
         #End orgasm
         
         if "unseen" in K_RecentActions:
@@ -1675,12 +1695,6 @@ label KM_Interupted:
         $ Situation = 0
         return
     $ Situation = 0
-        
-    if R_Loc == bg_current and "noticed kitty" in R_RecentActions: #If Rogue was participating
-            $ R_LikeKitty += 3 if R_LikeKitty >= 800 else 1    
-    if E_Loc == bg_current and "noticed kitty" in E_RecentActions: #If Emma was participating
-            $ E_LikeKitty += 3 if E_LikeKitty >= 800 else 1
-            
     if Round <= 10:
             ch_k "Gimme a minute, I need to collect myself here. . ."
             return
@@ -1729,7 +1743,7 @@ label Kitty_Offhand(TempLine=0):
     if not Trigger2: #If there are no offhand options set, return
         return    
     
-    if Trigger2 == "kiss you":
+    if Trigger2 == "kissing":
                 $ Line = renpy.random.choice([". Your lips gently slide across hers.", 
                         ". Her lips part as you hold her close.",    
                         ". You nibble her neck as she groans in pleasure.",
@@ -1878,7 +1892,7 @@ label Kitty_Offhand_Set(Situation = Situation, TempTrigger = Trigger2):
                 elif TempTrigger == "insert ass":
                         "You shift your attention to her ass."
                         jump KIA_Prep
-                else: #If Trigger2 is "kiss you"
+                else: #If Trigger2 is "kissing"
                         "You go back to kissing her deeply."
                         jump K_KissPrep                
             else: #if there's no Trigger2
@@ -1891,7 +1905,7 @@ label Kitty_Offhand_Set(Situation = Situation, TempTrigger = Trigger2):
         menu:  
             "Also kiss her." if Trigger in ("fondle breasts", "fondle pussy", "fondle thighs", "fondle ass", "insert ass", "sex", "anal", "hotdog", "dildo pussy", "dildo anal", "foot"):
                     "You lean in and start kissing her."
-                    $ Trigger2 = "kiss you"
+                    $ Trigger2 = "kissing"
                     
             "Also fondle her breasts." if Trigger in ("fondle pussy", "fondle thighs", "fondle ass", "insert ass", "suck breasts", "lick pussy", "lick ass", "sex", "anal", "hotdog", "dildo pussy", "dildo anal", "foot"):
                     $ Trigger2 = "fondle breasts"
@@ -1931,7 +1945,7 @@ label Kitty_Offhand_Set(Situation = Situation, TempTrigger = Trigger2):
 label Kitty_ShameIndex:   
     $ K_ShameLevel = 0
     
-    if Trigger == "kiss you":
+    if Trigger == "kissing":
         $ K_ShameLevel += 2
         
     elif Trigger in ("fondle breasts", "fondle thighs", "fondle ass"):
@@ -1949,7 +1963,7 @@ label Kitty_ShameIndex:
     
     if not Trigger2:
         pass
-    if Trigger2 == "kiss you":
+    if Trigger2 == "kissing":
         $ K_ShameLevel += 2
         
     elif Trigger2 in ("fondle breasts", "fondle thighs", "fondle ass"):
@@ -1964,12 +1978,8 @@ label Kitty_ShameIndex:
         
     if not Trigger3:
         pass
-    elif Trigger3 == "kiss you":
+    elif Trigger3 == "kissing":
         $ K_ShameLevel += 2
-    elif Trigger3 == "kiss girl":
-        $ K_ShameLevel += 3
-    elif Trigger3 == "kiss both":
-        $ K_ShameLevel += 4
         
     elif Trigger3 in ("fondle breasts", "fondle thighs", "fondle ass"):
         $ K_ShameLevel += 6
@@ -1985,28 +1995,38 @@ label Kitty_ShameIndex:
     
     return
             
-label Kitty_Taboo(Cnt= 1):    
-    if Trigger == "kiss you" and not Trigger2 and not Trigger3:        
+label Kitty_Taboo(Cnt= 1): 
+    if Trigger == "kissing" and not Trigger2 and not Trigger3:        
             if R_Loc == bg_current:
                 call Rogue_Noticed("Kitty")
             if E_Loc == bg_current:
                 call Emma_Noticed("Kitty")
+            $ i = 0
+            while i < len(ModdedGirls):
+                if newgirl[ModdedGirls[i]].Loc == bg_current:
+                    call NewGirl_Noticed(ModdedGirls[i], "Kitty")
+                $ i += 1
             return
     call KittyFace("surprised", 1) 
     $ Cnt = Action_Check("Kitty", "recent", "spotted") if "spotted" in K_RecentActions else 1
     $ Cnt = 4 if Cnt > 4 else Cnt   
     
     $ D20 = renpy.random.randint(1, 20)  
-    if "Kitty" not in Rules and D20 < 10:                                              
+    if K_Rules and D20 < 10:                                              
         # If Xavier notices you can calls you in   
         if R_Loc == bg_current:
                 call Rogue_Noticed("Kitty")
         if E_Loc == bg_current:
                 call Emma_Noticed("Kitty")
+        $ i = 0
+        while i < len(ModdedGirls):
+                if newgirl[ModdedGirls[i]].Loc == bg_current:
+                    call NewGirl_Noticed(ModdedGirls[i], "Kitty")
+                $ i += 1
         if bg_current == "bg classroom" and E_Loc == "bg teacher":
                 #If you're in class and emma's there as a teacher. . .
                 call Emma_Teacher_Caught("Kitty")
-        if Trigger != "kiss you" and Taboo > 20:
+        if Trigger != "kissing" and Taboo > 20:
                 call KittyFace("surprised", 1)
                 if Trigger == "blow" or Trigger == "hand" or Trigger == "titjob":
                     "Kitty stops what she's doing with a startled look."                
@@ -2024,6 +2044,11 @@ label Kitty_Taboo(Cnt= 1):
                 call Rogue_Noticed("Kitty")
         if E_Loc == bg_current:
                 call Emma_Noticed("Kitty")
+        $ i = 0
+        while i < len(ModdedGirls):
+                if newgirl[ModdedGirls[i]].Loc == bg_current:
+                    call NewGirl_Noticed(ModdedGirls[i], "Kitty")
+                $ i += 1
         if bg_current == "bg classroom" and E_Loc == "bg teacher":
                 #If you're in class and emma's there as a teacher. . .
                 call Emma_Teacher_Caught("Kitty")
@@ -2162,7 +2187,6 @@ label Kitty_Noticed(Other = "Rogue", B = 0):
             call KittyFace("surprised", 1)
             "Kitty noticed what you and Rogue are up to."
             $ K_RecentActions.append("noticed rogue")
-            $ R_RecentActions.append("noticed kitty")
             if "poly rogue" in K_Traits:
                 $ B = (1000-(20*Taboo))  
             else:
@@ -2173,16 +2197,25 @@ label Kitty_Noticed(Other = "Rogue", B = 0):
             call KittyFace("surprised", 1)
             "Kitty noticed what you and Emma are up to."
             $ K_RecentActions.append("noticed emma")
-            $ E_RecentActions.append("noticed kitty")
             if "poly emma" in K_Traits:
                 $ B = (1000-(20*Taboo))  
             else:
                 $ B = (K_LikeEmma - 500)               
                 if "dating" in K_Traits:
                     $ B -= 200
-                    
-    $ K_SpriteLoc = StageFarRight  
-    call Display_Kitty(0,TrigReset=0) 
+
+    elif Other in ModdedGirls:            
+            call KittyFace("surprised", 1)
+            "Kitty noticed what you and [Other] are up to."
+            $ K_RecentActions.append("noticed " + Other)
+            $ PolyVariable = "poly " + Other
+            if PolyVariable in K_Traits:
+                $ B = (1000-(20*Taboo))  
+            else:
+                $ B = (K_LikeNewGirl[Other] - 500)               
+                if "dating" in K_Traits:
+                    $ B -= 200
+                
     $ Partner = "Kitty"
     if ApprovalCheck("Kitty", 2000, TabM=2, Bonus = B) or ApprovalCheck("Kitty", 950, "L", TabM=2, Bonus = (B/3)): 
             #if she's very loose or really likes you
@@ -2195,6 +2228,9 @@ label Kitty_Noticed(Other = "Rogue", B = 0):
                     $ K_Traits.append("poly rogue") 
             elif Other == "Emma" and "poly emma" not in K_Traits: 
                     $ K_Traits.append("poly emma") 
+            elif Other in ModdedGirls and PolyVariable not in K_Traits: 
+                    $ K_Traits.append(PolyVariable) 
+            call Kitty_Threeway_Set
     elif ApprovalCheck("Kitty", 650, "O", TabM=2) and ApprovalCheck("Kitty", 450, "L", TabM=1) or ApprovalCheck("Kitty", 800, "O", TabM=2, Bonus = (B/3)): 
             #if she likes you, but is very obedient
             call KittyFace("sexy")
@@ -2206,6 +2242,9 @@ label Kitty_Noticed(Other = "Rogue", B = 0):
                     $ K_Traits.append("poly rogue") 
             elif Other == "Emma" and "poly emma" not in K_Traits: 
                     $ K_Traits.append("poly emma") 
+            elif Other in ModdedGirls and PolyVariable not in K_Traits: 
+                    $ K_Traits.append(PolyVariable) 
+            call Kitty_Threeway_Set("watch")
     elif ApprovalCheck("Kitty", 650, "I", TabM=2) and ApprovalCheck("Kitty", 450, "L", TabM=1) or ApprovalCheck("Kitty", 800, "I", TabM=2, Bonus = (B/3)):
             #if she likes you, but is very uninhibited
             call KittyFace("sexy")
@@ -2218,6 +2257,9 @@ label Kitty_Noticed(Other = "Rogue", B = 0):
                     $ K_Traits.append("poly rogue") 
             elif Other == "Emma" and "poly emma" not in K_Traits: 
                     $ K_Traits.append("poly emma") 
+            elif Other in ModdedGirls and PolyVariable not in K_Traits: 
+                    $ K_Traits.append(PolyVariable) 
+            call Kitty_Threeway_Set("watch")
     elif ApprovalCheck("Kitty", 1500, TabM=2, Bonus = B):
             call KittyFace("perplexed", 1)
             "She looks a little confused at what's happening, but she stays put and watches."
@@ -2232,6 +2274,7 @@ label Kitty_Noticed(Other = "Rogue", B = 0):
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, 1)
                 $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 90, 1) 
             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 90, 5)
+            call Kitty_Threeway_Set("watch")
     elif ApprovalCheck("Kitty", 650, "L", TabM=1) or ApprovalCheck("Kitty", 400, "O", TabM=2):
             #if she likes you or is obedient, but not enough
             call KittyFace("angry", 2)                
@@ -2248,6 +2291,8 @@ label Kitty_Noticed(Other = "Rogue", B = 0):
                     $ K_Traits.append("saw with rogue") 
             elif Other == "Emma" and "saw with emma" not in K_Traits: 
                     $ K_Traits.append("saw with emma") 
+            elif Other in ModdedGirls and ("saw with " + Other) not in K_Traits: 
+                    $ K_Traits.append("saw with " + Other) 
             $ Partner = 0
             if bg_current == "bg kitty": #Kicks you out if in Kitty's room
                     $ K_RecentActions.append("angry")
@@ -2258,7 +2303,7 @@ label Kitty_Noticed(Other = "Rogue", B = 0):
             call KittyFace("surprised", 2)
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 90, 2) 
             $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 40, 20)
-            if Trigger != "kiss you":
+            if Trigger != "kissing":
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -10) 
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, -5)
                     $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 80, 10)
@@ -2266,7 +2311,7 @@ label Kitty_Noticed(Other = "Rogue", B = 0):
                     $ K_Love = Statupdate("Kitty", "Love", K_Love, 90, -5) 
                     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 90, -5)
                     "She looks embarrassed, and shoves you both out of the room."                 
-            elif Trigger != "kiss you":
+            elif Trigger != "kissing":
                     "She looks embarrassed, and bolts from the room." 
             else:
                     "She looks a bit disgusted and walks away."                                  

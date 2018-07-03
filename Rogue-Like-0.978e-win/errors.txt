@@ -2,9 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/NewGirl_Python.rpy", line 283: invalid syntax
-                $ GirlsAround.append(xkk)
-                 ^
-    
+File "game/Kitty_Chat.rpy", line 1: expected statement.
+    ﻿
+     ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

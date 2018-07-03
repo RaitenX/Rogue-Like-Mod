@@ -630,8 +630,7 @@ label Kitty_Key:
 
 #Not updated
 
-label Kitty_Caught(TotalCaught=0):
-    $ TotalCaught = R_Caught + K_Caught + E_Caught
+label Kitty_Caught:
     call Shift_Focus("Kitty")
     call Checkout
     ch_k "!!!"        
@@ -685,22 +684,9 @@ label Kitty_Caught(TotalCaught=0):
     if R_Loc == bg_current:             #fix, might not currently work?
         call RogueFace("surprised",2)
         ch_x "And Rogue, you were just watching this occur!"        
-        call RogueFace("bemused",1, Eyes="side")
-    elif E_Loc == bg_current:             #fix, might not currently work?
-        call EmmaFace("surprised",2)
-        ch_x "And Emma, you were just watching this occur!"        
-        call EmmaFace("bemused",1, Eyes="side")
-        ch_x "Unacceptable. . ." 
+        call RogueFace("bemused",1)
+        $ R_Eyes = "side"
         
-    if "rules" in Rules: #if the rules had been removed in a previous game
-            call XavierFace("hypno")
-            ch_x ". . ."
-            ch_x "Hmm, I seem to be having a bit of deja vu here. . ."
-            ch_x "I could swear that we've had a conversation like this before, but I cannot recall when. . ."
-            call XavierFace("angry")
-            ch_x "Regardless, this is a serious issue."
-            $ Rules.remove("rules")
-            
     $ Count = K_Caught
     menu:
         "Well what have you to say for yourselves?"
@@ -712,9 +698,9 @@ label Kitty_Caught(TotalCaught=0):
             call XavierFace("happy")  
             if K_Caught:
                 ch_x "But you know you've done this before. . . at least [K_Caught] times. . ." 
-            elif TotalCaught:
+            elif R_Caught:
                 ch_x "Not with this young lady, perhaps, but you know you've done this before. . ."
-                ch_x "at least [TotalCaught] times. . ." 
+                ch_x "at least [R_Caught] times. . ." 
             else:
                 ch_x "Very well, just don't let it happen again. "
             $ Count += 5
@@ -849,12 +835,12 @@ label Plan_Kappa:
         $ Count -= 1
         menu:
             ch_k "Well, [K_Petname], what should we ask for?"
-            "Don't bother us anymore when we're having fun." if "Kitty" not in Rules:
+            "Don't bother us anymore when we're having fun." if K_Rules:
                     ch_x "Very well. . . I could offer you some. . . discretion. . ."
-                    $ Rules.append("Kitty")
-            "You know, it's kinda fun dodging you, catch us if you can." if "Kitty" in Rules:
+                    $ K_Rules = 0
+            "You know, it's kinda fun dodging you, catch us if you can." if not K_Rules:
                     ch_x "If you. . . want me to, I suppose. . ."
-                    $ Rules.remove("Kitty")
+                    $ K_Rules = 1
             "Raise my stipend." if P_Income < 30 and "Kappa" not in P_Traits:    
                     ch_x "Very well. . . but I can only raise it by so much. . ."        
                     $ P_Income += 2
@@ -884,7 +870,7 @@ label Plan_Kappa:
                             $ Count += 1
             "That should do it.":
                 $ Count = 0
-    ch_x "Very well, that should conclude our business. Please leave." 
+    ch_x "Very well, that should conlude our business. Please leave." 
     if "Kappa" not in P_Traits:
         $ K_Lust = Statupdate("Kitty", "Lust", K_Lust, 90, 10)
         $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, 10)
@@ -984,8 +970,6 @@ label Kitty_BF:
             jump Kitty_BF_Jerk
     call KittyFace("sexy")    
     ch_k "Now. . . boyfriend. . . how about you and I[K_like]celebrate, huh?"
-    if "Historia" in P_Traits:
-            return 1
     $ Tempmod = 10
     call Kitty_SexMenu
     $ Tempmod = 0
@@ -999,13 +983,11 @@ label Kitty_BF_Jerk:
     $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, Count)
     if K_Event[5] >= 3:
         call KittyFace("sad")
-        ch_k "Yeah?  Well. . .[K_like]I don’t care what you want!  We’re dating!  Deal." 
-        ch_k "I. . .uhm. . .think I need to[K_like]be alone for a little while."        
-        if "Historia" in P_Traits:
-                return 1  
+        ch_k "Yeah?  Well. . .[K_like]I don’t care what you want!  We’re dating!  Deal."   
         $ K_Petnames.append("boyfriend")
         $ K_Traits.append("dating")
         $ Achievements.append("I am not your Boyfriend!")
+        ch_k "I. . .uhm. . .think I need to[K_like]be alone for a little while."
         $ bg_current = "bg player"  
         call Remove_Girl("Kitty")   
         call Set_The_Scene
@@ -1015,8 +997,6 @@ label Kitty_BF_Jerk:
     $ Count = (50* K_Event[5])                                  #fix test to see if negatives can work here.
     $ K_Love = Statupdate("Kitty", "Love", K_Love, 200, -Count)
     ch_k "Get out, you big jerk!"
-    if "Historia" in P_Traits:
-            return
     $ bg_current = "bg player"  
     call Remove_Girl("Kitty")  
     $ renpy.pop_call()
@@ -1026,8 +1006,6 @@ label Kitty_BF_Jerk:
 
 ## start Kitty_Love//////////////////////////////////////////////////////////
 label Kitty_Love:
-    #First time through, K_Event[6] is 0, each time adds 1, automatically ends at 5,
-    # it gets set at 20 if you refuse her advances, if it's 25 it means you've asked for a second chance and been refused
     call Shift_Focus("Kitty")  
     if K_Event[6]:
             #on repeat attempts
@@ -1263,9 +1241,8 @@ label Kitty_Love:
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 80, -50)  
             ch_k "Oh, well I mean if you don't love me-"
             ch_k "You don't have to love me, that's ok."
-            ch_k "I'll, um. . . never mind."            
-            if "Historia" not in P_Traits:
-                $ K_RecentActions.append("angry")
+            ch_k "I'll, um. . . never mind."
+            $ K_RecentActions.append("angry")
         $ K_Event[6] = 20 #this means it shuts down future attempts
     else:
         if Line:
@@ -1298,17 +1275,13 @@ label Kitty_Love_End:
             extend ""
             "Yeah, let's do this. . . [[have sex]":      
                 $ K_Inbt = Statupdate("Kitty", "K_Inbt", K_Inbt, 30, 30) 
-                ch_k "Hmm. . ."                  
-                if "Historia" in P_Traits:
-                        return 1
+                ch_k "Hmm. . ."  
                 call Kitty_SexAct("sex")
             "I have something else in mind. . .[[choose another activity]":
                 $ K_Brows = "confused"
                 $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 70, 20)
-                ch_k "Something like. . ."  
-                if "Historia" in P_Traits:
-                        return 1  
-                $ Tempmod = 20     
+                ch_k "Something like. . ."    
+                $ Tempmod = 20
                 call Kitty_SexMenu     
     return
     
@@ -1559,9 +1532,8 @@ label Kitty_Sub:
             #put in stuff that happens if this succeeds
     elif Line == "rude":        
             hide Kitty_Sprite with easeoutbottom                     
-            call Remove_Girl("Kitty")            
-            if "Historia" not in P_Traits:
-                    $ renpy.pop_call()
+            call Remove_Girl("Kitty")
+            $ renpy.pop_call()
             "Kitty phases through the floor in a huff, leaving you alone."
     elif Line == "embarrassed":
             call KittyFace("sadside", 2)
@@ -1572,8 +1544,7 @@ label Kitty_Sub:
             $ K_Blush = 1            
             hide Kitty_Sprite with easeoutbottom                     
             call Remove_Girl("Kitty")
-            if "Historia" not in P_Traits:
-                    $ renpy.pop_call()
+            $ renpy.pop_call()
             "Kitty phases through the floor, leaving you alone. It didn't look like she could get away fast enough."
     return
 
@@ -1657,8 +1628,7 @@ label Kitty_Sub_Asked:
             hide Kitty_Sprite with easeoutbottom                     
             call Remove_Girl("Kitty")
             $ K_RecentActions.append("angry")
-            if "Historia" not in P_Traits:
-                    $ renpy.pop_call()
+            $ renpy.pop_call()
             "Kitty phases through the floor, leaving you alone.  She looked pretty upset."
     elif "sir" in K_Petnames:
             #it didn't fail and "sir" was covered
@@ -1784,14 +1754,12 @@ label Kitty_Master:
             $ K_RecentActions.append("angry")
             hide Kitty_Sprite with easeoutbottom                     
             call Remove_Girl("Kitty")
-            if "Historia" not in P_Traits:
-                    $ renpy.pop_call()
+            $ renpy.pop_call()
             "Kitty phases through the floor in a huff.  She might have been crying."
     elif Line == "embarrassed":    
             hide Kitty_Sprite with easeoutbottom                     
             call Remove_Girl("Kitty")
-            if "Historia" not in P_Traits:
-                    $ renpy.pop_call()
+            $ renpy.pop_call()
             "Kitty phases through the floor, leaving you alone.  She looked really embarrassed."
     elif Line != "fail":
             $ K_Obed = Statupdate("Kitty", "Obed", K_Obed, 200, 50)

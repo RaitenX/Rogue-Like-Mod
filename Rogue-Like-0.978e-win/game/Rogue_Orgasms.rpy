@@ -1,4 +1,4 @@
-﻿# Start You Cumming //////////////////////////////////////////////////////////////////////////////////
+# Start You Cumming //////////////////////////////////////////////////////////////////////////////////
 
 label PR_Cumming:
     call Shift_Focus("Rogue")
@@ -67,8 +67,11 @@ label PR_Cumming:
             
         "Cum on her face":
                 jump R_Facial            
-        "Cum on her ass" if Trigger == "sex" or Trigger == "anal" or Trigger == "hotdog":
+        "Cum on her ass" if (Trigger == "sex" or Trigger == "anal" or Trigger == "hotdog") and renpy.showing("Rogue_Doggy"):
                 jump R_SpunkBack
+
+        "Cum on her belly" if Trigger in ("sex","anal","hotdog","foot") and renpy.showing("Rogue_SexSprite"):
+                jump R_SpunkBelly
             
         "Pull back":
             if renpy.showing("Rogue_BJ_Animation"):
@@ -103,7 +106,7 @@ label PR_Cumming:
                     menu:
                         extend ""
                         "Ok, if you'll swallow it.":
-                                if not renpy.showing("Rogue_BJ_Animation"):
+                                if Trigger != "blow": 
                                     call Rogue_BJ_Launch("cum")
                                 call RogueFace("sucking") 
                                 $ Speed = 2
@@ -127,7 +130,7 @@ label PR_Cumming:
                                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, -2)
                                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 2)
                                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 3)
-                                        if not renpy.showing("Rogue_BJ_Animation"):
+                                        if Trigger != "blow":
                                             call Rogue_BJ_Launch("cum")
                                             $ Speed = 4
                                         "She dives down on you and you can't resist filling her throat."
@@ -155,7 +158,7 @@ label PR_Cumming:
             #end "pull back"
 #End Main orgasm menu
 
-#Warn her start / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
 label R_Warn_Her:                                                                                                                       #Warn her start
         "You let her know that you're going to come."
         $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 3)
@@ -232,7 +235,8 @@ label R_Warn_Her:                                                               
                 if renpy.showing("Rogue_BJ_Animation"):            
                         call RogueFace("sucking")
                         $ R_Spunk.append("mouth")
-                        "She makes a little humming sound, but keeps sucking."                        
+                        "She makes a little humming sound, but keeps sucking."
+                        "When you finish filling her mouth, she quickly gulps it down and wipes her lips."
                 else:
                         if renpy.showing("Rogue_Doggy"):
                             call Rogue_BJ_Launch("cum")
@@ -240,7 +244,7 @@ label R_Warn_Her:                                                               
                         call RogueFace("sucking")
                         $ R_Spunk.append("mouth")
                         "She smiles and then puts your tip in her mouth."
-                "When you finish filling her mouth, she quickly gulps it down and wipes her lips."                
+                        "When you finish filling her mouth, she quickly gulps it down and wipes her lips."                
                 $ Speed = 0
                 call RogueFace("sexy")
                 $ R_Mouth = "smile"
@@ -288,10 +292,10 @@ label R_Warn_Her:                                                               
                         jump R_Handy_Finish
                 elif renpy.showing("Rogue_TJ_Animation") and R_Tit:
                         jump R_Facial
-                elif renpy.showing("Rogue_Doggy") and R_Sex and Trigger == "sex":
+                elif renpy.showing("Rogue_SexSprite"): #and R_Sex and Trigger == "sex":
                         "She gently pushes you back off of her."
-                        jump R_SpunkBack
-                elif renpy.showing("Rogue_Doggy") and R_Anal and Trigger == "anal":
+                        jump R_SpunkBelly
+                elif renpy.showing("Rogue_Doggy"): #and R_Anal and Trigger == "anal":
                         "She gently pushes you back off of her."
                         jump R_SpunkBack
         
@@ -307,7 +311,8 @@ label R_Warn_Her:                                                               
         elif renpy.showing("Rogue_Doggy"):#hotdogging
                 "She smiles and starts rubbing against you a bit faster."
                 jump R_SpunkBack
-        jump R_Facial
+        else:
+                jump R_Facial
     #End "Warn her" / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
     
                       
@@ -318,8 +323,7 @@ label R_In_Mouth:
             $ Tempmod -= 15
     if "hungry" not in R_Traits and R_Addict <= 50 and "full" in R_RecentActions:
             $ Tempmod -= 15                  
-            
-    $ P_Cock = "out"    
+                
     if Situation == "auto":
                 $ Situation = 0
                 if not renpy.showing("Rogue_BJ_Animation"):
@@ -329,7 +333,6 @@ label R_In_Mouth:
                 $R_Eyes = "closed"        
                 show Rogue_BJ_Animation
                 with vpunch
-                $ P_Spunk = 1
                 if "full" in R_RecentActions:
                         #if she's had enough
                         call RogueFace("bemused")
@@ -454,7 +457,7 @@ label R_In_Mouth:
                                 
                 jump R_Swallowed
                 #end if not asked/auto / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
-           
+    
     $ Situation = 0
     "You ask if you can cum in her mouth."
     if renpy.showing("Rogue_Doggy"):
@@ -469,14 +472,12 @@ label R_In_Mouth:
             if not renpy.showing("Rogue_BJ_Animation"):
                 call Rogue_BJ_Launch("cum")            
                 $ Speed = 2
-                "She nods and bends down to put the tip between her lips."
+                "She nods and bends down to put the tip between her lips. After you cum, she quickly gulps it down and wipes her mouth."
             else:            
                 $ Speed = 2
-                "She nods and hums a \"yes\" sound."            
-            $ P_Spunk = 1
+                "She nods and hums a \"yes\" sound."
             $ R_Spunk.append("mouth")
             ". . ."
-            "After you cum, she quickly gulps it down and wipes her mouth."
             call RogueFace("sexy")            
             $ Speed = 0
             ch_r "That was real sweet, [R_Petname]."
@@ -490,16 +491,14 @@ label R_In_Mouth:
             if not renpy.showing("Rogue_BJ_Animation"):
                 call Rogue_BJ_Launch("cum")            
                 $ Speed = 2    
-                "She looks a bit quizzical, but gently puts the tip to her lips, just as you blow."
+                "She looks a bit quizzical, but gently puts the tip to her lips, just as you blow. She gags a little, but quickly swallows it."
             else:            
                 $ Speed = 2
                 "She nods and hums a \"yes\" sound."
             $ R_Mouth = "sucking"
-            $ P_Spunk = 1
             $ R_Spunk.append("mouth")
             ". . ."
             $ Speed = 0
-            "She gags a little, but quickly swallows it."
             call RogueFace("sexy")
             $ R_Mouth = "smile"
             ch_r "I would be mad, but you taste so sweet, [R_Petname]."
@@ -513,7 +512,7 @@ label R_In_Mouth:
                 if not renpy.showing("Rogue_BJ_Animation"):
                     call Rogue_BJ_Launch("cum")            
                     $ Speed = 2    
-                    "She looks a bit quizzical, but gently puts the tip to her lips, just as you blow."
+                    "She looks a bit quizzical, but gently puts the tip to her lips, just as you blow. She gags a little, but quickly swallows it."
                 else:            
                     $ Speed = 2
                     "She tilts her head and hums a \"huh?\" sound."
@@ -521,12 +520,10 @@ label R_In_Mouth:
                 $ R_Spunk.append("mouth")
                 $ R_Brows = "normal"
                 $ R_Eyes = "sexy"
-                $ P_Spunk = 1
-                $ R_Spunk.append("mouth")
                 ". . ."
-                "She gags a little, but quickly swallows it."
                 $ Speed = 0
                 call RogueFace("sexy")
+                $ R_Spunk.append("mouth")
                 ch_r "I'm starting to get used to that."
                 $ R_Spunk.remove("mouth")
                 jump R_Swallowed
@@ -556,6 +553,7 @@ label R_In_Mouth:
                 call RogueFace("smile", 1)
                 ch_r "Well, maybe it would taste as sweet as your words, [R_Petname]."
                 if ApprovalCheck("Rogue", 1200, TabM=1) and "full" not in R_RecentActions:
+                    $ Approval = 2 
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 3)
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 2)  
                     call RogueFace("sexy", 1)
@@ -565,6 +563,7 @@ label R_In_Mouth:
             
         "Give it a try, you might like it." if "full" not in R_RecentActions:
                 if ApprovalCheck("Rogue", 1200, TabM=1):  
+                    $ Approval = 2
                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 5)
                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 3)
                     $ R_Brows = "confused"  
@@ -597,25 +596,27 @@ label R_In_Mouth:
                         $ R_RecentActions.append("angry")
                         $ R_DailyActions.append("angry")   
                         $ Line = 0
-                        return            
+                        return                    
+                $ R_Mouth = "sucking"
+                call Rogue_BJ_Launch("cum")            
+                $ Speed = 2     
                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 10)
                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 5)
         
     if not renpy.showing("Rogue_BJ_Animation"):
         call Rogue_BJ_Launch("cum")            
-    $ Speed = 2   
+    $ Speed = 2    
     if ApprovalCheck("Rogue", 1200):            
             "She gently puts the tip to her lips, just as you blow."
+            "She gags a little, but quickly swallows it." 
     else:
-            "She tentatively places the tip in her mouth, and you blast inside it."                   
+            "She tentatively places the tip in her mouth, and you blast inside it. She quickly gulps it down."                    
             call RogueFace("sexy")
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -3, 1)
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, -4, 1)        
     $ R_Mouth = "sucking"
-    $ P_Spunk = 1
     $ R_Spunk.append("mouth")
     ". . ."   
-    "She gags a little, but quickly swallows it." 
     $ Speed = 0            
     call RogueFace("sexy") 
     
@@ -739,147 +740,191 @@ label R_Creampie_A:
             
 #Start Facial  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /    
 label R_Facial: 
-        if renpy.showing("Rogue_BJ_Animation"):       
-                if R_Addict >= 60 and ApprovalCheck("Rogue", 1000, "I", Bonus = ((R_Addict*10)- R_Obed)) and R_Swallow:
-                        $ R_Eyes = "manic"
-                        $ R_Blush = 1
-                        $ Speed = 0
-                        "You pull out of her mouth with a pop, and her eyes widen in surprise." 
-                        $ Speed = 4
-                        $ R_Spunk.append("mouth")
-                        "She leaps at your cock and sucks it deep, draining your fluids hungrily."
-                        $ R_Mouth = "lipbite"
-                        $ Speed = 0
-                        "When she finishes, she licks her lips."
-                        call RogueFace("bemused")
-                        $ R_Spunk.remove("mouth")
-                        ch_r "Sorry, [R_Petname], I just couldn't let that go to waste."
-                        $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, -5)
-                        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 10)
-                        jump R_Swallowed
-                call Rogue_HJ_Launch("cum")
-                $ Speed = 2
-                $ R_Spunk.append("facial")
-                "You pull out of her mouth with a pop, and she strokes you off. You spray all over her face."
-                $ Speed = 0
-        
-        elif renpy.showing("Rogue_TJ_Animation"):   
-                $ R_Spunk.append("facial")
-                if not R_Tit:                       
-                    "She glances up but continues to rub her breasts up and down on your cock. When you come, you spray all over her face."
-                else:
-                    "As you're about to finish, you aim squarely at her face, and spray all over it."  
-                $ Speed = 0
+    if renpy.showing("Rogue_BJ_Animation"):       
+            if R_Addict >= 60 and ApprovalCheck("Rogue", 1000, "I", Bonus = ((R_Addict*10)- R_Obed)) and R_Swallow:
+                    $ R_Eyes = "manic"
+                    $ R_Blush = 1
+                    $ Speed = 0
+                    "You pull out of her mouth with a pop, and her eyes widen in surprise." 
+                    $ Speed = 4
+                    $ R_Spunk.append("mouth")
+                    "She leaps at your cock and sucks it deep, draining your fluids hungrily."
+                    $ R_Mouth = "lipbite"
+                    $ Speed = 0
+                    "When she finishes, she licks her lips."
+                    call RogueFace("bemused")
+                    $ R_Spunk.remove("mouth")
+                    ch_r "Sorry, [R_Petname], I just couldn't let that go to waste."
+                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, -5)
+                    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 10)
+                    jump R_Swallowed
+            call Rogue_HJ_Launch("cum")
+            $ Speed = 2
+            $ R_Spunk.append("facial")
+            "You pull out of her mouth with a pop, and she strokes you off. You spray all over her face."
+            $ Speed = 0
+    
+    elif renpy.showing("Rogue_TJ_Animation"):   
+            $ R_Spunk.append("facial")
+            if not R_Tit:                       
+                "She glances up but continues to rub her breasts up and down on your cock. When you come, you spray all over her face."
+            else:
+                "As you're about to finish, you aim squarely at her face, and spray all over it."  
+            $ Speed = 0
+            
+    elif renpy.showing("Rogue_HJ_Animation"):       
+            $ R_Spunk.append("facial")
+            if not R_Hand:                       
+                "She looks a bit confused but continues to stroke while staring at it like a live snake. When you finish, you spray all over her face."
+            else:
+                "As you're about to finish, you aim squarely at her face, and spray all over it."  
+            $ Speed = 0
+    else:        
+            call Rogue_HJ_Launch("cum")
+            $ Speed = 2
+            $ R_Spunk.append("facial")
+            "As you're about to finish, you pull out, aim squarely at her face, and spray all over it."
+            $ Speed = 0
+    
+            if Situation == "warn":
+                ch_r "Thanks for the warning, [R_Petname]. Such a mess though. . ."  
+            else:
+                ch_r "What a mess, you could have warned me." 
                 
-        elif renpy.showing("Rogue_HJ_Animation"):       
-                $ R_Spunk.append("facial")
-                if not R_Hand:                       
-                    "She looks a bit confused but continues to stroke while staring at it like a live snake. When you finish, you spray all over her face."
-                else:
-                    "As you're about to finish, you aim squarely at her face, and spray all over it."  
-                $ Speed = 0
-        else:        
-                call Rogue_HJ_Launch("cum")
-                $ Speed = 2
-                $ R_Spunk.append("facial")
-                "As you're about to finish, you pull out, aim squarely at her face, and spray all over it."
-                $ Speed = 0
-        
-        if Situation == "warn":
-            ch_r "Thanks for the warning, [R_Petname]. Such a mess though. . ."  
-        else:
-            ch_r "What a mess, you could have warned me." 
-               
-        $ P_Cock = "out"            
-        jump R_Orgasm_After
+    jump R_Orgasm_After
 
+# Start Spunk Belly / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+label R_SpunkBelly:
+    call Rogue_Sex_Launch("hotdog")
+    $ Speed = 0
+    if R_Addict >= 60 and ApprovalCheck("Rogue", 1000, "I", Bonus = ((R_Addict*10)- R_Obed)) and R_Swallow:
+            $ R_Eyes = "manic"
+            $ R_Blush = 1
+            call Rogue_BJ_Launch("cum")
+            if Trigger == "sex":
+                "You pull out of her pussy with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
+            elif Trigger == "anal":                
+                "You pull out of her ass with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
+            $ R_Mouth = "lipbite"
+            $ R_Spunk.append("mouth")
+            "When she finishes, she licks her lips."
+            call RogueFace("bemused")
+            $ R_Spunk.remove("mouth")  
+            ch_r "Sorry, that's just sooooo good."
+            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, -5)
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 10)
+            jump R_Swallowed
+    $ P_Cock = "out"
+    $ P_Spunk = "out"
+    $ R_Spunk.append("belly")
+    if Trigger == "sex":
+            "You pull out of her pussy with a pop and spray all over her belly."
+    elif Trigger == "anal":
+            "You pull out of her ass with a pop and spray all over her belly."
+    else:
+            "You pick up the pace and with a grunt you spray all over her belly."
+        
+                  
+    if R_Addict >= 60 and ApprovalCheck("Rogue", 800, "I", Bonus = ((R_Addict*10)- R_Obed)) and R_Swallow: 
+            #if she's manic and has swallowed
+            $ R_Eyes = "manic"
+            $ R_Blush = 1        
+            "Rogue's eyes widen with desire, and she quickly wipes a bit off with her hand, then licks her fingers clean."
+            call RogueFace("manic", 1)
+            $ R_Spunk.append("mouth")
+            $ R_Mouth = "smile"
+            ch_r "Sorry, that's just sooooo good."
+            $ R_Spunk.remove("mouth")  
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3)
+            jump R_Swallowed
+          
+        
+    #else . . .
+    call RogueFace("sexy", 1)    
+    ch_r "Mmmm, all over the place. . ."
+    call Rogue_Sex_Reset
+    jump R_Orgasm_After
 
 # Start Spunk back  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label R_SpunkBack: 
-        call Rogue_Doggy_Launch("hotdog")
-        $ Speed = 0
-        if R_Addict >= 60 and ApprovalCheck("Rogue", 1000, "I", Bonus = ((R_Addict*10)- R_Obed))  and R_Swallow:
-                $ R_Eyes = "manic"
-                $ R_Blush = 1
-                call Rogue_BJ_Launch("cum")
-                if Trigger == "sex":
-                    "You pull out of her pussy with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
-                elif Trigger == "anal":                
-                    "You pull out of her ass with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
-                $ R_Mouth = "lipbite"
-                $ R_Spunk.append("mouth")
-                "When she finishes, she licks her lips."
-                call RogueFace("bemused")
-                $ R_Spunk.remove("mouth")
-                ch_r "Sorry, [R_Petname], I just couldn't let that go to waste."
-                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, -5)
-                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 10)
-                jump R_Swallowed
-        $ P_Cock = "out"
-        $ R_Spunk.append("back")
-        if Trigger == "sex":
-                "You pull out of her pussy with a pop and spray all over her backside."
-        elif Trigger == "anal":
-                "You pull out of her ass with a pop and spray all over her backside."
-        else:
-                "You pick up the pace and with a grunt you spray all over her backside."
-            
-                      
-        if R_Addict >= 60 and ApprovalCheck("Rogue", 800, "I", Bonus = ((R_Addict*10)- R_Obed)) and R_Swallow: 
-                #if she's manic and has swallowed
-                $ R_Eyes = "manic"
-                $ R_Blush = 1        
-                "Rogue's eyes widen with desire, and she quickly wipes a bit off with her hand, then licks her fingers clean."
-                call RogueFace("manic", 1)
-                $ R_Spunk.append("mouth")
-                $ R_Mouth = "smile"
-                ch_r "Well, [R_Petname], I just couldn't let that go to waste."
-                $ R_Spunk.remove("mouth")
-                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3)
-                jump R_Swallowed
-              
-            
-        #else . . .
-        call RogueFace("sexy", 1)
-        ch_r "Thanks for the courtesy, [R_Petname]. Such a mess though. . ." 
-#        call Rogue_Doggy_Reset
-        jump R_Orgasm_After
+    call Rogue_Doggy_Launch("hotdog")
+    $ Speed = 0
+    if R_Addict >= 60 and ApprovalCheck("Rogue", 1000, "I", Bonus = ((R_Addict*10)- R_Obed))  and R_Swallow:
+            $ R_Eyes = "manic"
+            $ R_Blush = 1
+            call Rogue_BJ_Launch("cum")
+            if Trigger == "sex":
+                "You pull out of her pussy with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
+            elif Trigger == "anal":                
+                "You pull out of her ass with a pop, and her eyes widen in surprise. She leaps at your cock and sucks it deep, draining your fluids hungrily."
+            $ R_Mouth = "lipbite"
+            $ R_Spunk.append("mouth")
+            "When she finishes, she licks her lips."
+            call RogueFace("bemused")
+            $ R_Spunk.remove("mouth")
+            ch_r "Sorry, [R_Petname], I just couldn't let that go to waste."
+            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, -5)
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 10)
+            jump R_Swallowed
+    $ P_Cock = "out"
+    $ P_Spunk = "out"
+    $ R_Spunk.append("back")
+    if Trigger == "sex":
+            "You pull out of her pussy with a pop and spray all over her backside."
+    elif Trigger == "anal":
+            "You pull out of her ass with a pop and spray all over her backside."
+    else:
+            "You pick up the pace and with a grunt you spray all over her backside."
+        
+                  
+    if R_Addict >= 60 and ApprovalCheck("Rogue", 800, "I", Bonus = ((R_Addict*10)- R_Obed)) and R_Swallow: 
+            #if she's manic and has swallowed
+            $ R_Eyes = "manic"
+            $ R_Blush = 1        
+            "Rogue's eyes widen with desire, and she quickly wipes a bit off with her hand, then licks her fingers clean."
+            call RogueFace("manic", 1)
+            $ R_Spunk.append("mouth")
+            $ R_Mouth = "smile"
+            ch_r "Well, [R_Petname], I just couldn't let that go to waste."
+            $ R_Spunk.remove("mouth")
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3)
+            jump R_Swallowed
+          
+        
+    #else . . .
+    call RogueFace("sexy", 1)
+    ch_r "Thanks for the courtesy, [R_Petname]. Such a mess though. . ." 
+    call Rogue_Doggy_Reset
+    jump R_Orgasm_After
     
    
 #Start Handy finish  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label R_Handy_Finish:
-        if renpy.showing("Rogue_Doggy"):
-                call Rogue_Doggy_Reset
-                if Trigger == "hotdog":
-                    "She bends down and begins to stroke you off."
-                else:
-                    "She grins and pulls out with a pop, and begins to stroke you off."
-                $ Speed = 2   
-        elif renpy.showing("Rogue_BJ_Animation"):         
-                call Rogue_HJ_Launch("cum")  
-                $ Speed = 2   
-                "She slides her lips off your cock, and begins to stroke you off."        
-        else:    
-                call Rogue_HJ_Launch("cum")
-                $ Speed = 2                     
-        $ R_Spunk.append("hand")  
-        "She grins and speeds up her efforts, placing her left hand over your tip. You burst all over her hands." 
-        $ Speed = 0
-        
-        if R_Addict > 80 or "hungry" in R_Traits:
-                $ R_Eyes = "manic"
-                $ R_Spunk.remove("hand")
-                $ R_Spunk.append("mouth")
-                $ R_Mouth = "smile"
-                "She licks her hands off with a satisfied grin."
-                $ R_Spunk.remove("mouth")
-                ch_r "Hmmm. . ."
-        else:
-                call RogueFace("bemused")
-                $ R_Spunk.remove("hand")
-                "She wipes her hands off, but takes a quick sniff when she's done and smiles."
-                ch_r "Thanks for the head's up."     
-                jump R_Orgasm_After
+    if renpy.showing("Rogue_Doggy"):
+        call Rogue_Doggy_Reset
+    call Rogue_HJ_Launch("cum")
+    $ Speed = 2        
+    $ R_Spunk.append("hand")  
+    if renpy.showing("Rogue_HJ_Animation"):                                  
+            "She grins and speeds up her efforts, placing her left hand over your tip. You burst all over her hands." 
+    else:
+            "She grins and starts jerking you off, placing her left hand over your tip. You burst all over her hands." 
+    $ Speed = 0
+    
+    if R_Addict > 80 or "hungry" in R_Traits:
+            $ R_Eyes = "manic"
+            $ R_Spunk.remove("hand")
+            $ R_Spunk.append("mouth")
+            $ R_Mouth = "smile"
+            "She licks her hands off with a satisfied grin."
+            $ R_Spunk.remove("mouth")
+            ch_r "Hmmm. . ."
+    else:
+            call RogueFace("bemused")
+            $ R_Spunk.remove("hand")
+            "She wipes her hands off, but takes a quick sniff when she's done and smiles."
+            ch_r "Thanks for the head's up."     
+            jump R_Orgasm_After
 
 
 #Start Swallowed  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -910,92 +955,85 @@ label R_Swallowed:
 
 #Start Creampied  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label R_Creampied:
-        if Trigger == "sex":
-                $ R_CreamP += 1
-                $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 10)
-                $ R_RecentActions.append("creampie sex")                      
-                $ R_DailyActions.append("creampie sex") 
-        elif Trigger == "anal":
-                $ R_CreamA += 1
-                $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5)
-                $ R_RecentActions.append("creampie anal")                      
-                $ R_DailyActions.append("creampie anal") 
-        $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3)
-        $ R_Addict -= 30
-        $ R_Addictionrate += 2
-        if "addictive" in P_Traits:
-                $ R_Addictionrate += 3
-        if R_CreamP == 1:
-                $R_SEXP += 10
-                $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 5)
-#        call Rogue_Doggy_Reset
+    if Trigger == "sex":
+            $ R_CreamP += 1
+            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 10)
+            $ R_RecentActions.append("creampie sex")                      
+            $ R_DailyActions.append("creampie sex") 
+    elif Trigger == "anal":
+            $ R_CreamA += 1
+            $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 200, 5)
+            $ R_RecentActions.append("creampie anal")                      
+            $ R_DailyActions.append("creampie anal") 
+    $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3)
+    $ R_Addict -= 30
+    $ R_Addictionrate += 2
+    if "addictive" in P_Traits:
+            $ R_Addictionrate += 3
+    if R_CreamP == 1:
+            $R_SEXP += 10
+            $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 5)
+    call Rogue_Doggy_Reset
 
 # Clean-up / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
 label R_Orgasm_After:
-        $ Line = "What next?"
-        $ Rogue_Arms = 1
-        $ P_Semen -= 1
-        $ P_Focus = 0
-        $ Speed = 0  
-        menu:
-                "Want her to clean you off?"
-                "Yes":
-                    call R_CleanCock
-                "No":
-                    pass
-        if R_Spunk:
-                call Rogue_Cleanup
-        $ Situation = 0
-        return
-        
-        
-label R_CleanCock:
-        $ Line = "What next?"
-        $ Rogue_Arms = 1
-        $ P_Cock = "out"
-        $ Speed = 0    
-        if Trigger == "anal" and not ApprovalCheck("Rogue", 1600, TabM=1) and not R_Addict >= 80:
-                "She wipes your cock clean."
-        elif R_Blow > 3 or R_Swallow: 
-                if ApprovalCheck("Rogue", 1200, TabM=1) or R_Addict >= 60:
-                        call Rogue_BJ_Launch("cum")
-                        $ Speed = 1
-                        call RogueFace("sucking", 1) 
-                        if ApprovalCheck("Rogue", 1500, TabM=1):
-                            if R_Love > R_Inbt and R_Love > R_Obed:
-                                "She looks up at you lovingly as she licks your cock clean."            
-                            elif R_Obed > R_Inbt:
-                                $ R_Eyes = "side"
-                                "She dutifully licks your cock clean with lowered eyes."
-                                $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 3)                
-                            else:
-                                "She happily licks your cock clean." 
-                        elif R_Addict >= 60:
-                                "She hungrily and thoroughly licks your cock clean."   
+    $ Line = 0
+    $ Rogue_Arms = 1
+    $ P_Semen -= 1
+    $ P_Focus = 0
+    $ P_Cock = "out"
+    $ P_Spunk = 0
+    $ Speed = 0    
+    if Trigger == "anal" and not ApprovalCheck("Rogue", 1600, TabM=1) and not R_Addict >= 80:
+            "She wipes your cock clean."
+            call Rogue_BJ_Reset 
+    elif R_Blow > 3 or R_Swallow and R_Gag != "ballgag": 
+            if ApprovalCheck("Rogue", 1200, TabM=1) or R_Addict >= 60:
+                    call Rogue_BJ_Launch("cum")
+                    $ Speed = 1
+                    call RogueFace("sucking", 1) 
+                    if ApprovalCheck("Rogue", 1500, TabM=1):
+                        if R_Love > R_Inbt and R_Love > R_Obed:
+                            "She looks up at you lovingly as she licks your cock clean."            
+                        elif R_Obed > R_Inbt:
+                            $ R_Eyes = "side"
+                            "She dutifully licks your cock clean with lowered eyes."
+                            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 80, 3)                
                         else:
-                            "She licks you cock clean." 
-                        call RogueFace("sexy")       
-                else:
-                        if not renpy.showing("Rogue_HJ_Animation"):
-                            call Rogue_HJ_Launch("cum") 
-                        "She wipes your cock clean."  
-        else:
-                        if not renpy.showing("Rogue_HJ_Animation"):
-                            call Rogue_HJ_Launch("cum") 
-                        "She wipes your cock clean."         
-        $ P_Spunk = 0
-        call RogueFace("sexy") 
-        return
-                    
-
-
+                            "She happily licks your cock clean." 
+                    elif R_Addict >= 60:
+                            "She hungrily and thoroughly licks your cock clean."   
+                    else:
+                        "She licks you cock clean." 
+                    call RogueFace("sexy") 
+                    call Rogue_BJ_Reset            
+            else:
+                    if not renpy.showing("Rogue_HJ_Animation"):
+                        call Rogue_HJ_Launch("cum") 
+                    "She wipes your cock clean."  
+    else:
+                    if not renpy.showing("Rogue_HJ_Animation"):
+                        call Rogue_HJ_Launch("cum") 
+                    "She wipes your cock clean." 
+    call RogueFace("sexy") 
+    call Rogue_HJ_Reset 
+    if R_Spunk and not ApprovalCheck("Rogue", 400, "I"):
+                call Rogue_Cleanup
+    elif R_Spunk:    
+        menu:
+            extend""
+            "And maybe clean yourself up too?":            
+                call Rogue_Cleanup
+            "[[Say nothing.]":
+                call Rogue_Cleanup
+    $ Situation = 0
+    return
     
 # End You Cumming //////////////////////////////////////////////////////////////////////////////////
 
 
 # Rogue Lusty face check ////////////////////////////////////////////////////////////////////////////////
-label RogueLust(Extreme = 0, Kissing = 0):
+label RogueLust(Extreme = 0):
     if R_Lust >= 40:        
             $ R_Blush = 1
         
@@ -1004,21 +1042,18 @@ label RogueLust(Extreme = 0, Kissing = 0):
     elif R_Lust >= 50:
             $ R_Wet = 1
     
-    if Trigger3 == "kiss both" or Trigger3 == "kiss girl":
-            #if the girls are kissing or all three are
-            $ Kissing = 1
-    if Trigger4 == "kiss both" or Trigger3 == "kiss girl":
-            #if the girls are kissing or all three are
-            $ Kissing = 1   
-    if Partner != "Rogue":
+    if Partner != "Rogue" and (Trigger == "kissing" or Trigger2 == "kissing" or Trigger5 == "kiss both" or Trigger5 == "kiss girl"):  
             #If Rogue is kissing and is primary
-            if Trigger == "kiss you" or Trigger2 == "kiss you":  
-                $ Kissing = 1
-    elif Trigger4 == "kiss you":   
-            #If Rogue is kissing you in a threesome action
-            $ Kissing = 1
-            
-    if Kissing:
+            $ R_Eyes = "closed"
+            if R_Kissed >= 10 and R_Inbt >= 300:
+                $ R_Mouth = "sucking"
+            elif R_Kissed > 1 and R_Addict >= 50:            
+                $ R_Mouth = "sucking"
+            else:
+                $ R_Mouth = "kiss"
+                            
+    elif Partner == "Rogue" and Trigger4 == "kissing":   
+            #If Rogue is kissing in a threesome action
             $ R_Eyes = "closed"
             if R_Kissed >= 10 and R_Inbt >= 300:
                 $ R_Mouth = "sucking"
@@ -1134,23 +1169,9 @@ label R_Cumming:
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, 1)
             $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, 1)
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 2)
-            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 2) 
-            
-            #checks to check reaction of other girls
-            if K_Loc == bg_current and "noticed rogue" in K_RecentActions: 
-                    $ K_Lust += 15 if K_LikeRogue >= 500 else 10
-                    $ K_Lust += 5 if K_Les >= 5 else 0
-            elif E_Loc == bg_current and "noticed rogue" in E_RecentActions: 
-                    $ E_Lust += 15 if E_LikeRogue >= 500 else 10
-                    $ E_Lust += 5 if E_Les >= 5 else 0 
-            if Partner == "Rogue":
-                    #If the active girl is someone else
-                    if K_Lust >= 100 and K_Loc == bg_current: 
-                            call K_Cumming  
-                    elif E_Lust >= 100 and E_Loc == bg_current: 
-                            call E_Cumming   
-            #Orgasm count                                          
-            if Trigger != "blow" and Trigger != "hand" and Partner != "Rogue":
+            $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 2)            
+    #Orgasm count
+            if Trigger != "blow" and Trigger != "hand":
                 $ R_OCount += 1        
                 if R_OCount == 2:
                         $ R_Brows = "confused"
@@ -1166,7 +1187,7 @@ label R_Cumming:
                         $ R_Love = Statupdate("Rogue", "Love", R_Love, 80, 2)
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 30, 1)
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 1)                    
-                elif R_OCount == 5 and Partner != "Rogue": #10
+                elif R_OCount == 5: #10
                     $ R_Mouth = "tongue"    
                     ch_r "I'm . . .really. . . getting. . . worn. . . out . . ."
                     menu:
@@ -1207,66 +1228,48 @@ label R_Cumming:
 
 
 # Start Rogue Clean-Up /////////////////////////////////////////////////////////////////////////////////////
-label Rogue_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
-    if Choice == "after":
-            # This is at the end of a session
-            if not R_Spunk:
-                $ R_Wet = 0
-                return    
-            $ Cnt = 1
-        
+label Rogue_Cleanup(Options = [], Cnt = 0, Line = "random", Cleaned = 0):
+    if not R_Spunk:
+        $ R_Wet = 0
+        return     
         
     if R_Addict > 80 and R_Swallow:
         #if she likes cum, she prefers to eat it. 
-        $ Choice = "eat"            
+        $ Line = "eat"            
         $ R_Eyes = "manic"
         $ R_Mouth = "smile" 
     elif "painted" in R_RecentActions and ApprovalCheck("Rogue", 1000, "OI"):
-        return    
+        return
     elif ApprovalCheck("Rogue", 1200, "LO"):  
-        $ Choice = "ask"   
+        $ Line = "ask"            
     elif not ApprovalCheck("Rogue", 400, "I"):
         call RogueFace("bemused") 
-        $ Choice = "clean"   
-    elif not Cnt:
-        $ Choice = "random"  
+        $ Line = "clean"   
     else:
-        $ Choice = "ask"      
+        $ Line = "ask"      
    
     $ Cleaned = 1 if "cleaned" in R_DailyActions else 0
     $ R_RecentActions.append("cleaned") 
     $ R_DailyActions.append("cleaned") 
     
-    if Choice == "ask":
-            $ Choice = "random"
+    if Line == "ask":
+            $ Line = "random"
             "She looks down at the spunk covering her."
             menu:
                 "What do you suggest Rogue do about cleaning up?"
                 "You should leave it where it is.":
-                        if not Cnt:
-                            # If this isn't the end of the session
-                            if ApprovalCheck("Rogue", 300, "I") or ApprovalCheck("Rogue", 1000):
-                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 1)
-                                    $ R_Obed = Statupdate("Rogue", "Obed", R_Inbt, 50, 1)
-                                    $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 2) 
-                                    $ Choice = "leave"  
-                                    call RogueFace("sly") 
-                                    ch_r "Heh, ok, [R_Petname]."
-                            else:
-                                    call RogueFace("sly") 
-                                    ch_r "Ugh, too messy."                                    
-                        elif ApprovalCheck("Rogue", 900, "I") or "exhibitionist" in R_Traits:
+                        if ApprovalCheck("Rogue", 900, "I") or "exhibitionist" in R_Traits:
                                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 70, 2)
                                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 1)
                                 $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 5) 
-                                $ Choice = "leave"  
+                                $ Line = "leave"  
                                 call RogueFace("sly") 
                                 ch_r "Ooh, I like where your head is at. . "
                         elif ApprovalCheck("Rogue", 600, "I") and ApprovalCheck("Rogue", 1200, "LO"):
                                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 1)
                                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 1) 
                                 $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 5) 
-                                $ Choice = "leave"  
+                                $ Line = "leave"  
                                 call RogueFace("surprised",2) 
                                 ch_r "Well, I guess I could. . ."
                                 call RogueFace("sly",1) 
@@ -1283,7 +1286,7 @@ label Rogue_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
                                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 40, 3) 
                                         $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 1) 
                                         ch_r "Oh, fine!"
-                                        $ Choice = "leave"  
+                                        $ Line = "leave"  
                                     elif Cleaned:
                                         call RogueFace("angry") 
                                         ch_r "Seriously, stop bugging me about this."
@@ -1302,14 +1305,14 @@ label Rogue_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
                                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 40, 3)
                                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 2)
                                         ch_r "Alright, fine."
-                                        $ Choice = "leave"  
+                                        $ Line = "leave"  
                                     elif ApprovalCheck("Rogue", 800, "O"):
                                         $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -10)
                                         $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -5)
                                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 10)
                                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 200, 5)
                                         ch_r "If you have to insist."
-                                        $ Choice = "leave"  
+                                        $ Line = "leave"  
                                     elif Cleaned:
                                         $ R_Love = Statupdate("Rogue", "Love", R_Love, 50, -5)
                                         $ R_Love = Statupdate("Rogue", "Love", R_Love, 200, -1)
@@ -1338,7 +1341,7 @@ label Rogue_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
                                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3) 
                                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 1) 
                                 $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 5) 
-                                $ Choice = "eat"   
+                                $ Line = "eat"   
                                 ch_r "I am a bit peckish. . ."
                         elif R_Swallow and ApprovalCheck("Rogue", 800): 
                                 #few swallows
@@ -1347,7 +1350,7 @@ label Rogue_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
                                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 2) 
                                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 1) 
                                 $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 90, 5) 
-                                $ Choice = "eat"   
+                                $ Line = "eat"   
                                 ch_r "I guess it wasn't so bad last time. . ."
                         elif ApprovalCheck("Rogue", 1200): 
                                 #no swallows, but likes you
@@ -1355,7 +1358,7 @@ label Rogue_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
                                 $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 1)
                                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 3) 
                                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 1) 
-                                $ Choice = "eat"   
+                                $ Line = "eat"   
                                 ch_r "I suppose I could give it a go. . ."
                         elif ApprovalCheck("Rogue", 400): 
                                 #Likes you well enough, but won't
@@ -1377,7 +1380,7 @@ label Rogue_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
                                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 5) 
                                 $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 60, 5) 
                                 ch_r "I don't know, [R_Petname], I kind of like it where it is. . ."
-                                $ Choice = "leave"   
+                                $ Line = "leave"   
                                 menu:
                                     extend ""
                                     "Ok, fine.":
@@ -1389,13 +1392,13 @@ label Rogue_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
                                             call RogueFace("sad") 
                                             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 10)
                                             ch_r "If that's what you really want. . ."
-                                            $ Choice = "clean"  
+                                            $ Line = "clean"  
                                         elif ApprovalCheck("Rogue", 1200, "LO"):
                                             call RogueFace("sad") 
                                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, -3)
                                             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 3)
                                             ch_r "You take the fun out of this. . ."
-                                            $ Choice = "clean"   
+                                            $ Line = "clean"   
                                         else:
                                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, -5)
                                             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, -5)
@@ -1403,40 +1406,37 @@ label Rogue_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
                                                                                     
                         else: #agrees
                                 call RogueFace("bemused") 
-                                $ Choice = "clean"   
+                                $ Line = "clean"   
                                 ch_r "Ok, I guess. . ."
                         #end clean it up
                         
                 "Say nothing. [[leave it to her]":
-                    $ Choice = "random"
+                    $ Line = "random"
             #end "asked"
                 
                 
-    if Choice == "random":
+    if Line == "random":
             $ Options = ["clean"]
             if R_Swallow and ApprovalCheck("Rogue", 800):
+                $ Options.append("eat") 
+                if R_Swallow >=5:                            
                     $ Options.append("eat") 
-                    if R_Swallow >=5:                            
-                        $ Options.append("eat") 
-                    if "hungry" in R_Traits:                
-                        $ Options.append("eat") 
-            if ApprovalCheck("Rogue", 300, "I"):
-                    if not Cnt:
-                        $ Options.append("leave") 
-                    if not Cnt or ApprovalCheck("Rogue", 600, "I"):
-                        $ Options.append("leave") 
-                    if not Cnt or ApprovalCheck("Rogue", 800, "I"):
-                        $ Options.append("leave") 
-                    if "exhibitionist" in R_Traits:
-                        $ Options.append("leave") 
+                if "hungry" in R_Traits:                
+                    $ Options.append("eat") 
+            if ApprovalCheck("Rogue", 600, "I"):
+                $ Options.append("leave") 
+                if ApprovalCheck("Rogue", 800, "I"):
+                    $ Options.append("leave") 
+                if "exhibitionist" in R_Traits:
+                    $ Options.append("leave") 
                     
             $ renpy.random.shuffle(Options)
             
-            $ Choice = Options[0]
+            $ Line = Options[0]
             #end "random"
             
             
-    if Choice == "leave":
+    if Line == "leave":
             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 80, 2) 
             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 200, 1) 
             "She leaves the jiz right where it is and gives you a wink."
@@ -1448,16 +1448,14 @@ label Rogue_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
                         "She does wipe her hand off though."   
             if "mouth" in R_Spunk:                  
                     $ R_Spunk.remove("mouth")
-            if Cnt:
-                    # if this is final clean-up and left the jiz on   
-                    $ R_RecentActions.append("painted")                  
-                    $ R_DailyActions.append("painted")                         
+            $ R_RecentActions.append("painted")  #means she left the jiz on                   
+            $ R_DailyActions.append("painted")                         
             return
             #end "leave it"
 
     $ Cnt = 0
     $ R_Spunk.append("hand")
-    if "mouth" in R_Spunk and Choice != "eat":
+    if "mouth" in R_Spunk and Line != "eat":
             $ R_Spunk.remove("mouth")
             "She spits out the spunk in her mouth and dribbling down her chin,"
             $ Cnt += 1
@@ -1496,7 +1494,7 @@ label Rogue_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
             else:
                 "She wipes the spunk inside her pussy,"     
             $ Cnt += 1 
-    if "anal" in R_Spunk and (ApprovalCheck("Rogue", 800, "I") or Choice != "eat"):
+    if "anal" in R_Spunk and (ApprovalCheck("Rogue", 800, "I") or Line != "eat"):
             while "anal" in R_Spunk:
                 $ R_Spunk.remove("anal")
             if Cnt:
@@ -1506,7 +1504,7 @@ label Rogue_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
             $ Cnt += 1            
     if "hand" in R_Spunk:
             $ R_Spunk.remove("hand")
-            if Choice == "eat":                    
+            if Line == "eat":                    
                 $ R_Spunk.append("mouth")
                 if Cnt and "anal" in R_Spunk:
                     "then licks her hands off with a satisfied grin," 
@@ -1536,7 +1534,7 @@ label Rogue_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
                 "Afterward, she wipes the spunk dripping our of her ass."
             else:
                 "She wipes the spunk dripping out of her ass."
-    $ R_Wet = 0        
+    $ R_Wet = 0
     $ del R_Spunk[:]   
     if Cnt >= 5:
             $ R_Eyes = "surprised"
@@ -1544,7 +1542,7 @@ label Rogue_Cleanup(Choice = "random", Options = [], Cnt = 0, Cleaned = 0):
             $ R_Eyes = "sexy"
     elif Cnt >=3:
             ch_r "That was a real mess you left me to clean up."
-    elif Choice == "eat" and R_Swallow >= 5:
+    elif Line == "eat" and R_Swallow >= 5:
             ch_r "That was delcious."
     return    
     

@@ -125,7 +125,11 @@ label R_Stripping:
                     $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 2)
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 50, 1)
                     $ P_Focus = Statupdate("Rogue", "Focus", P_Focus, 80, 15) 
-                    $ Line = R_Chest                
+                    $ Line = R_Chest   
+                    if R_Chest == "swimsuit1" or R_Chest == "swimsuit2":
+                        if R_Panties:
+                            $ R_Panties = 0
+                            call Rogue_First_Bottomless             
                     $ R_Chest = 0                     
                     if not R_SeenChest:
                         call RogueFace("bemused", 1)
@@ -197,7 +201,11 @@ label R_Stripping:
             elif R_Chest:                                                               # Will she go topless?
                 if ApprovalCheck("Rogue", 1250, TabM = 3) or (R_SeenChest and ApprovalCheck("Rogue", 1100, TabM = 3) and not Taboo):
                     $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 60, 5) 
-                    $ Line = R_Chest                
+                    $ Line = R_Chest     
+                    if R_Chest == "swimsuit1" or R_Chest == "swimsuit2":
+                        if R_Panties:
+                            $ R_Panties = 0
+                            call Rogue_First_Bottomless           
                     $ R_Chest = 0                     
                     if not R_SeenChest:
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 3)                              
@@ -217,7 +225,11 @@ label R_Stripping:
             elif R_Panties:                                                                        # Will she go bottomless?
                 if ApprovalCheck("Rogue", 1350, TabM = 3) or (R_SeenPussy and ApprovalCheck("Rogue", 1100, TabM = 3) and not Taboo):
                     $ R_Lust = Statupdate("Rogue", "Lust", R_Lust, 75, 10) 
-                    $ Line = R_Panties                
+                    $ Line = R_Panties  
+                    if R_Panties == "swimsuit1" or R_Panties == "swimsuit2":
+                        if R_Chest:
+                            $ R_Chest = 0
+                            call Rogue_First_Topless              
                     $ R_Panties = 0                     
                     if not R_SeenPussy:
                         $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 60, 3)                              
@@ -443,7 +455,7 @@ label R_Undress(Region = "ask",CountStore=0):
     if Region == "ask":
         menu:
             "Which parts?"
-            "Her top" if R_Over or R_Chest or R_Arms:    
+            "Her top" if R_Over or R_Chest:    
                 $ Region = "top"     
             "Her bottoms" if R_Legs or R_Panties or R_Hose:
                 $ Region = "bottom"           
@@ -540,10 +552,18 @@ label Rogue_Top_Off(Intro = 1, Line = 0, Cnt = 0):                              
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 90, (int(Taboo/20))) 
                 if Line:
                     $ Line = R_Chest
+                    if R_Chest == "swimsuit1" or R_Chest == "swimsuit2":
+                        if R_Panties:
+                            $ R_Panties = 0
+                            call Rogue_First_Bottomless
                     $ R_Chest = 0
                     "After that, she also tears off her [Line]."  
                 else:
                     $ Line = R_Chest
+                    if R_Chest == "swimsuit1" or R_Chest == "swimsuit2":
+                        if R_Panties:
+                            $ R_Panties = 0
+                            call Rogue_First_Bottomless
                     $ R_Chest = 0
                     "Rogue sighs in frustration, and pulls off her [Line]."  
 
@@ -568,42 +588,48 @@ label Rogue_Top_Off(Intro = 1, Line = 0, Cnt = 0):                              
             menu:                                                                                 #Menu All off?
                 ch_r "So, [R_Petname]. Did you want me to take my top off?"  
                 "Lose the [R_Over]." if R_Over:                 
-                        call RogueFace("bemused", 1)                    
-                        $ Line = R_Over
-                        $ R_Over = 0
-                        "Rogue pulls her [Line] off and tosses it aside."
+                    call RogueFace("bemused", 1)                    
+                    $ Line = R_Over
+                    $ R_Over = 0
+                    "Rogue pulls her [Line] off and tosses it aside."
                 "Why don't you lose the [R_Neck]?" if R_Neck:
-                        $ Line = R_Neck
-                        $ R_Neck = 0
-                        "Rogue pulls her [Line] off."                    
+                    $ Line = R_Neck
+                    $ R_Neck = 0
+                    "Rogue pulls her [Line] off."                    
                 "Just lose the [R_Chest]." if R_Over and R_Chest:
-                        call RogueFace("bemused", 1)                    
-                        $ Line = R_Chest
-                        $ R_Chest = 0                 
-                        "Rogue slowly removes her [Line] from under the [R_Over]."   
+                    call RogueFace("bemused", 1)                    
+                    $ Line = R_Chest
+                    if R_Chest == "swimsuit1" or R_Chest == "swimsuit2":
+                        if R_Panties:
+                            $ R_Panties = 0
+                            call Rogue_First_Bottomless
+                    $ R_Chest = 0                 
+                    "Rogue slowly removes her [Line] from under the [R_Over]."   
                 "Lose the [R_Chest]." if not R_Over and R_Chest:
-                        call RogueFace("bemused", 1)
-                        $ Line = R_Chest
-                        $ R_Chest = 0                 
-                        "Rogue throws off her [Line]."   
+                    call RogueFace("bemused", 1)
+                    $ Line = R_Chest
+                    if R_Chest == "swimsuit1" or R_Chest == "swimsuit2":
+                        if R_Panties:
+                            $ R_Panties = 0
+                            call Rogue_First_Bottomless
+                    $ R_Chest = 0                 
+                    "Rogue throws off her [Line]."   
                 "Lose both tops." if R_Over and R_Chest:
-                        call RogueFace("bemused", 1)
-                        $ Line = R_Over
-                        $ R_Over = 0
-                        "Rogue tosses the [Line] over her head. . ."   
-                        $ Line = R_Chest
-                        $ R_Chest = 0 
-                        ". . .and then the [Line] as well."        
-                "Lose the gloves. . ." if R_Arms:
-                        call RogueFace("sexy")
-                        $ R_Arms = 0          
-                        "She pulls off her gloves."
-                "Lose the gloves. . .(locked)" if not R_Arms:
-                        pass
+                    call RogueFace("bemused", 1)
+                    $ Line = R_Over
+                    $ R_Over = 0
+                    "Rogue tosses the [Line] over her head. . ."   
+                    $ Line = R_Chest
+                    if R_Chest == "swimsuit1" or R_Chest == "swimsuit2":
+                        if R_Panties:
+                            $ R_Panties = 0
+                            call Rogue_First_Bottomless
+                    $ R_Chest = 0 
+                    ". . .and then the [Line] as well."                
                 "That's enough. [[exit]":               
-                        call RogueFace("bemused", 1)
-                        ch_r "All right, [R_Petname]."    
-                        $ Cnt = 0
+                    call RogueFace("bemused", 1)
+                    ch_r "All right, [R_Petname]."    
+                    $ Cnt = 0
         if not R_Chest and not R_Over:             
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 1)
             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 90, 1)
@@ -656,8 +682,7 @@ label Rogue_Top_Off(Intro = 1, Line = 0, Cnt = 0):                              
                     $ R_Love = Statupdate("Rogue", "Love", R_Love, 70, 2)
                     $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 1)
                                                                                                          
-        "How about just the [R_Over]?" if R_Over:                                                
-            # asked to go shirtless. 
+        "How about just the [R_Over]?" if R_Over:                                                # asked to go shirtless. 
             if ApprovalCheck("Rogue", 800, TabM = 2) and R_Chest: #80, 160 taboo 
                 call RogueFace("sexy") 
                 ch_r "Well, that's no big deal I guess. . ."                 
@@ -716,13 +741,20 @@ label Rogue_Top_Off(Intro = 1, Line = 0, Cnt = 0):                              
                     $ R_Over = 0
                     "Rogue tosses the [Line] over her head. . ."   
                     $ Line = R_Chest
+                    if R_Chest == "swimsuit1" or R_Chest == "swimsuit2":
+                        if R_Panties:
+                            $ R_Panties = 0
+                            call Rogue_First_Bottomless
                     $ R_Chest = 0 
                     ". . .and then the [Line] as well."
                 else:                    
                     $ Line = R_Chest
+                    if R_Chest == "swimsuit1" or R_Chest == "swimsuit2":
+                        if R_Panties:
+                            $ R_Panties = 0
+                            call Rogue_First_Bottomless
                     $ R_Chest = 0 
-                    "Rogue tosses her [Line] over her head."   
-                $ R_Arms = 0          
+                    "Rogue tosses her [Line] over her head."                      
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 30, 2)  
                 $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 1)
                 call Rogue_First_Topless     
@@ -735,12 +767,7 @@ label Rogue_Top_Off(Intro = 1, Line = 0, Cnt = 0):                              
             else:   
                 call RogueFace("sexy")
                 call Rogue_Top_Off_Refused
-           
-        "Lose the gloves, at least. . ." if R_Arms:
-                call RogueFace("sexy")
-                ch_r "Oh, all right, [R_Petname]."
-                $ R_Arms = 0          
-                "She pulls off her gloves."
+        
         "No, topless or nothing.":                                                              #demanded topless 60, 260 taboo 
             call Rogue_ToplessorNothing
             
@@ -803,10 +830,18 @@ label Rogue_ToplessorNothing:
             "Rogue haltingly pulls the [Line] over her head. . ."
             if R_Chest:
                 $ Line = R_Chest
+                if R_Chest == "swimsuit1" or R_Chest == "swimsuit2":
+                    if R_Panties:
+                        $ R_Panties = 0
+                        call Rogue_First_Bottomless
                 $ R_Chest = 0 
                 ". . .and then the [Line] as well."
         elif R_Chest:
             $ Line = R_Chest
+            if R_Chest == "swimsuit1" or R_Chest == "swimsuit2":
+                if R_Panties:
+                    $ R_Panties = 0
+                    call Rogue_First_Bottomless
             $ R_Chest = 0 
             "Rogue haltingly pulls the [Line] over her head. . ."
         call Rogue_First_Topless                       
@@ -1186,6 +1221,10 @@ label Rogue_Bottoms_Off_Legs:
                         
                     if R_Panties:                               
                         $ Line = R_Panties   
+                        if R_Panties == "swimsuit1" or R_Panties == "swimsuit2":
+                            if R_Chest:
+                                $ R_Chest = 0
+                                call Rogue_First_Topless 
                         $ R_Panties = 0  
                         "She glances up at you as she removes her [Line]." 
                     call Rogue_First_Bottomless   
@@ -1228,7 +1267,11 @@ label Rogue_Bottoms_Off_Legs:
                         ch_r "A little backwards, but sure. . ."
                     else:
                         ch_r "Ok, sure, [R_Petname]."                                            
-                    $ Line = R_Panties   
+                    $ Line = R_Panties  
+                    if R_Panties == "swimsuit1" or R_Panties == "swimsuit2":
+                        if R_Chest:
+                            $ R_Chest = 0
+                            call Rogue_First_Topless 
                     $ R_Panties = 0  
                     if R_Legs == "pants":
                         "She pulls her pants off, then removes her [Line], before putting them back on."                        
@@ -1429,7 +1472,7 @@ label Rogue_First_Peen(Silent = 0, Undress = 0): #checked each time she sees you
                             $ R_Love = Statupdate("Rogue", "Love", R_Love, 90, -5)                
                             $ R_Obed = Statupdate("Rogue", "Obed", R_Obed, 50, 10)
                             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 60, 10)  
-        elif Taboo and (not ApprovalCheck("Rogue", 1500) or R_SEXP < 10) and bg_current != "bg showerroom":
+        elif (Taboo and not ApprovalCheck("Rogue", 1500) or R_SEXP < 10) and bg_current != "bg showerroom":
                 call RogueFace("surprised", 2)  
                 ch_r "What are you- you should really put that thing away!"
                 call RogueFace("bemused", 1)  

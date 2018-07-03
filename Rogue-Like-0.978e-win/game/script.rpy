@@ -4148,8 +4148,8 @@ label Set_The_Scene(Chr = 1, Entry = 0, Dress = 1, TrigReset = 1, Quiet=0):
         # Trigreset resets triggers
         # if Quiet, no fade to black
         
-        if not Quiet:
-            show blackscreen onlayer black 
+        #if not Quiet:
+        #    show blackscreen onlayer black 
         
         if Entry:
             $ Chr = 0
