@@ -304,8 +304,8 @@ image Mystique_Blue_Sprite:
         (0,0), ConditionSwitch(
             #UI tool for When Mystique is masturbating using Trigger3 actions
             "Trigger == 'lesbian' or not Trigger3 or Ch_Focus != 'Mystique'", Null(),
-            "Trigger3 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy",
-            "Trigger3 == 'fondle pussy'", "GirlGropePussy",
+            "Trigger3 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy_M",
+            "Trigger3 == 'fondle pussy'", "GirlGropePussy_M",
             "Trigger3 == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
             "Trigger3 == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeRightBreast", #When zero is working the left breast, fondle right  
             "Trigger3 == 'fondle breasts'", "GirlGropeRightBreast",
@@ -320,8 +320,8 @@ image Mystique_Blue_Sprite:
             #UI tool for Trigger5(Threesome masutrbation) actions
             "not Trigger5 or Trigger4 != 'masturbation' or Ch_Focus == 'Mystique'", Null(), 
             #this doesn't activate unless Mystique is not primary, and is actively masturbating
-            "Trigger5 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy",
-            "Trigger5 == 'fondle pussy'", "GirlGropePussy",
+            "Trigger5 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy_M",
+            "Trigger5 == 'fondle pussy'", "GirlGropePussy_M",
             "Trigger5 == 'fondle breasts'", "GirlGropeRightBreast",
             "Trigger5 == 'vibrator breasts'", "VibratorRightBreast",     
             "Trigger5 == 'vibrator pussy'", "VibratorPussy",
@@ -341,9 +341,9 @@ image Mystique_Blue_Sprite:
             "Trigger == 'vibrator pussy insert'", "VibratorPussy",
             "Trigger == 'vibrator anal'", "VibratorAnal",
             "Trigger == 'vibrator anal insert'", "VibratorPussy",
-            "Trigger == 'fondle pussy' and Speed == 2", "FingerPussy",
-            "Trigger == 'fondle pussy'", "GropePussy",
-            "Trigger == 'lick pussy'", "Lickpussy",
+            "Trigger == 'fondle pussy' and Speed == 2", "FingerPussy_M",
+            "Trigger == 'fondle pussy'", "GropePussy_M",
+            "Trigger == 'lick pussy'", "Lickpussy_M",
             "True", Null(), 
             ),
         (0,0), ConditionSwitch(                                                                        
@@ -364,17 +364,17 @@ image Mystique_Blue_Sprite:
             "Trigger2 == 'vibrator pussy insert'", "VibratorPussy",
             "Trigger2 == 'vibrator anal'", "VibratorAnal",
             "Trigger2 == 'vibrator anal insert'", "VibratorPussy",
-            "Trigger2 == 'fondle pussy'", "GropePussy",
-            "Trigger2 == 'lick pussy'", "Lickpussy",
+            "Trigger2 == 'fondle pussy'", "GropePussy_M",
+            "Trigger2 == 'lick pussy'", "Lickpussy_M",
             "Trigger2 == 'fondle thighs'", "GropeThigh",
             "True", Null(), 
             ),     
         (0,0), ConditionSwitch(  
             #UI tool for Trigger4(Threesome) actions (ie Kitty's hand on her)
             "not Trigger4 or Ch_Focus != 'Mystique'", Null(),
-            "Trigger4 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy",
-            "Trigger4 == 'fondle pussy'", "GirlGropePussy",            
-            "Trigger4 == 'lick pussy'", "Lickpussy",
+            "Trigger4 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy_M",
+            "Trigger4 == 'fondle pussy'", "GirlGropePussy_M",            
+            "Trigger4 == 'lick pussy'", "Lickpussy_M",
             "Trigger4 == 'suck breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast", 
             "Trigger4 == 'suck breasts'", "LickRightBreast",          
             "Trigger4 == 'vibrator breasts'", "VibratorRightBreast",     
@@ -390,9 +390,9 @@ image Mystique_Blue_Sprite:
         (0,0), ConditionSwitch(  
             #UI tool for Trigger3(lesbian) actions (ie Kitty's hand on her when Mystique is secondary)
             "not Trigger3 or Ch_Focus == 'Mystique'", Null(),
-            "Trigger3 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy",
-            "Trigger3 == 'fondle pussy'", "GirlGropePussy",            
-            "Trigger3 == 'lick pussy'", "Lickpussy",
+            "Trigger3 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy_M",
+            "Trigger3 == 'fondle pussy'", "GirlGropePussy_M",            
+            "Trigger3 == 'lick pussy'", "Lickpussy_M",
             "Trigger3 == 'suck breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast", 
             "Trigger3 == 'suck breasts'", "LickRightBreast",          
             "Trigger3 == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
@@ -750,8 +750,8 @@ image Mystique_Raven_Sprite:
         (0,0), ConditionSwitch(
             #UI tool for When Mystique is masturbating using Trigger3 actions
             "Trigger == 'lesbian' or not Trigger3 or Ch_Focus != 'Mystique'", Null(),
-            "Trigger3 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy",
-            "Trigger3 == 'fondle pussy'", "GirlGropePussy",
+            "Trigger3 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy_M",
+            "Trigger3 == 'fondle pussy'", "GirlGropePussy_M",
             "Trigger3 == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
             "Trigger3 == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeRightBreast", #When zero is working the left breast, fondle right  
             "Trigger3 == 'fondle breasts'", "GirlGropeRightBreast",
@@ -766,8 +766,8 @@ image Mystique_Raven_Sprite:
             #UI tool for Trigger5(Threesome masutrbation) actions
             "not Trigger5 or Trigger4 != 'masturbation' or Ch_Focus == 'Mystique'", Null(), 
             #this doesn't activate unless Mystique is not primary, and is actively masturbating
-            "Trigger5 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy",
-            "Trigger5 == 'fondle pussy'", "GirlGropePussy",
+            "Trigger5 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy_M",
+            "Trigger5 == 'fondle pussy'", "GirlGropePussy_M",
             "Trigger5 == 'fondle breasts'", "GirlGropeRightBreast",
             "Trigger5 == 'vibrator breasts'", "VibratorRightBreast",     
             "Trigger5 == 'vibrator pussy'", "VibratorPussy",
@@ -787,9 +787,9 @@ image Mystique_Raven_Sprite:
             "Trigger == 'vibrator pussy insert'", "VibratorPussy",
             "Trigger == 'vibrator anal'", "VibratorAnal",
             "Trigger == 'vibrator anal insert'", "VibratorPussy",
-            "Trigger == 'fondle pussy' and Speed == 2", "FingerPussy",
-            "Trigger == 'fondle pussy'", "GropePussy",
-            "Trigger == 'lick pussy'", "Lickpussy",
+            "Trigger == 'fondle pussy' and Speed == 2", "FingerPussy_M",
+            "Trigger == 'fondle pussy'", "GropePussy_M",
+            "Trigger == 'lick pussy'", "Lickpussy_M",
             "True", Null(), 
             ),
         (0,0), ConditionSwitch(                                                                        
@@ -810,17 +810,17 @@ image Mystique_Raven_Sprite:
             "Trigger2 == 'vibrator pussy insert'", "VibratorPussy",
             "Trigger2 == 'vibrator anal'", "VibratorAnal",
             "Trigger2 == 'vibrator anal insert'", "VibratorPussy",
-            "Trigger2 == 'fondle pussy'", "GropePussy",
-            "Trigger2 == 'lick pussy'", "Lickpussy",
+            "Trigger2 == 'fondle pussy'", "GropePussy_M",
+            "Trigger2 == 'lick pussy'", "Lickpussy_M",
             "Trigger2 == 'fondle thighs'", "GropeThigh",
             "True", Null(), 
             ),     
         (0,0), ConditionSwitch(  
             #UI tool for Trigger4(Threesome) actions (ie Kitty's hand on her)
             "not Trigger4 or Ch_Focus != 'Mystique'", Null(),
-            "Trigger4 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy",
-            "Trigger4 == 'fondle pussy'", "GirlGropePussy",            
-            "Trigger4 == 'lick pussy'", "Lickpussy",
+            "Trigger4 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy_M",
+            "Trigger4 == 'fondle pussy'", "GirlGropePussy_M",            
+            "Trigger4 == 'lick pussy'", "Lickpussy_M",
             "Trigger4 == 'suck breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast", 
             "Trigger4 == 'suck breasts'", "LickRightBreast",          
             "Trigger4 == 'vibrator breasts'", "VibratorRightBreast",     
@@ -836,9 +836,9 @@ image Mystique_Raven_Sprite:
         (0,0), ConditionSwitch(  
             #UI tool for Trigger3(lesbian) actions (ie Kitty's hand on her when Mystique is secondary)
             "not Trigger3 or Ch_Focus == 'Mystique'", Null(),
-            "Trigger3 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy",
-            "Trigger3 == 'fondle pussy'", "GirlGropePussy",            
-            "Trigger3 == 'lick pussy'", "Lickpussy",
+            "Trigger3 == 'fondle pussy' and Trigger != 'sex' and newgirl['Mystique'].Lust >= 70", "GirlFingerPussy_M",
+            "Trigger3 == 'fondle pussy'", "GirlGropePussy_M",            
+            "Trigger3 == 'lick pussy'", "Lickpussy_M",
             "Trigger3 == 'suck breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast", 
             "Trigger3 == 'suck breasts'", "LickRightBreast",          
             "Trigger3 == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
@@ -947,8 +947,8 @@ image Mystique_At_Podium:
 
 # ////////////////////////////////                                                                                      ///////////////////////////////
 # ////////////////////////////////                                                                                      ///////////////////////////////
-# Core Rogue BJ element ///////////////////////////////////////////////////////////////////////////                                     Core Rogue BJ element
-#Rogue BJ Over Sprite Compositing
+# Core Mystique BJ element ///////////////////////////////////////////////////////////////////////////                                     Core Mystique BJ element
+#Mystique BJ Over Sprite Compositing
 
 
 image Mystique_Blue_BJ_Animation:#BJ_NewTest:                                                                #core BJ animation   
@@ -1006,70 +1006,6 @@ image Mystique_Blue_BJ_Animation:#BJ_NewTest:                                   
     zoom .55
     anchor (.5,.5)
     
-image Emma_BJ_HairBack:
-    LiveComposite(
-        (555,673), 
-        (0,0), ConditionSwitch(       
-            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_HairbackWet_Red.png",
-            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_HairbackWet_White.png",
-            "(E_Hair == 'wet' or E_Water) and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackbackWet.png",
-            "E_Hair == 'wet' or E_Water", "images/EmmaSprite/EmmaSprite_Head_HairbackWet.png",
-            "E_Hair and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Hairback_Red.png",   
-            "E_Hair and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Hairback_White.png",   
-            "E_Hair and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackback.png",   
-            "E_Hair", "images/EmmaSprite/EmmaSprite_Head_Hairback.png",   
-            "True", Null(),        
-            ),
-        )
-    anchor (0.6, 0.0)                
-    zoom 2.025 
-    offset (-240, -200)
-
-image E_BJ_MaskHeadingComposite:                                  #The composite for the heading mask that goes over the face
-    LiveComposite(    
-        (787,913),  
-        (0,0), ConditionSwitch(      #600               
-            #"Speed == 2", At("Emma_BJ_Mask", E_BJ_MouthAnim()),     
-            "Speed == 2", At("Emma_BJ_Head_3", E_BJ_MouthAnim()),     
-            "True", Null(),
-            ),  
-        )  
-
-transform E_BJ_MouthAnim():                                       #The animation for the heading mouth
-        subpixel True
-        zoom 0.90     #small 
-        block: #total time 10 down, 15 back up
-            pause .40            
-            easein .40 zoom 0.87
-            linear .10 zoom 0.9
-            easeout .45 zoom 0.70 
-            pause .15                       
-            easein .25 zoom 0.9
-            linear .10 zoom 0.87
-            easeout .30 zoom 0.9   
-            pause .35
-          
-            repeat
-
-transform E_BJ_Sucking():                                 #The sucking animation for her face
-    subpixel True
-    ease 0.5 offset (0,50) 
-    block:
-        ease 1 yoffset 120 #100
-        ease 1.5 offset (0,50) 
-        repeat
-
-    
-transform E_BJ_Deep():                                    #The deep animation for her face
-    subpixel True
-    ease .5 offset (0,100) 
-    block:
-        subpixel True
-        ease 1 yoffset 300
-        pause .5
-        ease 2 yoffset 100  
-        repeat
-
 image Mystique_BJ_Backdrop:                                                                        #Her Body under the head
     "Mystique_Sprite"
     zoom 4.5
@@ -1218,6 +1154,218 @@ image Mystique_BJ_Head:
             ),  
         )                
     anchor (0.6, 0.0)                
+    zoom .75
+
+
+# ////////////////////////////////                                                                                      ///////////////////////////////
+# ////////////////////////////////                                                                                      ///////////////////////////////
+# Core Raven BJ element ///////////////////////////////////////////////////////////////////////////                                     Core Raven BJ element
+#Raven BJ Over Sprite Compositing
+
+
+image Mystique_Raven_BJ_Animation:#BJ_NewTest:                                                                #core BJ animation   
+    LiveComposite(    
+        (787,913),             
+        # (0,0), ConditionSwitch(                                                                 # back of the hair, which needs to go behind the body
+        #     "Speed == 0", At("Emma_BJ_HairBack", BJ_Starting()),                         
+        #     "Speed == 1", At("Emma_BJ_HairBack", BJ_Licking()),                         
+        #     "Speed == 2", At("Emma_BJ_HairBack", BJ_Heading()),                        
+        #     "Speed == 3", At("Emma_BJ_HairBack", BJ_Sucking()),
+        #     "Speed == 4", At("Emma_BJ_HairBack", BJ_Deep()), 
+        #     "True", Null(),
+        #     ),    
+        (0,0), ConditionSwitch(                                                                 # body, everything below the chin
+            "Speed == 0", At("Raven_BJ_Backdrop", BJ_StartingBody()),                       
+            "Speed == 1", At("Raven_BJ_Backdrop", BJ_LickingBody()),                        
+            "Speed == 2", At("Raven_BJ_Backdrop", BJ_HeadingBody()),                 
+            "Speed == 3", At("Raven_BJ_Backdrop", BJ_SuckingBody()),
+            "Speed == 4", At("Raven_BJ_Backdrop", BJ_DeepBody()), 
+            "True", Null(),
+            ),    
+        (0,0), ConditionSwitch(                                                                 # her head
+            "Speed == 0", At("Raven_BJ_Head_2", BJ_Starting()),                       
+            #"Speed == 1", At("BJ_Head", BJ_Licking()),                       
+            "Speed == 1", At("Raven_BJ_Head_2", BJ_Licking()),                       
+            "Speed == 2", At("Raven_BJ_Head_2", BJ_Heading()),                     
+            "Speed == 3", At("Raven_BJ_Head_2", BJ_Sucking()),
+            "Speed == 4", At("Raven_BJ_Head_2", BJ_Deep()), 
+            "True", Null(),
+            ),   
+#        (0,0), Transform("images/RogueBJFace/Rogue_bj_markercard.png", alpha=(.2)),
+        (0,0), ConditionSwitch(                                                                 # cock
+            "Speed == 0", At("Blowcock", Cock_BJ_Starting()),   
+            "Speed == 1", At("Blowcock", Cock_BJ_Licking()),                                  
+            "Speed == 2", At("Blowcock", Cock_BJ_Straight()),
+            "Speed == 3", At("Blowcock", Cock_BJ_Straight()),                          
+            "Speed == 4", At("Blowcock", Cock_BJ_Straight()), 
+            "True", Null(),
+            ),    
+         (0,0), ConditionSwitch(                                                                 # the masked overlay for when her head overlaps the cock
+             "Speed < 3", Null(), 
+             #"Speed == 2", At("Emma_BJ_Head_3", BJ_Heading()),
+             "Speed == 3", At("Raven_BJ_Head_3", BJ_Sucking()),
+             "Speed == 4", At("Raven_BJ_Head_3", BJ_Deep()), 
+             #"Speed == 3", At(AlphaMask("Raven_BJ_Head_2", "Emma_BJ_Mask"), BJ_Sucking()),
+             #"Speed == 4", At(AlphaMask("Raven_BJ_Head_2", "images/EmmaSprite/Emma_bj_facemask.png"), BJ_Deep()), 
+             "True", Null(),
+             ),    
+         (0,0), ConditionSwitch(                                                                 # same as above, but for the heading animation
+             #"Speed == 2", At("E_BJ_MaskHeadingComposite", BJ_Heading()),
+             #"Speed == 2", At("Emma_BJ_Head_4", BJ_Heading()),
+             "True", Null(),
+             ),    
+        )
+    zoom .55
+    anchor (.5,.5)
+    
+image Raven_BJ_Backdrop:                                                                        #Her Body under the head
+    "Mystique_Raven_Sprite"
+    zoom 4.5
+    pos (175,-110)
+    offset (-615, -125) #-325, -125
+
+image Raven_BJ_Head_3:
+    #"images/RavenSprite/Raven_bj_facemask.png"
+    AlphaMask("Raven_BJ_Head", "Raven_BJ_Mask")    #zoom .75
+    # #zoom 4.05
+    # pos (275,-110)
+    # offset (-240, -200) #-140 - 125
+    zoom 4.5
+    pos (175,-110)
+    offset (-615, -125)
+
+image Raven_BJ_Head_4:
+    AlphaMask("Raven_BJ_Head_2", "E_BJ_MaskHeadingComposite")    #zoom .75
+    # #zoom 4.05
+    # pos (275,-110)
+    # offset (-240, -200) #-140 - 125
+    zoom 4.5
+    pos (175,-110)
+    offset (-615, -125)
+
+image Raven_BJ_Head_2:
+    "Raven_BJ_Head"
+    # #zoom .75
+    # zoom 4.05
+    # pos (275,-110)
+    # offset (-240, -200) #-140 - 125
+    zoom 4.5
+    pos (175,-110)
+    offset (-615, -125)
+
+image Raven_BJ_Mask:
+    "images/RavenSprite/Raven_bj_facemask2.png"
+    # anchor (0.6, 0.0)                
+    # zoom 2.025  
+    # #zoom 4.05
+    # pos (275,-110)
+    # offset (-240, -200) #-140 - 125
+
+    # zoom 4.5
+    # pos (175,-110)
+    # offset (-615, -125)
+    anchor (0.6, 0.0)                
+    zoom .75 
+
+
+image Raven_BJ_Head:
+    LiveComposite(
+        (555,673), 
+        #(0,0), ConditionSwitch(       
+        #    "(E_Hair == 'wet' or E_Water) and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_HairbackWet_Red.png",
+        #    "(E_Hair == 'wet' or E_Water) and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_HairbackWet_White.png",
+        #    "(E_Hair == 'wet' or E_Water) and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackbackWet.png",
+        #    "E_Hair == 'wet' or E_Water", "images/EmmaSprite/EmmaSprite_Head_HairbackWet.png",
+        #    "E_Hair and E_HairColor == 'red'", "images/EmmaSprite/EmmaSprite_Head_Hairback_Red.png",   
+        #    "E_Hair and E_HairColor == 'white'", "images/EmmaSprite/EmmaSprite_Head_Hairback_White.png",   
+        #    "E_Hair and E_HairColor == 'black'", "images/EmmaSprite/EmmaSprite_Head_HairBlackback.png",   
+        #    "E_Hair", "images/EmmaSprite/EmmaSprite_Head_Hairback.png",   
+        #    "True", Null(),        
+        #    ),
+        (0,0), ConditionSwitch(                                                                         #head 
+            #"renpy.showing('Mystique_BJ_Animation') or renpy.showing('BJ_NewTest') or renpy.showing('Mystique_TJ_Animation')", Null(),
+            # "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_head_evowet.png",
+            # "R_Hair == 'evo' and R_Blush == 2", "images/RogueSprite/Rogue_head_evo_blush2.png",
+            # "R_Hair == 'evo' and R_Blush", "images/RogueSprite/Rogue_head_evo_blush.png",
+            # "R_Hair == 'evo'", "images/RogueSprite/Rogue_head_evo.png",
+            "True", "images/RavenSprite/Raven_Sprite_Head.png",
+            ),  
+        (0,0), ConditionSwitch(                                                                         #brows
+            # "R_Brows == 'normal' and R_Blush == 2", "images/RogueSprite/Rogue_brows_normal_b.png",
+            # "R_Brows == 'angry' and R_Blush == 2", "images/RogueSprite/Rogue_brows_angry_b.png",
+            # "R_Brows == 'sad' and R_Blush == 2", "images/RogueSprite/Rogue_brows_sad_b.png",
+            # "R_Brows == 'surprised' and R_Blush == 2", "images/RogueSprite/Rogue_brows_surprised_b.png",        
+            # "R_Brows == 'confused' and R_Blush == 2", "images/RogueSprite/Rogue_brows_confused_b.png",
+            "newgirl['Mystique'].Brows == 'normal'", "images/RavenSprite/Raven_brows_normal.png",
+            "newgirl['Mystique'].Brows == 'angry'", "images/RavenSprite/Raven_brows_angry.png",
+            "newgirl['Mystique'].Brows == 'sad'", "images/RavenSprite/Raven_brows_sad.png",
+            "newgirl['Mystique'].Brows == 'surprised'", "images/RavenSprite/Raven_brows_surprised.png",        
+            "newgirl['Mystique'].Brows == 'confused'", "images/RavenSprite/Raven_brows_confused.png",
+            "True", "images/RavenSprite/Raven_brows_normal.png",
+            ),
+#        (0,0), ConditionSwitch(                                                                         #Blush
+#            "R_Blush", "images/RogueSprite/Rogue_blush.png",
+#            "True", Null(), 
+#            ),
+        (0,0), "Raven Blink",  
+        (0,0), ConditionSwitch(                                                                                 #Collar
+            "newgirl['Mystique'].Glasses", "images/RogueSprite/Rogue_Sprite_Glasses.png",   
+            "True", Null(),                #R_Arms == 'gloved' or not R_Arms
+            ),  
+        (0,0), ConditionSwitch(                                                                         #Hair
+            # "R_Hair == 'evo' and R_Water and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_wet.png",
+            # "R_Hair == 'evo' and R_Water and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_wet.png",
+            # "R_Hair == 'evo' and R_Water", "images/RogueSprite/Rogue_hair_wet.png",
+            # "R_Hair == 'evo' and R_HairColor == 'black'", "images/RogueSprite/Rogue_hairBlack_evo.png",
+            # "R_Hair == 'evo' and R_HairColor == 'blonde'", "images/RogueSprite/Rogue_hairBlonde_evo.png",
+            "newgirl['Mystique'].Hair", "images/RavenSprite/Raven_Sprite_Hair.png",
+            "True", Null(), 
+            ),   
+        (0,0), ConditionSwitch(                                                                                 #Mouth for under layer
+            #"Speed == 1 and Trigger == 'blow' and 'mouth' in R_Spunk", "images/RogueBJFace/Rogue_bj_mouth_lickingS.png",
+            "Speed == 1 and Trigger == 'blow'", "images/RavenSprite/Raven_mouth_tongue.png", #licking
+            "Speed == 2 and Trigger == 'blow'", Null(),                                #heading Rogue_BJ_HeadingMouth()
+            "Speed == 3 and Trigger == 'blow'", "images/RavenSprite/Raven_bj_mouth2.png", #sucking
+            "Speed == 4 and Trigger == 'blow'", "images/RavenSprite/Raven_bj_mouth2.png", #deepthroat   
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'sucking'", "images/RavenSprite/Raven_mouth_sucking_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'surprised'", "images/RavenSprite/Raven_mouth_sucking_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'sad'", "images/RavenSprite/Raven_mouth_sad_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'kiss'", "images/RavenSprite/Raven_mouth_sad_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'smile'", "images/RavenSprite/Raven_mouth_smile_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk and newgirl['Mystique'].Mouth == 'tongue'", "images/RavenSprite/Raven_mouth_tongue_w.png",
+            "'mouth' in newgirl['Mystique'].Spunk", "images/RavenSprite/Raven_mouth_lipbite_w.png",      
+            "newgirl['Mystique'].Mouth == 'normal'", "images/RavenSprite/Raven_mouth_normal.png",
+            "newgirl['Mystique'].Mouth == 'lipbite'", "images/RavenSprite/Raven_mouth_lipbite.png",
+            "newgirl['Mystique'].Mouth == 'sucking'", "images/RavenSprite/Raven_mouth_sucking.png",            
+            "newgirl['Mystique'].Mouth == 'kiss'", "images/RavenSprite/Raven_mouth_kiss.png",
+            "newgirl['Mystique'].Mouth == 'sad'", "images/RavenSprite/Raven_mouth_sad.png",
+            "newgirl['Mystique'].Mouth == 'smile'", "images/RavenSprite/Raven_mouth_smile.png",
+            "newgirl['Mystique'].Mouth == 'surprised'", "images/RavenSprite/Raven_mouth_surprised.png",            
+            "newgirl['Mystique'].Mouth == 'tongue'", "images/RavenSprite/Raven_mouth_tongue.png",                
+            "newgirl['Mystique'].Mouth == 'grimace'", "images/RavenSprite/Raven_mouth_grimace.png",          
+            "True", "images/RavenSprite/Raven_mouth_normal.png",
+            ),
+        # (0,0), ConditionSwitch(                                                                         #Mouth spunk               
+        #     "'mouth' not in E_Spunk", Null(),
+        #     "E_Mouth == 'surprised'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthOpen.png",            
+        #     "E_Mouth == 'tongue'", "images/EmmaSprite/EmmaSprite_Head_Spunk_MouthTongue.png",            
+        #     "True", "images/EmmaSprite/EmmaSprite_Head_Spunk_Mouth.png",  
+        #     ), 
+        (0,0), ConditionSwitch(                                                                         #facial spunk               
+            "'facial' in newgirl['Mystique'].Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_Face.png",             
+            "True", Null(),
+            ),  
+        # (0,0), ConditionSwitch(                                                                         #Hair Water
+        #     "not E_Water", Null(),
+        #     "E_Hair == 'wet'", "images/EmmaSprite/EmmaSprite_Head_Water.png",
+        #     "True", "images/EmmaSprite/EmmaSprite_Head_Water.png",
+        #     ),
+        (0,0), ConditionSwitch(                                                                         #hair spunk               
+            "'hair' in newgirl['Mystique'].Spunk", "images/EmmaSprite/EmmaSprite_Head_Spunk_HairWave.png",              
+            "True", Null(),
+            ),  
+        )                
+    anchor (0.6, 0.0)                
     zoom .75 
 
 
@@ -1292,6 +1440,8 @@ label Mystique_BJ_Reset: # The sequence to the Mystique animations from BJ to de
 
 image Mystique_Hand_Under:
     ConditionSwitch(
+        "newgirl['Mystique'].LooksLike == 'Mystique'", "images/MystiqueSprite/hand2.png",
+        "newgirl['Mystique'].LooksLike == 'Raven'", "images/RavenSprite/hand2.png",
         "True", "images/MystiqueSprite/hand2.png",
         ),
     anchor (0.5,0.5)
@@ -1300,6 +1450,8 @@ image Mystique_Hand_Under:
     
 image Mystique_Hand_Over:
     ConditionSwitch(
+        "newgirl['Mystique'].LooksLike == 'Mystique'", "images/MystiqueSprite/hand1.png",
+        "newgirl['Mystique'].LooksLike == 'Raven'", "images/RavenSprite/hand1.png",
         "True", "images/MystiqueSprite/hand1.png",
         ),
     anchor (0.5,0.5)
@@ -1345,6 +1497,43 @@ label Mystique_HJ_Launch(Line = 0):
     if renpy.showing("Mystique_HJ_Animation"):        
         $ Trigger = "hand"
         return
+    call Mystique_Hide
+    if Line == "L":      
+        show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer:
+            alpha 1
+            ease 1 zoom 1.7 xpos 700 yoffset 200
+    else:     
+        show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer:
+            alpha 1
+            ease 1 zoom 1.7 xpos 700 yoffset 200
+        with dissolve
+   
+    $ Speed = 0
+    if Line != "cum":
+        $ Trigger = "hand"
+    else:
+        $ Speed = 1
+    pause .5
+    if newgirl["Mystique"].LooksLike == "Mystique" or newgirl["Mystique"].LooksLike == "Raven":
+        show Mystique_HJ_Animation at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder 150 with easeinbottom:
+            #xoffset 150
+            #offset (100,250)#(75,250)
+    elif newgirl["Mystique"].LooksLike == "Emma" or newgirl["Mystique"].LooksLike == "Kitty":
+        show Mystique_HJ_Animation at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder 150 with easeinbottom:
+            offset (100,250)#(75,250)
+    else:
+        show Mystique_HJ_Animation at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder 150 with easeinbottom:
+            #xoffset 150
+            #offset (100,250)#(75,250)
+    return
+
+label Mystique_HJ_FixPos(Line = 0): 
+    $ newgirl["Mystique"].Girl_Arms = 1
+    if Trigger2 == "jackin":
+        $ Trigger2 = 0
+    # if renpy.showing("Mystique_HJ_Animation"):        
+    #     $ Trigger = "hand"
+    #     return
     call Mystique_Hide
     if Line == "L":      
         show Mystique_Sprite at SpriteLoc(newgirl["Mystique"].SpriteLoc) zorder newgirl["Mystique"].GirlLayer:
@@ -1527,68 +1716,68 @@ image GropeThigh_E:
             ease 1 rotate 100 pos (180,670)   
             repeat
 
-image GropePussy_E: 
+image GropePussy_M: 
     contains:
         subpixel True
         "UI_Hand"
-        zoom .65
-        pos (200,600)#(210,640) -20
+        zoom .7
+        pos (255,635)
         anchor (0.5,0.5)
         alpha 0.5
         rotate 170
         block:
             choice: 
-                ease .5 rotate 190 pos (200,585)
-                ease .75 rotate 170 pos (200,600)   
+                ease .5 rotate 190 pos (255,620)
+                ease .75 rotate 170 pos (255,635)   
             choice: 
-                ease .5 rotate 190 pos (200,585)
+                ease .5 rotate 190 pos (255,620)
                 pause .25
-                ease 1 rotate 170 pos (200,600)             
+                ease 1 rotate 170 pos (255,635)             
             repeat
 
-image FingerPussy_E: 
+image FingerPussy_M: 
     contains:
         subpixel True
         "UI_Finger"       
-        zoom 0.65
-        pos (210,665)#(220,730)
+        zoom 0.7
+        pos (265,720)
         anchor (0.5,0.5)
         alpha 0.5
         rotate 40
         block:
             choice: 
-                ease 1 rotate 40 pos (220,640)#(230,695)
+                ease 1 rotate 40 pos (275,685)
                 pause .5
-                ease 1 rotate 50 pos (210,665)  #(220,730)     
+                ease 1 rotate 50 pos (265,720)   
             choice:                          
-                ease .5 rotate 40 pos (220,640)
+                ease .5 rotate 40 pos (275,685)
                 pause .5
-                ease 1.75 rotate 50 pos (210,665)  
+                ease 1.75 rotate 50 pos (265,720)  
             choice:                          
-                ease 2 rotate 40 pos (220,640)
+                ease 2 rotate 40 pos (275,685)
                 pause .5
-                ease 1 rotate 50 pos (210,665)  
+                ease 1 rotate 50 pos (265,720)  
             choice:                          
-                ease .25 rotate 40 pos (220,640)
-                ease .25 rotate 50 pos (210,665) 
-                ease .25 rotate 40 pos (220,640)
-                ease .25 rotate 50 pos (210,665)
+                ease .25 rotate 40 pos (275,685)
+                ease .25 rotate 50 pos (265,720) 
+                ease .25 rotate 40 pos (275,685)
+                ease .25 rotate 50 pos (265,720)
             repeat
             
-image Lickpussy_E:   
+image Lickpussy_M:   
     contains:
         subpixel True
         "UI_Tongue"        
-        yzoom 0.45
-        xzoom -0.45
-        pos (230,625)#(240,680)
+        yzoom 0.5
+        xzoom -0.5
+        pos (285,670)#(0.5,0.5)
         anchor (0.5,0.5)
         alpha 0.5
         rotate 10
         block: 
-            easein .5 rotate -50 pos (210,605) #(220,660)
-            linear .5 rotate -60 pos (200,615) #(210,670)
-            easeout 1 rotate 10 pos (230,625) #(240,680)
+            easein .5 rotate -50 pos (265,650)  
+            linear .5 rotate -60 pos (255,660)
+            easeout 1 rotate 10 pos (285,670)
             repeat
 
 image VibratorRightBreast_E: 
@@ -1743,72 +1932,72 @@ image GirlGropePussy_ESelf:
 #        yzoom -1
         pos (120,530)
     
-image GirlGropePussy_E: 
+image GirlGropePussy_M: 
     contains:
         subpixel True
         "UI_GirlHand"
         zoom 0.6
-        pos (200,575)#(210,625)
+        pos (235,575)#(210,625)
         anchor (0.5,0.5)
         alpha 0.5
         rotate 200
         block:
             choice: #fast rub
-                ease .75 rotate 210 pos (205,590)
+                ease .75 rotate 210 pos (240,590)
                 ease .5 rotate 195 
                 ease .75 rotate 210 
                 ease .5 rotate 195 
             choice: #slow rub
-                ease .5 rotate 210 pos (205,590)#-10+20
+                ease .5 rotate 210 pos (240,590)#-10+20
                 ease 1 rotate 195
                 pause .25
                 ease .5 rotate 210
                 ease 1 rotate 195
                 pause .25
             choice: #slow stroke
-                ease .5 rotate 205 pos (205,590)
-                ease .75 rotate 200 pos (205,595)
-                ease .5 rotate 205 pos (205,590)
-                ease .75 rotate 200 pos (205,595)
+                ease .5 rotate 205 pos (240,590)
+                ease .75 rotate 200 pos (240,595)
+                ease .5 rotate 205 pos (240,590)
+                ease .75 rotate 200 pos (240,595)
             choice: #Fast stroke
-                ease .3 rotate 205 pos (205,590)
-                ease .3 rotate 200 pos (205,600)
-                ease .3 rotate 205 pos (205,590)
-                ease .3 rotate 200 pos (205,600)
+                ease .3 rotate 205 pos (240,590)
+                ease .3 rotate 200 pos (240,600)
+                ease .3 rotate 205 pos (240,590)
+                ease .3 rotate 200 pos (240,600)
             repeat
 
-image GirlFingerPussy_E: 
+image GirlFingerPussy_M: 
     contains:
         subpixel True
         "UI_GirlFinger"       
         zoom .6
-        pos (220,640)#(220,635)
+        pos (265,630)#(220,635)
         anchor (0.5,0.5)
         alpha 0.5
         rotate 200
         block:
             choice: #fast rub
-                ease .75 rotate 210 pos (220,645)
+                ease .75 rotate 210 pos (265,635)
                 ease .5 rotate 195 
                 ease .75 rotate 210 
                 ease .5 rotate 195 
             choice: #slow rub
-                ease .5 rotate 210 pos (220,645)
+                ease .5 rotate 210 pos (265,635)
                 ease 1 rotate 195
                 pause .25
                 ease .5 rotate 210
                 ease 1 rotate 195
                 pause .25
             choice: #slow stroke
-                ease .5 rotate 205 pos (220,655)
-                ease .75 rotate 200 pos (220,660)
-                ease .5 rotate 205 pos (220,655)
-                ease .75 rotate 200 pos (220,660)
+                ease .5 rotate 205 pos (265,635)
+                ease .75 rotate 200 pos (265,640)
+                ease .5 rotate 205 pos (265,635)
+                ease .75 rotate 200 pos (265,640)
             choice: #Fast stroke
-                ease .3 rotate 205 pos (220,655)
-                ease .3 rotate 200 pos (220,665)
-                ease .3 rotate 205 pos (220,655)
-                ease .3 rotate 200 pos (220,665)
+                ease .3 rotate 205 pos (265,635)
+                ease .3 rotate 200 pos (265,645)
+                ease .3 rotate 205 pos (265,635)
+                ease .3 rotate 200 pos (265,645)
             repeat
 
 # Start Emma Faces / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /

@@ -15,7 +15,7 @@ image Mystique_Sprite:
 image Mystique_HJ_Animation:
     ConditionSwitch(          
     "newgirl['Mystique'].LooksLike == 'Mystique'", "Mystique_Blue_HJ_Animation",
-    "newgirl['Mystique'].LooksLike == 'Raven'", "Mystique_Raven_HJ_Animation",
+    "newgirl['Mystique'].LooksLike == 'Raven'", "Mystique_Blue_HJ_Animation",
     "newgirl['Mystique'].LooksLike == 'Emma'", "Mystique_Emma_HJ_Animation",
     "newgirl['Mystique'].LooksLike == 'Rogue'", "Mystique_Rogue_HJ_Animation",
     "newgirl['Mystique'].LooksLike == 'Kitty'", "Mystique_Kitty_HJ_Animation",

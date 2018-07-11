@@ -569,6 +569,8 @@ init python:
                                 return 5
                             elif R_Hose == "fishnet":
                                 return 10
+                            elif R_Hose == "SR7 hose":
+                                return 10
                             else:
                                 return 0
                                 
@@ -615,15 +617,21 @@ init python:
                         if E_Legs == "pants":
                             return 10 
                         elif E_Legs == "black pants":
-                            return 10    
+                            return 10   
+                        elif E_Legs == "skirt":
+                            return 3 
                         else:
                             return 0
                 elif Chr in ModdedGirls:
                         if newgirl[Chr].Legs == "pants":
                             return 10
+                        if newgirl[Chr].Legs == "workout pants":
+                            return 10
                         elif newgirl[Chr].Legs == "skirt":
                             return 3
                         elif newgirl[Chr].Legs == "black skirt":
+                            return 3
+                        elif newgirl[Chr].Legs == "split skirt":
                             return 3
                         else:
                             return 0

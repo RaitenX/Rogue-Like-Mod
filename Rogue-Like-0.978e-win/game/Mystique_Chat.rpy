@@ -1227,7 +1227,7 @@ label Mystique_Flirt:
         menu:        
                 
             "Touch her cheek.":                                                                                 #Touch her cheek 
-                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 5:
+                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 4:
                         "You try to reach for her cheek but she moves away from you"
                         #"She whispers to you:"
                         ch_m "You can't do that here"
@@ -1236,14 +1236,14 @@ label Mystique_Flirt:
                         call Mystique_TouchCheek
                             
             "Kiss her cheek":                                                                                   #Kiss her cheek
-                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 5:
+                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 4:
                         "You try to reach for her cheek but she moves away from you"
                         #"She whispers to you:"
                         ch_m "You can't do that here"
                         return
                     else:    
                         "You lean over, tilt her head back, and kiss her on the cheek."    
-                        if P_Lvl < 5:
+                        if P_Lvl < 4:
                             $ newgirl["Mystique"].LooksLike = "Mystique"
                             call NewGirl_RemoveClothes("Mystique")            
                             "As soon as your lips touch her cheek, she turns back into her original form and her clothes vanish"
@@ -1273,7 +1273,7 @@ label Mystique_Flirt:
                             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 90, 5)            
                             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 40, 3) 
                             ch_m "Stop that at once."
-                        if P_Lvl < 5:
+                        if P_Lvl < 4:
                             $ newgirl["Mystique"].LooksLike = "Raven"
                             call MystiqueOutfit
                         if "addict Mystique" in P_Traits:
@@ -1282,7 +1282,7 @@ label Mystique_Flirt:
                             $ newgirl["Mystique"].Addictionrate = 3 if newgirl["Mystique"].Addictionrate < 3 else newgirl["Mystique"].Addictionrate 
                    
             "Kiss her lips":                                                                                    #Kiss her
-                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 5:
+                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 4:
                         "You try to reach for her lips but she moves away from you"
                         #"She whispers to you:"
                         ch_m "You can't do that here"
@@ -1290,7 +1290,7 @@ label Mystique_Flirt:
                     else:    
                         if ApprovalCheck("Mystique", 1000, TabM=2) or ApprovalCheck("Mystique", 600, "L", TabM=2):        
                             "You lean down, tilt her head back, and plant a kiss on her lips."
-                            if P_Lvl < 5:
+                            if P_Lvl < 4:
                                 $ newgirl["Mystique"].LooksLike = "Mystique"
                                 call NewGirl_RemoveClothes("Mystique")
                                 "As soon as your lips touch hers, she turns back into her original form and her clothes vanish"
@@ -1398,7 +1398,7 @@ label Mystique_Flirt:
                                     $ newgirl["Mystique"].Love = Statupdate("Mystique", "Love", newgirl["Mystique"].Love, 60, 3) 
                                     $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, 1)
                                     call Mystique_SexAct("kissing")
-                                    if P_Lvl < 5:
+                                    if P_Lvl < 4:
                                         $ newgirl["Mystique"].LooksLike = "Raven"
                                         call MystiqueOutfit 
                                     return
@@ -1422,13 +1422,13 @@ label Mystique_Flirt:
                             ch_m "Not here."
                         else:
                             ch_m "Don't try that again."
-                        if P_Lvl < 5:
+                        if P_Lvl < 4:
                             $ newgirl["Mystique"].LooksLike = "Raven"
                             call MystiqueOutfit 
                         #End Kiss her
                 
             "Hug her":                                                                                          #Hug her
-                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 5:
+                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 4:
                         "You try to reach for a hug but she moves away from you"
                         #"She whispers to you:"
                         ch_m "You can't do that here"
@@ -1436,7 +1436,7 @@ label Mystique_Flirt:
                     else:
                         if ApprovalCheck("Mystique", 400, TabM=2):        
                             "You lean over and wrap Mystique in a warm hug."
-                            if P_Lvl < 5:
+                            if P_Lvl < 4:
                                 $ newgirl["Mystique"].LooksLike = "Mystique"
                                 call NewGirl_RemoveClothes("Mystique")
                                 "As soon as you hug her, she turns back into her original form and her clothes vanish"
@@ -1478,23 +1478,23 @@ label Mystique_Flirt:
                             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 50, 4)            
                             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 30, 2) 
                             ch_m "What was that about, [newgirl[Mystique].Petname]?"   
-                        if P_Lvl < 5:
+                        if P_Lvl < 4:
                             $ newgirl["Mystique"].LooksLike = "Raven"
                             call MystiqueOutfit 
             "Slap her ass" if newgirl["Mystique"].Loc == bg_current:                                                              #Slap her ass
-                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 5:
+                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 4:
                         "You try to slap her ass but she moves away from you"
                         #"She whispers to you:"
                         ch_m "You can't do that here"
                         return
                     else:
                         call Mystique_Slap_Ass
-                        if P_Lvl < 5:
+                        if P_Lvl < 4:
                             $ newgirl["Mystique"].LooksLike = "Raven"
                             call MystiqueOutfit 
                 
             "Pinch her ass":                                                                                    #Pinch her ass
-                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 5:
+                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 4:
                         "You try to reach for her ass but she moves away from you"
                         #"She whispers to you:"
                         ch_m "You can't do that here"
@@ -1503,20 +1503,20 @@ label Mystique_Flirt:
                         call NewGirl_Face("Mystique","surprised", 1)
                         if newgirl["Mystique"].SEXP >= 5 and ApprovalCheck("Mystique", 700, TabM=2):        
                             "You come up to Mystique from behind and quickly pinch her butt."
-                            if P_Lvl < 5:
+                            if P_Lvl < 4:
                                 $ newgirl["Mystique"].LooksLike = "Mystique"
                                 call NewGirl_RemoveClothes("Mystique")
                                 "As soon as your hand touchs her ass, she turns back into her original form and her clothes vanish"
                         else:                
                             "You come up to Mystique from behind and quickly pinch her butt."
-                            if P_Lvl < 5:
+                            if P_Lvl < 4:
                                 $ newgirl["Mystique"].LooksLike = "Mystique"
                                 call NewGirl_RemoveClothes("Mystique")
                                 "As soon as your hand touchs her ass, she turns back into her original form and her clothes vanish"
                             call NewGirl_Face("Mystique","angry")
                             "She slaps your hand away and rounds on you."
                             ch_m "Down boy!" 
-                            if P_Lvl < 5:
+                            if P_Lvl < 4:
                                 $ newgirl["Mystique"].LooksLike = "Raven"
                                 call MystiqueOutfit 
                             return
@@ -1550,7 +1550,7 @@ label Mystique_Flirt:
                             $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 90, 4)            
                             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, 2)
                             ch_m "Would you like me to break those fingers?"  
-                        if P_Lvl < 5:
+                        if P_Lvl < 4:
                             $ newgirl["Mystique"].LooksLike = "Raven"
                             call MystiqueOutfit 
 
@@ -1760,7 +1760,7 @@ label Mystique_Flirt:
                         #End Flip her Skirt
 
             "Grab her tit":                                                                                     #Grab her tit
-                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 5:
+                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 4:
                         "You try to reach for her tit but she moves away from you"
                         #"She whispers to you:"
                         ch_m "You can't do that here"
@@ -1769,13 +1769,13 @@ label Mystique_Flirt:
                         call NewGirl_Face("Mystique","surprised", 1)
                         if newgirl["Mystique"].SEXP >= 5 and ApprovalCheck("Mystique", 700, TabM=3):        
                             "You come up to Mystique and quickly honk her boob."
-                            if P_Lvl < 5:
+                            if P_Lvl < 4:
                                 $ newgirl["Mystique"].LooksLike = "Mystique"
                                 call NewGirl_RemoveClothes("Mystique")
                                 "As soon as your hand touchs her tit, she turns back into her original form and her clothes vanish"
                         else:             
                             "You come up to Mystique and quickly honk her boob."
-                            if P_Lvl < 5:
+                            if P_Lvl < 4:
                                 $ newgirl["Mystique"].LooksLike = "Mystique"
                                 call NewGirl_RemoveClothes("Mystique")
                                 "As soon as your hand touchs her tit, she turns back into her original form and her clothes vanish"
@@ -1784,7 +1784,7 @@ label Mystique_Flirt:
                             with vpunch
                             "She grabs your arm and turns it on your back."
                             ch_m "You must learn to resist temptations, [newgirl[Mystique].Petname]." 
-                            if P_Lvl < 5:
+                            if P_Lvl < 4:
                                 $ newgirl["Mystique"].LooksLike = "Raven"
                                 call MystiqueOutfit 
                             return
@@ -1932,19 +1932,19 @@ label Mystique_Flirt:
                         else:
                             call NewGirl_Face("Mystique","angry", 1)
                             ch_m "Just keep your hands to yourself."
-                        if P_Lvl < 5:
+                        if P_Lvl < 4:
                             $ newgirl["Mystique"].LooksLike = "Raven"
                             call MystiqueOutfit 
                     
             "Rub her shoulders":                                                                                #Rub her shoulders
-                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 5:
+                    if (Taboo or OtherGirls_Around("Mystique")) and P_Lvl < 4:
                         "You try to reach for her shoulders but she moves away from you"
                         #"She whispers to you:"
                         ch_m "You can't do that here"
                         return
                     else:
                         "You come up to Mystique from behind and gently rub her shoulders."
-                        if P_Lvl < 5:
+                        if P_Lvl < 4:
                                 $ newgirl["Mystique"].LooksLike = "Mystique"
                                 call NewGirl_RemoveClothes("Mystique")
                                 "As soon as your hands touch her shoulders, she turns back into her original form and her clothes vanish"
@@ -1976,7 +1976,7 @@ label Mystique_Flirt:
                             ch_m "That will be enough of that."           
                         $ newgirl["Mystique"].Obed = Statupdate("Mystique", "Obed", newgirl["Mystique"].Obed, 30, 3)            
                         $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 30, 2) 
-                        if P_Lvl < 5:
+                        if P_Lvl < 4:
                             $ newgirl["Mystique"].LooksLike = "Raven"
                             call MystiqueOutfit 
 
@@ -3649,8 +3649,8 @@ label Mystique_Clothes(Public=0,Bonus=0):
                     jump Mystique_Clothes_Legs
         "Let's talk about your underwear.":
                     jump Mystique_Clothes_Under
-        "Let's talk about the other stuff.":
-                    jump Mystique_Clothes_Misc
+        # "Let's talk about the other stuff.":
+        #             jump Mystique_Clothes_Misc
         "That looks really good on you, you should remember that one. [[Set Custom]":
                 menu:
                     "Which slot would you like this saved in?"
@@ -3660,6 +3660,10 @@ label Mystique_Clothes(Public=0,Bonus=0):
                                 call Mystique_OutfitShame(5,1)
                     "Custom 3":
                                 call Mystique_OutfitShame(6,1)
+                    "Gym Clothes":
+                                call Mystique_OutfitShame(7,1)                    
+                    "Sleepwear":
+                                call Mystique_OutfitShame(9,1)  
                     "Never mind":
                                 pass
         "Never mind, you look good like that.":
@@ -3859,7 +3863,7 @@ label Mystique_Clothes(Public=0,Bonus=0):
         "Never mind":    
             jump Mystique_Clothes     
             
-    jump Mystique_Clothes
+    jump Mystique_Clothes_Outfits
     #End of Mystique Outfits
             
     # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
@@ -3920,8 +3924,9 @@ label Mystique_Clothes(Public=0,Bonus=0):
             call Mystique_Tits_Up
                             
         "Never mind":
-            pass
-    jump Mystique_Clothes
+            jump Mystique_Clothes
+
+    jump Mystique_Clothes_Over
     #End of Mystique Top
             
     # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
@@ -4000,27 +4005,47 @@ label Mystique_Clothes(Public=0,Bonus=0):
                 $ newgirl["Mystique"].SeenPanties = 1
             else:
                 call Mystique_First_Bottomless
-        
-        "You look great in those white pants." if newgirl["Mystique"].Legs != "pants":
-            ch_m "I know."
-            $ newgirl["Mystique"].Legs = "pants"
 
-        "You look great in those black pants." if newgirl["Mystique"].Legs != "black pants":
-            ch_m "I know."
-            $ newgirl["Mystique"].Legs = "black pants"
-
-        "You look great in those white shorts." if newgirl["Mystique"].Legs != "NewX":
-            ch_m "I know."
-            $ newgirl["Mystique"].Legs = "NewX"
+        "Maybe go without the skirt." if PantsNum("Mystique") == 3:
+            call NewGirl_Face("Mystique","sexy", 1)
+            if newgirl["Mystique"].SeenPanties and newgirl["Mystique"].Panties and ApprovalCheck("Mystique", 500, TabM=(6-Public)):
+                ch_m "Fine."
+            elif newgirl["Mystique"].SeenPussy and ApprovalCheck("Mystique", 900, TabM=(5-Public)):
+                ch_m "Fine."
+            elif ApprovalCheck("Mystique", 1300, TabM=(2-Public)) and newgirl["Mystique"].Panties:
+                ch_m "It's not like I haven't worn this look before. . ."
+            elif ApprovalCheck("Mystique", 800) and not newgirl["Mystique"].Panties:
+                call Mystique_NoPantiesOn
+                if not _return:
+                    jump Mystique_Clothes
+            else:
+                ch_m "I'm afraid not."
+                if not newgirl["Mystique"].Panties:
+                    ch_m "You understand, it could get. . . drafty. . ."
+                jump Mystique_Clothes
+            $ newgirl["Mystique"].Legs = 0    
+            "She takes her skirt off."
+            if newgirl["Mystique"].Panties:                
+                $ newgirl["Mystique"].SeenPanties = 1
+            else:
+                call Mystique_First_Bottomless
         
-        "You look great in those black shorts." if newgirl["Mystique"].Legs != "NewX black":
+        "You look great in those workout pants." if newgirl["Mystique"].Legs != "workout pants":
             ch_m "I know."
-            $ newgirl["Mystique"].Legs = "NewX black"
-                
-                   
+            $ newgirl["Mystique"].Legs = "workout pants"
+
+        "You look great in that black skirt." if newgirl["Mystique"].Legs != "black skirt":
+            ch_m "I know."
+            $ newgirl["Mystique"].Legs = "black skirt"
+
+        "You look great in that split skirt." if newgirl["Mystique"].Legs != "split skirt":
+            ch_m "I know."
+            $ newgirl["Mystique"].Legs = "split skirt"
+        
         "Never mind":
-            pass
-    jump Mystique_Clothes
+            jump Mystique_Clothes
+            
+    jump Mystique_Clothes_Legs
     #End of Mystique Pants
     
     # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
@@ -4038,11 +4063,11 @@ label Mystique_Clothes(Public=0,Bonus=0):
                                 $ newgirl["Mystique"].Blush = 0                
                         elif ApprovalCheck("Mystique", 800, TabM=(5-Public)) and "lace panties" in newgirl["Mystique"].Inventory:
                                 ch_m "I like how you think, turn around."
-                                $ newgirl["Mystique"].Panties  = "lace panties"    
+                                $ newgirl["Mystique"].Panties  = "black lingerie"    
                                 "She pulls out her lace panties, and with your back turned she removes her pants, and slips her panties on."
                         elif ApprovalCheck("Mystique", 700, TabM=(5-Public)):
                                 ch_m "Yeah, I guess."
-                                $ newgirl["Mystique"].Panties = "white panties"
+                                $ newgirl["Mystique"].Panties = "black panties"
                                 "She pulls out her white panties, and with your back turned she removes her pants, and slips her panties on."                   
                         elif Taboo and ApprovalCheck("Mystique", 800, TabM=0):
                                 ch_m "I like how you think, but not in public like this."
@@ -4087,9 +4112,9 @@ label Mystique_Clothes(Public=0,Bonus=0):
                     ch_m "I'd rather not out here. . ."
                 else:
                     ch_m "I suppose for you. . ."
-            elif newgirl["Mystique"].Over == "jacket" or newgirl["Mystique"].Over == "black jacket" and ApprovalCheck("Mystique", 700, TabM=(3-Public)):
+            elif ApprovalCheck("Mystique", 700, TabM=(3-Public)):
                 ch_m "This is a bit daring without anything under it. . ."  
-            elif not newgirl["Mystique"].Over:
+            elif not newgirl["Mystique"].Over or newgirl["Mystique"].Over == "workout jacket":
                 ch_m "I don't think that would be appropriate."
                 jump Mystique_Clothes 
             else:
@@ -4104,46 +4129,37 @@ label Mystique_Clothes(Public=0,Bonus=0):
                 "She lets her [Line] fall to the ground."
             call Mystique_First_Topless
           
-        "I like that corset you have." if newgirl["Mystique"].Chest != "corset":
+        "I like that workout top you have." if newgirl["Mystique"].Chest != "workout top":
             if newgirl["Mystique"].SeenChest or ApprovalCheck("Mystique", 1000, TabM=(3-Public)):
                 ch_m "So do I."   
-                $ newgirl["Mystique"].Chest = "corset"  
+                $ newgirl["Mystique"].Chest = "workout top"  
                 $ newgirl["Mystique"].TitsUp = 1
             else:                
                 ch_m "I don't think that would be appropriate. . ."  
 
-        "I like that black corset you have." if newgirl["Mystique"].Chest != "black corset":
+        "I like that black bra you have." if newgirl["Mystique"].Chest != "black bra":
             if newgirl["Mystique"].SeenChest or ApprovalCheck("Mystique", 1000, TabM=(3-Public)):
                 ch_m "So do I."   
-                $ newgirl["Mystique"].Chest = "black corset"  
+                $ newgirl["Mystique"].Chest = "black bra"  
                 $ newgirl["Mystique"].TitsUp = 1
             else:                
                 ch_m "I don't think that would be appropriate. . ."    
 
-        "I like that NewX corset you have." if newgirl["Mystique"].Chest != "NewX":
+        "I like that yellow bikini you have." if newgirl["Mystique"].Chest != "yellow bikini":
             if newgirl["Mystique"].SeenChest or ApprovalCheck("Mystique", 1000, TabM=(3-Public)):
                 ch_m "So do I."   
-                $ newgirl["Mystique"].Chest = "NewX"  
+                $ newgirl["Mystique"].Chest = "yellow bikini"  
                 $ newgirl["Mystique"].TitsUp = 1
             else:                
                 ch_m "I don't think that would be appropriate. . ."    
 
-        "I like that NewX black corset you have." if newgirl["Mystique"].Chest != "NewX black":
+        "I like that black top you have." if newgirl["Mystique"].Chest != "top":
             if newgirl["Mystique"].SeenChest or ApprovalCheck("Mystique", 1000, TabM=(3-Public)):
                 ch_m "So do I."   
-                $ newgirl["Mystique"].Chest = "NewX black"  
+                $ newgirl["Mystique"].Chest = "top"  
                 $ newgirl["Mystique"].TitsUp = 1
             else:                
                 ch_m "I don't think that would be appropriate. . ."  
-
-        "I like that bikini top you have." if newgirl["Mystique"].Chest != "bikini":
-            if newgirl["Mystique"].SeenChest or ApprovalCheck("Mystique", 1000, TabM=(3-Public)):
-                ch_m "So do I."   
-                $ newgirl["Mystique"].Chest = "bikini"  
-                $ newgirl["Mystique"].TitsUp = 1
-            else:                
-                ch_m "I don't think that would be appropriate. . ."  
-
                                                                                                                             #Panties        
         "You could lose those panties. . ." if newgirl["Mystique"].Panties:
             call NewGirl_Face("Mystique","bemused", 1)  
@@ -4191,13 +4207,6 @@ label Mystique_Clothes(Public=0,Bonus=0):
                 call Mystique_First_Bottomless
                 $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 50, 2)  
                 
-        "Why don't you wear the white panties instead?" if newgirl["Mystique"].Panties and newgirl["Mystique"].Panties != "white panties":
-            if ApprovalCheck("Mystique", 1100, TabM=(4-Public)):
-                    ch_m "Ok."
-                    $ newgirl["Mystique"].Panties = "white panties"  
-            else:                
-                    ch_m "I really don't see how that's any of your concern."
-
         "Why don't you wear the black panties instead?" if newgirl["Mystique"].Panties and newgirl["Mystique"].Panties != "black panties":
             if ApprovalCheck("Mystique", 1100, TabM=(4-Public)):
                     ch_m "Ok."
@@ -4205,41 +4214,46 @@ label Mystique_Clothes(Public=0,Bonus=0):
             else:                
                     ch_m "I really don't see how that's any of your concern."
 
-        "Why don't you wear that bikini panties?" if newgirl["Mystique"].Panties and newgirl["Mystique"].Panties != "bikini":
+        "Why don't you wear that yellow bikini panties?" if newgirl["Mystique"].Panties and newgirl["Mystique"].Panties != "yellow bikini":
             if ApprovalCheck("Mystique", 1100, TabM=(4-Public)):
                     ch_m "Ok."
-                    $ newgirl["Mystique"].Panties = "bikini"  
+                    $ newgirl["Mystique"].Panties = "yellow bikini"  
             else:                
                     ch_m "I really don't see how that's any of your concern."
                 
-        "Why don't you wear the lace panties instead?" if "lace panties" in newgirl["Mystique"].Inventory and newgirl["Mystique"].Panties and newgirl["Mystique"].Panties != "lace panties":
+        "Why don't you wear the black lingerie set instead?" if newgirl["Mystique"].Panties and newgirl["Mystique"].Panties != "black lingerie":
             if ApprovalCheck("Mystique", 1300, TabM=(4-Public)):
                     ch_m "Fine."
-                    $ newgirl["Mystique"].Panties = "lace panties"
+                    $ newgirl["Mystique"].Panties = "black lingerie"
             else:
                     ch_m "I really don't see how that's any of your concern."
                 
         "You know, you could wear some panties with that. . ." if not newgirl["Mystique"].Panties:
             call NewGirl_Face("Mystique","bemused", 1)
-            if (newgirl["Mystique"].Lovenewgirl]["Mystique"]["Obed"]) <= (2* newgirl["Mystique"].Inbt):
+            if (newgirl["Mystique"].Love + newgirl["Mystique"].Obed) <= (2* newgirl["Mystique"].Inbt):
                 $ newgirl["Mystique"].Mouth = "smile"
                 ch_m "I could, but won't."
                 $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 70, 2)
-                jump Mystique_Clothes
+                menu:
+                    "Wear them":
+                        pass
+                    "Ok":
+                        jump Mystique_Clothes
             menu:
                 ch_m "If you insist. . ."
-                "How about the white ones?":
-                    ch_m "Fine."
-                    $ newgirl["Mystique"].Panties = "white panties"
                 "How about the black ones?":
                     ch_m "Fine."
                     $ newgirl["Mystique"].Panties = "black panties"
-                "How about the lace ones?" if "lace panties" in newgirl["Mystique"].Inventory:
+                "How about the yellow bikini ones?":
+                    ch_m "Fine."
+                    $ newgirl["Mystique"].Panties = "yellow bikini"
+                "How about the lingerie set?":
                     ch_m "Fine."                
-                    $ newgirl["Mystique"].Panties  = "lace panties"
+                    $ newgirl["Mystique"].Panties  = "black lingerie"
         "Never mind":
-            pass
-    jump Mystique_Clothes
+            jump Mystique_Clothes
+
+    jump Mystique_Clothes_Under
     #End of Mystique Underwear
        
     # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  
@@ -4333,9 +4347,6 @@ label Mystique_Clothes(Public=0,Bonus=0):
                     ch_m "Ok. . ."         
                     $ newgirl["Mystique"].Neck = "NewX black"
                     jump Mystique_Clothes_Misc_Neck
-        #        "Why don't you try on that star necklace." if newgirl["Mystique"].Neck != "star necklace":
-        #            ch_m "Ok. . ."         
-        #            $ newgirl["Mystique"].Neck = "star necklace"
                 "Maybe go without a collar." if newgirl["Mystique"].Neck:
                     ch_m "Ok. . ."         
                     $ newgirl["Mystique"].Neck = 0
@@ -4633,20 +4644,14 @@ label Mystique_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agr
             #If she's wearing a bra of some kind
             if newgirl["Mystique"].Chest == "top":  
                 $ Count = 20
-            elif newgirl["Mystique"].Chest == "black corset":  
+            elif newgirl["Mystique"].Chest == "workout top":  
                 $ Count = 15
-            elif newgirl["Mystique"].Chest == "corset":  
-                $ Count = 15
-            elif newgirl["Mystique"].Chest == "NewX":  
-                $ Count = 10
             elif newgirl["Mystique"].Chest == "black bra":  
                 $ Count = 10
-            elif newgirl["Mystique"].Chest == "bikini":  
-                $ Count = 15
-            elif newgirl["Mystique"].Chest == "naked pool":  
-                $ Count = 15
-            elif newgirl["Mystique"].Chest == "NewX black":  
+            elif newgirl["Mystique"].Chest == "bra":  
                 $ Count = 10
+            elif newgirl["Mystique"].Chest == "yellow bikini":  
+                $ Count = 15
             else:     #E_Chest == 0
                 if newgirl["Mystique"].Pierce:
                     $ Count = -5
@@ -4654,15 +4659,11 @@ label Mystique_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agr
                     $ Count = 0
                     
             #If she's wearing an overshirt
-            if newgirl["Mystique"].Over == "black jacket":                                             
-                $ Count += 15
-            elif newgirl["Mystique"].Over == "jacket":                                             
-                $ Count += 15
+            if newgirl["Mystique"].Over == "workout jacket":                                             
+                $ Count += 5
             elif newgirl["Mystique"].Over == "red shirt":                                             
                 $ Count += 20
-            elif newgirl["Mystique"].Over == "black cape":
-                $ Count += 20
-            elif newgirl["Mystique"].Over == "cape":
+            elif newgirl["Mystique"].Over == "lavender shirt":                                             
                 $ Count += 20
             elif newgirl["Mystique"].Over == "towel":      
                 $ Count += 5
@@ -4713,13 +4714,11 @@ label Mystique_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agr
                     else:
                             # if commando
                             $ Count = 15                
-                elif newgirl["Mystique"].Panties == "white panties":      #If wearing only white panties
+                elif newgirl["Mystique"].Panties == "black lingerie":      #If wearing only white panties
                     $ Count = 10
                 elif newgirl["Mystique"].Panties == "black panties":      #If wearing only black panties
                     $ Count = 10
-                elif newgirl["Mystique"].Panties == "bikini":      #If wearing only bikini
-                    $ Count = 15
-                elif newgirl["Mystique"].Panties == "naked pool":      #If wearing only bikini
+                elif newgirl["Mystique"].Panties == "yellow bikini":      #If wearing only bikini
                     $ Count = 15
                 
                 if HoseNum("Mystique") >= 10:

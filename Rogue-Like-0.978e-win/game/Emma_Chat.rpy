@@ -3358,10 +3358,10 @@ label Emma_Clothes(Public=0,Bonus=0):
                                 call Emma_OutfitShame(5,1)
                     "Custom 3":
                                 call Emma_OutfitShame(6,1)
-#                    "Gym Clothes":
-#                                call Emma_OutfitShame(7,1)
-#                    "Sleepwear":
-#                                call Emma_OutfitShame(9,1)
+                    "Gym Clothes":
+                                call Emma_OutfitShame(7,1)
+                    "Sleepwear":
+                                call Emma_OutfitShame(9,1)
                     "Never mind":
                                 pass
         "Never mind, you look good like that.":
@@ -3657,6 +3657,115 @@ label Emma_Clothes(Public=0,Bonus=0):
                 jump Emma_Clothes
             $ E_Over = "towel"       
             call Emma_Tits_Up
+
+        "How about that nighty I got you?" if E_Over != "nighty" and "nighty" in E_Inventory:
+                        if E_Legs:
+                            ch_e "I can't really wear that with my [E_Legs] on."
+                        elif ApprovalCheck("Emma", 1100, TabM=3):
+                            ch_e "Sure. . ."
+                            $ E_Over = "nighty"   
+                            if "lace bra" in E_Inventory:
+                                $ E_Chest = "lace bra"
+                            else:
+                                $ E_Chest = "bra"
+                            if "lace panties" in E_Inventory:
+                                $ E_Panties = "lace panties"
+                            else:
+                                $ E_Panties = "black panties"
+                            menu:
+                                extend ""
+                                "Nice.":
+                                    pass
+                                "I meant {i}just{/i} the nighty.":
+                                    if ApprovalCheck("Emma", 1400, TabM=3):
+                                        "She shrugs off her bra and then pulls the nighty back up."
+                                        $ E_Panties = 0
+                                        $ E_Chest = 0
+                                        ch_e "Hmmm, alright. . ."
+                                    elif ApprovalCheck("Emma", 1200, TabM=3):
+                                        $ E_Chest = 0
+                                        ch_e "I'll keep my panties on, thanks."
+                                    else:
+                                        ch_e "Be happy with what you get."
+                        else:
+                            ch_e "That's a bit . . . revealing."
+
+        "How about that nighty you have?" if E_Over != "nighty":
+                        if E_Legs:
+                            ch_e "I can't really wear that with my [E_Legs] on."
+                            ch_p "Just take them off."
+                            call EmmaFace("sexy", 1)
+                            if E_SeenPanties and E_Panties and ApprovalCheck("Emma", 500, TabM=(6-Public)):
+                                ch_e "Fine."
+                            elif E_SeenPussy and ApprovalCheck("Emma", 900, TabM=(5-Public)):
+                                ch_e "Fine."
+                            elif ApprovalCheck("Emma", 1300, TabM=(2-Public)) and E_Panties:
+                                ch_e "It's not like I haven't worn this look before. . ."
+                            elif ApprovalCheck("Emma", 800) and not E_Panties:
+                                call Emma_NoPantiesOn
+                            else:
+                                ch_e "I'm afraid not."
+                                if not E_Panties:
+                                    ch_e "You understand, it could get. . . drafty. . ."
+                                jump Emma_Clothes_Over
+                            $ E_Legs = 0    
+                            "She peels her pants off."
+                            if E_Panties:                
+                                $ E_SeenPanties = 1
+                            else:
+                                call Emma_First_Bottomless
+                            $ E_Over = "nighty"   
+                            if "lace bra" in E_Inventory:
+                                $ E_Chest = "lace bra"
+                            else:
+                                $ E_Chest = "bra"
+                            if "lace panties" in E_Inventory:
+                                $ E_Panties = "lace panties"
+                            else:
+                                $ E_Panties = "black panties"
+                            menu:
+                                extend ""
+                                "Nice.":
+                                    pass
+                                "I meant {i}just{/i} the nighty.":
+                                    if ApprovalCheck("Emma", 1400, TabM=3):
+                                        "She shrugs off her bra and then pulls the nighty back up."
+                                        $ E_Panties = 0
+                                        $ E_Chest = 0
+                                        ch_e "Hmmm, alright. . ."
+                                    elif ApprovalCheck("Emma", 1200, TabM=3):
+                                        $ E_Chest = 0
+                                        ch_e "I'll keep my panties on, thanks."
+                                    else:
+                                        ch_e "Be happy with what you get."
+                        elif ApprovalCheck("Emma", 1100, TabM=3):
+                            ch_e "Sure. . ."
+                            $ E_Over = "nighty"   
+                            if "lace bra" in E_Inventory:
+                                $ E_Chest = "lace bra"
+                            else:
+                                $ E_Chest = "bra"
+                            if "lace panties" in E_Inventory:
+                                $ E_Panties = "lace panties"
+                            else:
+                                $ E_Panties = "black panties"
+                            menu:
+                                extend ""
+                                "Nice.":
+                                    pass
+                                "I meant {i}just{/i} the nighty.":
+                                    if ApprovalCheck("Emma", 1400, TabM=3):
+                                        "She shrugs off her bra and then pulls the nighty back up."
+                                        $ E_Panties = 0
+                                        $ E_Chest = 0
+                                        ch_e "Hmmm, alright. . ."
+                                    elif ApprovalCheck("Emma", 1200, TabM=3):
+                                        $ E_Chest = 0
+                                        ch_e "I'll keep my panties on, thanks."
+                                    else:
+                                        ch_e "Be happy with what you get."
+                        else:
+                            ch_e "That's a bit . . . revealing."
                             
         "Never mind":
             pass
@@ -3744,6 +3853,10 @@ label Emma_Clothes(Public=0,Bonus=0):
             else:
                 call Emma_First_Bottomless
         
+        "You look great in that white skirt." if E_Legs != "skirt":
+            ch_e "I know."
+            $ E_Legs = "skirt"
+
         "You look great in those white pants." if E_Legs != "pants":
             ch_e "I know."
             $ E_Legs = "pants"
@@ -3914,6 +4027,22 @@ label Emma_Clothes(Public=0,Bonus=0):
             else:                
                 ch_e "I don't think that would be appropriate. . ."  
 
+        "I like that sports bra you have." if E_Chest != "sports bra":
+            if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
+                ch_e "So do I."   
+                $ E_Chest = "sports bra"  
+                $ E_TitsUp = 1
+            else:                
+                ch_e "I don't think that would be appropriate. . ." 
+
+        "I like that lace bra you have." if E_Chest != "lace bra":
+            if E_SeenChest or ApprovalCheck("Emma", 1200, TabM=(3-Public)):
+                ch_e "So do I."   
+                $ E_Chest = "lace bra"  
+                $ E_TitsUp = 1
+            else:                
+                ch_e "I don't think that would be appropriate. . ."  
+
         "I like that bikini top you have." if E_Chest != "bikini":
             if E_SeenChest or ApprovalCheck("Emma", 1000, TabM=(3-Public)):
                 ch_e "So do I."   
@@ -3967,7 +4096,14 @@ label Emma_Clothes(Public=0,Bonus=0):
             else:
                 "She pulls off her [Line] and lets them drop to the ground."
                 call Emma_First_Bottomless
-                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 2)  
+                $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 50, 2) 
+
+        "Why don't you wear the sports panties instead?" if E_Panties and E_Panties != "sports panties":
+            if ApprovalCheck("Emma", 800, TabM=(4-Public)):
+                    ch_e "Ok."
+                    $ E_Panties = "sports panties"  
+            else:                
+                    ch_e "I really don't see how that's any of your concern." 
                 
         "Why don't you wear the white panties instead?" if E_Panties and E_Panties != "white panties":
             if ApprovalCheck("Emma", 1100, TabM=(4-Public)):
@@ -4003,9 +4139,16 @@ label Emma_Clothes(Public=0,Bonus=0):
                 $ E_Mouth = "smile"
                 ch_e "I could, but won't."
                 $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 2)
-                jump Emma_Clothes
+                menu:
+                    "Wear them":
+                        pass
+                    "Ok":
+                        jump Emma_Clothes
             menu:
                 ch_e "If you insist. . ."
+                "How about the sports ones?":
+                    ch_e "Fine."
+                    $ E_Panties = "sports panties"
                 "How about the white ones?":
                     ch_e "Fine."
                     $ E_Panties = "white panties"
@@ -4032,6 +4175,11 @@ label Emma_Clothes(Public=0,Bonus=0):
                 "Why don't you wear those black thigh highs?" if E_Hose != "black thigh high":
                     ch_k "Fine."
                     $ E_Hose = "black thigh high"  
+                    jump Emma_Clothes_Under_Hoses
+
+                "Why don't you wear those boots?" if E_Hose != "boots":
+                    ch_k "Fine."
+                    $ E_Hose = "boots"  
                     jump Emma_Clothes_Under_Hoses
 
                 "Go back":  
@@ -4184,7 +4332,7 @@ label Emma_Clothes(Public=0,Bonus=0):
         "Piercings. [[See what she looks like without them first] (locked)" if not E_SeenPussy and not E_SeenChest:
             pass
             
-        "You know, you'd look really nice with some ring body piercings." if E_Pierce != "ring" and (E_SeenPussy or E_SeenChest) and "ring" not in E_Todo:
+        "You know, you'd look really nice with some ring body piercings." if E_Pierce != "ring" and (E_SeenPussy or E_SeenChest):
             call EmmaFace("bemused", 1)
             $ Approval = ApprovalCheck("Emma", 1350, TabM=0)
             if ApprovalCheck("Emma", 900, "L", TabM=0) or (Approval and E_Love > 2* E_Obed):   
@@ -4198,9 +4346,10 @@ label Emma_Clothes(Public=0,Bonus=0):
                     $ E_Brows = "angry"
                     ch_e "Well, I'm just not ready for that sort of thing, [E_Petname]."
                     jump Emma_Clothes            
-            $ E_Todo.append("ring")
+            $ E_Pierce = "ring"
+            #$ E_Todo.append("ring")
         
-        "You know, you'd look really nice with some barbell body piercings." if E_Pierce != "barbell" and (E_SeenPussy or E_SeenChest)and "barbell" not in E_Todo:
+        "You know, you'd look really nice with some barbell body piercings." if E_Pierce != "barbell" and (E_SeenPussy or E_SeenChest):
             call EmmaFace("bemused", 1)
             $ Approval = ApprovalCheck("Emma", 1350, TabM=0)
             if ApprovalCheck("Emma", 900, "L", TabM=0) or (Approval and E_Love > 2 * E_Obed): 
@@ -4214,7 +4363,7 @@ label Emma_Clothes(Public=0,Bonus=0):
                 $ E_Brows = "angry"
                 ch_e "Well, I'm just not ready for that sort of thing, [E_Petname]."
                 jump Emma_Clothes                
-            $ E_Todo.append("barbell")
+            #$ E_Todo.append("barbell")
             $ E_Pierce = "barbell"
             
         "You know, you'd look better without those piercings." if E_Pierce:
@@ -4515,6 +4664,8 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
                 $ Count = 15
             elif E_Chest == "red sports bra":  
                 $ Count = 15
+            elif E_Chest == "sports bra":  
+                $ Count = 15
             elif E_Chest == "NewX":  
                 $ Count = 10
             elif E_Chest == "bikini":  
@@ -4527,8 +4678,8 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
 #                $ Count = 15
 #            elif E_Chest == "bra":
 #                $ Count = 10   
-#            elif E_Chest == "lace bra":
-#                $ Count = 5
+            elif E_Chest == "lace bra":
+                $ Count = 5
             else:     #E_Chest == 0
                 if E_Pierce:
                     $ Count = -5
@@ -4585,17 +4736,25 @@ label Emma_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agree =
                             $ Count = 30
                     else:
                             # if commando
-                            $ Count = 25                
+                            $ Count = 25  
+                elif E_Legs: #if skirt
+                    if E_Panties:
+                            $ Count = 20
+                    else:
+                            # if commando
+                            $ Count = 15                
                 elif E_Panties == "white panties":      #If wearing only white panties
                     $ Count = 10
                 elif E_Panties == "black panties":      #If wearing only black panties
                     $ Count = 10
+                elif E_Panties == "sports panties":      #If wearing only white panties
+                    $ Count = 15
                 elif E_Panties == "bikini":      #If wearing only bikini
                     $ Count = 15
                 elif E_Panties == "naked pool":      #If wearing only bikini
                     $ Count = 15
-#                elif E_Panties == "lace panties":       #If wearing only lace panties
-#                    $ Count = 5              
+                elif E_Panties == "lace panties":       #If wearing only lace panties
+                    $ Count = 5              
                 #else: 0
                 
                 if HoseNum("Emma") >= 10:

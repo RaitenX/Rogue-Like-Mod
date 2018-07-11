@@ -363,6 +363,10 @@ label MystiqueHJ_Cycle:
                     $ Round -= 1
                     menu:
                         "[Line]"
+                        
+                        "Appearance" if P_Lvl >= 4:
+                                call Mystique_Appearance_HJ 
+                        
                         "Keep going. . ." if Speed:
                                     pass
                         "Start moving? . ." if not Speed:
@@ -892,6 +896,10 @@ label MystiqueBJ_Cycle: #Repeating strokes
                     
                     menu:
                         "[Line]"
+                        
+                        "Appearance" if P_Lvl >= 4:
+                                call Mystique_Appearance_BJ               
+                        
                         "Keep going. . ." if Speed:
                                 pass
                             
@@ -2151,6 +2159,10 @@ label MystiqueDP_Cycle: #Repeating strokes
                     $ Round -= 1
                     menu:
                         "[Line]"
+                        
+                        "Appearance" if P_Lvl >= 4:
+                                call Mystique_Appearance_BJ               
+                        
                         "Keep going. . .":
                                     pass
                                                            
@@ -2748,6 +2760,10 @@ label MystiqueDA_Cycle: #Repeating strokes
                     $ Round -= 1
                     menu:
                         "[Line]"
+                        
+                        "Appearance" if P_Lvl >= 4:
+                                call Mystique_Appearance_BJ               
+                        
                         "Keep going. . .":
                                     pass
                                     
@@ -3292,6 +3308,10 @@ label MystiqueFJ_Cycle:
                     $ Round -= 1
                     menu:
                         "[Line]"
+                        
+                        "Appearance" if P_Lvl >= 4:
+                                call Mystique_Appearance               
+                        
                         "Keep going. . ." if Speed:
                                     pass
                         "Start moving? . ." if not Speed:
@@ -3588,4 +3608,129 @@ label Mystique_Les_Response(Girl="Rogue", Step=1, B=0, B2=0, Tempmod=0, Result=0
                     ch_m "I'm sorry, [newgirl[Mystique].Petname], I just can't do that."
                 
         return Result
+
+label Mystique_Appearance_HJ:
+    menu:
+        "Why don't you turn into Raven" if newgirl["Mystique"].LooksLike != "Raven":
+            ch_m "Sure"
+            $ newgirl["Mystique"].LooksLike = "Raven"
+            # call NewGirl_RemoveClothes("Mystique")
+            call Mystique_HJ_FixPos("L")
+            if P_Cock == "anal" or P_Cock == "in":
+                "She turns into Raven with your cock still inside her."
+            else:
+                "She turns into Raven."
+            ch_p "Nice"
+        "I preffer the real Raven" if newgirl["Mystique"].LooksLike != "Mystique":
+            ch_m "Sure"
+            $ newgirl["Mystique"].LooksLike = "Mystique"
+            call Mystique_HJ_FixPos("L")
+            if P_Cock == "anal" or P_Cock == "in":
+                "She turns back into her original form with your cock still inside her."
+            else:
+                "She turns back into her original form."
+            ch_p "Perfection"
+        "Why don't you turn into Emma" if newgirl["Mystique"].LooksLike != "Emma":
+            ch_m "So you like blondes huh?"
+            $ newgirl["Mystique"].LooksLike = "Emma"
+            call NewGirl_RemoveClothes("Mystique")
+            call Mystique_HJ_FixPos("L")
+            if P_Cock == "anal" or P_Cock == "in":
+                "She turns into Emma with your cock still inside her."
+            else:
+                "She turns into Emma."
+            ch_p "Nice"
+        "Why don't you turn into Rogue" if newgirl["Mystique"].LooksLike != "Rogue":
+            call NewGirl_FaceSpecial("Mystique", "surprised")
+            ch_m "You want me to turn into my own daughter?"
+            ch_m "That's dirty."
+            call NewGirl_FaceSpecial("Mystique", "smile")
+            ch_m "I like it."
+            $ newgirl["Mystique"].LooksLike = "Rogue"
+            call NewGirl_RemoveClothes("Mystique")
+            call Mystique_HJ_FixPos("L")
+            if P_Cock == "anal" or P_Cock == "in":
+                "She turns into Rogue with your cock still inside her."
+            else:
+                "She turns into Rogue."
+            ch_p "Nice"
+        "Why don't you turn into Kitty" if newgirl["Mystique"].LooksLike != "Kitty":
+            call NewGirl_FaceSpecial("Mystique", "surprised")
+            ch_m "So you want me to turn into that brat, huh?"
+            call NewGirl_FaceSpecial("Mystique", "smile")
+            ch_m "Ok."
+            $ newgirl["Mystique"].LooksLike = "Kitty"
+            call NewGirl_RemoveClothes("Mystique")
+            call Mystique_HJ_FixPos("L")
+            if P_Cock == "anal" or P_Cock == "in":
+                "She turns into Kitty with your cock still inside her."
+            else:
+                "She turns into Kitty."
+            ch_p "Nice"
+        "Nevermind":
+            pass 
+    return
+
+label Mystique_Appearance_BJ:
+    menu:
+        "Why don't you turn into Raven" if newgirl["Mystique"].LooksLike != "Raven":
+            ch_m "Sure"
+            $ newgirl["Mystique"].LooksLike = "Raven"
+            # call NewGirl_RemoveClothes("Mystique")
+            # call Mystique_HJ_FixPos("L")
+            if P_Cock == "anal" or P_Cock == "in":
+                "She turns into Raven with your cock still inside her."
+            else:
+                "She turns into Raven."
+            ch_p "Nice"
+        "I preffer the real Raven" if newgirl["Mystique"].LooksLike != "Mystique":
+            ch_m "Sure"
+            $ newgirl["Mystique"].LooksLike = "Mystique"
+            # call Mystique_HJ_FixPos("L")
+            if P_Cock == "anal" or P_Cock == "in":
+                "She turns back into her original form with your cock still inside her."
+            else:
+                "She turns back into her original form."
+            ch_p "Perfection"
+        "Why don't you turn into Emma" if newgirl["Mystique"].LooksLike != "Emma":
+            ch_m "So you like blondes huh?"
+            $ newgirl["Mystique"].LooksLike = "Emma"
+            call NewGirl_RemoveClothes("Mystique")
+            # call Mystique_HJ_FixPos("L")
+            if P_Cock == "anal" or P_Cock == "in":
+                "She turns into Emma with your cock still inside her."
+            else:
+                "She turns into Emma."
+            ch_p "Nice"
+        "Why don't you turn into Rogue" if newgirl["Mystique"].LooksLike != "Rogue":
+            call NewGirl_FaceSpecial("Mystique", "surprised")
+            ch_m "You want me to turn into my own daughter?"
+            ch_m "That's dirty."
+            call NewGirl_FaceSpecial("Mystique", "smile")
+            ch_m "I like it."
+            $ newgirl["Mystique"].LooksLike = "Rogue"
+            call NewGirl_RemoveClothes("Mystique")
+            # call Mystique_HJ_FixPos("L")
+            if P_Cock == "anal" or P_Cock == "in":
+                "She turns into Rogue with your cock still inside her."
+            else:
+                "She turns into Rogue."
+            ch_p "Nice"
+        "Why don't you turn into Kitty" if newgirl["Mystique"].LooksLike != "Kitty":
+            call NewGirl_FaceSpecial("Mystique", "surprised")
+            ch_m "So you want me to turn into that brat, huh?"
+            call NewGirl_FaceSpecial("Mystique", "smile")
+            ch_m "Ok."
+            $ newgirl["Mystique"].LooksLike = "Kitty"
+            call NewGirl_RemoveClothes("Mystique")
+            # call Mystique_HJ_FixPos("L")
+            if P_Cock == "anal" or P_Cock == "in":
+                "She turns into Kitty with your cock still inside her."
+            else:
+                "She turns into Kitty."
+            ch_p "Nice"
+        "Nevermind":
+            pass 
+    return
+
 #End Mystique_Les_Response >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >  >

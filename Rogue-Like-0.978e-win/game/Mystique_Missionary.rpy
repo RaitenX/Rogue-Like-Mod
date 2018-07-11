@@ -1396,7 +1396,7 @@ label Mystique_Missionary_Anal_Cycle: #Repeating strokes
                                     ch_m "No thanks, [newgirl[Mystique].Petname]. Maybe a Handy instead?"
                                     $ Situation = "shift"
                                     call Mystique_Missionary_AnalAfter
-                                    call EHJ_Prep   
+                                    call MystiqueHJ_Prep   
                         "How about a Handy?" if newgirl["Mystique"].Action and MultiAction:
                                 $ Situation = "shift"
                                 call Mystique_Missionary_AnalAfter

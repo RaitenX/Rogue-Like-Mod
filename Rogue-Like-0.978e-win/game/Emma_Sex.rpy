@@ -1166,7 +1166,7 @@ label E_Masturbate: #(Situation = Situation):
                         $ E_RecentActions.append("angry")
                         $ E_DailyActions.append("angry")  
                         if bg_current == "bg emma":
-                            ch_e "You may have noticed, I had soem work to take care of, so if you'll leave me to it. . ."
+                            ch_e "You may have noticed, I had some work to take care of, so if you'll leave me to it. . ."
                             "Emma kicks you out of her room."
                             $ renpy.pop_call()
                             jump Campus_Map  

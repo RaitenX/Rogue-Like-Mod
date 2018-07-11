@@ -3,27 +3,27 @@
 While running game code:
   File "game/script Locations.rpy", line 1318, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2795, in script call
+  File "game/script Functions.rpy", line 2803, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 540, in script call
     call Round10
   File "game/script Locations.rpy", line 1318, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2795, in script call
+  File "game/script Functions.rpy", line 2803, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 2093, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2795, in script call
+  File "game/script Functions.rpy", line 2803, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 540, in script call
     call Round10
   File "game/script Locations.rpy", line 1318, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2795, in script call
+  File "game/script Functions.rpy", line 2803, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 2093, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2795, in script call
+  File "game/script Functions.rpy", line 2803, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 540, in script call
     call Round10
@@ -31,44 +31,46 @@ While running game code:
     call Round10
   File "game/script Locations.rpy", line 4203, in script call
     call Round10
-  File "game/script Locations.rpy", line 159, in script call
-    call EventCalls
-  File "game/Rogue_Scenes.rpy", line 1310, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 112, in script call
-    call R_Titjob
-  File "game/Rogue_HJ.rpy", line 987, in script call
-    menu:
-  File "renpy/common/00console.rpy", line 765, in script call
-    python in _console:
-Exception: Sayer R_Pierce is not a function or string.
+  File "game/script Locations.rpy", line 2043, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1397, in script call
+    call Mystique_Chat
+  File "game/Mystique_Chat.rpy", line 205, in script call
+    call Mystique_Settings
+  File "game/Mystique_Chat.rpy", line 665, in script call
+    call Mystique_Clothes
+  File "game/Mystique_Chat.rpy", line 4227, in script
+    if (newgirl["Mystique"].Love + newgirl["Mystique"]["Obed"]) <= (2* newgirl["Mystique"].Inbt):
+  File "game/Mystique_Chat.rpy", line 4227, in <module>
+    if (newgirl["Mystique"].Love + newgirl["Mystique"]["Obed"]) <= (2* newgirl["Mystique"].Inbt):
+TypeError: 'Girlnew' object has no attribute '__getitem__'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
   File "game/script Locations.rpy", line 1318, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2795, in script call
+  File "game/script Functions.rpy", line 2803, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 540, in script call
     call Round10
   File "game/script Locations.rpy", line 1318, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2795, in script call
+  File "game/script Functions.rpy", line 2803, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 2093, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2795, in script call
+  File "game/script Functions.rpy", line 2803, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 540, in script call
     call Round10
   File "game/script Locations.rpy", line 1318, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2795, in script call
+  File "game/script Functions.rpy", line 2803, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 2093, in script call
     call Girls_Location
-  File "game/script Functions.rpy", line 2795, in script call
+  File "game/script Functions.rpy", line 2803, in script call
     call Rogue_Leave
   File "game/script Locations.rpy", line 540, in script call
     call Round10
@@ -76,20 +78,25 @@ Full traceback:
     call Round10
   File "game/script Locations.rpy", line 4203, in script call
     call Round10
-  File "game/script Locations.rpy", line 159, in script call
-    call EventCalls
-  File "game/Rogue_Scenes.rpy", line 1310, in script call
-    call Rogue_SexMenu
-  File "game/Rogue_Sex.rpy", line 112, in script call
-    call R_Titjob
-  File "game/Rogue_HJ.rpy", line 987, in script call
-    menu:
-  File "renpy/common/00console.rpy", line 765, in script call
-    python in _console:
-  File "<string>", line 1, in script
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 603, in execute
-    raise Exception("Sayer %s is not a function or string." % self.who.encode("utf-8"))
-Exception: Sayer R_Pierce is not a function or string.
+  File "game/script Locations.rpy", line 2043, in script call
+    call Chat
+  File "game/script Functions.rpy", line 1397, in script call
+    call Mystique_Chat
+  File "game/Mystique_Chat.rpy", line 205, in script call
+    call Mystique_Settings
+  File "game/Mystique_Chat.rpy", line 665, in script call
+    call Mystique_Clothes
+  File "game/Mystique_Chat.rpy", line 4227, in script
+    if (newgirl["Mystique"].Love + newgirl["Mystique"]["Obed"]) <= (2* newgirl["Mystique"].Inbt):
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\ast.py", line 1681, in execute
+    if renpy.python.py_eval(condition):
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1794, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1788, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/Mystique_Chat.rpy", line 4227, in <module>
+    if (newgirl["Mystique"].Love + newgirl["Mystique"]["Obed"]) <= (2* newgirl["Mystique"].Inbt):
+TypeError: 'Girlnew' object has no attribute '__getitem__'
 
 Windows-8-6.2.9200
 Ren'Py 6.99.13.2919
