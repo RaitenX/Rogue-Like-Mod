@@ -620,7 +620,7 @@ image Emma_At_Podium:
 #Rogue BJ Over Sprite Compositing
 
 
-image Emma_BJ_Animation:#BJ_NewTest:                                                                #core BJ animation   
+image Emma_BJ_Animation_Mod:#BJ_NewTest:                                                                #core BJ animation   
     LiveComposite(    
         (787,913),             
         (0,0), ConditionSwitch(                                                                 # back of the hair, which needs to go behind the body
@@ -1044,6 +1044,44 @@ image Emma_Hand_Over:
     pos (0,0)
 
 
+# Core Emma Titfucking element //////////////////////////////////////////////////////////////////////                                         Core Rogue TJ element
+
+image Emma_TJ_Under: 
+    contains:
+        "Emma_BJ_HairBack"
+        pos (750, -350)
+        zoom .75
+    contains:
+        ConditionSwitch(
+            "True", "images/EmmaTJ/Emma_tj_base.png",
+            ),
+    contains:
+        ConditionSwitch( 
+            "'tits' in R_Spunk", "images/RogueBJFace/Rogue_tj_spunkU.png",
+            "True", Null(),
+            ),
+    # contains:
+    #     "Emma_BJChin"
+    #     pos (150, -560)
+    #     zoom .95
+    contains:
+        "Emma_BJ_Head_2" 
+        pos (750, -350)
+        zoom .75
+    pos (-60, 200)
+
+image Emma_TJ_Over:     
+    contains:
+        ConditionSwitch( 
+            "True", "images/EmmaTJ/Emma_tj_tits.png",
+            ),
+    contains:
+        ConditionSwitch( 
+            "'tits' in R_Spunk", "images/RogueBJFace/Rogue_tj_spunk.png",
+            "True", Null(),
+            ),
+    pos (-60, 200)
+
 
 image Emma_HJ_Animation:  
     contains:
@@ -1116,6 +1154,109 @@ label Emma_HJ_Reset: # The sequence to the Emma animations from handjob to defau
         pause .5
         ease .5 zoom 1 offset (0,0)      
     return
+
+
+image Emma_TJ_Animation:                                                                                               #core TJ animation
+    contains:
+        ConditionSwitch(                                                                          # Zero cock sucking
+            "not Speed", Transform("Emma_TJ_Under"), 
+            "Speed == 1", At("Emma_TJ_Under", Rogue_TJ_Under_1()),
+            "Speed >= 2", At("Emma_TJ_Under", Rogue_TJ_Under_2()),
+            "Speed", Null(),
+            ),  
+    
+    contains:
+        ConditionSwitch(                                                                          # Zero cock sucking
+            "not Speed", At("Zero_Blowcock", Zero_TJ_Cock()),
+            "Speed == 1", At("Zero_Blowcock", Zero_TJ_Cock_1()),
+            "Speed >= 2", At("Zero_Blowcock", Zero_TJ_Cock_2()),
+            "Speed", Null(),
+            ),  
+        
+    contains:
+        ConditionSwitch(                                                                          # Zero cock sucking
+            "not Speed", Transform("Emma_TJ_Over"), 
+            "Speed == 1", At("Emma_TJ_Over", Rogue_TJ_Over_1()),
+            "Speed >= 2", At("Emma_TJ_Over", Rogue_TJ_Over_2()), 
+            "Speed", Null(),
+            ),     
+    anchor (0.6, 0.0)
+    offset (-75, 250)
+    zoom .55
+        
+label Emma_TJ_Launch(Line = 0):    # The sequence to launch the Emma Titfuck animations   
+    if renpy.showing("Emma_TJ_Animation"):
+        return
+    call Emma_Hide
+    show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer:
+        alpha 1
+        ease 1 zoom 2 xpos 550 yoffset 50 #offset (-100,50) 
+    if Taboo: # Emma gets started. . .
+         "Emma looks around to see if anyone can see her."
+    
+    if E_Chest and E_Over:
+        "She throws off her [E_Over] and her [E_Chest]."                
+    elif E_Over:
+        "She throws off her [E_Over], baring her breasts underneath."
+    elif E_Chest:
+        "She tugs off her [E_Chest] and throws it aside."
+    $ E_Over = 0
+    $ E_Chest = 0
+    $ E_Arms = 0
+    
+    call Emma_First_Topless                
+    
+    if not E_Tit and Line == "L": #first time
+        if not E_Chest and not E_Over:
+            "As you pull out your cock, Emma hesitantly places it between her breasts and starts to rub them up and down the shaft."
+        elif E_Chest and not E_Over:
+            "As you pull out your cock, Emma hesitantly places it under her [E_Chest], between her breasts and starts to rub them up and down the shaft."
+        elif E_Chest and E_Over:
+            "As you pull out your cock, Emma hesitantly places it under her [E_Over], between her breasts and starts to rub them up and down the shaft."
+        else:
+            "As you pull out your cock, Emma hesitantly places it under her clothes, between her breasts and starts to rub them up and down the shaft."
+    elif Line == "L": #any other time
+        if not E_Chest and not E_Over:
+            "As you pull out your cock, Emma places it between her breasts and starts to rub them up and down the shaft."
+        elif E_Chest and not E_Over:
+            "As you pull out your cock, Emma places it under her [E_Chest], between her breasts and starts to rub them up and down the shaft."
+        elif E_Chest and E_Over:
+            "As you pull out your cock, Emma places it under her [E_Over], between her breasts and starts to rub them up and down the shaft."
+        else:
+            "As you pull out your cock, Emma places it under her clothes, between her breasts and starts to rub them up and down the shaft."    
+    else:
+        "Emma wraps her tits around your cock."
+#    hide Emma    
+    show blackscreen onlayer black with dissolve
+    show Emma_Sprite zorder EmmaLayer:
+        alpha 0
+    $ Speed = 0
+    if Line != "cum":
+        $ Trigger = "titjob"
+    show Emma_TJ_Animation at SpriteLoc(StageRight) zorder 150 
+    hide blackscreen onlayer black with dissolve
+    return
+    
+label Emma_TJ_Reset: # The sequence to the Emma animations from Titfuck to default
+    if not renpy.showing("Emma_TJ_Animation"):
+        return
+    hide Emma_TJ_Animation
+
+    if E_Over == "bondage" or E_Over == "bondage cuffs":
+            "You help her remove the bondage suit"
+            $ E_Over = 0
+    
+    show Emma_Sprite at SpriteLoc(E_SpriteLoc) zorder EmmaLayer:
+        zoom 2 xpos 550 yoffset 50 #offset (-100,50)  #zoom 2 offset (-100,50)
+    show Emma_Sprite zorder EmmaLayer:
+        alpha 1
+        ease 1 zoom 1.5 xpos 500 yoffset 50
+        pause .5
+        ease .5 zoom 1 xpos E_SpriteLoc yoffset 0
+        
+    "Emma pulls back"
+    return
+
         
 label E_Kissing_Launch(T = Trigger):    
     call Emma_Hide
@@ -1170,7 +1311,7 @@ label Emma_Hide:
         hide Emma_Doggy
         hide Emma_HJ_Animation
         hide Emma_BJ_Animation
-    #    hide Emma_TJ_Animation 
+        hide Emma_TJ_Animation 
         return
 
 

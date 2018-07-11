@@ -114,8 +114,8 @@ label Emma_SexMenu:
                         ch_e "What did you want me to do?"
                         "Could you give me a handjob?":
                             call E_Handjob
-#                        "Could you give me a titjob?":
-#                            call E_Titjob         
+                        "Could you give me a titjob?":
+                            call E_Titjob         
                         "Could you suck my cock?":
                             call E_Blowjob 
                         "Could you use your feet?":

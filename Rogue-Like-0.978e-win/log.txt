@@ -1,37 +1,37 @@
-Wed Jul 11 01:36:35 2018
+Wed Jul 11 11:44:55 2018
 Windows-8-6.2.9200
 Ren'Py 6.99.13.2919
  
 
-Bootstrap to the start of init.init took 0.09s
+Bootstrap to the start of init.init took 0.07s
 Early init took 0.01s
-Loader init took 0.56s
-Loading error handling took 0.11s
-Loading script took 4.69s
-Loading persistent took 0.40s
+Loader init took 0.44s
+Loading error handling took 0.12s
+Loading script took 4.18s
+Loading persistent took 0.37s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
 Set script version to: (6, 99, 13)
-Running init code took 0.39s
-Loading analysis data took 6.17s
-Analyze and compile ATL took 0.28s
+Running init code took 0.41s
+Loading analysis data took 6.91s
+Analyze and compile ATL took 0.29s
 Index archives took 0.00s
 Dump and make backups. took 0.00s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
 DPI scale factor: 1.000000
-Creating interface object took 0.15s
+Creating interface object took 0.13s
 Cleaning stores took 0.00s
 Init translation took 0.01s
 Build styles took 0.00s
-Load screen analysis took 0.01s
-Analyze screens took 0.01s
-Save screen analysis took 0.09s
-Prepare screens took 0.06s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.08s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.44s
-Running _start took 0.01s
+Save bytecode. took 0.00s
+Running _start took 0.00s
 Performance test:
-Interface start took 0.01s
+Interface start took 0.02s
 
 primary display bounds: (0, 0, 1920, 1080)
 Windowed mode.
@@ -426,43 +426,13 @@ Texture testing:
 - 512px textures work.
 - 1024px textures work.
 - 2048px textures work.
-Total time until interface ready: 15.3399999142s
+Total time until interface ready: 14.746999979s
 - Target is 5 frames in 0.333333333333 seconds.
 - Frame drawn at 0.000000 seconds.
-- Frame drawn at 0.330000 seconds.
-- Frame drawn at 0.332000 seconds.
-- Frame drawn at 0.336000 seconds.
-- Frame drawn at 0.341000 seconds.
-- 0.341000 seconds to render 5 frames.
-- Frame drawn at 0.342000 seconds.
+- Frame drawn at 0.390000 seconds.
+- Frame drawn at 0.391000 seconds.
+- Frame drawn at 0.396000 seconds.
+- Frame drawn at 0.400000 seconds.
+- 0.400000 seconds to render 5 frames.
+- Frame drawn at 0.402000 seconds.
 - 0.012000 seconds to render 5 frames.
-The window was minimized.
-The window was restored.
-
-primary display bounds: (0, 0, 1920, 1080)
-Windowed mode.
-Screen sizes: virtual=(1024, 768) physical=(1024, 768) drawable=(1024, 768)
-The window was minimized.
-The window was restored.
-
-primary display bounds: (0, 0, 1920, 1080)
-Windowed mode.
-Screen sizes: virtual=(1024, 768) physical=(1024, 768) drawable=(1024, 768)
-Traceback (most recent call last):
-  File "renpy/common/00console.rpy", line 426, in run
-    result = renpy.python.py_eval(code)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1794, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1788, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "<none>", line 1, in <module>
-NameError: name 'K_Exhibitionist' is not defined
-Traceback (most recent call last):
-  File "renpy/common/00console.rpy", line 426, in run
-    result = renpy.python.py_eval(code)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1794, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "C:\Users\MyPC\Documents\GitHub\Rogue-Like-Mod\Rogue-Like-0.978e-win\renpy\python.py", line 1788, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "<none>", line 1, in <module>
-NameError: name 'K_HeadBand' is not defined

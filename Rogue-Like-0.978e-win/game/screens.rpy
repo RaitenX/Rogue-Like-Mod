@@ -1056,6 +1056,10 @@ screen P_Inventory_screen:
         
 #        hbox:    
         text "Inventory:" size 20
+        if OniBJ:
+            textbutton "Use Mod EmmaBJ" text_size 15 action [ SetVariable("OniBJ", 0)]
+        else:
+            textbutton "Use ONI EmmaBJ" text_size 15 action [ SetVariable("OniBJ", 1)]
         textbutton "+ $1000" text_size 15 action SetVariable("P_Cash", P_Cash + 1000)
         if P_Lvl < 10:
             textbutton "Player Max Level" text_size 15 action [ SetVariable("P_Lvl", 10), SetVariable("P_XP", 3330), SetVariable("P_StatPoints", 9) ]

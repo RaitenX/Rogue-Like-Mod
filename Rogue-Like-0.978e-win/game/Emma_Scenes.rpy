@@ -429,7 +429,7 @@ label Emma_Sleepover(sleepover = 0):  #Emma_Update
                     ch_e "It's getting late, I should retire for the evening. . ."  
             if Day <= 14:        
                 ch_e "It's been a pleasant evening, but it wouldn't be appropriate to stay after hours like this. . ."  
-                jump Return_Player    
+                #jump Return_Player    
                 
             call EmmaFace("sexy", 1)
             if (E_Sleep >= 3 and ApprovalCheck("Emma", 800)) or ApprovalCheck("Emma", 1100, "LI"):                                 
