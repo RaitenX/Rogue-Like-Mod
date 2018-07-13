@@ -14,7 +14,7 @@ label Mystique_SexAct(Act = 0):
         if Situation == "blow": 
             #If you selected to continue the BJ, then it calls the BJ actions
             $ Situation = 0
-            call Mystique_BJ_Prep
+            call MystiqueBJ_Prep
         if not Situation:
             return
     elif Act == "kissing":        
@@ -579,9 +579,9 @@ label Mystique_Jackin(Cnt = 0, TempVar = 0):
                 elif TempVar == "tit":
                         jump MystiqueTJ_Prep
                 elif TempVar == "sex":
-                        jump Mystique_SexPrep
+                        jump Mystique_Doggy_SexPrep
                 elif TempVar == "anal":
-                        jump Mystique_AnalPrep
+                        jump Mystique_Doggy_AnalPrep
     return
 # End Mystique "jackin it" action / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
  

@@ -802,7 +802,7 @@ label K_SpunkBelly:
     #else . . .
     call KittyFace("sexy", 1)    
     ch_k "Mmmm, all over the place. . ."
-    call Kitty_Sex_Reset
+    #call Kitty_Sex_Reset
     jump K_Orgasm_After
     
 # Start Spunk back  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -854,7 +854,7 @@ label K_SpunkBack:
     #else . . .
     call KittyFace("sexy", 1)
     ch_k "Thanks for the courtesy, [K_Petname]. Such a mess though. . ." 
-    call Kitty_Doggy_Reset
+    #call Kitty_Doggy_Reset
     jump K_Orgasm_After
 
 #Start Handy finish  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -942,16 +942,31 @@ label K_Creampied:
     if K_CreamP == 1:
             $K_SEXP += 10
             $ K_Inbt = Statupdate("Kitty", "Inbt", K_Inbt, 70, 5)
-    call Kitty_Sex_Reset
+    #call Kitty_Sex_Reset
 
 # Clean-up / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label K_Orgasm_After:
-    $ Line = 0
+        $ Line = "What next?"
+        $ Kitty_Arms = 1
+        $ P_Semen -= 1
+        $ P_Focus = 0
+        $ Speed = 0  
+        menu:
+                "Want her to clean you off?"
+                "Yes":
+                    call K_CleanCock
+                "No":
+                    pass
+        if K_Spunk:
+                call Kitty_Cleanup
+        $ Situation = 0
+        return
+        
+        
+label K_CleanCock:
+    $ Line = "What next?"
     $ Kitty_Arms = 1
-    $ P_Semen -= 1
-    $ P_Focus = 0
     $ P_Cock = "out"
-    $ P_Spunk = 0
     $ Speed = 0
     if Trigger == "anal" and not ApprovalCheck("Kitty", 1600, TabM=1) and not K_Addict >= 80:
             "She wipes your cock clean."
@@ -984,19 +999,9 @@ label K_Orgasm_After:
                 if not renpy.showing("Kitty_HJ_Animation"):
                     call Kitty_HJ_Launch("cum") 
                 "She wipes your cock clean."          
+    $ P_Spunk = 0
     call KittyFace("sexy") 
     call Kitty_HJ_Reset 
-    if K_Spunk and not ApprovalCheck("Kitty", 400, "I"):
-            call Kitty_Cleanup
-    elif K_Spunk:   
-        menu:
-            extend""
-            "And maybe clean yourself up too?":            
-                call Kitty_Cleanup
-            "[[Say nothing.]":         
-                call Kitty_Cleanup    
-    $ Speed = 0
-    $ Situation = 0
     return
     
 # End You Cumming //////////////////////////////////////////////////////////////////////////////////

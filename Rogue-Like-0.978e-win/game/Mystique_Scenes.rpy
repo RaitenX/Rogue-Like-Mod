@@ -549,7 +549,7 @@ label Mystique_Morning:
                     $ Cnt = 0 
                  
             if Cnt:   
-                    #call Mystique_SexAct("morningwood") #mystique wip
+                    call Mystique_SexAct("morningwood") #mystique wip
                     ch_m "Hmmm. . ."
                                     
             call MystiqueFace("smile")

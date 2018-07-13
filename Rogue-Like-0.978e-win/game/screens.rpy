@@ -1056,31 +1056,38 @@ screen P_Inventory_screen:
         
 #        hbox:    
         text "Inventory:" size 20
+        if CheatsEnabled:
+            textbutton "Disable Cheats" text_size 15 action [ SetVariable("CheatsEnabled", 0)]
+        else:
+            textbutton "Enable Cheats" text_size 15 action [ SetVariable("CheatsEnabled", 1)]
         if OniBJ:
             textbutton "Use Mod EmmaBJ" text_size 15 action [ SetVariable("OniBJ", 0)]
         else:
             textbutton "Use ONI EmmaBJ" text_size 15 action [ SetVariable("OniBJ", 1)]
-        textbutton "+ $1000" text_size 15 action SetVariable("P_Cash", P_Cash + 1000)
-        if P_Lvl < 10:
+        if CheatsEnabled:
+            textbutton "+ $1000" text_size 15 action SetVariable("P_Cash", P_Cash + 1000)
+        if P_Lvl < 10 and CheatsEnabled:
             textbutton "Player Max Level" text_size 15 action [ SetVariable("P_Lvl", 10), SetVariable("P_XP", 3330), SetVariable("P_StatPoints", 9) ]
-        if R_Lvl < 10:
+        if R_Lvl < 10 and CheatsEnabled:
             textbutton "Rogue Max Level" text_size 15 action [ SetVariable("R_Lvl", 10), SetVariable("R_XP", 3330), SetVariable("R_StatPoints", 9) ]
-        if K_Lvl < 10:
+        if K_Lvl < 10 and CheatsEnabled:
             textbutton "Kitty Max Level" text_size 15 action [ SetVariable("K_Lvl", 10), SetVariable("K_XP", 3330), SetVariable("K_StatPoints", 9) ]
-        if E_Lvl < 10:
+        if E_Lvl < 10 and CheatsEnabled:
             textbutton "Emma Max Level" text_size 15 action [ SetVariable("E_Lvl", 10), SetVariable("E_XP", 3330), SetVariable("E_StatPoints", 9) ]
-        if R_ForcedCount:
+        if R_ForcedCount and CheatsEnabled:
             textbutton "Rogue Forced 0" text_size 15 action [ SetVariable("R_ForcedCount", 0)]
-        if K_ForcedCount:
+        if K_ForcedCount and CheatsEnabled:
             textbutton "Kitty Forced 0" text_size 15 action [ SetVariable("K_ForcedCount", 0)]
-        if E_ForcedCount:
+        if E_ForcedCount and CheatsEnabled:
             textbutton "Emma Forced 0" text_size 15 action [ SetVariable("E_ForcedCount", 0)]
-        if not R_Action:
+        if not R_Action and CheatsEnabled:
             textbutton "10 Rogue actions" text_size 15 action [ SetVariable("R_Action", 10)]
-        if not K_Action:
+        if not K_Action and CheatsEnabled:
             textbutton "10 Kitty actions" text_size 15 action [ SetVariable("K_Action", 10)]
-        if not E_Action:
+        if not E_Action and CheatsEnabled:
             textbutton "10 Emma actions" text_size 15 action [ SetVariable("E_Action", 10)]
+        if not newgirl["Mystique"].Action and CheatsEnabled:
+            textbutton "10 Mystique actions" text_size 15 action [ SetField(newgirl["Mystique"], "Action", 10)]
         textbutton "Dick Opacity 0" text_size 15 action [ SetVariable("P_CockVisible", 0)]
         textbutton "Dick Opacity 0_5" text_size 15 action [ SetVariable("P_CockVisible", 0.5)]
         textbutton "Dick Opacity 1" text_size 15 action [ SetVariable("P_CockVisible", 1)]
@@ -1088,11 +1095,11 @@ screen P_Inventory_screen:
             textbutton "Mystique Picture" text_size 15 action Show("Mystique_Pic",transition=Pause(1))
             if renpy.get_screen("Mystique_Pic"):
                 textbutton "Hide Picture" text_size 15 action Hide("Mystique_Pic",transition=Pause(1))
-        if R_Rules:
+        if R_Rules and CheatsEnabled:
             textbutton "X stop bothering Rogue" text_size 15 action [ SetVariable("R_Rules", 0)]
-        if K_Rules:
+        if K_Rules and CheatsEnabled:
             textbutton "X stop bothering Kitty" text_size 15 action [ SetVariable("K_Rules", 0)]
-        if E_Rules:
+        if E_Rules and CheatsEnabled:
             textbutton "X stop bothering Emma" text_size 15 action [ SetVariable("E_Rules", 0)]
         showif "dildo" in P_Inventory:
             $ Inventory_Count = Inventory_Check("dildo")

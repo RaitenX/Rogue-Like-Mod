@@ -861,7 +861,7 @@ label E_SpunkBelly:
     #else . . .
     call EmmaFace("sexy", 1)    
     ch_e "Mmmm, all over the place. . ."
-    call Emma_Sex_Reset
+    #call Emma_Sex_Reset
     jump E_Orgasm_After
 
 # Start Spunk back  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -913,7 +913,7 @@ label E_SpunkBack:
     #else . . .
     call EmmaFace("sexy", 1)
     ch_e "Hmm. . . you do make a mess. . ."  
-    call Emma_Sex_Reset
+    #call Emma_Sex_Reset
     jump E_Orgasm_After
     
    
@@ -992,16 +992,30 @@ label E_Creampied:
     if E_CreamP == 1:
             $E_SEXP += 10
             $ E_Inbt = Statupdate("Emma", "Inbt", E_Inbt, 70, 5)
-    call Emma_Sex_Reset
+    #call Emma_Sex_Reset
 
 # Clean-up / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label E_Orgasm_After:
-    $ Line = 0
-#    $ Emma_Arms = 2
+    $ Line = "What next?"
     $ P_Semen -= 1
     $ P_Focus = 0
+    $ Speed = 0  
+    menu:
+            "Want her to clean you off?"
+            "Yes":
+                call E_CleanCock
+            "No":
+                pass
+    if E_Spunk:
+            call Emma_Cleanup
+    $ Situation = 0
+    return
+
+
+label E_CleanCock:
+    $ Line = "What next?"
+#    $ Emma_Arms = 2
     $ P_Cock = "out"
-    $ P_Spunk = 0
     $ Speed = 0    
     if Trigger == "anal" and not ApprovalCheck("Emma", 1600, TabM=1) and not E_Addict >= 80:
             "She wipes your cock clean."
@@ -1053,19 +1067,9 @@ label E_Orgasm_After:
     #    if "hand" in E_Spunk:
     #        $ E_Spunk.remove("hand")
     #    "Emma wipes your cock clean, and then wipes off her hands."
+    $ P_Spunk = 0
     call EmmaFace("sexy") 
     call Emma_HJ_Reset 
-    if E_Spunk and not ApprovalCheck("Emma", 400, "I"):
-                call Emma_Cleanup
-    elif E_Spunk:    
-        menu:
-            extend""
-            "And maybe clean yourself up too?":            
-                call Emma_Cleanup
-            "[[Say nothing.]":
-                call Emma_Cleanup
-    $ Situation = 0
-    $ Emma_Arms = 1
     return
     
 # End You Cumming //////////////////////////////////////////////////////////////////////////////////

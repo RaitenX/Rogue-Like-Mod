@@ -861,7 +861,7 @@ label Mystique_SpunkBelly:
     #else . . .
     call MystiqueFace("sexy", 1)    
     ch_m "Mmmm, all over the place. . ."
-    call Mystique_Sex_Reset
+    #call Mystique_Sex_Reset
     jump Mystique_Orgasm_After
 
 # Start Spunk back  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -913,7 +913,7 @@ label Mystique_SpunkBack:
     #else . . .
     call MystiqueFace("sexy", 1)
     ch_m "Hmm. . . you do make a mess. . ."  
-    call Mystique_Sex_Reset
+    #call Mystique_Sex_Reset
     jump Mystique_Orgasm_After
     
    
@@ -992,16 +992,30 @@ label Mystique_Creampied:
     if newgirl["Mystique"].CreamP == 1:
             $ newgirl["Mystique"].SEXP += 10
             $ newgirl["Mystique"].Inbt = Statupdate("Mystique", "Inbt", newgirl["Mystique"].Inbt, 70, 5)
-    call Mystique_Sex_Reset
+    #call Mystique_Sex_Reset
 
 # Clean-up / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label Mystique_Orgasm_After:
-    $ Line = 0
+        $ Line = "What next?"
+        $ P_Semen -= 1
+        $ P_Focus = 0
+        $ Speed = 0  
+        menu:
+                "Want her to clean you off?"
+                "Yes":
+                    call Mystique_CleanCock
+                "No":
+                    pass
+        if newgirl["Mystique"].Spunk:
+                call Mystique_Cleanup
+        $ Situation = 0
+        return
+        
+        
+label Mystique_CleanCock:
+    $ Line = "What next?"
 #    $ newgirl["Mystique"].Girl_Arms = 2
-    $ P_Semen -= 1
-    $ P_Focus = 0
     $ P_Cock = "out"
-    $ P_Spunk = 0
     $ Speed = 0    
     if Trigger == "anal" and not ApprovalCheck("Mystique", 1600, TabM=1) and not newgirl["Mystique"].Addict >= 80:
             "She wipes your cock clean."
@@ -1053,19 +1067,9 @@ label Mystique_Orgasm_After:
     #    if "hand" in newgirl["Mystique"].Spunk:
     #        $ newgirl["Mystique"].Spunk.remove("hand")
     #    "Mystique wipes your cock clean, and then wipes off her hands."
+    $ P_Spunk = 0
     call MystiqueFace("sexy") 
     call Mystique_HJ_Reset 
-    if newgirl["Mystique"].Spunk and not ApprovalCheck("Mystique", 400, "I"):
-                call Mystique_Cleanup
-    elif newgirl["Mystique"].Spunk:    
-        menu:
-            extend""
-            "And maybe clean yourself up too?":            
-                call Mystique_Cleanup
-            "[[Say nothing.]":
-                call Mystique_Cleanup
-    $ Situation = 0
-    $ newgirl["Mystique"].Girl_Arms = 1
     return
     
 # End You Cumming //////////////////////////////////////////////////////////////////////////////////

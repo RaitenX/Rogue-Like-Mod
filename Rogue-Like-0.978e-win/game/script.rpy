@@ -89,7 +89,7 @@ init -1:
     #$ newgirl["Mystique"].Love = 300
     #girlnew.add_othergirls()
     default OniBJ = 0
-    #girlnew.girls[0].flights
+    default CheatsEnabled = 1
 #World Stats
     default SaveVersion = 978
     default Day = 1

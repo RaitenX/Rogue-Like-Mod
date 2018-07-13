@@ -14,7 +14,7 @@ label Emma_SexAct(Act = 0):
         if Situation == "blow": 
             #If you selected to continue the BJ, then it calls the BJ actions
             $ Situation = 0
-            call E_BJ_Prep
+            call EBJ_Prep
         if not Situation:
             return
     elif Act == "kissing":        
@@ -576,9 +576,9 @@ label E_Jackin(Cnt = 0, TempVar = 0):
                 elif TempVar == "tit":
                         jump ETJ_Prep
                 elif TempVar == "sex":
-                        jump E_SexPrep
+                        jump E_Doggy_SexPrep
                 elif TempVar == "anal":
-                        jump E_AnalPrep
+                        jump E_Doggy_AnalPrep
     return
 # End Emma "jackin it" action / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
  

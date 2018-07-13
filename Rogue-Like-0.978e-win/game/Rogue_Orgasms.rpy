@@ -842,7 +842,7 @@ label R_SpunkBelly:
     #else . . .
     call RogueFace("sexy", 1)    
     ch_r "Mmmm, all over the place. . ."
-    call Rogue_Sex_Reset
+    #call Rogue_Sex_Reset
     jump R_Orgasm_After
 
 # Start Spunk back  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -894,7 +894,7 @@ label R_SpunkBack:
     #else . . .
     call RogueFace("sexy", 1)
     ch_r "Thanks for the courtesy, [R_Petname]. Such a mess though. . ." 
-    call Rogue_Doggy_Reset
+    #call Rogue_Doggy_Reset
     jump R_Orgasm_After
     
    
@@ -973,16 +973,31 @@ label R_Creampied:
     if R_CreamP == 1:
             $R_SEXP += 10
             $ R_Inbt = Statupdate("Rogue", "Inbt", R_Inbt, 70, 5)
-    call Rogue_Doggy_Reset
+    #call Rogue_Doggy_Reset
 
 # Clean-up / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 label R_Orgasm_After:
-    $ Line = 0
+        $ Line = "What next?"
+        $ Rogue_Arms = 1
+        $ P_Semen -= 1
+        $ P_Focus = 0
+        $ Speed = 0  
+        menu:
+                "Want her to clean you off?"
+                "Yes":
+                    call R_CleanCock
+                "No":
+                    pass
+        if R_Spunk:
+                call Rogue_Cleanup
+        $ Situation = 0
+        return
+        
+        
+label R_CleanCock:
+    $ Line = "What next?"
     $ Rogue_Arms = 1
-    $ P_Semen -= 1
-    $ P_Focus = 0
     $ P_Cock = "out"
-    $ P_Spunk = 0
     $ Speed = 0    
     if Trigger == "anal" and not ApprovalCheck("Rogue", 1600, TabM=1) and not R_Addict >= 80:
             "She wipes your cock clean."
@@ -1015,18 +1030,9 @@ label R_Orgasm_After:
                     if not renpy.showing("Rogue_HJ_Animation"):
                         call Rogue_HJ_Launch("cum") 
                     "She wipes your cock clean." 
+    $ P_Spunk = 0
     call RogueFace("sexy") 
     call Rogue_HJ_Reset 
-    if R_Spunk and not ApprovalCheck("Rogue", 400, "I"):
-                call Rogue_Cleanup
-    elif R_Spunk:    
-        menu:
-            extend""
-            "And maybe clean yourself up too?":            
-                call Rogue_Cleanup
-            "[[Say nothing.]":
-                call Rogue_Cleanup
-    $ Situation = 0
     return
     
 # End You Cumming //////////////////////////////////////////////////////////////////////////////////

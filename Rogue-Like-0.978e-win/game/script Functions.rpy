@@ -1277,9 +1277,12 @@ label Round10(Options = ["none"]):
                         if K_Loc == bg_current and K_Sleep >= 2 and ApprovalCheck("Kitty", 1000): 
                                     $ Options.append("Kitty")
                                     $ Options.append("Kitty")
-#                        if E_Loc == bg_current and E_Sleep >= 2 and ApprovalCheck("Emma", 1000): 
-#                                    $ Options.append("Emma")
-#                                    $ Options.append("Emma")
+                        if E_Loc == bg_current and E_Sleep >= 2 and ApprovalCheck("Emma", 1000): 
+                                    $ Options.append("Emma")
+                                    $ Options.append("Emma")
+                        if newgirl["Mystique"].Loc == bg_current and newgirl["Mystique"].Sleep >= 2 and ApprovalCheck("Mystique", 1000): 
+                                    $ Options.append("Mystique")
+                                    $ Options.append("Mystique")
                                     
                         $ renpy.random.shuffle(Options)
                         if Options[0] == "none":
@@ -1287,8 +1290,10 @@ label Round10(Options = ["none"]):
                                             $ Options[0] = "Rogue"
                                 elif K_Loc == bg_current and ApprovalCheck("Kitty", 1000): 
                                             $ Options[0] = "Kitty"
-#                                elif E_Loc == bg_current and ApprovalCheck("Emma", 1000): 
-#                                            $ Options[0] = "Emma"                            
+                                elif E_Loc == bg_current and ApprovalCheck("Emma", 1000): 
+                                            $ Options[0] = "Emma"  
+                                elif newgirl["Mystique"].Loc == bg_current and ApprovalCheck("Mystique", 1000): 
+                                            $ Options[0] = "Mystique"                            
                                 
                         if Options[0] == "Rogue":                                
                                 call CleartheRoom("Rogue",1)
@@ -1298,7 +1303,10 @@ label Round10(Options = ["none"]):
                                 call Kitty_Sleepover 
                         elif Options[0] == "Emma":    
                                 call CleartheRoom("Emma",1)
-                                call Emma_Sleepover                         
+                                call Emma_Sleepover 
+                        elif Options[0] == "Mystique":    
+                                call CleartheRoom("Mystique",1)
+                                call Mystique_Sleepover                         
                         else:   
                                 call CleartheRoom("All",1)
                                 #if nobody is here, you just go to sleep
@@ -3705,7 +3713,7 @@ label Sex_Dialog(Primary = Ch_Focus, Secondary = 0, TempFocus = 0, PrimaryLust =
                 $ E_Lust = Statupdate("Emma", "Lust", E_Lust, 200, PrimaryLust)
                 call EmmaLust 
         elif Primary == "Mystique":
-                $ E_Lust = Statupdate("Mystique", "Lust", E_Lust, 200, PrimaryLust)
+                $ newgirl["Mystique"].Lust = Statupdate("Mystique", "Lust", newgirl["Mystique"].Lust, 200, PrimaryLust)
                 call MystiqueLust            
         
         #Applying secondary girl's satisfaction
