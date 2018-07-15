@@ -75,7 +75,11 @@
             self.PantiesDown = 0
             self.Custom = [0,0,0,0,0,0,0,0,0,0]
             self.Custom2 = [0,0,0,0,0,0,0,0,0,0,0]
-            self.Custom3 = [0,0,0,0,0,0,0,0,0,0,0]    
+            self.Custom3 = [0,0,0,0,0,0,0,0,0,0,0]  
+            self.Custom4 = [0,0,0,0,0,0,0,0,0,0,0]  
+            self.Custom5 = [0,0,0,0,0,0,0,0,0,0,0]  
+            self.Custom6 = [0,0,0,0,0,0,0,0,0,0,0]    
+            self.Custom7 = [0,0,0,0,0,0,0,0,0,0,0]    
             self.Gym = [2,0,0,0,"tights","top","black panties",0,0,0,0] #arms position, 0, 0, over, legs, chest, panties, 
             self.Sleepwear = [0,0,0,0,0,"short top","black panties",0,0,0]
             self.Schedule = [0,0,0,0,0,0,0,0,4,0]                      #chooses when she wears what

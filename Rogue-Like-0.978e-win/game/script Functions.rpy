@@ -5030,4 +5030,11 @@ label Failsafe:
     $ E_Slap = 0 if "E_Slap" not in globals().keys() else E_Slap
     $ E_Spank = 0 if "E_Spank" not in globals().keys() else E_Spank
     $ E_Plugged = 0 if "E_Plugged" not in globals().keys() else E_Plugged
+    $ E_Custom = [0,0,0,0,0,0,0,0,0,0,0] if "E_Custom" not in globals().keys() else E_Custom
+    $ E_Custom2 = [0,0,0,0,0,0,0,0,0,0,0] if "E_Custom2" not in globals().keys() else E_Custom2
+    $ E_Custom3 = [0,0,0,0,0,0,0,0,0,0,0] if "E_Custom3" not in globals().keys() else E_Custom3
+    $ E_Custom4 = [0,0,0,0,0,0,0,0,0,0,0] if "E_Custom4" not in globals().keys() else E_Custom4
+    $ E_Custom5 = [0,0,0,0,0,0,0,0,0,0,0] if "E_Custom5" not in globals().keys() else E_Custom5
+    $ E_Custom6 = [0,0,0,0,0,0,0,0,0,0,0] if "E_Custom6" not in globals().keys() else E_Custom6
+    $ E_Custom7 = [0,0,0,0,0,0,0,0,0,0,0] if "E_Custom7" not in globals().keys() else E_Custom7
     return

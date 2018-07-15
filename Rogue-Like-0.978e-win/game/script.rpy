@@ -521,6 +521,10 @@ init -1:
     default E_Custom = [0,0,0,0,0,0,0,0,0,0]
     default E_Custom2 = [0,0,0,0,0,0,0,0,0,0,0]
     default E_Custom3 = [0,0,0,0,0,0,0,0,0,0,0]    
+    default E_Custom4 = [0,0,0,0,0,0,0,0,0,0,0]    
+    default E_Custom5 = [0,0,0,0,0,0,0,0,0,0,0]    
+    default E_Custom6 = [0,0,0,0,0,0,0,0,0,0,0]    
+    default E_Custom7 = [0,0,0,0,0,0,0,0,0,0,0]    
     default E_Gym = [2,0,0,"cape","NewX","corset","white panties",0,0,0,0]
     default E_Sleepwear = [0,0,0,0,0,"corset","white panties",0,0,0]
     default E_Schedule = [0,0,0,0,0,0,0,0,4,0]                      #chooses when she wears what
@@ -655,6 +659,12 @@ label VersionNumber:
     #if getattr(newgirl["Mystique"], "Blindfold", None) == None:
         $ newgirl["Mystique"].Blindfold = 0
         $ newgirl["Mystique"].Headband = 0
+
+    if getattr(newgirl["Mystique"], "Custom4", None) == None:
+        $ newgirl["Mystique"].Custom4 = [0,0,0,0,0,0,0,0,0,0,0]
+        $ newgirl["Mystique"].Custom5 = [0,0,0,0,0,0,0,0,0,0,0]
+        $ newgirl["Mystique"].Custom6 = [0,0,0,0,0,0,0,0,0,0,0]
+        $ newgirl["Mystique"].Custom7 = [0,0,0,0,0,0,0,0,0,0,0]
 
     if "metgym" not in newgirl["Mystique"].History: 
         $ newgirl["Mystique"].LooksLike = "Raven"
@@ -2764,6 +2774,90 @@ label EmmaOutfit(E_OutfitTemp = E_Outfit, Spunk = 0, Undressed = 0, Changed = 0)
                     $ E_Hair = E_Custom3[8] if E_Custom3[8] else E_Hair  
                     $ E_Hose = E_Custom3[9]                         
                     $ E_Shame = E_OutfitShame[6]
+        elif E_OutfitTemp == "custom4":
+                    if not E_Legs and E_Custom4[2]:            
+                            $ Undressed = 1
+                    elif not E_Over and E_Custom4[3]:          
+                            $ Undressed = 1
+                    elif not E_Chest and E_Custom4[5]:          
+                            $ Undressed = 1
+                    elif not E_Panties and E_Custom4[6] and "pantyless" not in E_DailyActions:         
+                            $ Undressed = 1
+                    elif not E_Hose and E_Custom4[9]:          
+                            $ Undressed = 1
+                        
+                    $ E_Arms = E_Custom4[1]
+                    $ E_Legs = E_Custom4[2]
+                    $ E_Over = E_Custom4[3]
+                    $ E_Neck = E_Custom4[4]
+                    $ E_Chest = E_Custom4[5]
+                    $ E_Panties = E_Custom4[6]    
+                    $ E_Hose = E_Custom4[9]   
+                    $ E_Hair = E_Custom4[8] if E_Custom4[8] else E_Hair
+                    $ E_Shame = E_OutfitShame[11]
+        elif E_OutfitTemp == "custom5":
+                    if not E_Legs and E_Custom5[2]:            
+                            $ Undressed = 1
+                    elif not E_Over and E_Custom5[3]:          
+                            $ Undressed = 1
+                    elif not E_Chest and E_Custom5[5]:          
+                            $ Undressed = 1
+                    elif not E_Panties and E_Custom5[6] and "pantyless" not in E_DailyActions:         
+                            $ Undressed = 1
+                    elif not E_Hose and E_Custom5[9]:          
+                            $ Undressed = 1
+                        
+                    $ E_Arms = E_Custom5[1]
+                    $ E_Legs = E_Custom5[2]
+                    $ E_Over = E_Custom5[3]
+                    $ E_Neck = E_Custom5[4]
+                    $ E_Chest = E_Custom5[5]
+                    $ E_Panties = E_Custom5[6]    
+                    $ E_Hose = E_Custom5[9]   
+                    $ E_Hair = E_Custom5[8] if E_Custom5[8] else E_Hair
+                    $ E_Shame = E_OutfitShame[12]
+        elif E_OutfitTemp == "custom6":
+                    if not E_Legs and E_Custom6[2]:            
+                            $ Undressed = 1
+                    elif not E_Over and E_Custom6[3]:          
+                            $ Undressed = 1
+                    elif not E_Chest and E_Custom6[5]:          
+                            $ Undressed = 1
+                    elif not E_Panties and E_Custom6[6] and "pantyless" not in E_DailyActions:         
+                            $ Undressed = 1
+                    elif not E_Hose and E_Custom6[9]:          
+                            $ Undressed = 1
+                        
+                    $ E_Arms = E_Custom6[1]
+                    $ E_Legs = E_Custom6[2]
+                    $ E_Over = E_Custom6[3]
+                    $ E_Neck = E_Custom6[4]
+                    $ E_Chest = E_Custom6[5]
+                    $ E_Panties = E_Custom6[6]    
+                    $ E_Hose = E_Custom6[9]   
+                    $ E_Hair = E_Custom6[8] if E_Custom6[8] else E_Hair
+                    $ E_Shame = E_OutfitShame[13]
+        elif E_OutfitTemp == "custom7":
+                    if not E_Legs and E_Custom7[2]:            
+                            $ Undressed = 1
+                    elif not E_Over and E_Custom7[3]:          
+                            $ Undressed = 1
+                    elif not E_Chest and E_Custom7[5]:          
+                            $ Undressed = 1
+                    elif not E_Panties and E_Custom7[6] and "pantyless" not in E_DailyActions:         
+                            $ Undressed = 1
+                    elif not E_Hose and E_Custom7[9]:          
+                            $ Undressed = 1
+                        
+                    $ E_Arms = E_Custom7[1]
+                    $ E_Legs = E_Custom7[2]
+                    $ E_Over = E_Custom7[3]
+                    $ E_Neck = E_Custom7[4]
+                    $ E_Chest = E_Custom7[5]
+                    $ E_Panties = E_Custom7[6]    
+                    $ E_Hose = E_Custom7[9]   
+                    $ E_Hair = E_Custom7[8] if E_Custom7[8] else E_Hair
+                    $ E_Shame = E_OutfitShame[14]
         elif E_OutfitTemp == "sleep":  
                     if not E_Legs and E_Sleepwear[2]:            
                             $ Undressed = 1
@@ -2863,6 +2957,10 @@ label Emma_Schedule(Clothes = 1, Location = 1, LocTemp = E_Loc):
                 $ Options.append("custom1") if E_Custom[0] == 2 else Options
                 $ Options.append("custom2") if E_Custom2[0] == 2 else Options
                 $ Options.append("custom3") if E_Custom3[0] == 2 else Options
+                $ Options.append("custom4") if E_Custom4[0] == 2 else Options
+                $ Options.append("custom5") if E_Custom5[0] == 2 else Options
+                $ Options.append("custom6") if E_Custom6[0] == 2 else Options
+                $ Options.append("custom7") if E_Custom7[0] == 2 else Options
                 $ renpy.random.shuffle(Options) 
                 $ E_OutfitDay = Options[0]
                 $ del Options[:]  
@@ -3137,6 +3235,90 @@ label MystiqueOutfit(M_OutfitTemp = newgirl["Mystique"].Outfit, Spunk = 0, Undre
                     $ newgirl["Mystique"].Hair = newgirl["Mystique"].Custom3[8] if newgirl["Mystique"].Custom3[8] else newgirl["Mystique"].Hair  
                     $ newgirl["Mystique"].Hose = newgirl["Mystique"].Custom3[9]                         
                     $ newgirl["Mystique"].Shame = newgirl["Mystique"].OutfitShame[6]
+        elif M_OutfitTemp == "custom4":
+                    if not newgirl["Mystique"].Legs and newgirl["Mystique"].Custom4[2]:            
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Over and newgirl["Mystique"].Custom4[3]:          
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Chest and newgirl["Mystique"].Custom4[5]:          
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Panties and newgirl["Mystique"].Custom4[6] and "pantyless" not in newgirl["Mystique"].DailyActions:         
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Hose and newgirl["Mystique"].Custom4[9]:          
+                            $ Undressed = 1
+                        
+                    $ newgirl["Mystique"].Arms = newgirl["Mystique"].Custom4[1]
+                    $ newgirl["Mystique"].Legs = newgirl["Mystique"].Custom4[2]
+                    $ newgirl["Mystique"].Over = newgirl["Mystique"].Custom4[3]
+                    $ newgirl["Mystique"].Neck = newgirl["Mystique"].Custom4[4]
+                    $ newgirl["Mystique"].Chest = newgirl["Mystique"].Custom4[5]
+                    $ newgirl["Mystique"].Panties = newgirl["Mystique"].Custom4[6]  
+                    $ newgirl["Mystique"].Hair = newgirl["Mystique"].Custom4[8] if newgirl["Mystique"].Custom4[8] else newgirl["Mystique"].Hair  
+                    $ newgirl["Mystique"].Hose = newgirl["Mystique"].Custom4[9]                         
+                    $ newgirl["Mystique"].Shame = newgirl["Mystique"].OutfitShame[11]
+        elif M_OutfitTemp == "custom5":
+                    if not newgirl["Mystique"].Legs and newgirl["Mystique"].Custom5[2]:            
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Over and newgirl["Mystique"].Custom5[3]:          
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Chest and newgirl["Mystique"].Custom5[5]:          
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Panties and newgirl["Mystique"].Custom5[6] and "pantyless" not in newgirl["Mystique"].DailyActions:         
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Hose and newgirl["Mystique"].Custom5[9]:          
+                            $ Undressed = 1
+                        
+                    $ newgirl["Mystique"].Arms = newgirl["Mystique"].Custom5[1]
+                    $ newgirl["Mystique"].Legs = newgirl["Mystique"].Custom5[2]
+                    $ newgirl["Mystique"].Over = newgirl["Mystique"].Custom5[3]
+                    $ newgirl["Mystique"].Neck = newgirl["Mystique"].Custom5[4]
+                    $ newgirl["Mystique"].Chest = newgirl["Mystique"].Custom5[5]
+                    $ newgirl["Mystique"].Panties = newgirl["Mystique"].Custom5[6]  
+                    $ newgirl["Mystique"].Hair = newgirl["Mystique"].Custom5[8] if newgirl["Mystique"].Custom5[8] else newgirl["Mystique"].Hair  
+                    $ newgirl["Mystique"].Hose = newgirl["Mystique"].Custom5[9]                         
+                    $ newgirl["Mystique"].Shame = newgirl["Mystique"].OutfitShame[12]
+        elif M_OutfitTemp == "custom6":
+                    if not newgirl["Mystique"].Legs and newgirl["Mystique"].Custom6[2]:            
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Over and newgirl["Mystique"].Custom6[3]:          
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Chest and newgirl["Mystique"].Custom6[5]:          
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Panties and newgirl["Mystique"].Custom6[6] and "pantyless" not in newgirl["Mystique"].DailyActions:         
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Hose and newgirl["Mystique"].Custom6[9]:          
+                            $ Undressed = 1
+                        
+                    $ newgirl["Mystique"].Arms = newgirl["Mystique"].Custom6[1]
+                    $ newgirl["Mystique"].Legs = newgirl["Mystique"].Custom6[2]
+                    $ newgirl["Mystique"].Over = newgirl["Mystique"].Custom6[3]
+                    $ newgirl["Mystique"].Neck = newgirl["Mystique"].Custom6[4]
+                    $ newgirl["Mystique"].Chest = newgirl["Mystique"].Custom6[5]
+                    $ newgirl["Mystique"].Panties = newgirl["Mystique"].Custom6[6]  
+                    $ newgirl["Mystique"].Hair = newgirl["Mystique"].Custom6[8] if newgirl["Mystique"].Custom6[8] else newgirl["Mystique"].Hair  
+                    $ newgirl["Mystique"].Hose = newgirl["Mystique"].Custom6[9]                         
+                    $ newgirl["Mystique"].Shame = newgirl["Mystique"].OutfitShame[13]
+        elif M_OutfitTemp == "custom7":
+                    if not newgirl["Mystique"].Legs and newgirl["Mystique"].Custom7[2]:            
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Over and newgirl["Mystique"].Custom7[3]:          
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Chest and newgirl["Mystique"].Custom7[5]:          
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Panties and newgirl["Mystique"].Custom7[6] and "pantyless" not in newgirl["Mystique"].DailyActions:         
+                            $ Undressed = 1
+                    elif not newgirl["Mystique"].Hose and newgirl["Mystique"].Custom7[9]:          
+                            $ Undressed = 1
+                        
+                    $ newgirl["Mystique"].Arms = newgirl["Mystique"].Custom7[1]
+                    $ newgirl["Mystique"].Legs = newgirl["Mystique"].Custom7[2]
+                    $ newgirl["Mystique"].Over = newgirl["Mystique"].Custom7[3]
+                    $ newgirl["Mystique"].Neck = newgirl["Mystique"].Custom7[4]
+                    $ newgirl["Mystique"].Chest = newgirl["Mystique"].Custom7[5]
+                    $ newgirl["Mystique"].Panties = newgirl["Mystique"].Custom7[6]  
+                    $ newgirl["Mystique"].Hair = newgirl["Mystique"].Custom7[8] if newgirl["Mystique"].Custom7[8] else newgirl["Mystique"].Hair  
+                    $ newgirl["Mystique"].Hose = newgirl["Mystique"].Custom7[9]                         
+                    $ newgirl["Mystique"].Shame = newgirl["Mystique"].OutfitShame[14]
         elif M_OutfitTemp == "sleep":  
                     if not newgirl["Mystique"].Legs and newgirl["Mystique"].Sleepwear[2]:            
                             $ Undressed = 1
@@ -3237,6 +3419,10 @@ label Mystique_Schedule(Clothes = 1, Location = 1, LocTemp = newgirl["Mystique"]
                 $ Options.append("custom1") if newgirl["Mystique"].Custom[0] == 2 else Options
                 $ Options.append("custom2") if newgirl["Mystique"].Custom2[0] == 2 else Options
                 $ Options.append("custom3") if newgirl["Mystique"].Custom3[0] == 2 else Options
+                $ Options.append("custom4") if newgirl["Mystique"].Custom4[0] == 2 else Options
+                $ Options.append("custom5") if newgirl["Mystique"].Custom5[0] == 2 else Options
+                $ Options.append("custom6") if newgirl["Mystique"].Custom6[0] == 2 else Options
+                $ Options.append("custom7") if newgirl["Mystique"].Custom7[0] == 2 else Options
                 $ renpy.random.shuffle(Options) 
                 $ newgirl["Mystique"].OutfitDay = Options[0]
                 $ del Options[:]  

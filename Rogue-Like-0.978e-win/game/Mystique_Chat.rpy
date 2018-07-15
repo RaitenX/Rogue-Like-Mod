@@ -3660,6 +3660,14 @@ label Mystique_Clothes(Public=0,Bonus=0):
                                 call Mystique_OutfitShame(5,1)
                     "Custom 3":
                                 call Mystique_OutfitShame(6,1)
+                    "Custom 4":
+                                call Mystique_OutfitShame(11,1)
+                    "Custom 5":
+                                call Mystique_OutfitShame(12,1)
+                    "Custom 6":
+                                call Mystique_OutfitShame(13,1)
+                    "Custom 7":
+                                call Mystique_OutfitShame(14,1)
                     "Gym Clothes":
                                 call Mystique_OutfitShame(7,1)                    
                     "Sleepwear":
@@ -3722,10 +3730,10 @@ label Mystique_Clothes(Public=0,Bonus=0):
                 "Let's try something else though.":
                     ch_m "Very well."            
                     
-        "Remember that outfit we put together? [[Set a custom outfit] (locked)" if not newgirl["Mystique"].Custom[0] and not newgirl["Mystique"].Custom2[0] and not newgirl["Mystique"].Custom3[0]:
+        "Remember that outfit we put together? [[Set a custom outfit] (locked)" if not newgirl["Mystique"].Custom[0] and not newgirl["Mystique"].Custom2[0] and not newgirl["Mystique"].Custom3[0] and not newgirl["Mystique"].Custom4[0] and not newgirl["Mystique"].Custom5[0] and not newgirl["Mystique"].Custom6[0] and not newgirl["Mystique"].Custom7[0]:
                         pass       
                         
-        "Remember that outfit we put together?" if newgirl["Mystique"].Custom[0] or newgirl["Mystique"].Custom2[0] or newgirl["Mystique"].Custom3[0]: 
+        "Remember that outfit we put together?" if newgirl["Mystique"].Custom[0] or newgirl["Mystique"].Custom2[0] or newgirl["Mystique"].Custom3[0] or newgirl["Mystique"].Custom4[0] or newgirl["Mystique"].Custom5[0] or newgirl["Mystique"].Custom6[0] or newgirl["Mystique"].Custom7[0]: 
             $ Cnt = 0
             while 1:
                 menu:                
@@ -3744,6 +3752,28 @@ label Mystique_Clothes(Public=0,Bonus=0):
                     "Throw on Custom 3" if newgirl["Mystique"].Custom3[0]:
                         call MystiqueOutfit("custom3")
                         $ Cnt = 6
+
+                    "Throw on Custom 4 (locked)" if not newgirl["Mystique"].Custom4[0]:
+                        pass
+                    "Throw on Custom 4" if newgirl["Mystique"].Custom4[0]:
+                        call MystiqueOutfit("custom4")
+                        $ Cnt = 11
+                    "Throw on Custom 5 (locked)" if not newgirl["Mystique"].Custom5[0]:
+                        pass
+                    "Throw on Custom 5" if newgirl["Mystique"].Custom5[0]:
+                        call MystiqueOutfit("custom5")
+                        $ Cnt = 12
+                    "Throw on Custom 6 (locked)" if not newgirl["Mystique"].Custom6[0]:
+                        pass
+                    "Throw on Custom 6" if newgirl["Mystique"].Custom6[0]:
+                        call MystiqueOutfit("custom6")
+                        $ Cnt = 13
+                    "Throw on Custom 7 (locked)" if not newgirl["Mystique"].Custom7[0]:
+                        pass
+                    "Throw on Custom 7" if newgirl["Mystique"].Custom7[0]:
+                        call MystiqueOutfit("custom7")
+                        $ Cnt = 14
+                    
                     
                     "You should wear this one in our rooms. (locked)" if not Cnt:
                         pass
@@ -3752,6 +3782,14 @@ label Mystique_Clothes(Public=0,Bonus=0):
                             $ newgirl["Mystique"].Schedule[9] = "custom2"
                         elif Cnt == 6:
                             $ newgirl["Mystique"].Schedule[9] = "custom3"
+                        elif Cnt == 11:
+                            $ newgirl["Mystique"].Schedule[9] = "custom4"
+                        elif Cnt == 12:
+                            $ newgirl["Mystique"].Schedule[9] = "custom5"
+                        elif Cnt == 13:
+                            $ newgirl["Mystique"].Schedule[9] = "custom6"
+                        elif Cnt == 14:
+                            $ newgirl["Mystique"].Schedule[9] = "custom7"
                         else:
                             $ newgirl["Mystique"].Schedule[9] = "custom"
                         ch_m "Ok, sure."
@@ -3773,6 +3811,26 @@ label Mystique_Clothes(Public=0,Bonus=0):
                                 ch_m "Very well."
                                 $ newgirl["Mystique"].Custom3[0] = 0
                             "Custom 3 [[clear custom 1] (locked)" if not newgirl["Mystique"].Custom3[0]:
+                                pass
+                            "Custom 4 [[clear custom 4]" if newgirl["Mystique"].Custom4[0]:
+                                ch_m "Very well."
+                                $ newgirl["Mystique"].Custom4[0] = 0
+                            "Custom 4 [[clear custom 1] (locked)" if not newgirl["Mystique"].Custom4[0]:
+                                pass
+                            "Custom 5 [[clear custom 5]" if newgirl["Mystique"].Custom5[0]:
+                                ch_m "Very well."
+                                $ newgirl["Mystique"].Custom5[0] = 0
+                            "Custom 5 [[clear custom 1] (locked)" if not newgirl["Mystique"].Custom5[0]:
+                                pass
+                            "Custom 6 [[clear custom 6]" if newgirl["Mystique"].Custom6[0]:
+                                ch_m "Very well."
+                                $ newgirl["Mystique"].Custom6[0] = 0
+                            "Custom 6 [[clear custom 1] (locked)" if not newgirl["Mystique"].Custom6[0]:
+                                pass
+                            "Custom 7 [[clear custom 7]" if newgirl["Mystique"].Custom7[0]:
+                                ch_m "Very well."
+                                $ newgirl["Mystique"].Custom7[0] = 0
+                            "Custom 7 [[clear custom 1] (locked)" if not newgirl["Mystique"].Custom7[0]:
                                 pass
                             "Never mind, [[back].":
                                 pass    
@@ -4538,7 +4596,7 @@ label Mystique_Clothes_ScheduleB(Count = 0):
                     $ Count = 1
                 "Your superhero outfit.":
                     $ Count = 2
-                "That outfit we put together [[custom]" if newgirl["Mystique"].Custom[0] or newgirl["Mystique"].Custom2[0] or newgirl["Mystique"].Custom3[0]:
+                "That outfit we put together [[custom]" if newgirl["Mystique"].Custom[0] or newgirl["Mystique"].Custom2[0] or newgirl["Mystique"].Custom3[0] or newgirl["Mystique"].Custom4[0] or newgirl["Mystique"].Custom5[0] or newgirl["Mystique"].Custom6[0] or newgirl["Mystique"].Custom7[0]:
                             menu:
                                 "Like, which?"
                                 "The first one. (locked)" if not newgirl["Mystique"].Custom[0]:
@@ -4562,6 +4620,38 @@ label Mystique_Clothes_ScheduleB(Count = 0):
                                 "The third one." if newgirl["Mystique"].Custom3[0]:
                                     if newgirl["Mystique"].Custom3[0] == 2 or Count == 99:
                                         $ Count = 6
+                                    else:
+                                        ch_m "I said I'm not wearing that one in public."
+
+                                "The fourth one. (locked)" if not newgirl["Mystique"].Custom4[0]:
+                                    pass
+                                "The fourth one." if newgirl["Mystique"].Custom4[0]:
+                                    if newgirl["Mystique"].Custom4[0] == 2 or Count == 99:
+                                        $ Count = 11
+                                    else:
+                                        ch_m "I said I'm not wearing that one in public."
+
+                                "The fifth one. (locked)" if not newgirl["Mystique"].Custom5[0]:
+                                    pass
+                                "The fifth one." if newgirl["Mystique"].Custom5[0]:
+                                    if newgirl["Mystique"].Custom5[0] == 2 or Count == 99:
+                                        $ Count = 12
+                                    else:
+                                        ch_m "I said I'm not wearing that one in public."
+
+                                "The sixth one. (locked)" if not newgirl["Mystique"].Custom6[0]:
+                                    pass
+                                "The sixth one." if newgirl["Mystique"].Custom6[0]:
+                                    if newgirl["Mystique"].Custom6[0] == 2 or Count == 99:
+                                        $ Count = 13
+                                    else:
+                                        ch_m "I said I'm not wearing that one in public."
+
+                                "The seventh one. (locked)" if not newgirl["Mystique"].Custom7[0]:
+                                    pass
+                                "The seventh one." if newgirl["Mystique"].Custom7[0]:
+                                    if newgirl["Mystique"].Custom7[0] == 2 or Count == 99:
+                                        $ Count = 14
                                     else:
                                         ch_m "I said I'm not wearing that one in public."
                                         
@@ -4592,15 +4682,35 @@ label Mystique_Custom_Out(Custom = 3, Shame = 0, Agree = 1):
                         elif Custom == 6 and newgirl["Mystique"].Custom3[0] == 2:
                             $ newgirl["Mystique"].Outfit = "custom3"                    
                             $ newgirl["Mystique"].Shame = newgirl["Mystique"].OutfitShame[6]
+                        elif Custom == 11 and newgirl["Mystique"].Custom4[0] == 2:
+                            $ newgirl["Mystique"].Outfit = "custom4"                    
+                            $ newgirl["Mystique"].Shame = newgirl["Mystique"].OutfitShame[11]
+                        elif Custom == 12 and newgirl["Mystique"].Custom5[0] == 2:
+                            $ newgirl["Mystique"].Outfit = "custom5"                    
+                            $ newgirl["Mystique"].Shame = newgirl["Mystique"].OutfitShame[12]
+                        elif Custom == 13 and newgirl["Mystique"].Custom6[0] == 2:
+                            $ newgirl["Mystique"].Outfit = "custom6"                    
+                            $ newgirl["Mystique"].Shame = newgirl["Mystique"].OutfitShame[13]
+                        elif Custom == 14 and newgirl["Mystique"].Custom7[0] == 2:
+                            $ newgirl["Mystique"].Outfit = "custom7"                    
+                            $ newgirl["Mystique"].Shame = newgirl["Mystique"].OutfitShame[14]
                         else: #if custom 1:
                             $ newgirl["Mystique"].Outfit = "custom1"                    
                             $ newgirl["Mystique"].Shame = newgirl["Mystique"].OutfitShame[3]            
-                        return    
+                        return      
             
             if Custom == 5 and newgirl["Mystique"].Custom2[0] == 2:
                         $ newgirl["Mystique"].Outfit = "custom2"   
             elif Custom == 6 and newgirl["Mystique"].Custom3[0] == 2:
-                        $ newgirl["Mystique"].Outfit = "custom3"   
+                        $ newgirl["Mystique"].Outfit = "custom3"    
+            elif Custom == 11 and newgirl["Mystique"].Custom4[0] == 2:
+                        $ newgirl["Mystique"].Outfit = "custom4"    
+            elif Custom == 12 and newgirl["Mystique"].Custom5[0] == 2:
+                        $ newgirl["Mystique"].Outfit = "custom5"    
+            elif Custom == 13 and newgirl["Mystique"].Custom6[0] == 2:
+                        $ newgirl["Mystique"].Outfit = "custom6"    
+            elif Custom == 14 and newgirl["Mystique"].Custom7[0] == 2:
+                        $ newgirl["Mystique"].Outfit = "custom7"   
             elif newgirl["Mystique"].Custom[0] == 2: #if custom 1:
                         $ newgirl["Mystique"].Outfit = "custom1"   
             else: #no
@@ -4834,6 +4944,42 @@ label Mystique_OutfitShame(Custom = 3, Check = 0, Count = 0, Tempshame = 50, Agr
                             $ newgirl["Mystique"].Custom3[8] = newgirl["Mystique"].Hair
                             $ newgirl["Mystique"].Custom3[9] = newgirl["Mystique"].Hose
                             $ newgirl["Mystique"].Custom3[0] = 2 if Agree else 1
+                    elif Custom == 11:
+                            $ newgirl["Mystique"].Custom4[1] = newgirl["Mystique"].Arms  
+                            $ newgirl["Mystique"].Custom4[2] = newgirl["Mystique"].Legs 
+                            $ newgirl["Mystique"].Custom4[3] = newgirl["Mystique"].Over
+                            $ newgirl["Mystique"].Custom4[5] = newgirl["Mystique"].Chest 
+                            $ newgirl["Mystique"].Custom4[6] = newgirl["Mystique"].Panties
+                            $ newgirl["Mystique"].Custom4[8] = newgirl["Mystique"].Hair
+                            $ newgirl["Mystique"].Custom4[9] = newgirl["Mystique"].Hose
+                            $ newgirl["Mystique"].Custom4[0] = 2 if Agree else 1           
+                    elif Custom == 12:
+                            $ newgirl["Mystique"].Custom5[1] = newgirl["Mystique"].Arms  
+                            $ newgirl["Mystique"].Custom5[2] = newgirl["Mystique"].Legs 
+                            $ newgirl["Mystique"].Custom5[3] = newgirl["Mystique"].Over
+                            $ newgirl["Mystique"].Custom5[5] = newgirl["Mystique"].Chest 
+                            $ newgirl["Mystique"].Custom5[6] = newgirl["Mystique"].Panties
+                            $ newgirl["Mystique"].Custom5[8] = newgirl["Mystique"].Hair
+                            $ newgirl["Mystique"].Custom5[9] = newgirl["Mystique"].Hose
+                            $ newgirl["Mystique"].Custom5[0] = 2 if Agree else 1           
+                    elif Custom == 13:
+                            $ newgirl["Mystique"].Custom6[1] = newgirl["Mystique"].Arms  
+                            $ newgirl["Mystique"].Custom6[2] = newgirl["Mystique"].Legs 
+                            $ newgirl["Mystique"].Custom6[3] = newgirl["Mystique"].Over
+                            $ newgirl["Mystique"].Custom6[5] = newgirl["Mystique"].Chest 
+                            $ newgirl["Mystique"].Custom6[6] = newgirl["Mystique"].Panties
+                            $ newgirl["Mystique"].Custom6[8] = newgirl["Mystique"].Hair
+                            $ newgirl["Mystique"].Custom6[9] = newgirl["Mystique"].Hose
+                            $ newgirl["Mystique"].Custom6[0] = 2 if Agree else 1           
+                    elif Custom == 14:
+                            $ newgirl["Mystique"].Custom7[1] = newgirl["Mystique"].Arms  
+                            $ newgirl["Mystique"].Custom7[2] = newgirl["Mystique"].Legs 
+                            $ newgirl["Mystique"].Custom7[3] = newgirl["Mystique"].Over
+                            $ newgirl["Mystique"].Custom7[5] = newgirl["Mystique"].Chest 
+                            $ newgirl["Mystique"].Custom7[6] = newgirl["Mystique"].Panties
+                            $ newgirl["Mystique"].Custom7[8] = newgirl["Mystique"].Hair
+                            $ newgirl["Mystique"].Custom7[9] = newgirl["Mystique"].Hose
+                            $ newgirl["Mystique"].Custom7[0] = 2 if Agree else 1
                     elif Custom == 7 and Agree:
                             $ newgirl["Mystique"].Gym[1] = newgirl["Mystique"].Arms  
                             $ newgirl["Mystique"].Gym[2] = newgirl["Mystique"].Legs 

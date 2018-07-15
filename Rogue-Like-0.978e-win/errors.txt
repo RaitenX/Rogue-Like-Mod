@@ -2,7 +2,24 @@
 errors listed below, and try again.
 
 
-File "game/Emma_Animations.rpy", line 3: is not terminated with a newline. (Check strings and parenthesis.)
-        LiveComposite(
+File "game/Emma_Chat.rpy", line 3487: expected statement.
+    elif Cnt == 11:
+             ^
+
+File "game/Emma_Chat.rpy", line 3489: expected statement.
+    elif Cnt == 12:
+             ^
+
+File "game/Emma_Chat.rpy", line 3491: expected statement.
+    elif Cnt == 13:
+             ^
+
+File "game/Emma_Chat.rpy", line 3493: expected statement.
+    elif Cnt == 14:
+             ^
+
+File "game/Emma_Chat.rpy", line 3495: expected statement.
+    else:
+        ^
 
 Ren'Py Version: Ren'Py 6.99.13.2919

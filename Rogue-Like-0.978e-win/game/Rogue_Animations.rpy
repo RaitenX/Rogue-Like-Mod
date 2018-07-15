@@ -2165,7 +2165,8 @@ image Rogue_Sex_Legs:
             "True", Null(),                     
             ),  
         (0,0), ConditionSwitch(        
-            #"R_LegsUp", Null(),                                                                         #Legs Layer
+            "R_LegsUp", Null(),                                                                         #Legs Layer
+            "R_Hose == 'SR7 hose'", "images/RogueSex/Rogue_Sex_SR7_Hose_Legs.png",
             #"R_Hose == 'stockings'", "images/RogueSex/Rogue_Sex_Stockings_Legs.png",
             #"R_Hose == 'white socks'", "images/RogueSex/Rogue_Sex_WSocks_Thigh_Legs.png",
             #"R_Hose == 'black socks'", "images/RogueSex/Rogue_Sex_BSocks_Thigh_Legs.png",
@@ -2174,6 +2175,7 @@ image Rogue_Sex_Legs:
             ), 
         (0,0), ConditionSwitch(                                                                                 #Legs Layer
             #"R_Upskirt", Null(),  
+            "R_Legs == 'SR7 skirtshort'", "images/RogueSex/Rogue_Sex_SR7_Skirt_Short.png",
             #"R_Legs == 'shorts' and R_Wet > 1", "images/RogueSex/Rogue_Sex_Shorts_Wet.png",
             #"R_Legs == 'shorts'", "images/RogueSex/Rogue_Sex_Shorts.png",
             #"R_Legs == 'blue shorts' and R_Wet > 1", "images/RogueSex/Rogue_Sex_BlueShorts_Wet.png",
@@ -2228,11 +2230,21 @@ image Rogue_Sex_Feet = LiveComposite(
             "True", "images/RogueSex/Rogue_Sex_Feet.png",
             ),
         (0,0), ConditionSwitch(
-            #"R_LegsUp", Null(),
+            "R_LegsUp", Null(),
+            "R_Hose == 'SR7 hose'", "images/RogueSex/Rogue_Sex_SR7_Hose_Feet.png",  
             #"R_Hose == 'stockings'", "images/RogueSex/Rogue_Sex_Stockings_Feet.png",  
             #"R_Hose == 'white socks'", "images/RogueSex/Rogue_Sex_WSocks_Thigh_Feet.png",
             #"R_Hose == 'black socks'", "images/RogueSex/Rogue_Sex_BSocks_Thigh_Feet.png",
             #"R_Hose == 'pink socks'", "images/RogueSex/Rogue_Sex_PSocks_Thigh_Feet.png",                                                       #Legs Base
+            "True", Null(),
+            ),
+        (0,0), ConditionSwitch(
+            "not R_LegsUp", Null(),
+            "R_Hose == 'SR7 hose'", "images/RogueSex/Rogue_Sex_SR7_Hose_LegsUp.png", 
+            # "R_Hose == 'stockings'", "images/RogueSex/Rogue_Sex_Stockings_Thigh_LegsUp_.png",  
+            # "R_Hose == 'white socks'", "images/RogueSex/Rogue_Sex_WSocks_Thigh_LegsUp_.png",
+            # "R_Hose == 'black socks'", "images/RogueSex/Rogue_Sex_BSocks_Thigh_LegsUp_.png",
+            # "R_Hose == 'pink socks'", "images/RogueSex/Rogue_Sex_PSocks_Thigh_LegsUp_.png",                                                       #Legs Base
             "True", Null(),
             ),
         (0,0), ConditionSwitch(                                                                                 #Wet look
@@ -2933,7 +2945,7 @@ image Rogue_Sex_Body = LiveComposite(
             #"R_Chest == 'white cami'", "images/RogueSex/Rogue_Sex_Under_WhiteCami.png",
             #"R_Chest == 'sports bra'", "images/RogueSex/Rogue_Sex_Under_SportsBra.png",
             #"R_Chest == 'purple bikini bra'", "images/RogueSex/Rogue_Sex_Under_Bikini1.png",
-            #"R_Chest == 'red bikini bra'", "images/RogueSex/Rogue_Sex_Under_Bikini2.png",
+            "R_Chest == 'SR7 tank short'", "images/RogueSex/Rogue_Sex_SR7_Tank_Short.png",
             "R_Chest == 'bra'", "images/RogueSex/Rogue_Sex_Under_Bra.png",
             #"R_Chest == 'lace bra'", "images/RogueSex/Rogue_Sex_Under_LaceBra.png",
             #"R_Chest == 'darker lace bra'", "images/RogueSex/Rogue_Sex_Under_DarkerLaceBra.png",
@@ -2959,7 +2971,7 @@ image Rogue_Sex_Body = LiveComposite(
         (0,0), ConditionSwitch(                                                                                 #Overshirt
             "not R_Over", Null(),
             "R_Over == 'armbinder'", "images/RogueSex/RogueSexArmbinderOvershirt.png",
-            #"R_Over == 'dark top'", "images/RogueSex/Rogue_Sex_Over_darkShirt.png",           
+            "R_Over == 'SR7 mesh top'", "images/RogueSex/Rogue_Sex_Over_SR7_Mesh_Top.png",           
             #"R_Over == 'pink top'", "images/RogueSex/Rogue_Sex_Over_PinkShirt.png",           
             #"R_Over == 'purple shirt'", "images/RogueSex/Rogue_Sex_Over_purpleShirt.png",   
             #"R_Over == 'red shirt'", "images/RogueSex/Rogue_Sex_Over_RedShirt.png",   
