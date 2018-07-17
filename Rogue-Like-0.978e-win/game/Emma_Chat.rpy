@@ -3358,6 +3358,14 @@ label Emma_Clothes(Public=0,Bonus=0):
                                 call Emma_OutfitShame(5,1)
                     "Custom 3":
                                 call Emma_OutfitShame(6,1)
+                    "Custom 4":
+                                call Emma_OutfitShame(11,1)
+                    "Custom 5":
+                                call Emma_OutfitShame(12,1)
+                    "Custom 6":
+                                call Emma_OutfitShame(13,1)
+                    "Custom 7":
+                                call Emma_OutfitShame(14,1)
                     "Gym Clothes":
                                 call Emma_OutfitShame(7,1)
                     "Sleepwear":

@@ -1136,16 +1136,13 @@ image Rogue_Doggy_Ass = LiveComposite(                                          
             ),   
         (0,0), ConditionSwitch(                                                                                 #Hotdogging underlayer
             "not P_Sprite or P_Cock != 'out'", Null(),   
-            "(R_Legs == 'skirt' or R_Legs == 'cheerleader skirt') and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_HotdogUpskirtBack.png",  
-            "(R_Legs == 'skirtshort' or R_Legs == 'SR7 skirtshort' or R_Legs == 'cheerleader skirt') and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_HotdogUpskirtBack.png", 
+            "(R_Legs == 'skirt') and R_Upskirt", "images/RogueDoggy/Rogue_Doggy_HotdogUpskirtBack.png",  
             "True", "images/RogueDoggy/Rogue_Doggy_HotdogBack.png", 
             ),    
         (0,0), ConditionSwitch(                                                                                 #Hotdogging Cock w/ alpha
             "not P_Sprite or P_Cock != 'out'", Null(),            
             "(R_Legs == 'skirt' or R_Legs == 'cheerleader skirt') and R_Upskirt and Speed", AlphaMask("Zero_Hotdog_Moving", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png"),
             "(R_Legs == 'skirt' or R_Legs == 'cheerleader skirt') and R_Upskirt", AlphaMask("Zero_Hotdog_Static", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png"),
-            "(R_Legs == 'skirtshort' or R_Legs == 'SR7 skirtshort' or R_Legs == 'cheerleader skirt') and R_Upskirt and Speed", AlphaMask("Zero_Hotdog_Moving", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png"),
-            "(R_Legs == 'skirtshort' or R_Legs == 'SR7 skirtshort' or R_Legs == 'cheerleader skirt') and R_Upskirt", AlphaMask("Zero_Hotdog_Static", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png"),
             "Speed", AlphaMask("Zero_Hotdog_Moving", "images/RogueDoggy/Rogue_Doggy_HotdogMask.png"),    
             "True", AlphaMask("Zero_Hotdog_Static", "images/RogueDoggy/Rogue_Doggy_HotdogMask.png"),
             ),

@@ -568,9 +568,9 @@ init python:
                             elif R_Hose == "ripped tights":
                                 return 5
                             elif R_Hose == "fishnet":
-                                return 10
+                                return 1
                             elif R_Hose == "SR7 hose":
-                                return 10
+                                return 1
                             else:
                                 return 0
                                 
