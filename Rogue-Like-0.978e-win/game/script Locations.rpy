@@ -999,8 +999,13 @@ label Class_Room:
                             call K_Cumming
                             $ K_Lust = 45
                             $ K_RecentActions.append("vcame")
-                            if Situation == "shift" or "angry" in K_RecentActions:
-                                jump KFB_After
+                            if "angry" in K_RecentActions:
+                                if K_Love >= 500 and "unsatisfied" not in K_RecentActions:
+                                    ch_k "That was . . . real pleasant, [K_Petname]."
+                                else:
+                                    call KittyFaceSpecial("angry", 1)
+                                    if Adjacent == "Kitty":
+                                        ch_k "You had your fun, [K_Petname], can you stop now?"
                         menu:
                             "Keep it on":
                                 jump V_Kitty_On
@@ -1114,8 +1119,13 @@ label Class_Room:
                             call R_Cumming
                             $ R_Lust = 45
                             $ R_RecentActions.append("vcame")
-                            if Situation == "shift" or "angry" in R_RecentActions:
-                                jump RFB_After
+                            if "angry" in R_RecentActions:
+                                if R_Love >= 500 and "unsatisfied" not in R_RecentActions:
+                                    ch_r "That was . . . real pleasant, [R_Petname]."
+                                else:
+                                    call RogueFaceSpecial("angry", 1)
+                                    if Adjacent == "Rogue":
+                                        ch_r "You had your fun, [R_Petname], can you stop now?"
                         menu:
                             "Keep it on":
                                 jump V_Rogue_On
@@ -1229,8 +1239,13 @@ label Class_Room:
                             call E_Cumming
                             $ E_Lust = 45
                             $ E_RecentActions.append("vcame")
-                            if Situation == "shift" or "angry" in E_RecentActions:
-                                jump E_FB_After
+                            if "angry" in E_RecentActions:
+                                if E_Love >= 500 and "unsatisfied" not in E_RecentActions:
+                                    ch_e "That was . . . real pleasant, [E_Petname]."
+                                else:
+                                    call EmmaFaceSpecial("angry", 1)
+                                    if Adjacent == "Emma":
+                                        ch_e "You had your fun, [E_Petname], can you stop now?"
                         menu:
                             "Keep it on":
                                 jump V_Emma_On
